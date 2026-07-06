@@ -198,52 +198,52 @@ export function computerWontTurnOnHtml() {
 
 // ---------- General FAQ (site-wide, grouped) ----------
 const FAQ_GROUPS = [
-  ['General & Process', [
-    ["Does home/contents insurance typically cover accidental damage repairs?", "Many home insurance policies cover accidental damage to laptops — worth checking your specific policy. We can provide a detailed invoice for insurance claim purposes either way."],
-    ["Can you provide an invoice in English for expense reports or reimbursement?", "Yes — all invoices are available in English, which is useful for expense claims, company reimbursement, or embassy administrative purposes."],
-    ["What should I do before bringing my device in for repair?", "If possible: back up important data, remove any case or accessories, and note your device's passcode if we'll need to test it after repair. Not required, but it speeds things up."],
-    ["Do you offer any discount for students?", "Contact us directly to ask — worth checking, especially given our location near Copenhagen Business School."],
-    ['Do you speak English?', 'Yes — our entire service is in English, from your first call or email through to picking up your repaired device. No Danish required.'],
-    ['How does diagnostics and repair work?', 'We diagnose the actual problem first, then give you a fixed quote before any repair work starts. Standard diagnostics are free (2–4 days), or choose express for 600 kr (1–2 hours) — with repair and delivery within 24 hours if no special parts need ordering.'],
-    ['What if I need my device back faster than standard diagnostics?', 'Choose express diagnostics (600 kr, 1–2 hours) instead of the free standard option. Most express repairs are completed within 24 hours if no special parts need ordering.'],
-    ['Do you offer a warranty on repairs?', 'Yes, repairs come with a warranty. Ask at the time of booking for specifics on your repair type.'],
-    ['Is my data safe during repair?', "Yes. We don't access or share personal data beyond what's necessary to complete the repair, and we recommend backing up important files beforehand regardless."],
-    ['Do I need an appointment, or can I walk in?', 'Walk-in service — no appointment needed.'],
-    ['Can you pick up and deliver my computer?', 'Yes, pickup and delivery is available — contact us for details based on your location.'],
-    ['What if my device can\'t be repaired?', "We'll tell you honestly. If repair isn't cost-effective compared to replacement, we'll say so rather than charging for work that isn't worthwhile — and can point you toward refurbished or new options in our <a href=\"/shop/\">shop</a> if that's the better path."],
-    ['How do I know if it\'s worth repairing my computer, or if I should just replace it?', 'A common rule of thumb: if the repair cost is more than 25–50% of a comparable replacement, replacement is usually the better value — especially on an older machine. A 2–3 year old laptop is almost always worth repairing; a 7–8 year old one may have harder-to-source parts. We give you our honest opinion as part of your fixed quote.'],
-    ['What payment methods do you accept?', 'Card payments and bank transfer.'],
+  ['Generelt & proces', [
+    ['Dækker indbo-/husforsikring typisk skader ved uheld?', 'Mange indboforsikringer dækker skader på bærbare ved uheld — værd at tjekke din konkrete police. Vi kan under alle omstændigheder lave en detaljeret faktura til brug for en forsikringssag.'],
+    ['Kan I lave en faktura til udlægsrapporter eller refusion?', 'Ja — alle fakturaer kan laves med de nødvendige oplysninger til udlæg, virksomhedsrefusion eller administrative formål. Vi kan også lave fakturaen på engelsk, hvis det er nødvendigt.'],
+    ['Hvad skal jeg gøre, før jeg bringer min enhed ind til reparation?', 'Hvis muligt: tag backup af vigtige data, fjern eventuelt cover eller tilbehør, og notér enhedens adgangskode, hvis vi skal teste den efter reparation. Ikke et krav, men det gør det hurtigere.'],
+    ['Tilbyder I studierabat?', 'Kontakt os direkte for at spørge — værd at tjekke, især i betragtning af vores placering tæt på Copenhagen Business School.'],
+    ['Taler I engelsk?', 'Ja — vi kan sagtens klare hele forløbet på engelsk, hvis det er nemmere for jer, fra første opkald eller e-mail til afhentning af den reparerede enhed.'],
+    ['Hvordan fungerer fejlsøgning og reparation?', 'Vi fejlsøger det reelle problem først og giver dig derefter en fast pris, før noget reparationsarbejde starter. Standardfejlsøgning er gratis (2–4 dage), eller vælg ekspres for 600 kr. (1–2 timer) — med reparation og levering inden for 24 timer, hvis der ikke skal bestilles specielle reservedele.'],
+    ['Hvad hvis jeg skal bruge min enhed hurtigere end standardfejlsøgning?', 'Vælg ekspres fejlsøgning (600 kr., 1–2 timer) i stedet for den gratis standardmulighed. De fleste ekspresreparationer klares inden for 24 timer, hvis der ikke skal bestilles specielle reservedele.'],
+    ['Giver I garanti på reparationer?', 'Ja, reparationer kommer med garanti. Spørg ved booking om detaljerne for din type reparation.'],
+    ['Er mine data sikre under reparation?', 'Ja. Vi tilgår eller deler ikke personlige data ud over det, der er nødvendigt for at gennemføre reparationen, og vi anbefaler under alle omstændigheder at tage backup af vigtige filer forinden.'],
+    ['Skal jeg bestille tid, eller kan jeg bare møde op?', 'Fremmøde uden bestilling — ingen tidsbestilling nødvendig.'],
+    ['Kan I hente og levere min computer?', 'Ja, afhentning og levering er muligt — kontakt os for detaljer ud fra din placering.'],
+    ['Hvad hvis min enhed ikke kan repareres?', 'Så siger vi det ærligt. Hvis en reparation ikke kan betale sig sammenlignet med at udskifte, siger vi det frem for at opkræve for arbejde, der ikke kan svare sig — og kan pege dig mod istandsatte eller nye muligheder i vores <a href="/shop/">butik</a>, hvis det er den bedre vej.'],
+    ['Hvordan ved jeg, om det kan betale sig at reparere min computer, eller om jeg bare skal udskifte den?', 'En almindelig tommelfingerregel: hvis reparationsprisen er mere end 25–50 % af en tilsvarende erstatning, er udskiftning som regel den bedre værdi — især på en ældre maskine. En 2–3 år gammel bærbar er næsten altid værd at reparere; en på 7–8 år kan have sværere-tilgængelige reservedele. Vi giver dig vores ærlige vurdering som en del af din faste pris.'],
+    ['Hvilke betalingsmetoder tager I imod?', 'Kortbetaling og bankoverførsel.'],
   ]],
-  ['Brands We Repair', [
-    ['Do you repair Lenovo laptops?', 'Yes — ThinkPad (T14, T14s, X1 Carbon, P16 and more), IdeaPad, Legion, Yoga, and ThinkBook. See <a href="/lenovo-repair/">Lenovo Repair</a>.'],
-    ['Do you repair Acer laptops?', 'Yes — Aspire, Swift, Nitro, and Predator models. See <a href="/acer-repair/">Acer Repair</a>.'],
-    ['Do you repair HP laptops?', 'Yes — EliteBook, ProBook, Pavilion, Spectre, and Omen. See <a href="/hp-repair/">HP Repair</a>.'],
-    ['Do you repair Dell laptops?', 'Yes — XPS, Latitude, Inspiron, Precision, and Alienware. See <a href="/dell-repair/">Dell Repair</a>.'],
-    ['Do you repair Asus laptops?', 'Yes — ZenBook, Vivobook, ROG, and TUF Gaming. See <a href="/asus-repair/">Asus Repair</a>.'],
-    ['Do you repair MSI laptops?', "Yes — Katana, GF-series, Stealth, and Prestige. We're also one of the few workshops in Denmark that stocks MSI parts. See <a href=\"/msi-repair/\">MSI Repair</a>."],
-    ['Do you repair Huawei laptops?', 'Yes — the MateBook D14, D15, and X Pro. See <a href="/huawei-repair/">Huawei Repair</a>.'],
-    ['Do you repair MacBook and Mac desktops?', 'Yes — every MacBook generation (Intel and Apple Silicon), plus iMac, Mac mini, Mac Studio, and Mac Pro. See <a href="/mac-repair/">Mac Repair</a>.'],
-    ['Do you repair Microsoft Surface devices?', 'Yes — Surface Pro, Surface Laptop, and Surface Book, including specialized digitizer and touch-screen repair. See <a href="/microsoft-surface-repair/">Microsoft Surface Repair</a>.'],
-    ['Do you repair Samsung Galaxy Book laptops?', 'Yes — Galaxy Book3, Galaxy Book4 Pro, Galaxy Book3 360, and Galaxy Book Go. See <a href="/samsung-repair/">Samsung Repair</a>.'],
-    ['What about brands not listed here — Toshiba, Gigabyte, LG gram, Razer?', 'We repair virtually every brand and custom-built setup — see <a href="/other-brands-repair/">Other Brands & Custom Builds</a>.'],
-    ['Do you build custom gaming PCs, not just repair them?', "Yes — tell us your budget and intended use, and we'll recommend components, build it, and test it before handover. See our <a href=\"/gaming-pc-repair-and-build/\">Gaming PC</a> page."],
+  ['Mærker vi reparerer', [
+    ['Reparerer I Lenovo-bærbare?', 'Ja — ThinkPad (T14, T14s, X1 Carbon, P16 med flere), IdeaPad, Legion, Yoga og ThinkBook. Se <a href="/lenovo-repair/">Lenovo-reparation</a>.'],
+    ['Reparerer I Acer-bærbare?', 'Ja — Aspire, Swift, Nitro og Predator-modeller. Se <a href="/acer-repair/">Acer-reparation</a>.'],
+    ['Reparerer I HP-bærbare?', 'Ja — EliteBook, ProBook, Pavilion, Spectre og Omen. Se <a href="/hp-repair/">HP-reparation</a>.'],
+    ['Reparerer I Dell-bærbare?', 'Ja — XPS, Latitude, Inspiron, Precision og Alienware. Se <a href="/dell-repair/">Dell-reparation</a>.'],
+    ['Reparerer I Asus-bærbare?', 'Ja — ZenBook, Vivobook, ROG og TUF Gaming. Se <a href="/asus-repair/">Asus-reparation</a>.'],
+    ['Reparerer I MSI-bærbare?', 'Ja — Katana, GF-serien, Stealth og Prestige. Vi er også et af de få værksteder i Danmark, der har MSI-dele på lager. Se <a href="/msi-repair/">MSI-reparation</a>.'],
+    ['Reparerer I Huawei-bærbare?', 'Ja — MateBook D14, D15 og X Pro. Se <a href="/huawei-repair/">Huawei-reparation</a>.'],
+    ['Reparerer I MacBook og stationære Mac?', 'Ja — alle MacBook-generationer (Intel og Apple Silicon), plus iMac, Mac mini, Mac Studio og Mac Pro. Se <a href="/mac-repair/">Mac-reparation</a>.'],
+    ['Reparerer I Microsoft Surface-enheder?', 'Ja — Surface Pro, Surface Laptop og Surface Book, inklusive specialiseret digitizer- og touchskærm-reparation. Se <a href="/microsoft-surface-repair/">Microsoft Surface-reparation</a>.'],
+    ['Reparerer I Samsung Galaxy Book-bærbare?', 'Ja — Galaxy Book3, Galaxy Book4 Pro, Galaxy Book3 360 og Galaxy Book Go. Se <a href="/samsung-repair/">Samsung-reparation</a>.'],
+    ['Hvad med mærker, der ikke er nævnt her — Toshiba, Gigabyte, LG gram, Razer?', 'Vi reparerer stort set alle mærker og specialbyggede opsætninger — se <a href="/other-brands-repair/">Andre mærker & specialbyggede</a>.'],
+    ['Bygger I specialbyggede gaming-pc’er, ikke kun reparerer dem?', 'Ja — fortæl os dit budget og formål, så anbefaler vi komponenter, bygger den og tester den før overdragelse. Se vores <a href="/gaming-pc-repair-and-build/">Gaming-pc</a>-side.'],
   ]],
   ['Services', [
-    ['Can you upgrade my old laptop to an SSD?', 'Yes — often one of the most noticeable speed improvements you can make to an older machine. See <a href="/ssd-upgrade/">SSD Upgrade</a>.'],
-    ['Do you repair liquid damage?', "Yes, for any brand or model. Liquid damage diagnostics work differently from our standard pricing — it's a flat 600 kr, takes 3–4 days, and there's no express option, since a proper assessment takes time. See <a href=\"/liquid-damage-repair/\">Liquid Damage Repair</a>."],
-    ['Can you recover data from a failed hard drive?', 'Often, yes — depends on the type and severity of the failure. We assess first and give an honest answer. See <a href="/data-backup-and-recovery/">Data Backup & Recovery</a>.'],
-    ['Do you remove viruses and malware?', 'Yes, on both PC and Mac. See <a href="/virus-removal/">Virus & Malware Removal</a>.'],
-    ['Do you clean dust and reapply thermal paste?', 'Yes — a common fix for overheating or fan noise on both laptops and desktop gaming PCs.'],
-    ['Do you fix charging ports?', 'Yes, across laptop brands. See <a href="/charging-port-repair/">Charging Port Repair</a>.'],
+    ['Kan I opgradere min gamle bærbar til en SSD?', 'Ja — ofte en af de mest mærkbare hastighedsforbedringer, du kan lave på en ældre maskine. Se <a href="/ssd-upgrade/">SSD-opgradering</a>.'],
+    ['Reparerer I væskeskade?', 'Ja, på alle mærker og modeller. Væskeskade-fejlsøgning fungerer anderledes end vores standardpriser — det er en fast pris på 600 kr., tager 3–4 dage, og der er ingen ekspresmulighed, da en ordentlig vurdering tager tid. Se <a href="/liquid-damage-repair/">Væskeskade-reparation</a>.'],
+    ['Kan I genskabe data fra en svigtet harddisk?', 'Ofte, ja — det afhænger af svigtets type og alvorlighed. Vi vurderer først og giver et ærligt svar. Se <a href="/data-backup-and-recovery/">Backup & datagenskabelse</a>.'],
+    ['Fjerner I virus og malware?', 'Ja, på både pc og Mac. Se <a href="/virus-removal/">Fjernelse af virus & malware</a>.'],
+    ['Renser I støv og påfører ny kølepasta?', 'Ja — en almindelig løsning på overophedning eller blæserstøj på både bærbare og stationære gaming-pc’er.'],
+    ['Udbedrer I ladeporte?', 'Ja, på tværs af bærbar-mærker. Se <a href="/charging-port-repair/">Reparation af ladeport</a>.'],
   ]],
-  ['Business IT Support', [
-    ["Can a company send multiple devices in at once for repair or setup?", "Yes — this is common for businesses, and ties into our Business IT Support service for larger or ongoing needs."],
-    ['Do you offer ongoing IT support for businesses, not just one-off repairs?', 'Yes — fixed-price IT service agreements with unlimited support, monitoring, and security. See our <a href="/business-it-service-agreement/">Business IT Support</a> page.'],
-    ["What's the difference between a one-off repair and a service agreement?", 'A repair is a single fix for a specific problem. A service agreement is an ongoing, fixed monthly arrangement covering unlimited support, monitoring, and security for your business — designed to prevent problems rather than just fix them after the fact.'],
+  ['IT-support til erhverv', [
+    ['Kan en virksomhed sende flere enheder ind på én gang til reparation eller opsætning?', 'Ja — det er almindeligt for virksomheder og kobler sig til vores IT-support til erhverv ved større eller løbende behov.'],
+    ['Tilbyder I løbende IT-support til virksomheder, ikke kun enkeltstående reparationer?', 'Ja — IT-supportaftaler til fast pris med ubegrænset support, overvågning og sikkerhed. Se vores side om <a href="/business-it-service-agreement/">IT-support til erhverv</a>.'],
+    ['Hvad er forskellen på en enkeltstående reparation og en supportaftale?', 'En reparation er en enkelt løsning på et bestemt problem. En supportaftale er en løbende, fast månedlig ordning, der dækker ubegrænset support, overvågning og sikkerhed for jeres virksomhed — designet til at forebygge problemer frem for bare at udbedre dem bagefter.'],
   ]],
-  ['Shop', [
-    ['Do you sell computers, not just repair them?', 'Yes — new and refurbished computers, plus backup and security equipment, are available in our <a href="/shop/">shop</a>.'],
-    ['Are refurbished computers guaranteed?', 'Yes — refurbished computers come with a warranty; see the <a href="/shop/computers/refurbished/">shop</a> for specifics.'],
+  ['Butik', [
+    ['Sælger I computere, ikke kun reparerer dem?', 'Ja — nye og istandsatte computere samt backup- og sikkerhedsudstyr findes i vores <a href="/shop/">butik</a>.'],
+    ['Er der garanti på istandsatte computere?', 'Ja — istandsatte computere kommer med garanti; se <a href="/shop/computers/refurbished/">butikken</a> for detaljer.'],
   ]],
 ];
 const stripTags = (h) => h.replace(/<[^>]+>/g, '');
@@ -253,11 +253,11 @@ export function faqPageHtml() {
     const rows = items.map(([q, a]) => `<details><summary>${esc(q)}</summary><div class="answer">${a}</div></details>`).join('');
     return `<section class="section${i%2? ' alt':''}"><div class="wrap"><div class="eyebrow">${esc(title)}</div><div class="faq" style="max-width:900px">${rows}</div></div></section>`;
   }).join('');
-  return `  <section class="hero"><div class="wrap"><div class="eyebrow">Help · FAQ</div>
-    <h1>Frequently Asked Questions</h1><p class="lead">Everything about our repairs, brands, services, business IT, and shop — answered in English.</p>
-    <div class="cta-row"><a class="btn btn-white" href="/contact/">Contact us</a><a class="btn btn-ghost-light" href="${site.phoneHref}">📞 Call ${site.phone}</a></div></div></section>
+  return `  <section class="hero"><div class="wrap"><div class="eyebrow">Hjælp · FAQ</div>
+    <h1>Ofte stillede spørgsmål</h1><p class="lead">Alt om vores reparationer, mærker, services, erhvervs-IT og butik — samlet ét sted.</p>
+    <div class="cta-row"><a class="btn btn-white" href="/contact/">Kontakt os</a><a class="btn btn-ghost-light" href="${site.phoneHref}">📞 Ring ${site.phone}</a></div></div></section>
   ${sections}
-  <section class="section"><div class="wrap"><div class="cta-band"><h2>Still have a question?</h2><p>Call, email, or stop by the workshop on Falkoner Allé — we respond quickly, in English.</p><div class="cta-row"><a class="btn btn-white" href="/contact/">Contact us</a><a class="btn btn-ghost-light" href="${site.phoneHref}">📞 Call ${site.phone}</a></div></div></div></section>`;
+  <section class="section"><div class="wrap"><div class="cta-band"><h2>Har du stadig et spørgsmål?</h2><p>Ring, skriv eller kig forbi værkstedet på Falkoner Allé — vi svarer hurtigt.</p><div class="cta-row"><a class="btn btn-white" href="/contact/">Kontakt os</a><a class="btn btn-ghost-light" href="${site.phoneHref}">📞 Ring ${site.phone}</a></div></div></div></section>`;
 }
 
 // ---------- Network Equipment hub ----------

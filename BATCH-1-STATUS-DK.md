@@ -73,12 +73,26 @@ Deploy: Cloudflare Pages, `pages_build_output_dir = dist`, build command
   lists translated. Global `businessSchema` is pure structured data (no change).
 - Verified: 76 pages, 0 English on Batch-5 pages, 0 broken links, 0 Arabic.
 
-## Still English — pending later batches (NOT yet Danish; do NOT deploy publicly)
-Page BODIES for these still render English text from the .eu fork and must be
-rewritten natively in Danish in their batches (nav labels already point to them):
-- Batch 6 — General FAQ (`faqPageHtml`), Meet the Team (`aboutBody`)
-- Slug renames to Danish (e.g. `/lenovo-reparation/`, `/butik/`,
-  `/it-support-til-erhverv/`, `/kontakt/`) are a later, deliberate step.
+## Done — Batch 6 (General FAQ + Meet the Team, native Danish)
+- General FAQ (`FAQ_GROUPS` / `faqPageHtml`): all 5 groups / **37 entries**
+  translated (verified 37 rendered). English-speaking framing adapted to natural
+  Danish ("Taler I engelsk?" instead of "no Danish required").
+- Meet the Team (`aboutBody` / `TEAM`): 7-person team translated, honest
+  Mac-specialist positioning kept ("Uafhængig, ikke Apple-autoriseret …").
+  Verified: 7 team cards, "Syv personer, ét værksted".
+
+## PROJECT COMPLETE — full Danish parity
+All 6 batches done. Final full-site audit: **76 pages, 0 English body copy,
+0 English titles/descriptions, 0 broken internal links, 0 Arabic, no /ar/ routes.**
+Nav, homepage, 11 locations, Nyheder (3 posts), 18 brand/hub pages, 20 service
+pages, 5 network + hub, 5 shop pages, Websites & SEO (3 + hub), Business IT
+(22-Q FAQ + 3-tier pricing), General FAQ (37), Meet the Team (7) — all native Danish.
+
+## Deployment (still a deliberate, Shan-approved step — not done here)
+Own Cloudflare Pages project + repo, build command `npm run build` (= node build.mjs),
+output `dist`. Verify domain in Resend + set RESEND_API_KEY before go-live.
+Domain cutover to pcklinik.dk stays a deliberate step. See GITHUB-DEPLOY.md /
+GO-LIVE-RESEND-v90.md.
 
 ## Notes / cleanup
 - **RESOLVED:** the legacy Astro view mirror (`src/pages`, `src/components`,

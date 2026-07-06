@@ -456,23 +456,23 @@ function shopBackup() {
 
 // ---------- About / Team ----------
 const TEAM = [
-  ['Shan — Founder', '/images/team/shan.jpg', '20+ years of experience across Mac, PC, servers, and networks. Oversees the workshop and handles the most technically demanding repairs and business IT setups personally.'],
-  ['On-Site Technician', '/images/team/on-site-technician-1.jpg', 'Handles home and office visits across Frederiksberg and Copenhagen — network setups, on-location troubleshooting, and hands-on work outside the workshop.'],
-  ['On-Site Technician', '/images/team/on-site-technician-2.jpg', 'Handles home and office visits across Frederiksberg and Copenhagen — network setups, on-location troubleshooting, and hands-on work outside the workshop.'],
-  ['Mac Specialist', '/images/team/mac-specialist.jpg', "Independent, not Apple-authorized — which means more flexibility: component-level repairs authorized shops often can't perform, and honest advice about repair vs. replace without pressure toward pricier official channels."],
-  ['Website & SEO Specialist', '/images/team/seo-specialist.jpg', "15 years of experience, responsible for the technical and search side of PCKlinik's own web presence, as well as the Websites & SEO services we offer to clients."],
-  ['Team Member', '/images/team/team-member-6.jpg', 'Rounds out the team for day-to-day repairs and customer support.'],
-  ['Team Member', '/images/team/team-member-7.jpg', 'Rounds out the team for day-to-day repairs and customer support.'],
+  ['Shan — Indehaver', '/images/team/shan.jpg', '20+ års erfaring på tværs af Mac, pc, servere og netværk. Står for værkstedet og håndterer personligt de mest teknisk krævende reparationer og erhvervs-IT-opsætninger.'],
+  ['On-site tekniker', '/images/team/on-site-technician-1.jpg', 'Håndterer besøg i hjem og på kontorer i Frederiksberg og København — netværksopsætninger, fejlfinding på stedet og praktisk arbejde uden for værkstedet.'],
+  ['On-site tekniker', '/images/team/on-site-technician-2.jpg', 'Håndterer besøg i hjem og på kontorer i Frederiksberg og København — netværksopsætninger, fejlfinding på stedet og praktisk arbejde uden for værkstedet.'],
+  ['Mac-specialist', '/images/team/mac-specialist.jpg', 'Uafhængig, ikke Apple-autoriseret — hvilket betyder mere fleksibilitet: reparationer på komponentniveau, som autoriserede værksteder ofte ikke kan udføre, og ærlig rådgivning om reparation kontra udskiftning uden pres mod dyrere officielle kanaler.'],
+  ['Hjemmeside- & SEO-specialist', '/images/team/seo-specialist.jpg', '15 års erfaring, ansvarlig for den tekniske og søgemæssige side af PCKliniks egen webtilstedeværelse samt de hjemmeside- og SEO-ydelser, vi tilbyder kunder.'],
+  ['Teammedlem', '/images/team/team-member-6.jpg', 'Runder teamet af med daglige reparationer og kundesupport.'],
+  ['Teammedlem', '/images/team/team-member-7.jpg', 'Runder teamet af med daglige reparationer og kundesupport.'],
 ];
 function aboutBody() {
   const cards = TEAM.map(([name, img, bio]) => `<div class="card"><img class="img-placeholder" src="${img}" alt="${esc(name)}" loading="lazy" width="480" height="360" /><h3>${esc(name)}</h3><p>${esc(bio)}</p></div>`).join('');
-  return `  <section class="hero"><div class="wrap"><div class="eyebrow">About PCKlinik</div><h1>Meet the Team</h1>
-    <p class="lead">Real people, real experience — not a call center. PCKlinik is a team of 7, based in our workshop on Falkoner All&eacute; in Frederiksberg. Between us, we cover PC and Mac repair, networks and servers, on-site support, and website/SEO work — so whatever you need, there's someone on the team who genuinely knows it well.</p></div></section>
-  <section class="section"><div class="wrap"><div class="eyebrow">The team</div><h2>Seven people, one workshop</h2>
+  return `  <section class="hero"><div class="wrap"><div class="eyebrow">Om PCKlinik</div><h1>Mød teamet</h1>
+    <p class="lead">Rigtige mennesker, rigtig erfaring — ikke et callcenter. PCKlinik er et team på 7, med base i vores værksted på Falkoner All&eacute; i Frederiksberg. Tilsammen dækker vi pc- og Mac-reparation, netværk og servere, on-site support og hjemmeside-/SEO-arbejde — så uanset hvad du har brug for, er der en på teamet, der virkelig kender det godt.</p></div></section>
+  <section class="section"><div class="wrap"><div class="eyebrow">Teamet</div><h2>Syv personer, ét værksted</h2>
     <div class="grid grid-3" style="margin-top:24px">${cards}</div></div></section>
-  <section class="section alt"><div class="wrap"><div class="eyebrow">Why this matters for you</div><h2>A bigger team — same straight answers</h2>
-    <p class="sub">A bigger team means faster turnaround and more specialized expertise — but we still work the same way we always have: you get a straight answer from someone who actually knows what they're talking about, not a ticket number in a queue.</p>
-    <div class="cta-row"><a class="btn btn-primary" href="/contact/">Contact us</a><a class="btn btn-outline" href="/business-it-service-agreement/">Business IT Support →</a></div></div></section>`;
+  <section class="section alt"><div class="wrap"><div class="eyebrow">Derfor betyder det noget for dig</div><h2>Et større team — samme lige svar</h2>
+    <p class="sub">Et større team betyder hurtigere ekspedition og mere specialiseret ekspertise — men vi arbejder stadig, som vi altid har gjort: du får et lige svar fra en, der faktisk ved, hvad han taler om, ikke et sagsnummer i en kø.</p>
+    <div class="cta-row"><a class="btn btn-primary" href="/contact/">Kontakt os</a><a class="btn btn-outline" href="/business-it-service-agreement/">IT-support til erhverv →</a></div></div></section>`;
 }
 
 function thankYouHtml() {
@@ -618,13 +618,13 @@ async function run() {
   // Computer won't turn on (guide)
   pages.push(['/computer-wont-turn-on/', page({ title: 'Vil computeren ikke tænde? Her er hvorfor | PCKlinik', description: 'Vil din bærbare eller pc ikke tænde? De tre mest almindelige årsager, hvad de betyder, og hvordan vi fejlsøger og udbedrer det. Frederiksberg og København.', p: '/computer-wont-turn-on/', body: computerWontTurnOnHtml(), schema: faqSchemaFrom(WONT_TURN_ON_FAQ) })]);
   // General site-wide FAQ
-  pages.push(['/faq/', page({ title: 'Frequently Asked Questions | PCKlinik', description: 'English-speaking PC and Mac repair in Copenhagen — FAQs on diagnostics, pricing, brands, services, business IT, and our shop.', p: '/faq/', body: faqPageHtml(), schema: faqSchemaFrom(GENERAL_FAQ) })]);
+  pages.push(['/faq/', page({ title: 'Ofte stillede spørgsmål | PCKlinik', description: 'PC- og Mac-reparation i København — FAQ om fejlsøgning, priser, mærker, services, erhvervs-IT og vores butik.', p: '/faq/', body: faqPageHtml(), schema: faqSchemaFrom(GENERAL_FAQ) })]);
   // Network Equipment hub
   pages.push(['/network-equipment/', page({ title: 'Netværks- & router-opsætning | UniFi, Netgear, TP-Link m.m. | PCKlinik', description: 'Router- og netværksopsætning, konfiguration og fejlfinding — UniFi, Netgear, TP-Link, ASUS, Eero og Google Nest. Frederiksberg og København.', p: '/network-equipment/', body: networkHubHtml(), schema: faqSchemaFrom(NETWORK_HUB_FAQ) })]);
   // Websites & SEO hub
   pages.push(['/websites-seo-google-ads/', page({ title: 'Webdesign, SEO & Google Ads | PCKlinik', description: 'Webdesign, SEO og Google Ads-administration til virksomheder i København. Bygget og optimeret af en, der faktisk laver arbejdet.', p: '/websites-seo-google-ads/', body: websitesHubHtml(), schema: faqSchemaFrom(WEBSITES_HUB_FAQ) })]);
   // About / Meet the Team
-  pages.push(['/about-us/', page({ title: 'About PCKlinik & Our Team | PCKlinik', description: 'Meet the PCKlinik team — 7 people covering PC, Mac, networks, on-site support, and web/SEO, based in Frederiksberg.', p: '/about-us/', body: aboutBody() })]);
+  pages.push(['/about-us/', page({ title: 'Om PCKlinik & vores team | PCKlinik', description: 'Mød PCKlinik-teamet — 7 personer, der dækker pc, Mac, netværk, on-site support og web/SEO, med base i Frederiksberg.', p: '/about-us/', body: aboutBody() })]);
   // News section
   pages.push(['/nyheder/', page({ title: 'Nyheder & guides | PCKlinik', description: 'Praktiske computer-, Mac- og IT-guides fra PCKlinik i Frederiksberg — klare svar på almindelige spørgsmål, uden jargon.', p: '/nyheder/', body: newsIndexHtml() })]);
   for (const n of news) pages.push([`/nyheder/${n.slug}/`, page({ title: `${n.title} | PCKlinik Nyheder`, description: n.description, p: `/nyheder/${n.slug}/`, body: newsPostHtml(n), schema: newsPostSchema(n) })]);
