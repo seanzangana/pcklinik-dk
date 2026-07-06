@@ -1,0 +1,141 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { repairs } from '../data/repairs.js';
+import { site } from '../data/site.js';
+
+export function getStaticPaths() {
+  return repairs.map((r) => ({ params: { slug: r.slug }, props: { r } }));
+}
+
+const { r } = Astro.props;
+const path = `/${r.slug}/`;
+
+const faqSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  mainEntity: r.faq.map((f) => ({
+    '@type': 'Question',
+    name: f.q,
+    acceptedAnswer: { '@type': 'Answer', text: f.a },
+  })),
+};
+---
+<BaseLayout title={r.title} description={r.description} path={path} schema={faqSchema}>
+  <section class="hero">
+    <div class="wrap">
+      <div class="eyebrow">{r.brand} Repair · Frederiksberg & Copenhagen</div>
+      <h1>{r.h1}</h1>
+      <p class="lead">{r.h2}</p>
+      <div class="cta-row">
+        <a class="btn btn-white" href="/contact/">{r.ctaPrimary}</a>
+        <a class="btn btn-ghost-light" href={site.phoneHref}>📞 Call {site.phone}</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="wrap lead-copy">
+      <div class="crumbs"><a href="/">Home</a> › <span>{r.brand} Repair</span></div>
+      {r.intro.map((p) => <p set:html={p} />)}
+    </div>
+  </section>
+
+  {r.models && (
+  <section class="section alt">
+    <div class="wrap">
+      <div class="eyebrow">Models we repair</div>
+      <h2>Full model coverage</h2>
+      <div class="table-wrap">
+        <table class="models">
+          <thead><tr><th>Series</th><th>Models</th><th>Typical issue</th></tr></thead>
+          <tbody>
+            {r.models.map((m) => (
+              <tr><td>{m.series}</td><td>{m.models}</td><td class="issue">{m.issue}</td></tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+  )}
+
+  <section class="section">
+    <div class="wrap">
+      <div class="eyebrow">What we fix</div>
+      <h2>{r.brand} repair services</h2>
+      <div class="grid grid-4">
+        {r.services.map((s, i) => (
+          <div class="card">
+            <div class="card-icon">{['🖥️', '🔋', '🔧', '🌀'][i % 4]}</div>
+            <h3>{s.title}</h3>
+            <p set:html={s.body} />
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  {r.photos && (
+  <section class="section alt">
+    <div class="wrap">
+      <div class="eyebrow">From our workshop</div>
+      <h2>Real {r.brand} repairs</h2>
+      <div class={`grid grid-${r.photos.length === 2 ? '2' : '3'}`}>
+        {r.photos.map((ph) => (
+          <img class="img-placeholder" src={ph.path} alt={ph.alt} loading="lazy" width="480" height="360" />
+        ))}
+      </div>
+    </div>
+  </section>
+  )}
+
+  {r.why && (
+  <section class="section">
+    <div class="wrap">
+      <div class="eyebrow">Why PCKlinik</div>
+      <h2>{r.whyHeading}</h2>
+      {r.whyIntro && <p class="sub" set:html={r.whyIntro} />}
+      <ul class="why-list">
+        {r.why.map((w) => (
+          <li><strong>{w.title}</strong>{w.body}</li>
+        ))}
+      </ul>
+    </div>
+  </section>
+  )}
+
+  <section class="section alt">
+    <div class="wrap">
+      <div class="eyebrow">FAQ</div>
+      <h2>{r.brand} repair — common questions</h2>
+      <div class="faq">
+        {r.faq.map((f) => (
+          <details>
+            <summary>{f.q}</summary>
+            <div class="answer">{f.a}</div>
+          </details>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="wrap">
+      <div class="cta-band">
+        <h2>{r.ctaHeading ? r.ctaHeading : `Ready to get your ${r.brand} fixed?`}</h2>
+        <p>Free diagnostics (2–4 days) or express for 600 kr (1–2 hours). Fixed quote before we start.</p>
+        <div class="cta-row">
+          <a class="btn btn-white" href="/contact/">{r.ctaPrimary}</a>
+          <a class="btn btn-ghost-light" href={site.phoneHref}>📞 Call {site.phone}</a>
+        </div>
+      </div>
+      <div style="margin-top:32px">
+        <p class="eyebrow">Related repairs</p>
+        <div class="crosslinks">
+          {r.crosslinks.map((c) => <a href={c.href}>{c.label} →</a>)}
+          <a href="/contact/">Contact & booking →</a>
+        </div>
+      </div>
+    </div>
+  </section>
+</BaseLayout>

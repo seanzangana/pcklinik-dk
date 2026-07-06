@@ -1,0 +1,88 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { site } from '../data/site.js';
+const { s } = Astro.props;
+const path = `/${s.slug}/`;
+const cta = s.ctaLabel || 'Book diagnostics';
+const faqSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  mainEntity: s.faq.map((f) => ({ '@type': 'Question', name: f.q, acceptedAnswer: { '@type': 'Answer', text: f.a } })),
+};
+---
+<BaseLayout title={s.title} description={s.description} path={path} schema={faqSchema}>
+  <section class="hero">
+    <div class="wrap">
+      <div class="eyebrow">Service · Frederiksberg & Copenhagen</div>
+      <h1>{s.h1}</h1>
+      {s.subhead && <p class="lead">{s.subhead}</p>}
+      <div class="cta-row">
+        <a class="btn btn-white" href="/contact/">{cta}</a>
+        <a class="btn btn-ghost-light" href={site.phoneHref}>📞 Call {site.phone}</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="wrap lead-copy">
+      <div class="crumbs"><a href="/">Home</a> › <span>{s.h1}</span></div>
+      {s.intro.map((p) => <p set:html={p} />)}
+      {s.whatsIncluded && <div class="trust-line" style="margin:6px 0 20px"><strong>What's included:</strong> {s.whatsIncluded}</div>}
+    </div>
+  </section>
+
+  {(s.bulletSections || []).map((b) => (
+    <section class="section">
+      <div class="wrap">
+        <div class="eyebrow">{b.heading}</div>
+        <ul class="check-list">{b.items.map((it) => <li>{it}</li>)}</ul>
+      </div>
+    </section>
+  ))}
+
+  {s.callout && (
+    <section class="section">
+      <div class="wrap"><div class="callout"><strong>{s.callout.label}:</strong> {s.callout.text}</div></div>
+    </section>
+  )}
+
+  <section class="section alt">
+    <div class="wrap">
+      {s.pricing ? (
+        <><div class="eyebrow">Pricing</div><h2>{s.pricing.h2}</h2><p class="sub">{s.pricing.text}</p></>
+      ) : (
+        <><div class="eyebrow">Diagnostics & pricing</div><h2>Free or express — your choice</h2><p class="sub">Standard diagnostics are free (2–4 days), or express for 600 kr (1–2 hours) — with repair and delivery within 24 hours if no special parts need ordering. You get a fixed quote before we start, always.</p></>
+      )}
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="wrap">
+      <div class="eyebrow">FAQ</div>
+      <h2>Common questions</h2>
+      <div class="faq">
+        {s.faq.map((f) => <details><summary>{f.q}</summary><div class="answer">{f.a}</div></details>)}
+      </div>
+    </div>
+  </section>
+
+  <section class="section alt">
+    <div class="wrap">
+      <div class="cta-band">
+        <h2>Ready to get started?</h2>
+        <p>Contact us and we'll help you book the right service.</p>
+        <div class="cta-row">
+          <a class="btn btn-white" href="/contact/">{cta}</a>
+          <a class="btn btn-ghost-light" href={site.phoneHref}>📞 Call {site.phone}</a>
+        </div>
+      </div>
+      <div style="margin-top:32px">
+        <p class="eyebrow">Related services</p>
+        <div class="crosslinks">
+          {s.crosslinks.map((c) => <a href={c.href}>{c.label} →</a>)}
+          <a href="/contact/">Contact & booking →</a>
+        </div>
+      </div>
+    </div>
+  </section>
+</BaseLayout>

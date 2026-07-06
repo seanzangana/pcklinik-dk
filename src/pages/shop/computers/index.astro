@@ -1,0 +1,37 @@
+---
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+---
+<BaseLayout
+  title="Computers | New & Refurbished | PCKlinik Shop"
+  description="New and refurbished computers from PCKlinik — tested and ready to use, with warranty. Browse our selection and buy securely via Stripe."
+  path="/shop/computers/"
+>
+  <section class="hero">
+    <div class="wrap">
+      <div class="eyebrow"><a href="/shop/" style="color:#A9C1F0">Shop</a> · Computers</div>
+      <h1>Computers</h1>
+      <p class="lead">Choose between new and refurbished computers.</p>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="wrap">
+      <div class="crumbs"><a href="/shop/">Shop</a> › <span>Computers</span></div>
+      <p class="sub">Whether you want a brand-new machine or a well-maintained, tested computer at a lower price, we have both. Every computer is prepared and tested by us before it's sold.</p>
+      <div class="grid grid-2">
+        <a class="card card-link" href="/shop/computers/new/">
+          <div class="card-icon">✨</div>
+          <h3>New Computers</h3>
+          <p>New computers from reliable brands, ready for pickup or delivery.</p>
+          <span class="arrow">View new computers →</span>
+        </a>
+        <a class="card card-link" href="/shop/computers/refurbished/">
+          <div class="card-icon">♻️</div>
+          <h3>Refurbished Computers</h3>
+          <p>Thoroughly tested and refurbished computers — great performance at a lower price, with warranty.</p>
+          <span class="arrow">View refurbished computers →</span>
+        </a>
+      </div>
+    </div>
+  </section>
+</BaseLayout>

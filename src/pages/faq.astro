@@ -1,0 +1,8 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { faqPageHtml, GENERAL_FAQ } from '../data/richPages.js';
+const faqSchema = { '@context': 'https://schema.org', '@type': 'FAQPage', mainEntity: GENERAL_FAQ.map((f) => ({ '@type': 'Question', name: f.q, acceptedAnswer: { '@type': 'Answer', text: f.a } })) };
+---
+<BaseLayout title="Frequently Asked Questions | PCKlinik" description="English-speaking PC and Mac repair in Copenhagen — FAQs on diagnostics, pricing, brands, services, business IT, and our shop." path="/faq/" schema={faqSchema}>
+  <Fragment set:html={faqPageHtml()} />
+</BaseLayout>

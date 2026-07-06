@@ -1,0 +1,6 @@
+---
+import ServicePage from '../components/ServicePage.astro';
+import { services } from '../data/services.js';
+const s = services.find((x) => x.slug === 'virus-removal');
+---
+<ServicePage s={s} />

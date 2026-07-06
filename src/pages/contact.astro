@@ -1,0 +1,88 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { site } from '../data/site.js';
+---
+<BaseLayout
+  title="Contact PCKlinik | Frederiksberg & Copenhagen"
+  description="Contact PCKlinik for PC and Mac repair in Frederiksberg and Copenhagen. Call 91 81 61 81 or email contact@pcklinik.eu."
+  path="/contact/"
+>
+  <section class="hero">
+    <div class="wrap">
+      <div class="eyebrow">Get in touch</div>
+      <h1>Contact Us</h1>
+      <p class="lead">We're ready to help with your computer. Have a question about a repair, or want to book a time? Call, write, or stop by the workshop on Falkoner Allé — we respond quickly.</p>
+      <div class="badges"><span class="badge check">Walk-in service — no appointment needed</span><span class="badge check">Pickup and delivery available</span></div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="wrap">
+      <div class="info-block">
+        <!-- Left: contact info -->
+        <div class="nap">
+          <div class="eyebrow">Contact details</div>
+          <p><strong>Phone</strong><br /><a href={site.phoneHref}>{site.phone}</a></p>
+          <p><strong>Email</strong><br /><a href={`mailto:${site.emailConsumer}`}>{site.emailConsumer}</a></p>
+          <p><strong>Address</strong><br />{site.address}</p>
+          <p><strong>Hours</strong><br />Mon–Fri 10:00–18:00 · Sat 10:00–14:00 · Sun closed</p>
+        </div>
+
+        <!-- Right: form -->
+        <div class="form-card">
+          <div class="placeholder-note">
+            ⚙️ Placeholder: this form's <code>action</code> points to a Formspree ID. Replace <code>your-form-id</code> with a real endpoint (Formspree, Web3Forms, or your own handler) to receive submissions.
+          </div>
+          <form action="https://formspree.io/f/your-form-id" method="POST">
+            <div class="form-row">
+              <div>
+                <label for="name">Name</label>
+                <input id="name" name="name" type="text" autocomplete="name" required />
+              </div>
+            </div>
+            <div class="form-row">
+              <div>
+                <label for="contact">Phone or email</label>
+                <input id="contact" name="contact" type="text" autocomplete="email" required />
+              </div>
+            </div>
+            <div class="form-row">
+              <div>
+                <label for="model">Brand / model <span style="font-weight:400;color:var(--muted)">(optional — helps us prepare)</span></label>
+                <input id="model" name="model" type="text" placeholder="e.g. Lenovo ThinkPad T14" />
+              </div>
+            </div>
+            <div class="form-row">
+              <div>
+                <label for="message">Message / description of the issue</label>
+                <textarea id="message" name="message" required></textarea>
+              </div>
+            </div>
+            <button class="btn btn-primary" type="submit">Send Message</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="wrap">
+      <div class="eyebrow">Good to know</div>
+      <h2>Common questions</h2>
+      <div class="faq">
+        <details><summary>Do I need an appointment?</summary><div class="answer">No — walk-in service is available, no appointment needed. You're welcome to stop by during opening hours.</div></details>
+        <details><summary>Can you pick up and deliver my computer?</summary><div class="answer">Yes, pickup and delivery is available — contact us for details based on your location.</div></details>
+      </div>
+    </div>
+  </section>
+
+  <section class="section alt">
+    <div class="wrap">
+      <div class="eyebrow">Find us</div>
+      <h2>Falkoner Allé 108, Frederiksberg</h2>
+      <div class="map-frame">
+        <iframe src={site.mapsEmbed} loading="lazy" title="PCKlinik on the map, Falkoner Allé 108" referrerpolicy="no-referrer-when-downgrade"></iframe>
+      </div>
+    </div>
+  </section>
+</BaseLayout>

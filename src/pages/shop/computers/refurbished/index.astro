@@ -1,0 +1,40 @@
+---
+import BaseLayout from '../../../../layouts/BaseLayout.astro';
+import ProductCard from '../../../../components/ProductCard.astro';
+
+const products = [
+  { img: '/images/shop/thinkpad-t14-refurbished.jpg', alt: 'Lenovo ThinkPad T14 — refurbished', title: 'Lenovo ThinkPad T14 — Refurbished', desc: 'Thoroughly tested and cleaned by us, with a new battery if needed. Perfect for office work and everyday use. 6-month warranty.', price: '1,999 kr.' },
+  { img: '/images/shop/macbook-air-refurbished.jpg', alt: 'MacBook Air M1 — refurbished', title: 'MacBook Air M1 — Refurbished', desc: 'Apple Silicon performance at a lower price. Tested, cleaned and battery-checked. 6-month warranty.', price: '4,499 kr.' },
+  { img: '/images/shop/dell-latitude-refurbished.jpg', alt: 'Dell Latitude 7440 — refurbished', title: 'Dell Latitude 7440 — Refurbished', desc: 'Business-grade laptop, professionally refurbished and ready for work. 6-month warranty.', price: '2,799 kr.' },
+];
+---
+<BaseLayout
+  title="Refurbished Computers with Warranty | PCKlinik Shop"
+  description="Thoroughly tested and refurbished computers from PCKlinik, with warranty. Great performance at a lower price. Secure payment via Stripe."
+  path="/shop/computers/refurbished/"
+>
+  <section class="hero">
+    <div class="wrap">
+      <div class="eyebrow"><a href="/shop/computers/" style="color:#A9C1F0">Computers</a> · Refurbished</div>
+      <h1>Refurbished Computers</h1>
+      <p class="lead">Tested, cleaned and ready to use — with warranty.</p>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="wrap">
+      <div class="crumbs"><a href="/shop/">Shop</a> › <a href="/shop/computers/">Computers</a> › <span>Refurbished</span></div>
+      <p class="sub">Thoroughly tested and refurbished computers — great performance at a lower price, with the same service guarantee as our repairs. Tested by the same person who repairs computers in the shop.</p>
+
+      <div class="trust-line" style="margin:20px 0 8px">
+        <strong>What "refurbished" means here:</strong> every machine is tested, cleaned, and fitted with a new battery if needed — then backed by a 6-month warranty. It's the same technician who repairs and refurbishes, so it's held to the same standard as our repair work.
+      </div>
+
+      <div class="placeholder-note">⚙️ Example products below. Refurbished stock changes often — update this page's cards, prices, photos and Stripe links as inventory changes.</div>
+
+      <div class="grid grid-3" style="margin-top:24px">
+        {products.map((p) => <ProductCard {...p} />)}
+      </div>
+    </div>
+  </section>
+</BaseLayout>

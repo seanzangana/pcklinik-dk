@@ -1,0 +1,15 @@
+# PCKlinik
+
+PCKlinik er et computer- og Mac-værksted på Falkoner Allé 108, 2000 Frederiksberg (København), Danmark. Vi reparerer alle større PC- og Mac-mærker, tilbyder opgavebaserede services (SSD-opgraderinger, datagenskabelse, virusfjernelse, væskeskade-reparation, netværksopsætning), sælger nye og istandsatte computere og leverer IT-support til fast pris for virksomheder. Standardfejlsøgning er gratis (2–4 dage) eller ekspres for 600 kr. (1–2 timer), med fast pris før vi går i gang. Telefon: 91 81 61 81. E-mail: kontakt@pcklinik.dk.
+
+## Vigtige sider
+- [Forside](https://www.pcklinik.dk/)
+- [IT-support til erhverv](https://www.pcklinik.dk/business-it-service-agreement/)
+- [Reparationer — Lenovo](https://www.pcklinik.dk/lenovo-repair/) og alle større mærker
+- [Mac-reparation](https://www.pcklinik.dk/mac-repair/)
+- [Gaming-pc-reparation & specialbyggede](https://www.pcklinik.dk/gaming-pc-repair-and-build/)
+- [Services — SSD-opgradering, datagenskabelse, virusfjernelse, netværksopsætning m.m.](https://www.pcklinik.dk/ssd-upgrade/)
+- [Almindelige fejlmeddelelser & koder](https://www.pcklinik.dk/error-messages/)
+- [Butik](https://www.pcklinik.dk/shop/)
+- [Kontakt](https://www.pcklinik.dk/contact/)
+- [Nyheder](https://www.pcklinik.dk/nyheder/)

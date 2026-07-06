@@ -1,0 +1,37 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { site } from '../../data/site.js';
+---
+<BaseLayout
+  title="Shop | Computers, Backup & Security | PCKlinik"
+  description="Buy refurbished and new computers, plus backup and security solutions, from PCKlinik. Simple and secure checkout via Stripe."
+  path="/shop/"
+>
+  <section class="hero">
+    <div class="wrap">
+      <div class="eyebrow">Shop</div>
+      <h1>Shop</h1>
+      <p class="lead">Computers, backup and security — hand-picked and tested by us.</p>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="wrap">
+      <div class="trust-line" style="margin-bottom:36px">All products are personally selected and tested by us before sale. Questions before you buy? Call <a href={site.phoneHref}>{site.phone}</a>.</div>
+      <div class="grid grid-2">
+        <a class="card card-link" href="/shop/computers/">
+          <div class="card-icon">🖥️</div>
+          <h3>Computers</h3>
+          <p>New and refurbished computers — tested and ready to use.</p>
+          <span class="arrow">Browse computers →</span>
+        </a>
+        <a class="card card-link" href="/shop/backup-security/">
+          <div class="card-icon">🛡️</div>
+          <h3>Backup & Security</h3>
+          <p>External hard drives, NAS solutions and security software we personally recommend.</p>
+          <span class="arrow">Browse backup & security →</span>
+        </a>
+      </div>
+    </div>
+  </section>
+</BaseLayout>

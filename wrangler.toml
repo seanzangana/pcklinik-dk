@@ -1,0 +1,8 @@
+# Cloudflare Pages project config for pcklinik.dk (with Functions)
+name = "pcklinik-dk"
+compatibility_date = "2025-07-01"
+pages_build_output_dir = "dist"
+
+# Email is sent via the Resend API — no Cloudflare Email binding needed.
+# Set the API key as a secret (not committed):
+#   npx wrangler pages secret put RESEND_API_KEY

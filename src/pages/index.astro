@@ -1,0 +1,146 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { site } from '../data/site.js';
+import { lucide } from '../data/icons.js';
+
+const brands = [
+  { name: 'Lenovo', models: 'ThinkPad, IdeaPad, Legion, Yoga', href: '/lenovo-repair/', icon: 'laptop' },
+  { name: 'Acer', models: 'Aspire, Swift, Nitro, Predator', href: '/acer-repair/', icon: 'laptop' },
+  { name: 'HP', models: 'EliteBook, Pavilion, Spectre, Omen', href: '/hp-repair/', icon: 'laptop' },
+  { name: 'Dell', models: 'XPS, Latitude, Inspiron, Precision', href: '/dell-repair/', icon: 'laptop' },
+  { name: 'Asus', models: 'ZenBook, Vivobook, ROG, TUF', href: '/asus-repair/', icon: 'laptop' },
+  { name: 'MSI', models: 'Katana, GF-series, Stealth, Prestige', href: '/msi-repair/', icon: 'laptop' },
+  { name: 'Huawei', models: 'MateBook D14, D15, X Pro', href: '/huawei-repair/', icon: 'laptop' },
+  { name: 'MacBook', models: 'Pro, Air, all generations', href: '/macbook-repair/', icon: 'laptop' },
+  { name: 'Microsoft Surface', models: 'Pro, Laptop, Book', href: '/microsoft-surface-repair/', icon: 'laptop' },
+  { name: 'Samsung', models: 'Galaxy Book series', href: '/samsung-repair/', icon: 'laptop' },
+  { name: 'Mac (desktop)', models: 'iMac, Mac mini, Mac Studio, Mac Pro', href: '/mac-desktop-repair/', icon: 'monitor' },
+  { name: 'Gaming PCs & Custom Builds', models: 'Repair, service & builds from scratch', href: '/gaming-pc-repair-and-build/', icon: 'monitor' },
+  { name: 'Other Brands & Custom Builds', models: 'Gigabyte, Chromebook, custom PCs & more', href: '/other-brands-repair/', icon: 'wrench', linkText: 'View other brands' },
+  { name: 'Network Equipment', models: 'UniFi, Netgear, TP-Link & more', href: '/network-equipment/', icon: 'wifi', linkText: 'View network equipment' },
+  { name: 'Toshiba / Dynabook', models: 'Satellite, Portégé, Tecra', href: '/toshiba-dynabook-repair/', icon: 'laptop' },
+  { name: 'Fujitsu', models: 'LIFEBOOK — repair & refurbished sales', href: '/fujitsu-repair/', icon: 'laptop' },
+  { name: 'LG gram', models: 'Ultra-lightweight laptop repair', href: '/lg-gram-repair/', icon: 'laptop' },
+  { name: 'Razer Blade', models: 'Gaming laptop repair', href: '/razer-blade-repair/', icon: 'laptop' },
+];
+const popular = [
+  { t: 'SSD Upgrade', d: 'Faster boot times for an older PC or laptop.', h: '/ssd-upgrade/' },
+  { t: 'Liquid Damage Repair', d: 'Any brand, any model — Windows or Mac.', h: '/liquid-damage-repair/' },
+  { t: 'Data Backup & Recovery', d: 'Protect your data, or recover it after a failure.', h: '/data-backup-and-recovery/' },
+  { t: 'Virus & Malware Removal', d: 'PC or Mac, cleaned and protected.', h: '/virus-removal/' },
+];
+const homeFaq = [
+  ['Do you speak English?', "Yes — our entire service is in English. No Danish required, whether you're calling, emailing, or visiting the workshop."],
+  ['Do you repair every computer brand?', 'Yes — we repair all major PC and Mac brands, plus custom builds and brands not individually listed. See "Other Brands & Custom Builds" if you don\'t see yours.'],
+  ['How much does a repair cost?', "Standard diagnostics are free (2–4 days), or express for 600 kr (1–2 hours). You'll always get a fixed quote before any repair work starts, so there are no surprises."],
+  ['How long does a repair take?', 'Many repairs are completed the same day, especially with express diagnostics. More involved repairs depend on parts availability.'],
+  ['Do you serve businesses as well as individuals?', 'Yes — alongside device repair, we offer fixed-price IT service agreements for businesses, including unlimited support, monitoring, and security. See our Business IT page for details.'],
+  ['Where are you located?', 'Falkoner Allé 108, Frederiksberg. We serve Frederiksberg and Copenhagen directly, plus the rest of Denmark via remote support for IT service agreements.'],
+  ['Do you sell computers as well as repair them?', 'Yes — new and refurbished computers, plus backup and security equipment, are available in our shop.'],
+];
+const faqSchema = { '@context': 'https://schema.org', '@type': 'FAQPage', mainEntity: homeFaq.map(([q, a]) => ({ '@type': 'Question', name: q, acceptedAnswer: { '@type': 'Answer', text: a } })) };
+---
+<BaseLayout
+  title="PCKlinik | Computer & Mac Repair in Copenhagen"
+  description="Fast, honest PC and Mac repair in Frederiksberg and Copenhagen. Free diagnostics (2-4 days) or express (600 kr, 1-2 hours). Call 91 81 61 81."
+  path="/"
+  schema={faqSchema}
+>
+  <section class="hero">
+    <div class="wrap">
+      <div class="eyebrow">Frederiksberg & Copenhagen · English-speaking</div>
+      <h1>Computer & IT support — for you or your business</h1>
+      <p class="lead">Fast, honest repair for individuals. Fixed-price IT support for businesses. No Danish required — pick your path below.</p>
+      <div class="grid grid-2 hero-paths">
+        <a class="card card-link" href="/contact/"><div class="card-icon">🖥️</div><h3>For Individuals</h3><p>PC & Mac repair — free or express diagnostics, fixed quote, most repairs same-day.</p><span class="arrow">Book a repair →</span></a>
+        <a class="card card-link" href="/business-it-service-agreement/"><div class="card-icon">🏢</div><h3>For Business</h3><p>IT service agreements — unlimited support, monitoring, and security for one fixed monthly price.</p><span class="arrow">See Business IT plans →</span></a>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="wrap">
+      <div class="eyebrow">Our Promise</div><h2>How it works</h2>
+      <div class="steps">
+        <div class="step"><div class="num">1</div><h3>Diagnostics</h3><p>Free (2–4 days), or express for 600 kr (1–2 hours).</p></div>
+        <div class="step"><div class="num">2</div><h3>Fixed quote</h3><p>You get a clear price before we touch anything.</p></div>
+        <div class="step"><div class="num">3</div><h3>Repair</h3><p>We carry out the repair with the same care as the diagnostics.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section alt">
+    <div class="wrap">
+      <div class="eyebrow">What we repair</div><h2>Every major computer brand — PC and Mac</h2>
+      <p class="sub">We repair all major computer brands — PC and Mac, laptop and desktop — for individuals and businesses in Frederiksberg and Copenhagen.</p>
+      <div class="grid grid-3">
+        {brands.map((b) => (
+          <a class="card card-link brand-card" href={b.href}>
+            <div class="card-icon brand-icon" set:html={lucide[b.icon]} />
+            <h3>{b.name}</h3><p class="models">{b.models}</p>
+            <span class="arrow">{b.linkText ? b.linkText : `View ${b.name} repair`} →</span>
+          </a>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="wrap">
+      <div class="eyebrow">Common Services</div><h2>Beyond brand repairs</h2>
+      <p class="sub">Beyond brand-specific repairs, we handle these frequently requested services:</p>
+      <div class="grid grid-4">
+        {popular.map((p) => (
+          <a class="card card-link" href={p.h}><h3>{p.t}</h3><p>{p.d}</p><span class="arrow">Learn more →</span></a>
+        ))}
+      </div>
+      <div style="margin-top:24px"><a class="btn btn-outline" href="/faq/">See all services & FAQs →</a></div>
+    </div>
+  </section>
+
+  <section class="section alt">
+    <div class="wrap">
+      <div class="eyebrow">Why PCKlinik</div><h2>Why choose PCKlinik</h2>
+      <ul class="why-list">
+        <li><strong>English-speaking service</strong>Our entire service runs in English — no Danish required, start to finish.</li>
+        <li><strong>Experienced service</strong>Deep experience across every major brand and model.</li>
+        <li><strong>Fast turnaround</strong>Most repairs completed the same day.</li>
+        <li><strong>Fixed quote before we start</strong>No surprises, ever.</li>
+        <li><strong>Real people, real expertise</strong>A genuine team, not a call center — you always get a straight answer from someone who knows what they're talking about.</li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="wrap">
+      <div class="cta-band"><h2>Looking to buy instead?</h2><p>New and refurbished computers, plus backup and security equipment — all tested and ready to use.</p>
+        <div class="cta-row"><a class="btn btn-white" href="/shop/">Visit the shop →</a></div></div>
+    </div>
+  </section>
+
+  <section class="section alt">
+    <div class="wrap">
+      <div class="eyebrow">Find us</div><h2>Find us in Frederiksberg</h2>
+      <p class="sub">We're a real repair shop — not just a website. Stop by, call, or write, and we'll take a look.</p>
+      <div class="info-block">
+        <div class="nap">
+          <p><strong>Address</strong><br />{site.address}</p>
+          <p><strong>Phone</strong><br /><a href={site.phoneHref}>{site.phone}</a></p>
+          <p><strong>Email</strong><br /><a href={`mailto:${site.emailConsumer}`}>{site.emailConsumer}</a></p>
+          <p><strong>Hours</strong><br />Mon–Fri 10:00–18:00 · Sat 10:00–14:00 · Sun closed</p>
+          <a class="btn btn-primary" href="/contact/" style="margin-top:8px">Book a repair</a>
+        </div>
+        <div class="map-frame"><iframe src={site.mapsEmbed} loading="lazy" title="PCKlinik on the map, Falkoner Allé 108" referrerpolicy="no-referrer-when-downgrade"></iframe></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="wrap">
+      <div class="eyebrow">FAQ</div><h2>Frequently Asked Questions</h2>
+      <div class="faq">
+        {homeFaq.map(([q, a]) => <details><summary>{q}</summary><div class="answer">{a}</div></details>)}
+      </div>
+    </div>
+  </section>
+</BaseLayout>

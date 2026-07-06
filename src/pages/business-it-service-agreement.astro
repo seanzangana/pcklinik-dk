@@ -1,0 +1,220 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { site } from '../data/site.js';
+
+const features = [
+  { icon: '🛠️', title: 'Unlimited IT support', body: 'Help for your employees by phone, email and remote support — and on-site in Copenhagen when needed. Fixed price, no hourly billing.' },
+  { icon: '📡', title: 'Monitoring & operations', body: 'We watch your computers and servers around the clock and catch problems before they become outages.' },
+  { icon: '💾', title: 'Backup & recovery', body: 'Real backup of your data and Microsoft 365 — not just cloud storage. If something happens to a machine, we restore everything onto a new one.' },
+  { icon: '🛡️', title: 'IT security', body: 'Professional endpoint protection and antivirus — protection against viruses, ransomware, phishing and email threats, plus ongoing monitoring.' },
+  { icon: '📧', title: 'Microsoft 365', body: 'Setup and management of Microsoft 365, Teams, SharePoint and email — new employees are onboarded quickly and securely.' },
+  { icon: '📋', title: 'Advisory & NIS2', body: 'Practical IT advice so you make the right choices — and stay ready for requirements like GDPR and NIS2.' },
+  { icon: '🖥️', title: 'New IT equipment', body: 'We sell and set up new computers, Macs, monitors and other equipment — ready to use from day one.' },
+  { icon: '♻️', title: 'Refurbished equipment', body: 'Professionally restored computers and devices with up to 3 years warranty — cheaper and greener. Extended warranty available.' },
+  { icon: '🔒', title: 'Secure disposal', body: 'We take back your old equipment, securely erase all data, and dispose of it responsibly — fully GDPR-compliant.' },
+];
+
+const tiers = [
+  {
+    tag: 'Starter', name: 'Starter', blurb: 'Unlimited remote support and proactive maintenance for smaller businesses.',
+    price: '399', featured: false,
+    items: [
+      ['yes', 'Unlimited remote support (phone & email)'],
+      ['yes', 'Response within 1 business day'],
+      ['yes', 'Patch management & updates'],
+      ['yes', 'RMM device monitoring'],
+      ['yes', 'Monthly status report'],
+      ['no', 'Antivirus & endpoint protection'],
+      ['no', 'Backup monitoring'],
+    ],
+  },
+  {
+    tag: 'Premium', name: 'Premium', blurb: 'Everything your business needs: unlimited support and complete IT security.',
+    price: '599', featured: true,
+    items: [
+      ['yes', 'Everything in Starter'],
+      ['yes', 'Response within 4 hours'],
+      ['yes', 'Antivirus & endpoint protection'],
+      ['yes', '24/7 monitoring'],
+      ['yes', 'Backup monitoring'],
+      ['yes', 'Microsoft 365 administration'],
+      ['yes', 'MFA & access management'],
+    ],
+  },
+  {
+    tag: 'Exclusive', name: 'Exclusive', blurb: 'Complete IT support, security and Microsoft 365 licensing — all in one package.',
+    price: '899', featured: false,
+    items: [
+      ['yes', 'Everything in Premium'],
+      ['yes', 'Microsoft 365 license included'],
+      ['yes', 'Outlook, Teams & OneDrive'],
+      ['yes', 'Exchange Online (business email)'],
+      ['yes', 'Setup & migration included'],
+      ['yes', 'Ongoing license management'],
+      ['yes', 'GDPR-ready cloud solution'],
+    ],
+  },
+];
+
+const faq = [
+  ['What does an IT service agreement cost?', 'We have three packages: Starter from 399 kr., Premium 599 kr., and Exclusive 899 kr. per user per month (excl. VAT). You pay a fixed monthly price, so you always know the cost upfront. Not sure which package fits? Book a review.'],
+  ['Are there any hidden fees?', 'No — never. You pay one fixed monthly price per user, and that’s it. No setup fee, no hourly rate for support requests, and no surprises on the invoice.'],
+  ['What’s your response time?', 'We guarantee a response within 4 hours during normal business hours (Mon–Fri 10:00–17:00). Most requests are resolved the same day — many within the first hour.'],
+  ['Can I cancel my subscription at any time?', 'Monthly subscriptions can be cancelled with one month’s notice. Annual subscriptions run until the end of the period. No commitment beyond that.'],
+  ['What does "unlimited support" cover?', 'Everything related to your daily IT: computer and software issues, network problems, printers, email, Microsoft 365, viruses and security. Does not cover hardware replacement or custom development — we agree on those separately.'],
+  ['Does this work for businesses of any size?', 'Yes. We help sole proprietors, offices with 2–3 employees, and businesses with 50+ users. The price is per user, so you pay exactly for what you need.'],
+  ['Do I need to install anything?', 'We install a small remote-access tool (TeamViewer or similar) so we can help you quickly without you needing to come to us. Setup typically takes under 15 minutes and we handle it for you.'],
+  ['Do you help with printers and network printers?', 'Yes. We set up, configure and troubleshoot all types of printers — local, network and cloud printers. We also help with driver updates and integration with your existing network.'],
+  ['Do you offer backup solutions?', 'Yes. We set up automatic backup — both local and cloud — so your data is always protected. We test the backup regularly and help with recovery if something goes wrong.'],
+  ['What about antivirus software and IT security?', 'We install and manage antivirus and endpoint security on all your devices. The Premium package includes ongoing security monitoring, so you’re protected against viruses, ransomware and phishing.'],
+  ['Can you help with our network and WiFi?', 'Yes. We set up and optimize networks, routers and WiFi — including guest networks, firewalls and VPN. Slow internet or poor coverage? We’ll find the solution.'],
+  ['Do you sell computers and equipment?', 'Yes. We sell both new and used/refurbished equipment — computers, laptops, monitors, printers for business, and accessories. Refurbished equipment is professionally inspected and comes with a warranty. We help you find the right equipment for your needs and budget, and set it up ready to use.'],
+  ['What’s the difference between a service agreement and hourly billing?', 'With a service agreement, you pay a fixed monthly price and get unlimited support — without thinking about what each call costs. With hourly billing, you pay per task, which makes costs unpredictable and often more expensive. An agreement also means we work proactively, so fewer problems arise in the first place.'],
+  ['Can you take over from our current IT provider?', 'Yes. We manage a smooth transition, gather the necessary information, and take over operations without you experiencing downtime. You don’t need to coordinate it yourself.'],
+  ['How quickly can we get started?', 'Usually within a few days. We start with a review, set up remote access (under 15 minutes), and run your agreement from there.'],
+  ['Do you help with NIS2 and GDPR?', 'Yes. We advise on both GDPR and the new NIS2 directive, and help with backup, access management, security and documentation, so you meet the requirements.'],
+  ['Do you support employees working from home?', 'Yes. Our support isn’t dependent on where employees are located. We help via remote support, whether they’re at the office or at home, and ensure a stable connection to company systems.'],
+  ['What happens during an IT outage?', 'You contact us, and we get started immediately. With our monitoring, we often catch the problem before you even notice it. Our goal is to get you back up and running as fast as possible and keep downtime to a minimum.'],
+  ['Do you help businesses across the whole country?', 'Yes. Remote support covers all of Denmark. We offer on-site service in Copenhagen and Frederiksberg, where we’re based.'],
+];
+
+const faqSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  mainEntity: faq.map(([q, a]) => ({ '@type': 'Question', name: q, acceptedAnswer: { '@type': 'Answer', text: a } })),
+};
+const reviewMail = `mailto:${site.emailBusiness}?subject=Free%20IT%20review`;
+---
+<BaseLayout
+  title="Business IT Service Agreement | PCKlinik"
+  description="Fixed-price IT support for businesses in Copenhagen and Frederiksberg. Unlimited support, monitoring, security and backup — from 399 kr./user/month."
+  path="/business-it-service-agreement/"
+  schema={faqSchema}
+>
+  <!-- Hero -->
+  <section class="hero">
+    <div class="wrap">
+      <div class="eyebrow">Business · IT Service Agreement</div>
+      <h1>Business IT Service Agreement — your IT department on subscription</h1>
+      <p class="lead">Fixed-price IT support for businesses in Copenhagen and Frederiksberg. Unlimited support, proactive monitoring and IT security for one predictable monthly price. We're based on Falkoner Allé in Frederiksberg, travel across Copenhagen and help the rest of the country via remote support.</p>
+      <div class="badges">
+        <span class="badge check">Fixed packages from 399 kr./user/mo.</span>
+        <span class="badge check">Unlimited support — no hourly rates</span>
+        <span class="badge check">Same-day response</span>
+        <span class="badge check">Local IT partner in Frederiksberg</span>
+      </div>
+      <div class="cta-row">
+        <a class="btn btn-ghost-light" href={site.phoneHref}>📞 Call {site.phone}</a>
+        <a class="btn btn-white" href={reviewMail}>Book a free IT review</a>
+        <a class="hero-text-link" href="#pricing">See pricing →</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- What is -->
+  <section class="section alt">
+    <div class="wrap">
+      <div class="eyebrow">What is an IT service agreement?</div>
+      <h2>One fixed agreement — and your IT just runs</h2>
+      <p class="sub">A business IT service agreement means PCKlinik looks after your IT so you can focus on your business. You get a dedicated IT manager who knows your setup, keeps an eye on your systems and steps in whenever something goes wrong — with no unexpected bills. Instead of calling around for help, you have one partner who keeps everything under control.</p>
+      <div class="grid grid-3">
+        {features.map((f) => (
+          <div class="card">
+            <div class="card-icon">{f.icon}</div>
+            <h3>{f.title}</h3>
+            <p>{f.body}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Why -->
+  <section class="section">
+    <div class="wrap">
+      <div class="eyebrow">Why PCKlinik</div>
+      <h2>A real local IT partner — not a call center</h2>
+      <ul class="why-list">
+        <li><strong>Predictable IT costs</strong>Fixed monthly price, no hourly rates or billing surprises.</li>
+        <li><strong>A dedicated contact</strong>You get one named IT manager who knows your business, backed by a full team when you need more hands.</li>
+        <li><strong>Fast help</strong>Most cases are resolved the same day via remote support.</li>
+        <li><strong>Local and nationwide</strong>On-site in Copenhagen and the surrounding area, remote support across the country.</li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- How to get started -->
+  <section class="section alt">
+    <div class="wrap">
+      <div class="eyebrow">How to get started</div>
+      <h2>Three simple steps</h2>
+      <div class="steps">
+        <div class="step"><div class="num">1</div><h3>Free IT review</h3><p>We map out your current IT setup, identify security gaps and savings opportunities — completely no-obligation.</p></div>
+        <div class="step"><div class="num">2</div><h3>A clear plan</h3><p>You get a concrete recommendation and a service agreement that fits your size and needs. You set the pace.</p></div>
+        <div class="step"><div class="num">3</div><h3>We run your IT</h3><p>We set it up and maintain it going forward — support, monitoring and security included.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Pricing -->
+  <section class="section" id="pricing">
+    <div class="wrap">
+      <div class="eyebrow">Pricing & Packages</div>
+      <h2>Transparent pricing — no surprises</h2>
+      <p class="sub">Choose the package that fits your business. Fixed price per user, excl. VAT — no commitment.</p>
+      <div class="pricing-grid">
+        {tiers.map((t) => (
+          <div class={`price-card${t.featured ? ' featured' : ''}`}>
+            {t.featured && <span class="ribbon">⭐ Recommended</span>}
+            <div class="tag">{t.tag}</div>
+            <h3>{t.name}</h3>
+            <p class="blurb">{t.blurb}</p>
+            <div class="price">{t.price} kr. <small>/ user / month</small></div>
+            <div class="vat">excl. VAT</div>
+            <ul>
+              {t.items.map(([kind, label]) => <li class={kind}>{label}</li>)}
+            </ul>
+            <a class={`btn ${t.featured ? 'btn-primary' : 'btn-outline'}`} href={`mailto:${site.emailBusiness}?subject=${encodeURIComponent('Sign up: ' + t.name + ' plan')}`}>Choose {t.name}</a>
+            <div class="fine">No commitment • Start today</div>
+          </div>
+        ))}
+      </div>
+      <p class="center" style="margin-top:28px;color:var(--muted)">Not sure what you need? <a href={site.phoneHref}>Call {site.phone}</a> for a no-obligation IT review.</p>
+    </div>
+  </section>
+
+  <!-- Find us -->
+  <section class="section alt">
+    <div class="wrap">
+      <div class="eyebrow">Find us in Frederiksberg</div>
+      <h2>A physical IT shop and workshop — not just a website</h2>
+      <p class="sub">Stop by, call, or write, and we'll find the right agreement for you.</p>
+      <div class="info-block">
+        <div class="nap">
+          <p><strong>Address</strong><br />{site.address}</p>
+          <p><strong>Phone</strong><br /><a href={site.phoneHref}>{site.phone}</a></p>
+          <p><strong>Email</strong><br /><a href={`mailto:${site.emailBusiness}`}>{site.emailBusiness}</a></p>
+        </div>
+        <div class="map-frame">
+          <iframe src={site.mapsEmbed} loading="lazy" title="PCKlinik on the map, Falkoner Allé 108" referrerpolicy="no-referrer-when-downgrade"></iframe>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section class="section">
+    <div class="wrap">
+      <div class="eyebrow">FAQ</div>
+      <h2>Business IT support — common questions</h2>
+      <div class="faq">
+        {faq.map(([q, a]) => (
+          <details>
+            <summary>{q}</summary>
+            <div class="answer">{a}</div>
+          </details>
+        ))}
+      </div>
+    </div>
+  </section>
+</BaseLayout>

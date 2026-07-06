@@ -1,0 +1,8 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { computerWontTurnOnHtml, WONT_TURN_ON_FAQ } from '../data/richPages.js';
+const faqSchema = { '@context': 'https://schema.org', '@type': 'FAQPage', mainEntity: WONT_TURN_ON_FAQ.map((f) => ({ '@type': 'Question', name: f.q, acceptedAnswer: { '@type': 'Answer', text: f.a } })) };
+---
+<BaseLayout title="Computer Won't Turn On? Here's Why | PCKlinik" description="Laptop or PC not turning on? The three most common causes, what they mean, and how we diagnose and fix it. Frederiksberg and Copenhagen." path="/computer-wont-turn-on/" schema={faqSchema}>
+  <Fragment set:html={computerWontTurnOnHtml()} />
+</BaseLayout>

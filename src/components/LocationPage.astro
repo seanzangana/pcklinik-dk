@@ -1,0 +1,30 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { site } from '../data/site.js';
+import { locations } from '../data/locations.js';
+const { loc } = Astro.props;
+const path = `/${loc.slug}/`;
+const faqSchema = { '@context': 'https://schema.org', '@type': 'FAQPage', mainEntity: loc.faq.map((f) => ({ '@type': 'Question', name: f.q, acceptedAnswer: { '@type': 'Answer', text: f.a } })) };
+const mapEmbed = site.mapsEmbed;
+---
+<BaseLayout title={loc.title} description={loc.description} path={path} schema={faqSchema}>
+  <section class="hero"><div class="wrap"><div class="eyebrow">Copenhagen · English-speaking</div>
+    <h1>{loc.h1}</h1><p class="lead">{loc.subhead}</p>
+    <div class="cta-row"><a class="btn btn-white" href="/contact/">Book a repair</a><a class="btn btn-ghost-light" href={site.phoneHref}>📞 Call {site.phone}</a></div></div></section>
+  <section class="section"><div class="wrap lead-copy"><div class="crumbs"><a href="/">Home</a> › <span>{loc.h1}</span></div>
+    {loc.intro.map((p) => <p set:html={p} />)}
+    {loc.trustLine && <div class="trust-line" style="margin:8px 0 24px">{loc.trustLine}</div>}</div></section>
+  {loc.areas && (
+    <section class="section alt"><div class="wrap"><div class="eyebrow">Areas we serve</div><h2>Copenhagen neighbourhoods</h2>
+      <div class="grid grid-3">{loc.areas.map((sl) => { const a = locations.find((x) => x.slug === sl); return (
+        <a class="card card-link" href={`/${a.slug}/`}><h3>{a.h1.replace('Computer Repair in ', '')}</h3><p>{a.subhead}</p><span class="arrow">View area →</span></a>); })}</div></div></section>
+  )}
+  <section class="section"><div class="wrap"><div class="eyebrow">FAQ</div><h2>Common questions</h2>
+    <div class="faq">{loc.faq.map((f) => <details><summary>{f.q}</summary><div class="answer">{f.a}</div></details>)}</div></div></section>
+  <section class="section alt"><div class="wrap"><div class="eyebrow">Find us</div><h2>Our workshop — Falkoner Allé 108, Frederiksberg</h2>
+    <p class="sub">We serve this area from our Frederiksberg workshop; drop-off, pickup and delivery options available depending on your location.</p>
+    <div class="map-frame"><iframe src={mapEmbed} loading="lazy" title="PCKlinik on the map" referrerpolicy="no-referrer-when-downgrade"></iframe></div></div></section>
+  <section class="section"><div class="wrap"><div class="cta-band"><h2>Need a repair nearby?</h2><p>Free diagnostics (2–4 days) or express (600 kr, 1–2 hours). English-speaking, fixed quote before we start.</p>
+    <div class="cta-row"><a class="btn btn-white" href="/contact/">Book a repair</a><a class="btn btn-ghost-light" href={site.phoneHref}>📞 Call {site.phone}</a></div></div>
+    <div style="margin-top:32px"><p class="eyebrow">Related</p><div class="crosslinks">{loc.crosslinks.map((c) => <a href={c.href}>{c.label} →</a>)}</div></div></div></section>
+</BaseLayout>

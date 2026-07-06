@@ -1,0 +1,13 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { gamingHtml, GAMING_FAQ } from '../data/richPages.js';
+const faqSchema = { '@context': 'https://schema.org', '@type': 'FAQPage', mainEntity: GAMING_FAQ.map((f) => ({ '@type': 'Question', name: f.q, acceptedAnswer: { '@type': 'Answer', text: f.a } })) };
+---
+<BaseLayout
+  title="Gaming PC Repair, Service & Custom Builds | PCKlinik"
+  description="Gaming PC repair, cooling service, and custom PC builds in Frederiksberg and Copenhagen. GPU, overheating, upgrades — plus builds from scratch."
+  path="/gaming-pc-repair-and-build/"
+  schema={faqSchema}
+>
+  <Fragment set:html={gamingHtml()} />
+</BaseLayout>

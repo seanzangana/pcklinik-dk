@@ -1,0 +1,13 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { errorMessagesHtml, ERROR_FAQ } from '../data/richPages.js';
+const faqSchema = { '@context': 'https://schema.org', '@type': 'FAQPage', mainEntity: ERROR_FAQ.map((f) => ({ '@type': 'Question', name: f.q, acceptedAnswer: { '@type': 'Answer', text: f.a } })) };
+---
+<BaseLayout
+  title="Common Computer Error Messages & Codes | PCKlinik"
+  description="Blue screen errors, boot failures, kernel panics and more — what common Windows and Mac error messages mean, and how we fix them."
+  path="/error-messages/"
+  schema={faqSchema}
+>
+  <Fragment set:html={errorMessagesHtml()} />
+</BaseLayout>

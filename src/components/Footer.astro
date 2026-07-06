@@ -1,0 +1,51 @@
+---
+import { site } from '../data/site.js';
+const year = new Date().getFullYear();
+---
+<footer class="site-footer">
+  <div class="wrap">
+    <div class="cols">
+      <div>
+        <img src="/logo.png" alt="PCKlinik" class="logo-foot" width="85" height="34" />
+        <p>Fast, honest PC and Mac repair for individuals and businesses in Frederiksberg and Copenhagen.</p>
+        <p>{site.address}</p>
+      </div>
+      <div>
+        <h2>Repairs</h2>
+        <a href="/lenovo-repair/">Lenovo</a>
+        <a href="/hp-repair/">HP</a>
+        <a href="/dell-repair/">Dell</a>
+        <a href="/macbook-repair/">MacBook</a>
+        <a href="/mac-desktop-repair/">Mac (desktop)</a>
+        <a href="/microsoft-surface-repair/">Microsoft Surface</a>
+      </div>
+      <div>
+        <h2>More</h2>
+        <a href="/shop/">Shop</a>
+        <a href="/shop/computers/refurbished/">Refurbished Computers</a>
+        <a href="/business-it-service-agreement/">Business IT Support</a>
+        <a href="/faq/">FAQ</a>
+        <a href="/contact/">Contact</a>
+      </div>
+      <div>
+        <h2>Areas we serve</h2>
+        <a href="/computer-repair-copenhagen/">Copenhagen</a>
+        <a href="/computer-repair-frederiksberg/">Frederiksberg</a>
+        <a href="/computer-repair-vesterbro/">Vesterbro</a>
+        <a href="/computer-repair-vanloese/">Vanløse</a>
+        <a href="/computer-repair-valby/">Valby</a>
+        <a href="/computer-repair-nordvest/">Nordvest</a>
+      </div>
+      <div>
+        <h2>Get in touch</h2>
+        <p>📞 <a href={site.phoneHref} style="display:inline">{site.phone}</a></p>
+        <p>✉️ <a href={`mailto:${site.emailConsumer}`} style="display:inline">{site.emailConsumer}</a></p>
+        <p style="margin-top:14px">Mon–Fri 10:00–18:00<br />Sat 10:00–14:00<br />Sun closed</p>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <div class="footer-nap">PCKlinik · Falkoner Allé 108, 2000 Frederiksberg · 91 81 61 81</div>
+      <div>© {year} PCKlinik · CVR-nr. 33275145 · Frederiksberg</div>
+    </div>
+  </div>
+</footer>

@@ -1,0 +1,84 @@
+---
+import '../styles/global.css';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import { site, hreflangMap } from '../data/site.js';
+
+const {
+  title,
+  description,
+  path,            // e.g. '/lenovo-repair/'
+  schema = null,   // optional JSON-LD object or array
+} = Astro.props;
+
+const canonical = site.domain + path;
+const dkAlternate = hreflangMap[path];
+
+// LocalBusiness schema shared across all pages.
+const businessSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'ComputerRepairService',
+  name: 'PCKlinik',
+  image: site.domain + '/logo.png',
+  url: site.domain + '/',
+  telephone: '+4591816181',
+  email: site.emailConsumer,
+  address: {
+    '@type': 'PostalAddress',
+    streetAddress: site.addressStreet,
+    postalCode: site.addressPostal,
+    addressLocality: site.addressLocality,
+    addressCountry: 'DK',
+  },
+  areaServed: ['Frederiksberg', 'Copenhagen'],
+  openingHoursSpecification: [
+    { '@type': 'OpeningHoursSpecification', dayOfWeek: ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday'], opens: '10:00', closes: '18:00' },
+    { '@type': 'OpeningHoursSpecification', dayOfWeek: ['Saturday'], opens: '10:00', closes: '14:00' },
+  ],
+};
+
+const schemas = [businessSchema];
+if (schema) {
+  Array.isArray(schema) ? schemas.push(...schema) : schemas.push(schema);
+}
+---
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>{title}</title>
+  <meta name="description" content={description} />
+  <link rel="canonical" href={canonical} />
+
+  <!-- hreflang: EN page <-> DK equivalent (bidirectional pairing on both domains) -->
+  <link rel="alternate" hreflang="en" href={canonical} />
+  {dkAlternate && <link rel="alternate" hreflang="da" href={dkAlternate} />}
+  {dkAlternate && <link rel="alternate" hreflang="x-default" href={canonical} />}
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content={title} />
+  <meta property="og:description" content={description} />
+  <meta property="og:url" content={canonical} />
+  <meta property="og:site_name" content="PCKlinik" />
+  <meta property="og:locale" content="en" />
+
+  <link rel="icon" type="image/png" href="/logo.png" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" media="print" onload="this.media='all'" />
+  <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" /></noscript>
+
+  {schemas.map((s) => (
+    <script type="application/ld+json" set:html={JSON.stringify(s)} />
+  ))}
+</head>
+<body>
+  <Header path={path} />
+  <main>
+    <slot />
+  </main>
+  <Footer />
+</body>
+</html>

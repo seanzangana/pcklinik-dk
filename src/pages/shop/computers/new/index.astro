@@ -1,0 +1,33 @@
+---
+import BaseLayout from '../../../../layouts/BaseLayout.astro';
+import ProductCard from '../../../../components/ProductCard.astro';
+
+// Placeholder products — replace with real inventory, prices, photos and Stripe links.
+const products = [
+  { img: '/images/shop/thinkpad-t14-new.jpg', alt: 'Lenovo ThinkPad T14 — new', title: 'Lenovo ThinkPad T14 — New', desc: 'Brand new and sealed, direct from supplier. Perfect for office work and everyday use.', price: '6,999 kr.' },
+];
+---
+<BaseLayout
+  title="New Computers | PCKlinik Shop"
+  description="Buy new computers from PCKlinik. Reliable brands, prepared and ready to use. Secure payment via Stripe."
+  path="/shop/computers/new/"
+>
+  <section class="hero">
+    <div class="wrap">
+      <div class="eyebrow"><a href="/shop/computers/" style="color:#A9C1F0">Computers</a> · New</div>
+      <h1>New Computers</h1>
+      <p class="lead">Ready for pickup or delivery.</p>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="wrap">
+      <div class="crumbs"><a href="/shop/">Shop</a> › <a href="/shop/computers/">Computers</a> › <span>New</span></div>
+      <p class="sub">New computers from reliable brands. We help you find the right equipment for your needs and budget, and set it up ready to use.</p>
+      <div class="placeholder-note">⚙️ Placeholder product below. Add your real new-computer inventory (title, description, price, photo at <code>/images/shop/…</code>, and a Stripe Payment Link — separate from the Danish site).</div>
+      <div class="grid grid-3" style="margin-top:24px">
+        {products.map((p) => <ProductCard {...p} />)}
+      </div>
+    </div>
+  </section>
+</BaseLayout>

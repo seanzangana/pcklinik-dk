@@ -1,0 +1,11 @@
+---
+// Reusable shop product card. Buttons link to Stripe Payment Links (placeholders).
+const { img, alt, title, desc, price, stripe = '#stripe-link-placeholder' } = Astro.props;
+---
+<div class="card product-card">
+  <img class="img-placeholder" src={img} alt={alt} loading="lazy" width="480" height="360" />
+  <h3>{title}</h3>
+  <p class="desc">{desc}</p>
+  <div class="price-tag">{price}</div>
+  <a class="btn btn-primary" href={stripe}>Buy Now →</a>
+</div>

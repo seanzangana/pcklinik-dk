@@ -1,0 +1,14 @@
+{
+  "name": "pcklinik-dk",
+  "type": "module",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "dev": "astro dev",
+    "build": "node build.mjs",
+    "preview": "astro preview"
+  },
+  "dependencies": {
+    "astro": "^4.16.18"
+  }
+}

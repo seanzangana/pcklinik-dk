@@ -1,0 +1,13 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { macHubHtml, MAC_HUB_FAQ } from '../data/richPages.js';
+const faqSchema = { '@context': 'https://schema.org', '@type': 'FAQPage', mainEntity: MAC_HUB_FAQ.map((f) => ({ '@type': 'Question', name: f.q, acceptedAnswer: { '@type': 'Answer', text: f.a } })) };
+---
+<BaseLayout
+  title="Mac Repair in Frederiksberg & Copenhagen | PCKlinik"
+  description="MacBook, iMac, Mac mini, Mac Studio and Mac Pro repair in Frederiksberg and Copenhagen. Free diagnostics, fixed quote, fast turnaround."
+  path="/mac-repair/"
+  schema={faqSchema}
+>
+  <Fragment set:html={macHubHtml()} />
+</BaseLayout>

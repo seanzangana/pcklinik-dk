@@ -1,0 +1,8 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { websitesHubHtml, WEBSITES_HUB_FAQ } from '../data/richPages.js';
+const faqSchema = { '@context': 'https://schema.org', '@type': 'FAQPage', mainEntity: WEBSITES_HUB_FAQ.map((f) => ({ '@type': 'Question', name: f.q, acceptedAnswer: { '@type': 'Answer', text: f.a } })) };
+---
+<BaseLayout title="Website Design, SEO & Google Ads | PCKlinik" description="Website design, SEO, and Google Ads management for businesses in Copenhagen. Built and optimized by someone who actually does this work." path="/websites-seo-google-ads/" schema={faqSchema}>
+  <Fragment set:html={websitesHubHtml()} />
+</BaseLayout>
