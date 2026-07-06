@@ -262,27 +262,27 @@ export function faqPageHtml() {
 
 // ---------- Network Equipment hub ----------
 export const NETWORK_HUB_FAQ = [
-  { q: 'Do you help with router setup for both homes and businesses?', a: 'Yes, from simple home WiFi to multi-access-point business networks.' },
-  { q: "I'm not sure which of these matches my equipment — can I just ask?", a: "Yes, contact us and we'll point you to the right service, or just help directly." },
+  { q: 'Hjælper I med router-opsætning til både private og virksomheder?', a: 'Ja, fra simpelt hjemme-WiFi til virksomhedsnetværk med flere access points.' },
+  { q: 'Jeg er ikke sikker på, hvilken af disse der matcher mit udstyr — kan jeg bare spørge?', a: 'Ja, kontakt os, så peger vi dig mod den rette service eller hjælper bare direkte.' },
 ];
 export function networkHubHtml() {
   const cards = [
-    ['UniFi (Ubiquiti)', 'Setup, VLANs, multi-access-point networks', '/unifi-setup-support/'],
-    ['Netgear', 'Nighthawk and Orbi setup and troubleshooting', '/netgear-setup-support/'],
-    ['TP-Link', 'Archer routers and Deco mesh systems', '/tp-link-setup-support/'],
-    ['ASUS Routers', 'Standard, gaming, and AiMesh setups', '/asus-router-setup-support/'],
-    ['Eero & Google Nest WiFi', 'Simple mesh system setup', '/eero-google-nest-wifi-setup/'],
-  ].map(([t, d, h]) => `<a class="card card-link" href="${h}"><div class="card-icon brand-icon">${lucide.wifi}</div><h3>${esc(t)}</h3><p class="models">${esc(d)}</p><span class="arrow">View →</span></a>`).join('');
+    ['UniFi (Ubiquiti)', 'Opsætning, VLAN, netværk med flere access points', '/unifi-setup-support/'],
+    ['Netgear', 'Nighthawk- og Orbi-opsætning og fejlfinding', '/netgear-setup-support/'],
+    ['TP-Link', 'Archer-routere og Deco mesh-systemer', '/tp-link-setup-support/'],
+    ['ASUS-routere', 'Almindelige, gaming- og AiMesh-opsætninger', '/asus-router-setup-support/'],
+    ['Eero & Google Nest WiFi', 'Enkel mesh-systemopsætning', '/eero-google-nest-wifi-setup/'],
+  ].map(([t, d, h]) => `<a class="card card-link" href="${h}"><div class="card-icon brand-icon">${lucide.wifi}</div><h3>${esc(t)}</h3><p class="models">${esc(d)}</p><span class="arrow">Se →</span></a>`).join('');
   const faqHtml = NETWORK_HUB_FAQ.map((f) => `<details><summary>${esc(f.q)}</summary><div class="answer">${esc(f.a)}</div></details>`).join('');
-  return `  <section class="hero"><div class="wrap"><div class="eyebrow">Network · Frederiksberg &amp; Copenhagen</div>
-    <h1>Network Equipment Setup &amp; Support</h1><p class="lead">From a single router to a full multi-access-point network.</p>
-    <div class="cta-row"><a class="btn btn-white" href="/contact/">Get network help</a><a class="btn btn-ghost-light" href="${site.phoneHref}">📞 Call ${site.phone}</a></div></div></section>
-  <section class="section"><div class="wrap lead-copy"><div class="crumbs"><a href="/">Home</a> › <span>Network Equipment</span></div>
-    <p>Whether you're setting up a new router, troubleshooting a flaky connection, or want proper network management for a home or small business, we work with all the major brands.</p></div></section>
-  <section class="section alt"><div class="wrap"><div class="eyebrow">Brands we support</div><h2>Choose your equipment</h2><div class="grid grid-3">${cards}</div></div></section>
-  <section class="section"><div class="wrap"><div class="eyebrow">FAQ</div><h2>Network setup — common questions</h2><div class="faq">${faqHtml}</div></div></section>
-  <section class="section alt"><div class="wrap"><div class="cta-band"><h2>Not sure where to start?</h2><p>Tell us your equipment and what's going wrong — we'll point you to the right service or help directly.</p><div class="cta-row"><a class="btn btn-white" href="/contact/">Get network help</a><a class="btn btn-ghost-light" href="${site.phoneHref}">📞 Call ${site.phone}</a></div></div>
-    <div style="margin-top:32px"><p class="eyebrow">Related</p><div class="crosslinks"><a href="/wifi-network-troubleshooting/">WiFi &amp; Network Troubleshooting →</a><a href="/business-it-service-agreement/">Business IT Support →</a><a href="/contact/">Contact & booking →</a></div></div></div></section>`;
+  return `  <section class="hero"><div class="wrap"><div class="eyebrow">Netværk · Frederiksberg &amp; København</div>
+    <h1>Opsætning &amp; support af netværksudstyr</h1><p class="lead">Fra en enkelt router til et fuldt netværk med flere access points.</p>
+    <div class="cta-row"><a class="btn btn-white" href="/contact/">Få netværkshjælp</a><a class="btn btn-ghost-light" href="${site.phoneHref}">📞 Ring ${site.phone}</a></div></div></section>
+  <section class="section"><div class="wrap lead-copy"><div class="crumbs"><a href="/">Forside</a> › <span>Netværksudstyr</span></div>
+    <p>Uanset om du opsætter en ny router, fejlfinder en ustabil forbindelse eller vil have ordentlig netværksstyring til et hjem eller en mindre virksomhed, arbejder vi med alle de store mærker.</p></div></section>
+  <section class="section alt"><div class="wrap"><div class="eyebrow">Mærker vi understøtter</div><h2>Vælg dit udstyr</h2><div class="grid grid-3">${cards}</div></div></section>
+  <section class="section"><div class="wrap"><div class="eyebrow">FAQ</div><h2>Netværksopsætning — ofte stillede spørgsmål</h2><div class="faq">${faqHtml}</div></div></section>
+  <section class="section alt"><div class="wrap"><div class="cta-band"><h2>Er du i tvivl om, hvor du skal starte?</h2><p>Fortæl os, hvilket udstyr du har, og hvad der driller — så peger vi dig mod den rette service eller hjælper direkte.</p><div class="cta-row"><a class="btn btn-white" href="/contact/">Få netværkshjælp</a><a class="btn btn-ghost-light" href="${site.phoneHref}">📞 Ring ${site.phone}</a></div></div>
+    <div style="margin-top:32px"><p class="eyebrow">Relateret</p><div class="crosslinks"><a href="/wifi-network-troubleshooting/">WiFi- &amp; netværksfejlfinding →</a><a href="/business-it-service-agreement/">IT-support til erhverv →</a><a href="/contact/">Kontakt & booking →</a></div></div></div></section>`;
 }
 
 // ---------- Websites & SEO hub ----------

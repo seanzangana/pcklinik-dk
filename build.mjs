@@ -397,61 +397,61 @@ const FAQ_BUSINESS = [
 
 // ---------- shop ----------
 function productCard({ img, alt, title, desc, price, stripe = '#stripe-link-placeholder' }) {
-  return `<div class="card product-card"><img class="img-placeholder" src="${img}" alt="${esc(alt)}" loading="lazy" width="480" height="360" /><h3>${esc(title)}</h3><p class="desc">${esc(desc)}</p><div class="price-tag">${esc(price)}</div><a class="btn btn-primary" href="${stripe}">Buy Now →</a></div>`;
+  return `<div class="card product-card"><img class="img-placeholder" src="${img}" alt="${esc(alt)}" loading="lazy" width="480" height="360" /><h3>${esc(title)}</h3><p class="desc">${esc(desc)}</p><div class="price-tag">${esc(price)}</div><a class="btn btn-primary" href="${stripe}">Køb nu →</a></div>`;
 }
 function shopFaq(heading, items) {
   const d = items.map(([q, a]) => `<details><summary>${esc(q)}</summary><div class="answer">${esc(a)}</div></details>`).join('');
   return `\n  <section class="section alt"><div class="wrap"><div class="eyebrow">FAQ</div><h2>${esc(heading)}</h2><div class="faq">${d}</div></div></section>`;
 }
 function shopHub() {
-  return `  <section class="hero"><div class="wrap"><div class="eyebrow">Shop</div><h1>Shop</h1><p class="lead">Computers, backup and security — hand-picked and tested by us.</p></div></section>
-  <section class="section"><div class="wrap"><div class="trust-line" style="margin-bottom:36px">All products are personally selected and tested by us before sale. Questions before you buy? Call <a href="${site.phoneHref}">${site.phone}</a>.</div>
+  return `  <section class="hero"><div class="wrap"><div class="eyebrow">Butik</div><h1>Butik</h1><p class="lead">Computere, backup og sikkerhed — håndplukket og testet af os.</p></div></section>
+  <section class="section"><div class="wrap"><div class="trust-line" style="margin-bottom:36px">Alle produkter er personligt udvalgt og testet af os inden salg. Spørgsmål inden du køber? Ring <a href="${site.phoneHref}">${site.phone}</a>.</div>
     <div class="grid grid-2">
-      <a class="card card-link" href="/shop/computers/"><div class="card-icon">🖥️</div><h3>Computers</h3><p>New and refurbished computers — tested and ready to use.</p><span class="arrow">Browse computers →</span></a>
-      <a class="card card-link" href="/shop/backup-security/"><div class="card-icon">🛡️</div><h3>Backup & Security</h3><p>External hard drives, NAS solutions and security software we personally recommend.</p><span class="arrow">Browse backup & security →</span></a>
-    </div></div></section>`+shopFaq("Shop — common questions", [["Can I request a specific product not currently listed?","Yes, contact us and we'll see what we can source."],["Do you offer bundled deals (e.g. computer + backup drive)?","Ask us directly — bundling can sometimes be arranged."],["Can I trade in an old device toward a new or refurbished purchase?","Contact us to discuss — this can sometimes be arranged depending on the device and its condition."]]);
+      <a class="card card-link" href="/shop/computers/"><div class="card-icon">🖥️</div><h3>Computere</h3><p>Nye og istandsatte computere — testet og klar til brug.</p><span class="arrow">Se computere →</span></a>
+      <a class="card card-link" href="/shop/backup-security/"><div class="card-icon">🛡️</div><h3>Backup & sikkerhed</h3><p>Eksterne harddiske, NAS-løsninger og sikkerhedssoftware, vi personligt anbefaler.</p><span class="arrow">Se backup & sikkerhed →</span></a>
+    </div></div></section>`+shopFaq("Butik — ofte stillede spørgsmål", [["Kan jeg bede om et bestemt produkt, der ikke er på listen lige nu?","Ja, kontakt os, så ser vi, hvad vi kan skaffe."],["Tilbyder I samlede tilbud (fx computer + backupdrev)?","Spørg os direkte — det kan nogle gange arrangeres."],["Kan jeg bytte en gammel enhed ind mod et nyt eller istandsat køb?","Kontakt os for at drøfte det — det kan nogle gange arrangeres afhængigt af enheden og dens stand."]]);
 }
 function shopComputers() {
-  return `  <section class="hero"><div class="wrap"><div class="eyebrow"><a href="/shop/" style="color:#A9C1F0">Shop</a> · Computers</div><h1>Computers</h1><p class="lead">Choose between new and refurbished computers.</p></div></section>
-  <section class="section"><div class="wrap"><div class="crumbs"><a href="/shop/">Shop</a> › <span>Computers</span></div>
-    <p class="sub">Whether you want a brand-new machine or a well-maintained, tested computer at a lower price, we have both. Every computer is prepared and tested by us before it's sold.</p>
+  return `  <section class="hero"><div class="wrap"><div class="eyebrow"><a href="/shop/" style="color:#A9C1F0">Butik</a> · Computere</div><h1>Computere</h1><p class="lead">Vælg mellem nye og istandsatte computere.</p></div></section>
+  <section class="section"><div class="wrap"><div class="crumbs"><a href="/shop/">Butik</a> › <span>Computere</span></div>
+    <p class="sub">Uanset om du vil have en helt ny maskine eller en velholdt, testet computer til en lavere pris, har vi begge dele. Hver computer klargøres og testes af os, før den sælges.</p>
     <div class="grid grid-2">
-      <a class="card card-link" href="/shop/computers/new/"><div class="card-icon">✨</div><h3>New Computers</h3><p>New computers from reliable brands, ready for pickup or delivery.</p><span class="arrow">View new computers →</span></a>
-      <a class="card card-link" href="/shop/computers/refurbished/"><div class="card-icon">♻️</div><h3>Refurbished Computers</h3><p>Thoroughly tested and refurbished computers — great performance at a lower price, with warranty.</p><span class="arrow">View refurbished computers →</span></a>
-    </div></div></section>`+shopFaq("Computers — common questions", [["Which is better for most people — new or refurbished?","Depends on budget and needs; refurbished offers better value for standard use, new suits those wanting the latest specs and full warranty."]]);
+      <a class="card card-link" href="/shop/computers/new/"><div class="card-icon">✨</div><h3>Nye computere</h3><p>Nye computere fra driftssikre mærker, klar til afhentning eller levering.</p><span class="arrow">Se nye computere →</span></a>
+      <a class="card card-link" href="/shop/computers/refurbished/"><div class="card-icon">♻️</div><h3>Refurbished computere</h3><p>Grundigt testede og istandsatte computere — god ydelse til en lavere pris, med garanti.</p><span class="arrow">Se refurbished computere →</span></a>
+    </div></div></section>`+shopFaq("Computere — ofte stillede spørgsmål", [["Hvad er bedst for de fleste — nyt eller refurbished?","Afhænger af budget og behov; refurbished giver bedre værdi til almindelig brug, nyt passer til dem, der vil have de nyeste specifikationer og fuld garanti."]]);
 }
 function shopNew() {
-  const products = [{ img: '/images/shop/thinkpad-t14-new.jpg', alt: 'Lenovo ThinkPad T14 — new', title: 'Lenovo ThinkPad T14 — New', desc: 'Brand new and sealed, direct from supplier. Perfect for office work and everyday use.', price: '6,999 kr.' }];
-  return `  <section class="hero"><div class="wrap"><div class="eyebrow"><a href="/shop/computers/" style="color:#A9C1F0">Computers</a> · New</div><h1>New Computers</h1><p class="lead">Ready for pickup or delivery.</p></div></section>
-  <section class="section"><div class="wrap"><div class="crumbs"><a href="/shop/">Shop</a> › <a href="/shop/computers/">Computers</a> › <span>New</span></div>
-    <p class="sub">New computers from reliable brands. We help you find the right equipment for your needs and budget, and set it up ready to use.</p>
-    <div class="placeholder-note">⚙️ Placeholder product below. Add your real new-computer inventory (title, description, price, photo at <code>/images/shop/…</code>, and a Stripe Payment Link — separate from the Danish site).</div>
-    <div class="grid grid-3" style="margin-top:24px">${products.map(productCard).join('')}</div></div></section>`+shopFaq("New computers — common questions", [["Can I customize the specs of a new computer before purchase?","Contact us about your requirements — we can often source configurations beyond what's listed."]]);
+  const products = [{ img: '/images/shop/thinkpad-t14-new.jpg', alt: 'Lenovo ThinkPad T14 — ny', title: 'Lenovo ThinkPad T14 — Ny', desc: 'Helt ny og forseglet, direkte fra leverandør. Perfekt til kontorarbejde og daglig brug.', price: '6.999 kr.' }];
+  return `  <section class="hero"><div class="wrap"><div class="eyebrow"><a href="/shop/computers/" style="color:#A9C1F0">Computere</a> · Nye</div><h1>Nye computere</h1><p class="lead">Klar til afhentning eller levering.</p></div></section>
+  <section class="section"><div class="wrap"><div class="crumbs"><a href="/shop/">Butik</a> › <a href="/shop/computers/">Computere</a> › <span>Nye</span></div>
+    <p class="sub">Nye computere fra driftssikre mærker. Vi hjælper dig med at finde det rette udstyr til dine behov og dit budget og opsætter det klar til brug.</p>
+    <div class="placeholder-note">⚙️ Placeholder-produkt nedenfor. Tilføj jeres rigtige lager af nye computere (titel, beskrivelse, pris, foto under <code>/images/shop/…</code> og et Stripe Payment Link — separat fra den danske side).</div>
+    <div class="grid grid-3" style="margin-top:24px">${products.map(productCard).join('')}</div></div></section>`+shopFaq("Nye computere — ofte stillede spørgsmål", [["Kan jeg tilpasse specifikationerne på en ny computer inden køb?","Kontakt os om jeres krav — vi kan ofte skaffe konfigurationer ud over det, der er nævnt."]]);
 }
 function shopRefurb() {
   const products = [
-    { img: '/images/shop/thinkpad-t14-refurbished.jpg', alt: 'Lenovo ThinkPad T14 — refurbished', title: 'Lenovo ThinkPad T14 — Refurbished', desc: 'Thoroughly tested and cleaned by us, with a new battery if needed. Perfect for office work and everyday use. 6-month warranty.', price: '1,999 kr.' },
-    { img: '/images/shop/macbook-air-refurbished.jpg', alt: 'MacBook Air M1 — refurbished', title: 'MacBook Air M1 — Refurbished', desc: 'Apple Silicon performance at a lower price. Tested, cleaned and battery-checked. 6-month warranty.', price: '4,499 kr.' },
-    { img: '/images/shop/dell-latitude-refurbished.jpg', alt: 'Dell Latitude 7440 — refurbished', title: 'Dell Latitude 7440 — Refurbished', desc: 'Business-grade laptop, professionally refurbished and ready for work. 6-month warranty.', price: '2,799 kr.' },
+    { img: '/images/shop/thinkpad-t14-refurbished.jpg', alt: 'Lenovo ThinkPad T14 — refurbished', title: 'Lenovo ThinkPad T14 — Refurbished', desc: 'Grundigt testet og rengjort af os, med nyt batteri hvis nødvendigt. Perfekt til kontorarbejde og daglig brug. 6 måneders garanti.', price: '1.999 kr.' },
+    { img: '/images/shop/macbook-air-refurbished.jpg', alt: 'MacBook Air M1 — refurbished', title: 'MacBook Air M1 — Refurbished', desc: 'Apple Silicon-ydelse til en lavere pris. Testet, rengjort og batteritjekket. 6 måneders garanti.', price: '4.499 kr.' },
+    { img: '/images/shop/dell-latitude-refurbished.jpg', alt: 'Dell Latitude 7440 — refurbished', title: 'Dell Latitude 7440 — Refurbished', desc: 'Erhvervsbærbar, professionelt istandsat og klar til arbejde. 6 måneders garanti.', price: '2.799 kr.' },
   ];
-  return `  <section class="hero"><div class="wrap"><div class="eyebrow"><a href="/shop/computers/" style="color:#A9C1F0">Computers</a> · Refurbished</div><h1>Refurbished Computers</h1><p class="lead">Tested, cleaned and ready to use — with warranty.</p></div></section>
-  <section class="section"><div class="wrap"><div class="crumbs"><a href="/shop/">Shop</a> › <a href="/shop/computers/">Computers</a> › <span>Refurbished</span></div>
-    <p class="sub">Thoroughly tested and refurbished computers — great performance at a lower price, with the same service guarantee as our repairs. Tested by the same person who repairs computers in the shop.</p>
-    <div class="trust-line" style="margin:20px 0 8px"><strong>What "refurbished" means here:</strong> every machine is tested, cleaned, and fitted with a new battery if needed — then backed by a 6-month warranty. It's the same technician who repairs and refurbishes, so it's held to the same standard as our repair work.</div>
-    <div class="placeholder-note">⚙️ Example products below. Refurbished stock changes often — update this page's cards, prices, photos and Stripe links as inventory changes.</div>
-    <div class="grid grid-3" style="margin-top:24px">${products.map(productCard).join('')}</div></div></section>`+shopFaq("Refurbished computers — common questions", [["Do refurbished computers come with a licensed operating system?","Yes, all refurbished units include a valid, licensed OS installation."],["What happens to the old parts or devices you replace during refurbishment?","Where possible, working components are reused or recycled responsibly; anything non-functional is disposed of through proper e-waste channels rather than landfill."]]);
+  return `  <section class="hero"><div class="wrap"><div class="eyebrow"><a href="/shop/computers/" style="color:#A9C1F0">Computere</a> · Refurbished</div><h1>Refurbished computere</h1><p class="lead">Testet, rengjort og klar til brug — med garanti.</p></div></section>
+  <section class="section"><div class="wrap"><div class="crumbs"><a href="/shop/">Butik</a> › <a href="/shop/computers/">Computere</a> › <span>Refurbished</span></div>
+    <p class="sub">Grundigt testede og istandsatte computere — god ydelse til en lavere pris, med samme servicegaranti som vores reparationer. Testet af den samme person, der reparerer computere i butikken.</p>
+    <div class="trust-line" style="margin:20px 0 8px"><strong>Hvad "refurbished" betyder her:</strong> hver maskine bliver testet, rengjort og forsynet med et nyt batteri, hvis nødvendigt — og derefter dækket af 6 måneders garanti. Det er den samme tekniker, der reparerer og istandsætter, så den holdes til samme standard som vores reparationsarbejde.</div>
+    <div class="placeholder-note">⚙️ Eksempelprodukter nedenfor. Refurbished-lageret ændrer sig ofte — opdatér denne sides kort, priser, fotos og Stripe-links, når lageret ændrer sig.</div>
+    <div class="grid grid-3" style="margin-top:24px">${products.map(productCard).join('')}</div></div></section>`+shopFaq("Refurbished computere — ofte stillede spørgsmål", [["Kommer refurbished computere med et licenseret styresystem?","Ja, alle istandsatte enheder inkluderer en gyldig, licenseret OS-installation."],["Hvad sker der med de gamle dele eller enheder, I udskifter under istandsættelsen?","Hvor det er muligt, genbruges eller genanvendes fungerende komponenter ansvarligt; alt, der ikke fungerer, bortskaffes gennem korrekte e-affaldskanaler frem for på lossepladsen."]]);
 }
 function shopBackup() {
   const products = [
-    { img: '/images/shop/external-hdd-2tb.jpg', alt: 'External hard drive 2TB', title: 'External Hard Drive 2TB — For Automatic Backup', desc: "The drive we personally recommend to customers who want to secure their files. We're happy to help with setup if purchased from us.", price: '599 kr.' },
-    { img: '/images/shop/nas-2bay.jpg', alt: '2-bay NAS solution', title: 'NAS 2-Bay — Home & Office Backup', desc: 'A network drive for automatic, redundant backup across all your devices. Setup help included if bought from us.', price: '2,199 kr.' },
-    { img: '/images/shop/security-software.jpg', alt: 'Security software licence', title: 'Security Software — 1-Year Licence', desc: 'The endpoint protection we use and recommend — antivirus, ransomware and phishing protection for one computer.', price: '349 kr.' },
+    { img: '/images/shop/external-hdd-2tb.jpg', alt: 'Ekstern harddisk 2 TB', title: 'Ekstern harddisk 2 TB — til automatisk backup', desc: 'Det drev, vi personligt anbefaler til kunder, der vil sikre deres filer. Vi hjælper gerne med opsætning, hvis det er købt hos os.', price: '599 kr.' },
+    { img: '/images/shop/nas-2bay.jpg', alt: 'NAS-løsning med 2 pladser', title: 'NAS 2-bay — backup til hjem & kontor', desc: 'Et netværksdrev til automatisk, redundant backup på tværs af alle dine enheder. Hjælp til opsætning inkluderet, hvis det er købt hos os.', price: '2.199 kr.' },
+    { img: '/images/shop/security-software.jpg', alt: 'Licens til sikkerhedssoftware', title: 'Sikkerhedssoftware — 1 års licens', desc: 'Den endpoint-beskyttelse, vi bruger og anbefaler — antivirus samt beskyttelse mod ransomware og phishing til én computer.', price: '349 kr.' },
   ];
-  return `  <section class="hero"><div class="wrap"><div class="eyebrow"><a href="/shop/" style="color:#A9C1F0">Shop</a> · Backup & Security</div><h1>Backup & Security</h1><p class="lead">Equipment and software we personally recommend and use.</p></div></section>
-  <section class="section"><div class="wrap"><div class="crumbs"><a href="/shop/">Shop</a> › <span>Backup & Security</span></div>
-    <p class="sub">External hard drives, NAS solutions and security software we personally recommend and use. We're happy to help with setup if purchased from us.</p>
-    <div class="placeholder-note">⚙️ Example products below. Replace with the exact items you stock, real prices, photos, and Stripe Payment Links (separate from the Danish site).</div>
-    <div class="grid grid-3" style="margin-top:24px">${products.map(productCard).join('')}</div></div></section>`+shopFaq("Backup & security — common questions", [["Do you offer cloud backup, or only physical drives?","Both — contact us about your specific needs and budget."]]);
+  return `  <section class="hero"><div class="wrap"><div class="eyebrow"><a href="/shop/" style="color:#A9C1F0">Butik</a> · Backup & sikkerhed</div><h1>Backup & sikkerhed</h1><p class="lead">Udstyr og software, vi personligt anbefaler og bruger.</p></div></section>
+  <section class="section"><div class="wrap"><div class="crumbs"><a href="/shop/">Butik</a> › <span>Backup & sikkerhed</span></div>
+    <p class="sub">Eksterne harddiske, NAS-løsninger og sikkerhedssoftware, vi personligt anbefaler og bruger. Vi hjælper gerne med opsætning, hvis det er købt hos os.</p>
+    <div class="placeholder-note">⚙️ Eksempelprodukter nedenfor. Erstat med de præcise varer, I fører, rigtige priser, fotos og Stripe Payment Links (separat fra den danske side).</div>
+    <div class="grid grid-3" style="margin-top:24px">${products.map(productCard).join('')}</div></div></section>`+shopFaq("Backup & sikkerhed — ofte stillede spørgsmål", [["Tilbyder I cloud-backup, eller kun fysiske drev?","Begge dele — kontakt os om jeres konkrete behov og budget."]]);
 }
 
 // ---------- About / Team ----------
@@ -603,11 +603,11 @@ async function run() {
   // business
   pages.push(['/business-it-service-agreement/', page({ title: 'Business IT Service Agreement | PCKlinik', description: 'Fixed-price IT support for businesses in Copenhagen and Frederiksberg. Unlimited support, monitoring, security and backup — from 399 kr./user/month.', p: '/business-it-service-agreement/', body: businessBody(), schema: businessSchemaFaq() })]);
   // shop
-  pages.push(['/shop/', page({ title: 'Shop | Computers, Backup & Security | PCKlinik', description: 'Buy refurbished and new computers, plus backup and security solutions, from PCKlinik. Simple and secure checkout via Stripe.', p: '/shop/', body: shopHub() })]);
-  pages.push(['/shop/computers/', page({ title: 'Computers | New & Refurbished | PCKlinik Shop', description: 'New and refurbished computers from PCKlinik — tested and ready to use, with warranty. Browse our selection and buy securely via Stripe.', p: '/shop/computers/', body: shopComputers() })]);
-  pages.push(['/shop/computers/new/', page({ title: 'New Computers | PCKlinik Shop', description: 'Buy new computers from PCKlinik. Reliable brands, prepared and ready to use. Secure payment via Stripe.', p: '/shop/computers/new/', body: shopNew() })]);
-  pages.push(['/shop/computers/refurbished/', page({ title: 'Refurbished Computers with Warranty | PCKlinik Shop', description: 'Thoroughly tested and refurbished computers from PCKlinik, with warranty. Great performance at a lower price. Secure payment via Stripe.', p: '/shop/computers/refurbished/', body: shopRefurb() })]);
-  pages.push(['/shop/backup-security/', page({ title: 'Backup & Security | PCKlinik Shop', description: 'External hard drives, NAS solutions and security software recommended by PCKlinik. Secure payment via Stripe.', p: '/shop/backup-security/', body: shopBackup() })]);
+  pages.push(['/shop/', page({ title: 'Butik | Computere, backup & sikkerhed | PCKlinik', description: 'Køb istandsatte og nye computere samt backup- og sikkerhedsløsninger hos PCKlinik. Enkel og sikker betaling via Stripe.', p: '/shop/', body: shopHub() })]);
+  pages.push(['/shop/computers/', page({ title: 'Computere | Nye & refurbished | PCKlinik Butik', description: 'Nye og istandsatte computere fra PCKlinik — testet og klar til brug, med garanti. Se udvalget og køb sikkert via Stripe.', p: '/shop/computers/', body: shopComputers() })]);
+  pages.push(['/shop/computers/new/', page({ title: 'Nye computere | PCKlinik Butik', description: 'Køb nye computere hos PCKlinik. Driftssikre mærker, klargjort og klar til brug. Sikker betaling via Stripe.', p: '/shop/computers/new/', body: shopNew() })]);
+  pages.push(['/shop/computers/refurbished/', page({ title: 'Refurbished computere med garanti | PCKlinik Butik', description: 'Grundigt testede og istandsatte computere fra PCKlinik, med garanti. God ydelse til en lavere pris. Sikker betaling via Stripe.', p: '/shop/computers/refurbished/', body: shopRefurb() })]);
+  pages.push(['/shop/backup-security/', page({ title: 'Backup & sikkerhed | PCKlinik Butik', description: 'Eksterne harddiske, NAS-løsninger og sikkerhedssoftware anbefalet af PCKlinik. Sikker betaling via Stripe.', p: '/shop/backup-security/', body: shopBackup() })]);
 
   // Mac Repair hub (broad intent)
   pages.push(['/mac-repair/', page({ title: 'Mac-reparation i Frederiksberg & København | PCKlinik', description: 'Reparation af MacBook, iMac, Mac mini, Mac Studio og Mac Pro i Frederiksberg og København. Gratis fejlsøgning, fast pris, hurtig ekspedition.', p: '/mac-repair/', body: macHubHtml(), schema: faqSchemaFrom(MAC_HUB_FAQ) })]);
@@ -620,7 +620,7 @@ async function run() {
   // General site-wide FAQ
   pages.push(['/faq/', page({ title: 'Frequently Asked Questions | PCKlinik', description: 'English-speaking PC and Mac repair in Copenhagen — FAQs on diagnostics, pricing, brands, services, business IT, and our shop.', p: '/faq/', body: faqPageHtml(), schema: faqSchemaFrom(GENERAL_FAQ) })]);
   // Network Equipment hub
-  pages.push(['/network-equipment/', page({ title: 'Network & Router Setup | UniFi, Netgear, TP-Link & More | PCKlinik', description: 'Router and network setup, configuration, and troubleshooting — UniFi, Netgear, TP-Link, ASUS, Eero and Google Nest. Frederiksberg and Copenhagen.', p: '/network-equipment/', body: networkHubHtml(), schema: faqSchemaFrom(NETWORK_HUB_FAQ) })]);
+  pages.push(['/network-equipment/', page({ title: 'Netværks- & router-opsætning | UniFi, Netgear, TP-Link m.m. | PCKlinik', description: 'Router- og netværksopsætning, konfiguration og fejlfinding — UniFi, Netgear, TP-Link, ASUS, Eero og Google Nest. Frederiksberg og København.', p: '/network-equipment/', body: networkHubHtml(), schema: faqSchemaFrom(NETWORK_HUB_FAQ) })]);
   // Websites & SEO hub
   pages.push(['/websites-seo-google-ads/', page({ title: 'Website Design, SEO & Google Ads | PCKlinik', description: 'Website design, SEO, and Google Ads management for businesses in Copenhagen. Built and optimized by someone who actually does this work.', p: '/websites-seo-google-ads/', body: websitesHubHtml(), schema: faqSchemaFrom(WEBSITES_HUB_FAQ) })]);
   // About / Meet the Team

@@ -51,10 +51,20 @@ Deploy: Cloudflare Pages, `pages_build_output_dir = dist`, build command
 - Still English by design: 5 network-equipment pages (Batch 4) and 3 Web
   pages (Batch 5) kept verbatim in `services.js`.
 
+## Done — Batch 4 (network equipment + shop, native Danish)
+- 5 network-equipment entries in `services.js` (UniFi, Netgear, TP-Link, ASUS
+  router, Eero/Nest) translated + `networkHubHtml` / `NETWORK_HUB_FAQ`.
+- All shop pages in `build.mjs` translated: hub, computers, new, refurbished,
+  backup & security, `productCard` ("Køb nu"), `shopFaq`. Prices reformatted to
+  Danish thousands separator (e.g. 6.999 kr.). Shop `run()` titles Danish.
+- **Refurbished extra content preserved:** the "Hvad \"refurbished\" betyder her"
+  trust-line + 6-month-warranty detail renders in Danish (not collapsed to the
+  generic shop template). Verified in the built output (4× "6 måneders garanti").
+- Verified: 76 pages, 0 English on the Batch-4 pages, 0 broken links, 0 Arabic.
+
 ## Still English — pending later batches (NOT yet Danish; do NOT deploy publicly)
 Page BODIES for these still render English text from the .eu fork and must be
 rewritten natively in Danish in their batches (nav labels already point to them):
-- Batch 4 — 5 network equipment pages + shop (`richPages.js`, shop* in build.mjs)
 - Batch 5 — Websites & SEO (4) + Business IT verification
 - Batch 6 — General FAQ (`faqPageHtml`), Meet the Team (`aboutBody`)
 - Slug renames to Danish (e.g. `/lenovo-reparation/`, `/butik/`,
