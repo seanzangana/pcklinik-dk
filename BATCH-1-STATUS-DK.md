@@ -25,10 +25,19 @@ Deploy: Cloudflare Pages, `pages_build_output_dir = dist`, build command
   - Contact page + "Stil os et spørgsmål" page in Danish.
 - Build verified: 76 pages, 0 Arabic, 0 broken internal links.
 
+## Done — Batch 2 (18 brand pages, native Danish)
+- `repairBody()` template chrome translated (breadcrumbs, section headings,
+  models table, CTA band, related links).
+- All 16 brand entries in `repairs.js` rewritten natively in Danish (intro,
+  services, models, why, FAQ, CTAs, crosslinks). Brand/model names kept in
+  English per the standing rule.
+- Mac Repair hub (`macHubHtml`) + Gaming (`gamingHtml`) + their FAQ arrays in
+  `richPages.js` translated. Hub page meta titles/descriptions Danish.
+- Verified: 76 pages, 0 English on the 18 brand/hub pages, 0 broken links.
+
 ## Still English — pending later batches (NOT yet Danish; do NOT deploy publicly)
 Page BODIES for these still render English text from the .eu fork and must be
 rewritten natively in Danish in their batches (nav labels already point to them):
-- Batch 2 — 18 brand pages (`repairs.js`) + Mac hub / Gaming (`richPages.js`)
 - Batch 3 — 20 service/task pages (`services.js` + remote/system/error/wont-turn-on)
 - Batch 4 — 5 network equipment pages + shop (`richPages.js`, shop* in build.mjs)
 - Batch 5 — Websites & SEO (4) + Business IT verification
