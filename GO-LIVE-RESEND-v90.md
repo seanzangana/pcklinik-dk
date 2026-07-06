@@ -18,9 +18,13 @@ Unchanged and already correct from earlier work: allow-listed destinations
 set to the visitor's email/contact, and `wrangler.toml` (Resend, no MX binding).
 
 ## Form → destination (built and verified)
-- contact/ → contact@pcklinik.dk
-- ask-a-question/ → contact@pcklinik.dk
-- business-it-service-agreement/ → support@pcklinik.dk
+- contact/ → kontakt@pcklinik.dk
+- ask-a-question/ → kontakt@pcklinik.dk
+- business-it-service-agreement/ → kontakt@pcklinik.dk
+  (all three route to the single Danish inbox kontakt@pcklinik.dk; sender is
+  noreply@pcklinik.dk. To split the business form to its own inbox, set
+  site.emailBusiness in src/data/site.js and add that address to the
+  ALLOWED_DESTINATIONS list in functions/api/submit-form.js.)
 
 ## IMPORTANT: deploy method changes
 Because the forms now need the Pages Function, this version must be deployed
@@ -48,7 +52,7 @@ the "requires a build process" error seen before). The drag-and-drop
    you didn't change anything.
 
 ## Test after deploy
-- Submit each of the 5 forms → confirm arrival at the right inbox (contact@ ×3, support@ ×2), no page reload, inline "message sent" appears.
+- Submit each of the 5 forms → confirm arrival at kontakt@pcklinik.dk, no page reload, inline "message sent" appears.
 - Reply to a notification → goes to the visitor (reply_to), not noreply/Resend.
 - Honeypot: set the hidden `_gotcha` field via dev tools and submit → page shows success but **no email arrives**.
 - Error state: temporarily unset `RESEND_API_KEY` → the form shows the inline error instead of failing silently (check the Pages Functions logs for the logged error). Restore the key.

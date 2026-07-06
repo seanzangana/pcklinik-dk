@@ -71,7 +71,7 @@ everything. No more zip uploads. Content edits happen in `src/data/*` (and the
 `build.mjs` templates); push and Cloudflare does the rest.
 
 ## Test checklist after go-live
-- Submit all 5 forms → correct inbox (contact@ ×3, support@ ×2), no reload, inline success.
+- Submit all 5 forms → kontakt@pcklinik.dk, no reload, inline success.
 - Reply to a notification → reaches the visitor (reply_to), not noreply/Resend.
 - Honeypot `_gotcha` filled → looks successful, no email sent.
 - Unset `RESEND_API_KEY` temporarily → inline error shown, logged in Functions logs.
