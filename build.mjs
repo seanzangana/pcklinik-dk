@@ -1,8 +1,7 @@
 // ============================================================================
 // Zero-dependency static site renderer for pcklinik.dk (Danish; fork of pcklinik.eu codebase).
-// Produces the same HTML the Astro project renders, into ./dist.
-// Reuses the SAME data files (src/data/*.js) and CSS (src/styles/global.css),
-// so the built output and the Astro source never drift.
+// Single source of truth for the site (no Astro/view mirror). Renders into ./dist.
+// Reads data files (src/data/*.js) and CSS (src/styles/global.css).
 //   Run:  node build.mjs
 // ============================================================================
 import { promises as fs } from 'node:fs';
@@ -174,26 +173,26 @@ function repairBody(r) {
   const svcIcons = ['🖥️', '🔋', '🔧', '🌀'];
   const services = r.services.map((s, i) => `<div class="card"><div class="card-icon">${svcIcons[i % 4]}</div><h3>${esc(s.title)}</h3><p>${s.body}</p></div>`).join('');
   const faq = r.faq.map((f) => `<details><summary>${esc(f.q)}</summary><div class="answer">${esc(f.a)}</div></details>`).join('');
-  const cross = r.crosslinks.map((c) => `<a href="${c.href}">${esc(c.label)} →</a>`).join('') + `<a href="/contact/">Contact & booking →</a>`;
+  const cross = r.crosslinks.map((c) => `<a href="${c.href}">${esc(c.label)} →</a>`).join('') + `<a href="/contact/">Kontakt & booking →</a>`;
   const intro = r.intro.map((pp) => `<p>${pp}</p>`).join('');
   // Optional sections — omitted for the catch-all "Other Brands" page.
-  const modelsSection = r.models ? `<section class="section alt"><div class="wrap"><div class="eyebrow">Models we repair</div><h2>Full model coverage</h2><div class="table-wrap"><table class="models"><thead><tr><th>Series</th><th>Models</th><th>Typical issue</th></tr></thead><tbody>${r.models.map((m) => `<tr><td>${esc(m.series)}</td><td>${esc(m.models)}</td><td class="issue">${esc(m.issue)}</td></tr>`).join('')}</tbody></table></div></div></section>` : '';
-  const photosSection = r.photos ? `<section class="section alt"><div class="wrap"><div class="eyebrow">From our workshop</div><h2>Real ${esc(r.brand)} repairs</h2><div class="grid grid-${r.photos.length === 2 ? '2' : '3'}">${r.photos.map((ph) => `<img class="img-placeholder" src="${ph.path}" alt="${esc(ph.alt)}" loading="lazy" width="480" height="360" />`).join('')}</div></div></section>` : '';
-  const whySection = r.why ? `<section class="section"><div class="wrap"><div class="eyebrow">Why PCKlinik</div><h2>${esc(r.whyHeading)}</h2>${r.whyIntro ? `<p class="sub">${r.whyIntro}</p>` : ''}<ul class="why-list">${r.why.map((w) => `<li><strong>${esc(w.title)}</strong>${esc(w.body)}</li>`).join('')}</ul></div></section>` : '';
-  const ctaHeading = r.ctaHeading ? esc(r.ctaHeading) : `Ready to get your ${esc(r.brand)} fixed?`;
+  const modelsSection = r.models ? `<section class="section alt"><div class="wrap"><div class="eyebrow">Modeller vi reparerer</div><h2>Fuld modeldækning</h2><div class="table-wrap"><table class="models"><thead><tr><th>Serie</th><th>Modeller</th><th>Typisk problem</th></tr></thead><tbody>${r.models.map((m) => `<tr><td>${esc(m.series)}</td><td>${esc(m.models)}</td><td class="issue">${esc(m.issue)}</td></tr>`).join('')}</tbody></table></div></div></section>` : '';
+  const photosSection = r.photos ? `<section class="section alt"><div class="wrap"><div class="eyebrow">Fra vores værksted</div><h2>Rigtige ${esc(r.brand)}-reparationer</h2><div class="grid grid-${r.photos.length === 2 ? '2' : '3'}">${r.photos.map((ph) => `<img class="img-placeholder" src="${ph.path}" alt="${esc(ph.alt)}" loading="lazy" width="480" height="360" />`).join('')}</div></div></section>` : '';
+  const whySection = r.why ? `<section class="section"><div class="wrap"><div class="eyebrow">Hvorfor PCKlinik</div><h2>${esc(r.whyHeading)}</h2>${r.whyIntro ? `<p class="sub">${r.whyIntro}</p>` : ''}<ul class="why-list">${r.why.map((w) => `<li><strong>${esc(w.title)}</strong>${esc(w.body)}</li>`).join('')}</ul></div></section>` : '';
+  const ctaHeading = r.ctaHeading ? esc(r.ctaHeading) : `Klar til at få din ${esc(r.brand)} repareret?`;
   return `  <section class="hero"><div class="wrap">
-    <div class="eyebrow">${esc(r.brand)} Repair · Frederiksberg &amp; Copenhagen</div>
+    <div class="eyebrow">${esc(r.brand)}-reparation · Frederiksberg &amp; København</div>
     <h1>${esc(r.h1)}</h1><p class="lead">${esc(r.h2)}</p>
-    <div class="cta-row"><a class="btn btn-white" href="/contact/">${esc(r.ctaPrimary)}</a><a class="btn btn-ghost-light" href="${site.phoneHref}">📞 Call ${site.phone}</a></div>
+    <div class="cta-row"><a class="btn btn-white" href="/contact/">${esc(r.ctaPrimary)}</a><a class="btn btn-ghost-light" href="${site.phoneHref}">📞 Ring ${site.phone}</a></div>
   </div></section>
-  <section class="section"><div class="wrap lead-copy"><div class="crumbs"><a href="/">Home</a> › <span>${esc(r.brand)} Repair</span></div>${intro}</div></section>
+  <section class="section"><div class="wrap lead-copy"><div class="crumbs"><a href="/">Forside</a> › <span>${esc(r.brand)}-reparation</span></div>${intro}</div></section>
   ${modelsSection}
-  <section class="section"><div class="wrap"><div class="eyebrow">What we fix</div><h2>${esc(r.brand)} repair services</h2><div class="grid grid-4">${services}</div></div></section>
+  <section class="section"><div class="wrap"><div class="eyebrow">Hvad vi reparerer</div><h2>${esc(r.brand)}-reparationsservices</h2><div class="grid grid-4">${services}</div></div></section>
   ${photosSection}
   ${whySection}
-  <section class="section alt"><div class="wrap"><div class="eyebrow">FAQ</div><h2>${esc(r.brand)} repair — common questions</h2><div class="faq">${faq}</div></div></section>
-  <section class="section"><div class="wrap"><div class="cta-band"><h2>${ctaHeading}</h2><p>Free diagnostics (2–4 days) or express for 600 kr (1–2 hours). Fixed quote before we start.</p><div class="cta-row"><a class="btn btn-white" href="/contact/">${esc(r.ctaPrimary)}</a><a class="btn btn-ghost-light" href="${site.phoneHref}">📞 Call ${site.phone}</a></div></div>
-    <div style="margin-top:32px"><p class="eyebrow">Related repairs</p><div class="crosslinks">${cross}</div></div></div></section>`;
+  <section class="section alt"><div class="wrap"><div class="eyebrow">FAQ</div><h2>${esc(r.brand)}-reparation — ofte stillede spørgsmål</h2><div class="faq">${faq}</div></div></section>
+  <section class="section"><div class="wrap"><div class="cta-band"><h2>${ctaHeading}</h2><p>Gratis fejlsøgning (2–4 dage) eller ekspres for 600 kr. (1–2 timer). Fast pris, før vi går i gang.</p><div class="cta-row"><a class="btn btn-white" href="/contact/">${esc(r.ctaPrimary)}</a><a class="btn btn-ghost-light" href="${site.phoneHref}">📞 Ring ${site.phone}</a></div></div>
+    <div style="margin-top:32px"><p class="eyebrow">Relaterede reparationer</p><div class="crosslinks">${cross}</div></div></div></section>`;
 }
 function repairSchema(r) {
   return { '@context': 'https://schema.org', '@type': 'FAQPage', mainEntity: r.faq.map((f) => ({ '@type': 'Question', name: f.q, acceptedAnswer: { '@type': 'Answer', text: f.a } })) };
@@ -611,9 +610,9 @@ async function run() {
   pages.push(['/shop/backup-security/', page({ title: 'Backup & Security | PCKlinik Shop', description: 'External hard drives, NAS solutions and security software recommended by PCKlinik. Secure payment via Stripe.', p: '/shop/backup-security/', body: shopBackup() })]);
 
   // Mac Repair hub (broad intent)
-  pages.push(['/mac-repair/', page({ title: 'Mac Repair in Frederiksberg & Copenhagen | PCKlinik', description: 'MacBook, iMac, Mac mini, Mac Studio and Mac Pro repair in Frederiksberg and Copenhagen. Free diagnostics, fixed quote, fast turnaround.', p: '/mac-repair/', body: macHubHtml(), schema: faqSchemaFrom(MAC_HUB_FAQ) })]);
+  pages.push(['/mac-repair/', page({ title: 'Mac-reparation i Frederiksberg & København | PCKlinik', description: 'Reparation af MacBook, iMac, Mac mini, Mac Studio og Mac Pro i Frederiksberg og København. Gratis fejlsøgning, fast pris, hurtig ekspedition.', p: '/mac-repair/', body: macHubHtml(), schema: faqSchemaFrom(MAC_HUB_FAQ) })]);
   // Gaming PC repair, service & custom builds
-  pages.push(['/gaming-pc-repair-and-build/', page({ title: 'Gaming PC Repair, Service & Custom Builds | PCKlinik', description: 'Gaming PC repair, cooling service, and custom PC builds in Frederiksberg and Copenhagen. GPU, overheating, upgrades — plus builds from scratch.', p: '/gaming-pc-repair-and-build/', body: gamingHtml(), schema: faqSchemaFrom(GAMING_FAQ) })]);
+  pages.push(['/gaming-pc-repair-and-build/', page({ title: 'Gaming-pc — reparation, service & specialbyggede | PCKlinik', description: 'Reparation af gaming-pc, køleservice og specialbyggede pc’er i Frederiksberg og København. GPU, overophedning, opgraderinger — plus bygning fra bunden.', p: '/gaming-pc-repair-and-build/', body: gamingHtml(), schema: faqSchemaFrom(GAMING_FAQ) })]);
   // Error messages reference page
   pages.push(['/error-messages/', page({ title: 'Common Computer Error Messages & Codes | PCKlinik', description: 'Blue screen errors, boot failures, kernel panics and more — what common Windows and Mac error messages mean, and how we fix them.', p: '/error-messages/', body: errorMessagesHtml(), schema: faqSchemaFrom(ERROR_FAQ) })]);
   // Computer won't turn on (guide)

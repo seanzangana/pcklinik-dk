@@ -68,7 +68,7 @@ arrives). Then cut the domain over:
 
 Every `git push` to `main` rebuilds and deploys automatically — forms, content,
 everything. No more zip uploads. Content edits happen in `src/data/*` (and the
-`.astro`/`build.mjs` templates); push and Cloudflare does the rest.
+`build.mjs` templates); push and Cloudflare does the rest.
 
 ## Test checklist after go-live
 - Submit all 5 forms → correct inbox (contact@ ×3, support@ ×2), no reload, inline success.

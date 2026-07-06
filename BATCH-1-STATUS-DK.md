@@ -10,8 +10,7 @@ Deploy: Cloudflare Pages, `pages_build_output_dir = dist`, build command
 - Forked pcklinik.eu; **all Arabic removed**: `ar*.js` data files deleted, all
   `/ar/` routes, RTL handling, `headerAr/footerAr/arHomeHtml/...` functions, and
   the topbar language switcher stripped from `build.mjs`. No language switcher.
-- Reconfigured to `.dk`: `package.json` (pcklinik-dk), `astro.config.mjs`
-  (site https://www.pcklinik.dk), `wrangler.toml` (project pcklinik-dk),
+- Reconfigured to `.dk`: `package.json` (pcklinik-dk), `wrangler.toml` (project pcklinik-dk),
   `site.js` (domain, `kontakt@pcklinik.dk`, Danish hours). `<html lang="da">`,
   `og:locale=da_DK`.
 - Danish global chrome: nav labels + flyout categories (`site.js`), footer,
@@ -38,8 +37,8 @@ rewritten natively in Danish in their batches (nav labels already point to them)
   `/it-support-til-erhverv/`, `/kontakt/`) are a later, deliberate step.
 
 ## Notes / cleanup
-- `src/pages/*.astro` + `src/components/*.astro` are the legacy Astro mirror and
-  are **not used** by `node build.mjs`; they are still English and stale. Either
-  resync or delete in a cleanup pass — they don't affect the production build.
+- **RESOLVED:** the legacy Astro view mirror (`src/pages`, `src/components`,
+  `src/layouts`, `astro.config.mjs`, the `astro` dependency) has been **deleted**.
+  `build.mjs` is now the single source of truth — no static-HTML-vs-Astro split.
 - Deployment (Cloudflare Pages project, GitHub repo, domain cutover) remains a
   deliberate, Shan-approved step — not done here.
