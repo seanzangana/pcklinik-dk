@@ -62,10 +62,20 @@ Deploy: Cloudflare Pages, `pages_build_output_dir = dist`, build command
   generic shop template). Verified in the built output (4× "6 måneders garanti").
 - Verified: 76 pages, 0 English on the Batch-4 pages, 0 broken links, 0 Arabic.
 
+## Done — Batch 5 (Websites & SEO + Business IT, native Danish)
+- Websites & SEO: 3 service entries (`website-design-development` incl. its
+  ~17 platform FAQs, `seo-services`, `google-ads-management`) + `websitesHubHtml`
+  / `WEBSITES_HUB_FAQ` translated. Platform names (Shopify, WordPress, etc.) kept.
+- Business IT (`businessBody` + `FAQ_BUSINESS`): fully translated with
+  **full FAQ parity — all 22 questions** (verified: 22 rendered + 22 in JSON-LD)
+  and the **3-tier pricing intact** (Starter 399 / Premium 599 / Exclusive 899,
+  ekskl. moms, "Anbefalet" ribbon on Premium). 9 feature cards + tier feature
+  lists translated. Global `businessSchema` is pure structured data (no change).
+- Verified: 76 pages, 0 English on Batch-5 pages, 0 broken links, 0 Arabic.
+
 ## Still English — pending later batches (NOT yet Danish; do NOT deploy publicly)
 Page BODIES for these still render English text from the .eu fork and must be
 rewritten natively in Danish in their batches (nav labels already point to them):
-- Batch 5 — Websites & SEO (4) + Business IT verification
 - Batch 6 — General FAQ (`faqPageHtml`), Meet the Team (`aboutBody`)
 - Slug renames to Danish (e.g. `/lenovo-reparation/`, `/butik/`,
   `/it-support-til-erhverv/`, `/kontakt/`) are a later, deliberate step.

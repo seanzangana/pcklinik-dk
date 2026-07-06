@@ -301,98 +301,98 @@ function contactBody() {
 // ---------- business IT ----------
 function businessBody() {
   const features = [
-    ['🛠️', 'Unlimited IT support', 'Help for your employees by phone, email and remote support — and on-site in Copenhagen when needed. Fixed price, no hourly billing.'],
-    ['📡', 'Monitoring & operations', 'We watch your computers and servers around the clock and catch problems before they become outages.'],
-    ['💾', 'Backup & recovery', 'Real backup of your data and Microsoft 365 — not just cloud storage. If something happens to a machine, we restore everything onto a new one.'],
-    ['🛡️', 'IT security', 'Professional endpoint protection and antivirus — protection against viruses, ransomware, phishing and email threats, plus ongoing monitoring.'],
-    ['📧', 'Microsoft 365', 'Setup and management of Microsoft 365, Teams, SharePoint and email — new employees are onboarded quickly and securely.'],
-    ['📋', 'Advisory & NIS2', 'Practical IT advice so you make the right choices — and stay ready for requirements like GDPR and NIS2.'],
-    ['🖥️', 'New IT equipment', 'We sell and set up new computers, Macs, monitors and other equipment — ready to use from day one.'],
-    ['♻️', 'Refurbished equipment', 'Professionally restored computers and devices with up to 3 years warranty — cheaper and greener. Extended warranty available.'],
-    ['🔒', 'Secure disposal', 'We take back your old equipment, securely erase all data, and dispose of it responsibly — fully GDPR-compliant.'],
+    ['🛠️', 'Ubegrænset IT-support', 'Hjælp til jeres medarbejdere via telefon, e-mail og fjernsupport — og on-site i København, når det er nødvendigt. Fast pris, ingen timeafregning.'],
+    ['📡', 'Overvågning & drift', 'Vi holder øje med jeres computere og servere døgnet rundt og fanger problemer, før de bliver til nedbrud.'],
+    ['💾', 'Backup & genskabelse', 'Rigtig backup af jeres data og Microsoft 365 — ikke bare cloud-lagring. Sker der noget med en maskine, genskaber vi det hele på en ny.'],
+    ['🛡️', 'IT-sikkerhed', 'Professionel endpoint-beskyttelse og antivirus — beskyttelse mod virus, ransomware, phishing og mailtrusler, plus løbende overvågning.'],
+    ['📧', 'Microsoft 365', 'Opsætning og administration af Microsoft 365, Teams, SharePoint og e-mail — nye medarbejdere kommer hurtigt og sikkert i gang.'],
+    ['📋', 'Rådgivning & NIS2', 'Praktisk IT-rådgivning, så I træffer de rette valg — og er klar til krav som GDPR og NIS2.'],
+    ['🖥️', 'Nyt IT-udstyr', 'Vi sælger og opsætter nye computere, Mac, skærme og andet udstyr — klar til brug fra dag ét.'],
+    ['♻️', 'Istandsat udstyr', 'Professionelt istandsatte computere og enheder med op til 3 års garanti — billigere og grønnere. Udvidet garanti mulig.'],
+    ['🔒', 'Sikker bortskaffelse', 'Vi tager jeres gamle udstyr retur, sletter alle data sikkert og bortskaffer det ansvarligt — fuldt GDPR-compliant.'],
   ];
   const tiers = [
-    ['Starter', 'Unlimited remote support and proactive maintenance for smaller businesses.', '399', false,
-      [['yes', 'Unlimited remote support (phone & email)'], ['yes', 'Response within 1 business day'], ['yes', 'Patch management & updates'], ['yes', 'RMM device monitoring'], ['yes', 'Monthly status report'], ['no', 'Antivirus & endpoint protection'], ['no', 'Backup monitoring']]],
-    ['Premium', 'Everything your business needs: unlimited support and complete IT security.', '599', true,
-      [['yes', 'Everything in Starter'], ['yes', 'Response within 4 hours'], ['yes', 'Antivirus & endpoint protection'], ['yes', '24/7 monitoring'], ['yes', 'Backup monitoring'], ['yes', 'Microsoft 365 administration'], ['yes', 'MFA & access management']]],
-    ['Exclusive', 'Complete IT support, security and Microsoft 365 licensing — all in one package.', '899', false,
-      [['yes', 'Everything in Premium'], ['yes', 'Microsoft 365 license included'], ['yes', 'Outlook, Teams & OneDrive'], ['yes', 'Exchange Online (business email)'], ['yes', 'Setup & migration included'], ['yes', 'Ongoing license management'], ['yes', 'GDPR-ready cloud solution']]],
+    ['Starter', 'Ubegrænset fjernsupport og proaktiv vedligeholdelse til mindre virksomheder.', '399', false,
+      [['yes', 'Ubegrænset fjernsupport (telefon & e-mail)'], ['yes', 'Svar inden for 1 arbejdsdag'], ['yes', 'Patch management & opdateringer'], ['yes', 'RMM-enhedsovervågning'], ['yes', 'Månedlig statusrapport'], ['no', 'Antivirus & endpoint-beskyttelse'], ['no', 'Backup-overvågning']]],
+    ['Premium', 'Alt, jeres virksomhed har brug for: ubegrænset support og komplet IT-sikkerhed.', '599', true,
+      [['yes', 'Alt i Starter'], ['yes', 'Svar inden for 4 timer'], ['yes', 'Antivirus & endpoint-beskyttelse'], ['yes', '24/7-overvågning'], ['yes', 'Backup-overvågning'], ['yes', 'Microsoft 365-administration'], ['yes', 'MFA & adgangsstyring']]],
+    ['Exclusive', 'Komplet IT-support, sikkerhed og Microsoft 365-licens — alt i én pakke.', '899', false,
+      [['yes', 'Alt i Premium'], ['yes', 'Microsoft 365-licens inkluderet'], ['yes', 'Outlook, Teams & OneDrive'], ['yes', 'Exchange Online (virksomhedsmail)'], ['yes', 'Opsætning & migrering inkluderet'], ['yes', 'Løbende licensadministration'], ['yes', 'GDPR-klar cloud-løsning']]],
   ];
   const faq = FAQ_BUSINESS;
   const feat = features.map(([i, t, b]) => `<div class="card"><div class="card-icon">${i}</div><h3>${esc(t)}</h3><p>${esc(b)}</p></div>`).join('');
   const price = tiers.map(([name, blurb, p, feat2, items]) => {
     const li = items.map(([k, l]) => `<li class="${k}">${esc(l)}</li>`).join('');
-    const signup = `mailto:${site.emailBusiness}?subject=${encodeURIComponent('Sign up: ' + name + ' plan')}`;
-    return `<div class="price-card${feat2 ? ' featured' : ''}">${feat2 ? '<span class="ribbon">⭐ Recommended</span>' : ''}<div class="tag">${esc(name)}</div><h3>${esc(name)}</h3><p class="blurb">${esc(blurb)}</p><div class="price">${p} kr. <small>/ user / month</small></div><div class="vat">excl. VAT</div><ul>${li}</ul><a class="btn ${feat2 ? 'btn-primary' : 'btn-outline'}" href="${signup}">Choose ${esc(name)}</a><div class="fine">No commitment • Start today</div></div>`;
+    const signup = `mailto:${site.emailBusiness}?subject=${encodeURIComponent('Tilmelding: ' + name + '-pakke')}`;
+    return `<div class="price-card${feat2 ? ' featured' : ''}">${feat2 ? '<span class="ribbon">⭐ Anbefalet</span>' : ''}<div class="tag">${esc(name)}</div><h3>${esc(name)}</h3><p class="blurb">${esc(blurb)}</p><div class="price">${p} kr. <small>/ bruger / måned</small></div><div class="vat">ekskl. moms</div><ul>${li}</ul><a class="btn ${feat2 ? 'btn-primary' : 'btn-outline'}" href="${signup}">Vælg ${esc(name)}</a><div class="fine">Ingen binding • Start i dag</div></div>`;
   }).join('');
   const faqHtml = faq.map(([q, a]) => `<details><summary>${esc(q)}</summary><div class="answer">${esc(a)}</div></details>`).join('');
-  const reviewMail = `mailto:${site.emailBusiness}?subject=Free%20IT%20review`;
-  return `  <section class="hero"><div class="wrap"><div class="eyebrow">Business · IT Service Agreement</div>
-    <h1>Business IT Service Agreement — your IT department on subscription</h1>
-    <p class="lead">Fixed-price IT support for businesses in Copenhagen and Frederiksberg. Unlimited support, proactive monitoring and IT security for one predictable monthly price. We're based on Falkoner Allé in Frederiksberg, travel across Copenhagen and help the rest of the country via remote support.</p>
-    <div class="badges"><span class="badge check">Fixed packages from 399 kr./user/mo.</span><span class="badge check">Unlimited support — no hourly rates</span><span class="badge check">Same-day response</span><span class="badge check">Local IT partner in Frederiksberg</span></div>
-    <div class="cta-row"><a class="btn btn-ghost-light" href="${site.phoneHref}">📞 Call ${site.phone}</a><a class="btn btn-white" href="#enquiry">Book a free IT review</a><a class="hero-text-link" href="#pricing">See pricing →</a></div></div></section>
-  <section class="section alt"><div class="wrap"><div class="eyebrow">What is an IT service agreement?</div><h2>One fixed agreement — and your IT just runs</h2>
-    <p class="sub">A business IT service agreement means PCKlinik looks after your IT so you can focus on your business. You get a dedicated IT manager who knows your setup, keeps an eye on your systems and steps in whenever something goes wrong — with no unexpected bills. Instead of calling around for help, you have one partner who keeps everything under control.</p>
+  const reviewMail = `mailto:${site.emailBusiness}?subject=Gratis%20IT-gennemgang`;
+  return `  <section class="hero"><div class="wrap"><div class="eyebrow">Erhverv · IT-supportaftale</div>
+    <h1>IT-supportaftale til erhverv — din IT-afdeling på abonnement</h1>
+    <p class="lead">IT-support til fast pris for virksomheder i København og Frederiksberg. Ubegrænset support, proaktiv overvågning og IT-sikkerhed for én forudsigelig månedlig pris. Vi ligger på Falkoner Allé i Frederiksberg, kører ud i hele København og hjælper resten af landet via fjernsupport.</p>
+    <div class="badges"><span class="badge check">Faste pakker fra 399 kr./bruger/md.</span><span class="badge check">Ubegrænset support — ingen timepriser</span><span class="badge check">Svar samme dag</span><span class="badge check">Lokal IT-partner i Frederiksberg</span></div>
+    <div class="cta-row"><a class="btn btn-ghost-light" href="${site.phoneHref}">📞 Ring ${site.phone}</a><a class="btn btn-white" href="#enquiry">Book en gratis IT-gennemgang</a><a class="hero-text-link" href="#pricing">Se priser →</a></div></div></section>
+  <section class="section alt"><div class="wrap"><div class="eyebrow">Hvad er en IT-supportaftale?</div><h2>Én fast aftale — og jeres IT kører bare</h2>
+    <p class="sub">En IT-supportaftale til erhverv betyder, at PCKlinik passer på jeres IT, så I kan fokusere på jeres forretning. I får en dedikeret IT-ansvarlig, der kender jeres opsætning, holder øje med jeres systemer og træder til, når noget går galt — uden uventede regninger. I stedet for at ringe rundt efter hjælp har I én partner, der holder styr på det hele.</p>
     <div class="grid grid-3">${feat}</div></div></section>
-  <section class="section"><div class="wrap"><div class="eyebrow">Why PCKlinik</div><h2>A real local IT partner — not a call center</h2><ul class="why-list">
-    <li><strong>Predictable IT costs</strong>Fixed monthly price, no hourly rates or billing surprises.</li>
-    <li><strong>A dedicated contact</strong>You get one named IT manager who knows your business, backed by a full team when you need more hands.</li>
-    <li><strong>Fast help</strong>Most cases are resolved the same day via remote support.</li>
-    <li><strong>Local and nationwide</strong>On-site in Copenhagen and the surrounding area, remote support across the country.</li></ul></div></section>
-  <section class="section alt"><div class="wrap"><div class="eyebrow">How to get started</div><h2>Three simple steps</h2><div class="steps">
-    <div class="step"><div class="num">1</div><h3>Free IT review</h3><p>We map out your current IT setup, identify security gaps and savings opportunities — completely no-obligation.</p></div>
-    <div class="step"><div class="num">2</div><h3>A clear plan</h3><p>You get a concrete recommendation and a service agreement that fits your size and needs. You set the pace.</p></div>
-    <div class="step"><div class="num">3</div><h3>We run your IT</h3><p>We set it up and maintain it going forward — support, monitoring and security included.</p></div></div></div></section>
-  <section class="section" id="pricing"><div class="wrap"><div class="eyebrow">Pricing & Packages</div><h2>Transparent pricing — no surprises</h2>
-    <p class="sub">Choose the package that fits your business. Fixed price per user, excl. VAT — no commitment.</p>
+  <section class="section"><div class="wrap"><div class="eyebrow">Hvorfor PCKlinik</div><h2>En rigtig lokal IT-partner — ikke et callcenter</h2><ul class="why-list">
+    <li><strong>Forudsigelige IT-omkostninger</strong>Fast månedlig pris, ingen timepriser eller regningsoverraskelser.</li>
+    <li><strong>En dedikeret kontaktperson</strong>I får én navngiven IT-ansvarlig, der kender jeres virksomhed, bakket op af et helt team, når der skal flere hænder til.</li>
+    <li><strong>Hurtig hjælp</strong>De fleste sager løses samme dag via fjernsupport.</li>
+    <li><strong>Lokalt og landsdækkende</strong>On-site i København og omegn, fjernsupport i hele landet.</li></ul></div></section>
+  <section class="section alt"><div class="wrap"><div class="eyebrow">Sådan kommer I i gang</div><h2>Tre enkle trin</h2><div class="steps">
+    <div class="step"><div class="num">1</div><h3>Gratis IT-gennemgang</h3><p>Vi kortlægger jeres nuværende IT-opsætning, finder sikkerhedshuller og besparelsesmuligheder — helt uforpligtende.</p></div>
+    <div class="step"><div class="num">2</div><h3>En klar plan</h3><p>I får en konkret anbefaling og en supportaftale, der passer til jeres størrelse og behov. I sætter tempoet.</p></div>
+    <div class="step"><div class="num">3</div><h3>Vi driver jeres IT</h3><p>Vi opsætter det og vedligeholder det fremover — support, overvågning og sikkerhed inkluderet.</p></div></div></div></section>
+  <section class="section" id="pricing"><div class="wrap"><div class="eyebrow">Priser & pakker</div><h2>Gennemsigtige priser — ingen overraskelser</h2>
+    <p class="sub">Vælg den pakke, der passer til jeres virksomhed. Fast pris pr. bruger, ekskl. moms — ingen binding.</p>
     <div class="pricing-grid">${price}</div>
-    <p class="center" style="margin-top:28px;color:var(--muted)">Not sure what you need? <a href="${site.phoneHref}">Call ${site.phone}</a> for a no-obligation IT review.</p></div></section>
-  <section class="section alt"><div class="wrap"><div class="eyebrow">Find us in Frederiksberg</div><h2>A physical IT shop and workshop — not just a website</h2>
-    <p class="sub">Stop by, call, or write, and we'll find the right agreement for you.</p>
-    <div class="info-block"><div class="nap"><p><strong>Address</strong><br />${site.address}</p><p><strong>Phone</strong><br /><a href="${site.phoneHref}">${site.phone}</a></p><p><strong>Email</strong><br /><a href="mailto:${site.emailBusiness}">${site.emailBusiness}</a></p></div>${mapFrame}</div></div></section>
-  <section class="section alt" id="enquiry"><div class="wrap"><div class="eyebrow">Get in touch</div><h2>Book a free IT review</h2>
-    <p class="sub">Tell us a bit about your business and we'll get back to you — no obligation.</p>
+    <p class="center" style="margin-top:28px;color:var(--muted)">Er I i tvivl om, hvad I har brug for? <a href="${site.phoneHref}">Ring ${site.phone}</a> for en uforpligtende IT-gennemgang.</p></div></section>
+  <section class="section alt"><div class="wrap"><div class="eyebrow">Find os i Frederiksberg</div><h2>En fysisk IT-butik og værksted — ikke bare en hjemmeside</h2>
+    <p class="sub">Kig forbi, ring eller skriv, så finder vi den rette aftale til jer.</p>
+    <div class="info-block"><div class="nap"><p><strong>Adresse</strong><br />${site.address}</p><p><strong>Telefon</strong><br /><a href="${site.phoneHref}">${site.phone}</a></p><p><strong>E-mail</strong><br /><a href="mailto:${site.emailBusiness}">${site.emailBusiness}</a></p></div>${mapFrame}</div></div></section>
+  <section class="section alt" id="enquiry"><div class="wrap"><div class="eyebrow">Kom i kontakt</div><h2>Book en gratis IT-gennemgang</h2>
+    <p class="sub">Fortæl os lidt om jeres virksomhed, så vender vi tilbage — uforpligtende.</p>
     <div class="form-card" style="max-width:640px">
       ${formOpen(site.emailBusiness, 'Ny henvendelse om IT-support til erhverv — pcklinik.dk', '/thank-you/')}
-        <div class="form-row"><div><label for="biz-name">Name</label><input id="biz-name" name="name" type="text" autocomplete="name" required /></div></div>
-        <div class="form-row"><div><label for="biz-company">Company <span style="font-weight:400;color:var(--muted)">(optional)</span></label><input id="biz-company" name="company" type="text" autocomplete="organization" /></div></div>
-        <div class="form-row"><div><label for="biz-email">Email</label><input id="biz-email" name="email" type="email" autocomplete="email" required /></div></div>
-        <div class="form-row"><div><label for="biz-phone">Phone <span style="font-weight:400;color:var(--muted)">(optional)</span></label><input id="biz-phone" name="phone" type="tel" autocomplete="tel" /></div></div>
-        <div class="form-row"><div><label for="biz-users">Number of users <span style="font-weight:400;color:var(--muted)">(optional)</span></label><input id="biz-users" name="users" type="text" placeholder="e.g. 8" /></div></div>
-        <div class="form-row"><div><label for="biz-message">What do you need help with?</label><textarea id="biz-message" name="message" required></textarea></div></div>
-        <button class="btn btn-primary" type="submit">Request a free IT review</button>
+        <div class="form-row"><div><label for="biz-name">Navn</label><input id="biz-name" name="name" type="text" autocomplete="name" required /></div></div>
+        <div class="form-row"><div><label for="biz-company">Virksomhed <span style="font-weight:400;color:var(--muted)">(valgfrit)</span></label><input id="biz-company" name="company" type="text" autocomplete="organization" /></div></div>
+        <div class="form-row"><div><label for="biz-email">E-mail</label><input id="biz-email" name="email" type="email" autocomplete="email" required /></div></div>
+        <div class="form-row"><div><label for="biz-phone">Telefon <span style="font-weight:400;color:var(--muted)">(valgfrit)</span></label><input id="biz-phone" name="phone" type="tel" autocomplete="tel" /></div></div>
+        <div class="form-row"><div><label for="biz-users">Antal brugere <span style="font-weight:400;color:var(--muted)">(valgfrit)</span></label><input id="biz-users" name="users" type="text" placeholder="fx 8" /></div></div>
+        <div class="form-row"><div><label for="biz-message">Hvad har I brug for hjælp til?</label><textarea id="biz-message" name="message" required></textarea></div></div>
+        <button class="btn btn-primary" type="submit">Anmod om en gratis IT-gennemgang</button>
       </form>
     </div></div></section>
-  <section class="section"><div class="wrap"><div class="eyebrow">FAQ</div><h2>Business IT support — common questions</h2><div class="faq">${faqHtml}</div></div></section>`;
+  <section class="section"><div class="wrap"><div class="eyebrow">FAQ</div><h2>IT-support til erhverv — ofte stillede spørgsmål</h2><div class="faq">${faqHtml}</div></div></section>`;
 }
 function businessSchemaFaq() {
   return { '@context': 'https://schema.org', '@type': 'FAQPage', mainEntity: FAQ_BUSINESS.map(([q, a]) => ({ '@type': 'Question', name: q, acceptedAnswer: { '@type': 'Answer', text: a } })) };
 }
 const FAQ_BUSINESS = [
-  ["Can embassies or diplomatic missions request VAT-exempt invoicing?", "Contact us directly to discuss your specific administrative and invoicing requirements — we're happy to work within your organization's procurement process."],
-  ["Do you offer onboarding for a large number of employees at once?", "Yes — bulk setup (multiple new starters, or migrating a whole team's equipment) is something we handle as part of a service agreement."],
-  ["Can you work with our existing IT documentation or asset inventory system?", "Yes — contact us about your specific systems and we'll adapt to fit into your existing processes rather than requiring you to change them."],
-  ['What does an IT service agreement cost?', 'We have three packages: Starter from 399 kr., Premium 599 kr., and Exclusive 899 kr. per user per month (excl. VAT). You pay a fixed monthly price, so you always know the cost upfront. Not sure which package fits? Book a review.'],
-  ['Are there any hidden fees?', 'No — never. You pay one fixed monthly price per user, and that’s it. No setup fee, no hourly rate for support requests, and no surprises on the invoice.'],
-  ['What’s your response time?', 'We guarantee a response within 4 hours during normal business hours (Mon–Fri 10:00–17:00). Most requests are resolved the same day — many within the first hour.'],
-  ['Can I cancel my subscription at any time?', 'Monthly subscriptions can be cancelled with one month’s notice. Annual subscriptions run until the end of the period. No commitment beyond that.'],
-  ['What does "unlimited support" cover?', 'Everything related to your daily IT: computer and software issues, network problems, printers, email, Microsoft 365, viruses and security. Does not cover hardware replacement or custom development — we agree on those separately.'],
-  ['Does this work for businesses of any size?', 'Yes. We help sole proprietors, offices with 2–3 employees, and businesses with 50+ users. The price is per user, so you pay exactly for what you need.'],
-  ['Do I need to install anything?', 'We install a small remote-access tool (TeamViewer or similar) so we can help you quickly without you needing to come to us. Setup typically takes under 15 minutes and we handle it for you.'],
-  ['Do you help with printers and network printers?', 'Yes. We set up, configure and troubleshoot all types of printers — local, network and cloud printers. We also help with driver updates and integration with your existing network.'],
-  ['Do you offer backup solutions?', 'Yes. We set up automatic backup — both local and cloud — so your data is always protected. We test the backup regularly and help with recovery if something goes wrong.'],
-  ['What about antivirus software and IT security?', 'We install and manage antivirus and endpoint security on all your devices. The Premium package includes ongoing security monitoring, so you’re protected against viruses, ransomware and phishing.'],
-  ['Can you help with our network and WiFi?', 'Yes. We set up and optimize networks, routers and WiFi — including guest networks, firewalls and VPN. Slow internet or poor coverage? We’ll find the solution.'],
-  ['Do you sell computers and equipment?', 'Yes. We sell both new and used/refurbished equipment — computers, laptops, monitors, printers for business, and accessories. Refurbished equipment is professionally inspected and comes with a warranty. We help you find the right equipment for your needs and budget, and set it up ready to use.'],
-  ['What’s the difference between a service agreement and hourly billing?', 'With a service agreement, you pay a fixed monthly price and get unlimited support — without thinking about what each call costs. With hourly billing, you pay per task, which makes costs unpredictable and often more expensive. An agreement also means we work proactively, so fewer problems arise in the first place.'],
-  ['Can you take over from our current IT provider?', 'Yes. We manage a smooth transition, gather the necessary information, and take over operations without you experiencing downtime. You don’t need to coordinate it yourself.'],
-  ['How quickly can we get started?', 'Usually within a few days. We start with a review, set up remote access (under 15 minutes), and run your agreement from there.'],
-  ['Do you help with NIS2 and GDPR?', 'Yes. We advise on both GDPR and the new NIS2 directive, and help with backup, access management, security and documentation, so you meet the requirements.'],
-  ['Do you support employees working from home?', 'Yes. Our support isn’t dependent on where employees are located. We help via remote support, whether they’re at the office or at home, and ensure a stable connection to company systems.'],
-  ['What happens during an IT outage?', 'You contact us, and we get started immediately. With our monitoring, we often catch the problem before you even notice it. Our goal is to get you back up and running as fast as possible and keep downtime to a minimum.'],
-  ['Do you help businesses across the whole country?', 'Yes. Remote support covers all of Denmark. We offer on-site service in Copenhagen and Frederiksberg, where we’re based.'],
+  ['Kan ambassader eller diplomatiske repræsentationer bede om momsfri fakturering?', 'Kontakt os direkte for at drøfte jeres konkrete administrative krav og faktureringskrav — vi arbejder gerne inden for jeres organisations indkøbsproces.'],
+  ['Tilbyder I onboarding af mange medarbejdere på én gang?', 'Ja — masseopsætning (flere nye medarbejdere eller migrering af et helt teams udstyr) er noget, vi håndterer som en del af en supportaftale.'],
+  ['Kan I arbejde med vores eksisterende IT-dokumentation eller asset-inventory-system?', 'Ja — kontakt os om jeres konkrete systemer, så tilpasser vi os til at passe ind i jeres eksisterende processer frem for at kræve, at I ændrer dem.'],
+  ['Hvad koster en IT-supportaftale?', 'Vi har tre pakker: Starter fra 399 kr., Premium 599 kr. og Exclusive 899 kr. pr. bruger pr. måned (ekskl. moms). I betaler en fast månedlig pris, så I altid kender omkostningen på forhånd. Usikker på, hvilken pakke der passer? Book en gennemgang.'],
+  ['Er der nogen skjulte gebyrer?', 'Nej — aldrig. I betaler én fast månedlig pris pr. bruger, og det er det. Ingen opstartsgebyr, ingen timepris for supporthenvendelser og ingen overraskelser på fakturaen.'],
+  ['Hvad er jeres svartid?', 'Vi garanterer svar inden for 4 timer i normal åbningstid (man–fre 10:00–17:00). De fleste henvendelser løses samme dag — mange inden for den første time.'],
+  ['Kan jeg opsige mit abonnement når som helst?', 'Månedlige abonnementer kan opsiges med en måneds varsel. Årlige abonnementer løber til periodens udløb. Ingen binding ud over det.'],
+  ['Hvad dækker "ubegrænset support"?', 'Alt vedrørende jeres daglige IT: computer- og softwareproblemer, netværksproblemer, printere, e-mail, Microsoft 365, virus og sikkerhed. Dækker ikke hardwareudskiftning eller kundespecifik udvikling — det aftaler vi særskilt.'],
+  ['Fungerer det for virksomheder af enhver størrelse?', 'Ja. Vi hjælper enkeltmandsvirksomheder, kontorer med 2–3 medarbejdere og virksomheder med 50+ brugere. Prisen er pr. bruger, så I betaler præcis for det, I har brug for.'],
+  ['Skal jeg installere noget?', 'Vi installerer et lille fjernadgangsværktøj (TeamViewer eller lignende), så vi hurtigt kan hjælpe jer, uden at I behøver komme til os. Opsætningen tager typisk under 15 minutter, og vi klarer den for jer.'],
+  ['Hjælper I med printere og netværksprintere?', 'Ja. Vi opsætter, konfigurerer og fejlfinder alle typer printere — lokale, netværks- og cloud-printere. Vi hjælper også med driveropdateringer og integration med jeres eksisterende netværk.'],
+  ['Tilbyder I backupløsninger?', 'Ja. Vi opsætter automatisk backup — både lokalt og i skyen — så jeres data altid er beskyttet. Vi tester backuppen regelmæssigt og hjælper med genskabelse, hvis noget går galt.'],
+  ['Hvad med antivirussoftware og IT-sikkerhed?', 'Vi installerer og administrerer antivirus og endpoint-sikkerhed på alle jeres enheder. Premium-pakken inkluderer løbende sikkerhedsovervågning, så I er beskyttet mod virus, ransomware og phishing.'],
+  ['Kan I hjælpe med vores netværk og WiFi?', 'Ja. Vi opsætter og optimerer netværk, routere og WiFi — inklusive gæstenetværk, firewalls og VPN. Langsomt internet eller dårlig dækning? Vi finder løsningen.'],
+  ['Sælger I computere og udstyr?', 'Ja. Vi sælger både nyt og brugt/istandsat udstyr — computere, bærbare, skærme, printere til erhverv og tilbehør. Istandsat udstyr er professionelt gennemgået og kommer med garanti. Vi hjælper jer med at finde det rette udstyr til jeres behov og budget og opsætter det klar til brug.'],
+  ['Hvad er forskellen på en supportaftale og timeafregning?', 'Med en supportaftale betaler I en fast månedlig pris og får ubegrænset support — uden at tænke på, hvad hvert opkald koster. Med timeafregning betaler I pr. opgave, hvilket gør omkostningerne uforudsigelige og ofte dyrere. En aftale betyder også, at vi arbejder proaktivt, så der opstår færre problemer i første omgang.'],
+  ['Kan I overtage fra vores nuværende IT-leverandør?', 'Ja. Vi styrer en glidende overgang, indhenter de nødvendige oplysninger og overtager driften, uden at I oplever nedetid. I behøver ikke selv koordinere det.'],
+  ['Hvor hurtigt kan vi komme i gang?', 'Som regel inden for få dage. Vi starter med en gennemgang, opsætter fjernadgang (under 15 minutter) og driver jeres aftale derfra.'],
+  ['Hjælper I med NIS2 og GDPR?', 'Ja. Vi rådgiver om både GDPR og det nye NIS2-direktiv og hjælper med backup, adgangsstyring, sikkerhed og dokumentation, så I lever op til kravene.'],
+  ['Understøtter I medarbejdere, der arbejder hjemmefra?', 'Ja. Vores support afhænger ikke af, hvor medarbejderne befinder sig. Vi hjælper via fjernsupport, uanset om de er på kontoret eller hjemme, og sikrer en stabil forbindelse til virksomhedens systemer.'],
+  ['Hvad sker der ved et IT-nedbrud?', 'I kontakter os, og vi går i gang med det samme. Med vores overvågning fanger vi ofte problemet, før I selv opdager det. Vores mål er at få jer op at køre igen hurtigst muligt og holde nedetiden på et minimum.'],
+  ['Hjælper I virksomheder i hele landet?', 'Ja. Fjernsupport dækker hele Danmark. Vi tilbyder on-site service i København og Frederiksberg, hvor vi holder til.'],
 ];
 
 // ---------- shop ----------
@@ -601,7 +601,7 @@ async function run() {
   // contact
   pages.push(['/contact/', page({ title: 'Kontakt PCKlinik | Frederiksberg & København', description: 'Kontakt PCKlinik for PC- og Mac-reparation i Frederiksberg og København. Ring 91 81 61 81 eller skriv til kontakt@pcklinik.dk.', p: '/contact/', body: contactBody() })]);
   // business
-  pages.push(['/business-it-service-agreement/', page({ title: 'Business IT Service Agreement | PCKlinik', description: 'Fixed-price IT support for businesses in Copenhagen and Frederiksberg. Unlimited support, monitoring, security and backup — from 399 kr./user/month.', p: '/business-it-service-agreement/', body: businessBody(), schema: businessSchemaFaq() })]);
+  pages.push(['/business-it-service-agreement/', page({ title: 'IT-supportaftale til erhverv | PCKlinik', description: 'IT-support til fast pris for virksomheder i København og Frederiksberg. Ubegrænset support, overvågning, sikkerhed og backup — fra 399 kr./bruger/måned.', p: '/business-it-service-agreement/', body: businessBody(), schema: businessSchemaFaq() })]);
   // shop
   pages.push(['/shop/', page({ title: 'Butik | Computere, backup & sikkerhed | PCKlinik', description: 'Køb istandsatte og nye computere samt backup- og sikkerhedsløsninger hos PCKlinik. Enkel og sikker betaling via Stripe.', p: '/shop/', body: shopHub() })]);
   pages.push(['/shop/computers/', page({ title: 'Computere | Nye & refurbished | PCKlinik Butik', description: 'Nye og istandsatte computere fra PCKlinik — testet og klar til brug, med garanti. Se udvalget og køb sikkert via Stripe.', p: '/shop/computers/', body: shopComputers() })]);
@@ -622,7 +622,7 @@ async function run() {
   // Network Equipment hub
   pages.push(['/network-equipment/', page({ title: 'Netværks- & router-opsætning | UniFi, Netgear, TP-Link m.m. | PCKlinik', description: 'Router- og netværksopsætning, konfiguration og fejlfinding — UniFi, Netgear, TP-Link, ASUS, Eero og Google Nest. Frederiksberg og København.', p: '/network-equipment/', body: networkHubHtml(), schema: faqSchemaFrom(NETWORK_HUB_FAQ) })]);
   // Websites & SEO hub
-  pages.push(['/websites-seo-google-ads/', page({ title: 'Website Design, SEO & Google Ads | PCKlinik', description: 'Website design, SEO, and Google Ads management for businesses in Copenhagen. Built and optimized by someone who actually does this work.', p: '/websites-seo-google-ads/', body: websitesHubHtml(), schema: faqSchemaFrom(WEBSITES_HUB_FAQ) })]);
+  pages.push(['/websites-seo-google-ads/', page({ title: 'Webdesign, SEO & Google Ads | PCKlinik', description: 'Webdesign, SEO og Google Ads-administration til virksomheder i København. Bygget og optimeret af en, der faktisk laver arbejdet.', p: '/websites-seo-google-ads/', body: websitesHubHtml(), schema: faqSchemaFrom(WEBSITES_HUB_FAQ) })]);
   // About / Meet the Team
   pages.push(['/about-us/', page({ title: 'About PCKlinik & Our Team | PCKlinik', description: 'Meet the PCKlinik team — 7 people covering PC, Mac, networks, on-site support, and web/SEO, based in Frederiksberg.', p: '/about-us/', body: aboutBody() })]);
   // News section

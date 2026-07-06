@@ -287,29 +287,29 @@ export function networkHubHtml() {
 
 // ---------- Websites & SEO hub ----------
 export const WEBSITES_HUB_FAQ = [
-  { q: "How do international clients pay?", a: "We accept international bank transfer and card payments. Payment details are made clear when we agree on the project scope." },
-  { q: "Do you work across different time zones?", a: "Yes — we agree on communication times upfront that work for your location." },
-  { q: "What currency are invoices in?", a: "Typically EUR or Danish kroner — we can discuss what works best for you when the project starts." },
-  { q: "How long does it take to build a website?", a: "Depends on scope — a simple business site is faster than a custom webshop. We'll give you a realistic timeline as part of the project quote." },
-  { q: "Do you offer ongoing maintenance after the site launches?", a: "Yes — updates, security patches, and small changes can be arranged as an ongoing service rather than a one-time build." },
-  { q: 'Do you build the website AND handle the SEO, or just one or the other?', a: 'Either — some clients want both from the start, others already have a site and just want SEO or Ads help.' },
-  { q: 'Is this only for businesses, or can individuals get a personal website built too?', a: 'Primarily aimed at businesses, but contact us regardless of what you need.' },
+  { q: 'Hvordan betaler kunder i udlandet?', a: 'Vi tager imod international bankoverførsel og kortbetaling. Betalingsdetaljer gøres klare, når vi aftaler projektets omfang.' },
+  { q: 'Arbejder I på tværs af forskellige tidszoner?', a: 'Ja — vi aftaler kommunikationstider på forhånd, der passer til jeres placering.' },
+  { q: 'Hvilken valuta er fakturaer i?', a: 'Typisk DKK eller EUR — vi kan drøfte, hvad der fungerer bedst for jer, når projektet starter.' },
+  { q: 'Hvor lang tid tager det at bygge en hjemmeside?', a: 'Afhænger af omfanget — en simpel virksomhedsside er hurtigere end en specialbygget webshop. Vi giver jer en realistisk tidsplan som en del af projekttilbuddet.' },
+  { q: 'Tilbyder I løbende vedligeholdelse, efter siden er lanceret?', a: 'Ja — opdateringer, sikkerhedsrettelser og små ændringer kan aftales som en løbende service frem for en engangsopgave.' },
+  { q: 'Bygger I både hjemmesiden OG håndterer SEO, eller kun det ene?', a: 'Begge dele — nogle kunder vil have begge fra start, andre har allerede en side og vil bare have hjælp til SEO eller Ads.' },
+  { q: 'Er dette kun for virksomheder, eller kan private også få bygget en personlig hjemmeside?', a: 'Primært rettet mod virksomheder, men kontakt os uanset, hvad du har brug for.' },
 ];
 export function websitesHubHtml() {
   const cards = [
-    ['Website Design & Development', 'Modern, fast, mobile-friendly sites — business sites, portfolios, or simple webshops.', '/website-design-development/'],
-    ['SEO Services', 'Real keyword research, technical SEO, and content strategy — not just a monthly report.', '/seo-services/'],
-    ['Google Ads Management', 'Targeted campaigns managed properly, with your budget spent on the right searches.', '/google-ads-management/'],
-  ].map(([t, d, h]) => `<a class="card card-link" href="${h}"><h3>${esc(t)}</h3><p>${esc(d)}</p><span class="arrow">Learn more →</span></a>`).join('');
+    ['Webdesign & udvikling', 'Moderne, hurtige, mobilvenlige sider — virksomhedssider, porteføljer eller simple webshops.', '/website-design-development/'],
+    ['SEO-ydelser', 'Rigtig søgeordsanalyse, teknisk SEO og indholdsstrategi — ikke bare en månedlig rapport.', '/seo-services/'],
+    ['Google Ads-administration', 'Målrettede kampagner, styret ordentligt, så jeres budget bruges på de rette søgninger.', '/google-ads-management/'],
+  ].map(([t, d, h]) => `<a class="card card-link" href="${h}"><h3>${esc(t)}</h3><p>${esc(d)}</p><span class="arrow">Læs mere →</span></a>`).join('');
   const faqHtml = WEBSITES_HUB_FAQ.map((f) => `<details><summary>${esc(f.q)}</summary><div class="answer">${esc(f.a)}</div></details>`).join('');
-  const quote = `mailto:${site.emailBusiness}?subject=${encodeURIComponent('Websites & SEO enquiry')}`;
-  return `  <section class="hero"><div class="wrap"><div class="eyebrow">Business · Websites &amp; SEO</div>
-    <h1>Websites &amp; SEO</h1><p class="lead">A website that works, found by the people looking for it.</p>
-    <div class="cta-row"><a class="btn btn-white" href="${quote}">Get a quote</a><a class="btn btn-ghost-light" href="${site.phoneHref}">📞 Call ${site.phone}</a></div></div></section>
-  <section class="section"><div class="wrap lead-copy"><div class="crumbs"><a href="/">Home</a> › <span>Websites &amp; SEO</span></div>
-    <p>Having a website isn't enough if nobody finds it. We build modern, fast websites, then make sure they actually rank — through real SEO work and, where it makes sense, targeted Google Ads. This isn't outsourced to a template or a junior account manager — the same person building your site does the technical SEO work behind it.</p></div></section>
-  <section class="section alt"><div class="wrap"><div class="eyebrow">What we do</div><h2>Three ways we help</h2><div class="grid grid-3">${cards}</div></div></section>
-  <section class="section"><div class="wrap"><div class="eyebrow">FAQ</div><h2>Websites &amp; SEO — common questions</h2><div class="faq">${faqHtml}</div></div></section>
-  <section class="section alt"><div class="wrap"><div class="cta-band"><h2>Want to be found online?</h2><p>Tell us what you need — a new site, better rankings, or ad campaigns that actually convert. We scope it and quote it, no obligation.</p><div class="cta-row"><a class="btn btn-white" href="${quote}">Get a quote</a><a class="btn btn-ghost-light" href="${site.phoneHref}">📞 Call ${site.phone}</a></div></div>
-    <div style="margin-top:32px"><p class="eyebrow">Related</p><div class="crosslinks"><a href="/business-it-service-agreement/">Business IT Support →</a><a href="/contact/">Contact →</a></div></div></div></section>`;
+  const quote = `mailto:${site.emailBusiness}?subject=${encodeURIComponent('Forespørgsel om hjemmeside & SEO')}`;
+  return `  <section class="hero"><div class="wrap"><div class="eyebrow">Erhverv · Hjemmesider &amp; SEO</div>
+    <h1>Hjemmesider &amp; SEO</h1><p class="lead">En hjemmeside, der virker, og som findes af dem, der leder efter den.</p>
+    <div class="cta-row"><a class="btn btn-white" href="${quote}">Få et tilbud</a><a class="btn btn-ghost-light" href="${site.phoneHref}">📞 Ring ${site.phone}</a></div></div></section>
+  <section class="section"><div class="wrap lead-copy"><div class="crumbs"><a href="/">Forside</a> › <span>Hjemmesider &amp; SEO</span></div>
+    <p>Det er ikke nok at have en hjemmeside, hvis ingen finder den. Vi bygger moderne, hurtige hjemmesider og sørger så for, at de faktisk rangerer — gennem rigtigt SEO-arbejde og, hvor det giver mening, målrettede Google Ads. Det er ikke outsourcet til en skabelon eller en junior-kundeansvarlig — den samme person, der bygger din side, laver det tekniske SEO-arbejde bagved.</p></div></section>
+  <section class="section alt"><div class="wrap"><div class="eyebrow">Hvad vi laver</div><h2>Tre måder vi hjælper på</h2><div class="grid grid-3">${cards}</div></div></section>
+  <section class="section"><div class="wrap"><div class="eyebrow">FAQ</div><h2>Hjemmesider &amp; SEO — ofte stillede spørgsmål</h2><div class="faq">${faqHtml}</div></div></section>
+  <section class="section alt"><div class="wrap"><div class="cta-band"><h2>Vil du findes online?</h2><p>Fortæl os, hvad du har brug for — en ny side, bedre placeringer eller annoncekampagner, der faktisk konverterer. Vi afdækker det og giver et tilbud, uforpligtende.</p><div class="cta-row"><a class="btn btn-white" href="${quote}">Få et tilbud</a><a class="btn btn-ghost-light" href="${site.phoneHref}">📞 Ring ${site.phone}</a></div></div>
+    <div style="margin-top:32px"><p class="eyebrow">Relateret</p><div class="crosslinks"><a href="/business-it-service-agreement/">IT-support til erhverv →</a><a href="/contact/">Kontakt →</a></div></div></div></section>`;
 }
