@@ -526,24 +526,24 @@ function askQuestionBody() {
 // ---------- task-based service pages ----------
 function serviceBody(s) {
   const intro = s.intro.map((p) => `<p>${p}</p>`).join('');
-  const included = s.whatsIncluded ? `<div class="trust-line" style="margin:6px 0 20px"><strong>What's included:</strong> ${esc(s.whatsIncluded)}</div>` : '';
+  const included = s.whatsIncluded ? `<div class="trust-line" style="margin:6px 0 20px"><strong>Hvad er inkluderet:</strong> ${esc(s.whatsIncluded)}</div>` : '';
   const bullets = (s.bulletSections || []).map((b) => `<section class="section"><div class="wrap"><div class="eyebrow">${esc(b.heading)}</div><ul class="check-list">${b.items.map((it) => `<li>${esc(it)}</li>`).join('')}</ul></div></section>`).join('');
   const callout = s.callout ? `<section class="section"><div class="wrap"><div class="callout"><strong>${esc(s.callout.label)}:</strong> ${esc(s.callout.text)}</div></div></section>` : '';
   const pricing = s.pricing
-    ? `<section class="section alt"><div class="wrap"><div class="eyebrow">Pricing</div><h2>${esc(s.pricing.h2)}</h2><p class="sub">${esc(s.pricing.text)}</p></div></section>`
-    : `<section class="section alt"><div class="wrap"><div class="eyebrow">Diagnostics &amp; pricing</div><h2>Free or express — your choice</h2><p class="sub">Standard diagnostics are free (2–4 days), or express for 600 kr (1–2 hours) — with repair and delivery within 24 hours if no special parts need ordering. You get a fixed quote before we start, always.</p></div></section>`;
-  const cta = esc(s.ctaLabel || 'Book diagnostics');
+    ? `<section class="section alt"><div class="wrap"><div class="eyebrow">Pris</div><h2>${esc(s.pricing.h2)}</h2><p class="sub">${esc(s.pricing.text)}</p></div></section>`
+    : `<section class="section alt"><div class="wrap"><div class="eyebrow">Fejlsøgning &amp; pris</div><h2>Gratis eller ekspres — dit valg</h2><p class="sub">Standardfejlsøgning er gratis (2–4 dage), eller ekspres for 600 kr. (1–2 timer) — med reparation og levering inden for 24 timer, hvis der ikke skal bestilles specielle reservedele. Du får altid en fast pris, før vi går i gang.</p></div></section>`;
+  const cta = esc(s.ctaLabel || 'Book fejlsøgning');
   const faq = s.faq.map((f) => `<details><summary>${esc(f.q)}</summary><div class="answer">${esc(f.a)}</div></details>`).join('');
-  const cross = s.crosslinks.map((c) => `<a href="${c.href}">${esc(c.label)} →</a>`).join('') + `<a href="/contact/">Contact & booking →</a>`;
-  return `  <section class="hero"><div class="wrap"><div class="eyebrow">Service · Frederiksberg &amp; Copenhagen</div><h1>${esc(s.h1)}</h1>${s.subhead ? `<p class="lead">${esc(s.subhead)}</p>` : ''}
-    <div class="cta-row"><a class="btn btn-white" href="/contact/">${cta}</a><a class="btn btn-ghost-light" href="${site.phoneHref}">📞 Call ${site.phone}</a></div></div></section>
-  <section class="section"><div class="wrap lead-copy"><div class="crumbs"><a href="/">Home</a> › <span>${esc(s.h1)}</span></div>${intro}${included}</div></section>
+  const cross = s.crosslinks.map((c) => `<a href="${c.href}">${esc(c.label)} →</a>`).join('') + `<a href="/contact/">Kontakt & booking →</a>`;
+  return `  <section class="hero"><div class="wrap"><div class="eyebrow">Service · Frederiksberg &amp; København</div><h1>${esc(s.h1)}</h1>${s.subhead ? `<p class="lead">${esc(s.subhead)}</p>` : ''}
+    <div class="cta-row"><a class="btn btn-white" href="/contact/">${cta}</a><a class="btn btn-ghost-light" href="${site.phoneHref}">📞 Ring ${site.phone}</a></div></div></section>
+  <section class="section"><div class="wrap lead-copy"><div class="crumbs"><a href="/">Forside</a> › <span>${esc(s.h1)}</span></div>${intro}${included}</div></section>
   ${bullets}
   ${callout}
   ${pricing}
-  <section class="section"><div class="wrap"><div class="eyebrow">FAQ</div><h2>Common questions</h2><div class="faq">${faq}</div></div></section>
-  <section class="section alt"><div class="wrap"><div class="cta-band"><h2>Ready to get started?</h2><p>Contact us and we'll help you book the right service.</p><div class="cta-row"><a class="btn btn-white" href="/contact/">${cta}</a><a class="btn btn-ghost-light" href="${site.phoneHref}">📞 Call ${site.phone}</a></div></div>
-    <div style="margin-top:32px"><p class="eyebrow">Related services</p><div class="crosslinks">${cross}</div></div></div></section>`;
+  <section class="section"><div class="wrap"><div class="eyebrow">FAQ</div><h2>Ofte stillede spørgsmål</h2><div class="faq">${faq}</div></div></section>
+  <section class="section alt"><div class="wrap"><div class="cta-band"><h2>Klar til at komme i gang?</h2><p>Kontakt os, så hjælper vi dig med at booke den rette service.</p><div class="cta-row"><a class="btn btn-white" href="/contact/">${cta}</a><a class="btn btn-ghost-light" href="${site.phoneHref}">📞 Ring ${site.phone}</a></div></div>
+    <div style="margin-top:32px"><p class="eyebrow">Relaterede services</p><div class="crosslinks">${cross}</div></div></div></section>`;
 }
 function faqSchemaFrom(items) {
   return { '@context': 'https://schema.org', '@type': 'FAQPage', mainEntity: items.map((f) => ({ '@type': 'Question', name: f.q, acceptedAnswer: { '@type': 'Answer', text: f.a } })) };
@@ -614,9 +614,9 @@ async function run() {
   // Gaming PC repair, service & custom builds
   pages.push(['/gaming-pc-repair-and-build/', page({ title: 'Gaming-pc — reparation, service & specialbyggede | PCKlinik', description: 'Reparation af gaming-pc, køleservice og specialbyggede pc’er i Frederiksberg og København. GPU, overophedning, opgraderinger — plus bygning fra bunden.', p: '/gaming-pc-repair-and-build/', body: gamingHtml(), schema: faqSchemaFrom(GAMING_FAQ) })]);
   // Error messages reference page
-  pages.push(['/error-messages/', page({ title: 'Common Computer Error Messages & Codes | PCKlinik', description: 'Blue screen errors, boot failures, kernel panics and more — what common Windows and Mac error messages mean, and how we fix them.', p: '/error-messages/', body: errorMessagesHtml(), schema: faqSchemaFrom(ERROR_FAQ) })]);
+  pages.push(['/error-messages/', page({ title: 'Almindelige computerfejlmeddelelser & koder | PCKlinik', description: 'Blå skærme, opstartsfejl, kernel panics og mere — hvad almindelige Windows- og Mac-fejlmeddelelser betyder, og hvordan vi udbedrer dem.', p: '/error-messages/', body: errorMessagesHtml(), schema: faqSchemaFrom(ERROR_FAQ) })]);
   // Computer won't turn on (guide)
-  pages.push(['/computer-wont-turn-on/', page({ title: "Computer Won't Turn On? Here's Why | PCKlinik", description: 'Laptop or PC not turning on? The three most common causes, what they mean, and how we diagnose and fix it. Frederiksberg and Copenhagen.', p: '/computer-wont-turn-on/', body: computerWontTurnOnHtml(), schema: faqSchemaFrom(WONT_TURN_ON_FAQ) })]);
+  pages.push(['/computer-wont-turn-on/', page({ title: 'Vil computeren ikke tænde? Her er hvorfor | PCKlinik', description: 'Vil din bærbare eller pc ikke tænde? De tre mest almindelige årsager, hvad de betyder, og hvordan vi fejlsøger og udbedrer det. Frederiksberg og København.', p: '/computer-wont-turn-on/', body: computerWontTurnOnHtml(), schema: faqSchemaFrom(WONT_TURN_ON_FAQ) })]);
   // General site-wide FAQ
   pages.push(['/faq/', page({ title: 'Frequently Asked Questions | PCKlinik', description: 'English-speaking PC and Mac repair in Copenhagen — FAQs on diagnostics, pricing, brands, services, business IT, and our shop.', p: '/faq/', body: faqPageHtml(), schema: faqSchemaFrom(GENERAL_FAQ) })]);
   // Network Equipment hub

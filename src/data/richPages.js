@@ -101,99 +101,99 @@ export const GAMING_FAQ = [
 
 // ---------- Common Error Messages & Codes (help/reference page) ----------
 export const ERROR_FAQ = [
-  { q: "Do error codes mean the same thing on every Windows version?", a: "Largely yes, though some codes are more common on certain versions — we diagnose the actual cause regardless of code." },
-  { q: "Can an error code appear intermittently without being serious?", a: "Occasionally, though repeated occurrences of the same error are worth having checked." },
-  { q: 'Should I try to fix an error code myself before bringing it in?', a: "Basic steps (a restart, checking for obvious cable/connection issues) are fine to try. Beyond that, especially for BSODs or kernel panics, we'd recommend bringing it in rather than risking further data loss from repeated troubleshooting attempts." },
-  { q: "Does a blue screen or kernel panic mean I've lost my data?", a: 'Not necessarily — these are safety mechanisms, not data-destroying events by themselves. The risk comes from an underlying failing drive, which is exactly what we check first.' },
-  { q: 'Can you tell what’s wrong just from the error code?', a: 'The code narrows down the possibilities, but we always verify with actual diagnostics rather than assuming — the same code can point to several different root causes.' },
+  { q: 'Betyder fejlkoder det samme på alle Windows-versioner?', a: 'Stort set ja, men nogle koder er mere almindelige på visse versioner — vi fejlsøger den reelle årsag uanset kode.' },
+  { q: 'Kan en fejlkode dukke op sporadisk uden at være alvorlig?', a: 'Lejlighedsvis, men gentagne forekomster af samme fejl er værd at få tjekket.' },
+  { q: 'Bør jeg selv forsøge at udbedre en fejlkode, før jeg bringer den ind?', a: 'Grundlæggende trin (en genstart, tjek af oplagte kabel-/forbindelsesproblemer) er fine at prøve. Ud over det, især ved blå skærme eller kernel panics, anbefaler vi at bringe den ind frem for at risikere yderligere datatab ved gentagne fejlsøgningsforsøg.' },
+  { q: 'Betyder en blå skærm eller kernel panic, at jeg har mistet mine data?', a: 'Ikke nødvendigvis — det er sikkerhedsmekanismer, ikke datadræbende hændelser i sig selv. Risikoen kommer fra et underliggende svigtende drev, hvilket er præcis det, vi tjekker først.' },
+  { q: 'Kan I sige, hvad der er galt, alene ud fra fejlkoden?', a: 'Koden indsnævrer mulighederne, men vi bekræfter altid med faktisk fejlsøgning frem for at antage — den samme kode kan pege på flere forskellige rodårsager.' },
 ];
 const STOP_CODES = [
-  ['MEMORY_MANAGEMENT', 'Faulty RAM, corrupted system files, or a bad driver'],
-  ['PAGE_FAULT_IN_NONPAGED_AREA', 'Faulty RAM, failing drive, or driver conflict'],
-  ['CRITICAL_PROCESS_DIED', 'A core Windows process crashed — corrupted system files or a bad driver update'],
-  ['SYSTEM_THREAD_EXCEPTION_NOT_HANDLED', 'Usually a driver issue, often graphics or network drivers'],
-  ['IRQL_NOT_LESS_OR_EQUAL', 'Driver conflict or faulty RAM'],
-  ['KERNEL_SECURITY_CHECK_FAILURE', 'Corrupted system files or driver issue'],
-  ['DPC_WATCHDOG_VIOLATION', 'Driver or storage controller issue, especially after Windows updates'],
-  ['VIDEO_TDR_FAILURE', 'Graphics driver crash or failing GPU'],
-  ['WHEA_UNCORRECTABLE_ERROR', 'Hardware fault — often CPU, RAM, or motherboard'],
-  ['INACCESSIBLE_BOOT_DEVICE', "Windows can't access the boot drive — failing drive or driver/BIOS setting issue"],
-  ['Hex codes (e.g. 0x0000007E, 0x0000008E, 0x0000007B)', 'Older-style codes, same general causes as above — driver, hardware, or corrupted files'],
+  ['MEMORY_MANAGEMENT', 'Defekt RAM, beskadigede systemfiler eller en dårlig driver'],
+  ['PAGE_FAULT_IN_NONPAGED_AREA', 'Defekt RAM, svigtende drev eller driverkonflikt'],
+  ['CRITICAL_PROCESS_DIED', 'En central Windows-proces gik ned — beskadigede systemfiler eller en dårlig driveropdatering'],
+  ['SYSTEM_THREAD_EXCEPTION_NOT_HANDLED', 'Som regel et driverproblem, ofte grafik- eller netværksdrivere'],
+  ['IRQL_NOT_LESS_OR_EQUAL', 'Driverkonflikt eller defekt RAM'],
+  ['KERNEL_SECURITY_CHECK_FAILURE', 'Beskadigede systemfiler eller driverproblem'],
+  ['DPC_WATCHDOG_VIOLATION', 'Driver- eller lagercontroller-problem, især efter Windows-opdateringer'],
+  ['VIDEO_TDR_FAILURE', 'Grafikdriver-nedbrud eller svigtende GPU'],
+  ['WHEA_UNCORRECTABLE_ERROR', 'Hardwarefejl — ofte CPU, RAM eller bundkort'],
+  ['INACCESSIBLE_BOOT_DEVICE', 'Windows kan ikke tilgå startdrevet — svigtende drev eller driver-/BIOS-indstillingsproblem'],
+  ['Hex-koder (fx 0x0000007E, 0x0000008E, 0x0000007B)', 'Ældre koder, samme generelle årsager som ovenfor — driver, hardware eller beskadigede filer'],
 ];
 const winSubs = [
-  ['“Your PC ran into a problem and needs to restart”', "The everyday-language version of a stop code error (Windows 10/11's friendlier BSOD wording). Same underlying causes as above."],
-  ['Computer won’t boot / stuck on startup logo', 'Can point to a corrupted operating system, a failing drive, or a hardware fault preventing Windows from loading. We diagnose whether it’s a quick software fix or something more serious.'],
-  ['“Operating System Not Found” / boot device errors', 'Usually means the computer can’t find a working drive with an operating system on it — often a failing or disconnected hard drive/SSD, sometimes a BIOS/boot order setting.'],
-  ['Frequent freezing or random restarts (no error message)', 'Often overheating (dust buildup, failing fans), failing RAM, or a drive nearing failure — same root causes as BSOD errors, just without a specific code shown.'],
+  ['“Your PC ran into a problem and needs to restart”', 'Hverdagssprogs-versionen af en stop-kode-fejl (Windows 10/11’s venligere BSOD-formulering). Samme underliggende årsager som ovenfor.'],
+  ['Computeren vil ikke starte / hænger på opstartslogoet', 'Kan pege på et beskadiget styresystem, et svigtende drev eller en hardwarefejl, der forhindrer Windows i at indlæse. Vi fejlsøger, om det er en hurtig softwareløsning eller noget mere alvorligt.'],
+  ['“Operating System Not Found” / boot device-fejl', 'Betyder som regel, at computeren ikke kan finde et fungerende drev med et styresystem på — ofte et svigtende eller frakoblet drev/SSD, nogle gange en BIOS-/boot-rækkefølge-indstilling.'],
+  ['Hyppige frysninger eller tilfældige genstarter (ingen fejlmeddelelse)', 'Ofte overophedning (støvophobning, defekte blæsere), defekt RAM eller et drev nær svigt — samme rodårsager som BSOD-fejl, bare uden en specifik kode vist.'],
 ];
 const macSubs = [
-  ['Kernel panic', 'The Mac equivalent of a Windows BSOD — macOS hits a critical error and restarts to protect itself. A single occasional panic usually isn’t urgent, but repeated panics point to a real hardware or software problem — often faulty memory, a failing drive, or incompatible software.'],
-  ['Prohibitory symbol (circle with a line through it) at startup', 'Means macOS can’t boot from any available drive — often due to corrupted system files, a failing drive, or (on Intel Macs) startup disk selection issues.'],
-  ['Spinning wheel / beachball that won’t go away', 'Usually indicates the system or an app is overloaded — could be a failing drive, insufficient free storage, or a specific app hanging rather than the whole system.'],
-  ['Folder with a question mark at startup', 'Means the Mac can’t find a valid startup disk — commonly a failing drive or a corrupted macOS installation, not necessarily a fully dead drive.'],
-  ['Gray screen at startup (no progress)', 'Can indicate a startup disk issue, incompatible startup items, or in some cases a hardware fault preventing the boot process from completing.'],
+  ['Kernel panic', 'Mac-ækvivalenten til en Windows-BSOD — macOS rammer en kritisk fejl og genstarter for at beskytte sig selv. En enkelt lejlighedsvis panic er som regel ikke akut, men gentagne panics peger på et reelt hardware- eller softwareproblem — ofte defekt hukommelse, et svigtende drev eller inkompatibel software.'],
+  ['Forbudssymbol (cirkel med en streg igennem) ved opstart', 'Betyder, at macOS ikke kan starte op fra noget tilgængeligt drev — ofte på grund af beskadigede systemfiler, et svigtende drev eller (på Intel-Mac) problemer med valg af startdisk.'],
+  ['Roterende hjul / beachball, der ikke forsvinder', 'Indikerer som regel, at systemet eller en app er overbelastet — kan være et svigtende drev, for lidt fri lagerplads eller en bestemt app, der hænger, frem for hele systemet.'],
+  ['Mappe med et spørgsmålstegn ved opstart', 'Betyder, at Mac’en ikke kan finde en gyldig startdisk — almindeligvis et svigtende drev eller en beskadiget macOS-installation, ikke nødvendigvis et helt dødt drev.'],
+  ['Grå skærm ved opstart (ingen fremgang)', 'Kan indikere et startdisk-problem, inkompatible startobjekter eller i nogle tilfælde en hardwarefejl, der forhindrer opstartsprocessen i at fuldføre.'],
 ];
 export function errorMessagesHtml() {
   const rows = STOP_CODES.map(([c, m]) => `<tr><td><code>${esc(c)}</code></td><td class="issue">${esc(m)}</td></tr>`).join('');
   const wsubs = winSubs.map(([h, p]) => `<h3 style="margin-top:26px">${esc(h)}</h3><p>${esc(p)}</p>`).join('');
   const msubs = macSubs.map(([h, p]) => `<h3 style="margin-top:26px">${esc(h)}</h3><p>${esc(p)}</p>`).join('');
   const faqHtml = ERROR_FAQ.map((f) => `<details><summary>${esc(f.q)}</summary><div class="answer">${esc(f.a)}</div></details>`).join('');
-  return `  <section class="hero"><div class="wrap"><div class="eyebrow">Help · Error Messages</div>
-    <h1>Common Error Messages &amp; What They Mean</h1><p class="lead">Windows and Mac errors, explained plainly.</p>
-    <div class="cta-row"><a class="btn btn-white" href="/contact/">Book diagnostics</a><a class="btn btn-ghost-light" href="${site.phoneHref}">📞 Call ${site.phone}</a></div></div></section>
-  <section class="section"><div class="wrap lead-copy"><div class="crumbs"><a href="/">Home</a> › <span>Error Messages</span></div>
-    <p>Seeing a cryptic error message or code is unsettling, especially when it stops you from using your computer at all. Below are the most common Windows and Mac errors we're asked about — what they generally mean, and what we do to fix them. We always diagnose the specific cause rather than guessing, since the same error message can have several different underlying causes.</p></div></section>
-  <section class="section alt"><div class="wrap"><div class="eyebrow">Windows</div><h2>Windows errors</h2>
-    <div class="lead-copy"><h3>Blue Screen of Death (BSOD)</h3><p>Windows displays a blue screen with an error code when it hits a critical error it can't recover from safely. The specific code is a clue, not a full diagnosis — we test the actual hardware and check system logs rather than relying on the code alone.</p></div>
-    <div class="table-wrap" style="margin-top:20px"><table class="models"><thead><tr><th>Error code</th><th>What it usually points to</th></tr></thead><tbody>${rows}</tbody></table></div>
-    <div class="lead-copy"><h3 style="margin-top:26px">Windows 11-specific issues</h3>
+  return `  <section class="hero"><div class="wrap"><div class="eyebrow">Hjælp · Fejlmeddelelser</div>
+    <h1>Almindelige fejlmeddelelser &amp; hvad de betyder</h1><p class="lead">Windows- og Mac-fejl, forklaret ligeud.</p>
+    <div class="cta-row"><a class="btn btn-white" href="/contact/">Book fejlsøgning</a><a class="btn btn-ghost-light" href="${site.phoneHref}">📞 Ring ${site.phone}</a></div></div></section>
+  <section class="section"><div class="wrap lead-copy"><div class="crumbs"><a href="/">Forside</a> › <span>Fejlmeddelelser</span></div>
+    <p>At se en kryptisk fejlmeddelelse eller kode er ubehageligt, især når den forhindrer dig i at bruge computeren overhovedet. Nedenfor er de mest almindelige Windows- og Mac-fejl, vi bliver spurgt om — hvad de generelt betyder, og hvad vi gør for at udbedre dem. Vi fejlsøger altid den specifikke årsag frem for at gætte, da den samme fejlmeddelelse kan have flere forskellige underliggende årsager.</p></div></section>
+  <section class="section alt"><div class="wrap"><div class="eyebrow">Windows</div><h2>Windows-fejl</h2>
+    <div class="lead-copy"><h3>Blue Screen of Death (BSOD)</h3><p>Windows viser en blå skærm med en fejlkode, når den rammer en kritisk fejl, den ikke kan komme sikkert videre fra. Den specifikke kode er et spor, ikke en fuld diagnose — vi tester den faktiske hardware og tjekker systemlogfiler frem for at stole på koden alene.</p></div>
+    <div class="table-wrap" style="margin-top:20px"><table class="models"><thead><tr><th>Fejlkode</th><th>Hvad den som regel peger på</th></tr></thead><tbody>${rows}</tbody></table></div>
+    <div class="lead-copy"><h3 style="margin-top:26px">Windows 11-specifikke problemer</h3>
       <ul class="check-list" style="grid-template-columns:1fr">
-        <li><strong>“This PC can't run Windows 11”</strong> — usually a missing TPM 2.0 chip, Secure Boot not enabled in BIOS, or incompatible CPU. We can check whether your machine can be made compatible or advise honestly if it can't.</li>
-        <li>Update-related freezes or rollback loops after a Windows 11 feature update — often driver incompatibility with the new update.</li>
+        <li><strong>“This PC can’t run Windows 11”</strong> — som regel en manglende TPM 2.0-chip, Secure Boot ikke aktiveret i BIOS eller en inkompatibel CPU. Vi kan tjekke, om din maskine kan gøres kompatibel, eller rådgive ærligt, hvis den ikke kan.</li>
+        <li>Opdateringsrelaterede frysninger eller rollback-loops efter en Windows 11-funktionsopdatering — ofte driverinkompatibilitet med den nye opdatering.</li>
       </ul>
       ${wsubs}
     </div></div></section>
-  <section class="section"><div class="wrap"><div class="eyebrow">Mac</div><h2>Mac errors</h2><div class="lead-copy">${msubs}</div></div></section>
-  <section class="section alt"><div class="wrap"><div class="eyebrow">FAQ</div><h2>Error messages — common questions</h2><div class="faq">${faqHtml}</div></div></section>
-  <section class="section"><div class="wrap"><div class="cta-band"><h2>Got one of these errors?</h2><p>We diagnose the root cause, not just the code. Free diagnostics (2–4 days) or express (600 kr, 1–2 hours), fixed quote before we start.</p><div class="cta-row"><a class="btn btn-white" href="/contact/">Book diagnostics</a><a class="btn btn-ghost-light" href="${site.phoneHref}">📞 Call ${site.phone}</a></div></div>
-    <div style="margin-top:32px"><p class="eyebrow">Related</p><div class="crosslinks"><a href="/data-backup-and-recovery/">Data Backup & Recovery →</a><a href="/hard-drive-replacement/">Hard Drive Replacement →</a><a href="/system-installation/">System Installation →</a><a href="/virus-removal/">Virus &amp; Malware Removal →</a><a href="/contact/">Contact & booking →</a></div></div></div></section>`;
+  <section class="section"><div class="wrap"><div class="eyebrow">Mac</div><h2>Mac-fejl</h2><div class="lead-copy">${msubs}</div></div></section>
+  <section class="section alt"><div class="wrap"><div class="eyebrow">FAQ</div><h2>Fejlmeddelelser — ofte stillede spørgsmål</h2><div class="faq">${faqHtml}</div></div></section>
+  <section class="section"><div class="wrap"><div class="cta-band"><h2>Har du en af disse fejl?</h2><p>Vi fejlsøger rodårsagen, ikke bare koden. Gratis fejlsøgning (2–4 dage) eller ekspres (600 kr., 1–2 timer), fast pris før vi går i gang.</p><div class="cta-row"><a class="btn btn-white" href="/contact/">Book fejlsøgning</a><a class="btn btn-ghost-light" href="${site.phoneHref}">📞 Ring ${site.phone}</a></div></div>
+    <div style="margin-top:32px"><p class="eyebrow">Relateret</p><div class="crosslinks"><a href="/data-backup-and-recovery/">Backup & datagenskabelse →</a><a href="/hard-drive-replacement/">Udskiftning af harddisk →</a><a href="/system-installation/">Systeminstallation →</a><a href="/virus-removal/">Fjernelse af virus & malware →</a><a href="/contact/">Kontakt & booking →</a></div></div></div></section>`;
 }
 
-// ---------- Computer Won't Turn On (guide) ----------
+// ---------- Computeren vil ikke tænde (guide) ----------
 export const WONT_TURN_ON_FAQ = [
-  { q: "Could a faulty power outlet be the actual cause?", a: "Yes — always worth testing a different outlet first." },
-  { q: "Does a computer that won't turn on always mean data loss?", a: "No — in most cases the issue is separate from the storage drive, and your data is recoverable." },
-  { q: 'My laptop shows no signs of life at all — is it definitely the battery?', a: 'Not necessarily — it could be the battery, the charger, or the charging port. We test each separately rather than assuming, since replacing the wrong part wastes time and money.' },
-  { q: 'The fans are spinning but I see nothing on screen — is this serious?', a: "It's actually one of the more fixable scenarios — the core computer is working, it's a display-specific issue, which is often a straightforward screen or cable repair rather than a deeper hardware problem." },
-  { q: "Will I lose my data if my computer won't turn on?", a: "Not from the fact that it won't turn on by itself — but if a failing drive is the underlying cause, backing up or recovering data becomes time-sensitive. We prioritize this if that's what diagnostics reveal." },
-  { q: 'Should I keep trying to turn it on myself, or bring it in?', a: "A few basic checks (charger connection, a different outlet) are fine to try. Beyond that, especially if you hear beeping or see repeated restart loops, we'd recommend bringing it in rather than risking further complications." },
+  { q: 'Kan en defekt stikkontakt være den reelle årsag?', a: 'Ja — altid værd at teste en anden stikkontakt først.' },
+  { q: 'Betyder en computer, der ikke vil tænde, altid datatab?', a: 'Nej — i de fleste tilfælde er problemet adskilt fra lagerdrevet, og dine data kan genskabes.' },
+  { q: 'Min bærbare viser slet ingen livstegn — er det helt sikkert batteriet?', a: 'Ikke nødvendigvis — det kan være batteriet, opladeren eller ladeporten. Vi tester hver del for sig frem for at antage, da det spilder tid og penge at udskifte den forkerte del.' },
+  { q: 'Blæserne kører, men jeg ser ingenting på skærmen — er det alvorligt?', a: 'Det er faktisk et af de mere reparerbare scenarier — selve computeren fungerer, det er et skærmspecifikt problem, hvilket ofte er en ligetil skærm- eller kabelreparation frem for et dybere hardwareproblem.' },
+  { q: 'Mister jeg mine data, hvis min computer ikke vil tænde?', a: 'Ikke af den grund alene — men hvis et svigtende drev er den underliggende årsag, bliver backup eller genskabelse af data tidskritisk. Vi prioriterer det, hvis det er det, fejlsøgningen viser.' },
+  { q: 'Skal jeg blive ved med selv at forsøge at tænde den, eller bringe den ind?', a: 'Nogle få grundlæggende tjek (opladerforbindelse, en anden stikkontakt) er fine at prøve. Ud over det, især hvis du hører bippen eller ser gentagne genstartsloops, anbefaler vi at bringe den ind frem for at risikere yderligere komplikationer.' },
 ];
 export function computerWontTurnOnHtml() {
   const scen = [
-    ['Scenario 1: No power at all — no lights, no sound, nothing',
-     'a power issue — the charger, the charging port, a drained or failed battery, or (less often) a deeper hardware fault.',
-     "Is the charger's LED lit when plugged in? Does the laptop show any charging indicator at all? If there's genuinely zero sign of life even when plugged directly into a wall outlet, this is very likely charger, battery, or charging port related.",
-     'We test the charger, battery, and charging port separately to isolate which one has failed — see our <a href="/mac-battery-replacement/">Battery Replacement</a> and <a href="/charging-port-repair/">Charging Port Repair</a> pages for those specific fixes.'],
-    ['Scenario 2: It powers on (fans spin, lights come on) — but the screen stays black',
-     "the device itself is working, but something's preventing a display — could be the screen itself, the graphics hardware, or a connection issue between them.",
-     'Connect to an external monitor if possible. If the external monitor shows an image, the built-in screen itself is the problem, not the rest of the computer.',
-     'We isolate whether it\'s the screen, the display cable, or the graphics hardware — see our <a href="/screen-replacement/">Screen Replacement</a> page if it turns out to be the display itself.'],
-    ["Scenario 3: It powers on and starts booting, but won't finish loading Windows or macOS",
-     'a software or operating-system-level problem — a corrupted OS, a failing drive, or a Windows/macOS update that didn\'t complete properly.',
-     'Does it get stuck on a logo screen, show an error message, or loop back to a black screen repeatedly? Any error code shown is useful information.',
-     'Depends on the cause — could be a <a href="/system-installation/">System Installation</a> (fresh OS setup), a <a href="/hard-drive-replacement/">Hard Drive Replacement</a> if the drive has failed, or <a href="/data-backup-and-recovery/">Data Recovery</a> first if the drive is failing and data isn\'t backed up. See our <a href="/error-messages/">Error Messages</a> page for a specific code or symbol.'],
-  ].map(([h, m, c, fx], i) => `<section class="section${i%2? ' alt':''}"><div class="wrap lead-copy"><h2>${esc(h)}</h2><p><strong>What it usually means:</strong> ${esc(m)}</p><p><strong>What to check first:</strong> ${esc(c)}</p><p><strong>How we fix it:</strong> ${fx}</p></div></section>`).join('');
+    ['Scenarie 1: Ingen strøm overhovedet — ingen lys, ingen lyd, intet',
+     'et strømproblem — opladeren, ladeporten, et fladt eller svigtet batteri eller (sjældnere) en dybere hardwarefejl.',
+     'Lyser opladerens LED, når den er sat i? Viser den bærbare nogen ladeindikator overhovedet? Hvis der virkelig er nul livstegn, selv når den er sat direkte i en stikkontakt, er dette meget sandsynligt relateret til oplader, batteri eller ladeport.',
+     'Vi tester opladeren, batteriet og ladeporten hver for sig for at isolere, hvilken der er svigtet — se vores sider om <a href="/mac-battery-replacement/">batteriskift</a> og <a href="/charging-port-repair/">reparation af ladeport</a> for de specifikke løsninger.'],
+    ['Scenarie 2: Den tænder (blæsere kører, lys tændes) — men skærmen forbliver sort',
+     'selve enheden fungerer, men noget forhindrer et billede — det kan være selve skærmen, grafikhardwaren eller en forbindelse mellem dem.',
+     'Tilslut en ekstern skærm, hvis det er muligt. Hvis den eksterne skærm viser et billede, er det den indbyggede skærm, der er problemet, ikke resten af computeren.',
+     'Vi isolerer, om det er skærmen, skærmkablet eller grafikhardwaren — se vores side om <a href="/screen-replacement/">skærmudskiftning</a>, hvis det viser sig at være selve skærmen.'],
+    ['Scenarie 3: Den tænder og begynder at starte op, men bliver ikke færdig med at indlæse Windows eller macOS',
+     'et software- eller styresystemsproblem — et beskadiget OS, et svigtende drev eller en Windows-/macOS-opdatering, der ikke blev fuldført korrekt.',
+     'Sætter den sig fast på en logoskærm, viser en fejlmeddelelse eller looper tilbage til en sort skærm gentagne gange? Enhver vist fejlkode er nyttig information.',
+     'Afhænger af årsagen — det kan være en <a href="/system-installation/">systeminstallation</a> (frisk OS-opsætning), en <a href="/hard-drive-replacement/">udskiftning af harddisk</a>, hvis drevet er svigtet, eller <a href="/data-backup-and-recovery/">datagenskabelse</a> først, hvis drevet er ved at svigte, og data ikke er sikkerhedskopieret. Se vores side om <a href="/error-messages/">fejlmeddelelser</a> for en specifik kode eller et symbol.'],
+  ].map(([h, m, c, fx], i) => `<section class="section${i%2? ' alt':''}"><div class="wrap lead-copy"><h2>${esc(h)}</h2><p><strong>Hvad det som regel betyder:</strong> ${esc(m)}</p><p><strong>Hvad du skal tjekke først:</strong> ${esc(c)}</p><p><strong>Sådan udbedrer vi det:</strong> ${fx}</p></div></section>`).join('');
   const faqHtml = WONT_TURN_ON_FAQ.map((f) => `<details><summary>${esc(f.q)}</summary><div class="answer">${esc(f.a)}</div></details>`).join('');
-  return `  <section class="hero"><div class="wrap"><div class="eyebrow">Help · Won't turn on</div>
-    <h1>Computer Won't Turn On?</h1><p class="lead">Three common scenarios — and what each one usually means.</p>
-    <div class="cta-row"><a class="btn btn-white" href="/contact/">Book diagnostics</a><a class="btn btn-ghost-light" href="${site.phoneHref}">📞 Call ${site.phone}</a></div></div></section>
-  <section class="section"><div class="wrap lead-copy"><div class="crumbs"><a href="/">Home</a> › <span>Computer Won't Turn On</span></div>
-    <p>"Won't turn on" can actually mean a few different things, and each points to a different cause. Before assuming the worst, it helps to know which of these three situations matches yours:</p></div></section>
+  return `  <section class="hero"><div class="wrap"><div class="eyebrow">Hjælp · Vil ikke tænde</div>
+    <h1>Vil computeren ikke tænde?</h1><p class="lead">Tre almindelige scenarier — og hvad hvert af dem som regel betyder.</p>
+    <div class="cta-row"><a class="btn btn-white" href="/contact/">Book fejlsøgning</a><a class="btn btn-ghost-light" href="${site.phoneHref}">📞 Ring ${site.phone}</a></div></div></section>
+  <section class="section"><div class="wrap lead-copy"><div class="crumbs"><a href="/">Forside</a> › <span>Computeren vil ikke tænde</span></div>
+    <p>"Vil ikke tænde" kan faktisk betyde et par forskellige ting, og hver peger på en forskellig årsag. Før du antager det værste, hjælper det at vide, hvilken af disse tre situationer der matcher din:</p></div></section>
   ${scen}
-  <section class="section alt"><div class="wrap"><div class="eyebrow">Diagnostics &amp; pricing</div><h2>Free or express — your choice</h2><p class="sub">Standard diagnostics are free (2–4 days), or express for 600 kr (1–2 hours) — with repair and delivery within 24 hours if no special parts need ordering. You get a fixed quote before we start.</p></div></section>
-  <section class="section"><div class="wrap"><div class="eyebrow">FAQ</div><h2>Won't turn on — common questions</h2><div class="faq">${faqHtml}</div></div></section>
-  <section class="section alt"><div class="wrap"><div class="cta-band"><h2>Not sure which scenario is yours?</h2><p>Bring it in — free diagnostics (2–4 days) or express (600 kr). We isolate the cause before quoting.</p><div class="cta-row"><a class="btn btn-white" href="/contact/">Book diagnostics</a><a class="btn btn-ghost-light" href="${site.phoneHref}">📞 Call ${site.phone}</a></div></div>
-    <div style="margin-top:32px"><p class="eyebrow">Related</p><div class="crosslinks"><a href="/charging-port-repair/">Charging Port Repair →</a><a href="/screen-replacement/">Screen Replacement →</a><a href="/error-messages/">Error Messages →</a><a href="/faq/">General FAQ →</a></div></div></div></section>`;
+  <section class="section alt"><div class="wrap"><div class="eyebrow">Fejlsøgning &amp; pris</div><h2>Gratis eller ekspres — dit valg</h2><p class="sub">Standardfejlsøgning er gratis (2–4 dage), eller ekspres for 600 kr. (1–2 timer) — med reparation og levering inden for 24 timer, hvis der ikke skal bestilles specielle reservedele. Du får en fast pris, før vi går i gang.</p></div></section>
+  <section class="section"><div class="wrap"><div class="eyebrow">FAQ</div><h2>Vil ikke tænde — ofte stillede spørgsmål</h2><div class="faq">${faqHtml}</div></div></section>
+  <section class="section alt"><div class="wrap"><div class="cta-band"><h2>Er du i tvivl om, hvilket scenarie der er dit?</h2><p>Kom forbi — gratis fejlsøgning (2–4 dage) eller ekspres (600 kr.). Vi isolerer årsagen, før vi giver pris.</p><div class="cta-row"><a class="btn btn-white" href="/contact/">Book fejlsøgning</a><a class="btn btn-ghost-light" href="${site.phoneHref}">📞 Ring ${site.phone}</a></div></div>
+    <div style="margin-top:32px"><p class="eyebrow">Relateret</p><div class="crosslinks"><a href="/charging-port-repair/">Reparation af ladeport →</a><a href="/screen-replacement/">Skærmudskiftning →</a><a href="/error-messages/">Fejlmeddelelser →</a><a href="/faq/">Generel FAQ →</a></div></div></div></section>`;
 }
 
 // ---------- General FAQ (site-wide, grouped) ----------

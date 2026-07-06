@@ -35,10 +35,25 @@ Deploy: Cloudflare Pages, `pages_build_output_dir = dist`, build command
   `richPages.js` translated. Hub page meta titles/descriptions Danish.
 - Verified: 76 pages, 0 English on the 18 brand/hub pages, 0 broken links.
 
+## Done — Batch 3 (20 service pages, native Danish)
+- `serviceBody()` template chrome translated (hero, breadcrumbs, default
+  free/express pricing block, FAQ, CTA band, related links).
+- All task-based entries in `services.js` translated: 8 PC + 5 Mac +
+  5 cross-cutting (incl. Remote Support, On-Site, System Installation) +
+  WiFi & Network Troubleshooting.
+- Error Messages + Computer Won't Turn On pages (+ ERROR_FAQ / WONT_TURN_ON_FAQ,
+  stop-code table, Windows/Mac sub-sections) in `richPages.js` translated.
+  Literal error codes/strings kept in English per convention.
+- **Liquid-damage pricing exception preserved:** the page renders its own
+  `pricing` override (flat 600 kr, 3–4 dage, ingen ekspres) and does NOT get
+  the standard free/express block. Verified in the built output.
+- Verified: 76 pages, 0 English on the 21 Batch-3 pages, 0 broken links.
+- Still English by design: 5 network-equipment pages (Batch 4) and 3 Web
+  pages (Batch 5) kept verbatim in `services.js`.
+
 ## Still English — pending later batches (NOT yet Danish; do NOT deploy publicly)
 Page BODIES for these still render English text from the .eu fork and must be
 rewritten natively in Danish in their batches (nav labels already point to them):
-- Batch 3 — 20 service/task pages (`services.js` + remote/system/error/wont-turn-on)
 - Batch 4 — 5 network equipment pages + shop (`richPages.js`, shop* in build.mjs)
 - Batch 5 — Websites & SEO (4) + Business IT verification
 - Batch 6 — General FAQ (`faqPageHtml`), Meet the Team (`aboutBody`)
