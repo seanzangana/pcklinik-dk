@@ -320,6 +320,8 @@ export const STUDENTS_FAQ = [
   { q: 'Jeg læser på DTU i Lyngby — kan I stadig hjælpe?', a: 'Ja. DTU Lyngby ligger længere væk end vores værksted i Frederiksberg, men afhentning/levering eller indsendelse dækker afstanden. Kontakt os, så aftaler vi det ud fra din situation.' },
   { q: 'Kan jeg låne en computer, mens min bliver repareret?', a: 'Efter tilgængelighed, ja — vi kan i nogle tilfælde låne dig en bærbar, mens din bliver repareret. Da vi kun har et begrænset antal lånecomputere, kan vi ikke garantere det, og det afhænger af, hvad der er ledigt. Spørg os, når du afleverer din computer.' },
   { q: 'Kan I hjælpe med backup, før jeg afslutter studiet eller flytter?', a: 'Ja. Vi hjælper med at sikre dine data — opgaver, projekter og noter — inden studieophold eller flytning, og vi fører backup- og sikkerhedsudstyr i vores butik. Se Backup & sikkerhed, eller kontakt os, så finder vi den rette løsning.' },
+  { q: 'Reparerer I også university-ejede computere (CBS/DTU-udstyr), eller kun private?', a: 'Ja, vi reparerer også university-ejede enheder fra CBS, DTU og andre uddannelsesinstitutioner — ikke kun private computere. Kom forbi med din institution-udstedte laptop, så kigger vi på den på samme vilkår som private enheder.' },
+  { q: 'Får studerende rabat på reparation?', a: 'Ja — studerende får 10% rabat på reparationsprisen. Vis blot dit studiekort (CBS, DTU eller anden uddannelsesinstitution), når du afleverer din computer.' },
 ];
 export function studentsHtml() {
   const faqHtml = STUDENTS_FAQ.map((f) => `<details><summary>${esc(f.q)}</summary><div class="answer">${esc(f.a)}</div></details>`).join('');
@@ -343,4 +345,26 @@ export function studentsHtml() {
   <section class="section alt"><div class="wrap"><div class="eyebrow">FAQ</div><h2>Studerende — ofte stillede spørgsmål</h2><div class="faq">${faqHtml}</div></div></section>
   <section class="section"><div class="wrap"><div class="cta-band"><h2>Bærbar gået ned før en deadline?</h2><p>Kom forbi uden tidsbestilling, eller ring. Fejlsøgning 300 kr. (2–4 dage) eller ekspres 600 kr. (1–2 timer), fast pris før vi går i gang.</p><div class="cta-row"><a class="btn btn-white" href="/contact/">Book en reparation</a><a class="btn btn-ghost-light" href="${site.phoneHref}">📞 Ring ${site.phone}</a></div></div>
     <div style="margin-top:32px"><p class="eyebrow">Relateret</p><div class="crosslinks"><a href="/computerreparation-frederiksberg/">Computerreparation i Frederiksberg →</a><a href="/shop/backup-security/">Backup &amp; sikkerhed →</a><a href="/macbook-repair/">MacBook-reparation →</a><a href="/contact/">Kontakt & booking →</a></div></div></div></section>`;
+}
+
+// ---------- Typiske reparationspriser (repair price ranges) ----------
+export function priceRangesHtml() {
+  const rows = [
+    ['Skærm (MacBook)', 'fra 1.800 kr.'],
+    ['Skærm (Windows-bærbar)', 'fra 1.500 kr.'],
+    ['Batteri (MacBook)', 'fra 1.500 kr.'],
+    ['Batteri (Windows-bærbar)', 'fra 800 kr.'],
+    ['SSD-opgradering (256 GB)', 'fra 1.800 kr. (højere pris ved større kapacitet)'],
+  ].map(([r, p]) => `<tr><td>${esc(r)}</td><td class="issue">${esc(p)}</td></tr>`).join('');
+  return `  <section class="hero"><div class="wrap"><div class="eyebrow">Priser · Frederiksberg &amp; København</div>
+    <h1>Typiske reparationspriser</h1><p class="lead">Vejledende fra-priser på de mest almindelige reparationer — inkl. reservedele og arbejdsløn.</p>
+    <div class="cta-row"><a class="btn btn-white" href="/contact/">Book en reparation</a><a class="btn btn-ghost-light" href="${site.phoneHref}">📞 Ring ${site.phone}</a></div></div></section>
+  <section class="section"><div class="wrap lead-copy"><div class="crumbs"><a href="/">Forside</a> › <span>Typiske reparationspriser</span></div>
+    <p>Priserne nedenfor er vejledende <strong>fra-priser</strong> (startpriser) og gælder de mest almindelige reparationer. Den endelige pris afhænger af model og skadens omfang — men du får altid et fast tilbud, før vi går i gang, så der ikke er nogen overraskelser.</p>
+    <p>Selve fejlsøgningen prissættes særskilt: standard koster 300 kr. (2–4 dage), eller ekspres 600 kr. (1–2 timer). Væskeskade har en fast pris på 600 kr. (3–4 dage, ingen ekspresmulighed).</p></div></section>
+  <section class="section alt"><div class="wrap"><div class="eyebrow">Vejledende priser</div><h2>Fra-priser på almindelige reparationer</h2>
+    <div class="table-wrap" style="margin-top:20px"><table class="models"><thead><tr><th>Reparation</th><th>Vejledende pris</th></tr></thead><tbody>${rows}</tbody></table></div>
+    <div class="trust-line" style="margin-top:24px"><strong>Alle priser er inkl. reservedele og arbejdsløn.</strong> SSD-prisen gælder 256 GB; større kapacitet koster mere. Fast tilbud, før vi går i gang.</div></div></section>
+  <section class="section"><div class="wrap"><div class="cta-band"><h2>Vil du have en pris på din reparation?</h2><p>Kom forbi uden tidsbestilling eller kontakt os — vi laver en fejlsøgning og giver dig et fast tilbud, før noget arbejde går i gang.</p><div class="cta-row"><a class="btn btn-white" href="/contact/">Book en reparation</a><a class="btn btn-ghost-light" href="${site.phoneHref}">📞 Ring ${site.phone}</a></div></div>
+    <div style="margin-top:32px"><p class="eyebrow">Relateret</p><div class="crosslinks"><a href="/screen-replacement/">Skærmudskiftning →</a><a href="/mac-battery-replacement/">Mac-batteriskift →</a><a href="/ssd-upgrade/">SSD-opgradering →</a><a href="/contact/">Kontakt & booking →</a></div></div></div></section>`;
 }

@@ -1,15 +1,30 @@
 # PCKlinik
 
-PCKlinik er et computer- og Mac-værksted på Falkoner Allé 108, 2000 Frederiksberg (København), Danmark. Vi reparerer alle større PC- og Mac-mærker, tilbyder opgavebaserede services (SSD-opgraderinger, datagenskabelse, virusfjernelse, væskeskade-reparation, netværksopsætning), sælger nye og istandsatte computere og leverer IT-support til fast pris for virksomheder. Standardfejlsøgning koster 300 kr. (2–4 dage) eller ekspres for 600 kr. (1–2 timer), med fast pris før vi går i gang. Telefon: 91 81 61 81. E-mail: kontakt@pcklinik.dk.
+> PC- og Mac-reparation samt IT-support i Frederiksberg, København. Uafhængig, ikke-Apple-autoriseret specialistviden, gratis walk-in uden tidsbestilling, og hente/bringe-service.
 
-## Vigtige sider
-- [Forside](https://www.pcklinik.dk/)
-- [IT-support til erhverv](https://www.pcklinik.dk/business-it-service-agreement/)
-- [Reparationer — Lenovo](https://www.pcklinik.dk/lenovo-repair/) og alle større mærker
-- [Mac-reparation](https://www.pcklinik.dk/mac-repair/)
-- [Gaming-pc-reparation & specialbyggede](https://www.pcklinik.dk/gaming-pc-repair-and-build/)
-- [Services — SSD-opgradering, datagenskabelse, virusfjernelse, netværksopsætning m.m.](https://www.pcklinik.dk/ssd-upgrade/)
-- [Almindelige fejlmeddelelser & koder](https://www.pcklinik.dk/error-messages/)
-- [Butik](https://www.pcklinik.dk/shop/)
-- [Kontakt](https://www.pcklinik.dk/contact/)
-- [Nyheder](https://www.pcklinik.dk/nyheder/)
+PCKlinik er en lokal PC/Mac-reparationsvirksomhed på Falkoner Allé 108, 2000 Frederiksberg. Vi reparerer computere (PC og Mac) — ikke iPad eller iPhone. Standard fejlsøgning koster 300 kr (2-4 dage). Ekspres fejlsøgning koster 600 kr (1-2 timer, reparation og levering inden for 24 timer hvis ingen specielle reservedele skal bestilles). Væskeskade har en fast pris på 600 kr (3-4 dage, ingen ekspresmulighed).
+
+## Services
+
+- [Computerreparation](https://pcklinik.dk/): Reparation af stationære og bærbare PC'er — skærm, batteri, SSD/harddisk, strømforsyning m.m. (se mærkeoversigt på forsiden og de enkelte mærkesider).
+- [Mac-reparation](https://pcklinik.dk/mac-repair/): Uafhængig Mac-specialist (ikke Apple-autoriseret) med komponentniveau-reparationer.
+- [IT-support til virksomheder](https://pcklinik.dk/business-it-service-agreement/): B2B IT-support og rådgivning.
+- [Butik](https://pcklinik.dk/shop/): Nye computere, renoverede computere, backup & sikkerhedsprodukter.
+- [Typiske reparationspriser](https://pcklinik.dk/reparationspriser/): Vejledende fra-priser på skærm, batteri og SSD.
+- [Studerende (CBS & DTU)](https://pcklinik.dk/studerende/): Computerreparation til studerende — gåafstand fra CBS, afhentning til DTU.
+
+## Lokationer
+
+- [København](https://pcklinik.dk/computerreparation-koebenhavn/)
+- [Vesterbro](https://pcklinik.dk/computerreparation-vesterbro/)
+- [Vanløse](https://pcklinik.dk/computerreparation-vanloese/)
+- [Valby](https://pcklinik.dk/computerreparation-valby/)
+- [Nordvest](https://pcklinik.dk/computerreparation-nordvest/)
+
+## Kontakt
+
+- [Kontakt os](https://pcklinik.dk/contact/): Falkoner Allé 108, st. th., 2000 Frederiksberg. Telefon: 91 81 61 81. Email: kontakt@pcklinik.dk. Åbningstider: Man-Fre 10-18, Lør 10-14, Søn lukket.
+
+## Optional
+
+- [Nyheder](https://pcklinik.dk/nyheder/): Danske artikler om PC/Mac-reparation, IT-tips og sikkerhed.

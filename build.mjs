@@ -13,7 +13,7 @@ import { lucide, lucideSm } from './src/data/icons.js';
 import { services } from './src/data/services.js';
 import { locations } from './src/data/locations.js';
 import { news } from './src/data/news.js';
-import { macHubHtml, gamingHtml, MAC_HUB_FAQ, GAMING_FAQ, errorMessagesHtml, ERROR_FAQ, computerWontTurnOnHtml, WONT_TURN_ON_FAQ, faqPageHtml, GENERAL_FAQ, networkHubHtml, NETWORK_HUB_FAQ, websitesHubHtml, WEBSITES_HUB_FAQ, studentsHtml, STUDENTS_FAQ } from './src/data/richPages.js';
+import { macHubHtml, gamingHtml, MAC_HUB_FAQ, GAMING_FAQ, errorMessagesHtml, ERROR_FAQ, computerWontTurnOnHtml, WONT_TURN_ON_FAQ, faqPageHtml, GENERAL_FAQ, networkHubHtml, NETWORK_HUB_FAQ, websitesHubHtml, WEBSITES_HUB_FAQ, studentsHtml, STUDENTS_FAQ, priceRangesHtml } from './src/data/richPages.js';
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const DIST = path.join(__dirname, 'dist');
@@ -77,7 +77,7 @@ function footer() {
   return `<footer class="site-footer"><div class="wrap"><div class="cols">
     <div><img src="/logo.png" alt="PCKlinik" class="logo-foot" width="85" height="34" /><p>Hurtig, ærlig PC- og Mac-reparation til privatpersoner og virksomheder i Frederiksberg og København.</p><p>${site.address}</p></div>
     <div><h2>Reparationer</h2><a href="/lenovo-repair/">Lenovo</a><a href="/hp-repair/">HP</a><a href="/dell-repair/">Dell</a><a href="/macbook-repair/">MacBook</a><a href="/mac-desktop-repair/">Mac (stationær)</a><a href="/microsoft-surface-repair/">Microsoft Surface</a></div>
-    <div><h2>Mere</h2><a href="/shop/">Butik</a><a href="/shop/computers/refurbished/">Refurbished computere</a><a href="/business-it-service-agreement/">IT-support til erhverv</a><a href="/about-us/">Mød teamet</a><a href="/faq/">FAQ</a><a href="/nyheder/">Nyheder</a><a href="/studerende/">Studerende (CBS & DTU)</a><a href="/ask-a-question/">Stil os et spørgsmål</a><a href="/contact/">Kontakt</a></div>
+    <div><h2>Mere</h2><a href="/shop/">Butik</a><a href="/shop/computers/refurbished/">Refurbished computere</a><a href="/business-it-service-agreement/">IT-support til erhverv</a><a href="/about-us/">Mød teamet</a><a href="/faq/">FAQ</a><a href="/nyheder/">Nyheder</a><a href="/studerende/">Studerende (CBS & DTU)</a><a href="/reparationspriser/">Typiske reparationspriser</a><a href="/ask-a-question/">Stil os et spørgsmål</a><a href="/contact/">Kontakt</a></div>
     <div><h2>Områder vi betjener</h2><a href="/computerreparation-koebenhavn/">København</a><a href="/computerreparation-frederiksberg/">Frederiksberg</a><a href="/computerreparation-vesterbro/">Vesterbro</a><a href="/computerreparation-vanloese/">Vanløse</a><a href="/computerreparation-valby/">Valby</a><a href="/computerreparation-nordvest/">Nordvest</a></div>
     
     <div><h2>Kontakt os</h2><p>📞 <a href="${site.phoneHref}" style="display:inline">${site.phone}</a></p><p>✉️ <a href="mailto:${site.emailConsumer}" style="display:inline">${site.emailConsumer}</a></p><p style="margin-top:14px">Man–fre 10:00–18:00<br />Lør 10:00–14:00<br />Søn lukket</p></div>
@@ -627,6 +627,8 @@ async function run() {
   pages.push(['/about-us/', page({ title: 'Om PCKlinik & vores team | PCKlinik', description: 'Mød PCKlinik-teamet — 7 personer, der dækker pc, Mac, netværk, on-site support og web/SEO, med base i Frederiksberg.', p: '/about-us/', body: aboutBody() })]);
   // Students (CBS & DTU) — student-facing SEO/FAQ page
   pages.push(['/studerende/', page({ title: 'Computerreparation til studerende — CBS & DTU | PCKlinik', description: 'Computer- og MacBook-reparation til studerende ved CBS og DTU. Gåafstand fra Solbjerg Plads, Frederiksberg. Skærm, batteri, SSD, backup — fast pris.', p: '/studerende/', body: studentsHtml(), schema: faqSchemaFrom(STUDENTS_FAQ) })]);
+  // Typiske reparationspriser
+  pages.push(['/reparationspriser/', page({ title: 'Typiske reparationspriser | PCKlinik', description: 'Vejledende fra-priser på almindelige reparationer hos PCKlinik — skærm, batteri og SSD-opgradering, inkl. reservedele og arbejdsløn. Fast tilbud før vi går i gang.', p: '/reparationspriser/', body: priceRangesHtml() })]);
   // News section
   pages.push(['/nyheder/', page({ title: 'Nyheder & guides | PCKlinik', description: 'Praktiske computer-, Mac- og IT-guides fra PCKlinik i Frederiksberg — klare svar på almindelige spørgsmål, uden jargon.', p: '/nyheder/', body: newsIndexHtml() })]);
   for (const n of news) pages.push([`/nyheder/${n.slug}/`, page({ title: `${n.title} | PCKlinik Nyheder`, description: n.description, p: `/nyheder/${n.slug}/`, body: newsPostHtml(n), schema: newsPostSchema(n) })]);
