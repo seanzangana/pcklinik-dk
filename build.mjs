@@ -13,7 +13,7 @@ import { lucide, lucideSm } from './src/data/icons.js';
 import { services } from './src/data/services.js';
 import { locations } from './src/data/locations.js';
 import { news } from './src/data/news.js';
-import { macHubHtml, gamingHtml, MAC_HUB_FAQ, GAMING_FAQ, errorMessagesHtml, ERROR_FAQ, computerWontTurnOnHtml, WONT_TURN_ON_FAQ, faqPageHtml, GENERAL_FAQ, networkHubHtml, NETWORK_HUB_FAQ, websitesHubHtml, WEBSITES_HUB_FAQ } from './src/data/richPages.js';
+import { macHubHtml, gamingHtml, MAC_HUB_FAQ, GAMING_FAQ, errorMessagesHtml, ERROR_FAQ, computerWontTurnOnHtml, WONT_TURN_ON_FAQ, faqPageHtml, GENERAL_FAQ, networkHubHtml, NETWORK_HUB_FAQ, websitesHubHtml, WEBSITES_HUB_FAQ, studentsHtml, STUDENTS_FAQ } from './src/data/richPages.js';
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const DIST = path.join(__dirname, 'dist');
@@ -77,7 +77,7 @@ function footer() {
   return `<footer class="site-footer"><div class="wrap"><div class="cols">
     <div><img src="/logo.png" alt="PCKlinik" class="logo-foot" width="85" height="34" /><p>Hurtig, ærlig PC- og Mac-reparation til privatpersoner og virksomheder i Frederiksberg og København.</p><p>${site.address}</p></div>
     <div><h2>Reparationer</h2><a href="/lenovo-repair/">Lenovo</a><a href="/hp-repair/">HP</a><a href="/dell-repair/">Dell</a><a href="/macbook-repair/">MacBook</a><a href="/mac-desktop-repair/">Mac (stationær)</a><a href="/microsoft-surface-repair/">Microsoft Surface</a></div>
-    <div><h2>Mere</h2><a href="/shop/">Butik</a><a href="/shop/computers/refurbished/">Refurbished computere</a><a href="/business-it-service-agreement/">IT-support til erhverv</a><a href="/about-us/">Mød teamet</a><a href="/faq/">FAQ</a><a href="/nyheder/">Nyheder</a><a href="/ask-a-question/">Stil os et spørgsmål</a><a href="/contact/">Kontakt</a></div>
+    <div><h2>Mere</h2><a href="/shop/">Butik</a><a href="/shop/computers/refurbished/">Refurbished computere</a><a href="/business-it-service-agreement/">IT-support til erhverv</a><a href="/about-us/">Mød teamet</a><a href="/faq/">FAQ</a><a href="/nyheder/">Nyheder</a><a href="/studerende/">Studerende (CBS & DTU)</a><a href="/ask-a-question/">Stil os et spørgsmål</a><a href="/contact/">Kontakt</a></div>
     <div><h2>Områder vi betjener</h2><a href="/computerreparation-koebenhavn/">København</a><a href="/computerreparation-frederiksberg/">Frederiksberg</a><a href="/computerreparation-vesterbro/">Vesterbro</a><a href="/computerreparation-vanloese/">Vanløse</a><a href="/computerreparation-valby/">Valby</a><a href="/computerreparation-nordvest/">Nordvest</a></div>
     
     <div><h2>Kontakt os</h2><p>📞 <a href="${site.phoneHref}" style="display:inline">${site.phone}</a></p><p>✉️ <a href="mailto:${site.emailConsumer}" style="display:inline">${site.emailConsumer}</a></p><p style="margin-top:14px">Man–fre 10:00–18:00<br />Lør 10:00–14:00<br />Søn lukket</p></div>
@@ -191,7 +191,7 @@ function repairBody(r) {
   ${photosSection}
   ${whySection}
   <section class="section alt"><div class="wrap"><div class="eyebrow">FAQ</div><h2>${esc(r.brand)}-reparation — ofte stillede spørgsmål</h2><div class="faq">${faq}</div></div></section>
-  <section class="section"><div class="wrap"><div class="cta-band"><h2>${ctaHeading}</h2><p>Gratis fejlsøgning (2–4 dage) eller ekspres for 600 kr. (1–2 timer). Fast pris, før vi går i gang.</p><div class="cta-row"><a class="btn btn-white" href="/contact/">${esc(r.ctaPrimary)}</a><a class="btn btn-ghost-light" href="${site.phoneHref}">📞 Ring ${site.phone}</a></div></div>
+  <section class="section"><div class="wrap"><div class="cta-band"><h2>${ctaHeading}</h2><p>Fejlsøgning 300 kr. (2–4 dage) eller ekspres for 600 kr. (1–2 timer). Fast pris, før vi går i gang.</p><div class="cta-row"><a class="btn btn-white" href="/contact/">${esc(r.ctaPrimary)}</a><a class="btn btn-ghost-light" href="${site.phoneHref}">📞 Ring ${site.phone}</a></div></div>
     <div style="margin-top:32px"><p class="eyebrow">Relaterede reparationer</p><div class="crosslinks">${cross}</div></div></div></section>`;
 }
 function repairSchema(r) {
@@ -201,7 +201,7 @@ function repairSchema(r) {
 // ---------- home ----------
 const HOME_FAQ = [
   ['Reparerer I alle computermærker?', 'Ja, vi reparerer alle større PC- og Mac-mærker samt specialbyggede computere. Kan I ikke se jeres mærke, så se "Andre mærker & specialbyggede".'],
-  ['Hvad koster en reparation?', 'Standardfejlsøgning er gratis (2–4 dage), eller ekspres for 600 kr. (1–2 timer). I får altid en fast pris, før vi går i gang, så der er ingen overraskelser.'],
+  ['Hvad koster en reparation?', 'Standardfejlsøgning koster 300 kr. (2–4 dage), eller ekspres for 600 kr. (1–2 timer). I får altid en fast pris, før vi går i gang, så der er ingen overraskelser.'],
   ['Hvor lang tid tager en reparation?', 'Mange reparationer klares samme dag, især med ekspres fejlsøgning. Mere omfattende reparationer afhænger af, om der skal bestilles reservedele.'],
   ['Tilbyder I service til virksomheder også, ikke kun privatpersoner?', 'Ja — udover reparation tilbyder vi IT-supportaftaler til fast pris, inklusive ubegrænset support, overvågning og sikkerhed. Se vores side om IT-support til erhverv.'],
   ['Hvor ligger I?', 'Falkoner Allé 108, Frederiksberg. Vi betjener Frederiksberg og København direkte, samt resten af Danmark via fjernsupport til IT-supportaftaler.'],
@@ -243,11 +243,11 @@ function homeBody() {
     <h1>Computer- og IT-support — til dig eller din virksomhed</h1>
     <p class="lead">Hurtig, ærlig reparation til privatpersoner. IT-support til fast pris for virksomheder. Vælg din vej nedenfor.</p>
     <div class="grid grid-2 hero-paths">
-      <a class="card card-link" href="/contact/"><div class="card-icon">🖥️</div><h3>Til privatpersoner</h3><p>PC- og Mac-reparation — gratis eller ekspres fejlsøgning, fast pris, de fleste reparationer samme dag.</p><span class="arrow">Book en reparation →</span></a>
+      <a class="card card-link" href="/contact/"><div class="card-icon">🖥️</div><h3>Til privatpersoner</h3><p>PC- og Mac-reparation — standard- eller ekspres-fejlsøgning, fast pris, de fleste reparationer samme dag.</p><span class="arrow">Book en reparation →</span></a>
       <a class="card card-link" href="/business-it-service-agreement/"><div class="card-icon">🏢</div><h3>Til virksomheder</h3><p>IT-supportaftaler til fast pris — ubegrænset support, overvågning og sikkerhed for ét fast månedligt beløb.</p><span class="arrow">Se IT-support til erhverv →</span></a>
     </div></div></section>
   <section class="section"><div class="wrap"><div class="eyebrow">Vores løfte</div><h2>Sådan fungerer det</h2><div class="steps">
-    <div class="step"><div class="num">1</div><h3>Fejlsøgning</h3><p>Gratis (2–4 dage), eller ekspres for 600 kr. (1–2 timer).</p></div>
+    <div class="step"><div class="num">1</div><h3>Fejlsøgning</h3><p>300 kr. (2–4 dage), eller ekspres for 600 kr. (1–2 timer).</p></div>
     <div class="step"><div class="num">2</div><h3>Fast pris</h3><p>I får en klar pris, før vi rører ved noget.</p></div>
     <div class="step"><div class="num">3</div><h3>Reparation</h3><p>Vi udfører reparationen med samme omhu som fejlsøgningen.</p></div></div></div></section>
   <section class="section alt"><div class="wrap"><div class="eyebrow">Hvad vi reparerer</div><h2>Alle større computermærker — PC og Mac</h2>
@@ -500,7 +500,7 @@ function newsPostHtml(n) {
     <h1>${esc(n.title)}</h1><p class="lead">${esc(fmtDate(n.date))}</p></div></section>
   <section class="section"><div class="wrap"><div class="lead-copy" style="max-width:760px">${n.body}</div>
     ${others ? `<div style="margin-top:40px"><p class="eyebrow">Mere fra Nyheder</p><div class="crosslinks">${others}</div></div>` : ''}</div></section>
-  <section class="section alt"><div class="wrap"><div class="cta-band"><h2>Brug for hjælp med dette?</h2><p>Gratis fejlsøgning (2–4 dage) eller ekspres for 600 kr. (1–2 timer). Fast pris, før vi går i gang.</p><div class="cta-row"><a class="btn btn-white" href="/contact/">Kontakt os</a><a class="btn btn-ghost-light" href="${site.phoneHref}">📞 Ring ${site.phone}</a></div></div></div></section>`;
+  <section class="section alt"><div class="wrap"><div class="cta-band"><h2>Brug for hjælp med dette?</h2><p>Fejlsøgning 300 kr. (2–4 dage) eller ekspres for 600 kr. (1–2 timer). Fast pris, før vi går i gang.</p><div class="cta-row"><a class="btn btn-white" href="/contact/">Kontakt os</a><a class="btn btn-ghost-light" href="${site.phoneHref}">📞 Ring ${site.phone}</a></div></div></div></section>`;
 }
 function newsPostSchema(n) {
   return { '@context': 'https://schema.org', '@type': 'BlogPosting', headline: n.title, datePublished: n.date, dateModified: n.date, description: n.description, author: { '@type': 'Organization', name: 'PCKlinik' }, publisher: { '@type': 'Organization', name: 'PCKlinik' }, mainEntityOfPage: `${site.domain}/nyheder/${n.slug}/` };
@@ -531,7 +531,7 @@ function serviceBody(s) {
   const callout = s.callout ? `<section class="section"><div class="wrap"><div class="callout"><strong>${esc(s.callout.label)}:</strong> ${esc(s.callout.text)}</div></div></section>` : '';
   const pricing = s.pricing
     ? `<section class="section alt"><div class="wrap"><div class="eyebrow">Pris</div><h2>${esc(s.pricing.h2)}</h2><p class="sub">${esc(s.pricing.text)}</p></div></section>`
-    : `<section class="section alt"><div class="wrap"><div class="eyebrow">Fejlsøgning &amp; pris</div><h2>Gratis eller ekspres — dit valg</h2><p class="sub">Standardfejlsøgning er gratis (2–4 dage), eller ekspres for 600 kr. (1–2 timer) — med reparation og levering inden for 24 timer, hvis der ikke skal bestilles specielle reservedele. Du får altid en fast pris, før vi går i gang.</p></div></section>`;
+    : `<section class="section alt"><div class="wrap"><div class="eyebrow">Fejlsøgning &amp; pris</div><h2>Standard eller ekspres — dit valg</h2><p class="sub">Standardfejlsøgning koster 300 kr. (2–4 dage), eller ekspres for 600 kr. (1–2 timer) — med reparation og levering inden for 24 timer, hvis der ikke skal bestilles specielle reservedele. Du får altid en fast pris, før vi går i gang.</p></div></section>`;
   const cta = esc(s.ctaLabel || 'Book fejlsøgning');
   const faq = s.faq.map((f) => `<details><summary>${esc(f.q)}</summary><div class="answer">${esc(f.a)}</div></details>`).join('');
   const cross = s.crosslinks.map((c) => `<a href="${c.href}">${esc(c.label)} →</a>`).join('') + `<a href="/contact/">Kontakt & booking →</a>`;
@@ -564,7 +564,7 @@ function locationBody(loc) {
   ${areas}
   <section class="section"><div class="wrap"><div class="eyebrow">FAQ</div><h2>Ofte stillede spørgsmål</h2><div class="faq">${faq}</div></div></section>
   <section class="section alt"><div class="wrap"><div class="eyebrow">Find os</div><h2>Vores værksted — Falkoner Allé 108, Frederiksberg</h2><p class="sub">Vi betjener dette område fra vores værksted i Frederiksberg; aflevering, afhentning og levering kan aftales afhængigt af jeres placering.</p>${mapFrame}</div></section>
-  <section class="section"><div class="wrap"><div class="cta-band"><h2>Brug for reparation i ${esc(loc.name)}?</h2><p>Gratis fejlsøgning (2–4 dage) eller ekspres (600 kr., 1–2 timer). Fast pris, før vi går i gang.</p><div class="cta-row"><a class="btn btn-white" href="/contact/">Book en reparation</a><a class="btn btn-ghost-light" href="${site.phoneHref}">📞 Ring ${site.phone}</a></div></div>
+  <section class="section"><div class="wrap"><div class="cta-band"><h2>Brug for reparation i ${esc(loc.name)}?</h2><p>Fejlsøgning 300 kr. (2–4 dage) eller ekspres (600 kr., 1–2 timer). Fast pris, før vi går i gang.</p><div class="cta-row"><a class="btn btn-white" href="/contact/">Book en reparation</a><a class="btn btn-ghost-light" href="${site.phoneHref}">📞 Ring ${site.phone}</a></div></div>
     <div style="margin-top:32px"><p class="eyebrow">Relateret</p><div class="crosslinks">${cross}</div></div></div></section>`;
 }
 // ---------- write helpers ----------
@@ -593,7 +593,7 @@ async function run() {
 
   const pages = [];
   // home
-  pages.push(['/', page({ title: 'PCKlinik | Computer- og Mac-reparation i København', description: 'Computer- og Mac-reparation i Frederiksberg og København. Gratis fejlsøgning (2–4 dage) eller ekspres (600 kr., 1–2 timer). Ring 91 81 61 81.', p: '/', body: homeBody(), schema: faqSchemaFrom(HOME_FAQ) })]);
+  pages.push(['/', page({ title: 'PCKlinik | Computer- og Mac-reparation i København', description: 'Computer- og Mac-reparation i Frederiksberg og København. Fejlsøgning 300 kr. (2–4 dage) eller ekspres (600 kr., 1–2 timer). Ring 91 81 61 81.', p: '/', body: homeBody(), schema: faqSchemaFrom(HOME_FAQ) })]);
   // repairs
   for (const r of repairs) {
     pages.push([`/${r.slug}/`, page({ title: r.title, description: r.description, p: `/${r.slug}/`, body: repairBody(r), schema: repairSchema(r) })]);
@@ -610,7 +610,7 @@ async function run() {
   pages.push(['/shop/backup-security/', page({ title: 'Backup & sikkerhed | PCKlinik Butik', description: 'Eksterne harddiske, NAS-løsninger og sikkerhedssoftware anbefalet af PCKlinik. Sikker betaling via Stripe.', p: '/shop/backup-security/', body: shopBackup() })]);
 
   // Mac Repair hub (broad intent)
-  pages.push(['/mac-repair/', page({ title: 'Mac-reparation i Frederiksberg & København | PCKlinik', description: 'Reparation af MacBook, iMac, Mac mini, Mac Studio og Mac Pro i Frederiksberg og København. Gratis fejlsøgning, fast pris, hurtig ekspedition.', p: '/mac-repair/', body: macHubHtml(), schema: faqSchemaFrom(MAC_HUB_FAQ) })]);
+  pages.push(['/mac-repair/', page({ title: 'Mac-reparation i Frederiksberg & København | PCKlinik', description: 'Reparation af MacBook, iMac, Mac mini, Mac Studio og Mac Pro i Frederiksberg og København. Fejlsøgning fra 300 kr., fast pris, hurtig ekspedition.', p: '/mac-repair/', body: macHubHtml(), schema: faqSchemaFrom(MAC_HUB_FAQ) })]);
   // Gaming PC repair, service & custom builds
   pages.push(['/gaming-pc-repair-and-build/', page({ title: 'Gaming-pc — reparation, service & specialbyggede | PCKlinik', description: 'Reparation af gaming-pc, køleservice og specialbyggede pc’er i Frederiksberg og København. GPU, overophedning, opgraderinger — plus bygning fra bunden.', p: '/gaming-pc-repair-and-build/', body: gamingHtml(), schema: faqSchemaFrom(GAMING_FAQ) })]);
   // Error messages reference page
@@ -625,6 +625,8 @@ async function run() {
   pages.push(['/websites-seo-google-ads/', page({ title: 'Webdesign, SEO & Google Ads | PCKlinik', description: 'Webdesign, SEO og Google Ads-administration til virksomheder i København. Bygget og optimeret af en, der faktisk laver arbejdet.', p: '/websites-seo-google-ads/', body: websitesHubHtml(), schema: faqSchemaFrom(WEBSITES_HUB_FAQ) })]);
   // About / Meet the Team
   pages.push(['/about-us/', page({ title: 'Om PCKlinik & vores team | PCKlinik', description: 'Mød PCKlinik-teamet — 7 personer, der dækker pc, Mac, netværk, on-site support og web/SEO, med base i Frederiksberg.', p: '/about-us/', body: aboutBody() })]);
+  // Students (CBS & DTU) — student-facing SEO/FAQ page
+  pages.push(['/studerende/', page({ title: 'Computerreparation til studerende — CBS & DTU | PCKlinik', description: 'Computer- og MacBook-reparation til studerende ved CBS og DTU. Gåafstand fra Solbjerg Plads, Frederiksberg. Skærm, batteri, SSD, backup — fast pris.', p: '/studerende/', body: studentsHtml(), schema: faqSchemaFrom(STUDENTS_FAQ) })]);
   // News section
   pages.push(['/nyheder/', page({ title: 'Nyheder & guides | PCKlinik', description: 'Praktiske computer-, Mac- og IT-guides fra PCKlinik i Frederiksberg — klare svar på almindelige spørgsmål, uden jargon.', p: '/nyheder/', body: newsIndexHtml() })]);
   for (const n of news) pages.push([`/nyheder/${n.slug}/`, page({ title: `${n.title} | PCKlinik Nyheder`, description: n.description, p: `/nyheder/${n.slug}/`, body: newsPostHtml(n), schema: newsPostSchema(n) })]);
