@@ -4,7 +4,7 @@
 // Reads data files (src/data/*.js) and CSS (src/styles/global.css).
 //   Run:  node build.mjs
 // ============================================================================
-import { promises as fs } from 'node:fs';
+import { promises as fs, readFileSync } from 'node:fs';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { repairs } from './src/data/repairs.js';
@@ -17,6 +17,12 @@ import { macHubHtml, gamingHtml, MAC_HUB_FAQ, GAMING_FAQ, errorMessagesHtml, ERR
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const DIST = path.join(__dirname, 'dist');
+// Inlined directly into every page's <head> (see page() below) so the
+// stylesheet is never a render-blocking network request — global.css is
+// small (~6.6 KiB) so inlining it is cheap and removes the ~160ms
+// render-blocking-resources penalty PageSpeed was flagging. Still copied to
+// /styles/global.css in dist/ (see run()) as a fallback/for direct linking.
+const GLOBAL_CSS = readFileSync(path.join(__dirname, 'src/styles/global.css'), 'utf8');
 const esc = (s) => String(s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
 // Renders a <form> opening + hidden routing fields for the active form mode.
 function formOpen(dest, subject, nextPath) {
@@ -151,7 +157,7 @@ function page({ title, description, p, body, schema = null, lang = 'da', dir = '
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" media="print" onload="this.media='all'" />
   <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" /></noscript>
-  <link rel="stylesheet" href="/styles/global.css" />
+  <style>${GLOBAL_CSS}</style>
   ${ld}
 </head>
 <body>
@@ -243,8 +249,8 @@ function homeBody() {
     <h1>Computer- og IT-support — til dig eller din virksomhed</h1>
     <p class="lead">Hurtig, ærlig reparation til privatpersoner. IT-support til fast pris for virksomheder. Vælg din vej nedenfor.</p>
     <div class="grid grid-2 hero-paths">
-      <a class="card card-link" href="/kontakt/"><div class="card-icon">🖥️</div><h3>Til privatpersoner</h3><p>PC- og Mac-reparation — standard- eller ekspres-fejlsøgning, fast pris, de fleste reparationer samme dag.</p><span class="arrow">Book en reparation →</span></a>
-      <a class="card card-link" href="/it-support-til-erhverv/"><div class="card-icon">🏢</div><h3>Til virksomheder</h3><p>IT-supportaftaler til fast pris — ubegrænset support, overvågning og sikkerhed for ét fast månedligt beløb.</p><span class="arrow">Se IT-support til erhverv →</span></a>
+      <a class="card card-link" href="/kontakt/"><div class="card-icon">🖥️</div><h2>Til privatpersoner</h2><p>PC- og Mac-reparation — standard- eller ekspres-fejlsøgning, fast pris, de fleste reparationer samme dag.</p><span class="arrow">Book en reparation →</span></a>
+      <a class="card card-link" href="/it-support-til-erhverv/"><div class="card-icon">🏢</div><h2>Til virksomheder</h2><p>IT-supportaftaler til fast pris — ubegrænset support, overvågning og sikkerhed for ét fast månedligt beløb.</p><span class="arrow">Se IT-support til erhverv →</span></a>
     </div></div></section>
   <section class="section"><div class="wrap"><div class="eyebrow">Vores løfte</div><h2>Sådan fungerer det</h2><div class="steps">
     <div class="step"><div class="num">1</div><h3>Fejlsøgning</h3><p>300 kr. (2–4 dage), eller ekspres for 600 kr. (1–2 timer).</p></div>

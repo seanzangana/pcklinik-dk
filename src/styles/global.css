@@ -358,7 +358,7 @@ textarea { resize: vertical; min-height: 120px; }
 
 /* ---------- Homepage split-hero path cards ---------- */
 .hero-paths { margin-top: 10px; }
-.hero-paths .card h3 { font-size: 18px; }
+.hero-paths .card h2 { font-size: 18px; font-weight: 700; margin: 0 0 8px; }
 .hero-paths .card p { font-size: 14px; }
 
 /* ---------- Services cascading flyout ---------- */
