@@ -20,7 +20,7 @@ export const news = [
 <p>På en Mac: hold Alternativ (Option) nede og klik på batteri-ikonet, eller tjek Systemindstillinger → Batteri → Batterisundhed. På Windows: åbn en kommandoprompt og kør <code>powercfg /batteryreport</code> for at se designkapacitet over for nuværende kapacitet. Er det nuværende tal langt under det oprindelige, bekræfter tallene det, du allerede kan mærke.</p>
 <h2>Værd at skifte batteriet — eller den bærbare?</h2>
 <p>På de fleste maskiner er et batteriskift hurtigt og langt billigere end en ny computer, så det kan sagtens betale sig, hvis resten af den bærbare er fin. På en meget gammel maskine med andre problemer er det måske ikke det. Vi giver altid et ærligt svar som en del af den faste pris i stedet for at presse en udskiftning på dig, du ikke har brug for.</p>
-<p>Har du set nogle af disse tegn, klarer vi batteriskift til bærbare og MacBook — se vores side om <a href="/mac-battery-replacement/">Mac-batteriskift</a>, eller <a href="/contact/">kontakt os</a>, så tjekker vi batteriets reelle sundhed for dig.</p>
+<p>Har du set nogle af disse tegn, klarer vi batteriskift til bærbare og MacBook — se vores side om <a href="/mac-batteriskift/">Mac-batteriskift</a>, eller <a href="/kontakt/">kontakt os</a>, så tjekker vi batteriets reelle sundhed for dig.</p>
 `,
   },
   {
@@ -42,7 +42,7 @@ export const news = [
 <h2>En globus, eller en roterende globus</h2>
 <p>Mac’en forsøger at starte op over internettet (Internet Recovery), fordi den ikke kunne starte fra den indbyggede disk. Det peger igen på et manglende eller beskadiget system på disken.</p>
 <h2>Hvad du skal gøre</h2>
-<p>Nogle af disse har sikre gør-det-selv-trin, men flere — især spørgsmålstegns-mappen og en fastlåst statuslinje — kan involvere en disk, der er ved at svigte, hvor hver ekstra genstart er en lille risiko for dine data. Ser du nogle af disse, dækker vores <a href="/error-messages/">Fejlmeddelelser</a>-guide flere koder, og vores <a href="/mac-repair/">Mac-reparation</a>-team kan diagnosticere præcis, hvad symbolet betyder for din maskine. Er du i tvivl, så <a href="/contact/">kontakt os</a>, før dataene bliver sværere at redde.</p>
+<p>Nogle af disse har sikre gør-det-selv-trin, men flere — især spørgsmålstegns-mappen og en fastlåst statuslinje — kan involvere en disk, der er ved at svigte, hvor hver ekstra genstart er en lille risiko for dine data. Ser du nogle af disse, dækker vores <a href="/fejlmeddelelser/">Fejlmeddelelser</a>-guide flere koder, og vores <a href="/mac-reparation/">Mac-reparation</a>-team kan diagnosticere præcis, hvad symbolet betyder for din maskine. Er du i tvivl, så <a href="/kontakt/">kontakt os</a>, før dataene bliver sværere at redde.</p>
 `,
   },
   {
@@ -63,7 +63,7 @@ export const news = [
 <p>En almindelig, nem opsætning: dine filer ligger på den bærbare (kopi et), en ekstern disk derhjemme tager backup automatisk (kopi to, andet medie), og en cloud-backuptjeneste holder en tredje kopi et andet sted. Sæt de automatiske op én gang, og de kører stille i baggrunden. Det er hele pointen — en backup, du skal huske at tage, er en backup, du før eller siden glemmer.</p>
 <h2>Den ene ting, der er værd at tjekke</h2>
 <p>En backup, du aldrig har testet, er endnu ikke rigtig en backup. Åbn en gang imellem en fil fra backuppen for at bekræfte, at den faktisk gendannes. Det tager et minut og er forskellen på "jeg har en backup" og "jeg havde det, jeg troede var en backup".</p>
-<p>Vil du hellere have det sat ordentligt og automatisk op — så det bare kører, uden du tænker over det — er det præcis, hvad vores <a href="/data-backup-and-recovery/">Backup &amp; datagenskabelse</a>-service gør. Og har du allerede mistet noget, så <a href="/contact/">kontakt os</a> hurtigt; jo før vi kigger, jo bedre er oddsene for at få det tilbage.</p>
+<p>Vil du hellere have det sat ordentligt og automatisk op — så det bare kører, uden du tænker over det — er det præcis, hvad vores <a href="/backup-og-datagendannelse/">Backup &amp; datagenskabelse</a>-service gør. Og har du allerede mistet noget, så <a href="/kontakt/">kontakt os</a> hurtigt; jo før vi kigger, jo bedre er oddsene for at få det tilbage.</p>
 `,
   },
 ];
