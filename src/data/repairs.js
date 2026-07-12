@@ -8,7 +8,7 @@
 export const repairs = [
   // ------------------------------------------------------------------ LENOVO
   {
-    slug: 'lenovo-repair',
+    slug: 'lenovo-reparation',
     brand: 'Lenovo',
     title: 'Lenovo-reparation: ThinkPad T14, IdeaPad, Legion | PCKlinik',
     description: 'Reparation af Lenovo ThinkPad T14, T14s, X1 Carbon, IdeaPad 3/5 og Legion i Frederiksberg og København. Fejlsøgning fra 300 kr., fast pris. Ring 91 81 61 81.',
@@ -55,13 +55,13 @@ export const repairs = [
       { path: '/images/lenovo/x1-carbon-hinge.jpg', alt: 'Lenovo ThinkPad X1 Carbon hængselreparation' },
       { path: '/images/lenovo/legion-5-cooling.jpg', alt: 'Lenovo Legion 5 køling og blæserreparation' },
     ],
-    crosslinks: [{ label: 'HP-reparation', href: '/hp-repair/' }, { label: 'Dell-reparation', href: '/dell-repair/' }],
+    crosslinks: [{ label: 'HP-reparation', href: '/hp-reparation/' }, { label: 'Dell-reparation', href: '/dell-reparation/' }],
     ctaPrimary: 'Book Lenovo-fejlsøgning',
   },
 
   // -------------------------------------------------------------------- ACER
   {
-    slug: 'acer-repair',
+    slug: 'acer-reparation',
     brand: 'Acer',
     title: 'Acer-reparation: Aspire, Nitro, Swift | PCKlinik',
     description: 'Reparation af Acer Aspire 5, Nitro 5, Swift og Predator i Frederiksberg og København. Fejlsøgning fra 300 kr., fast pris. Ring 91 81 61 81.',
@@ -103,13 +103,13 @@ export const repairs = [
       { path: '/images/acer/nitro-5-cooling.jpg', alt: 'Acer Nitro 5 køling og blæserreparation' },
       { path: '/images/acer/swift-3-repair.jpg', alt: 'Acer Swift 3 skærmudskiftning' },
     ],
-    crosslinks: [{ label: 'Asus-reparation', href: '/asus-repair/' }, { label: 'MSI-reparation', href: '/msi-repair/' }],
+    crosslinks: [{ label: 'Asus-reparation', href: '/asus-reparation/' }, { label: 'MSI-reparation', href: '/msi-reparation/' }],
     ctaPrimary: 'Book Acer-fejlsøgning',
   },
 
   // ---------------------------------------------------------------------- HP
   {
-    slug: 'hp-repair',
+    slug: 'hp-reparation',
     brand: 'HP',
     title: 'HP-reparation: EliteBook, Pavilion, Spectre | PCKlinik',
     description: 'Reparation af HP EliteBook 840, Pavilion, Spectre x360 og Omen i Frederiksberg og København. Fejlsøgning fra 300 kr., fast pris. Ring 91 81 61 81.',
@@ -151,13 +151,13 @@ export const repairs = [
       { path: '/images/hp/spectre-x360-hinge.jpg', alt: 'HP Spectre x360 hængselreparation' },
       { path: '/images/hp/omen-cooling.jpg', alt: 'HP Omen blæserrensning og kølereparation' },
     ],
-    crosslinks: [{ label: 'Lenovo-reparation', href: '/lenovo-repair/' }, { label: 'Dell-reparation', href: '/dell-repair/' }],
+    crosslinks: [{ label: 'Lenovo-reparation', href: '/lenovo-reparation/' }, { label: 'Dell-reparation', href: '/dell-reparation/' }],
     ctaPrimary: 'Book HP-fejlsøgning',
   },
 
   // -------------------------------------------------------------------- DELL
   {
-    slug: 'dell-repair',
+    slug: 'dell-reparation',
     brand: 'Dell',
     title: 'Dell-reparation: XPS, Latitude, Inspiron | PCKlinik',
     description: 'Reparation af Dell XPS 13/15, Latitude, Inspiron og Precision i Frederiksberg og København. Fejlsøgning fra 300 kr., fast pris. Ring 91 81 61 81.',
@@ -199,13 +199,13 @@ export const repairs = [
       { path: '/images/dell/latitude-7440-battery.jpg', alt: 'Dell Latitude 7440 batteriskift' },
       { path: '/images/dell/inspiron-screen.jpg', alt: 'Dell Inspiron skærmudskiftning' },
     ],
-    crosslinks: [{ label: 'HP-reparation', href: '/hp-repair/' }, { label: 'Lenovo-reparation', href: '/lenovo-repair/' }],
+    crosslinks: [{ label: 'HP-reparation', href: '/hp-reparation/' }, { label: 'Lenovo-reparation', href: '/lenovo-reparation/' }],
     ctaPrimary: 'Book Dell-fejlsøgning',
   },
 
   // -------------------------------------------------------------------- ASUS
   {
-    slug: 'asus-repair',
+    slug: 'asus-reparation',
     brand: 'Asus',
     title: 'Asus-reparation: ZenBook, ROG, Vivobook | PCKlinik',
     description: 'Reparation af Asus ZenBook 14, ROG Strix, TUF Gaming og Vivobook i Frederiksberg og København. Fejlsøgning fra 300 kr., fast pris. Ring 91 81 61 81.',
@@ -247,13 +247,13 @@ export const repairs = [
       { path: '/images/asus/rog-strix-cooling.jpg', alt: 'Asus ROG Strix kølereparation' },
       { path: '/images/asus/vivobook-battery.jpg', alt: 'Asus Vivobook batteriskift' },
     ],
-    crosslinks: [{ label: 'Acer-reparation', href: '/acer-repair/' }, { label: 'MSI-reparation', href: '/msi-repair/' }],
+    crosslinks: [{ label: 'Acer-reparation', href: '/acer-reparation/' }, { label: 'MSI-reparation', href: '/msi-reparation/' }],
     ctaPrimary: 'Book Asus-fejlsøgning',
   },
 
   // --------------------------------------------------------------------- MSI
   {
-    slug: 'msi-repair',
+    slug: 'msi-reparation',
     brand: 'MSI',
     title: 'MSI-reparation: Katana, GF63, Stealth | PCKlinik',
     description: 'Reparation af MSI Katana, GF63, Stealth og Prestige i Frederiksberg og København. Fejlsøgning fra 300 kr., fast pris. Ring 91 81 61 81.',
@@ -295,13 +295,13 @@ export const repairs = [
       { path: '/images/msi/katana-15-screen.jpg', alt: 'MSI Katana 15 skærmreparation' },
       { path: '/images/msi/stealth-battery.jpg', alt: 'MSI Stealth batteriskift' },
     ],
-    crosslinks: [{ label: 'Asus-reparation', href: '/asus-repair/' }, { label: 'Acer-reparation', href: '/acer-repair/' }],
+    crosslinks: [{ label: 'Asus-reparation', href: '/asus-reparation/' }, { label: 'Acer-reparation', href: '/acer-reparation/' }],
     ctaPrimary: 'Book MSI-fejlsøgning',
   },
 
   // ------------------------------------------------------------------ HUAWEI
   {
-    slug: 'huawei-repair',
+    slug: 'huawei-reparation',
     brand: 'Huawei',
     title: 'Huawei-reparation: MateBook D14, X Pro | PCKlinik',
     description: 'Reparation af Huawei MateBook D14, MateBook X Pro og MateBook 14 i Frederiksberg og København. Fejlsøgning fra 300 kr., fast pris. Ring 91 81 61 81.',
@@ -340,13 +340,13 @@ export const repairs = [
       { path: '/images/huawei/matebook-d14-screen.jpg', alt: 'Huawei MateBook D14 skærmreparation Frederiksberg' },
       { path: '/images/huawei/matebook-x-pro-charging.jpg', alt: 'Huawei MateBook X Pro ladeportreparation' },
     ],
-    crosslinks: [{ label: 'Lenovo-reparation', href: '/lenovo-repair/' }],
+    crosslinks: [{ label: 'Lenovo-reparation', href: '/lenovo-reparation/' }],
     ctaPrimary: 'Book Huawei-fejlsøgning',
   },
 
   // ----------------------------------------------------------------- MACBOOK
   {
-    slug: 'macbook-repair',
+    slug: 'macbook-reparation',
     brand: 'MacBook',
     title: 'MacBook-reparation: Pro, Air, M1/M2/M3 | PCKlinik',
     description: 'Reparation af MacBook Pro 13"/14"/16" og MacBook Air M1/M2/M3 i Frederiksberg og København. Fejlsøgning fra 300 kr., fast pris. Ring 91 81 61 81.',
@@ -387,13 +387,13 @@ export const repairs = [
       { path: '/images/macbook/pro-13-battery.jpg', alt: 'MacBook Pro 13 batteriskift' },
       { path: '/images/macbook/butterfly-keyboard.jpg', alt: 'MacBook Pro butterfly-tastaturreparation' },
     ],
-    crosslinks: [{ label: 'Mac (stationær)-reparation', href: '/mac-desktop-repair/' }, { label: 'Microsoft Surface-reparation', href: '/microsoft-surface-repair/' }],
+    crosslinks: [{ label: 'Mac (stationær)-reparation', href: '/mac-stationaer-reparation/' }, { label: 'Microsoft Surface-reparation', href: '/microsoft-surface-reparation/' }],
     ctaPrimary: 'Book MacBook-fejlsøgning',
   },
 
   // ------------------------------------------------------- MICROSOFT SURFACE
   {
-    slug: 'microsoft-surface-repair',
+    slug: 'microsoft-surface-reparation',
     brand: 'Microsoft Surface',
     title: 'Microsoft Surface-reparation: Pro, Laptop, Book | PCKlinik',
     description: 'Reparation af Microsoft Surface Pro, Surface Laptop og Surface Book i Frederiksberg og København. Fejlsøgning fra 300 kr., fast pris. Ring 91 81 61 81.',
@@ -434,13 +434,13 @@ export const repairs = [
       { path: '/images/microsoft-surface/book-hinge.jpg', alt: 'Surface Book hængselreparation' },
       { path: '/images/microsoft-surface/laptop-screen.jpg', alt: 'Surface Laptop skærmudskiftning' },
     ],
-    crosslinks: [{ label: 'MacBook-reparation', href: '/macbook-repair/' }],
+    crosslinks: [{ label: 'MacBook-reparation', href: '/macbook-reparation/' }],
     ctaPrimary: 'Book Surface-fejlsøgning',
   },
 
   // ----------------------------------------------------------------- SAMSUNG
   {
-    slug: 'samsung-repair',
+    slug: 'samsung-reparation',
     brand: 'Samsung',
     title: 'Samsung-reparation: Galaxy Book Pro, Go | PCKlinik',
     description: 'Reparation af Samsung Galaxy Book3, Galaxy Book4 Pro og Galaxy Book Go i Frederiksberg og København. Fejlsøgning fra 300 kr., fast pris. Ring 91 81 61 81.',
@@ -480,13 +480,13 @@ export const repairs = [
       { path: '/images/samsung/galaxy-book4-pro-screen.jpg', alt: 'Samsung Galaxy Book4 Pro skærmreparation Frederiksberg' },
       { path: '/images/samsung/galaxy-book3-360-spen.jpg', alt: 'Samsung Galaxy Book3 360 S Pen-reparation' },
     ],
-    crosslinks: [{ label: 'Microsoft Surface-reparation', href: '/microsoft-surface-repair/' }],
+    crosslinks: [{ label: 'Microsoft Surface-reparation', href: '/microsoft-surface-reparation/' }],
     ctaPrimary: 'Book Samsung-fejlsøgning',
   },
 
   // ------------------------------------------------------------- MAC DESKTOP
   {
-    slug: 'mac-desktop-repair',
+    slug: 'mac-stationaer-reparation',
     brand: 'Mac (stationær)',
     title: 'Reparation af stationær Mac: iMac, Mac mini, Mac Studio | PCKlinik',
     description: 'Reparation af iMac, Mac mini, Mac Studio og Mac Pro i Frederiksberg og København. Fejlsøgning fra 300 kr., fast pris. Ring 91 81 61 81.',
@@ -495,7 +495,7 @@ export const repairs = [
     intro: [
       'Har du problemer med din stationære Mac? Hos PCKlinik reparerer vi alle Mac-modeller — <strong>iMac 24" (M1/M3), iMac 27" (Intel), Mac mini (M2/M4), Mac Studio (M1 Max/Ultra, M2 Max/Ultra)</strong> og <strong>Mac Pro</strong> — for privatpersoner og virksomheder i Frederiksberg og København.',
       'Uanset om det er en <strong>iMac</strong>, der ikke vil starte, en <strong>Mac mini</strong>, der er blevet mistænkeligt langsom, eller en <strong>Mac Studio</strong>, der laver usædvanlig blæserstøj, arbejder vi os metodisk igennem det. Vi laver en grundig fejlsøgning af din Mac og giver dig en fast pris, før vi går i gang — så du altid kender prisen, før vi rører ved maskinen. Standardfejlsøgning koster 300 kr. (2–4 dage), eller vælg ekspres for 600 kr. (1–2 timer).',
-      'Leder du efter reparation af MacBook (bærbar) i stedet? Det har vi en dedikeret side til — <a href="/macbook-repair/">se MacBook-reparation her</a>.',
+      'Leder du efter reparation af MacBook (bærbar) i stedet? Det har vi en dedikeret side til — <a href="/macbook-reparation/">se MacBook-reparation her</a>.',
     ],
     models: [
       { series: 'iMac', models: 'iMac 24" M1, iMac 24" M3, iMac 27" (Intel, ældre)', issue: 'Vil ikke tænde, HDD/SSD-fejl, skærm/baggrundslys, blæserstøj' },
@@ -529,14 +529,14 @@ export const repairs = [
       { path: '/images/mac/mac-mini-ssd.jpg', alt: 'Mac mini SSD-opgradering Frederiksberg' },
       { path: '/images/mac/mac-studio-cooling.jpg', alt: 'Mac Studio køling og blæserreparation' },
     ],
-    crosslinks: [{ label: 'MacBook-reparation', href: '/macbook-repair/' }],
+    crosslinks: [{ label: 'MacBook-reparation', href: '/macbook-reparation/' }],
     ctaPrimary: 'Book Mac-fejlsøgning',
   },
 
   // ---------------------------------------------- OTHER BRANDS & CUSTOM BUILDS
   // Opsamlingsside. Ingen modeltabel / fotos / why-blok efter design.
   {
-    slug: 'other-brands-repair',
+    slug: 'andre-maerker-reparation',
     brand: 'Andre mærker & specialbyggede',
     title: 'Reparation af andre mærker & specialbyggede | PCKlinik',
     description: 'Computerreparation af Gigabyte, LG gram, Razer, specialbyggede stationære og ethvert mærke, der ikke er nævnt — Frederiksberg og København. Fejlsøgning fra 300 kr., fast pris.',
@@ -560,13 +560,13 @@ export const repairs = [
       { q: 'Jeg har en bærbar fra et mærke, jeg aldrig har set nævnt nogen steder på jeres side — vil I stadig kigge på den?', a: 'Ja — denne side findes netop til den situation. Kom forbi, så fejlsøger vi den på samme måde som ethvert andet mærke.' },
       { q: 'Får specialbyggede stationære pc’er samme standard-/ekspres-fejlsøgningspris som mærkevarebærbare?', a: 'Ja, samme prismodel gælder, uanset om det er et stort mærke, et mindre kendt mærke eller en specialbygget maskine.' },
     ],
-    crosslinks: [{ label: 'MSI-reparation', href: '/msi-repair/' }, { label: 'Mac (stationær)-reparation', href: '/mac-desktop-repair/' }],
+    crosslinks: [{ label: 'MSI-reparation', href: '/msi-reparation/' }, { label: 'Mac (stationær)-reparation', href: '/mac-stationaer-reparation/' }],
     ctaPrimary: 'Book fejlsøgning',
     ctaHeading: 'Har du et mærke, vi ikke har nævnt, eller en specialbygget maskine?',
   },
   // ------------------------------------------------------- TOSHIBA / DYNABOOK
   {
-    slug: 'toshiba-dynabook-repair',
+    slug: 'toshiba-dynabook-reparation',
     brand: 'Toshiba & Dynabook',
     title: 'Toshiba- & Dynabook-reparation | PCKlinik',
     description: 'Reparation af Toshiba- og Dynabook-bærbare — Satellite, Portégé, Tecra — i Frederiksberg og København. Fejlsøgning fra 300 kr., fast pris.',
@@ -598,13 +598,13 @@ export const repairs = [
       { q: 'Reparerer I stadig ældre Toshiba-modeller, eller kun nyere Dynabook?', a: 'Begge dele — alder stopper os ikke fra at reparere den, så længe der er reservedele.' },
       { q: 'Er Dynabook det samme firma som Toshiba?', a: 'Dynabook er den omdøbte efterfølger til Toshibas bærbar-forretning (overtaget af Sharp) — vi reparerer begge under samme service.' },
     ],
-    crosslinks: [{ label: 'Andre mærker & specialbyggede', href: '/other-brands-repair/' }, { label: 'Computerreparation i København', href: '/computerreparation-koebenhavn/' }],
+    crosslinks: [{ label: 'Andre mærker & specialbyggede', href: '/andre-maerker-reparation/' }, { label: 'Computerreparation i København', href: '/computerreparation-koebenhavn/' }],
     ctaPrimary: 'Book Toshiba-fejlsøgning',
   },
 
   // ------------------------------------------------------------------ FUJITSU
   {
-    slug: 'fujitsu-repair', brand: 'Fujitsu',
+    slug: 'fujitsu-reparation', brand: 'Fujitsu',
     title: 'Reparation af Fujitsu-bærbare | PCKlinik',
     description: 'Reparation af Fujitsu LIFEBOOK i Frederiksberg og København. Vi sælger også istandsatte Fujitsu-bærbare. Fejlsøgning fra 300 kr., fast pris.',
     h1: 'Fujitsu-reparation i Frederiksberg & København',
@@ -635,12 +635,12 @@ export const repairs = [
       { q: 'Ser I faktisk mange Fujitsu-bærbare, eller er det en sjælden henvendelse?', a: 'Vi ser dem jævnligt — vi sælger selv istandsatte Fujitsu-enheder, så vi er allerede fortrolige med de almindelige problemer.' },
       { q: 'Er Fujitsu-dele svære at skaffe?', a: 'Mindre almindelige end Lenovo/HP/Dell, men vi har erfaring med at finde det nødvendige.' },
     ],
-    crosslinks: [{ label: 'Refurbished computere', href: '/shop/computers/refurbished/' }, { label: 'Andre mærker & specialbyggede', href: '/other-brands-repair/' }],
+    crosslinks: [{ label: 'Refurbished computere', href: '/butik/computere/refurbished/' }, { label: 'Andre mærker & specialbyggede', href: '/andre-maerker-reparation/' }],
     ctaPrimary: 'Book Fujitsu-fejlsøgning',
   },
   // ------------------------------------------------------------------- LG GRAM
   {
-    slug: 'lg-gram-repair', brand: 'LG gram',
+    slug: 'lg-gram-reparation', brand: 'LG gram',
     title: 'Reparation af LG gram-bærbare | PCKlinik',
     description: 'Reparation af LG gram-bærbare i Frederiksberg og København. Skærm, batteri, tastatur. Fejlsøgning fra 300 kr., fast pris.',
     h1: 'LG gram-reparation i Frederiksberg & København',
@@ -667,12 +667,12 @@ export const repairs = [
       { q: 'Er LG gram sværere at reparere, fordi den er så let?', a: 'Det kræver omhu på grund af det tynde kabinet, men vi har det rette værktøj og den rette erfaring.' },
       { q: 'Reparerer I både ældre og nyere LG gram-modeller?', a: 'Ja, uanset generation.' },
     ],
-    crosslinks: [{ label: 'Andre mærker & specialbyggede', href: '/other-brands-repair/' }, { label: 'Computerreparation i København', href: '/computerreparation-koebenhavn/' }],
+    crosslinks: [{ label: 'Andre mærker & specialbyggede', href: '/andre-maerker-reparation/' }, { label: 'Computerreparation i København', href: '/computerreparation-koebenhavn/' }],
     ctaPrimary: 'Book LG gram-fejlsøgning',
   },
   // --------------------------------------------------------------- RAZER BLADE
   {
-    slug: 'razer-blade-repair', brand: 'Razer Blade',
+    slug: 'razer-blade-reparation', brand: 'Razer Blade',
     title: 'Reparation af Razer Blade-bærbare | PCKlinik',
     description: 'Reparation af Razer Blade gaming-bærbare i Frederiksberg og København. Skærm, køling, batteri. Fejlsøgning fra 300 kr., fast pris.',
     h1: 'Razer Blade-reparation i Frederiksberg & København',
@@ -699,7 +699,7 @@ export const repairs = [
       { q: 'Er en Razer Blade sværere at reparere end andre gaming-bærbare?', a: 'Det kompakte aluminiumskabinet kræver mere omhu, men vi har erfaring med tynde og lette gaming-bærbardesign.' },
       { q: 'Arbejder I på både standard- og Studio Edition-modellerne af Razer Blade?', a: 'Ja.' },
     ],
-    crosslinks: [{ label: 'Gaming-pc’er & specialbyggede', href: '/gaming-pc-repair-and-build/' }, { label: 'Andre mærker & specialbyggede', href: '/other-brands-repair/' }],
+    crosslinks: [{ label: 'Gaming-pc’er & specialbyggede', href: '/gaming-pc-reparation/' }, { label: 'Andre mærker & specialbyggede', href: '/andre-maerker-reparation/' }],
     ctaPrimary: 'Book Razer Blade-fejlsøgning',
   },
 
