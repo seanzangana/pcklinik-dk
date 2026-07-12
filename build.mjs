@@ -77,7 +77,7 @@ function footer() {
   return `<footer class="site-footer"><div class="wrap"><div class="cols">
     <div><img src="/logo.png" alt="PCKlinik" class="logo-foot" width="85" height="34" /><p>Hurtig, ærlig PC- og Mac-reparation til privatpersoner og virksomheder i Frederiksberg og København.</p><p>${site.address}</p></div>
     <div><h2>Reparationer</h2><a href="/computer-reparation/">Computer reparation</a><a href="/lenovo-reparation/">Lenovo</a><a href="/hp-reparation/">HP</a><a href="/dell-reparation/">Dell</a><a href="/macbook-reparation/">MacBook</a><a href="/mac-stationaer-reparation/">Mac (stationær)</a><a href="/bundkort-reparation/">Bundkortreparation</a></div>
-    <div><h2>Mere</h2><a href="/butik/">Butik</a><a href="/butik/computere/refurbished/">Refurbished computere</a><a href="/it-support-til-erhverv/">IT-support til erhverv</a><a href="/it-support-frederiksberg/">IT-support Frederiksberg</a><a href="/om-os/">Mød teamet</a><a href="/faq/">FAQ</a><a href="/nyheder/">Nyheder</a><a href="/studerende/">Studerende (CBS & DTU)</a><a href="/reparationspriser/">Typiske reparationspriser</a><a href="/garanti/">Garanti</a><a href="/aabningstider/">Åbningstider</a><a href="/kontakt/">Kontakt</a></div>
+    <div><h2>Mere</h2><a href="/butik/">Butik</a><a href="/domaener/">Domæner</a><a href="/butik/computere/refurbished/">Refurbished computere</a><a href="/it-support-til-erhverv/">IT-support til erhverv</a><a href="/it-support-frederiksberg/">IT-support Frederiksberg</a><a href="/om-os/">Mød teamet</a><a href="/faq/">FAQ</a><a href="/nyheder/">Nyheder</a><a href="/studerende/">Studerende (CBS & DTU)</a><a href="/reparationspriser/">Typiske reparationspriser</a><a href="/garanti/">Garanti</a><a href="/aabningstider/">Åbningstider</a><a href="/kontakt/">Kontakt</a></div>
     <div><h2>Områder vi betjener</h2><a href="/computerreparation-koebenhavn/">København</a><a href="/computerreparation-frederiksberg/">Frederiksberg</a><a href="/computerreparation-vesterbro/">Vesterbro</a><a href="/computerreparation-vanloese/">Vanløse</a><a href="/computerreparation-valby/">Valby</a><a href="/computerreparation-nordvest/">Nordvest</a></div>
     
     <div><h2>Kontakt os</h2><p>📞 <a href="${site.phoneHref}" style="display:inline">${site.phone}</a></p><p>✉️ <a href="mailto:${site.emailConsumer}" style="display:inline">${site.emailConsumer}</a></p><p style="margin-top:14px">Man–fre 10:00–18:00<br />Lør 10:00–14:00<br />Søn lukket</p></div>
@@ -454,6 +454,92 @@ function shopBackup() {
     <div class="grid grid-3" style="margin-top:24px">${products.map(productCard).join('')}</div></div></section>`+shopFaq("Backup & sikkerhed — ofte stillede spørgsmål", [["Tilbyder I cloud-backup, eller kun fysiske drev?","Begge dele — kontakt os om jeres konkrete behov og budget."]]);
 }
 
+// ---------- domain purchase ----------
+function domaenerBody() {
+  return `  <section class="hero"><div class="wrap"><div class="eyebrow">Domæner</div><h1>Find og køb dit domæne</h1>
+    <p class="lead">Søg efter et ledigt domænenavn og se prisen med det samme. Betal sikkert via Stripe — vi registrerer domænet for jer inden for få timer.</p></div></section>
+  <section class="section"><div class="wrap">
+    <div class="form-card" style="max-width:640px" id="dom-search-card">
+      <div class="form-row">
+        <div style="flex:2 1 auto"><label for="dom-name">Domænenavn</label><input id="dom-name" type="text" placeholder="fx pcklinik-webshop" autocomplete="off" /></div>
+        <div style="flex:0 0 120px"><label for="dom-tld">Endelse</label><select id="dom-tld"><option value="dk">.dk</option><option value="com">.com</option></select></div>
+      </div>
+      <button class="btn btn-primary" type="button" id="dom-check-btn">Tjek pris</button>
+      <div id="dom-result" style="margin-top:20px"></div>
+    </div>
+
+    <div class="form-card" style="max-width:640px;display:none;margin-top:24px" id="dom-registrant-card">
+      <div class="eyebrow">Kontaktoplysninger til domæneregistrering</div>
+      <div class="form-row"><div><label for="reg-name">Fulde navn</label><input id="reg-name" type="text" autocomplete="name" required /></div></div>
+      <div class="form-row"><div><label for="reg-email">E-mail</label><input id="reg-email" type="email" autocomplete="email" required /></div></div>
+      <div class="form-row"><div><label for="reg-address">Adresse</label><input id="reg-address" type="text" autocomplete="street-address" required /></div></div>
+      <div class="form-row">
+        <div><label for="reg-postal">Postnr.</label><input id="reg-postal" type="text" autocomplete="postal-code" required /></div>
+        <div><label for="reg-city">By</label><input id="reg-city" type="text" autocomplete="address-level2" required /></div>
+      </div>
+      <div class="form-row"><div><label for="reg-country">Land</label><input id="reg-country" type="text" autocomplete="country-name" value="Danmark" required /></div></div>
+      <button class="btn btn-primary" type="button" id="dom-buy-btn">Bestil nu</button>
+      <div id="dom-buy-error" class="form-status form-status--error" style="display:none;margin-top:14px"></div>
+      <p class="sub" style="margin-top:16px;font-size:14.5px">Ved bestilling betaler du det fulde beløb inkl. 25% moms via Stripe. Vi registrerer domænet for jer manuelt inden for få timer og sender en bekræftelse på e-mail. Dette er et engangskøb for 1 års registrering — fornyelse næste år faktureres separat.</p>
+    </div>
+  </div></section>
+  <section class="section alt"><div class="wrap"><div class="eyebrow">FAQ</div><h2>Ofte stillede spørgsmål</h2><div class="faq">${DOMAENER_FAQ.map((f) => `<details><summary>${esc(f.q)}</summary><div class="answer">${esc(f.a)}</div></details>`).join('')}</div></div></section>
+  <script>
+  (function(){
+    var nameEl=document.getElementById('dom-name'),tldEl=document.getElementById('dom-tld'),
+      checkBtn=document.getElementById('dom-check-btn'),resultEl=document.getElementById('dom-result'),
+      regCard=document.getElementById('dom-registrant-card'),buyBtn=document.getElementById('dom-buy-btn'),
+      buyErr=document.getElementById('dom-buy-error');
+    var currentCheck=null;
+    function esc(s){var d=document.createElement('div');d.textContent=s;return d.innerHTML;}
+    checkBtn.addEventListener('click',function(){
+      var name=(nameEl.value||'').trim().toLowerCase(),tld=tldEl.value;
+      if(!name){resultEl.innerHTML='<p class="form-status form-status--error" style="display:block">Skriv venligst et domænenavn.</p>';return;}
+      checkBtn.disabled=true;resultEl.innerHTML='<p class="sub">Tjekker …</p>';regCard.style.display='none';currentCheck=null;
+      fetch('/api/check-domain',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({name:name,tld:tld})})
+        .then(function(r){return r.json().then(function(j){return {ok:r.ok,j:j};});})
+        .then(function(x){
+          checkBtn.disabled=false;
+          if(!x.ok||x.j.error){resultEl.innerHTML='<p class="form-status form-status--error" style="display:block">'+esc(x.j&&x.j.error?x.j.error:'Noget gik galt. Prøv igen.')+'</p>';return;}
+          if(!x.j.available){resultEl.innerHTML='<p class="form-status form-status--error" style="display:block">'+esc(name+'.'+tld)+' er desværre ikke ledigt.</p>';return;}
+          currentCheck={name:name,tld:tld};
+          resultEl.innerHTML='<p class="form-status form-status--ok" style="display:block">'+esc(name+'.'+tld)+' er ledigt! <strong>'+x.j.price_dkk+' kr.</strong> <span class="vat">ekskl. moms</span></p>';
+          regCard.style.display='block';
+        })
+        .catch(function(){checkBtn.disabled=false;resultEl.innerHTML='<p class="form-status form-status--error" style="display:block">Noget gik galt. Prøv igen.</p>';});
+    });
+    buyBtn.addEventListener('click',function(){
+      buyErr.style.display='none';
+      if(!currentCheck){buyErr.textContent='Tjek venligst prisen på et domæne først.';buyErr.style.display='block';return;}
+      var registrant={
+        name:document.getElementById('reg-name').value.trim(),
+        email:document.getElementById('reg-email').value.trim(),
+        address:document.getElementById('reg-address').value.trim(),
+        postal_code:document.getElementById('reg-postal').value.trim(),
+        city:document.getElementById('reg-city').value.trim(),
+        country:document.getElementById('reg-country').value.trim()
+      };
+      for(var k in registrant){if(!registrant[k]){buyErr.textContent='Udfyld venligst alle kontaktoplysninger.';buyErr.style.display='block';return;}}
+      buyBtn.disabled=true;buyBtn.textContent='Et øjeblik …';
+      fetch('/api/create-checkout-session',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({name:currentCheck.name,tld:currentCheck.tld,registrant:registrant})})
+        .then(function(r){return r.json().then(function(j){return {ok:r.ok,j:j};});})
+        .then(function(x){
+          if(!x.ok||!x.j.url){buyBtn.disabled=false;buyBtn.textContent='Bestil nu';buyErr.textContent=(x.j&&x.j.error)?x.j.error:'Noget gik galt. Prøv igen.';buyErr.style.display='block';return;}
+          window.location.href=x.j.url;
+        })
+        .catch(function(){buyBtn.disabled=false;buyBtn.textContent='Bestil nu';buyErr.textContent='Noget gik galt. Prøv igen.';buyErr.style.display='block';});
+    });
+  })();
+  </script>`;
+}
+const DOMAENER_FAQ = [
+  { q: 'Hvor lang tid tager registreringen?', a: 'Vi registrerer domænet manuelt for jer, typisk inden for få timer efter betaling, og sender en bekræftelse på e-mail, når det er klar.' },
+  { q: 'Hvad er inkluderet i prisen?', a: 'Prisen dækker 1 års registrering af domænet. Fornyelse næste år faktureres separat — vi kontakter jer, inden domænet udløber.' },
+  { q: 'Er prisen inkl. eller ekskl. moms?', a: 'Prisen, du ser på siden, er ekskl. moms. Ved betaling via Stripe lægges 25% dansk moms oveni, så du ser det fulde beløb, før du betaler.' },
+  { q: 'Kan jeg overføre et domæne, jeg allerede ejer?', a: 'Ja, kontakt os direkte på kontakt@pcklinik.dk, så hjælper vi med overførslen.' },
+  { q: 'Hvilke endelser (TLD’er) tilbyder I?', a: 'Vi starter med .dk og .com — flere endelser kan tilføjes efter aftale. Kontakt os, hvis I mangler en bestemt endelse.' },
+];
+
 // ---------- About / Team ----------
 const TEAM = [
   ['Shan — Indehaver', '/images/team/shan.jpg', '20+ års erfaring på tværs af Mac, pc, servere og netværk. Står for værkstedet og håndterer personligt de mest teknisk krævende reparationer og erhvervs-IT-opsætninger.'],
@@ -475,6 +561,11 @@ function aboutBody() {
     <div class="cta-row"><a class="btn btn-primary" href="/kontakt/">Kontakt os</a><a class="btn btn-outline" href="/it-support-til-erhverv/">IT-support til erhverv →</a></div></div></section>`;
 }
 
+function domaenerTakHtml() {
+  return `  <section class="hero"><div class="wrap"><div class="eyebrow">Domæner</div><h1>Tak for din bestilling!</h1>
+    <p class="lead">Vi har modtaget din betaling. Vi registrerer jeres domæne inden for få timer og sender en bekræftelse til den e-mail, du opgav ved bestilling.</p>
+    <div class="cta-row"><a class="btn btn-white" href="/">← Til forsiden</a><a class="btn btn-ghost-light" href="${site.phoneHref}">📞 Ring ${site.phone}</a></div></div></section>`;
+}
 function thankYouHtml() {
   return `  <section class="hero"><div class="wrap"><div class="eyebrow">PCKlinik</div><h1>Thank You</h1>
     <p class="lead">Your message has been sent. We'll get back to you as soon as possible.</p>
@@ -686,6 +777,9 @@ async function run() {
   pages.push(['/butik/computere/nye/', page({ title: 'Nye computere | PCKlinik Butik', description: 'Køb nye computere hos PCKlinik. Driftssikre mærker, klargjort og klar til brug. Sikker betaling via Stripe.', p: '/butik/computere/nye/', body: shopNew() })]);
   pages.push(['/butik/computere/refurbished/', page({ title: 'Refurbished computere med garanti | PCKlinik Butik', description: 'Grundigt testede og istandsatte computere fra PCKlinik, med garanti. God ydelse til en lavere pris. Sikker betaling via Stripe.', p: '/butik/computere/refurbished/', body: shopRefurb() })]);
   pages.push(['/butik/backup-sikkerhed/', page({ title: 'Backup & sikkerhed | PCKlinik Butik', description: 'Eksterne harddiske, NAS-løsninger og sikkerhedssoftware anbefalet af PCKlinik. Sikker betaling via Stripe.', p: '/butik/backup-sikkerhed/', body: shopBackup() })]);
+  // Domain purchase
+  pages.push(['/domaener/', page({ title: 'Køb domæne (.dk & .com) | PCKlinik', description: 'Søg og køb dit domæne direkte online — se prisen med det samme og betal sikkert via Stripe. Vi registrerer domænet for jer inden for få timer.', p: '/domaener/', body: domaenerBody(), schema: faqSchemaFrom(DOMAENER_FAQ) })]);
+  pages.push(['/domaener/tak/', page({ title: 'Tak for din bestilling | PCKlinik Domæner', description: 'Vi har modtaget din betaling og registrerer jeres domæne inden for få timer.', p: '/domaener/tak/', body: domaenerTakHtml() })]);
 
   // Mac Repair hub (broad intent)
   pages.push(['/mac-reparation/', page({ title: 'Mac-reparation i Frederiksberg & København | PCKlinik', description: 'Reparation af MacBook, iMac, Mac mini, Mac Studio og Mac Pro i Frederiksberg og København. Fejlsøgning fra 300 kr., fast pris, hurtig ekspedition.', p: '/mac-reparation/', body: macHubHtml(), schema: faqSchemaFrom(MAC_HUB_FAQ) })]);

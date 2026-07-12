@@ -99,6 +99,7 @@ export const nav = [
       ] },
     ],
   },
+  { label: 'Domæner', href: '/domaener/' },
   { label: 'Kontakt', href: '/kontakt/' },
 ];
 
