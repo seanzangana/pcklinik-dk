@@ -16,7 +16,7 @@ export const locations = [
       { q: 'Betjener I både privatpersoner og virksomheder?', a: 'Ja — udover reparation af enkelte enheder tilbyder vi IT-supportaftaler til virksomheder. Se siden om IT-support til erhverv.' },
     ],
     areas: ['computerreparation-frederiksberg', 'computerreparation-vesterbro', 'computerreparation-vanloese', 'computerreparation-valby', 'computerreparation-nordvest'],
-    crosslinks: [{ label: 'IT-support til erhverv', href: '/business-it-service-agreement/' }, { label: 'Kontakt', href: '/contact/' }],
+    crosslinks: [{ label: 'IT-support til erhverv', href: '/it-support-til-erhverv/' }, { label: 'Kontakt', href: '/kontakt/' }],
   },
   {
     slug: 'computerreparation-frederiksberg', name: 'Frederiksberg',
@@ -33,7 +33,7 @@ export const locations = [
       { q: 'Ligger I tæt på CBS?', a: 'Ja, i samme område som CBS’ bygninger.' },
       { q: 'Kan I hjælpe, hvis jeg skal bruge min bærbare inden en eksamen?', a: 'Sig til om jeres deadline — ekspres fejlsøgning (600 kr., 1–2 timer) er den hurtigste mulighed, og vi er ærlige om, hvorvidt vi kan nå det.' },
     ],
-    crosslinks: [{ label: 'Computerreparation til studerende (CBS & DTU)', href: '/studerende/' }, { label: 'København (oversigt)', href: '/computerreparation-koebenhavn/' }, { label: 'IT-support til erhverv', href: '/business-it-service-agreement/' }, { label: 'Kontakt', href: '/contact/' }],
+    crosslinks: [{ label: 'Computerreparation til studerende (CBS & DTU)', href: '/studerende/' }, { label: 'København (oversigt)', href: '/computerreparation-koebenhavn/' }, { label: 'IT-support til erhverv', href: '/it-support-til-erhverv/' }, { label: 'Kontakt', href: '/kontakt/' }],
   },
   {
     slug: 'computerreparation-vesterbro', name: 'Vesterbro',
@@ -49,7 +49,7 @@ export const locations = [
       { q: 'Hvor langt er der fra Vesterbro til værkstedet?', a: 'Meget kort afstand — nemt med metro, bus eller cykel.' },
       { q: 'Hvad koster en reparation?', a: 'Fejlsøgning 300 kr. (2–4 dage) eller ekspres for 600 kr. (1–2 timer), altid med fast pris, før vi går i gang.' },
     ],
-    crosslinks: [{ label: 'København (oversigt)', href: '/computerreparation-koebenhavn/' }, { label: 'IT-support til erhverv', href: '/business-it-service-agreement/' }, { label: 'Kontakt', href: '/contact/' }],
+    crosslinks: [{ label: 'København (oversigt)', href: '/computerreparation-koebenhavn/' }, { label: 'IT-support til erhverv', href: '/it-support-til-erhverv/' }, { label: 'Kontakt', href: '/kontakt/' }],
   },
   {
     slug: 'computerreparation-vanloese', name: 'Vanløse',
@@ -61,7 +61,7 @@ export const locations = [
       { q: 'Hvad er den hurtigste måde at få mit device til jer fra Vanløse?', a: 'Kom forbi direkte, eller spørg om afhentning/levering afhængigt af jeres placering.' },
       { q: 'Hvad koster en reparation?', a: 'Fejlsøgning 300 kr. (2–4 dage) eller ekspres for 600 kr. (1–2 timer), altid med fast pris, før vi går i gang.' },
     ],
-    crosslinks: [{ label: 'København (oversigt)', href: '/computerreparation-koebenhavn/' }, { label: 'IT-support til erhverv', href: '/business-it-service-agreement/' }, { label: 'Kontakt', href: '/contact/' }],
+    crosslinks: [{ label: 'København (oversigt)', href: '/computerreparation-koebenhavn/' }, { label: 'IT-support til erhverv', href: '/it-support-til-erhverv/' }, { label: 'Kontakt', href: '/kontakt/' }],
   },
   {
     slug: 'computerreparation-valby', name: 'Valby',
@@ -73,7 +73,7 @@ export const locations = [
       { q: 'Hvad er den hurtigste måde at få mit device til jer fra Valby?', a: 'Kom forbi direkte, eller spørg om afhentning/levering afhængigt af jeres placering.' },
       { q: 'Hvad koster en reparation?', a: 'Fejlsøgning 300 kr. (2–4 dage) eller ekspres for 600 kr. (1–2 timer), altid med fast pris, før vi går i gang.' },
     ],
-    crosslinks: [{ label: 'København (oversigt)', href: '/computerreparation-koebenhavn/' }, { label: 'IT-support til erhverv', href: '/business-it-service-agreement/' }, { label: 'Kontakt', href: '/contact/' }],
+    crosslinks: [{ label: 'København (oversigt)', href: '/computerreparation-koebenhavn/' }, { label: 'IT-support til erhverv', href: '/it-support-til-erhverv/' }, { label: 'Kontakt', href: '/kontakt/' }],
   },
   {
     slug: 'computerreparation-nordvest', name: 'Nordvest (NV)',
@@ -85,7 +85,7 @@ export const locations = [
       { q: 'Hvad er den hurtigste måde at få mit device til jer fra Nordvest?', a: 'Kom forbi direkte, eller spørg om afhentning/levering afhængigt af jeres placering.' },
       { q: 'Hvad koster en reparation?', a: 'Fejlsøgning 300 kr. (2–4 dage) eller ekspres for 600 kr. (1–2 timer), altid med fast pris, før vi går i gang.' },
     ],
-    crosslinks: [{ label: 'København (oversigt)', href: '/computerreparation-koebenhavn/' }, { label: 'IT-support til erhverv', href: '/business-it-service-agreement/' }, { label: 'Kontakt', href: '/contact/' }],
+    crosslinks: [{ label: 'København (oversigt)', href: '/computerreparation-koebenhavn/' }, { label: 'IT-support til erhverv', href: '/it-support-til-erhverv/' }, { label: 'Kontakt', href: '/kontakt/' }],
   },
   {
     slug: 'computerreparation-helsingoer', name: 'Helsingør',
@@ -100,7 +100,7 @@ export const locations = [
       { q: 'Tilbyder I afhentning og levering til Helsingør?', a: 'Ja, kontakt os for at aftale det ud fra jeres placering.' },
       { q: 'Kan jeg sende mit device i stedet?', a: 'Ja, kontakt os først for instruktioner, inden I sender noget.' },
     ],
-    crosslinks: [{ label: 'København (oversigt)', href: '/computerreparation-koebenhavn/' }, { label: 'Kontakt', href: '/contact/' }],
+    crosslinks: [{ label: 'København (oversigt)', href: '/computerreparation-koebenhavn/' }, { label: 'Kontakt', href: '/kontakt/' }],
   },
   {
     slug: 'computerreparation-hillerod', name: 'Hillerød',
@@ -112,7 +112,7 @@ export const locations = [
       { q: 'Er afhentning/levering muligt for Hillerød?', a: 'Ja, kontakt os for at aftale det ud fra jeres placering.' },
       { q: 'Kan jeg sende mit device i stedet?', a: 'Ja, kontakt os først for forsendelsesinstruktioner, inden I sender noget.' },
     ],
-    crosslinks: [{ label: 'København (oversigt)', href: '/computerreparation-koebenhavn/' }, { label: 'Kontakt', href: '/contact/' }],
+    crosslinks: [{ label: 'København (oversigt)', href: '/computerreparation-koebenhavn/' }, { label: 'Kontakt', href: '/kontakt/' }],
   },
   {
     slug: 'computerreparation-roskilde', name: 'Roskilde',
@@ -124,7 +124,7 @@ export const locations = [
       { q: 'Er afhentning/levering muligt for Roskilde?', a: 'Ja, kontakt os for at aftale det ud fra jeres placering.' },
       { q: 'Kan jeg sende mit device i stedet?', a: 'Ja, kontakt os først for forsendelsesinstruktioner, inden I sender noget.' },
     ],
-    crosslinks: [{ label: 'København (oversigt)', href: '/computerreparation-koebenhavn/' }, { label: 'Kontakt', href: '/contact/' }],
+    crosslinks: [{ label: 'København (oversigt)', href: '/computerreparation-koebenhavn/' }, { label: 'Kontakt', href: '/kontakt/' }],
   },
   {
     slug: 'computerreparation-koege', name: 'Køge',
@@ -136,7 +136,7 @@ export const locations = [
       { q: 'Er afhentning/levering muligt for Køge?', a: 'Ja, kontakt os for at aftale det ud fra jeres placering.' },
       { q: 'Kan jeg sende mit device i stedet?', a: 'Ja, kontakt os først for forsendelsesinstruktioner, inden I sender noget.' },
     ],
-    crosslinks: [{ label: 'København (oversigt)', href: '/computerreparation-koebenhavn/' }, { label: 'Kontakt', href: '/contact/' }],
+    crosslinks: [{ label: 'København (oversigt)', href: '/computerreparation-koebenhavn/' }, { label: 'Kontakt', href: '/kontakt/' }],
   },
   {
     slug: 'computerreparation-nykoebing-falster', name: 'Nykøbing Falster',
@@ -151,6 +151,6 @@ export const locations = [
       { q: 'Kan det virkelig betale sig at sende et device så langt for reparation?', a: 'Vi har allerede kunder, der gør præcis det — kontakt os, så er vi ærlige omkring, om det giver mening for jeres konkrete situation.' },
       { q: 'Hvordan fungerer indsendelse?', a: 'Kontakt os først for forsendelsesinstruktioner og en idé om processen, inden I sender noget.' },
     ],
-    crosslinks: [{ label: 'København (oversigt)', href: '/computerreparation-koebenhavn/' }, { label: 'Kontakt', href: '/contact/' }],
+    crosslinks: [{ label: 'København (oversigt)', href: '/computerreparation-koebenhavn/' }, { label: 'Kontakt', href: '/kontakt/' }],
   },
 ];
