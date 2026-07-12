@@ -79,15 +79,27 @@ export const SUPPORTED_TLDS = [
   'technology',
 ];
 
+// Per-request timeout so one slow OpenProvider response can't drag the
+// whole Cloudflare Pages Function past its execution limit — a request
+// that hangs throws instead of stalling the platform into a 502.
+const OP_REQUEST_TIMEOUT_MS = 9000;
+
 async function callOpenProviderCheck(env, domains) {
   let token = await getOpenProviderToken(env);
 
   async function call(bearer) {
-    return fetch(`${OP_BASE}/v1beta/domains/check`, {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json', Authorization: `Bearer ${bearer}` },
-      body: JSON.stringify({ domains, with_price: true }),
-    });
+    const controller = new AbortController();
+    const timer = setTimeout(() => controller.abort(), OP_REQUEST_TIMEOUT_MS);
+    try {
+      return await fetch(`${OP_BASE}/v1beta/domains/check`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json', Authorization: `Bearer ${bearer}` },
+        body: JSON.stringify({ domains, with_price: true }),
+        signal: controller.signal,
+      });
+    } finally {
+      clearTimeout(timer);
+    }
   }
 
   let res = await call(token);
@@ -151,29 +163,59 @@ export async function checkDomainAndPrice(env, domainName, tld) {
   return priceFromResult(result);
 }
 
-// Multi-TLD lookup — used by check-domain.js to power the search bar,
-// checking every supported TLD for one name in a SINGLE OpenProvider
-// request. Returns results in the same order as `tlds`.
-// Returns [{ tld, available, price_dkk, price_incl_vat_dkk }, ...]
-export async function checkDomainAcrossTlds(env, domainName, tlds) {
-  const domains = tlds.map((tld) => ({ name: domainName, extension: tld }));
-  const results = await callOpenProviderCheck(env, domains);
+// How many TLDs go in a single OpenProvider request. A single request for
+// all SUPPORTED_TLDS (60+) was slow/large enough to occasionally blow past
+// the Cloudflare Pages Function's execution window, which surfaces to the
+// browser as a platform-level 502 (not one of our own JSON error
+// responses). Chunking keeps each individual request small and fast, and
+// the chunks run in parallel so total wall-clock time stays low.
+const OP_CHECK_CHUNK_SIZE = 10;
 
-  return tlds.map((tld, i) => {
-    // Prefer matching by extension/name if OpenProvider echoes them back;
-    // fall back to positional matching (same order as the request) since
-    // we don't have confirmed docs on the batch response shape.
-    const match =
-      results.find((r) => (r.extension === tld || r.domain === `${domainName}.${tld}`)) || results[i];
-    if (!match) {
-      return { tld, available: false, price_dkk: null, price_incl_vat_dkk: null, error: true };
-    }
-    try {
-      return { tld, ...priceFromResult(match) };
-    } catch {
-      return { tld, available: false, price_dkk: null, price_incl_vat_dkk: null, error: true };
-    }
-  });
+function chunk(arr, size) {
+  const out = [];
+  for (let i = 0; i < arr.length; i += size) out.push(arr.slice(i, i + size));
+  return out;
+}
+
+// Multi-TLD lookup — used by check-domain.js to power the search bar,
+// checking every supported TLD for one name via several small parallel
+// OpenProvider requests (see OP_CHECK_CHUNK_SIZE) rather than one large
+// one. A failure in one chunk only marks that chunk's TLDs as
+// unavailable-to-check — it doesn't take down the rest of the search.
+// Returns [{ tld, available, price_dkk, price_incl_vat_dkk }, ...] in the
+// same order as `tlds`.
+export async function checkDomainAcrossTlds(env, domainName, tlds) {
+  const tldChunks = chunk(tlds, OP_CHECK_CHUNK_SIZE);
+
+  const chunkResults = await Promise.all(
+    tldChunks.map(async (tldChunk) => {
+      try {
+        const domains = tldChunk.map((tld) => ({ name: domainName, extension: tld }));
+        const results = await callOpenProviderCheck(env, domains);
+        return tldChunk.map((tld, i) => {
+          // Prefer matching by extension/name if OpenProvider echoes them
+          // back; fall back to positional matching (same order as the
+          // request) since we don't have confirmed docs on the batch
+          // response shape.
+          const match =
+            results.find((r) => (r.extension === tld || r.domain === `${domainName}.${tld}`)) || results[i];
+          if (!match) {
+            return { tld, available: false, price_dkk: null, price_incl_vat_dkk: null, error: true };
+          }
+          try {
+            return { tld, ...priceFromResult(match) };
+          } catch {
+            return { tld, available: false, price_dkk: null, price_incl_vat_dkk: null, error: true };
+          }
+        });
+      } catch (err) {
+        console.error('OpenProvider chunk check failed:', tldChunk.join(','), err);
+        return tldChunk.map((tld) => ({ tld, available: false, price_dkk: null, price_incl_vat_dkk: null, error: true }));
+      }
+    })
+  );
+
+  return chunkResults.flat();
 }
 
 export function isValidTld(tld) {
