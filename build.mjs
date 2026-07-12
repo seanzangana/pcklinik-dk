@@ -129,7 +129,7 @@ const businessSchema = {
   ],
 };
 
-function page({ title, description, p, body, schema = null, lang = 'da', dir = '', chrome = 'da' }) {
+function page({ title, description, p, body, schema = null, lang = 'da', dir = '', chrome = 'da', noindex = false }) {
   const canonical = site.domain + p;
   const dk = hreflangMap[p];
   const altHreflang = '';
@@ -143,7 +143,7 @@ function page({ title, description, p, body, schema = null, lang = 'da', dir = '
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>${esc(title)}</title>
   <meta name="description" content="${esc(description)}" />
-  <link rel="canonical" href="${canonical}" />
+  ${noindex ? '<meta name="robots" content="noindex, follow" />\n  ' : ''}<link rel="canonical" href="${canonical}" />
   <link rel="alternate" hreflang="${lang}" href="${canonical}" />
   ${dk ? `<link rel="alternate" hreflang="da" href="${dk}" />\n  <link rel="alternate" hreflang="x-default" href="${canonical}" />` : ''}${altHreflang}
   <meta property="og:type" content="website" />
@@ -789,6 +789,22 @@ function locationBody(loc) {
   <section class="section"><div class="wrap"><div class="cta-band"><h2>Brug for reparation i ${esc(loc.name)}?</h2><p>Fejlsøgning 300 kr. (2–4 dage) eller ekspres (600 kr., 1–2 timer). Fast pris, før vi går i gang.</p><div class="cta-row"><a class="btn btn-white" href="/kontakt/">Book en reparation</a><a class="btn btn-ghost-light" href="${site.phoneHref}">📞 Ring ${site.phone}</a></div></div>
     <div style="margin-top:32px"><p class="eyebrow">Relateret</p><div class="crosslinks">${cross}</div></div></div></section>`;
 }
+// ---------- 404 ----------
+function notFoundBody() {
+  return `  <section class="hero"><div class="wrap"><div class="eyebrow">Fejl 404</div>
+    <h1>Siden blev ikke fundet</h1>
+    <p class="lead">Siden, du leder efter, findes ikke — den kan være flyttet, omdøbt, eller URL'en kan indeholde en fejl.</p>
+    <div class="cta-row"><a class="btn btn-white" href="/">Til forsiden</a><a class="btn btn-ghost-light" href="/kontakt/">Kontakt os</a></div>
+  </div></section>
+  <section class="section"><div class="wrap"><div class="eyebrow">Prøv i stedet</div><h2>Populære sider</h2>
+    <div class="grid grid-4">
+      <a class="card card-link" href="/kontakt/"><h3>Book en reparation</h3><p>Fejlsøgning fra 300 kr., fast pris.</p><span class="arrow">Gå til kontakt →</span></a>
+      <a class="card card-link" href="/butik/"><h3>Butik</h3><p>Computere, backup & sikkerhed.</p><span class="arrow">Se butikken →</span></a>
+      <a class="card card-link" href="/it-support-til-erhverv/"><h3>IT-support til erhverv</h3><p>Fast pris pr. måned.</p><span class="arrow">Se erhvervs-IT →</span></a>
+      <a class="card card-link" href="/faq/"><h3>FAQ</h3><p>Ofte stillede spørgsmål.</p><span class="arrow">Se FAQ →</span></a>
+    </div></div></section>`;
+}
+
 // ---------- write helpers ----------
 async function writePage(p, html) {
   const dir = p === '/' ? DIST : path.join(DIST, p);
@@ -871,6 +887,11 @@ async function run() {
   for (const s of services) pages.push([`/${s.slug}/`, page({ title: s.title, description: s.description, p: `/${s.slug}/`, body: serviceBody(s), schema: faqSchemaFrom(s.faq) })]);
 
   for (const [p, html] of pages) await writePage(p, html);
+
+  // 404 page — Cloudflare Pages serves this file (with an actual 404 status)
+  // for any request that doesn't match a static asset or another route.
+  const notFoundHtml = page({ title: 'Siden blev ikke fundet (404) | PCKlinik', description: 'Siden findes ikke. Gå til forsiden, eller find det, du leder efter, i menuen.', p: '/404.html', body: notFoundBody(), noindex: true });
+  await fs.writeFile(path.join(DIST, '404.html'), notFoundHtml);
 
   // sitemap + robots
   const urls = pages.map(([p]) => `  <url><loc>${site.domain}${p}</loc></url>`).join('\n');
