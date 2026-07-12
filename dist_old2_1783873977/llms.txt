@@ -1,0 +1,30 @@
+# PCKlinik
+
+> PC- og Mac-reparation samt IT-support i Frederiksberg, København. Uafhængig, ikke-Apple-autoriseret specialistviden, gratis walk-in uden tidsbestilling, og hente/bringe-service.
+
+PCKlinik er en lokal PC/Mac-reparationsvirksomhed på Falkoner Allé 108, 2000 Frederiksberg. Vi reparerer computere (PC og Mac) — ikke iPad eller iPhone. Standard fejlsøgning koster 300 kr (2-4 dage). Ekspres fejlsøgning koster 600 kr (1-2 timer, reparation og levering inden for 24 timer hvis ingen specielle reservedele skal bestilles). Væskeskade har en fast pris på 600 kr (3-4 dage, ingen ekspresmulighed).
+
+## Services
+
+- [Computerreparation](https://pcklinik.dk/): Reparation af stationære og bærbare PC'er — skærm, batteri, SSD/harddisk, strømforsyning m.m. (se mærkeoversigt på forsiden og de enkelte mærkesider).
+- [Mac-reparation](https://pcklinik.dk/mac-repair/): Uafhængig Mac-specialist (ikke Apple-autoriseret) med komponentniveau-reparationer.
+- [IT-support til virksomheder](https://pcklinik.dk/business-it-service-agreement/): B2B IT-support og rådgivning.
+- [Butik](https://pcklinik.dk/shop/): Nye computere, renoverede computere, backup & sikkerhedsprodukter.
+- [Typiske reparationspriser](https://pcklinik.dk/reparationspriser/): Vejledende fra-priser på skærm, batteri og SSD.
+- [Studerende (CBS & DTU)](https://pcklinik.dk/studerende/): Computerreparation til studerende — gåafstand fra CBS, afhentning til DTU.
+
+## Lokationer
+
+- [København](https://pcklinik.dk/computerreparation-koebenhavn/)
+- [Vesterbro](https://pcklinik.dk/computerreparation-vesterbro/)
+- [Vanløse](https://pcklinik.dk/computerreparation-vanloese/)
+- [Valby](https://pcklinik.dk/computerreparation-valby/)
+- [Nordvest](https://pcklinik.dk/computerreparation-nordvest/)
+
+## Kontakt
+
+- [Kontakt os](https://pcklinik.dk/contact/): Falkoner Allé 108, st. th., 2000 Frederiksberg. Telefon: 91 81 61 81. Email: kontakt@pcklinik.dk. Åbningstider: Man-Fre 10-18, Lør 10-14, Søn lukket.
+
+## Optional
+
+- [Nyheder](https://pcklinik.dk/nyheder/): Danske artikler om PC/Mac-reparation, IT-tips og sikkerhed.

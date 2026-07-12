@@ -1,0 +1,65 @@
+# ---------------------------------------------------------------------------
+# pcklinik.dk — 301 map: gammelt WordPress-site -> nyt statisk site.
+# Rækkefølgen betyder noget: første match vinder. Specifikke regler før wildcards.
+# ---------------------------------------------------------------------------
+
+# --- Tag-arkiver der har en rigtig side (konsoliderer kannibalisering) ---
+/tag/it-support-frederiksberg/                                 /it-support-frederiksberg/  301
+/tag/pc-reparation/                                            /computer-reparation/  301
+/tag/computer-reparator/                                       /computer-reparation/  301
+/tag/computer-diagnose/                                        /computer-reparation/  301
+/tag/pc-opgraderingsservice/                                   /ssd-opgradering/  301
+/tag/systemoptimering/                                         /optimering-af-computer/  301
+/tag/datalagning/                                              /backup-og-datagendannelse/  301
+/tag/lagring-problemer/                                        /harddisk-ssd-udskiftning/  301
+
+# --- Resterende WordPress tag-/kategori-arkiver (tyndt indhold, ingen SEO-værdi) ---
+/tag/*                                                         /nyheder/  301
+/category/*                                                    /nyheder/  301
+/author/*                                                      /om-os/  301
+
+# --- WooCommerce produkt-URLer ---
+/product/*                                                     /butik/  301
+/product-category/*                                            /butik/  301
+
+# --- Sider hvis URL har ændret sig ---
+/order-tracking/                                               /kontakt/  301
+/my-account/                                                   /kontakt/  301
+/cart/                                                         /butik/  301
+/checkout/                                                     /butik/  301
+/shop/                                                         /butik/  301
+/vaeskeskade-pc/                                               /vaeskeskade-reparation/  301
+/vaeskeskade-mac/                                              /vaeskeskade-reparation/  301
+/apple-mac-reparation/                                         /mac-reparation/  301
+/contact-us/                                                   /kontakt/  301
+/backup/                                                       /backup-og-datagendannelse/  301
+/data-recovery/                                                /backup-og-datagendannelse/  301
+/tastatur-trackpad-udskiftning/                                /tastaturudskiftning/  301
+/indlevering-og-forsendelse/                                   /kontakt/  301
+/opgradering-af-pc/                                            /ssd-opgradering/  301
+/imac-reparation/                                              /mac-stationaer-reparation/  301
+/udskiftning-af-batteri/                                       /computer-reparation/  301
+/msi-gamer-reparation/                                         /msi-reparation/  301
+/vores-tjenester/                                              /computer-reparation/  301
+/spoergsmaal-og-svar/                                          /faq/  301
+/computer-reparation-koebenhavn/                               /computerreparation-koebenhavn/  301
+/computer-reparation-kobenhavn-billigt-hurtigt/                /computerreparation-koebenhavn/  301
+/laptop-reparation-koebenhavn-professionel-service-samme-dag/  /computerreparation-koebenhavn/  301
+/ssd-opgradering-i-koebenhavn-giv-din-computer-nyt-liv/        /ssd-opgradering/  301
+/virus-og-malwarefjernelse-i-koebenhavn/                       /virus-og-malwarefjernelse/  301
+/mac-reparation-kobenhavn/                                     /mac-reparation/  301
+/computer-reparation-vesterbro/                                /computerreparation-vesterbro/  301
+/computer-reparation-vanloese/                                 /computerreparation-vanloese/  301
+/computer-reparation-valby/                                    /computerreparation-valby/  301
+/computer-reparation-nordvest/                                 /computerreparation-nordvest/  301
+/privacy-policy/                                               /kontakt/  301
+
+# --- WordPress-rester ---
+/feed/                                                         /nyheder/  301
+/wp-content/*                                                  /  301
+/wp-includes/*                                                 /  301
+
+# --- Rester fra pcklinik.eu-kodebasen (engelske slugs) ---
+/liquid-damage-repair-pc/                                      /vaeskeskade-reparation/  301
+/liquid-damage-repair-mac/                                     /vaeskeskade-reparation/  301
+/liquid-damage-repair/                                         /vaeskeskade-reparation/  301
