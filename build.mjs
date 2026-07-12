@@ -472,7 +472,7 @@ function domaenerBody() {
       <div class="form-row">
         <div style="flex:2 1 auto"><label for="dom-name">Domænenavn</label><input id="dom-name" type="text" placeholder="fx pcklinik-webshop" autocomplete="off" /></div>
       </div>
-      <button class="btn btn-primary" type="button" id="dom-check-btn">Tjek pris</button>
+      <button class="btn btn-primary" type="button" id="dom-check-btn">Tjek ledighed</button>
       <div id="dom-result" style="margin-top:20px"></div>
     </div>
 
