@@ -1,11 +1,13 @@
 // POST /api/check-domain
-// Body: { name: string, tld: "dk" | "com" }
-// Returns: { available: boolean, price_dkk: number|null, price_incl_vat_dkk: number|null }
+// Body: { name: string }
+// Checks the name across every SUPPORTED_TLDS extension in a single
+// OpenProvider request. Returns:
+//   { results: [{ tld, available, price_dkk, price_incl_vat_dkk }, ...] }
 // price_dkk is EX-VAT (this is what's shown on the page, labeled "ekskl.
 // moms" per the confirmed pricing decision) — price_incl_vat_dkk is shown
 // only as a reference of what will actually be charged at checkout. Never
 // returns the raw OpenProvider response or the OpenProvider bearer token.
-import { checkDomainAndPrice, isValidTld, isValidDomainLabel } from '../_lib/openprovider.js';
+import { checkDomainAcrossTlds, isValidDomainLabel, SUPPORTED_TLDS } from '../_lib/openprovider.js';
 
 export async function onRequestPost(context) {
   const { request, env } = context;
@@ -17,18 +19,14 @@ export async function onRequestPost(context) {
   }
 
   const name = String(body?.name || '').trim().toLowerCase();
-  const tld = String(body?.tld || '').trim().toLowerCase();
 
   if (!isValidDomainLabel(name)) {
     return json({ error: 'Ugyldigt domænenavn.' }, 400);
   }
-  if (!isValidTld(tld)) {
-    return json({ error: 'Ugyldig endelse — vælg .dk eller .com.' }, 400);
-  }
 
   try {
-    const result = await checkDomainAndPrice(env, name, tld);
-    return json(result, 200);
+    const results = await checkDomainAcrossTlds(env, name, SUPPORTED_TLDS);
+    return json({ results }, 200);
   } catch (err) {
     console.error('check-domain error:', err);
     return json({ error: 'Kunne ikke tjekke domænet lige nu. Prøv igen om lidt.' }, 502);

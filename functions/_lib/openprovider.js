@@ -54,36 +54,41 @@ function roundUpToNearest10(n) {
   return Math.ceil(n / 10) * 10;
 }
 
-// domainName: label only (no dot), e.g. "pcklinik-webshop"
-// tld: "dk" | "com"
-// Returns { available: boolean, price_dkk: number|null }
-export async function checkDomainAndPrice(env, domainName, tld) {
+// TLDs offered on the /domaener/ search. OpenProvider's check endpoint
+// accepts any extension it resells, so adding more here is a one-line
+// change — no other code depends on this specific list.
+export const SUPPORTED_TLDS = ['dk', 'com', 'net', 'org', 'eu'];
+
+async function callOpenProviderCheck(env, domains) {
   let token = await getOpenProviderToken(env);
 
-  async function callCheck(bearer) {
+  async function call(bearer) {
     return fetch(`${OP_BASE}/v1beta/domains/check`, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json', Authorization: `Bearer ${bearer}` },
-      body: JSON.stringify({ domains: [{ name: domainName, extension: tld }], with_price: true }),
+      body: JSON.stringify({ domains, with_price: true }),
     });
   }
 
-  let res = await callCheck(token);
+  let res = await call(token);
   if (res.status === 401) {
     // Token expired/invalid — force a fresh login and retry once.
     cachedToken = null;
     token = await loginToOpenProvider(env);
-    res = await callCheck(token);
+    res = await call(token);
   }
   if (!res.ok) {
     throw new Error(`OpenProvider domain check failed (HTTP ${res.status}).`);
   }
   const data = await res.json();
-  const result = data && data.data && Array.isArray(data.data.results) ? data.data.results[0] : null;
-  if (!result) {
-    throw new Error('OpenProvider domain check returned no result.');
+  const results = data && data.data && Array.isArray(data.data.results) ? data.data.results : null;
+  if (!results) {
+    throw new Error('OpenProvider domain check returned no results.');
   }
+  return results;
+}
 
+function priceFromResult(result) {
   const available = result.status === 'free' || result.status === 'available' || result.available === true;
   if (!available) {
     return { available: false, price_dkk: null, price_incl_vat_dkk: null };
@@ -111,8 +116,48 @@ export async function checkDomainAndPrice(env, domainName, tld) {
   return { available: true, price_dkk: exVatPriceDkk, price_incl_vat_dkk: inclVatPriceDkk };
 }
 
+// Single-TLD lookup — used by create-checkout-session.js to re-derive the
+// exact price for the one domain being purchased. Never trusts a price
+// sent by the browser.
+// domainName: label only (no dot), e.g. "pcklinik-webshop"
+// tld: one of SUPPORTED_TLDS
+// Returns { available: boolean, price_dkk: number|null, price_incl_vat_dkk: number|null }
+export async function checkDomainAndPrice(env, domainName, tld) {
+  const results = await callOpenProviderCheck(env, [{ name: domainName, extension: tld }]);
+  const result = results[0];
+  if (!result) {
+    throw new Error('OpenProvider domain check returned no result.');
+  }
+  return priceFromResult(result);
+}
+
+// Multi-TLD lookup — used by check-domain.js to power the search bar,
+// checking every supported TLD for one name in a SINGLE OpenProvider
+// request. Returns results in the same order as `tlds`.
+// Returns [{ tld, available, price_dkk, price_incl_vat_dkk }, ...]
+export async function checkDomainAcrossTlds(env, domainName, tlds) {
+  const domains = tlds.map((tld) => ({ name: domainName, extension: tld }));
+  const results = await callOpenProviderCheck(env, domains);
+
+  return tlds.map((tld, i) => {
+    // Prefer matching by extension/name if OpenProvider echoes them back;
+    // fall back to positional matching (same order as the request) since
+    // we don't have confirmed docs on the batch response shape.
+    const match =
+      results.find((r) => (r.extension === tld || r.domain === `${domainName}.${tld}`)) || results[i];
+    if (!match) {
+      return { tld, available: false, price_dkk: null, price_incl_vat_dkk: null, error: true };
+    }
+    try {
+      return { tld, ...priceFromResult(match) };
+    } catch {
+      return { tld, available: false, price_dkk: null, price_incl_vat_dkk: null, error: true };
+    }
+  });
+}
+
 export function isValidTld(tld) {
-  return tld === 'dk' || tld === 'com';
+  return SUPPORTED_TLDS.includes(tld);
 }
 
 // Basic domain-label validation: letters/digits/hyphens, 1-63 chars,

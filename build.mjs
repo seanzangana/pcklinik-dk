@@ -455,21 +455,29 @@ function shopBackup() {
 }
 
 // ---------- domain purchase ----------
+// NOTE: DOMAENER_TLDS below is display/copy-only. The actual list of TLDs
+// checked is SUPPORTED_TLDS in functions/_lib/openprovider.js (the two
+// lists live in separate deploy targets — static build vs. Pages
+// Functions — so they can't share an import). Keep them in sync by hand.
 function domaenerBody() {
   return `  <section class="hero"><div class="wrap"><div class="eyebrow">Domæner</div><h1>Find og køb dit domæne</h1>
-    <p class="lead">Søg efter et ledigt domænenavn og se prisen med det samme. Betal sikkert via Stripe — vi registrerer domænet for jer inden for få timer.</p></div></section>
+    <p class="lead">Søg efter et domænenavn — vi tjekker ${DOMAENER_TLD_LIST_TEXT} på én gang og viser priserne med det samme. Betal sikkert via Stripe — vi registrerer domænet for jer inden for få timer.</p></div></section>
+  <style>
+    .dom-results-list{display:flex;flex-direction:column;gap:10px}
+    .dom-result-row{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:12px 14px;border:1px solid var(--border,#e2e2e2);border-radius:10px;flex-wrap:wrap}
+    .dom-result-row .dom-choose-btn{margin-left:auto}
+  </style>
   <section class="section"><div class="wrap">
     <div class="form-card" style="max-width:640px" id="dom-search-card">
       <div class="form-row">
         <div style="flex:2 1 auto"><label for="dom-name">Domænenavn</label><input id="dom-name" type="text" placeholder="fx pcklinik-webshop" autocomplete="off" /></div>
-        <div style="flex:0 0 120px"><label for="dom-tld">Endelse</label><select id="dom-tld"><option value="dk">.dk</option><option value="com">.com</option></select></div>
       </div>
       <button class="btn btn-primary" type="button" id="dom-check-btn">Tjek pris</button>
       <div id="dom-result" style="margin-top:20px"></div>
     </div>
 
     <div class="form-card" style="max-width:640px;display:none;margin-top:24px" id="dom-registrant-card">
-      <div class="eyebrow">Kontaktoplysninger til domæneregistrering</div>
+      <div class="eyebrow">Valgt domæne: <strong id="dom-selected-label"></strong></div>
       <div class="form-row"><div><label for="reg-name">Fulde navn</label><input id="reg-name" type="text" autocomplete="name" required /></div></div>
       <div class="form-row"><div><label for="reg-email">E-mail</label><input id="reg-email" type="email" autocomplete="email" required /></div></div>
       <div class="form-row"><div><label for="reg-address">Adresse</label><input id="reg-address" type="text" autocomplete="street-address" required /></div></div>
@@ -486,31 +494,46 @@ function domaenerBody() {
   <section class="section alt"><div class="wrap"><div class="eyebrow">FAQ</div><h2>Ofte stillede spørgsmål</h2><div class="faq">${DOMAENER_FAQ.map((f) => `<details><summary>${esc(f.q)}</summary><div class="answer">${esc(f.a)}</div></details>`).join('')}</div></div></section>
   <script>
   (function(){
-    var nameEl=document.getElementById('dom-name'),tldEl=document.getElementById('dom-tld'),
+    var nameEl=document.getElementById('dom-name'),
       checkBtn=document.getElementById('dom-check-btn'),resultEl=document.getElementById('dom-result'),
       regCard=document.getElementById('dom-registrant-card'),buyBtn=document.getElementById('dom-buy-btn'),
-      buyErr=document.getElementById('dom-buy-error');
+      buyErr=document.getElementById('dom-buy-error'),selectedLabel=document.getElementById('dom-selected-label');
     var currentCheck=null;
     function esc(s){var d=document.createElement('div');d.textContent=s;return d.innerHTML;}
-    checkBtn.addEventListener('click',function(){
-      var name=(nameEl.value||'').trim().toLowerCase(),tld=tldEl.value;
+    function runCheck(){
+      var name=(nameEl.value||'').trim().toLowerCase();
       if(!name){resultEl.innerHTML='<p class="form-status form-status--error" style="display:block">Skriv venligst et domænenavn.</p>';return;}
-      checkBtn.disabled=true;resultEl.innerHTML='<p class="sub">Tjekker …</p>';regCard.style.display='none';currentCheck=null;
-      fetch('/api/check-domain',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({name:name,tld:tld})})
+      checkBtn.disabled=true;resultEl.innerHTML='<p class="sub">Tjekker '+esc(name)+' på tværs af alle endelser …</p>';regCard.style.display='none';currentCheck=null;
+      fetch('/api/check-domain',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({name:name})})
         .then(function(r){return r.json().then(function(j){return {ok:r.ok,j:j};});})
         .then(function(x){
           checkBtn.disabled=false;
-          if(!x.ok||x.j.error){resultEl.innerHTML='<p class="form-status form-status--error" style="display:block">'+esc(x.j&&x.j.error?x.j.error:'Noget gik galt. Prøv igen.')+'</p>';return;}
-          if(!x.j.available){resultEl.innerHTML='<p class="form-status form-status--error" style="display:block">'+esc(name+'.'+tld)+' er desværre ikke ledigt.</p>';return;}
-          currentCheck={name:name,tld:tld};
-          resultEl.innerHTML='<p class="form-status form-status--ok" style="display:block">'+esc(name+'.'+tld)+' er ledigt! <strong>'+x.j.price_dkk+' kr.</strong> <span class="vat">ekskl. moms</span></p>';
-          regCard.style.display='block';
+          if(!x.ok||x.j.error||!x.j.results){resultEl.innerHTML='<p class="form-status form-status--error" style="display:block">'+esc(x.j&&x.j.error?x.j.error:'Noget gik galt. Prøv igen.')+'</p>';return;}
+          var rows=x.j.results.map(function(r){
+            var full=name+'.'+r.tld;
+            if(r.error){return '<div class="dom-result-row"><span>'+esc(full)+'</span><span class="sub">Kunne ikke tjekkes</span></div>';}
+            if(!r.available){return '<div class="dom-result-row"><span>'+esc(full)+'</span><span class="sub">Optaget</span></div>';}
+            return '<div class="dom-result-row"><span>'+esc(full)+'</span><span><strong>'+r.price_dkk+' kr.</strong> <span class="vat">ekskl. moms</span></span>'
+              +'<button type="button" class="btn btn-outline dom-choose-btn" data-name="'+esc(name)+'" data-tld="'+esc(r.tld)+'" data-full="'+esc(full)+'">Vælg</button></div>';
+          }).join('');
+          resultEl.innerHTML='<div class="dom-results-list">'+rows+'</div>';
+          var buttons=resultEl.querySelectorAll('.dom-choose-btn');
+          for(var i=0;i<buttons.length;i++){
+            buttons[i].addEventListener('click',function(){
+              currentCheck={name:this.getAttribute('data-name'),tld:this.getAttribute('data-tld')};
+              selectedLabel.textContent=this.getAttribute('data-full');
+              regCard.style.display='block';
+              regCard.scrollIntoView({behavior:'smooth',block:'start'});
+            });
+          }
         })
         .catch(function(){checkBtn.disabled=false;resultEl.innerHTML='<p class="form-status form-status--error" style="display:block">Noget gik galt. Prøv igen.</p>';});
-    });
+    }
+    checkBtn.addEventListener('click',runCheck);
+    nameEl.addEventListener('keydown',function(e){if(e.key==='Enter'){e.preventDefault();runCheck();}});
     buyBtn.addEventListener('click',function(){
       buyErr.style.display='none';
-      if(!currentCheck){buyErr.textContent='Tjek venligst prisen på et domæne først.';buyErr.style.display='block';return;}
+      if(!currentCheck){buyErr.textContent='Vælg venligst et domæne først.';buyErr.style.display='block';return;}
       var registrant={
         name:document.getElementById('reg-name').value.trim(),
         email:document.getElementById('reg-email').value.trim(),
@@ -532,12 +555,14 @@ function domaenerBody() {
   })();
   </script>`;
 }
+const DOMAENER_TLDS = ['dk', 'com', 'net', 'org', 'eu'];
+const DOMAENER_TLD_LIST_TEXT = DOMAENER_TLDS.map((t) => '.' + t).join(', ');
 const DOMAENER_FAQ = [
   { q: 'Hvor lang tid tager registreringen?', a: 'Vi registrerer domænet manuelt for jer, typisk inden for få timer efter betaling, og sender en bekræftelse på e-mail, når det er klar.' },
   { q: 'Hvad er inkluderet i prisen?', a: 'Prisen dækker 1 års registrering af domænet. Fornyelse næste år faktureres separat — vi kontakter jer, inden domænet udløber.' },
   { q: 'Er prisen inkl. eller ekskl. moms?', a: 'Prisen, du ser på siden, er ekskl. moms. Ved betaling via Stripe lægges 25% dansk moms oveni, så du ser det fulde beløb, før du betaler.' },
   { q: 'Kan jeg overføre et domæne, jeg allerede ejer?', a: 'Ja, kontakt os direkte på kontakt@pcklinik.dk, så hjælper vi med overførslen.' },
-  { q: 'Hvilke endelser (TLD’er) tilbyder I?', a: 'Vi starter med .dk og .com — flere endelser kan tilføjes efter aftale. Kontakt os, hvis I mangler en bestemt endelse.' },
+  { q: 'Hvilke endelser (TLD’er) tilbyder I?', a: 'Vi tjekker automatisk ' + DOMAENER_TLD_LIST_TEXT + ' for hvert domænenavn, du søger på. Mangler du en anden endelse, så kontakt os direkte.' },
 ];
 
 // ---------- About / Team ----------
