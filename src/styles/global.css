@@ -258,6 +258,9 @@ table.models td.issue { color: var(--muted); }
 .info-block .nap strong { color: var(--ink); }
 .map-frame { border: 1px solid var(--line); border-radius: var(--radius); overflow: hidden; }
 .map-frame iframe { width: 100%; height: 320px; border: 0; display: block; }
+.map-facade { width: 100%; height: 320px; border: 0; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 10px; background: var(--bg-alt, #f4f6f9); color: var(--muted); font: inherit; font-weight: 600; font-size: 15px; cursor: pointer; }
+.map-facade:hover { background: var(--line); }
+.map-facade-icon { font-size: 28px; }
 
 /* ---------- Contact form ---------- */
 .form-card { background: #fff; border: 1px solid var(--line); border-radius: var(--radius); padding: 30px; box-shadow: var(--shadow-card); }

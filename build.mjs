@@ -168,11 +168,20 @@ ${body}
   ${footer()}
   ${navToggleScript}
   ${formsScript}
+  ${mapFacadeScript}
 </body>
 </html>`;
 }
 
-const mapFrame = `<div class="map-frame"><iframe src="${site.mapsEmbed}" loading="lazy" title="PCKlinik on the map, Falkoner Allé 108" referrerpolicy="no-referrer-when-downgrade"></iframe></div>`;
+// Click-to-load map facade: avoids loading Google Maps' embed JS (~220 KiB
+// unused-on-load, per PageSpeed) until the visitor actually wants the
+// interactive map. Swaps in the real iframe on click via mapFacadeScript
+// (see page()). Every page that shows the map pays zero JS cost for it
+// unless the button is clicked.
+const mapFrame = `<div class="map-frame"><button type="button" class="map-facade" data-map-src="${esc(site.mapsEmbed)}" aria-label="Åbn interaktivt kort over PCKlinik, Falkoner Allé 108"><span class="map-facade-icon" aria-hidden="true">📍</span><span>Klik for at åbne det interaktive kort</span></button></div>`;
+const mapFacadeScript = `<script>
+document.querySelectorAll('.map-facade').forEach(function(btn){btn.addEventListener('click',function(){var src=btn.getAttribute('data-map-src');var f=document.createElement('iframe');f.src=src;f.loading='lazy';f.title='PCKlinik on the map, Falkoner Allé 108';f.referrerPolicy='no-referrer-when-downgrade';btn.replaceWith(f);});});
+</script>`;
 
 // ---------- repair pages ----------
 function repairBody(r) {
