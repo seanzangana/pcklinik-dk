@@ -461,7 +461,7 @@ function shopBackup() {
 // Functions — so they can't share an import). Keep them in sync by hand.
 function domaenerBody() {
   return `  <section class="hero"><div class="wrap"><div class="eyebrow">Domæner</div><h1>Find og køb dit domæne</h1>
-    <p class="lead">Søg efter et domænenavn — vi tjekker ${DOMAENER_TLD_LIST_TEXT} på én gang og viser priserne med det samme. Betal sikkert via Stripe — vi registrerer domænet for jer inden for få timer.</p></div></section>
+    <p class="lead">Søg efter et domænenavn — vi tjekker ${DOMAENER_TLD_COUNT} endelser (${DOMAENER_TLD_LIST_TEXT}) på én gang og viser priserne med det samme. Betal sikkert via Stripe — vi registrerer domænet for jer inden for få timer.</p></div></section>
   <style>
     .dom-results-list{display:flex;flex-direction:column;gap:10px}
     .dom-result-row{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:12px 14px;border:1px solid var(--border,#e2e2e2);border-radius:10px;flex-wrap:wrap}
@@ -555,14 +555,27 @@ function domaenerBody() {
   })();
   </script>`;
 }
-const DOMAENER_TLDS = ['dk', 'com', 'net', 'org', 'eu'];
-const DOMAENER_TLD_LIST_TEXT = DOMAENER_TLDS.map((t) => '.' + t).join(', ');
+// Must match SUPPORTED_TLDS in functions/_lib/openprovider.js (see note above).
+const DOMAENER_TLDS = [
+  'dk', 'com', 'net', 'org', 'eu',
+  'info', 'biz', 'name', 'pro', 'mobi',
+  'io', 'ai', 'co', 'me', 'tv', 'cc',
+  'app', 'dev', 'xyz', 'online', 'store', 'tech', 'site', 'shop', 'club',
+  'live', 'cloud', 'page', 'agency', 'digital', 'company', 'email', 'host',
+  'link', 'media', 'news', 'software', 'solutions', 'studio', 'support',
+  'team', 'tools', 'top', 'website', 'work', 'world', 'zone', 'fun', 'life',
+  'art', 'design', 'style', 'consulting', 'finance', 'group', 'legal',
+  'ltd', 'management', 'market', 'marketing', 'services', 'systems',
+  'technology',
+];
+const DOMAENER_TLD_COUNT = DOMAENER_TLDS.length;
+const DOMAENER_TLD_LIST_TEXT = DOMAENER_TLDS.slice(0, 8).map((t) => '.' + t).join(', ') + ' m.fl.';
 const DOMAENER_FAQ = [
   { q: 'Hvor lang tid tager registreringen?', a: 'Vi registrerer domænet manuelt for jer, typisk inden for få timer efter betaling, og sender en bekræftelse på e-mail, når det er klar.' },
   { q: 'Hvad er inkluderet i prisen?', a: 'Prisen dækker 1 års registrering af domænet. Fornyelse næste år faktureres separat — vi kontakter jer, inden domænet udløber.' },
   { q: 'Er prisen inkl. eller ekskl. moms?', a: 'Prisen, du ser på siden, er ekskl. moms. Ved betaling via Stripe lægges 25% dansk moms oveni, så du ser det fulde beløb, før du betaler.' },
   { q: 'Kan jeg overføre et domæne, jeg allerede ejer?', a: 'Ja, kontakt os direkte på kontakt@pcklinik.dk, så hjælper vi med overførslen.' },
-  { q: 'Hvilke endelser (TLD’er) tilbyder I?', a: 'Vi tjekker automatisk ' + DOMAENER_TLD_LIST_TEXT + ' for hvert domænenavn, du søger på. Mangler du en anden endelse, så kontakt os direkte.' },
+  { q: 'Hvilke endelser (TLD’er) tilbyder I?', a: 'Vi tjekker automatisk ' + DOMAENER_TLD_COUNT + ' endelser på én gang, herunder ' + DOMAENER_TLD_LIST_TEXT + ' Vi tilbyder generiske endelser (ikke landespecifikke som .de eller .fr) — mangler du en bestemt endelse, så kontakt os direkte.' },
 ];
 
 // ---------- About / Team ----------

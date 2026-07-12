@@ -57,7 +57,27 @@ function roundUpToNearest10(n) {
 // TLDs offered on the /domaener/ search. OpenProvider's check endpoint
 // accepts any extension it resells, so adding more here is a one-line
 // change — no other code depends on this specific list.
-export const SUPPORTED_TLDS = ['dk', 'com', 'net', 'org', 'eu'];
+//
+// Deliberately generic TLDs only — no country-code TLDs (.de, .fr, .us,
+// .uk, .no, etc.) beyond .dk itself (the core Danish market). Many ccTLDs
+// require local presence / residency documentation to actually register,
+// which surfaces as friction for Shan at manual-registration time rather
+// than a checkout failure (registration is manual, not automated here) —
+// but it's still avoidable friction, so left out for now. .io/.ai/.co/
+// .me/.tv/.cc are technically ccTLDs too but are sold and used globally as
+// generic TLDs with no residency requirement, so they're included.
+export const SUPPORTED_TLDS = [
+  'dk', 'com', 'net', 'org', 'eu',
+  'info', 'biz', 'name', 'pro', 'mobi',
+  'io', 'ai', 'co', 'me', 'tv', 'cc',
+  'app', 'dev', 'xyz', 'online', 'store', 'tech', 'site', 'shop', 'club',
+  'live', 'cloud', 'page', 'agency', 'digital', 'company', 'email', 'host',
+  'link', 'media', 'news', 'software', 'solutions', 'studio', 'support',
+  'team', 'tools', 'top', 'website', 'work', 'world', 'zone', 'fun', 'life',
+  'art', 'design', 'style', 'consulting', 'finance', 'group', 'legal',
+  'ltd', 'management', 'market', 'marketing', 'services', 'systems',
+  'technology',
+];
 
 async function callOpenProviderCheck(env, domains) {
   let token = await getOpenProviderToken(env);
