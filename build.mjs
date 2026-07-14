@@ -83,7 +83,7 @@ function footer() {
   return `<footer class="site-footer"><div class="wrap"><div class="cols">
     <div><img src="/logo.png" alt="PCKlinik" class="logo-foot" width="85" height="34" /><p>Hurtig, ærlig PC- og Mac-reparation til privatpersoner og virksomheder i Frederiksberg og København.</p><p>${site.address}</p></div>
     <div><h2>Reparationer</h2><a href="/computer-reparation/">Computer reparation</a><a href="/lenovo-reparation/">Lenovo</a><a href="/hp-reparation/">HP</a><a href="/dell-reparation/">Dell</a><a href="/macbook-reparation/">MacBook</a><a href="/mac-stationaer-reparation/">Mac (stationær)</a><a href="/bundkort-reparation/">Bundkortreparation</a></div>
-    <div><h2>Mere</h2><a href="/butik/">Butik</a><a href="/domaener/">Domæner</a><a href="/butik/computere/refurbished/">Refurbished computere</a><a href="/it-support-til-erhverv/">IT-support til erhverv</a><a href="/it-support-frederiksberg/">IT-support Frederiksberg</a><a href="/om-os/">Mød teamet</a><a href="/faq/">FAQ</a><a href="/nyheder/">Nyheder</a><a href="/studerende/">Studerende (CBS & DTU)</a><a href="/reparationspriser/">Typiske reparationspriser</a><a href="/garanti/">Garanti</a><a href="/aabningstider/">Åbningstider</a><a href="/kontakt/">Kontakt</a></div>
+    <div><h2>Mere</h2><a href="/butik/">Butik</a><a href="/hosting/">Hosting</a><a href="/automatisk-backup/">Automatisk Backup</a><a href="/domaener/">Domæner</a><a href="/butik/computere/refurbished/">Refurbished computere</a><a href="/it-support-til-erhverv/">IT-support til erhverv</a><a href="/it-support-frederiksberg/">IT-support Frederiksberg</a><a href="/om-os/">Mød teamet</a><a href="/faq/">FAQ</a><a href="/nyheder/">Nyheder</a><a href="/studerende/">Studerende (CBS & DTU)</a><a href="/reparationspriser/">Typiske reparationspriser</a><a href="/garanti/">Garanti</a><a href="/aabningstider/">Åbningstider</a><a href="/kontakt/">Kontakt</a></div>
     <div><h2>Områder vi betjener</h2><a href="/computerreparation-koebenhavn/">København</a><a href="/computerreparation-frederiksberg/">Frederiksberg</a><a href="/computerreparation-vesterbro/">Vesterbro</a><a href="/computerreparation-vanloese/">Vanløse</a><a href="/computerreparation-valby/">Valby</a><a href="/computerreparation-nordvest/">Nordvest</a></div>
     
     <div><h2>Kontakt os</h2><p>📞 <a href="${site.phoneHref}" style="display:inline">${site.phone}</a></p><p>✉️ <a href="mailto:${site.emailConsumer}" style="display:inline">${site.emailConsumer}</a></p><p style="margin-top:14px">Man–fre 10:00–18:00<br />Lør 10:00–14:00<br />Søn lukket</p></div>
@@ -409,6 +409,94 @@ const FAQ_BUSINESS = [
   ['Hvad sker der ved et IT-nedbrud?', 'I kontakter os, og vi går i gang med det samme. Med vores overvågning fanger vi ofte problemet, før I selv opdager det. Vores mål er at få jer op at køre igen hurtigst muligt og holde nedetiden på et minimum.'],
   ['Hjælper I virksomheder i hele landet?', 'Ja. Fjernsupport dækker hele Danmark. Vi tilbyder on-site service i København og Frederiksberg, hvor vi holder til.'],
 ];
+
+// ---------- hosting ----------
+// NOTE: "Bestil nu" buttons below link to HostShop product pages. HostShop
+// setup (My20i package types, HostShop products, opening the shop) hasn't
+// been completed yet — see hostshop-checkout-setup.md — so these are
+// placeholders for now. Swap HOSTING_TIERS[].href with the real per-product
+// HostShop "Product Link" URLs once Steps 5-7 of that setup are done.
+const HOSTING_TIERS = [
+  ['Basic', '45', false, '10 GB lagerplads', ['10 GB lagerplads', 'Ubegrænset trafik', '15 mailbokse', 'Gratis SSL-certifikat', 'Daglig backup'], '#hostshop-basic-tbd'],
+  ['Business', '89', true, '50 GB lagerplads', ['50 GB lagerplads', 'Ubegrænset trafik', '60 mailbokse', 'Gratis SSL-certifikat', 'Daglig backup', 'Prioriteret support'], '#hostshop-business-tbd'],
+  ['Business+', '169', false, '100 GB lagerplads', ['100 GB lagerplads', 'Ubegrænset trafik', '120 mailbokse', 'Gratis SSL-certifikat', 'Daglig backup', 'Prioriteret support', 'Til virksomheder med flere sites'], '#hostshop-businessplus-tbd'],
+];
+const HOSTING_FAQ = [
+  ['Hvad er inkluderet i hosting-pakkerne?', 'Alle pakker inkluderer lagerplads, ubegrænset trafik, mailbokse, et gratis SSL-certifikat og daglig backup. Business og Business+ tilføjer flere mailbokse og prioriteret support — se sammenligningen ovenfor for detaljer pr. pakke.'],
+  ['Kan I flytte min hjemmeside fra min nuværende udbyder?', 'Ja, kontakt os, så håndterer vi flytningen af jeres hjemmeside og mailbokse, så I undgår nedetid eller mistede e-mails undervejs.'],
+  ['Er priserne inkl. eller ekskl. moms?', 'Priserne, du ser på siden, er ekskl. moms — 25% dansk moms lægges oveni ved bestilling.'],
+  ['Er der binding på abonnementet?', 'Nej, alle hosting-pakker er månedlige uden binding.'],
+  ['Hvad er forskellen på hosting og jeres webdesign-/SEO-ydelser?', 'Hosting er selve serverpladsen, der får jeres hjemmeside til at være tilgængelig online. Webdesign, SEO og Google Ads er separate ydelser — vi bygger og optimerer selve hjemmesiden. Mange kunder bruger begge dele, men de kan også vælges hver for sig.'],
+  ['Hvilken pakke skal jeg vælge?', 'Basic passer til de fleste mindre hjemmesider og enkeltmandsvirksomheder. Business og Business+ passer til virksomheder med flere medarbejdere, mere e-mail-behov eller flere hjemmesider. Er du i tvivl, så kontakt os — vi rådgiver gerne.'],
+];
+function hostingBody() {
+  const cards = HOSTING_TIERS.map(([name, price, featured, headline, features, href]) => {
+    const li = features.map((f) => `<li class="yes">${esc(f)}</li>`).join('');
+    return `<div class="price-card${featured ? ' featured' : ''}">${featured ? '<span class="ribbon">⭐ Anbefalet</span>' : ''}<div class="tag">${esc(name)}</div><h3>${esc(name)}</h3><p class="blurb">${esc(headline)}</p><div class="price">${price} kr. <small>/ måned</small></div><div class="vat">ekskl. moms</div><ul>${li}</ul><a class="btn ${featured ? 'btn-primary' : 'btn-outline'}" href="${href}">Bestil nu</a><div class="fine">Ingen binding</div></div>`;
+  }).join('');
+  const faqHtml = HOSTING_FAQ.map(([q, a]) => `<details><summary>${esc(q)}</summary><div class="answer">${esc(a)}</div></details>`).join('');
+  return `  <section class="hero"><div class="wrap"><div class="eyebrow">Hosting</div><h1>Webhosting til din hjemmeside</h1>
+    <p class="lead">Hurtig, driftssikker webhosting med daglig backup og gratis SSL — fra det samme team, der reparerer jeres computere og bygger jeres hjemmesider.</p>
+    <div class="badges"><span class="badge check">Fra 45 kr./md.</span><span class="badge check">Ingen binding</span><span class="badge check">Dansk support</span></div>
+    <div class="cta-row"><a class="btn btn-white" href="#pricing">Se priser</a><a class="btn btn-ghost-light" href="${site.phoneHref}">📞 Ring ${site.phone}</a></div></div></section>
+  <section class="section"><div class="wrap"><div class="crumbs"><a href="/">Forside</a> › <span>Hosting</span></div>
+    <p class="sub">Skal jeres hjemmeside køre stabilt, hurtigt og sikkert? Vores hosting-pakker inkluderer lagerplads, mailbokse, gratis SSL-certifikat og daglig backup — så I kan fokusere på jeres forretning i stedet for serverdrift. Passer godt sammen med vores <a href="/hjemmesider-seo-google-ads/">webdesign- og SEO-ydelser</a>, men kan også vælges alene.</p></div></section>
+  <section class="section alt" id="pricing"><div class="wrap"><div class="eyebrow">Priser & pakker</div><h2>Gennemsigtige priser — ingen overraskelser</h2>
+    <p class="sub">Vælg den pakke, der passer til jeres hjemmeside. Fast pris pr. måned, ekskl. moms — ingen binding.</p>
+    <div class="pricing-grid">${cards}</div>
+    <p class="center" style="margin-top:28px;color:var(--muted)">Er du i tvivl om, hvilken pakke der passer? <a href="${site.phoneHref}">Ring ${site.phone}</a> eller <a href="/kontakt/">kontakt os</a>.</p></div></section>
+  <section class="section"><div class="wrap"><div class="eyebrow">FAQ</div><h2>Hosting — ofte stillede spørgsmål</h2><div class="faq">${faqHtml}</div></div></section>`;
+}
+function hostingSchemaFaq() {
+  return { '@context': 'https://schema.org', '@type': 'FAQPage', mainEntity: HOSTING_FAQ.map(([q, a]) => ({ '@type': 'Question', name: q, acceptedAnswer: { '@type': 'Answer', text: a } })) };
+}
+
+// ---------- automatisk backup ----------
+// NOTE ON NAMING: deliberately distinct from "Backup & datagenskabelse"
+// (/backup-og-datagendannelse/, a one-time data-recovery service under
+// Services). This page is a recurring backup SUBSCRIPTION.
+const AUTOMATISK_BACKUP_TIERS = [
+  ['256 GB', '199', 'Til den enkelte computer med almindelig brug.'],
+  ['512 GB', '289', 'Til flere enheder eller større datamængder.'],
+  ['1 TB', '349', 'Til virksomheder eller store fotobiblioteker/arkiver.'],
+  ['2 TB', '599', 'Til servere eller flere brugere med store datamængder.'],
+];
+const AUTOMATISK_BACKUP_FAQ = [
+  ['Hvor ofte tages der backup?', 'Automatisk, løbende — typisk dagligt, afhængig af jeres behov og den aftalte plan.'],
+  ['Hvor opbevares mine data?', 'Sikkert og krypteret hos en anerkendt cloud-udbyder. Kontakt os for specifikke detaljer om datacenter-placering.'],
+  ['Kan jeg få gendannet en enkelt fil, eller kun det hele?', 'Begge dele — I kan få gendannet enkelte filer eller en fuld gendannelse, alt efter behov.'],
+  ['Er der binding?', 'Nej, alle planer er uden binding.'],
+  ['Hvad er forskellen på dette og "Backup & datagenskabelse"?', '"Backup & datagenskabelse" er en engangsservice — vi tager en backup eller genskaber data i forbindelse med en reparation. Automatisk Backup er et løbende abonnement, der kører i baggrunden hver dag, så I altid har en frisk kopi af jeres data.'],
+];
+function automatiskBackupBody() {
+  const cards = AUTOMATISK_BACKUP_TIERS.map(([name, price, blurb]) => {
+    const mailto = `mailto:${site.emailConsumer}?subject=${encodeURIComponent('Interesse: Automatisk Backup – ' + name)}`;
+    return `<div class="price-card"><div class="tag">${esc(name)}</div><h3>${esc(name)}</h3><p class="blurb">${esc(blurb)}</p><div class="price">${price} kr. <small>/ måned</small></div><div class="vat">ekskl. moms</div><a class="btn btn-outline" href="${mailto}">Kontakt os for at komme i gang</a><div class="fine">Ingen binding</div></div>`;
+  }).join('');
+  const why = [
+    ['Sker automatisk, i baggrunden', 'Ingen manuel kopiering, ingen glemte USB-drev.'],
+    ['Krypteret opbevaring', 'Jeres data er beskyttet, både under overførsel og i opbevaring.'],
+    ['Nem gendannelse', 'Mistet en fil, eller hele computeren? Vi henter det tilbage.'],
+    ['Dansk support', 'Samme team som kender jeres opsætning i forvejen.'],
+  ].map(([t, b]) => `<li><strong>${esc(t)}</strong>${esc(b)}</li>`).join('');
+  const faqHtml = AUTOMATISK_BACKUP_FAQ.map(([q, a]) => `<details><summary>${esc(q)}</summary><div class="answer">${esc(a)}</div></details>`).join('');
+  return `  <section class="hero"><div class="wrap"><div class="eyebrow">Automatisk Backup</div><h1>Automatisk Backup fra PCKlinik</h1>
+    <p class="lead">Løbende, automatisk sikkerhedskopiering af jeres computere og servere — så en computerfejl aldrig bliver en katastrofe. Fra det samme team, der reparerer jeres computere.</p>
+    <div class="badges"><span class="badge check">Fra 199 kr./md.</span><span class="badge check">Ingen binding</span><span class="badge check">Krypteret opbevaring</span></div>
+    <div class="cta-row"><a class="btn btn-white" href="#pricing">Se priser</a><a class="btn btn-ghost-light" href="${site.phoneHref}">📞 Ring ${site.phone}</a></div></div></section>
+  <section class="section"><div class="wrap"><div class="crumbs"><a href="/">Forside</a> › <span>Automatisk Backup</span></div>
+    <div class="eyebrow">Hvorfor automatisk backup</div><ul class="why-list">${why}</ul></div></section>
+  <section class="section alt" id="pricing"><div class="wrap"><div class="eyebrow">Priser</div><h2>Vælg den plan, der passer til jer</h2>
+    <p class="sub">Ekskl. moms, ingen bindingsperiode.</p>
+    <div class="pricing-grid">${cards}</div></div></section>
+  <section class="section"><div class="wrap"><div class="eyebrow">Sådan kommer du i gang</div><h2>Kontakt os for at komme i gang</h2>
+    <p class="sub">Skriv til os eller ring, så sætter vi jeres automatiske backup op — vi rådgiver gerne om, hvilken plan der passer til jeres behov.</p>
+    <div class="cta-row"><a class="btn btn-primary" href="mailto:${site.emailConsumer}?subject=${encodeURIComponent('Interesse: Automatisk Backup')}">Kontakt os for at komme i gang</a><a class="btn btn-outline" href="${site.phoneHref}">📞 Ring ${site.phone}</a></div></div></section>
+  <section class="section alt"><div class="wrap"><div class="eyebrow">FAQ</div><h2>Automatisk Backup — ofte stillede spørgsmål</h2><div class="faq">${faqHtml}</div></div></section>`;
+}
+function automatiskBackupSchemaFaq() {
+  return { '@context': 'https://schema.org', '@type': 'FAQPage', mainEntity: AUTOMATISK_BACKUP_FAQ.map(([q, a]) => ({ '@type': 'Question', name: q, acceptedAnswer: { '@type': 'Answer', text: a } })) };
+}
 
 // ---------- shop ----------
 function productCard({ img, alt, title, desc, price, stripe = '#stripe-link-placeholder' }) {
@@ -849,6 +937,10 @@ async function run() {
   // Domain purchase
   pages.push(['/domaener/', page({ title: 'Køb domæne (.dk & .com) | PCKlinik', description: 'Søg og køb dit domæne direkte online — se prisen med det samme og betal sikkert via Stripe. Vi registrerer domænet for jer inden for få timer.', p: '/domaener/', body: domaenerBody(), schema: faqSchemaFrom(DOMAENER_FAQ) })]);
   pages.push(['/domaener/tak/', page({ title: 'Tak for din bestilling | PCKlinik Domæner', description: 'Vi har modtaget din betaling og registrerer jeres domæne inden for få timer.', p: '/domaener/tak/', body: domaenerTakHtml() })]);
+  // Hosting (webhosting subscription — HostShop checkout links are TBD, see hostingBody() note)
+  pages.push(['/hosting/', page({ title: 'Webhosting til din hjemmeside | PCKlinik', description: 'Hurtig, driftssikker webhosting fra 45 kr./md. — daglig backup, gratis SSL og dansk support. Ingen binding.', p: '/hosting/', body: hostingBody(), schema: hostingSchemaFaq() })]);
+  // Automatisk Backup (recurring backup subscription — distinct from /backup-og-datagendannelse/)
+  pages.push(['/automatisk-backup/', page({ title: 'Automatisk Backup | PCKlinik', description: 'Løbende, automatisk sikkerhedskopiering af jeres computere og servere fra 199 kr./md. Krypteret opbevaring, nem gendannelse, dansk support.', p: '/automatisk-backup/', body: automatiskBackupBody(), schema: automatiskBackupSchemaFaq() })]);
 
   // Mac Repair hub (broad intent)
   pages.push(['/mac-reparation/', page({ title: 'Mac-reparation i Frederiksberg & København | PCKlinik', description: 'Reparation af MacBook, iMac, Mac mini, Mac Studio og Mac Pro i Frederiksberg og København. Fejlsøgning fra 300 kr., fast pris, hurtig ekspedition.', p: '/mac-reparation/', body: macHubHtml(), schema: faqSchemaFrom(MAC_HUB_FAQ) })]);

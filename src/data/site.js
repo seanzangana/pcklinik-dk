@@ -99,6 +99,8 @@ export const nav = [
       ] },
     ],
   },
+  { label: 'Hosting', href: '/hosting/' },
+  { label: 'Automatisk Backup', href: '/automatisk-backup/' },
   { label: 'Domæner', href: '/domaener/' },
   { label: 'Kontakt', href: '/kontakt/' },
 ];
