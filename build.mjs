@@ -81,7 +81,7 @@ function header(p) {
 function footer() {
   const year = new Date().getFullYear();
   return `<footer class="site-footer"><div class="wrap"><div class="cols">
-    <div><img src="/logo.png" alt="PCKlinik" class="logo-foot" width="85" height="34" /><p>Hurtig, ærlig PC- og Mac-reparation til privatpersoner og virksomheder i Frederiksberg og København.</p><p>${site.address}</p></div>
+    <div><img src="/logo.png" alt="PCKlinik" class="logo-foot" width="85" height="34" /><p>Hurtig, ærlig PC- og Mac-reparation til privatpersoner og virksomheder i Frederiksberg og København.</p><p>Alt inden for computer og IT — du har ikke brug for nogen andre.</p><p>${site.address}</p></div>
     <div><h2>Reparationer</h2><a href="/computer-reparation/">Computer reparation</a><a href="/lenovo-reparation/">Lenovo</a><a href="/hp-reparation/">HP</a><a href="/dell-reparation/">Dell</a><a href="/macbook-reparation/">MacBook</a><a href="/mac-stationaer-reparation/">Mac (stationær)</a><a href="/bundkort-reparation/">Bundkortreparation</a></div>
     <div><h2>Mere</h2><a href="/butik/">Butik</a><a href="/hosting/">Hosting</a><a href="/automatisk-backup/">Automatisk Backup</a><a href="/domaener/">Domæner</a><a href="/butik/computere/refurbished/">Refurbished computere</a><a href="/it-support-til-erhverv/">IT-support til erhverv</a><a href="/it-support-frederiksberg/">IT-support Frederiksberg</a><a href="/hjemmesider-seo-google-ads/">Hjemmesider & SEO</a><a href="/om-os/">Mød teamet</a><a href="/faq/">FAQ</a><a href="/nyheder/">Nyheder</a><a href="/studerende/">Studerende (CBS & DTU)</a><a href="/reparationspriser/">Typiske reparationspriser</a><a href="/garanti/">Garanti</a><a href="/aabningstider/">Åbningstider</a><a href="/kontakt/">Kontakt</a></div>
     <div><h2>Områder vi betjener</h2><a href="/computerreparation-koebenhavn/">København</a><a href="/computerreparation-frederiksberg/">Frederiksberg</a><a href="/computerreparation-vesterbro/">Vesterbro</a><a href="/computerreparation-vanloese/">Vanløse</a><a href="/computerreparation-valby/">Valby</a><a href="/computerreparation-nordvest/">Nordvest</a></div>
@@ -261,8 +261,9 @@ function homeBody() {
   ].map(([t, d, h]) => `<a class="card card-link" href="${h}"><h3>${esc(t)}</h3><p>${esc(d)}</p><span class="arrow">Læs mere →</span></a>`).join('');
   const faqHtml = HOME_FAQ.map(([q, a]) => `<details><summary>${esc(q)}</summary><div class="answer">${esc(a)}</div></details>`).join('');
   return `  <section class="hero"><div class="wrap"><div class="eyebrow">Frederiksberg &amp; København</div>
-    <h1>Computer- og IT-support — til dig eller din virksomhed</h1>
-    <p class="lead">Hurtig, ærlig reparation til privatpersoner. IT-support til fast pris for virksomheder. Vælg din vej nedenfor.</p>
+    <h1>Alt inden for computer og IT — du har ikke brug for nogen andre.</h1>
+    <p class="lead">Fra reparation og IT-support til hosting, domæner, backup og salg af computere — hos PCKlinik får du det hele ét sted. I jeres computerverden har I ikke brug for nogen andre end os. Ingen at ringe rundt til, ingen flere aftaler at holde styr på — bare ét team, der kender jeres opsætning fra start til slut.</p>
+    <p style="margin-top:14px;font-weight:600">Vælg din vej nedenfor:</p>
     <div class="grid grid-2 hero-paths">
       <a class="card card-link" href="/kontakt/"><div class="card-icon">🖥️</div><h2>Til privatpersoner</h2><p>PC- og Mac-reparation — standard- eller ekspres-fejlsøgning, fast pris, de fleste reparationer samme dag.</p><span class="arrow">Book en reparation →</span></a>
       <a class="card card-link" href="/it-support-til-erhverv/"><div class="card-icon">🏢</div><h2>Til virksomheder</h2><p>IT-supportaftaler til fast pris — ubegrænset support, overvågning og sikkerhed for ét fast månedligt beløb.</p><span class="arrow">Se IT-support til erhverv →</span></a>
@@ -701,9 +702,11 @@ function aboutBody() {
   const cards = TEAM.map(([name, img, bio]) => `<div class="card"><img class="img-placeholder" src="${img}" alt="${esc(name)}" loading="lazy" width="480" height="360" /><h3>${esc(name)}</h3><p>${esc(bio)}</p></div>`).join('');
   return `  <section class="hero"><div class="wrap"><div class="eyebrow">Om PCKlinik</div><h1>Mød teamet</h1>
     <p class="lead">Rigtige mennesker, rigtig erfaring — ikke et callcenter. PCKlinik er et team på 7, med base i vores værksted på Falkoner All&eacute; i Frederiksberg. Tilsammen dækker vi pc- og Mac-reparation, netværk og servere, on-site support og hjemmeside-/SEO-arbejde — så uanset hvad du har brug for, er der en på teamet, der virkelig kender det godt.</p></div></section>
-  <section class="section"><div class="wrap"><div class="eyebrow">Teamet</div><h2>Syv personer, ét værksted</h2>
+  <section class="section"><div class="wrap"><div class="eyebrow">Hvorfor vi er mere end reparation</div><h2>Alt inden for computer og IT — du har ikke brug for nogen andre</h2>
+    <p class="sub">Vi startede som et reparationsværksted, men er over tid vokset til også at dække IT-support, hosting, domæner, backup og salg af computere. Det er ikke tilfældigt. Vi så det samme mønster igen og igen: kunder, der endte med at ringe rundt til flere forskellige leverandører for ting, der egentlig hang sammen — én til reparationen, én til hjemmesiden, én til backuppen, én til domænet. Derfor har vi valgt at være det ene team, der kender jeres opsætning fra start til slut. Inden for jeres computer- og IT-verden har I ikke brug for nogen andre end os.</p></div></section>
+  <section class="section alt"><div class="wrap"><div class="eyebrow">Teamet</div><h2>Syv personer, ét værksted</h2>
     <div class="grid grid-3" style="margin-top:24px">${cards}</div></div></section>
-  <section class="section alt"><div class="wrap"><div class="eyebrow">Derfor betyder det noget for dig</div><h2>Et større team — samme lige svar</h2>
+  <section class="section"><div class="wrap"><div class="eyebrow">Derfor betyder det noget for dig</div><h2>Et større team — samme lige svar</h2>
     <p class="sub">Et større team betyder hurtigere ekspedition og mere specialiseret ekspertise — men vi arbejder stadig, som vi altid har gjort: du får et lige svar fra en, der faktisk ved, hvad han taler om, ikke et sagsnummer i en kø.</p>
     <div class="cta-row"><a class="btn btn-primary" href="/kontakt/">Kontakt os</a><a class="btn btn-outline" href="/it-support-til-erhverv/">IT-support til erhverv →</a></div></div></section>`;
 }
@@ -925,7 +928,7 @@ async function run() {
 
   const pages = [];
   // home
-  pages.push(['/', page({ title: 'PCKlinik | Computer- og Mac-reparation i København', description: 'Computer- og Mac-reparation i Frederiksberg og København. Fejlsøgning 300 kr. (2–4 dage) eller ekspres (600 kr., 1–2 timer). Ring 91 81 61 81.', p: '/', body: homeBody(), schema: faqSchemaFrom(HOME_FAQ) })]);
+  pages.push(['/', page({ title: 'PCKlinik | Computer- og Mac-reparation i København', description: 'Computer- og Mac-reparation, IT-support, hosting, domæner og backup — alt ét sted hos PCKlinik, så du ikke skal bruge nogen andre. Fejlsøgning fra 300 kr. Ring 91 81 61 81.', p: '/', body: homeBody(), schema: faqSchemaFrom(HOME_FAQ) })]);
   // repairs
   for (const r of repairs) {
     pages.push([`/${r.slug}/`, page({ title: r.title, description: r.description, p: `/${r.slug}/`, body: repairBody(r), schema: repairSchema(r) })]);
@@ -933,20 +936,20 @@ async function run() {
   // contact
   pages.push(['/kontakt/', page({ title: 'Kontakt PCKlinik | Frederiksberg & København', description: 'Kontakt PCKlinik for PC- og Mac-reparation i Frederiksberg og København. Ring 91 81 61 81 eller skriv til kontakt@pcklinik.dk.', p: '/kontakt/', body: contactBody() })]);
   // business
-  pages.push(['/it-support-til-erhverv/', page({ title: 'IT-supportaftale til erhverv | PCKlinik', description: 'IT-support til fast pris for virksomheder i København og Frederiksberg. Ubegrænset support, overvågning, sikkerhed og backup — fra 399 kr./bruger/måned.', p: '/it-support-til-erhverv/', body: businessBody(), schema: businessSchemaFaq() })]);
+  pages.push(['/it-support-til-erhverv/', page({ title: 'IT-supportaftale til erhverv | PCKlinik', description: 'IT-support til fast pris for virksomheder — plus hosting, domæner og backup fra samme team. I har ikke brug for nogen andre. Fra 399 kr./bruger/måned.', p: '/it-support-til-erhverv/', body: businessBody(), schema: businessSchemaFaq() })]);
   // shop
-  pages.push(['/butik/', page({ title: 'Butik | Computere, backup & sikkerhed | PCKlinik', description: 'Køb istandsatte og nye computere samt backup- og sikkerhedsløsninger hos PCKlinik. Enkel og sikker betaling via Stripe.', p: '/butik/', body: shopHub() })]);
+  pages.push(['/butik/', page({ title: 'Butik | Computere, backup & sikkerhed | PCKlinik', description: 'Køb nye og istandsatte computere samt backup- og sikkerhedsudstyr hos PCKlinik — samme team, der også reparerer og supporterer dem. Betaling via Stripe.', p: '/butik/', body: shopHub() })]);
   pages.push(['/butik/computere/', page({ title: 'Computere | Nye & refurbished | PCKlinik Butik', description: 'Nye og istandsatte computere fra PCKlinik — testet og klar til brug, med garanti. Se udvalget og køb sikkert via Stripe.', p: '/butik/computere/', body: shopComputers() })]);
   pages.push(['/butik/computere/nye/', page({ title: 'Nye computere | PCKlinik Butik', description: 'Køb nye computere hos PCKlinik. Driftssikre mærker, klargjort og klar til brug. Sikker betaling via Stripe.', p: '/butik/computere/nye/', body: shopNew() })]);
   pages.push(['/butik/computere/refurbished/', page({ title: 'Refurbished computere med garanti | PCKlinik Butik', description: 'Grundigt testede og istandsatte computere fra PCKlinik, med garanti. God ydelse til en lavere pris. Sikker betaling via Stripe.', p: '/butik/computere/refurbished/', body: shopRefurb() })]);
   pages.push(['/butik/backup-sikkerhed/', page({ title: 'Backup & sikkerhed | PCKlinik Butik', description: 'Eksterne harddiske, NAS-løsninger og sikkerhedssoftware anbefalet af PCKlinik. Sikker betaling via Stripe.', p: '/butik/backup-sikkerhed/', body: shopBackup() })]);
   // Domain purchase
-  pages.push(['/domaener/', page({ title: 'Køb domæne (.dk & .com) | PCKlinik', description: 'Søg og køb dit domæne direkte online — se prisen med det samme og betal sikkert via Stripe. Vi registrerer domænet for jer inden for få timer.', p: '/domaener/', body: domaenerBody(), schema: faqSchemaFrom(DOMAENER_FAQ) })]);
+  pages.push(['/domaener/', page({ title: 'Køb domæne (.dk & .com) | PCKlinik', description: 'Søg og køb dit domæne direkte online hos PCKlinik — samme team som klarer reparation, hosting og IT-support. Betal sikkert via Stripe.', p: '/domaener/', body: domaenerBody(), schema: faqSchemaFrom(DOMAENER_FAQ) })]);
   pages.push(['/domaener/tak/', page({ title: 'Tak for din bestilling | PCKlinik Domæner', description: 'Vi har modtaget din betaling og registrerer jeres domæne inden for få timer.', p: '/domaener/tak/', body: domaenerTakHtml() })]);
   // Hosting (webhosting subscription — HostShop checkout links are TBD, see hostingBody() note)
-  pages.push(['/hosting/', page({ title: 'Webhosting til din hjemmeside | PCKlinik', description: 'Hurtig, driftssikker webhosting fra 45 kr./md. — daglig backup, gratis SSL og dansk support. Ingen binding.', p: '/hosting/', body: hostingBody(), schema: hostingSchemaFaq() })]);
+  pages.push(['/hosting/', page({ title: 'Webhosting til din hjemmeside | PCKlinik', description: 'Hurtig, driftssikker webhosting fra 45 kr./md. — fra samme team, der reparerer jeres computere og bygger jeres hjemmeside. Ingen binding.', p: '/hosting/', body: hostingBody(), schema: hostingSchemaFaq() })]);
   // Automatisk Backup (recurring backup subscription — distinct from /backup-og-datagendannelse/)
-  pages.push(['/automatisk-backup/', page({ title: 'Automatisk Backup | PCKlinik', description: 'Løbende, automatisk sikkerhedskopiering af jeres computere og servere fra 199 kr./md. Krypteret opbevaring, nem gendannelse, dansk support.', p: '/automatisk-backup/', body: automatiskBackupBody(), schema: automatiskBackupSchemaFaq() })]);
+  pages.push(['/automatisk-backup/', page({ title: 'Automatisk Backup | PCKlinik', description: 'Løbende, automatisk sikkerhedskopiering af jeres computere og servere fra 199 kr./md. — fra det samme team, der reparerer og supporterer jer.', p: '/automatisk-backup/', body: automatiskBackupBody(), schema: automatiskBackupSchemaFaq() })]);
 
   // Mac Repair hub (broad intent)
   pages.push(['/mac-reparation/', page({ title: 'Mac-reparation i Frederiksberg & København | PCKlinik', description: 'Reparation af MacBook, iMac, Mac mini, Mac Studio og Mac Pro i Frederiksberg og København. Fejlsøgning fra 300 kr., fast pris, hurtig ekspedition.', p: '/mac-reparation/', body: macHubHtml(), schema: faqSchemaFrom(MAC_HUB_FAQ) })]);

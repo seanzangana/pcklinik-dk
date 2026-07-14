@@ -449,7 +449,7 @@ export const services = [
   {
     slug: 'computer-reparation', group: 'PC',
     title: 'Computer reparation i Frederiksberg & København | PCKlinik',
-    description: 'Computer reparation af pc, bærbar og Mac — alle mærker. Værksted på Falkoner Allé, Frederiksberg. Fejlsøgning fra 300 kr., fast pris, ofte færdig samme dag.',
+    description: 'Computer reparation af pc, bærbar og Mac — alle mærker. Fra samme team, der også klarer IT-support, hosting og backup, så du ikke skal bruge nogen andre. Fejlsøgning fra 300 kr.',
     h1: 'Computer reparation i Frederiksberg & København',
     subhead: 'Alle mærker, fast pris, og 9 ud af 10 reparationer klaret på under 24 timer',
     intro: [
