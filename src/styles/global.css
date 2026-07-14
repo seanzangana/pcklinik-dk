@@ -401,4 +401,14 @@ textarea { resize: vertical; min-height: 120px; }
 /* Contact form status messages (AJAX submit) */
 .form-status { margin-top: 16px; padding: 12px 16px; border-radius: 8px; font-size: 15px; line-height: 1.5; }
 .form-status--ok { background: #e7f6ec; color: #1a6b39; border: 1px solid #b6e2c4; }
+
+/* ---------- Announcement banner (site-wide toggle, see src/data/announcement.js) ---------- */
+.announcement-bar { width: 100%; text-align: center; }
+.announcement-inner { display: flex; align-items: center; justify-content: center; gap: 16px; padding: 10px 32px; position: relative; }
+.announcement-msg { font-size: 14.5px; font-weight: 600; line-height: 1.4; }
+.announcement-close { position: absolute; right: 12px; top: 50%; transform: translateY(-50%); background: none; border: none; font-size: 20px; line-height: 1; cursor: pointer; padding: 4px 8px; color: inherit; opacity: 0.75; }
+.announcement-close:hover { opacity: 1; }
+.announcement-closed, .announcement-holiday { background: #FCEFD9; color: #7A4A00; border-bottom: 1px solid #F3D9A6; }
+.announcement-info { background: var(--blue-soft); color: var(--navy-deep); border-bottom: 1px solid #C7D6F5; }
+@media (max-width: 640px) { .announcement-inner { padding: 10px 48px 10px 16px; } .announcement-msg { font-size: 13.5px; } }
 .form-status--error { background: #fdecec; color: #a12626; border: 1px solid #f3c2c2; }

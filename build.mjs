@@ -14,6 +14,7 @@ import { services } from './src/data/services.js';
 import { locations } from './src/data/locations.js';
 import { news } from './src/data/news.js';
 import { macHubHtml, gamingHtml, MAC_HUB_FAQ, GAMING_FAQ, errorMessagesHtml, ERROR_FAQ, computerWontTurnOnHtml, WONT_TURN_ON_FAQ, faqPageHtml, GENERAL_FAQ, networkHubHtml, NETWORK_HUB_FAQ, websitesHubHtml, WEBSITES_HUB_FAQ, studentsHtml, STUDENTS_FAQ, priceRangesHtml } from './src/data/richPages.js';
+import { announcement } from './src/data/announcement.js';
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const DIST = path.join(__dirname, 'dist');
@@ -41,6 +42,35 @@ function formOpen(dest, subject, nextPath) {
         <input type="hidden" name="_subject" value="${esc(subject)}" />
         <input type="hidden" name="_next" value="${next}" />`;
 }
+
+// ---------- announcement banner ----------
+// Renders nothing at all when announcement.enabled is false — zero visual
+// footprint, zero performance cost. See src/data/announcement.js for how
+// Shan (via Cowork) toggles this on/off with a one-line edit + push.
+// Dismiss is stored in sessionStorage (per-tab-session): dismissing hides
+// the banner for the rest of that browsing session, but it reappears on
+// the next fresh visit/session as long as `enabled` is still true — no code
+// change needed to "reset" it.
+function announcementBanner() {
+  if (!announcement.enabled) return '';
+  const id = 'pck-announcement';
+  return `<div class="announcement-bar announcement-${esc(announcement.type)}" id="${id}">
+    <div class="wrap announcement-inner"><span class="announcement-msg">${esc(announcement.message)}</span><button type="button" class="announcement-close" id="${id}-close" aria-label="Luk besked">&times;</button></div>
+  </div>`;
+}
+const announcementScript = announcement.enabled ? `<script>
+(function(){
+  var KEY='pck-announcement-dismissed';
+  var bar=document.getElementById('pck-announcement');
+  var btn=document.getElementById('pck-announcement-close');
+  if(!bar) return;
+  try{ if(sessionStorage.getItem(KEY)==='1'){ bar.style.display='none'; } }catch(e){}
+  btn&&btn.addEventListener('click',function(){
+    bar.style.display='none';
+    try{ sessionStorage.setItem(KEY,'1'); }catch(e){}
+  });
+})();
+</script>` : '';
 
 // ---------- shared chrome ----------
 function topbar(p) {
@@ -167,6 +197,7 @@ function page({ title, description, p, body, schema = null, lang = 'da', dir = '
   ${ld}
 </head>
 <body>
+  ${announcementBanner()}
   ${header(p)}
   <main>
 ${body}
@@ -175,6 +206,7 @@ ${body}
   ${navToggleScript}
   ${formsScript}
   ${mapFacadeScript}
+  ${announcementScript}
 </body>
 </html>`;
 }
