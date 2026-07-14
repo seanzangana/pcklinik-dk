@@ -14,23 +14,29 @@ export const site = {
   addressPostal: '2000',
   hours: 'Man–fre 10:00–18:00 · Lør 10:00–14:00 · Søn lukket',
   mapsEmbed: 'https://www.google.com/maps?q=Falkoner+All%C3%A9+108,+2000+Frederiksberg&output=embed',
+  // Public Google Maps listing for PCKlinik (search-by-name/address deep
+  // link — resolves directly to the business's own Maps page and reviews).
+  reviewsUrl: 'https://www.google.com/maps/search/?api=1&query=PCKlinik+Falkoner+All%C3%A9+108+Frederiksberg',
+  // STATIC, manually-maintained values (per footerreviewlinkandschemabrief.md
+  // — no Places API/billing set up yet). Used for the footer review link and
+  // the AggregateRating schema (businessSchema in build.mjs). These will
+  // drift as new reviews come in — re-check against PCKlinik's real Google
+  // Business Profile every few months and update both numbers together. A
+  // significantly stale mismatch risks Google disabling the rich result.
+  // Future upgrade path: automated-review-sync-brief.md (daily Worker sync
+  // to KV/D1 once a billing-enabled Google Cloud project + Places API key +
+  // Place ID exist) — not needed for this static version.
+  reviewRating: '4.9',
+  reviewCount: '493',
 };
 
 // Dropdown children may include { header: 'Label' } items — rendered as a
 // non-clickable section divider inside the menu.
+// NOTE: "Hjemmesider & SEO" is deliberately NOT a top-level header nav item —
+// it lives only in the footer "Mere" column (see footer() in build.mjs).
 export const nav = [
   { label: 'Forside', href: '/' },
   { label: 'IT-support til erhverv', href: '/it-support-til-erhverv/' },
-  {
-    label: 'Hjemmesider & SEO',
-    href: '/hjemmesider-seo-google-ads/',
-    children: [
-      { label: 'Oversigt', href: '/hjemmesider-seo-google-ads/' },
-      { label: 'Webdesign & udvikling', href: '/webdesign-og-udvikling/' },
-      { label: 'SEO-ydelser', href: '/seo-ydelser/' },
-      { label: 'Google Ads-administration', href: '/google-ads-administration/' },
-    ],
-  },
   {
     label: 'Services',
     href: '/faq/',
