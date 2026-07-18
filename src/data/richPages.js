@@ -36,7 +36,7 @@ export const MAC_HUB_FAQ = [
   { q: 'Tilbyder I en lånecomputer, mens min Mac bliver repareret?', a: 'Ikke i øjeblikket — spørg ved booking, hvis det er vigtigt for dig.' },
   { q: 'Koster fejlsøgning det samme for både MacBook og stationær Mac?', a: 'Ja, samme standard-/ekspres-priser gælder på tværs af alle Mac-modeller.' },
   { q: 'Hvad koster en Mac-reparation?', a: 'Det afhænger af fejlen og modellen. Vi fejlsøger altid først og giver dig en fast pris, før vi går i gang — standardfejlsøgning er 300 kr. (2–4 dage), eller ekspres for 600 kr. (1–2 timer).' },
-  { q: 'Hvor lang tid tager en Mac-reparation?', a: 'Mange reparationer klares samme dag, især med ekspres fejlsøgning. Mere omfattende reparationer kan tage længere tid afhængigt af reservedele.' },
+  { q: 'Hvor lang tid tager en Mac-reparation?', a: 'Mange reparationer klares samme dag, især med ekspresfejlsøgning. Mere omfattende reparationer kan tage længere tid afhængigt af reservedele.' },
   { q: 'Kan alle Mac-computere repareres?', a: 'De fleste kan, men det afhænger af skadens omfang og modellens alder. Vi siger altid ærligt til, hvis en reparation ikke kan betale sig.' },
   { q: 'Betyder det noget, om min Mac er gammel?', a: 'Nej — vi reparerer Mac-computere på tværs af generationer, fra aktuelle Apple Silicon-modeller til meget ældre Intel-Mac.' },
   { q: 'Holder en Mac længere end en Windows-computer?', a: 'Ofte ja, i praksis — Apples tætte integration mellem hardware og styresystem betyder typisk en længere brugbar levetid og mere jævn ydelse over tid, end man ofte ser på tilfældigt sammensat pc-hardware. Det er dog ikke en absolut regel: en velbygget pc kan sagtens holde lige så længe, og en Mac er ikke immun over for slid. Vi reparerer og anbefaler begge dele lige ærligt, alt efter hvad der reelt passer til din situation.' },
@@ -157,16 +157,16 @@ export function errorMessagesHtml() {
   <section class="section"><div class="wrap"><div class="eyebrow">Mac</div><h2>Mac-fejl</h2><div class="lead-copy">${msubs}</div></div></section>
   <section class="section alt"><div class="wrap"><div class="eyebrow">FAQ</div><h2>Fejlmeddelelser — ofte stillede spørgsmål</h2><div class="faq">${faqHtml}</div></div></section>
   <section class="section"><div class="wrap"><div class="cta-band"><h2>Har du en af disse fejl?</h2><p>Vi fejlsøger rodårsagen, ikke bare koden. Fejlsøgning 300 kr. (2–4 dage) eller ekspres (600 kr., 1–2 timer), fast pris før vi går i gang.</p><div class="cta-row"><a class="btn btn-white" href="/kontakt/">Book fejlsøgning</a><a class="btn btn-ghost-light" href="${site.phoneHref}">📞 Ring ${site.phone}</a></div></div>
-    <div style="margin-top:32px"><p class="eyebrow">Relateret</p><div class="crosslinks"><a href="/backup-og-datagendannelse/">Backup & datagenskabelse →</a><a href="/harddisk-ssd-udskiftning/">Udskiftning af harddisk →</a><a href="/reinstallation-af-system/">Systeminstallation →</a><a href="/virus-og-malwarefjernelse/">Fjernelse af virus & malware →</a><a href="/kontakt/">Kontakt & booking →</a></div></div></div></section>`;
+    <div style="margin-top:32px"><p class="eyebrow">Relateret</p><div class="crosslinks"><a href="/backup-og-datagendannelse/">Backup & datagendannelse →</a><a href="/harddisk-ssd-udskiftning/">Udskiftning af harddisk →</a><a href="/reinstallation-af-system/">Systeminstallation →</a><a href="/virus-og-malwarefjernelse/">Fjernelse af virus & malware →</a><a href="/kontakt/">Kontakt & booking →</a></div></div></div></section>`;
 }
 
 // ---------- Computeren vil ikke tænde (guide) ----------
 export const WONT_TURN_ON_FAQ = [
   { q: 'Kan en defekt stikkontakt være den reelle årsag?', a: 'Ja — altid værd at teste en anden stikkontakt først.' },
-  { q: 'Betyder en computer, der ikke vil tænde, altid datatab?', a: 'Nej — i de fleste tilfælde er problemet adskilt fra lagerdrevet, og dine data kan genskabes.' },
+  { q: 'Betyder en computer, der ikke vil tænde, altid datatab?', a: 'Nej — i de fleste tilfælde er problemet adskilt fra lagerdrevet, og dine data kan gendannes.' },
   { q: 'Min bærbare viser slet ingen livstegn — er det helt sikkert batteriet?', a: 'Ikke nødvendigvis — det kan være batteriet, opladeren eller ladeporten. Vi tester hver del for sig frem for at antage, da det spilder tid og penge at udskifte den forkerte del.' },
   { q: 'Blæserne kører, men jeg ser ingenting på skærmen — er det alvorligt?', a: 'Det er faktisk et af de mere reparerbare scenarier — selve computeren fungerer, det er et skærmspecifikt problem, hvilket ofte er en ligetil skærm- eller kabelreparation frem for et dybere hardwareproblem.' },
-  { q: 'Mister jeg mine data, hvis min computer ikke vil tænde?', a: 'Ikke af den grund alene — men hvis et svigtende drev er den underliggende årsag, bliver backup eller genskabelse af data tidskritisk. Vi prioriterer det, hvis det er det, fejlsøgningen viser.' },
+  { q: 'Mister jeg mine data, hvis min computer ikke vil tænde?', a: 'Ikke af den grund alene — men hvis et svigtende drev er den underliggende årsag, bliver backup eller gendannelse af data tidskritisk. Vi prioriterer det, hvis det er det, fejlsøgningen viser.' },
   { q: 'Skal jeg blive ved med selv at forsøge at tænde den, eller bringe den ind?', a: 'Nogle få grundlæggende tjek (opladerforbindelse, en anden stikkontakt) er fine at prøve. Ud over det, især hvis du hører bippen eller ser gentagne genstartsloops, anbefaler vi at bringe den ind frem for at risikere yderligere komplikationer.' },
 ];
 export function computerWontTurnOnHtml() {
@@ -182,7 +182,7 @@ export function computerWontTurnOnHtml() {
     ['Scenarie 3: Den tænder og begynder at starte op, men bliver ikke færdig med at indlæse Windows eller macOS',
      'et software- eller styresystemsproblem — et beskadiget OS, et svigtende drev eller en Windows-/macOS-opdatering, der ikke blev fuldført korrekt.',
      'Sætter den sig fast på en logoskærm, viser en fejlmeddelelse eller looper tilbage til en sort skærm gentagne gange? Enhver vist fejlkode er nyttig information.',
-     'Afhænger af årsagen — det kan være en <a href="/reinstallation-af-system/">systeminstallation</a> (frisk OS-opsætning), en <a href="/harddisk-ssd-udskiftning/">udskiftning af harddisk</a>, hvis drevet er svigtet, eller <a href="/backup-og-datagendannelse/">datagenskabelse</a> først, hvis drevet er ved at svigte, og data ikke er sikkerhedskopieret. Se vores side om <a href="/fejlmeddelelser/">fejlmeddelelser</a> for en specifik kode eller et symbol.'],
+     'Afhænger af årsagen — det kan være en <a href="/reinstallation-af-system/">systeminstallation</a> (frisk OS-opsætning), en <a href="/harddisk-ssd-udskiftning/">udskiftning af harddisk</a>, hvis drevet er svigtet, eller <a href="/backup-og-datagendannelse/">datagendannelse</a> først, hvis drevet er ved at svigte, og data ikke er sikkerhedskopieret. Se vores side om <a href="/fejlmeddelelser/">fejlmeddelelser</a> for en specifik kode eller et symbol.'],
   ].map(([h, m, c, fx], i) => `<section class="section${i%2? ' alt':''}"><div class="wrap lead-copy"><h2>${esc(h)}</h2><p><strong>Hvad det som regel betyder:</strong> ${esc(m)}</p><p><strong>Hvad du skal tjekke først:</strong> ${esc(c)}</p><p><strong>Sådan udbedrer vi det:</strong> ${fx}</p></div></section>`).join('');
   const faqHtml = WONT_TURN_ON_FAQ.map((f) => `<details><summary>${esc(f.q)}</summary><div class="answer">${esc(f.a)}</div></details>`).join('');
   return `  <section class="hero"><div class="wrap"><div class="eyebrow">Hjælp · Vil ikke tænde</div>
@@ -204,9 +204,9 @@ const FAQ_GROUPS = [
     ['Kan I lave en faktura til udlægsrapporter eller refusion?', 'Ja — alle fakturaer kan laves med de nødvendige oplysninger til udlæg, virksomhedsrefusion eller administrative formål. Vi kan også lave fakturaen på engelsk, hvis det er nødvendigt.'],
     ['Hvad skal jeg gøre, før jeg bringer min enhed ind til reparation?', 'Hvis muligt: tag backup af vigtige data, fjern eventuelt cover eller tilbehør, og notér enhedens adgangskode, hvis vi skal teste den efter reparation. Ikke et krav, men det gør det hurtigere.'],
     ['Tilbyder I studierabat?', 'Kontakt os direkte for at spørge — værd at tjekke, især i betragtning af vores placering tæt på Copenhagen Business School.'],
-    ['Taler I engelsk?', 'Ja — vi kan sagtens klare hele forløbet på engelsk, hvis det er nemmere for jer, fra første opkald eller e-mail til afhentning af den reparerede enhed.'],
+    ['Taler I engelsk?', 'Ja — vi kan sagtens klare hele forløbet på engelsk, hvis det er nemmere for dig, fra første opkald eller e-mail til afhentning af den reparerede enhed.'],
     ['Hvordan fungerer fejlsøgning og reparation?', 'Vi fejlsøger det reelle problem først og giver dig derefter en fast pris, før noget reparationsarbejde starter. Standardfejlsøgning koster 300 kr. (2–4 dage), eller vælg ekspres for 600 kr. (1–2 timer) — med reparation og levering inden for 24 timer, hvis der ikke skal bestilles specielle reservedele.'],
-    ['Hvad hvis jeg skal bruge min enhed hurtigere end standardfejlsøgning?', 'Vælg ekspres fejlsøgning (600 kr., 1–2 timer) i stedet for standardmuligheden (300 kr.). De fleste ekspresreparationer klares inden for 24 timer, hvis der ikke skal bestilles specielle reservedele.'],
+    ['Hvad hvis jeg skal bruge min enhed hurtigere end standardfejlsøgning?', 'Vælg ekspresfejlsøgning (600 kr., 1–2 timer) i stedet for standardmuligheden (300 kr.). De fleste ekspresreparationer klares inden for 24 timer, hvis der ikke skal bestilles specielle reservedele.'],
     ['Giver I garanti på reparationer?', 'Ja, reparationer kommer med garanti. Spørg ved booking om detaljerne for din type reparation.'],
     ['Er mine data sikre under reparation?', 'Ja. Vi tilgår eller deler ikke personlige data ud over det, der er nødvendigt for at gennemføre reparationen, og vi anbefaler under alle omstændigheder at tage backup af vigtige filer forinden.'],
     ['Skal jeg bestille tid, eller kan jeg bare møde op?', 'Fremmøde uden bestilling — ingen tidsbestilling nødvendig.'],
@@ -232,7 +232,7 @@ const FAQ_GROUPS = [
   ['Services', [
     ['Kan I opgradere min gamle bærbar til en SSD?', 'Ja — ofte en af de mest mærkbare hastighedsforbedringer, du kan lave på en ældre maskine. Se <a href="/ssd-opgradering/">SSD-opgradering</a>.'],
     ['Reparerer I væskeskade?', 'Ja, på alle mærker og modeller. Væskeskade-fejlsøgning fungerer anderledes end vores standardpriser — det er en fast pris på 600 kr., tager 3–4 dage, og der er ingen ekspresmulighed, da en ordentlig vurdering tager tid. Se <a href="/vaeskeskade-reparation/">Væskeskade-reparation</a>.'],
-    ['Kan I genskabe data fra en svigtet harddisk?', 'Ofte, ja — det afhænger af svigtets type og alvorlighed. Vi vurderer først og giver et ærligt svar. Se <a href="/backup-og-datagendannelse/">Backup & datagenskabelse</a>.'],
+    ['Kan I gendanne data fra en svigtet harddisk?', 'Ofte, ja — det afhænger af svigtets type og alvorlighed. Vi vurderer først og giver et ærligt svar. Se <a href="/backup-og-datagendannelse/">Backup & datagendannelse</a>.'],
     ['Fjerner I virus og malware?', 'Ja, på både pc og Mac. Se <a href="/virus-og-malwarefjernelse/">Fjernelse af virus & malware</a>.'],
     ['Renser I støv og påfører ny kølepasta?', 'Ja — en almindelig løsning på overophedning eller blæserstøj på både bærbare og stationære gaming-pc’er.'],
     ['Udbedrer I ladeporte?', 'Ja, på tværs af bærbar-mærker. Se <a href="/ladestik-reparation/">Reparation af ladeport</a>.'],
@@ -240,7 +240,7 @@ const FAQ_GROUPS = [
   ['IT-support til erhverv', [
     ['Kan en virksomhed sende flere enheder ind på én gang til reparation eller opsætning?', 'Ja — det er almindeligt for virksomheder og kobler sig til vores IT-support til erhverv ved større eller løbende behov.'],
     ['Tilbyder I løbende IT-support til virksomheder, ikke kun enkeltstående reparationer?', 'Ja — IT-supportaftaler til fast pris med ubegrænset support, overvågning og sikkerhed. Se vores side om <a href="/it-support-til-erhverv/">IT-support til erhverv</a>.'],
-    ['Hvad er forskellen på en enkeltstående reparation og en supportaftale?', 'En reparation er en enkelt løsning på et bestemt problem. En supportaftale er en løbende, fast månedlig ordning, der dækker ubegrænset support, overvågning og sikkerhed for jeres virksomhed — designet til at forebygge problemer frem for bare at udbedre dem bagefter.'],
+    ['Hvad er forskellen på en enkeltstående reparation og en supportaftale?', 'En reparation er en enkelt løsning på et bestemt problem. En supportaftale er en løbende, fast månedlig ordning, der dækker ubegrænset support, overvågning og sikkerhed for din virksomhed — designet til at forebygge problemer frem for bare at udbedre dem bagefter.'],
   ]],
   ['Butik', [
     ['Sælger I computere, ikke kun reparerer dem?', 'Ja — nye og istandsatte computere samt backup- og sikkerhedsudstyr findes i vores <a href="/butik/">butik</a>.'],
@@ -289,9 +289,9 @@ export function networkHubHtml() {
 // ---------- Websites & SEO hub ----------
 export const WEBSITES_HUB_FAQ = [
   { q: 'Hvordan betaler kunder i udlandet?', a: 'Vi tager imod international bankoverførsel og kortbetaling. Betalingsdetaljer gøres klare, når vi aftaler projektets omfang.' },
-  { q: 'Arbejder I på tværs af forskellige tidszoner?', a: 'Ja — vi aftaler kommunikationstider på forhånd, der passer til jeres placering.' },
-  { q: 'Hvilken valuta er fakturaer i?', a: 'Typisk DKK eller EUR — vi kan drøfte, hvad der fungerer bedst for jer, når projektet starter.' },
-  { q: 'Hvor lang tid tager det at bygge en hjemmeside?', a: 'Afhænger af omfanget — en simpel virksomhedsside er hurtigere end en specialbygget webshop. Vi giver jer en realistisk tidsplan som en del af projekttilbuddet.' },
+  { q: 'Arbejder I på tværs af forskellige tidszoner?', a: 'Ja — vi aftaler kommunikationstider på forhånd, der passer til din placering.' },
+  { q: 'Hvilken valuta er fakturaer i?', a: 'Typisk DKK eller EUR — vi kan drøfte, hvad der fungerer bedst for dig, når projektet starter.' },
+  { q: 'Hvor lang tid tager det at bygge en hjemmeside?', a: 'Afhænger af omfanget — en simpel virksomhedsside er hurtigere end en specialbygget webshop. Vi giver dig en realistisk tidsplan som en del af projekttilbuddet.' },
   { q: 'Tilbyder I løbende vedligeholdelse, efter siden er lanceret?', a: 'Ja — opdateringer, sikkerhedsrettelser og små ændringer kan aftales som en løbende service frem for en engangsopgave.' },
   { q: 'Bygger I både hjemmesiden OG håndterer SEO, eller kun det ene?', a: 'Begge dele — nogle kunder vil have begge fra start, andre har allerede en side og vil bare have hjælp til SEO eller Ads.' },
   { q: 'Er dette kun for virksomheder, eller kan private også få bygget en personlig hjemmeside?', a: 'Primært rettet mod virksomheder, men kontakt os uanset, hvad du har brug for.' },
@@ -300,7 +300,7 @@ export function websitesHubHtml() {
   const cards = [
     ['Webdesign & udvikling', 'Moderne, hurtige, mobilvenlige sider — virksomhedssider, porteføljer eller simple webshops.', '/webdesign-og-udvikling/'],
     ['SEO-ydelser', 'Rigtig søgeordsanalyse, teknisk SEO og indholdsstrategi — ikke bare en månedlig rapport.', '/seo-ydelser/'],
-    ['Google Ads-administration', 'Målrettede kampagner, styret ordentligt, så jeres budget bruges på de rette søgninger.', '/google-ads-administration/'],
+    ['Google Ads-administration', 'Målrettede kampagner, styret ordentligt, så dit budget bruges på de rette søgninger.', '/google-ads-administration/'],
   ].map(([t, d, h]) => `<a class="card card-link" href="${h}"><h3>${esc(t)}</h3><p>${esc(d)}</p><span class="arrow">Læs mere →</span></a>`).join('');
   const faqHtml = WEBSITES_HUB_FAQ.map((f) => `<details><summary>${esc(f.q)}</summary><div class="answer">${esc(f.a)}</div></details>`).join('');
   const quote = `mailto:${site.emailBusiness}?subject=${encodeURIComponent('Forespørgsel om hjemmeside & SEO')}`;
@@ -317,7 +317,7 @@ export function websitesHubHtml() {
 // ---------- Studerende (CBS & DTU) — student-facing SEO/FAQ page ----------
 export const STUDENTS_FAQ = [
   { q: 'Ligger PCKlinik tæt på CBS?', a: 'Ja. Vores værksted på Falkoner Allé 108 ligger i gåafstand fra CBS på Solbjerg Plads og Frederiksberg campus — nemt at nå til fods, på cykel eller med metro, hvis din bærbare driller midt i en aflevering.' },
-  { q: 'Skal jeg bestille tid, eller kan jeg bare komme forbi?', a: 'Ingen tidsbestilling nødvendig — bare kom forbi i åbningstiden, så kigger vi på den. Har du en stram deadline, så sig til, så prioriterer vi med ekspres fejlsøgning, hvor det er muligt.' },
+  { q: 'Skal jeg bestille tid, eller kan jeg bare komme forbi?', a: 'Ingen tidsbestilling nødvendig — bare kom forbi i åbningstiden, så kigger vi på den. Har du en stram deadline, så sig til, så prioriterer vi med ekspresfejlsøgning, hvor det er muligt.' },
   { q: 'Jeg læser på DTU i Lyngby — kan I stadig hjælpe?', a: 'Ja. DTU Lyngby ligger længere væk end vores værksted i Frederiksberg, men afhentning/levering eller indsendelse dækker afstanden. Kontakt os, så aftaler vi det ud fra din situation.' },
   { q: 'Kan jeg låne en computer, mens min bliver repareret?', a: 'Efter tilgængelighed, ja — vi kan i nogle tilfælde låne dig en bærbar, mens din bliver repareret. Da vi kun har et begrænset antal lånecomputere, kan vi ikke garantere det, og det afhænger af, hvad der er ledigt. Spørg os, når du afleverer din computer.' },
   { q: 'Kan I hjælpe med backup, før jeg afslutter studiet eller flytter?', a: 'Ja. Vi hjælper med at sikre dine data — opgaver, projekter og noter — inden studieophold eller flytning, og vi fører backup- og sikkerhedsudstyr i vores butik. Se Backup & sikkerhed, eller kontakt os, så finder vi den rette løsning.' },
@@ -330,7 +330,7 @@ export function studentsHtml() {
     ['Skærmudskiftning', 'Revnet eller sort skærm på din bærbare? Skift til fast pris — en af de mest almindelige studenterreparationer.', '/udskiftning-af-skaerm/'],
     ['SSD-opgradering', 'Er din ældre bærbare blevet langsom? En SSD-opgradering giver markant hurtigere opstart — populær hos DTU- og CBS-studerende.', '/ssd-opgradering/'],
     ['Batteriskift', 'Holder batteriet ikke længere en forelæsning? Vi skifter det, så du kan arbejde uden en stikkontakt igen.', '/mac-batteriskift/'],
-    ['Backup & datagenskabelse', 'Sikr dine opgaver og projekter — før noget går galt, eller genskab dem, hvis det allerede er sket.', '/backup-og-datagendannelse/'],
+    ['Backup & datagendannelse', 'Sikr dine opgaver og projekter — før noget går galt, eller gendan dem, hvis det allerede er sket.', '/backup-og-datagendannelse/'],
   ].map(([t, d, h]) => `<a class="card card-link" href="${h}"><h3>${esc(t)}</h3><p>${esc(d)}</p><span class="arrow">Læs mere →</span></a>`).join('');
   return `  <section class="hero"><div class="wrap"><div class="eyebrow">Studerende · CBS &amp; DTU</div>
     <h1>Computerreparation til studerende — CBS &amp; DTU</h1>

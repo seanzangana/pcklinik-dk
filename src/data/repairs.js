@@ -40,7 +40,7 @@ export const repairs = [
       { title: 'Erfaren service', body: 'Solid erfaring med ThinkPad T14/T14s, X1 Carbon, IdeaPad 3/5, Legion 5 og Yoga-modeller.' },
       { title: 'Hurtig ekspedition', body: 'De fleste Lenovo-reparationer klares samme dag — uanset om det er en T14 eller en Legion 5 Pro.' },
       { title: 'Fast pris, før vi starter', body: 'Ingen overraskelser.' },
-      { title: 'Rigtige mennesker, rigtig ekspertise', body: 'Et ægte team, ikke et callcenter — du får altid et lige svar fra en, der ved, hvad han taler om.' },
+      { title: 'Rigtige mennesker, rigtig ekspertise', body: 'Et ægte team, ikke et callcenter — du får altid et ærligt svar fra en, der ved, hvad de taler om.' },
     ],
     faq: [
       { q: 'Giver I garanti specifikt på reparation af ThinkPad-hængsler?', a: 'Ja, samme garanti som på enhver anden reparation.' },
@@ -505,7 +505,7 @@ export const repairs = [
     ],
     services: [
       { title: 'Opstartsproblemer & fejlsøgning', body: 'Vil din <strong>iMac</strong> eller <strong>Mac mini</strong> ikke starte, eller viser den en blinkende mappe? Vi fejlsøger hardware og software systematisk for at finde årsagen.' },
-      { title: 'Harddisk & SSD', body: 'Er din <strong>iMac</strong> eller <strong>Mac Pro</strong> blevet langsom, eller er harddisken svigtet helt? Vi opgraderer til SSD og genskaber dine data, hvor det er muligt.' },
+      { title: 'Harddisk & SSD', body: 'Er din <strong>iMac</strong> eller <strong>Mac Pro</strong> blevet langsom, eller er harddisken svigtet helt? Vi opgraderer til SSD og gendanner dine data, hvor det er muligt.' },
       { title: 'Skærm & baggrundslys', body: 'Har din <strong>iMac</strong> pletter, mørke områder eller ujævnt baggrundslys? Vi udskifter skærmpanelet.' },
       { title: 'Køling & blæserstøj', body: 'Er din <strong>Mac Studio</strong> eller <strong>Mac Pro</strong> usædvanlig larmende eller overopheder under tung belastning? Vi renser og reparerer kølesystemet.' },
     ],
@@ -558,7 +558,7 @@ export const repairs = [
       { q: 'Reparerer I Gigabyte-bærbare?', a: 'Ja — Gigabyte (inklusive deres AORUS-gamingserie) er dækket her, sammen med ethvert andet mærke, der ikke er nævnt særskilt.' },
       { q: 'Reparerer I Chromebooks?', a: 'Ja, på tværs af mærker — Chromebook-specifikke problemer (software, batteri, skærm) håndteres på samme måde som enhver anden bærbar.' },
       { q: 'Jeg har en bærbar fra et mærke, jeg aldrig har set nævnt nogen steder på jeres side — vil I stadig kigge på den?', a: 'Ja — denne side findes netop til den situation. Kom forbi, så fejlsøger vi den på samme måde som ethvert andet mærke.' },
-      { q: 'Får specialbyggede stationære pc’er samme standard-/ekspres-fejlsøgningspris som mærkevarebærbare?', a: 'Ja, samme prismodel gælder, uanset om det er et stort mærke, et mindre kendt mærke eller en specialbygget maskine.' },
+      { q: 'Får specialbyggede stationære pc’er samme standard-/ekspresfejlsøgningspris som mærkevarebærbare?', a: 'Ja, samme prismodel gælder, uanset om det er et stort mærke, et mindre kendt mærke eller en specialbygget maskine.' },
     ],
     crosslinks: [{ label: 'MSI-reparation', href: '/msi-reparation/' }, { label: 'Mac (stationær)-reparation', href: '/mac-stationaer-reparation/' }],
     ctaPrimary: 'Book fejlsøgning',

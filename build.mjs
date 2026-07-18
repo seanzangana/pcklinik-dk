@@ -253,13 +253,13 @@ function repairSchema(r) {
 
 // ---------- home ----------
 const HOME_FAQ = [
-  ['Reparerer I alle computermærker?', 'Ja, vi reparerer alle større PC- og Mac-mærker samt specialbyggede computere. Kan I ikke se jeres mærke, så se "Andre mærker & specialbyggede".'],
-  ['Hvad koster en reparation?', 'Standardfejlsøgning koster 300 kr. (2–4 dage), eller ekspres for 600 kr. (1–2 timer). I får altid en fast pris, før vi går i gang, så der er ingen overraskelser.'],
-  ['Hvor lang tid tager en reparation?', 'Mange reparationer klares samme dag, især med ekspres fejlsøgning. Mere omfattende reparationer afhænger af, om der skal bestilles reservedele.'],
-  ['Tilbyder I service til virksomheder også, ikke kun privatpersoner?', 'Ja — udover reparation tilbyder vi IT-supportaftaler til fast pris, inklusive ubegrænset support, overvågning og sikkerhed. Se vores side om IT-support til erhverv.'],
+  ['Reparerer I alle computermærker?', 'Ja, vi reparerer alle større PC- og Mac-mærker samt specialbyggede computere. Kan du ikke se dit mærke, så se "Andre mærker & specialbyggede".'],
+  ['Hvad koster en reparation?', 'Standardfejlsøgning koster 300 kr. (2–4 dage), eller ekspres for 600 kr. (1–2 timer). Du får altid en fast pris, før vi går i gang, så der er ingen overraskelser.'],
+  ['Hvor lang tid tager en reparation?', 'Mange reparationer klares samme dag, især med ekspresfejlsøgning. Mere omfattende reparationer afhænger af, om der skal bestilles reservedele.'],
+  ['Tilbyder I service til virksomheder også, ikke kun privatpersoner?', 'Ja — ud over reparation tilbyder vi IT-supportaftaler til fast pris, inklusive ubegrænset support, overvågning og sikkerhed. Se vores side om IT-support til erhverv.'],
   ['Hvor ligger I?', 'Falkoner Allé 108, Frederiksberg. Vi betjener Frederiksberg og København direkte, samt resten af Danmark via fjernsupport til IT-supportaftaler.'],
   ['Sælger I også computere, eller kun reparation?', 'Ja — nye og brugte/istandsatte computere samt backup- og sikkerhedsudstyr findes i vores butik.'],
-  ['Kan jeg bare møde op, eller skal jeg bestille tid?', 'I kan altid møde op uden bestilling — men det kan reducere ventetiden at booke på forhånd, især ved ekspres fejlsøgning.'],
+  ['Kan jeg bare møde op, eller skal jeg bestille tid?', 'Du kan altid møde op uden bestilling — men det kan reducere ventetiden at booke på forhånd, især ved ekspresfejlsøgning.'],
   ['Tilbyder I en måde at følge status på en igangværende reparation uden at ringe?', 'Kontakt os direkte for en statusopdatering — et opkald eller en e-mail fungerer bedst for et lille, personligt værksted som vores.'],
 ];
 function homeBody() {
@@ -288,21 +288,21 @@ function homeBody() {
   const popular = [
     ['SSD-opgradering', 'Hurtigere opstartstid for en ældre pc eller bærbar.', '/ssd-opgradering/'],
     ['Væskeskade-reparation', 'Alle mærker og modeller — pc eller Mac.', '/vaeskeskade-reparation/'],
-    ['Backup & datagenskabelse', 'Beskyt dine filer, eller genskab dem efter en fejl.', '/backup-og-datagendannelse/'],
+    ['Backup & datagendannelse', 'Beskyt dine filer, eller gendan dem efter en fejl.', '/backup-og-datagendannelse/'],
     ['Fjernelse af virus & malware', 'Pc eller Mac, renset og beskyttet.', '/virus-og-malwarefjernelse/'],
   ].map(([t, d, h]) => `<a class="card card-link" href="${h}"><h3>${esc(t)}</h3><p>${esc(d)}</p><span class="arrow">Læs mere →</span></a>`).join('');
   const faqHtml = HOME_FAQ.map(([q, a]) => `<details><summary>${esc(q)}</summary><div class="answer">${esc(a)}</div></details>`).join('');
   return `  <section class="hero"><div class="wrap"><div class="eyebrow">Frederiksberg &amp; København</div>
     <h1>Alt inden for computer og IT — du har ikke brug for nogen andre.</h1>
-    <p class="lead">Fra reparation og IT-support til hosting, domæner, backup og salg af computere — hos PCKlinik får du det hele ét sted. I jeres computerverden har I ikke brug for nogen andre end os. Ingen at ringe rundt til, ingen flere aftaler at holde styr på — bare ét team, der kender jeres opsætning fra start til slut.</p>
+    <p class="lead">Fra reparation og IT-support til hosting, domæner, backup og salg af computere — hos PCKlinik får du det hele ét sted. I din computerverden har du ikke brug for nogen andre end os. Ingen at ringe rundt til, ingen flere aftaler at holde styr på — bare ét team, der kender din opsætning fra start til slut.</p>
     <p style="margin-top:14px;font-weight:600">Vælg din vej nedenfor:</p>
     <div class="grid grid-2 hero-paths">
-      <a class="card card-link" href="/kontakt/"><div class="card-icon">🖥️</div><h2>Til privatpersoner</h2><p>PC- og Mac-reparation — standard- eller ekspres-fejlsøgning, fast pris, de fleste reparationer samme dag.</p><span class="arrow">Book en reparation →</span></a>
+      <a class="card card-link" href="/kontakt/"><div class="card-icon">🖥️</div><h2>Til private</h2><p>PC- og Mac-reparation — standard- eller ekspresfejlsøgning, fast pris, de fleste reparationer samme dag.</p><span class="arrow">Book en reparation →</span></a>
       <a class="card card-link" href="/it-support-til-erhverv/"><div class="card-icon">🏢</div><h2>Til virksomheder</h2><p>IT-supportaftaler til fast pris — ubegrænset support, overvågning og sikkerhed for ét fast månedligt beløb.</p><span class="arrow">Se IT-support til erhverv →</span></a>
     </div></div></section>
   <section class="section"><div class="wrap"><div class="eyebrow">Vores løfte</div><h2>Sådan fungerer det</h2><div class="steps">
     <div class="step"><div class="num">1</div><h3>Fejlsøgning</h3><p>300 kr. (2–4 dage), eller ekspres for 600 kr. (1–2 timer).</p></div>
-    <div class="step"><div class="num">2</div><h3>Fast pris</h3><p>I får en klar pris, før vi rører ved noget.</p></div>
+    <div class="step"><div class="num">2</div><h3>Fast pris</h3><p>Du får en klar pris, før vi rører ved noget.</p></div>
     <div class="step"><div class="num">3</div><h3>Reparation</h3><p>Vi udfører reparationen med samme omhu som fejlsøgningen.</p></div></div></div></section>
   <section class="section alt"><div class="wrap"><div class="eyebrow">Hvad vi reparerer</div><h2>Alle større computermærker — PC og Mac</h2>
     <p class="sub">Vi reparerer alle større computermærker — PC og Mac, bærbar og stationær — for privatpersoner og virksomheder i Frederiksberg og København.</p>
@@ -312,11 +312,11 @@ function homeBody() {
     <div class="grid grid-4">${popular}</div>
     <div style="margin-top:24px"><a class="btn btn-outline" href="/faq/">Se alle services &amp; FAQ →</a></div></div></section>
   <section class="section alt"><div class="wrap"><div class="eyebrow">Hvorfor PCKlinik</div><h2>Derfor vælger du PCKlinik</h2><ul class="why-list">
-    <li><strong>Rigtig ekspertise</strong>Et erfarent team, ikke et callcenter — du får altid et lige svar fra en, der ved, hvad han taler om.</li>
+    <li><strong>Rigtig ekspertise</strong>Et erfarent team, ikke et callcenter — du får altid et ærligt svar fra en, der ved, hvad de taler om.</li>
     <li><strong>Fast pris før vi starter</strong>Ingen overraskelser, nogensinde.</li>
     <li><strong>Erfaring på tværs af mærker</strong>Solid erfaring med alle større mærker og modeller, PC og Mac.</li>
     <li><strong>Hurtig ekspedition</strong>De fleste reparationer klares samme dag.</li>
-    <li><strong>Vi taler dansk</strong>Naturligvis — men også engelsk, hvis det er nemmere for jer.</li></ul></div></section>
+    <li><strong>Vi taler dansk</strong>Naturligvis — men også engelsk, hvis det er nemmere for dig.</li></ul></div></section>
   <section class="section"><div class="wrap"><div class="cta-band"><h2>Vil du hellere købe?</h2><p>Nye og istandsatte computere samt backup- og sikkerhedsudstyr — alt testet og klar til brug.</p><div class="cta-row"><a class="btn btn-white" href="/butik/">Besøg butikken →</a></div></div></div></section>
   <section class="section alt"><div class="wrap"><div class="eyebrow">Find os</div><h2>Find os i Frederiksberg</h2>
     <p class="sub">Vi er et rigtigt værksted — ikke bare en hjemmeside. Kig forbi, ring eller skriv, så kigger vi på det.</p>
@@ -348,7 +348,7 @@ function contactBody() {
         <div class="form-row"><div><label for="message">Besked / beskrivelse af problemet</label><textarea id="message" name="message" required></textarea></div></div>
         <button class="btn btn-primary" type="submit">Send besked</button>
       </form></div></div></div></section>
-  <section class="section"><div class="wrap"><div class="eyebrow">Godt at vide</div><h2>Ofte stillede spørgsmål</h2><div class="faq"><details><summary>Skal jeg bestille tid?</summary><div class="answer">Nej — du kan møde op uden bestilling. Du er velkommen til at kigge forbi i åbningstiden.</div></details><details><summary>Kan I hente og levere min computer?</summary><div class="answer">Ja, afhentning og levering er muligt — kontakt os for detaljer ud fra jeres placering.</div></details><details><summary>Kan jeg bede om et bestemt tidspunkt?</summary><div class="answer">Da vi er et lille, personligt værksted, så ring gerne i forvejen, så finder vi en løsning, hvor det er muligt.</div></details><details><summary>Er værkstedet kørestolsvenligt?</summary><div class="answer">Kontakt os direkte, hvis du har særlige behov for tilgængelighed, så sørger vi for, at dit besøg fungerer.</div></details><details><summary>Hvilke oplysninger skal jeg give jer, for at få et hurtigt tilbud?</summary><div class="answer">Mærke og modelnavn er en god start, men serienummer (eller modelnummer) gør det muligt for os at give et hurtigere og mere præcist overslag, allerede før du kommer forbi. På en bærbar står det ofte på undersiden eller inde under batteriet; på en stationær pc typisk på et mærkat bagpå eller i siden. Har du ikke mulighed for at finde det, er det heller ikke noget problem — så ser vi nærmere på det, når du kontakter os eller kommer forbi.</div></details></div></div></section>
+  <section class="section"><div class="wrap"><div class="eyebrow">Godt at vide</div><h2>Ofte stillede spørgsmål</h2><div class="faq"><details><summary>Skal jeg bestille tid?</summary><div class="answer">Nej — du kan møde op uden bestilling. Du er velkommen til at kigge forbi i åbningstiden.</div></details><details><summary>Kan I hente og levere min computer?</summary><div class="answer">Ja, afhentning og levering er muligt — kontakt os for detaljer ud fra din placering.</div></details><details><summary>Kan jeg bede om et bestemt tidspunkt?</summary><div class="answer">Da vi er et lille, personligt værksted, så ring gerne i forvejen, så finder vi en løsning, hvor det er muligt.</div></details><details><summary>Er værkstedet kørestolsvenligt?</summary><div class="answer">Kontakt os direkte, hvis du har særlige behov for tilgængelighed, så sørger vi for, at dit besøg fungerer.</div></details><details><summary>Hvilke oplysninger skal jeg give jer, for at få et hurtigt tilbud?</summary><div class="answer">Mærke og modelnavn er en god start, men serienummer (eller modelnummer) gør det muligt for os at give et hurtigere og mere præcist overslag, allerede før du kommer forbi. På en bærbar står det ofte på undersiden eller inde under batteriet; på en stationær pc typisk på et mærkat bagpå eller i siden. Har du ikke mulighed for at finde det, er det heller ikke noget problem — så ser vi nærmere på det, når du kontakter os eller kommer forbi.</div></details></div></div></section>
   <section class="section alt"><div class="wrap"><div class="eyebrow">Find os</div><h2>Falkoner Allé 108, Frederiksberg</h2>${mapFrame}</div></section>`;
 }
 
@@ -357,7 +357,7 @@ function businessBody() {
   const features = [
     ['🛠️', 'Ubegrænset IT-support', 'Hjælp til jeres medarbejdere via telefon, e-mail og fjernsupport — og on-site i København, når det er nødvendigt. Fast pris, ingen timeafregning.'],
     ['📡', 'Overvågning & drift', 'Vi holder øje med jeres computere og servere døgnet rundt og fanger problemer, før de bliver til nedbrud.'],
-    ['💾', 'Backup & genskabelse', 'Rigtig backup af jeres data og Microsoft 365 — ikke bare cloud-lagring. Sker der noget med en maskine, genskaber vi det hele på en ny.'],
+    ['💾', 'Backup & gendannelse', 'Rigtig backup af jeres data og Microsoft 365 — ikke bare cloud-lagring. Sker der noget med en maskine, gendanner vi det hele på en ny.'],
     ['🛡️', 'IT-sikkerhed', 'Professionel endpoint-beskyttelse og antivirus — beskyttelse mod virus, ransomware, phishing og mailtrusler, plus løbende overvågning.'],
     ['📧', 'Microsoft 365', 'Opsætning og administration af Microsoft 365, Teams, SharePoint og e-mail — nye medarbejdere kommer hurtigt og sikkert i gang.'],
     ['📋', 'Rådgivning & NIS2', 'Praktisk IT-rådgivning, så I træffer de rette valg — og er klar til krav som GDPR og NIS2.'],
@@ -436,7 +436,7 @@ const FAQ_BUSINESS = [
   ['Fungerer det for virksomheder af enhver størrelse?', 'Ja. Vi hjælper enkeltmandsvirksomheder, kontorer med 2–3 medarbejdere og virksomheder med 50+ brugere. Prisen er pr. bruger, så I betaler præcis for det, I har brug for.'],
   ['Skal jeg installere noget?', 'Vi installerer et lille fjernadgangsværktøj (TeamViewer eller lignende), så vi hurtigt kan hjælpe jer, uden at I behøver komme til os. Opsætningen tager typisk under 15 minutter, og vi klarer den for jer.'],
   ['Hjælper I med printere og netværksprintere?', 'Ja. Vi opsætter, konfigurerer og fejlfinder alle typer printere — lokale, netværks- og cloud-printere. Vi hjælper også med driveropdateringer og integration med jeres eksisterende netværk.'],
-  ['Tilbyder I backupløsninger?', 'Ja. Vi opsætter automatisk backup — både lokalt og i skyen — så jeres data altid er beskyttet. Vi tester backuppen regelmæssigt og hjælper med genskabelse, hvis noget går galt.'],
+  ['Tilbyder I backupløsninger?', 'Ja. Vi opsætter automatisk backup — både lokalt og i skyen — så jeres data altid er beskyttet. Vi tester backuppen regelmæssigt og hjælper med gendannelse, hvis noget går galt.'],
   ['Hvad med antivirussoftware og IT-sikkerhed?', 'Vi installerer og administrerer antivirus og endpoint-sikkerhed på alle jeres enheder. Premium-pakken inkluderer løbende sikkerhedsovervågning, så I er beskyttet mod virus, ransomware og phishing.'],
   ['Kan I hjælpe med vores netværk og WiFi?', 'Ja. Vi opsætter og optimerer netværk, routere og WiFi — inklusive gæstenetværk, firewalls og VPN. Langsomt internet eller dårlig dækning? Vi finder løsningen.'],
   ['Sælger I computere og udstyr?', 'Ja. Vi sælger både nyt og brugt/istandsat udstyr — computere, bærbare, skærme, printere til erhverv og tilbehør. Istandsat udstyr er professionelt gennemgået og kommer med garanti. Vi hjælper jer med at finde det rette udstyr til jeres behov og budget og opsætter det klar til brug.'],
@@ -462,10 +462,10 @@ const HOSTING_TIERS = [
 ];
 const HOSTING_FAQ = [
   ['Hvad er inkluderet i hosting-pakkerne?', 'Alle pakker inkluderer lagerplads, ubegrænset trafik, mailbokse, et gratis SSL-certifikat og daglig backup. Business og Business+ tilføjer flere mailbokse og prioriteret support — se sammenligningen ovenfor for detaljer pr. pakke.'],
-  ['Kan I flytte min hjemmeside fra min nuværende udbyder?', 'Ja, kontakt os, så håndterer vi flytningen af jeres hjemmeside og mailbokse, så I undgår nedetid eller mistede e-mails undervejs.'],
+  ['Kan I flytte min hjemmeside fra min nuværende udbyder?', 'Ja, kontakt os, så håndterer vi flytningen af din hjemmeside og dine mailbokse, så du undgår nedetid eller mistede e-mails undervejs.'],
   ['Er priserne inkl. eller ekskl. moms?', 'Priserne, du ser på siden, er ekskl. moms — 25% dansk moms lægges oveni ved bestilling.'],
   ['Er der binding på abonnementet?', 'Nej, alle hosting-pakker er månedlige uden binding.'],
-  ['Hvad er forskellen på hosting og jeres webdesign-/SEO-ydelser?', 'Hosting er selve serverpladsen, der får jeres hjemmeside til at være tilgængelig online. Webdesign, SEO og Google Ads er separate ydelser — vi bygger og optimerer selve hjemmesiden. Mange kunder bruger begge dele, men de kan også vælges hver for sig.'],
+  ['Hvad er forskellen på hosting og jeres webdesign-/SEO-ydelser?', 'Hosting er selve serverpladsen, der får din hjemmeside til at være tilgængelig online. Webdesign, SEO og Google Ads er separate ydelser — vi bygger og optimerer selve hjemmesiden. Mange kunder bruger begge dele, men de kan også vælges hver for sig.'],
   ['Hvilken pakke skal jeg vælge?', 'Basic passer til de fleste mindre hjemmesider og enkeltmandsvirksomheder. Business og Business+ passer til virksomheder med flere medarbejdere, mere e-mail-behov eller flere hjemmesider. Er du i tvivl, så kontakt os — vi rådgiver gerne.'],
 ];
 function hostingBody() {
@@ -475,13 +475,13 @@ function hostingBody() {
   }).join('');
   const faqHtml = HOSTING_FAQ.map(([q, a]) => `<details><summary>${esc(q)}</summary><div class="answer">${esc(a)}</div></details>`).join('');
   return `  <section class="hero"><div class="wrap"><div class="eyebrow">Hosting</div><h1>Webhosting til din hjemmeside</h1>
-    <p class="lead">Hurtig, driftssikker webhosting med daglig backup og gratis SSL — fra det samme team, der reparerer jeres computere og bygger jeres hjemmesider.</p>
+    <p class="lead">Hurtig, driftssikker webhosting med daglig backup og gratis SSL — fra det samme team, der reparerer din computer og bygger din hjemmeside.</p>
     <div class="badges"><span class="badge check">Fra 45 kr./md.</span><span class="badge check">Ingen binding</span><span class="badge check">Dansk support</span></div>
     <div class="cta-row"><a class="btn btn-white" href="#pricing">Se priser</a><a class="btn btn-ghost-light" href="${site.phoneHref}">📞 Ring ${site.phone}</a></div></div></section>
   <section class="section"><div class="wrap"><div class="crumbs"><a href="/">Forside</a> › <span>Hosting</span></div>
-    <p class="sub">Skal jeres hjemmeside køre stabilt, hurtigt og sikkert? Vores hosting-pakker inkluderer lagerplads, mailbokse, gratis SSL-certifikat og daglig backup — så I kan fokusere på jeres forretning i stedet for serverdrift. Passer godt sammen med vores <a href="/hjemmesider-seo-google-ads/">webdesign- og SEO-ydelser</a>, men kan også vælges alene.</p></div></section>
+    <p class="sub">Skal din hjemmeside køre stabilt, hurtigt og sikkert? Vores hosting-pakker inkluderer lagerplads, mailbokse, gratis SSL-certifikat og daglig backup — så du kan fokusere på din forretning i stedet for serverdrift. Passer godt sammen med vores <a href="/hjemmesider-seo-google-ads/">webdesign- og SEO-ydelser</a>, men kan også vælges alene.</p></div></section>
   <section class="section alt" id="pricing"><div class="wrap"><div class="eyebrow">Priser & pakker</div><h2>Gennemsigtige priser — ingen overraskelser</h2>
-    <p class="sub">Vælg den pakke, der passer til jeres hjemmeside. Fast pris pr. måned, ekskl. moms — ingen binding.</p>
+    <p class="sub">Vælg den pakke, der passer til din hjemmeside. Fast pris pr. måned, ekskl. moms — ingen binding.</p>
     <div class="pricing-grid">${cards}</div>
     <p class="center" style="margin-top:28px;color:var(--muted)">Er du i tvivl om, hvilken pakke der passer? <a href="${site.phoneHref}">Ring ${site.phone}</a> eller <a href="/kontakt/">kontakt os</a>.</p></div></section>
   <section class="section"><div class="wrap"><div class="eyebrow">FAQ</div><h2>Hosting — ofte stillede spørgsmål</h2><div class="faq">${faqHtml}</div></div></section>`;
@@ -491,7 +491,7 @@ function hostingSchemaFaq() {
 }
 
 // ---------- automatisk backup ----------
-// NOTE ON NAMING: deliberately distinct from "Backup & datagenskabelse"
+// NOTE ON NAMING: deliberately distinct from "Backup & datagendannelse"
 // (/backup-og-datagendannelse/, a one-time data-recovery service under
 // Services). This page is a recurring backup SUBSCRIPTION.
 const AUTOMATISK_BACKUP_TIERS = [
@@ -501,11 +501,11 @@ const AUTOMATISK_BACKUP_TIERS = [
   ['2 TB', '599', 'Til servere eller flere brugere med store datamængder.'],
 ];
 const AUTOMATISK_BACKUP_FAQ = [
-  ['Hvor ofte tages der backup?', 'Automatisk, løbende — typisk dagligt, afhængig af jeres behov og den aftalte plan.'],
+  ['Hvor ofte tages der backup?', 'Automatisk, løbende — typisk dagligt, afhængig af dine behov og den aftalte plan.'],
   ['Hvor opbevares mine data?', 'Sikkert og krypteret hos en anerkendt cloud-udbyder. Kontakt os for specifikke detaljer om datacenter-placering.'],
-  ['Kan jeg få gendannet en enkelt fil, eller kun det hele?', 'Begge dele — I kan få gendannet enkelte filer eller en fuld gendannelse, alt efter behov.'],
+  ['Kan jeg få gendannet en enkelt fil, eller kun det hele?', 'Begge dele — du kan få gendannet enkelte filer eller en fuld gendannelse, alt efter behov.'],
   ['Er der binding?', 'Nej, alle planer er uden binding.'],
-  ['Hvad er forskellen på dette og "Backup & datagenskabelse"?', '"Backup & datagenskabelse" er en engangsservice — vi tager en backup eller genskaber data i forbindelse med en reparation. Automatisk Backup er et løbende abonnement, der kører i baggrunden hver dag, så I altid har en frisk kopi af jeres data.'],
+  ['Hvad er forskellen på dette og "Backup & datagendannelse"?', '"Backup & datagendannelse" er en engangsservice — vi tager en backup eller gendanner data i forbindelse med en reparation. Automatisk Backup er et løbende abonnement, der kører i baggrunden hver dag, så du altid har en frisk kopi af dine data.'],
 ];
 function automatiskBackupBody() {
   const cards = AUTOMATISK_BACKUP_TIERS.map(([name, price, blurb]) => {
@@ -514,22 +514,22 @@ function automatiskBackupBody() {
   }).join('');
   const why = [
     ['Sker automatisk, i baggrunden', 'Ingen manuel kopiering, ingen glemte USB-drev.'],
-    ['Krypteret opbevaring', 'Jeres data er beskyttet, både under overførsel og i opbevaring.'],
+    ['Krypteret opbevaring', 'Dine data er beskyttet, både under overførsel og i opbevaring.'],
     ['Nem gendannelse', 'Mistet en fil, eller hele computeren? Vi henter det tilbage.'],
-    ['Dansk support', 'Samme team som kender jeres opsætning i forvejen.'],
+    ['Dansk support', 'Samme team som kender din opsætning i forvejen.'],
   ].map(([t, b]) => `<li><strong>${esc(t)}</strong>${esc(b)}</li>`).join('');
   const faqHtml = AUTOMATISK_BACKUP_FAQ.map(([q, a]) => `<details><summary>${esc(q)}</summary><div class="answer">${esc(a)}</div></details>`).join('');
   return `  <section class="hero"><div class="wrap"><div class="eyebrow">Automatisk Backup</div><h1>Automatisk Backup fra PCKlinik</h1>
-    <p class="lead">Løbende, automatisk sikkerhedskopiering af jeres computere og servere — så en computerfejl aldrig bliver en katastrofe. Fra det samme team, der reparerer jeres computere.</p>
+    <p class="lead">Løbende, automatisk sikkerhedskopiering af dine computere og servere — så en computerfejl aldrig bliver en katastrofe. Fra det samme team, der reparerer dine computere.</p>
     <div class="badges"><span class="badge check">Fra 199 kr./md.</span><span class="badge check">Ingen binding</span><span class="badge check">Krypteret opbevaring</span></div>
     <div class="cta-row"><a class="btn btn-white" href="#pricing">Se priser</a><a class="btn btn-ghost-light" href="${site.phoneHref}">📞 Ring ${site.phone}</a></div></div></section>
   <section class="section"><div class="wrap"><div class="crumbs"><a href="/">Forside</a> › <span>Automatisk Backup</span></div>
     <div class="eyebrow">Hvorfor automatisk backup</div><ul class="why-list">${why}</ul></div></section>
-  <section class="section alt" id="pricing"><div class="wrap"><div class="eyebrow">Priser</div><h2>Vælg den plan, der passer til jer</h2>
+  <section class="section alt" id="pricing"><div class="wrap"><div class="eyebrow">Priser</div><h2>Vælg den plan, der passer til dig</h2>
     <p class="sub">Ekskl. moms, ingen bindingsperiode.</p>
     <div class="pricing-grid">${cards}</div></div></section>
   <section class="section"><div class="wrap"><div class="eyebrow">Sådan kommer du i gang</div><h2>Kontakt os for at komme i gang</h2>
-    <p class="sub">Skriv til os eller ring, så sætter vi jeres automatiske backup op — vi rådgiver gerne om, hvilken plan der passer til jeres behov.</p>
+    <p class="sub">Skriv til os eller ring, så sætter vi din automatiske backup op — vi rådgiver gerne om, hvilken plan der passer til dine behov.</p>
     <div class="cta-row"><a class="btn btn-primary" href="mailto:${site.emailConsumer}?subject=${encodeURIComponent('Interesse: Automatisk Backup')}">Kontakt os for at komme i gang</a><a class="btn btn-outline" href="${site.phoneHref}">📞 Ring ${site.phone}</a></div></div></section>
   <section class="section alt"><div class="wrap"><div class="eyebrow">FAQ</div><h2>Automatisk Backup — ofte stillede spørgsmål</h2><div class="faq">${faqHtml}</div></div></section>`;
 }
@@ -568,7 +568,7 @@ function shopNew() {
   <section class="section"><div class="wrap"><div class="crumbs"><a href="/butik/">Butik</a> › <a href="/butik/computere/">Computere</a> › <span>Nye</span></div>
     <p class="sub">Nye computere fra driftssikre mærker. Vi hjælper dig med at finde det rette udstyr til dine behov og dit budget og opsætter det klar til brug.</p>
     <div class="placeholder-note">⚙️ Placeholder-produkt nedenfor. Tilføj jeres rigtige lager af nye computere (titel, beskrivelse, pris, foto under <code>/images/butik/…</code> og et Stripe Payment Link — separat fra den danske side).</div>
-    <div class="grid grid-3" style="margin-top:24px">${products.map(productCard).join('')}</div></div></section>`+shopFaq("Nye computere — ofte stillede spørgsmål", [["Kan jeg tilpasse specifikationerne på en ny computer inden køb?","Kontakt os om jeres krav — vi kan ofte skaffe konfigurationer ud over det, der er nævnt."]]);
+    <div class="grid grid-3" style="margin-top:24px">${products.map(productCard).join('')}</div></div></section>`+shopFaq("Nye computere — ofte stillede spørgsmål", [["Kan jeg tilpasse specifikationerne på en ny computer inden køb?","Kontakt os om dine krav — vi kan ofte skaffe konfigurationer ud over det, der er nævnt."]]);
 }
 function shopRefurb() {
   const products = [
@@ -593,7 +593,7 @@ function shopBackup() {
   <section class="section"><div class="wrap"><div class="crumbs"><a href="/butik/">Butik</a> › <span>Backup & sikkerhed</span></div>
     <p class="sub">Eksterne harddiske, NAS-løsninger og sikkerhedssoftware, vi personligt anbefaler og bruger. Vi hjælper gerne med opsætning, hvis det er købt hos os.</p>
     <div class="placeholder-note">⚙️ Eksempelprodukter nedenfor. Erstat med de præcise varer, I fører, rigtige priser, fotos og Stripe Payment Links (separat fra den danske side).</div>
-    <div class="grid grid-3" style="margin-top:24px">${products.map(productCard).join('')}</div></div></section>`+shopFaq("Backup & sikkerhed — ofte stillede spørgsmål", [["Tilbyder I cloud-backup, eller kun fysiske drev?","Begge dele — kontakt os om jeres konkrete behov og budget."]]);
+    <div class="grid grid-3" style="margin-top:24px">${products.map(productCard).join('')}</div></div></section>`+shopFaq("Backup & sikkerhed — ofte stillede spørgsmål", [["Tilbyder I cloud-backup, eller kun fysiske drev?","Begge dele — kontakt os om dine konkrete behov og budget."]]);
 }
 
 // ---------- domain purchase ----------
@@ -603,7 +603,7 @@ function shopBackup() {
 // Functions — so they can't share an import). Keep them in sync by hand.
 function domaenerBody() {
   return `  <section class="hero"><div class="wrap"><div class="eyebrow">Domæner</div><h1>Find og køb dit domæne</h1>
-    <p class="lead">Søg efter et domænenavn — vi tjekker ${DOMAENER_TLD_COUNT} endelser (${DOMAENER_TLD_LIST_TEXT}) på én gang og viser priserne med det samme. Betal sikkert via Stripe — vi registrerer domænet for jer inden for få timer.</p></div></section>
+    <p class="lead">Søg efter et domænenavn — vi tjekker ${DOMAENER_TLD_COUNT} endelser (${DOMAENER_TLD_LIST_TEXT}) på én gang og viser priserne med det samme. Betal sikkert via Stripe — vi registrerer domænet for dig inden for få timer.</p></div></section>
   <style>
     .dom-results-list{display:flex;flex-direction:column;gap:10px}
     .dom-result-row{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:12px 14px;border:1px solid var(--border,#e2e2e2);border-radius:10px;flex-wrap:wrap}
@@ -630,7 +630,7 @@ function domaenerBody() {
       <div class="form-row"><div><label for="reg-country">Land</label><input id="reg-country" type="text" autocomplete="country-name" value="Danmark" required /></div></div>
       <button class="btn btn-primary" type="button" id="dom-buy-btn">Bestil nu</button>
       <div id="dom-buy-error" class="form-status form-status--error" style="display:none;margin-top:14px"></div>
-      <p class="sub" style="margin-top:16px;font-size:14.5px">Ved bestilling betaler du det fulde beløb inkl. 25% moms via Stripe. Vi registrerer domænet for jer manuelt inden for få timer og sender en bekræftelse på e-mail. Dette er et engangskøb for 1 års registrering — fornyelse næste år faktureres separat.</p>
+      <p class="sub" style="margin-top:16px;font-size:14.5px">Ved bestilling betaler du det fulde beløb inkl. 25% moms via Stripe. Vi registrerer domænet for dig manuelt inden for få timer og sender en bekræftelse på e-mail. Dette er et engangskøb for 1 års registrering — fornyelse næste år faktureres separat.</p>
     </div>
   </div></section>
   <section class="section alt"><div class="wrap"><div class="eyebrow">FAQ</div><h2>Ofte stillede spørgsmål</h2><div class="faq">${DOMAENER_FAQ.map((f) => `<details><summary>${esc(f.q)}</summary><div class="answer">${esc(f.a)}</div></details>`).join('')}</div></div></section>
@@ -713,8 +713,8 @@ const DOMAENER_TLDS = [
 const DOMAENER_TLD_COUNT = DOMAENER_TLDS.length;
 const DOMAENER_TLD_LIST_TEXT = DOMAENER_TLDS.slice(0, 8).map((t) => '.' + t).join(', ') + ' m.fl.';
 const DOMAENER_FAQ = [
-  { q: 'Hvor lang tid tager registreringen?', a: 'Vi registrerer domænet manuelt for jer, typisk inden for få timer efter betaling, og sender en bekræftelse på e-mail, når det er klar.' },
-  { q: 'Hvad er inkluderet i prisen?', a: 'Prisen dækker 1 års registrering af domænet. Fornyelse næste år faktureres separat — vi kontakter jer, inden domænet udløber.' },
+  { q: 'Hvor lang tid tager registreringen?', a: 'Vi registrerer domænet manuelt for dig, typisk inden for få timer efter betaling, og sender en bekræftelse på e-mail, når det er klar.' },
+  { q: 'Hvad er inkluderet i prisen?', a: 'Prisen dækker 1 års registrering af domænet. Fornyelse næste år faktureres separat — vi kontakter dig, inden domænet udløber.' },
   { q: 'Er prisen inkl. eller ekskl. moms?', a: 'Prisen, du ser på siden, er ekskl. moms. Ved betaling via Stripe lægges 25% dansk moms oveni, så du ser det fulde beløb, før du betaler.' },
   { q: 'Kan jeg overføre et domæne, jeg allerede ejer?', a: 'Ja, kontakt os direkte på kontakt@pcklinik.dk, så hjælper vi med overførslen.' },
   { q: 'Hvilke endelser (TLD’er) tilbyder I?', a: 'Vi tjekker automatisk ' + DOMAENER_TLD_COUNT + ' endelser på én gang, herunder ' + DOMAENER_TLD_LIST_TEXT + ' Vi tilbyder generiske endelser (ikke landespecifikke som .de eller .fr) — mangler du en bestemt endelse, så kontakt os direkte.' },
@@ -735,17 +735,17 @@ function aboutBody() {
   return `  <section class="hero"><div class="wrap"><div class="eyebrow">Om PCKlinik</div><h1>Mød teamet</h1>
     <p class="lead">Rigtige mennesker, rigtig erfaring — ikke et callcenter. PCKlinik er et team på 7, med base i vores værksted på Falkoner All&eacute; i Frederiksberg. Tilsammen dækker vi pc- og Mac-reparation, netværk og servere, on-site support og hjemmeside-/SEO-arbejde — så uanset hvad du har brug for, er der en på teamet, der virkelig kender det godt.</p></div></section>
   <section class="section"><div class="wrap"><div class="eyebrow">Hvorfor vi er mere end reparation</div><h2>Alt inden for computer og IT — du har ikke brug for nogen andre</h2>
-    <p class="sub">Vi startede som et reparationsværksted, men er over tid vokset til også at dække IT-support, hosting, domæner, backup og salg af computere. Det er ikke tilfældigt. Vi så det samme mønster igen og igen: kunder, der endte med at ringe rundt til flere forskellige leverandører for ting, der egentlig hang sammen — én til reparationen, én til hjemmesiden, én til backuppen, én til domænet. Derfor har vi valgt at være det ene team, der kender jeres opsætning fra start til slut. Inden for jeres computer- og IT-verden har I ikke brug for nogen andre end os.</p></div></section>
+    <p class="sub">Vi startede som et reparationsværksted, men er over tid vokset til også at dække IT-support, hosting, domæner, backup og salg af computere. Det er ikke tilfældigt. Vi så det samme mønster igen og igen: kunder, der endte med at ringe rundt til flere forskellige leverandører for ting, der egentlig hang sammen — én til reparationen, én til hjemmesiden, én til backuppen, én til domænet. Derfor har vi valgt at være det ene team, der kender din opsætning fra start til slut. Inden for din computer- og IT-verden har du ikke brug for nogen andre end os.</p></div></section>
   <section class="section alt"><div class="wrap"><div class="eyebrow">Teamet</div><h2>Syv personer, ét værksted</h2>
     <div class="grid grid-3" style="margin-top:24px">${cards}</div></div></section>
-  <section class="section"><div class="wrap"><div class="eyebrow">Derfor betyder det noget for dig</div><h2>Et større team — samme lige svar</h2>
-    <p class="sub">Et større team betyder hurtigere ekspedition og mere specialiseret ekspertise — men vi arbejder stadig, som vi altid har gjort: du får et lige svar fra en, der faktisk ved, hvad han taler om, ikke et sagsnummer i en kø.</p>
+  <section class="section"><div class="wrap"><div class="eyebrow">Derfor betyder det noget for dig</div><h2>Et større team — samme ærlige svar</h2>
+    <p class="sub">Et større team betyder hurtigere ekspedition og mere specialiseret ekspertise — men vi arbejder stadig, som vi altid har gjort: du får et ærligt svar fra en, der faktisk ved, hvad de taler om, ikke et sagsnummer i en kø.</p>
     <div class="cta-row"><a class="btn btn-primary" href="/kontakt/">Kontakt os</a><a class="btn btn-outline" href="/it-support-til-erhverv/">IT-support til erhverv →</a></div></div></section>`;
 }
 
 function domaenerTakHtml() {
   return `  <section class="hero"><div class="wrap"><div class="eyebrow">Domæner</div><h1>Tak for din bestilling!</h1>
-    <p class="lead">Vi har modtaget din betaling. Vi registrerer jeres domæne inden for få timer og sender en bekræftelse til den e-mail, du opgav ved bestilling.</p>
+    <p class="lead">Vi har modtaget din betaling. Vi registrerer dit domæne inden for få timer og sender en bekræftelse til den e-mail, du opgav ved bestilling.</p>
     <div class="cta-row"><a class="btn btn-white" href="/">← Til forsiden</a><a class="btn btn-ghost-light" href="${site.phoneHref}">📞 Ring ${site.phone}</a></div></div></section>`;
 }
 function thankYouHtml() {
@@ -789,7 +789,7 @@ function askQuestionBody() {
         <div class="form-row"><div><label for="aq-email">E-mail <span style="font-weight:400;color:var(--muted)">(valgfrit — kun nødvendigt, hvis du ønsker et personligt svar)</span></label><input id="aq-email" name="email" type="email" autocomplete="email" /></div></div>
         <div class="form-row"><div><label for="aq-device">Enhed / mærke <span style="font-weight:400;color:var(--muted)">(valgfrit — hjælper os med at svare mere præcist)</span></label><input id="aq-device" name="device" type="text" placeholder="fx MacBook Air M2" /></div></div>
         <div class="form-row"><div><label for="aq-question">Dit spørgsmål</label><textarea id="aq-question" name="question" required></textarea></div></div>
-        <div class="form-row"><label style="display:flex;gap:10px;align-items:flex-start;font-weight:400;color:var(--muted);font-size:14.5px"><input type="checkbox" name="feature_ok" value="yes" style="width:auto;margin-top:3px" /> Det er okay at vise dette spørgsmål (anonymt) på jeres nyhedsside.</label></div>
+        <div class="form-row"><label style="display:flex;gap:10px;align-items:flex-start;font-weight:400;color:var(--muted);font-size:14.5px"><input type="checkbox" name="feature_ok" value="yes" style="width:auto;margin-top:3px" /> Det er okay at vise dette spørgsmål (anonymt) på vores nyhedsside.</label></div>
         <button class="btn btn-primary" type="submit">Send spørgsmål</button>
       </form>
       <p class="sub" style="margin-top:20px;font-size:14.5px">Privat som standard. Vi offentliggør aldrig noget, medmindre du sætter kryds ovenfor — og selv da anonymiserer vi det (for eksempel: "en kunde spurgte for nylig…"). Dit navn og din e-mail bliver aldrig offentliggjort.</p>
@@ -914,7 +914,7 @@ function locationBody(loc) {
   <section class="section"><div class="wrap lead-copy"><div class="crumbs"><a href="/">Forside</a> › <span>${esc(loc.h1)}</span></div>${intro}${trust}</div></section>
   ${areas}
   <section class="section"><div class="wrap"><div class="eyebrow">FAQ</div><h2>Ofte stillede spørgsmål</h2><div class="faq">${faq}</div></div></section>
-  <section class="section alt"><div class="wrap"><div class="eyebrow">Find os</div><h2>Vores værksted — Falkoner Allé 108, Frederiksberg</h2><p class="sub">Vi betjener dette område fra vores værksted i Frederiksberg; aflevering, afhentning og levering kan aftales afhængigt af jeres placering.</p>${mapFrame}</div></section>
+  <section class="section alt"><div class="wrap"><div class="eyebrow">Find os</div><h2>Vores værksted — Falkoner Allé 108, Frederiksberg</h2><p class="sub">Vi betjener dette område fra vores værksted i Frederiksberg; aflevering, afhentning og levering kan aftales afhængigt af din placering.</p>${mapFrame}</div></section>
   <section class="section"><div class="wrap"><div class="cta-band"><h2>Brug for reparation i ${esc(loc.name)}?</h2><p>Fejlsøgning 300 kr. (2–4 dage) eller ekspres (600 kr., 1–2 timer). Fast pris, før vi går i gang.</p><div class="cta-row"><a class="btn btn-white" href="/kontakt/">Book en reparation</a><a class="btn btn-ghost-light" href="${site.phoneHref}">📞 Ring ${site.phone}</a></div></div>
     <div style="margin-top:32px"><p class="eyebrow">Relateret</p><div class="crosslinks">${cross}</div></div></div></section>`;
 }
@@ -977,11 +977,11 @@ async function run() {
   pages.push(['/butik/backup-sikkerhed/', page({ title: 'Backup & sikkerhed | PCKlinik Butik', description: 'Eksterne harddiske, NAS-løsninger og sikkerhedssoftware anbefalet af PCKlinik. Sikker betaling via Stripe.', p: '/butik/backup-sikkerhed/', body: shopBackup() })]);
   // Domain purchase
   pages.push(['/domaener/', page({ title: 'Køb domæne (.dk & .com) | PCKlinik', description: 'Søg og køb dit domæne direkte online hos PCKlinik — samme team som klarer reparation, hosting og IT-support. Betal sikkert via Stripe.', p: '/domaener/', body: domaenerBody(), schema: faqSchemaFrom(DOMAENER_FAQ) })]);
-  pages.push(['/domaener/tak/', page({ title: 'Tak for din bestilling | PCKlinik Domæner', description: 'Vi har modtaget din betaling og registrerer jeres domæne inden for få timer.', p: '/domaener/tak/', body: domaenerTakHtml() })]);
+  pages.push(['/domaener/tak/', page({ title: 'Tak for din bestilling | PCKlinik Domæner', description: 'Vi har modtaget din betaling og registrerer dit domæne inden for få timer.', p: '/domaener/tak/', body: domaenerTakHtml() })]);
   // Hosting (webhosting subscription — HostShop checkout links are TBD, see hostingBody() note)
-  pages.push(['/hosting/', page({ title: 'Webhosting til din hjemmeside | PCKlinik', description: 'Hurtig, driftssikker webhosting fra 45 kr./md. — fra samme team, der reparerer jeres computere og bygger jeres hjemmeside. Ingen binding.', p: '/hosting/', body: hostingBody(), schema: hostingSchemaFaq() })]);
+  pages.push(['/hosting/', page({ title: 'Webhosting til din hjemmeside | PCKlinik', description: 'Hurtig, driftssikker webhosting fra 45 kr./md. — fra samme team, der reparerer din computer og bygger din hjemmeside. Ingen binding.', p: '/hosting/', body: hostingBody(), schema: hostingSchemaFaq() })]);
   // Automatisk Backup (recurring backup subscription — distinct from /backup-og-datagendannelse/)
-  pages.push(['/automatisk-backup/', page({ title: 'Automatisk Backup | PCKlinik', description: 'Løbende, automatisk sikkerhedskopiering af jeres computere og servere fra 199 kr./md. — fra det samme team, der reparerer og supporterer jer.', p: '/automatisk-backup/', body: automatiskBackupBody(), schema: automatiskBackupSchemaFaq() })]);
+  pages.push(['/automatisk-backup/', page({ title: 'Automatisk Backup | PCKlinik', description: 'Løbende, automatisk sikkerhedskopiering af dine computere og servere fra 199 kr./md. — fra det samme team, der reparerer og supporterer dig.', p: '/automatisk-backup/', body: automatiskBackupBody(), schema: automatiskBackupSchemaFaq() })]);
 
   // Mac Repair hub (broad intent)
   pages.push(['/mac-reparation/', page({ title: 'Mac-reparation i Frederiksberg & København | PCKlinik', description: 'Reparation af MacBook, iMac, Mac mini, Mac Studio og Mac Pro i Frederiksberg og København. Fejlsøgning fra 300 kr., fast pris, hurtig ekspedition.', p: '/mac-reparation/', body: macHubHtml(), schema: faqSchemaFrom(MAC_HUB_FAQ) })]);
