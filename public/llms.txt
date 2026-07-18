@@ -1,30 +1,109 @@
 # PCKlinik
 
-> PC- og Mac-reparation samt IT-support i Frederiksberg, København. Uafhængig, ikke-Apple-autoriseret specialistviden, gratis walk-in uden tidsbestilling, og hente/bringe-service.
+> Alt inden for computer og IT — du har ikke brug for nogen andre. PCKlinik er en lokal PC- og Mac-reparationsvirksomhed på Falkoner Allé 108, 2000 Frederiksberg, med et team på 7 personer, heriblandt en uafhængig Mac-specialist (ikke Apple-autoriseret). Vi tilbyder computerreparation, IT-support til erhverv, webdesign & SEO, hosting, domæner og backup.
 
-PCKlinik er en lokal PC/Mac-reparationsvirksomhed på Falkoner Allé 108, 2000 Frederiksberg. Vi reparerer computere (PC og Mac) — ikke iPad eller iPhone. Standard fejlsøgning koster 300 kr (2-4 dage). Ekspres fejlsøgning koster 600 kr (1-2 timer, reparation og levering inden for 24 timer hvis ingen specielle reservedele skal bestilles). Væskeskade har en fast pris på 600 kr (3-4 dage, ingen ekspresmulighed).
+PCKlinik reparerer stationære og bærbare computere — PC og Mac — men ikke iPad eller iPhone. Standardfejlsøgning koster 300 kr (2–4 dage), ekspresfejlsøgning koster 600 kr (1–2 timer, reparation inden 24 timer), og væskeskade har en fast pris på 600 kr (3–4 dage, ingen ekspresmulighed). Walk-in uden tidsbestilling, samt afhentning/levering. Betaling med kort eller bankoverførsel. Det første møde om en IT-supportaftale eller anden IT-rådgivning til virksomheder er altid gratis og uforpligtende. Åbningstider: man–fre 10–18, lør 10–14, søn lukket.
 
-## Services
+## Reparation
 
-- [Computerreparation](https://pcklinik.dk/): Reparation af stationære og bærbare PC'er — skærm, batteri, SSD/harddisk, strømforsyning m.m. (se mærkeoversigt på forsiden og de enkelte mærkesider).
-- [Mac-reparation](https://pcklinik.dk/mac-repair/): Uafhængig Mac-specialist (ikke Apple-autoriseret) med komponentniveau-reparationer.
-- [IT-support til virksomheder](https://pcklinik.dk/business-it-service-agreement/): B2B IT-support og rådgivning.
-- [Butik](https://pcklinik.dk/shop/): Nye computere, renoverede computere, backup & sikkerhedsprodukter.
-- [Typiske reparationspriser](https://pcklinik.dk/reparationspriser/): Vejledende fra-priser på skærm, batteri og SSD.
-- [Studerende (CBS & DTU)](https://pcklinik.dk/studerende/): Computerreparation til studerende — gåafstand fra CBS, afhentning til DTU.
+- [Computerreparation (oversigt)](https://www.pcklinik.dk/computer-reparation/): Generel oversigt over PC- og Mac-reparation i Frederiksberg og København.
+- [Mac-reparation](https://www.pcklinik.dk/mac-reparation/): Uafhængig Mac-specialist, ikke Apple-autoriseret, komponentniveau-reparationer.
+- [Gaming-pc-reparation](https://www.pcklinik.dk/gaming-pc-reparation/): Reparation og service af gaming-pc'er, inkl. specialbyggede maskiner.
+- [Bundkortreparation](https://www.pcklinik.dk/bundkort-reparation/): Bundkortreparation for pc og Mac.
+- [Andre mærker & specialbyggede](https://www.pcklinik.dk/andre-maerker-reparation/): Reparation af mindre kendte mærker og specialbyggede computere.
+- [Lenovo-reparation](https://www.pcklinik.dk/lenovo-reparation/): ThinkPad, IdeaPad, Legion.
+- [Acer-reparation](https://www.pcklinik.dk/acer-reparation/): Aspire, Nitro, Swift, Predator.
+- [HP-reparation](https://www.pcklinik.dk/hp-reparation/): EliteBook, Pavilion, Spectre, Omen.
+- [Dell-reparation](https://www.pcklinik.dk/dell-reparation/): XPS, Latitude, Inspiron, Precision.
+- [Asus-reparation](https://www.pcklinik.dk/asus-reparation/): ZenBook, ROG Strix, TUF Gaming, Vivobook.
+- [MSI-reparation](https://www.pcklinik.dk/msi-reparation/): Katana, GF63, Stealth, Prestige.
+- [Huawei-reparation](https://www.pcklinik.dk/huawei-reparation/): MateBook D14, X Pro, 14.
+- [MacBook-reparation](https://www.pcklinik.dk/macbook-reparation/): MacBook Pro og Air.
+- [Microsoft Surface-reparation](https://www.pcklinik.dk/microsoft-surface-reparation/): Surface Pro, Laptop, Book.
+- [Samsung-reparation](https://www.pcklinik.dk/samsung-reparation/): Galaxy Book Pro, Go.
+- [Stationær Mac-reparation](https://www.pcklinik.dk/mac-stationaer-reparation/): iMac, Mac mini, Mac Studio.
+- [Toshiba- & Dynabook-reparation](https://www.pcklinik.dk/toshiba-dynabook-reparation/)
+- [Fujitsu-reparation](https://www.pcklinik.dk/fujitsu-reparation/)
+- [LG gram-reparation](https://www.pcklinik.dk/lg-gram-reparation/)
+- [Razer Blade-reparation](https://www.pcklinik.dk/razer-blade-reparation/)
+- [Skærmudskiftning](https://www.pcklinik.dk/udskiftning-af-skaerm/): Skærmudskiftning til bærbar og pc.
+- [Udskiftning af harddisk](https://www.pcklinik.dk/harddisk-ssd-udskiftning/)
+- [SSD-opgradering](https://www.pcklinik.dk/ssd-opgradering/)
+- [PC-optimering](https://www.pcklinik.dk/optimering-af-computer/): Hastighedsboost og optimering.
+- [Rensning af pc](https://www.pcklinik.dk/rens-af-pc/): Fysisk rensning af pc og bærbar.
+- [Ladestik-reparation](https://www.pcklinik.dk/ladestik-reparation/): Reparation af ladeport til bærbar.
+- [Tastaturudskiftning](https://www.pcklinik.dk/tastaturudskiftning/): Udskiftning af tastatur til bærbar.
+- [Væskeskade-reparation](https://www.pcklinik.dk/vaeskeskade-reparation/): Fast pris 600 kr, 3–4 dage, ingen ekspresmulighed.
+- [Fejlmeddelelser](https://www.pcklinik.dk/fejlmeddelelser/): Guide til almindelige computerfejlmeddelelser og -koder.
+- [Computer vil ikke tænde](https://www.pcklinik.dk/computer-vil-ikke-taende/): Fejlsøgning når computeren ikke vil tænde.
+- [Fjernelse af virus & malware](https://www.pcklinik.dk/virus-og-malwarefjernelse/)
+- [Backup & datagendannelse](https://www.pcklinik.dk/backup-og-datagendannelse/)
+- [Installation af styresystem](https://www.pcklinik.dk/reinstallation-af-system/): Geninstallation/reinstallation af styresystem.
+- [WiFi- & netværksfejlfinding](https://www.pcklinik.dk/wifi-og-netvaerksfejlfinding/)
+- [Rensning af Mac](https://www.pcklinik.dk/rens-af-mac/)
+- [Mac-batteriskift](https://www.pcklinik.dk/mac-batteriskift/)
+- [Mac-skærmudskiftning](https://www.pcklinik.dk/mac-skaermudskiftning/)
+- [MacBook-tastaturudskiftning](https://www.pcklinik.dk/mac-tastaturudskiftning/)
+- [MacBook-trackpadudskiftning](https://www.pcklinik.dk/mac-trackpadudskiftning/)
+- [Netværks- & routeropsætning (oversigt)](https://www.pcklinik.dk/netvaerksudstyr/): UniFi, Netgear, TP-Link m.fl.
+- [UniFi-opsætning](https://www.pcklinik.dk/unifi-opsaetning/)
+- [Netgear-opsætning](https://www.pcklinik.dk/netgear-opsaetning/)
+- [TP-Link-opsætning](https://www.pcklinik.dk/tp-link-opsaetning/): TP-Link-router og Deco mesh.
+- [Asus-router-opsætning](https://www.pcklinik.dk/asus-router-opsaetning/): Asus-router og AiMesh.
+- [Eero & Google Nest WiFi-opsætning](https://www.pcklinik.dk/eero-google-nest-wifi-opsaetning/)
+- [Fjernsupport](https://www.pcklinik.dk/fjernsupport/): Fjernsupport til computerproblemer.
+- [On-site tekniker](https://www.pcklinik.dk/on-site-tekniker/): On-site computertekniker i København-området.
+- [Reparationspriser](https://www.pcklinik.dk/reparationspriser/): Vejledende fra-priser på almindelige reparationer.
+- [Garanti](https://www.pcklinik.dk/garanti/): Garanti på udført reparation.
+- [Computerreparation København](https://www.pcklinik.dk/computerreparation-koebenhavn/)
+- [Computerreparation Frederiksberg](https://www.pcklinik.dk/computerreparation-frederiksberg/)
+- [Computerreparation Vesterbro](https://www.pcklinik.dk/computerreparation-vesterbro/)
+- [Computerreparation Vanløse](https://www.pcklinik.dk/computerreparation-vanloese/)
+- [Computerreparation Valby](https://www.pcklinik.dk/computerreparation-valby/)
+- [Computerreparation Nordvest](https://www.pcklinik.dk/computerreparation-nordvest/)
+- [Computerreparation Helsingør](https://www.pcklinik.dk/computerreparation-helsingoer/)
+- [Computerreparation Hillerød](https://www.pcklinik.dk/computerreparation-hillerod/)
+- [Computerreparation Roskilde](https://www.pcklinik.dk/computerreparation-roskilde/)
+- [Computerreparation Køge](https://www.pcklinik.dk/computerreparation-koege/)
+- [Computerreparation Nykøbing Falster](https://www.pcklinik.dk/computerreparation-nykoebing-falster/)
 
-## Lokationer
+## Erhverv
 
-- [København](https://pcklinik.dk/computerreparation-koebenhavn/)
-- [Vesterbro](https://pcklinik.dk/computerreparation-vesterbro/)
-- [Vanløse](https://pcklinik.dk/computerreparation-vanloese/)
-- [Valby](https://pcklinik.dk/computerreparation-valby/)
-- [Nordvest](https://pcklinik.dk/computerreparation-nordvest/)
+- [IT-supportaftale til erhverv](https://www.pcklinik.dk/it-support-til-erhverv/): Faste pakker fra 399 kr./bruger/md., ubegrænset support. Gratis, uforpligtende IT-gennemgang som første møde.
+- [IT-support på Frederiksberg](https://www.pcklinik.dk/it-support-frederiksberg/): Lokal IT-support til virksomheder på Frederiksberg.
+- [Hjemmesider, SEO & Google Ads (oversigt)](https://www.pcklinik.dk/hjemmesider-seo-google-ads/)
+- [Webdesign & udvikling](https://www.pcklinik.dk/webdesign-og-udvikling/)
+- [SEO-ydelser](https://www.pcklinik.dk/seo-ydelser/)
+- [Google Ads-administration](https://www.pcklinik.dk/google-ads-administration/)
 
-## Kontakt
+## Butik
 
-- [Kontakt os](https://pcklinik.dk/contact/): Falkoner Allé 108, st. th., 2000 Frederiksberg. Telefon: 91 81 61 81. Email: kontakt@pcklinik.dk. Åbningstider: Man-Fre 10-18, Lør 10-14, Søn lukket.
+- [Butik (oversigt)](https://www.pcklinik.dk/butik/): Computere samt backup & sikkerhed. Aktuelt lager oplyses ved kontakt — ring 91 81 61 81 eller skriv til kontakt@pcklinik.dk.
+- [Computere](https://www.pcklinik.dk/butik/computere/): Nye og refurbished computere. Aktuelt lager oplyses ved kontakt.
+- [Nye computere](https://www.pcklinik.dk/butik/computere/nye/): Aktuelt lager oplyses ved kontakt — ring 91 81 61 81 eller skriv til kontakt@pcklinik.dk.
+- [Refurbished computere](https://www.pcklinik.dk/butik/computere/refurbished/): Testede, istandsatte computere med garanti. Aktuelt lager oplyses ved kontakt.
+- [Backup & sikkerhed](https://www.pcklinik.dk/butik/backup-sikkerhed/): Eksterne harddiske, NAS og sikkerhedssoftware. Aktuelt udvalg oplyses ved kontakt.
 
-## Optional
+## Hosting & domæner
 
-- [Nyheder](https://pcklinik.dk/nyheder/): Danske artikler om PC/Mac-reparation, IT-tips og sikkerhed.
+- [Webhosting](https://www.pcklinik.dk/hosting/): Basic 45 kr., Business 89 kr., Business+ 169 kr. pr. måned.
+- [Domæner](https://www.pcklinik.dk/domaener/): Køb af .dk- og .com-domæner.
+- [Automatisk Backup](https://www.pcklinik.dk/automatisk-backup/): Priser fra 199/289/349/599 kr.
+
+## Om os & praktisk
+
+- [Forside](https://www.pcklinik.dk/): PCKlinik — computer- og Mac-reparation, IT-support, hosting, domæner og backup.
+- [Om PCKlinik](https://www.pcklinik.dk/om-os/): Om virksomheden og teamet på 7 personer.
+- [Kontakt](https://www.pcklinik.dk/kontakt/): Falkoner Allé 108, 2000 Frederiksberg. Telefon 91 81 61 81. Email kontakt@pcklinik.dk.
+- [FAQ](https://www.pcklinik.dk/faq/): Ofte stillede spørgsmål.
+- [Åbningstider](https://www.pcklinik.dk/aabningstider/): Man–fre 10–18, lør 10–14, søn lukket.
+- [Studerende (CBS & DTU)](https://www.pcklinik.dk/studerende/): Computerreparation til studerende.
+- [Stil os et spørgsmål](https://www.pcklinik.dk/stil-et-spoergsmaal/)
+- [Nyheder (oversigt)](https://www.pcklinik.dk/nyheder/): Danske artikler om PC/Mac-reparation, IT-tips og sikkerhed.
+- [Sådan ved du, om dit bærbare batteri skal skiftes](https://www.pcklinik.dk/nyheder/saadan-ved-du-om-dit-baerbare-batteri-skal-skiftes/)
+- [De mest almindelige Mac-opstartsskærme, og hvad de betyder](https://www.pcklinik.dk/nyheder/de-mest-almindelige-mac-opstartsskaerme-og-hvad-de-betyder/)
+- [3-2-1-backup-reglen, og hvorfor den betyder noget](https://www.pcklinik.dk/nyheder/3-2-1-backup-reglen-og-hvorfor-den-betyder-noget/)
+
+## Sprog
+
+Denne hjemmeside (pcklinik.dk) findes udelukkende på dansk og betjener det danske marked. Se llms-full.txt for uddybende fakta.
