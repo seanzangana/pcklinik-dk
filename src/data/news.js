@@ -63,7 +63,7 @@ export const news = [
 <p>En almindelig, nem opsætning: dine filer ligger på den bærbare (kopi et), en ekstern disk derhjemme tager backup automatisk (kopi to, andet medie), og en cloud-backuptjeneste holder en tredje kopi et andet sted. Sæt de automatiske op én gang, og de kører stille i baggrunden. Det er hele pointen — en backup, du skal huske at tage, er en backup, du før eller siden glemmer.</p>
 <h2>Den ene ting, der er værd at tjekke</h2>
 <p>En backup, du aldrig har testet, er endnu ikke rigtig en backup. Åbn en gang imellem en fil fra backuppen for at bekræfte, at den faktisk gendannes. Det tager et minut og er forskellen på "jeg har en backup" og "jeg havde det, jeg troede var en backup".</p>
-<p>Vil du hellere have det sat ordentligt og automatisk op — så det bare kører, uden du tænker over det — er det præcis, hvad vores <a href="/backup-og-datagendannelse/">Backup &amp; datagenskabelse</a>-service gør. Og har du allerede mistet noget, så <a href="/kontakt/">kontakt os</a> hurtigt; jo før vi kigger, jo bedre er oddsene for at få det tilbage.</p>
+<p>Vil du hellere have det sat ordentligt og automatisk op — så det bare kører, uden du tænker over det — er det præcis, hvad vores <a href="/backup-og-datagendannelse/">Backup &amp; datagendannelse</a>-service gør. Og har du allerede mistet noget, så <a href="/kontakt/">kontakt os</a> hurtigt; jo før vi kigger, jo bedre er oddsene for at få det tilbage.</p>
 `,
   },
 ];

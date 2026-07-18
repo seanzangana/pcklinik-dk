@@ -149,10 +149,13 @@ fetch(f.getAttribute('action'),{method:'POST',headers:{'Content-Type':'applicati
 })();
 </script>`;
 
-// NOTE — aggregateRating below is a STATIC, manually-maintained value (see
-// site.reviewRating/reviewCount in src/data/site.js for the maintenance
-// note and future automated-sync upgrade path). Keep these two numbers in
-// sync with site.js; re-check against Google every few months.
+// NOTE — no aggregateRating here on purpose. Google doesn't allow
+// self-serving review markup on LocalBusiness/Organization subtypes
+// (ours is ComputerRepairService), so it would never be rich-result
+// eligible regardless of how the JSON-LD is shaped. The visible footer
+// review link (site.reviewRating/reviewCount in src/data/site.js) is
+// page content, not markup, and is unaffected — it's sourced from the
+// Google Business Profile, not this schema object.
 const businessSchema = {
   '@context': 'https://schema.org', '@type': 'ComputerRepairService', name: 'PCKlinik',
   image: site.domain + '/logo.png', url: site.domain + '/', telephone: '+4591816181', email: site.emailConsumer,
@@ -162,7 +165,6 @@ const businessSchema = {
     { '@type': 'OpeningHoursSpecification', dayOfWeek: ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday'], opens: '10:00', closes: '18:00' },
     { '@type': 'OpeningHoursSpecification', dayOfWeek: ['Saturday'], opens: '10:00', closes: '14:00' },
   ],
-  aggregateRating: { '@type': 'AggregateRating', ratingValue: site.reviewRating, reviewCount: site.reviewCount, bestRating: '5' },
 };
 
 function page({ title, description, p, body, schema = null, lang = 'da', dir = '', chrome = 'da', noindex = false }) {
@@ -431,10 +433,10 @@ const FAQ_BUSINESS = [
   ['Hvad koster en IT-supportaftale?', 'Vi har tre pakker: Starter fra 399 kr., Premium 599 kr. og Exclusive 899 kr. pr. bruger pr. måned (ekskl. moms). I betaler en fast månedlig pris, så I altid kender omkostningen på forhånd. Usikker på, hvilken pakke der passer? Book en gennemgang.'],
   ['Er der nogen skjulte gebyrer?', 'Nej — aldrig. I betaler én fast månedlig pris pr. bruger, og det er det. Ingen opstartsgebyr, ingen timepris for supporthenvendelser og ingen overraskelser på fakturaen.'],
   ['Hvad er jeres svartid?', 'Vi garanterer svar inden for 4 timer i normal åbningstid (man–fre 10:00–17:00). De fleste henvendelser løses samme dag — mange inden for den første time.'],
-  ['Kan jeg opsige mit abonnement når som helst?', 'Månedlige abonnementer kan opsiges med en måneds varsel. Årlige abonnementer løber til periodens udløb. Ingen binding ud over det.'],
+  ['Kan I opsige jeres abonnement når som helst?', 'Månedlige abonnementer kan opsiges med en måneds varsel. Årlige abonnementer løber til periodens udløb. Ingen binding ud over det.'],
   ['Hvad dækker "ubegrænset support"?', 'Alt vedrørende jeres daglige IT: computer- og softwareproblemer, netværksproblemer, printere, e-mail, Microsoft 365, virus og sikkerhed. Dækker ikke hardwareudskiftning eller kundespecifik udvikling — det aftaler vi særskilt.'],
   ['Fungerer det for virksomheder af enhver størrelse?', 'Ja. Vi hjælper enkeltmandsvirksomheder, kontorer med 2–3 medarbejdere og virksomheder med 50+ brugere. Prisen er pr. bruger, så I betaler præcis for det, I har brug for.'],
-  ['Skal jeg installere noget?', 'Vi installerer et lille fjernadgangsværktøj (TeamViewer eller lignende), så vi hurtigt kan hjælpe jer, uden at I behøver komme til os. Opsætningen tager typisk under 15 minutter, og vi klarer den for jer.'],
+  ['Skal I installere noget?', 'Vi installerer et lille fjernadgangsværktøj (TeamViewer eller lignende), så vi hurtigt kan hjælpe jer, uden at I behøver komme til os. Opsætningen tager typisk under 15 minutter, og vi klarer den for jer.'],
   ['Hjælper I med printere og netværksprintere?', 'Ja. Vi opsætter, konfigurerer og fejlfinder alle typer printere — lokale, netværks- og cloud-printere. Vi hjælper også med driveropdateringer og integration med jeres eksisterende netværk.'],
   ['Tilbyder I backupløsninger?', 'Ja. Vi opsætter automatisk backup — både lokalt og i skyen — så jeres data altid er beskyttet. Vi tester backuppen regelmæssigt og hjælper med gendannelse, hvis noget går galt.'],
   ['Hvad med antivirussoftware og IT-sikkerhed?', 'Vi installerer og administrerer antivirus og endpoint-sikkerhed på alle jeres enheder. Premium-pakken inkluderer løbende sikkerhedsovervågning, så I er beskyttet mod virus, ransomware og phishing.'],
@@ -563,37 +565,26 @@ function shopComputers() {
     </div></div></section>`+shopFaq("Computere — ofte stillede spørgsmål", [["Hvad er bedst for de fleste — nyt eller refurbished?","Afhænger af budget og behov; refurbished giver bedre værdi til almindelig brug, nyt passer til dem, der vil have de nyeste specifikationer og fuld garanti."]]);
 }
 function shopNew() {
-  const products = [{ img: '/images/butik/thinkpad-t14-new.jpg', alt: 'Lenovo ThinkPad T14 — ny', title: 'Lenovo ThinkPad T14 — Ny', desc: 'Helt ny og forseglet, direkte fra leverandør. Perfekt til kontorarbejde og daglig brug.', price: '6.999 kr.' }];
   return `  <section class="hero"><div class="wrap"><div class="eyebrow"><a href="/butik/computere/" style="color:#A9C1F0">Computere</a> · Nye</div><h1>Nye computere</h1><p class="lead">Klar til afhentning eller levering.</p></div></section>
   <section class="section"><div class="wrap"><div class="crumbs"><a href="/butik/">Butik</a> › <a href="/butik/computere/">Computere</a> › <span>Nye</span></div>
     <p class="sub">Nye computere fra driftssikre mærker. Vi hjælper dig med at finde det rette udstyr til dine behov og dit budget og opsætter det klar til brug.</p>
-    <div class="placeholder-note">⚙️ Placeholder-produkt nedenfor. Tilføj jeres rigtige lager af nye computere (titel, beskrivelse, pris, foto under <code>/images/butik/…</code> og et Stripe Payment Link — separat fra den danske side).</div>
-    <div class="grid grid-3" style="margin-top:24px">${products.map(productCard).join('')}</div></div></section>`+shopFaq("Nye computere — ofte stillede spørgsmål", [["Kan jeg tilpasse specifikationerne på en ny computer inden køb?","Kontakt os om dine krav — vi kan ofte skaffe konfigurationer ud over det, der er nævnt."]]);
+    <div class="trust-line" style="margin:20px 0 8px">Vores lager af nye computere skifter løbende, så vi holder ikke faste modeller og priser her på siden. Ring <a href="${site.phoneHref}">${site.phone}</a> eller skriv til <a href="mailto:${site.emailConsumer}">${site.emailConsumer}</a>, så fortæller vi, hvad vi har på lager lige nu, og finder den rette maskine til dig.</div>
+    <div class="cta-row" style="margin-top:20px"><a class="btn btn-primary" href="${site.phoneHref}">📞 Ring ${site.phone}</a><a class="btn btn-outline" href="mailto:${site.emailConsumer}">Skriv til os</a></div></div></section>`+shopFaq("Nye computere — ofte stillede spørgsmål", [["Kan jeg tilpasse specifikationerne på en ny computer inden køb?","Kontakt os om dine krav — vi kan ofte skaffe konfigurationer ud over det, der er nævnt."]]);
 }
 function shopRefurb() {
-  const products = [
-    { img: '/images/butik/thinkpad-t14-refurbished.jpg', alt: 'Lenovo ThinkPad T14 — refurbished', title: 'Lenovo ThinkPad T14 — Refurbished', desc: 'Grundigt testet og rengjort af os, med nyt batteri hvis nødvendigt. Perfekt til kontorarbejde og daglig brug. 6 måneders garanti.', price: '1.999 kr.' },
-    { img: '/images/butik/macbook-air-refurbished.jpg', alt: 'MacBook Air M1 — refurbished', title: 'MacBook Air M1 — Refurbished', desc: 'Apple Silicon-ydelse til en lavere pris. Testet, rengjort og batteritjekket. 6 måneders garanti.', price: '4.499 kr.' },
-    { img: '/images/butik/dell-latitude-refurbished.jpg', alt: 'Dell Latitude 7440 — refurbished', title: 'Dell Latitude 7440 — Refurbished', desc: 'Erhvervsbærbar, professionelt istandsat og klar til arbejde. 6 måneders garanti.', price: '2.799 kr.' },
-  ];
   return `  <section class="hero"><div class="wrap"><div class="eyebrow"><a href="/butik/computere/" style="color:#A9C1F0">Computere</a> · Refurbished</div><h1>Refurbished computere</h1><p class="lead">Testet, rengjort og klar til brug — med garanti.</p></div></section>
   <section class="section"><div class="wrap"><div class="crumbs"><a href="/butik/">Butik</a> › <a href="/butik/computere/">Computere</a> › <span>Refurbished</span></div>
-    <p class="sub">Grundigt testede og istandsatte computere — god ydelse til en lavere pris, med samme servicegaranti som vores reparationer. Testet af den samme person, der reparerer computere i butikken.</p>
-    <div class="trust-line" style="margin:20px 0 8px"><strong>Hvad "refurbished" betyder her:</strong> hver maskine bliver testet, rengjort og forsynet med et nyt batteri, hvis nødvendigt — og derefter dækket af 6 måneders garanti. Det er den samme tekniker, der reparerer og istandsætter, så den holdes til samme standard som vores reparationsarbejde.</div>
-    <div class="placeholder-note">⚙️ Eksempelprodukter nedenfor. Refurbished-lageret ændrer sig ofte — opdatér denne sides kort, priser, fotos og Stripe-links, når lageret ændrer sig.</div>
-    <div class="grid grid-3" style="margin-top:24px">${products.map(productCard).join('')}</div></div></section>`+shopFaq("Refurbished computere — ofte stillede spørgsmål", [["Kommer refurbished computere med et licenseret styresystem?","Ja, alle istandsatte enheder inkluderer en gyldig, licenseret OS-installation."],["Hvad sker der med de gamle dele eller enheder, I udskifter under istandsættelsen?","Hvor det er muligt, genbruges eller genanvendes fungerende komponenter ansvarligt; alt, der ikke fungerer, bortskaffes gennem korrekte e-affaldskanaler frem for på lossepladsen."]]);
+    <p class="sub">Grundigt testede og istandsatte computere — god ydelse til en lavere pris, med samme servicegaranti som vores reparationer. Testet af de samme teknikere, der reparerer computere i værkstedet.</p>
+    <div class="trust-line" style="margin:20px 0 8px"><strong>Hvad "refurbished" betyder her:</strong> hver maskine bliver testet, rengjort og forsynet med et nyt batteri, hvis nødvendigt — og derefter dækket af 6 måneders garanti. Det er de samme teknikere, der reparerer og istandsætter, så den holdes til samme standard som vores reparationsarbejde.</div>
+    <div class="trust-line" style="margin:20px 0 8px">Vores lager af refurbished computere skifter løbende, så vi holder ikke faste modeller og priser her på siden. Ring <a href="${site.phoneHref}">${site.phone}</a> eller skriv til <a href="mailto:${site.emailConsumer}">${site.emailConsumer}</a>, så fortæller vi, hvad vi har på lager lige nu, og finder den rette maskine til dig.</div>
+    <div class="cta-row" style="margin-top:20px"><a class="btn btn-primary" href="${site.phoneHref}">📞 Ring ${site.phone}</a><a class="btn btn-outline" href="mailto:${site.emailConsumer}">Skriv til os</a></div></div></section>`+shopFaq("Refurbished computere — ofte stillede spørgsmål", [["Kommer refurbished computere med et licenseret styresystem?","Ja, alle istandsatte enheder inkluderer en gyldig, licenseret OS-installation."],["Hvad sker der med de gamle dele eller enheder, I udskifter under istandsættelsen?","Hvor det er muligt, genbruges eller genanvendes fungerende komponenter ansvarligt; alt, der ikke fungerer, bortskaffes gennem korrekte e-affaldskanaler frem for på lossepladsen."]]);
 }
 function shopBackup() {
-  const products = [
-    { img: '/images/butik/external-hdd-2tb.jpg', alt: 'Ekstern harddisk 2 TB', title: 'Ekstern harddisk 2 TB — til automatisk backup', desc: 'Det drev, vi personligt anbefaler til kunder, der vil sikre deres filer. Vi hjælper gerne med opsætning, hvis det er købt hos os.', price: '599 kr.' },
-    { img: '/images/butik/nas-2bay.jpg', alt: 'NAS-løsning med 2 pladser', title: 'NAS 2-bay — backup til hjem & kontor', desc: 'Et netværksdrev til automatisk, redundant backup på tværs af alle dine enheder. Hjælp til opsætning inkluderet, hvis det er købt hos os.', price: '2.199 kr.' },
-    { img: '/images/butik/security-software.jpg', alt: 'Licens til sikkerhedssoftware', title: 'Sikkerhedssoftware — 1 års licens', desc: 'Den endpoint-beskyttelse, vi bruger og anbefaler — antivirus samt beskyttelse mod ransomware og phishing til én computer.', price: '349 kr.' },
-  ];
   return `  <section class="hero"><div class="wrap"><div class="eyebrow"><a href="/butik/" style="color:#A9C1F0">Butik</a> · Backup & sikkerhed</div><h1>Backup & sikkerhed</h1><p class="lead">Udstyr og software, vi personligt anbefaler og bruger.</p></div></section>
   <section class="section"><div class="wrap"><div class="crumbs"><a href="/butik/">Butik</a> › <span>Backup & sikkerhed</span></div>
     <p class="sub">Eksterne harddiske, NAS-løsninger og sikkerhedssoftware, vi personligt anbefaler og bruger. Vi hjælper gerne med opsætning, hvis det er købt hos os.</p>
-    <div class="placeholder-note">⚙️ Eksempelprodukter nedenfor. Erstat med de præcise varer, I fører, rigtige priser, fotos og Stripe Payment Links (separat fra den danske side).</div>
-    <div class="grid grid-3" style="margin-top:24px">${products.map(productCard).join('')}</div></div></section>`+shopFaq("Backup & sikkerhed — ofte stillede spørgsmål", [["Tilbyder I cloud-backup, eller kun fysiske drev?","Begge dele — kontakt os om dine konkrete behov og budget."]]);
+    <div class="trust-line" style="margin:20px 0 8px">Vores udvalg skifter løbende, så vi holder ikke faste varer og priser her på siden. Ring <a href="${site.phoneHref}">${site.phone}</a> eller skriv til <a href="mailto:${site.emailConsumer}">${site.emailConsumer}</a>, så fortæller vi, hvad vi har på lager lige nu, og til hvilken pris.</div>
+    <div class="cta-row" style="margin-top:20px"><a class="btn btn-primary" href="${site.phoneHref}">📞 Ring ${site.phone}</a><a class="btn btn-outline" href="mailto:${site.emailConsumer}">Skriv til os</a></div></div></section>`+shopFaq("Backup & sikkerhed — ofte stillede spørgsmål", [["Tilbyder I cloud-backup, eller kun fysiske drev?","Begge dele — kontakt os om dine konkrete behov og budget."]]);
 }
 
 // ---------- domain purchase ----------

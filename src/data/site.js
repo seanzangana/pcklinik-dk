@@ -18,11 +18,13 @@ export const site = {
   // link — resolves directly to the business's own Maps page and reviews).
   reviewsUrl: 'https://www.google.com/maps/search/?api=1&query=PCKlinik+Falkoner+All%C3%A9+108+Frederiksberg',
   // STATIC, manually-maintained values (per footerreviewlinkandschemabrief.md
-  // — no Places API/billing set up yet). Used for the footer review link and
-  // the AggregateRating schema (businessSchema in build.mjs). These will
-  // drift as new reviews come in — re-check against PCKlinik's real Google
-  // Business Profile every few months and update both numbers together. A
-  // significantly stale mismatch risks Google disabling the rich result.
+  // — no Places API/billing set up yet). Used ONLY for the visible footer
+  // review link (⭐ x.x/5 baseret på N anmeldelser →) — no longer referenced
+  // by any JSON-LD schema (aggregateRating was removed sitewide; Google
+  // doesn't allow self-serving review markup on LocalBusiness subtypes).
+  // These will drift as new reviews come in — re-check against PCKlinik's
+  // real Google Business Profile every few months and update both numbers
+  // together.
   // Future upgrade path: automated-review-sync-brief.md (daily Worker sync
   // to KV/D1 once a billing-enabled Google Cloud project + Places API key +
   // Place ID exist) — not needed for this static version.
@@ -80,7 +82,7 @@ export const nav = [
         { label: 'MacBook-trackpadudskiftning', href: '/mac-trackpadudskiftning/' },
       ] },
       { label: 'Data & sikkerhed', children: [
-        { label: 'Backup & datagenskabelse', href: '/backup-og-datagendannelse/' },
+        { label: 'Backup & datagendannelse', href: '/backup-og-datagendannelse/' },
         { label: 'Fjernelse af virus & malware', href: '/virus-og-malwarefjernelse/' },
       ] },
       { label: 'Fjernsupport & on-site', children: [
