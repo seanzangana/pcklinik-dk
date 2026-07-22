@@ -9,8 +9,8 @@
 // When enabled is false, the banner component renders nothing at all
 // (zero visual footprint, zero performance cost) — see banner() in build.mjs.
 export const announcement = {
-  enabled: false,
-  message: 'Vi holder lukket i dag. Vi er tilbage mandag den 15. juli.',
+  enabled: true,
+  message: 'PCKlinik holder lukket i morgen. Vi er tilbage fredag med normale åbningstider. Skriv til kontakt@pcklinik.dk eller ring 91 81 61 81, hvis det haster.',
   // type controls the banner color: "closed" (amber/orange), "info" (blue),
   // "holiday" (amber/orange, same as closed). Add more types + colors in
   // the .announcement-bar CSS rules in src/styles/global.css if needed.
