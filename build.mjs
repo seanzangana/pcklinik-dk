@@ -51,6 +51,11 @@ function formOpen(dest, subject, nextPath) {
 // the banner for the rest of that browsing session, but it reappears on
 // the next fresh visit/session as long as `enabled` is still true — no code
 // change needed to "reset" it.
+// expiresAt (optional, ISO timestamp incl. tz offset) adds a client-side
+// auto-hide on top of that: once a visitor's own clock passes it, the
+// script below hides the banner even though `enabled` is still true.
+// No rebuild/push is needed right at the expiry moment since the check
+// runs in-browser on every page load. Leave unset/null to skip this.
 function announcementBanner() {
   if (!announcement.enabled) return '';
   const id = 'pck-announcement';
@@ -61,9 +66,11 @@ function announcementBanner() {
 const announcementScript = announcement.enabled ? `<script>
 (function(){
   var KEY='pck-announcement-dismissed';
+  var EXPIRES=${announcement.expiresAt ? JSON.stringify(announcement.expiresAt) : 'null'};
   var bar=document.getElementById('pck-announcement');
   var btn=document.getElementById('pck-announcement-close');
   if(!bar) return;
+  if(EXPIRES){ try{ if(Date.now()>=new Date(EXPIRES).getTime()){ bar.style.display='none'; return; } }catch(e){} }
   try{ if(sessionStorage.getItem(KEY)==='1'){ bar.style.display='none'; } }catch(e){}
   btn&&btn.addEventListener('click',function(){
     bar.style.display='none';
