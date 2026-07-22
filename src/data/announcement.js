@@ -11,6 +11,7 @@
 export const announcement = {
   enabled: true,
   message: 'PCKlinik holder lukket i morgen. Vi er tilbage fredag med normale åbningstider. Skriv til kontakt@pcklinik.dk eller ring 91 81 61 81, hvis det haster.',
+  expiresAt: '2026-07-24T00:00:00+02:00', // ISO timestamp with tz offset; banner auto-hides client-side once past this (see build.mjs). Leave null/unset for no auto-expiry.
   // type controls the banner color: "closed" (amber/orange), "info" (blue),
   // "holiday" (amber/orange, same as closed). Add more types + colors in
   // the .announcement-bar CSS rules in src/styles/global.css if needed.
