@@ -12,9 +12,13 @@ import { site, nav, hreflangMap } from './src/data/site.js';
 import { lucide, lucideSm } from './src/data/icons.js';
 import { services } from './src/data/services.js';
 import { locations } from './src/data/locations.js';
-import { news } from './src/data/news.js';
+import { loadNewsPosts } from './src/content/posts.mjs';
 import { macHubHtml, gamingHtml, MAC_HUB_FAQ, GAMING_FAQ, errorMessagesHtml, ERROR_FAQ, computerWontTurnOnHtml, WONT_TURN_ON_FAQ, faqPageHtml, GENERAL_FAQ, networkHubHtml, NETWORK_HUB_FAQ, websitesHubHtml, WEBSITES_HUB_FAQ, studentsHtml, STUDENTS_FAQ, priceRangesHtml } from './src/data/richPages.js';
 import { announcement } from './src/data/announcement.js';
+// Nyheder posts (src/content/nyheder/*.md), populated at the top of run().
+// Declared here rather than as a run()-local because newsIndexHtml()/
+// newsPostHtml()/newsPostSchema() below close over this module-level binding.
+let news = [];
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const DIST = path.join(__dirname, 'dist');
@@ -774,7 +778,9 @@ function newsPostHtml(n) {
   <section class="section alt"><div class="wrap"><div class="cta-band"><h2>Brug for hjælp med dette?</h2><p>Fejlsøgning 300 kr. (2–4 dage) eller ekspres for 600 kr. (1–2 timer). Fast pris, før vi går i gang.</p><div class="cta-row"><a class="btn btn-white" href="/kontakt/">Kontakt os</a><a class="btn btn-ghost-light" href="${site.phoneHref}">📞 Ring ${site.phone}</a></div></div></div></section>`;
 }
 function newsPostSchema(n) {
-  return { '@context': 'https://schema.org', '@type': 'BlogPosting', headline: n.title, datePublished: n.date, dateModified: n.date, description: n.description, author: { '@type': 'Organization', name: 'PCKlinik' }, publisher: { '@type': 'Organization', name: 'PCKlinik' }, mainEntityOfPage: `${site.domain}/nyheder/${n.slug}/` };
+  const schema = { '@context': 'https://schema.org', '@type': 'BlogPosting', headline: n.title, datePublished: n.date, dateModified: n.date, description: n.description, author: { '@type': 'Organization', name: 'PCKlinik' }, publisher: { '@type': 'Organization', name: 'PCKlinik' }, mainEntityOfPage: `${site.domain}/nyheder/${n.slug}/` };
+  if (n.image) schema.image = n.image.startsWith('http') ? n.image : `${site.domain}${n.image}`;
+  return schema;
 }
 
 // ---------- Ask Us a Question ----------
@@ -948,6 +954,10 @@ async function copyDir(src, dst) {
 
 // ---------- run ----------
 async function run() {
+  // Nyheder posts: Markdown + frontmatter under src/content/nyheder/*.md,
+  // newest first, drafts skipped. See src/content/README.md.
+  news = await loadNewsPosts(__dirname);
+
   await fs.rm(DIST, { recursive: true, force: true });
   await fs.mkdir(DIST, { recursive: true });
 
