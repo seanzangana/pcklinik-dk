@@ -307,7 +307,7 @@ function homeBody() {
   const faqHtml = HOME_FAQ.map(([q, a]) => `<details><summary>${esc(q)}</summary><div class="answer">${esc(a)}</div></details>`).join('');
   return `  <section class="hero"><div class="wrap"><div class="eyebrow">Frederiksberg &amp; København</div>
     <h1>Alt inden for computer og IT — du har ikke brug for nogen andre.</h1>
-    <p class="lead">Fra reparation og IT-support til hosting, domæner, backup og salg af computere — hos PCKlinik får du det hele ét sted. I din computerverden har du ikke brug for nogen andre end os. Ingen at ringe rundt til, ingen flere aftaler at holde styr på — bare ét team, der kender din opsætning fra start til slut.</p>
+    <p class="lead">Fra reparation, rådgivning og IT-support til hosting, domæner, backup og salg af computere — hos PCKlinik får du det hele ét sted. I din computerverden har du ikke brug for nogen andre end os. Ingen at ringe rundt til, ingen flere aftaler at holde styr på — bare ét team, der kender din opsætning fra start til slut.</p>
     <p style="margin-top:14px;font-weight:600">Vælg din vej nedenfor:</p>
     <div class="grid grid-2 hero-paths">
       <a class="card card-link" href="/kontakt/"><div class="card-icon">🖥️</div><h2>Til private</h2><p>PC- og Mac-reparation — standard- eller ekspresfejlsøgning, fast pris, de fleste reparationer samme dag.</p><span class="arrow">Book en reparation →</span></a>
