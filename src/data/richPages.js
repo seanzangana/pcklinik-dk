@@ -365,7 +365,199 @@ export function priceRangesHtml() {
     <p>Selve fejlsøgningen prissættes særskilt: standard koster 300 kr. (2–4 dage), eller ekspres 600 kr. (1–2 timer). Væskeskade har en fast pris på 600 kr. (3–4 dage, ingen ekspresmulighed).</p></div></section>
   <section class="section alt"><div class="wrap"><div class="eyebrow">Vejledende priser</div><h2>Fra-priser på almindelige reparationer</h2>
     <div class="table-wrap" style="margin-top:20px"><table class="models"><thead><tr><th>Reparation</th><th>Vejledende pris</th></tr></thead><tbody>${rows}</tbody></table></div>
-    <div class="trust-line" style="margin-top:24px"><strong>Alle priser er inkl. reservedele og arbejdsløn.</strong> SSD-prisen gælder 256 GB; større kapacitet koster mere. Fast tilbud, før vi går i gang.</div></div></section>
+    <div class="trust-line" style="margin-top:24px"><strong>Alle priser er inkl. reservedele og arbejdsløn.</strong> SSD-prisen gælder 256 GB; større kapacitet koster mere. Fast tilbud, før vi går i gang.</div>
+    <div class="trust-line" style="margin-top:12px">Kan du ikke komme forbi værkstedet? Afhentning og levering kan aftales — <a href="/kontakt/">kontakt os</a>, så finder vi en løsning ud fra din placering.</div></div></section>
   <section class="section"><div class="wrap"><div class="cta-band"><h2>Vil du have en pris på din reparation?</h2><p>Kom forbi uden tidsbestilling eller kontakt os — vi laver en fejlsøgning og giver dig et fast tilbud, før noget arbejde går i gang.</p><div class="cta-row"><a class="btn btn-white" href="/kontakt/">Book en reparation</a><a class="btn btn-ghost-light" href="${site.phoneHref}">📞 Ring ${site.phone}</a></div></div>
     <div style="margin-top:32px"><p class="eyebrow">Relateret</p><div class="crosslinks"><a href="/udskiftning-af-skaerm/">Skærmudskiftning →</a><a href="/mac-batteriskift/">Mac-batteriskift →</a><a href="/ssd-opgradering/">SSD-opgradering →</a><a href="/kontakt/">Kontakt & booking →</a></div></div></div></section>`;
+}
+
+// ---------- Fault-specific guides ----------
+// Each guide gives real, standalone help first (works even if the reader
+// never books anything) and ends with the same shared CTA block. This is
+// deliberate: it's what earns trust and ranks — the sales pitch is last,
+// not first. See build.mjs for the Article+FAQPage schema wiring.
+const guideCta = () => `<section class="section alt"><div class="wrap"><div class="cta-band"><h2>Kan du ikke løse det selv?</h2><p>Kom forbi Falkoner Allé 108, eller send din computer til os fra resten af landet. Vi fejlsøger (300 kr., 2–4 dage — eller ekspres 600 kr., 1–2 timer) og giver dig et fast tilbud, før vi går i gang.</p><div class="cta-row"><a class="btn btn-white" href="/kontakt/">Book fejlsøgning</a><a class="btn btn-ghost-light" href="${site.phoneHref}">📞 Ring ${site.phone}</a></div></div>`;
+
+// ---- Blå skærm (BSOD) ----
+export const BSOD_FAQ = [
+  { q: 'Er en blå skærm altid tegn på et alvorligt problem?', a: 'Nej. Nogle BSOD’er skyldes en enkelt driveropdatering, der gik galt, og forsvinder efter en driver-tilbagerulning eller genstart. Andre peger på et svigtende drev eller RAM — det er derfor stopkoden og mønsteret (én gang vs. gentaget) betyder noget.' },
+  { q: 'Mister jeg mine filer, hvis jeg får en blå skærm?', a: 'Ikke i sig selv — BSOD er et sikkerhedsstop, ikke en sletning. Hvis den underliggende årsag er et svigtende drev, bliver det tidskritisk at få taget backup, men selve den blå skærm sletter ikke dine data.' },
+  { q: 'Skal jeg bare genstarte, når jeg ser en blå skærm?', a: 'Ved en enkeltstående BSOD er en genstart fin. Kommer den igen — især gentagne gange med samme stopkode — bør du stoppe med at genstarte blindt og i stedet notere koden og fejlsøge årsagen, da gentagne genstarter kan forværre et drev, der er ved at svigte.' },
+  { q: 'Hvordan finder jeg stopkoden, hvis skærmen forsvinder for hurtigt?', a: 'Windows gemmer koden i Pålidelighedsovervågning (søg efter "Vis pålidelighedshistorik") og i Hændelsesviseren under Windows-logfiler → System. Der kan du også se koden i ro og mag efter genstart.' },
+  { q: 'Kan et opdateret grafikkort-driver forårsage blå skærm?', a: 'Ja, det er en af de hyppigste årsager, især efter en Windows- eller GPU-driveropdatering. En ren geninstallation af driveren eller en tilbagerulning til den forrige version løser ofte problemet.' },
+];
+export function blaaSkaermHtml() {
+  const faqHtml = BSOD_FAQ.map((f) => `<details><summary>${esc(f.q)}</summary><div class="answer">${esc(f.a)}</div></details>`).join('');
+  return `  <section class="hero"><div class="wrap"><div class="eyebrow">Hjælp · Blå skærm</div>
+    <h1>Blå skærm på Windows — sådan finder du fejlen</h1><p class="lead">Hvad en BSOD faktisk betyder, og hvordan du selv kommer videre i fejlsøgningen.</p>
+    <div class="cta-row"><a class="btn btn-white" href="/kontakt/">Book fejlsøgning</a><a class="btn btn-ghost-light" href="${site.phoneHref}">📞 Ring ${site.phone}</a></div></div></section>
+  <section class="section"><div class="wrap lead-copy"><div class="crumbs"><a href="/">Forside</a> › <span>Blå skærm (BSOD)</span></div>
+    <p>En "Blue Screen of Death" (BSOD) er ikke tilfældig — det er Windows, der bevidst stopper sig selv, fordi den er stødt på en fejl, den ikke kan komme sikkert videre fra uden risiko for at beskadige dine data eller hardware. Det er ubehageligt at se, men det er faktisk et sikkerhedstiltag, ikke selve skaden.</p></div></section>
+  <section class="section alt"><div class="wrap"><div class="eyebrow">Første skridt</div><h2>Sådan læser du stopkoden</h2><div class="lead-copy">
+    <p>Skærmen viser typisk en kort tekst som <code>CRITICAL_PROCESS_DIED</code> eller <code>MEMORY_MANAGEMENT</code> — det er stopkoden, og den er dit vigtigste spor. Forsvandt skærmen for hurtigt til, at du nåede at læse den? Søg efter "Vis pålidelighedshistorik" i Windows, eller åbn Hændelsesviseren (Windows-logfiler → System) — begge steder logger Windows koden, så du kan finde den i ro og mag.</p></div></div></section>
+  <section class="section"><div class="wrap"><div class="eyebrow">Hyppige årsager</div><h2>Hvad ligger typisk bag</h2><div class="lead-copy">
+    <ul class="check-list" style="grid-template-columns:1fr">
+      <li><strong>RAM-fejl</strong> — defekt eller løs hukommelse er en af de hyppigste årsager til gentagne, uforudsigelige BSOD'er.</li>
+      <li><strong>Driverproblemer</strong> — især grafikdrivere. En driveropdatering, der ikke passer med resten af systemet, kan udløse gentagne nedbrud.</li>
+      <li><strong>Disk på vej ud</strong> — et svigtende drev kan give BSOD'er relateret til fil- eller systemlæsning.</li>
+      <li><strong>Overophedning</strong> — støv og dårlig køling kan få systemet til at fejle under belastning.</li>
+      <li><strong>Ny hardware eller en frisk opdatering</strong> — timing er et vigtigt spor: begyndte det, lige efter du installerede noget nyt?</li>
+    </ul></div></div></section>
+  <section class="section alt"><div class="wrap"><div class="eyebrow">Selvhjælp</div><h2>Det kan du selv prøve</h2><div class="lead-copy">
+    <ul class="check-list" style="grid-template-columns:1fr">
+      <li>Notér stopkoden — du får brug for den, uanset om du løser det selv eller bringer maskinen ind.</li>
+      <li>Rul den seneste driveropdatering tilbage, især hvis fejlen startede efter en opdatering.</li>
+      <li>Kør Windows' indbyggede hukommelsestest ("Windows Memory Diagnostic") for at udelukke RAM.</li>
+      <li>Tjek diskens helbred (fx via <code>chkdsk</code> eller producentens diagnosticeringsværktøj) for tegn på et svigtende drev.</li>
+      <li>Afinstallér den seneste Windows-opdatering, hvis fejlen begyndte lige efter den blev installeret.</li>
+    </ul></div></div></section>
+  <section class="section"><div class="wrap lead-copy"><div class="eyebrow">Hvornår er det hardware</div><h2>Hvornår skal den på værksted</h2>
+    <p>Kommer den samme stopkode igen efter en driver-tilbagerulning, eller peger hukommelsestesten eller disktjekket på en fejl, er det tid til en fysisk fejlsøgning. Det gælder især, hvis maskinen også opfører sig unormalt på andre måder — uventede genstarter, meget langsom ydelse, eller lyde fra drevet.</p></div></section>
+  <section class="section alt"><div class="wrap"><div class="eyebrow">FAQ</div><h2>Blå skærm — ofte stillede spørgsmål</h2><div class="faq">${faqHtml}</div></div></section>
+  ${guideCta()}
+    <div style="margin-top:32px"><p class="eyebrow">Relateret</p><div class="crosslinks"><a href="/fejlmeddelelser/">Fejlmeddelelser &amp; koder →</a><a href="/harddisk-ssd-udskiftning/">Udskiftning af harddisk →</a><a href="/computer-vil-ikke-taende/">Computeren vil ikke tænde →</a><a href="/rens-af-pc/">PC-rensning &amp; støvfjernelse →</a></div></div></div></section>`;
+}
+
+// ---- Grafikkort-fejl på bærbar ----
+export const GRAFIKKORT_FAQ = [
+  { q: 'Kan jeg selv skifte grafikkortet på min bærbare?', a: 'Sjældent. På de fleste bærbare er grafikchippen loddet direkte på bundkortet — det er ikke et udskifteligt kort som i en stationær pc. Reparation betyder derfor typisk reparation eller udskiftning af selve bundkortet.' },
+  { q: 'Hvordan ved jeg, om det er driveren eller selve hardwaren?', a: 'Start med en ren geninstallation af grafikdriveren. Forsvinder problemet, var det softwaren. Vender det tilbage, især under belastning som spil eller video, peger det mere mod et hardwareproblem.' },
+  { q: 'Kan overophedning permanent skade et grafikkort?', a: 'Ja — gentagen overophedning slider loddepunkterne omkring grafikchippen, hvilket er en almindelig årsag til, at fejl, der startede som lejlighedsvise artefakter, med tiden bliver til et fast nedbrud.' },
+  { q: 'Er det bedre at reparere eller udskifte hele maskinen ved et grafikkortsvigt?', a: 'Det afhænger af maskinens alder og værdi. Vi giver dig en ærlig vurdering af, om en reparation kan betale sig, eller om du er bedre stillet med en anden maskine.' },
+  { q: 'Virker det, hvis jeg tilslutter en ekstern skærm?', a: 'Det er en god diagnosticeringstest. Virker den eksterne skærm fint, mens den indbyggede stadig fejler, kan det pege på et skærm- eller kabelproblem frem for selve grafikkortet — men viser den eksterne skærm de samme artefakter, peger det mere mod selve grafikhardwaren.' },
+];
+export function grafikkortFejlHtml() {
+  const faqHtml = GRAFIKKORT_FAQ.map((f) => `<details><summary>${esc(f.q)}</summary><div class="answer">${esc(f.a)}</div></details>`).join('');
+  return `  <section class="hero"><div class="wrap"><div class="eyebrow">Hjælp · Grafikkort-fejl</div>
+    <h1>Grafikkort-fejl på bærbar computer</h1><p class="lead">Typiske symptomer, og hvordan du skelner driverproblem fra hardwaresvigt.</p>
+    <div class="cta-row"><a class="btn btn-white" href="/kontakt/">Book fejlsøgning</a><a class="btn btn-ghost-light" href="${site.phoneHref}">📞 Ring ${site.phone}</a></div></div></section>
+  <section class="section"><div class="wrap lead-copy"><div class="crumbs"><a href="/">Forside</a> › <span>Grafikkort-fejl på bærbar</span></div>
+    <p>Et grafikkort, der er ved at fejle, giver sjældent ét entydigt symptom — det starter ofte lejlighedsvist og bliver værre over tid. At kende de typiske tegn hjælper dig med at afgøre, om det er noget, du selv kan rette, eller om maskinen skal fejlsøges fysisk.</p></div></section>
+  <section class="section alt"><div class="wrap"><div class="eyebrow">Symptomer</div><h2>Sådan ser en grafikkort-fejl typisk ud</h2><div class="lead-copy">
+    <ul class="check-list" style="grid-template-columns:1fr">
+      <li><strong>Artefakter og striber</strong> — farvede prikker, linjer eller mønstre, der ikke burde være der.</li>
+      <li><strong>Forvrænget billede</strong> — teksturer eller vinduer, der ser "smeltede" eller forkert tegnede ud.</li>
+      <li><strong>Sort skærm, men maskinen kører</strong> — du kan høre blæserne og se tastaturets baggrundslys, men der kommer intet billede.</li>
+      <li><strong>Nedbrud under spil eller video</strong> — systemet fryser eller genstarter specifikt, når grafikken belastes.</li>
+      <li><strong>Ekstern skærm opfører sig anderledes end den indbyggede</strong> — et vigtigt diagnosticeringsspor, se FAQ.</li>
+    </ul></div></div></section>
+  <section class="section"><div class="wrap"><div class="eyebrow">Selvhjælp</div><h2>Det kan du selv teste</h2><div class="lead-copy">
+    <ul class="check-list" style="grid-template-columns:1fr">
+      <li>Lav en ren geninstallation af grafikdriveren (afinstallér helt, genstart, installér den nyeste stabile version).</li>
+      <li>Tilslut en ekstern skærm for at se, om problemet følger med eller forsvinder.</li>
+      <li>Hold øje med temperaturer under belastning, hvis du har et overvågningsværktøj — usædvanligt høje temperaturer peger mod køling/overophedning.</li>
+      <li>Test i sikker tilstand (safe mode) — kører maskinen stabilt der, styrker det mistanken om et driver- eller softwareproblem frem for hardware.</li>
+    </ul></div></div></section>
+  <section class="section alt"><div class="wrap lead-copy"><div class="eyebrow">Hvorfor det er anderledes på en bærbar</div><h2>Loddet fast — hvad det betyder for reparation</h2>
+    <p>På de fleste bærbare computere er grafikchippen loddet direkte fast til bundkortet, i modsætning til stationære pc'er, hvor grafikkortet er et separat, udskifteligt kort. Det betyder, at en grafikkort-fejl på en bærbar som regel er en <a href="/bundkort-reparation/">bundkortreparation</a>, ikke en simpel udskiftning af en enkelt komponent — og at vi altid vurderer ærligt, om det kan betale sig at reparere, eller om <a href="/reparere-eller-koebe-ny-computer/">en anden maskine</a> giver bedre mening for pengene.</p></div></section>
+  <section class="section"><div class="wrap"><div class="eyebrow">FAQ</div><h2>Grafikkort-fejl — ofte stillede spørgsmål</h2><div class="faq">${faqHtml}</div></div></section>
+  ${guideCta()}
+    <div style="margin-top:32px"><p class="eyebrow">Relateret</p><div class="crosslinks"><a href="/bundkort-reparation/">Bundkortreparation →</a><a href="/rens-af-pc/">PC-rensning &amp; støvfjernelse →</a><a href="/udskiftning-af-skaerm/">Skærmudskiftning →</a><a href="/gaming-pc-reparation/">Gaming-pc-reparation →</a></div></div></div></section>`;
+}
+
+// ---- MacBook Touch Bar virker ikke ----
+export const TOUCHBAR_FAQ = [
+  { q: 'Hvilke MacBook-modeller har Touch Bar?', a: 'Touch Bar findes på udvalgte MacBook Pro-modeller fra 2016 til 2020 (både Intel- og de tidlige M1-modeller). Nyere MacBook Pro-modeller er gået tilbage til fysiske funktionstaster.' },
+  { q: 'Kan jeg nulstille SMC/NVRAM på alle MacBook-modeller med Touch Bar?', a: 'Nej — det er kun muligt på Intel-baserede modeller. Apple Silicon-modeller (M1 og nyere) håndterer det automatisk og har ikke den samme manuelle nulstillingsprocedure.' },
+  { q: 'Er en frossen Touch Bar altid tegn på et hardwareproblem?', a: 'Nej, ofte er det software — en hængende proces eller en macOS-fejl efter en opdatering. En genstart eller opdatering løser mange tilfælde. Bliver problemet ved efter det, er det mere sandsynligt hardware.' },
+  { q: 'Hvorfor skal Touch Bar og skærm vurderes samlet?', a: 'Fordi Touch Bar-modulet på mange modeller er fysisk og elektrisk forbundet til skærmenheden. Er skaden forårsaget af et fald eller væske, er det ofte mest effektivt at vurdere og reparere dem sammen frem for hver for sig.' },
+  { q: 'Kan væskeskade være årsagen, selv hvis resten af Mac’en virker fint?', a: 'Ja — Touch Bar er en af de mest følsomme komponenter ved væskeskade, netop fordi den sidder eksponeret øverst på tastaturet. Den kan fejle, selv hvis resten af maskinen fortsat fungerer normalt.' },
+];
+export function touchBarHtml() {
+  const faqHtml = TOUCHBAR_FAQ.map((f) => `<details><summary>${esc(f.q)}</summary><div class="answer">${esc(f.a)}</div></details>`).join('');
+  return `  <section class="hero"><div class="wrap"><div class="eyebrow">Hjælp · Touch Bar</div>
+    <h1>MacBook Touch Bar virker ikke</h1><p class="lead">Almindelige årsager, hvad du selv kan prøve, og hvornår det er hardware.</p>
+    <div class="cta-row"><a class="btn btn-white" href="/kontakt/">Book fejlsøgning</a><a class="btn btn-ghost-light" href="${site.phoneHref}">📞 Ring ${site.phone}</a></div></div></section>
+  <section class="section"><div class="wrap lead-copy"><div class="crumbs"><a href="/">Forside</a> › <span>MacBook Touch Bar virker ikke</span></div>
+    <p>Touch Bar findes på udvalgte MacBook Pro-modeller fra 2016–2020. Når den holder op med at reagere, er det ikke altid en hardwarefejl — men det er værd at vide, hvad du selv kan tjekke, før du antager det værste.</p></div></section>
+  <section class="section alt"><div class="wrap"><div class="eyebrow">Hyppige årsager</div><h2>Hvad ligger typisk bag</h2><div class="lead-copy">
+    <ul class="check-list" style="grid-template-columns:1fr">
+      <li><strong>Software-hængning</strong> — Touch Bar-processen kan gå i stå uden at resten af systemet påvirkes.</li>
+      <li><strong>macOS-fejl</strong> — særligt efter en systemopdatering, der ikke afsluttede korrekt.</li>
+      <li><strong>Væskeskade</strong> — Touch Bar sidder eksponeret øverst på tastaturet og er derfor særligt udsat.</li>
+      <li><strong>Defekt flexkabel eller display-modul</strong> — Touch Bar er fysisk forbundet til skærmenheden på mange modeller.</li>
+    </ul></div></div></section>
+  <section class="section"><div class="wrap"><div class="eyebrow">Selvhjælp</div><h2>Det kan du selv prøve</h2><div class="lead-copy">
+    <ul class="check-list" style="grid-template-columns:1fr">
+      <li>Genstart Touch Bar-processen: luk TouchBarServer og ControlStrip via Aktivitetsovervågning, eller genstart maskinen.</li>
+      <li>Installér seneste macOS-opdatering — mange Touch Bar-fejl er allerede rettet af Apple i senere versioner.</li>
+      <li>Nulstil SMC/NVRAM (kun Intel-modeller — se FAQ).</li>
+      <li>Test i sikker tilstand for at se, om Touch Bar reagerer der — hjælper med at afgøre software vs. hardware.</li>
+    </ul></div></div></section>
+  <section class="section alt"><div class="wrap lead-copy"><div class="eyebrow">Hvornår er det hardware</div><h2>Hvornår skal den vurderes fysisk</h2>
+    <p>Løser genstart, opdatering og nulstilling ikke problemet — eller er der tegn på væskeskade eller et fald — bør Touch Bar og skærm vurderes samlet, da de ofte hænger fysisk sammen. Se også vores sider om <a href="/mac-skaermudskiftning/">Mac-skærmudskiftning</a> og <a href="/vaeskeskade-reparation/">væskeskade-reparation</a>.</p></div></section>
+  <section class="section"><div class="wrap"><div class="eyebrow">FAQ</div><h2>Touch Bar — ofte stillede spørgsmål</h2><div class="faq">${faqHtml}</div></div></section>
+  ${guideCta()}
+    <div style="margin-top:32px"><p class="eyebrow">Relateret</p><div class="crosslinks"><a href="/macbook-reparation/">MacBook-reparation →</a><a href="/mac-skaermudskiftning/">Mac-skærmudskiftning →</a><a href="/vaeskeskade-reparation/">Væskeskade-reparation →</a><a href="/mac-tastaturudskiftning/">MacBook-tastaturudskiftning →</a></div></div></div></section>`;
+}
+
+// ---- Batteriet holder ikke ----
+export const BATTERY_FAQ = [
+  { q: 'Hvor mange opladninger holder et batteri typisk?', a: 'De fleste bærbar- og Mac-batterier er dimensioneret til omkring 300–500 fulde opladningscyklusser, før kapaciteten falder mærkbart. Det svarer typisk til et par års normal brug, afhængigt af, hvor ofte du oplader.' },
+  { q: 'Hvordan tjekker jeg mit batteris tilstand selv?', a: 'På Windows kan du generere en batterirapport ved at skrive "powercfg /batteryreport" i en kommandoprompt. På Mac finder du cyklustæller og status under Systemindstillinger → Batteri → Batteritilstand, hvor et "Service anbefales"-flag betyder, at kapaciteten er faldet mærkbart.' },
+  { q: 'Er et bulnet batteri farligt?', a: 'Ja — stop med at bruge maskinen med det samme, hvis batteriet hæver eller bulner, og undgå at trykke eller punktere det. Kontakt os, så vi kan udskifte det sikkert.' },
+  { q: 'Kan jeg forlænge batteriets levetid?', a: 'Delvis — at undgå konstant 100 %-opladning, undgå ekstrem varme, og ikke lade batteriet bunde helt ud ofte kan bremse slidet en smule, men batterier er sliddele og skal før eller siden skiftes uanset brugsmønster.' },
+  { q: 'Hvornår kan det bedre betale sig at skifte hele maskinen frem for kun batteriet?', a: 'Hvis maskinen i øvrigt er langsom, gammel eller har andre begyndende problemer, kan et batteriskift alene være spildte penge. Vi giver dig en ærlig vurdering af, om et batteriskift eller en anden maskine giver bedst mening.' },
+];
+export function batterietHolderIkkeHtml() {
+  const faqHtml = BATTERY_FAQ.map((f) => `<details><summary>${esc(f.q)}</summary><div class="answer">${esc(f.a)}</div></details>`).join('');
+  return `  <section class="hero"><div class="wrap"><div class="eyebrow">Hjælp · Batteri</div>
+    <h1>Batteriet holder ikke — skal det skiftes?</h1><p class="lead">Sådan tjekker du batteriets tilstand, og hvornår et skift kan betale sig.</p>
+    <div class="cta-row"><a class="btn btn-white" href="/kontakt/">Book fejlsøgning</a><a class="btn btn-ghost-light" href="${site.phoneHref}">📞 Ring ${site.phone}</a></div></div></section>
+  <section class="section"><div class="wrap lead-copy"><div class="crumbs"><a href="/">Forside</a> › <span>Batteriet holder ikke</span></div>
+    <p>Batterier er sliddele — de holder ikke evigt, uanset mærke eller pris. Typisk er et bærbar- eller Mac-batteri dimensioneret til omkring 300–500 fulde opladningscyklusser, før kapaciteten falder mærkbart. Spørgsmålet er sjældent "hvorfor," men snarere: er det normalt slid, eller er noget galt?</p></div></section>
+  <section class="section alt"><div class="wrap"><div class="eyebrow">Selvhjælp</div><h2>Sådan tjekker du batteriets tilstand</h2><div class="lead-copy">
+    <ul class="check-list" style="grid-template-columns:1fr">
+      <li><strong>Windows:</strong> skriv <code>powercfg /batteryreport</code> i en kommandoprompt for at generere en detaljeret batterirapport med aktuel vs. oprindelig kapacitet.</li>
+      <li><strong>Mac:</strong> gå til Systemindstillinger → Batteri → Batteritilstand — her ser du cyklustælleren og et eventuelt "Service anbefales"-flag.</li>
+    </ul></div></div></section>
+  <section class="section"><div class="wrap lead-copy"><div class="eyebrow">Normalt slid eller advarselstegn</div><h2>Hvornår er det bare slid — og hvornår skal du stoppe med det samme</h2>
+    <p><strong>Holder kortere end før:</strong> det er normalt slid. Det er en god anledning til at overveje et batteriskift, men ikke en akut situation.</p>
+    <p><strong>Batteriet hæver eller bulner:</strong> det er ikke normalt slid — det er en sikkerhedsrisiko. Stop med at bruge maskinen med det samme, undgå at trykke eller punktere batteriet, og kontakt os hurtigst muligt.</p></div></section>
+  <section class="section alt"><div class="wrap lead-copy"><div class="eyebrow">Er det pengene værd</div><h2>Kan et batteriskift betale sig?</h2>
+    <p>For de fleste maskiner, der ellers fungerer godt, er et batteriskift en af de reparationer, der giver mest værdi for pengene — det forlænger maskinens brugstid markant til en forholdsvis lav pris. Er maskinen derimod i forvejen gammel eller har andre problemer, giver vi dig en ærlig vurdering af, om et batteriskift alene er den bedste løsning, eller om <a href="/reparere-eller-koebe-ny-computer/">en anden maskine</a> giver bedre mening.</p></div></section>
+  <section class="section"><div class="wrap"><div class="eyebrow">FAQ</div><h2>Batteri — ofte stillede spørgsmål</h2><div class="faq">${faqHtml}</div></div></section>
+  ${guideCta()}
+    <div style="margin-top:32px"><p class="eyebrow">Relateret</p><div class="crosslinks"><a href="/mac-batteriskift/">Mac-batteriskift →</a><a href="/macbook-reparation/">MacBook-reparation →</a><a href="/reparere-eller-koebe-ny-computer/">Reparere eller købe ny computer? →</a></div></div></div></section>`;
+}
+
+// ---- Reparere eller købe ny computer? ----
+// Genopbygger en URL, der historisk har eksisteret på sitet (nu 404) —
+// se konkurrent-keyword-gap-rapporten, punkt 3. Ren beslutningsguide, ikke
+// en salgsside: giver et ærligt, selvstændigt svar først. Krydslinket fra
+// grafikkort-fejl- og batteri-guiderne ovenfor (var døde links, indtil
+// denne side blev bygget) samt fra /reparationspriser/.
+export const REPARERE_ELLER_KOEBE_FAQ = [
+  { q: 'Hvornår kan det ikke betale sig at reparere en computer?', a: 'Typisk når reparationsprisen nærmer sig prisen på en tilsvarende ny eller refurbished maskine, eller når en gammel maskine har flere problemer på én gang — så er der stor risiko for, at det næste går i stykker kort efter.' },
+  { q: 'Er en refurbished computer et godt alternativ til en reparation?', a: 'Ofte ja, særligt hvis din nuværende maskine er over 5-6 år gammel eller har et bundkorts- eller strømrelateret problem. En professionelt istandsat maskine med garanti koster typisk mindre end en tilsvarende ny.' },
+  { q: 'Hvad gør I, hvis I vurderer, at en reparation ikke kan betale sig?', a: 'Vi siger det ærligt, i stedet for at sælge dig en reparation, der ikke giver mening. Du er velkommen til at høre om nye eller refurbished alternativer i vores butik — men det er dit valg, ikke et krav.' },
+  { q: 'Kan I hjælpe med at flytte mine data til en ny maskine?', a: 'Ja, dataflytning kan indgå som en del af opsætningen af en ny eller refurbished maskine — kontakt os, så aftaler vi det konkret.' },
+  { q: 'Skal jeg betale for en fejlsøgning, selvom jeg måske ender med at købe en ny computer alligevel?', a: 'Ja, fejlsøgningen (300 kr. standard, 600 kr. ekspres) er det, der giver os grundlaget for at rådgive dig ærligt — uden den kan hverken du eller vi vide, om reparation kan betale sig.' },
+];
+export function repareEllerKoebeNyComputerHtml() {
+  const faqHtml = REPARERE_ELLER_KOEBE_FAQ.map((f) => `<details><summary>${esc(f.q)}</summary><div class="answer">${esc(f.a)}</div></details>`).join('');
+  return `  <section class="hero"><div class="wrap"><div class="eyebrow">Hjælp · Beslutning</div>
+    <h1>Skal du reparere din computer — eller købe en ny?</h1><p class="lead">Et ærligt svar afhænger af tre ting: reparationens pris, maskinens alder, og hvad du reelt har brug for. Her er, hvordan du selv regner på det.</p>
+    <div class="cta-row"><a class="btn btn-white" href="/kontakt/">Book fejlsøgning</a><a class="btn btn-ghost-light" href="${site.phoneHref}">📞 Ring ${site.phone}</a></div></div></section>
+  <section class="section"><div class="wrap lead-copy"><div class="crumbs"><a href="/">Forside</a> › <span>Reparere eller købe ny computer?</span></div>
+    <p>Det er sjældent et spørgsmål med ét rigtigt svar — men der er en enkel tommelfingerregel, der rammer rigtigt i de fleste tilfælde: <strong>hold reparationsprisen op mod prisen på en tilsvarende maskine</strong> (ny eller refurbished), og tag maskinens alder med i regnestykket.</p></div></section>
+  <section class="section alt"><div class="wrap"><div class="eyebrow">Tommelfingerreglen</div><h2>Sådan regner du på det</h2><div class="lead-copy">
+    <p>Koster reparationen under ca. en tredjedel til halvdelen af prisen på en tilsvarende maskine, og er din nuværende computer under 4-5 år gammel, kan reparationen som regel betale sig. Nærmer reparationsprisen sig 60-70 % eller mere af en ny maskine — eller er computeren i forvejen 6+ år gammel med mere end ét problem — begynder en ny eller refurbished maskine typisk at give bedre mening.</p></div></div></section>
+  <section class="section"><div class="wrap"><div class="eyebrow">Spørgsmål der afgør det</div><h2>Stil dig selv disse spørgsmål</h2><div class="lead-copy">
+    <ul class="check-list" style="grid-template-columns:1fr">
+      <li><strong>Hvor gammel er maskinen?</strong> — jo ældre, jo mindre giver en enkeltstående, dyr reparation mening.</li>
+      <li><strong>Er dette den eneste fejl, eller et symptom på noget større?</strong> — flere samtidige problemer er et advarselstegn.</li>
+      <li><strong>Dækker maskinens ydelse dine behov i forvejen, uafhængigt af fejlen?</strong> — hvis den allerede er for langsom til det, du bruger den til, løser en reparation ikke det underliggende problem.</li>
+      <li><strong>Er det en enkeltstående hændelse (tab, væske) eller almindeligt slid?</strong> — en enkeltskade på en ellers god maskine taler for reparation.</li>
+      <li><strong>Kan dine data reddes under alle omstændigheder?</strong> — det bør aldrig i sig selv afgøre valget, men det er godt at vide på forhånd.</li>
+    </ul></div></div></section>
+  <section class="section alt"><div class="wrap"><div class="eyebrow">Reparation giver ofte mening</div><h2>Når reparation næsten altid betaler sig</h2><div class="lead-copy">
+    <p>Et enkelt komponentsvigt — skærm, batteri, tastatur, ladeport — på en ellers velfungerende maskine, især hvis den er under 4-5 år gammel. Her er reparation typisk den billigste og hurtigste vej tilbage til en maskine, der virker som før.</p></div></div></section>
+  <section class="section"><div class="wrap"><div class="eyebrow">Ny eller refurbished giver ofte mening</div><h2>Når en anden maskine giver bedre mening</h2><div class="lead-copy">
+    <p>Bundkortsvigt eller gentagne fejl på en i forvejen ældre, lavtspecificeret maskine. En maskine der allerede er for langsom til det, du reelt bruger den til. Eller flere uafhængige problemer på samme tid, hvor der er stor risiko for, at det næste går i stykker kort efter reparationen. I de tilfælde kan en refurbished maskine med garanti ofte give mere computer for pengene end en reparation.</p></div></div></section>
+  <section class="section alt"><div class="wrap lead-copy"><div class="eyebrow">Vores tilgang</div><h2>Vores ærlige vurdering</h2>
+    <p>Vi lever af reparationer — men vi anbefaler ikke en reparation, der ikke kan betale sig. Fejlsøgningen giver os det faktiske grundlag for at rådgive dig ærligt, og siger vi, at en anden maskine giver mere mening, siger vi det, uanset om vi tjener mindre på det. Vi sælger også nye og professionelt istandsatte (refurbished) computere i butikken, hvis det ender med at være den rette vej for dig.</p></div></section>
+  <section class="section"><div class="wrap"><div class="eyebrow">FAQ</div><h2>Reparere eller købe ny — ofte stillede spørgsmål</h2><div class="faq">${faqHtml}</div></div></section>
+  ${guideCta()}
+    <div style="margin-top:32px"><p class="eyebrow">Relateret</p><div class="crosslinks"><a href="/reparationspriser/">Typiske reparationspriser →</a><a href="/butik/computere/refurbished/">Refurbished computere →</a><a href="/backup-og-datagendannelse/">Backup &amp; datagendannelse →</a><a href="/garanti/">Garanti →</a></div></div></div></section>`;
 }
