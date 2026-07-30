@@ -125,7 +125,7 @@ function footer() {
     <div><img src="/logo.png" alt="PCKlinik" class="logo-foot" width="85" height="34" /><p>Hurtig, ærlig PC- og Mac-reparation til privatpersoner og virksomheder i Frederiksberg og København.</p><p>Alt inden for computer og IT — du har ikke brug for nogen andre.</p><p>${site.address}</p></div>
     <div><h2>Reparationer</h2><a href="/computer-reparation/">Computer reparation</a><a href="/lenovo-reparation/">Lenovo</a><a href="/hp-reparation/">HP</a><a href="/dell-reparation/">Dell</a><a href="/macbook-reparation/">MacBook</a><a href="/mac-stationaer-reparation/">Mac (stationær)</a><a href="/bundkort-reparation/">Bundkortreparation</a></div>
     <div><h2>Mere</h2><a href="/butik/">Butik</a><a href="/hosting/">Hosting</a><a href="/automatisk-backup/">Automatisk Backup</a><a href="/domaener/">Domæner</a><a href="/butik/computere/refurbished/">Refurbished computere</a><a href="/it-support-til-erhverv/">IT-support til erhverv</a><a href="/it-support-frederiksberg/">IT-support Frederiksberg</a><a href="/hjemmesider-seo-google-ads/">Hjemmesider & SEO</a><a href="/om-os/">Mød teamet</a><a href="/faq/">FAQ</a><a href="/nyheder/">Nyheder</a><a href="/studerende/">Studerende (CBS & DTU)</a><a href="/reparationspriser/">Typiske reparationspriser</a><a href="/garanti/">Garanti</a><a href="/aabningstider/">Åbningstider</a><a href="/kontakt/">Kontakt</a></div>
-    <div><h2>Områder vi betjener</h2><a href="/computerreparation-koebenhavn/">København</a><a href="/computerreparation-frederiksberg/">Frederiksberg</a><a href="/computerreparation-vesterbro/">Vesterbro</a><a href="/computerreparation-vanloese/">Vanløse</a><a href="/computerreparation-valby/">Valby</a><a href="/computerreparation-nordvest/">Nordvest</a></div>
+    <div><h2>Områder vi betjener</h2><a href="/computerreparation-koebenhavn/">København</a><a href="/computerreparation-frederiksberg/">Frederiksberg</a><a href="/computerreparation-vesterbro/">Vesterbro</a><a href="/computerreparation-vanloese/">Vanløse</a><a href="/computerreparation-valby/">Valby</a><a href="/computerreparation-nordvest/">Nordvest</a><a href="/computerreparation-helsingoer/">Helsingør</a><a href="/computerreparation-hillerod/">Hillerød</a><a href="/computerreparation-roskilde/">Roskilde</a><a href="/computerreparation-koege/">Køge</a><a href="/computerreparation-nykoebing-falster/">Nykøbing Falster</a></div>
     
     <div><h2>Kontakt os</h2><p>📞 <a href="${site.phoneHref}" style="display:inline">${site.phone}</a></p><p>✉️ <a href="mailto:${site.emailConsumer}" style="display:inline">${site.emailConsumer}</a></p><p style="margin-top:14px">Man–fre 10:00–18:00<br />Lør 10:00–14:00<br />Søn lukket</p>
       <p style="margin-top:14px"><a href="${site.reviewsUrl}" target="_blank" rel="noopener">⭐ ${esc(site.reviewRating)}/5 baseret på ${esc(site.reviewCount)} anmeldelser →</a></p></div>
@@ -204,7 +204,7 @@ function page({ title, description, p, body, schema = null, lang = 'da', dir = '
   <link rel="icon" type="image/png" href="/logo.png" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" media="print" onload="this.media='all'" />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=optional" media="print" onload="this.media='all'" />
   <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" /></noscript>
   <style>${GLOBAL_CSS}</style>
   ${ld}
@@ -910,6 +910,7 @@ function locationBody(loc) {
   const intro = loc.intro.map((p) => `<p>${p}</p>`).join('');
   const trust = loc.trustLine ? `<div class="trust-line" style="margin:8px 0 24px">${esc(loc.trustLine)}</div>` : '';
   const areas = loc.areas ? `<section class="section alt"><div class="wrap"><div class="eyebrow">Områder vi betjener</div><h2>Kvarterer i København</h2><div class="grid grid-3">${loc.areas.map((sl) => { const a = locations.find((x) => x.slug === sl); return `<a class="card card-link" href="/${a.slug}/"><h3>${esc(a.name)}</h3><p>${esc(a.subhead)}</p><span class="arrow">Se område →</span></a>`; }).join('')}</div></div></section>` : '';
+  const remoteAreas = loc.remoteAreas ? '<section class="section"><div class="wrap"><div class="eyebrow">Laengere vaek</div><h2>Andre byer vi betjener</h2><p class="sub">Afhentning, levering eller indsendelse.</p><div class="grid grid-3">' + loc.remoteAreas.map((sl) => { const a = locations.find((x) => x.slug === sl); return '<a class="card card-link" href="/' + a.slug + '/"><h3>' + esc(a.name) + '</h3><p>' + esc(a.subhead) + '</p><span class="arrow">Se by</span></a>'; }).join('') + '</div></div></section>' : '';
   const faq = loc.faq.map((f) => `<details><summary>${esc(f.q)}</summary><div class="answer">${esc(f.a)}</div></details>`).join('');
   const cross = loc.crosslinks.map((c) => `<a href="${c.href}">${esc(c.label)} →</a>`).join('');
   return `  <section class="hero"><div class="wrap"><div class="eyebrow">København · Frederiksberg</div>
@@ -917,6 +918,7 @@ function locationBody(loc) {
     <div class="cta-row"><a class="btn btn-white" href="/kontakt/">Book en reparation</a><a class="btn btn-ghost-light" href="${site.phoneHref}">📞 Ring ${site.phone}</a></div></div></section>
   <section class="section"><div class="wrap lead-copy"><div class="crumbs"><a href="/">Forside</a> › <span>${esc(loc.h1)}</span></div>${intro}${trust}</div></section>
   ${areas}
+  ${remoteAreas}
   <section class="section"><div class="wrap"><div class="eyebrow">FAQ</div><h2>Ofte stillede spørgsmål</h2><div class="faq">${faq}</div></div></section>
   <section class="section alt"><div class="wrap"><div class="eyebrow">Find os</div><h2>Vores værksted — Falkoner Allé 108, Frederiksberg</h2><p class="sub">Vi betjener dette område fra vores værksted i Frederiksberg; aflevering, afhentning og levering kan aftales afhængigt af din placering.</p>${mapFrame}</div></section>
   <section class="section"><div class="wrap"><div class="cta-band"><h2>Brug for reparation i ${esc(loc.name)}?</h2><p>Fejlsøgning 300 kr. (2–4 dage) eller ekspres (600 kr., 1–2 timer). Fast pris, før vi går i gang.</p><div class="cta-row"><a class="btn btn-white" href="/kontakt/">Book en reparation</a><a class="btn btn-ghost-light" href="${site.phoneHref}">📞 Ring ${site.phone}</a></div></div>
@@ -985,7 +987,7 @@ async function run() {
   pages.push(['/butik/backup-sikkerhed/', page({ title: 'Backup & sikkerhed | PCKlinik Butik', description: 'Eksterne harddiske, NAS-løsninger og sikkerhedssoftware anbefalet af PCKlinik. Sikker betaling via Stripe.', p: '/butik/backup-sikkerhed/', body: shopBackup() })]);
   // Domain purchase
   pages.push(['/domaener/', page({ title: 'Køb domæne (.dk & .com) | PCKlinik', description: 'Søg og køb dit domæne direkte online hos PCKlinik — samme team som klarer reparation, hosting og IT-support. Betal sikkert via Stripe.', p: '/domaener/', body: domaenerBody(), schema: faqSchemaFrom(DOMAENER_FAQ) })]);
-  pages.push(['/domaener/tak/', page({ title: 'Tak for din bestilling | PCKlinik Domæner', description: 'Vi har modtaget din betaling og registrerer dit domæne inden for få timer.', p: '/domaener/tak/', body: domaenerTakHtml() })]);
+  pages.push(['/domaener/tak/', page({ title: 'Tak for din bestilling | PCKlinik Domæner', description: 'Vi har modtaget din betaling og registrerer dit domæne inden for få timer.', p: '/domaener/tak/', body: domaenerTakHtml(), noindex: true })]);
   // Hosting (webhosting subscription — HostShop checkout links are TBD, see hostingBody() note)
   pages.push(['/hosting/', page({ title: 'Webhosting til din hjemmeside | PCKlinik', description: 'Hurtig, driftssikker webhosting fra 45 kr./md. — fra samme team, der reparerer din computer og bygger din hjemmeside. Ingen binding.', p: '/hosting/', body: hostingBody(), schema: hostingSchemaFaq() })]);
   // Automatisk Backup (recurring backup subscription — distinct from /backup-og-datagendannelse/)
@@ -1021,7 +1023,7 @@ async function run() {
   // Ask Us a Question
   pages.push(['/stil-et-spoergsmaal/', page({ title: 'Stil os et spørgsmål | PCKlinik', description: 'Har du et spørgsmål om din computer, Mac eller IT-opsætning? Spørg os direkte — rigtige spørgsmål får rigtige svar, og nogle bliver til guides på vores nyhedsside.', p: '/stil-et-spoergsmaal/', body: askQuestionBody() })]);
   // Thank-you pages (form redirect targets)
-  pages.push(['/tak/', page({ title: 'Thank You | PCKlinik', description: 'Your message has been sent. We will get back to you as soon as possible.', p: '/tak/', body: thankYouHtml() })]);
+  pages.push(['/tak/', page({ title: 'Thank You | PCKlinik', description: 'Your message has been sent. We will get back to you as soon as possible.', p: '/tak/', body: thankYouHtml(), noindex: true })]);
   // Location / area pages
   for (const loc of locations) pages.push([`/${loc.slug}/`, page({ title: loc.title, description: loc.description, p: `/${loc.slug}/`, body: locationBody(loc), schema: faqSchemaFrom(loc.faq) })]);
   // 15 task-based service pages
