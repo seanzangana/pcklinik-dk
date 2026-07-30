@@ -24,7 +24,7 @@ export const locations = [
     description: 'PC- og Mac-reparation i Frederiksberg, tæt på CBS. Fejlsøgning fra 300 kr., fast pris.',
     h1: 'Computerreparation i Frederiksberg', subhead: 'Midt i Frederiksberg — gåafstand fra CBS',
     intro: [
-      'Vores værksted ligger på Falkoner Allé 108 — få minutter fra Frederiksberg Centret og gåafstand fra metroen (Frederiksberg St. og Fasanvej St.), midt — samme område som Copenhagen Business School (CBS), der har omkring 2.400–3.000 internationale studerende om året. Hvis din bærbare går ned lige før en eksamen, er vi tæt nok på til faktisk at kunne hjælpe i tide.',
+      'Vores værksted ligger på Falkoner Allé 108 — få minutter fra Frederiksberg Centret og gåafstand fra metroen (Frederiksberg St. og Fasanvej St.), i samme område som Copenhagen Business School (CBS), der har omkring 2.400–3.000 internationale studerende om året. Hvis din bærbare går ned lige før en eksamen, er vi tæt nok på til faktisk at kunne hjælpe i tide.',
       'Standardfejlsøgning koster 300 kr. (2–4 dage), eller ekspres for 600 kr. (1–2 timer) — vigtigt, hvis du er på en stram deadline.',
     ],
     trustLine: 'Vi kender presset op til eksamen og deadlines — sig til, hvis du har en stram tidsplan, så gør vi, hvad vi kan med ekspresfejlsøgning.',
