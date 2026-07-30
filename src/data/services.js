@@ -189,18 +189,26 @@ export const services = [
   },
   {
     slug: 'fjernsupport', group: 'Cross-cutting',
-    title: 'Fjernsupport til computer | PCKlinik',
-    description: 'Softwareproblemer, virusfjernelse eller hjælp til opsætning uden at besøge værkstedet. Fjernsupport til pc og Mac, tilgængelig i hele Danmark.',
-    h1: 'Fjernsupport', subhead: 'Softwareproblemer løst, uden du forlader skrivebordet',
+    title: 'Fjernsupport & indsendelse | PCKlinik',
+    description: 'Softwareproblemer løses på afstand. Hardwareproblemer kan sendes ind med post eller kurér. Til pc og Mac, tilgængeligt i hele Danmark — ikke kun Frederiksberg og København.',
+    h1: 'Fjernsupport', subhead: 'Softwareproblemer løst på afstand — hardwareproblemer sendes ind',
     intro: ['Ikke alle problemer kræver et værkstedsbesøg. Softwareproblemer, virusinfektioner, mailopsætning, langsom ydelse og mange konfigurationsproblemer kan fejlsøges og udbedres på afstand — vi forbinder til din computer med din tilladelse, du ser, hvad vi gør, og de fleste sessioner løser problemet på stedet. Tilgængelig for både pc og Mac, hvor som helst i Danmark, ikke kun Frederiksberg og København.', 'Standardfejlsøgning koster 300 kr. (2–4 dage), eller ekspres for 600 kr. (1–2 timer) — samme prismodel som vores fysiske reparationer, da fjernfejlsøgning fungerer på samme måde.'],
     bulletSections: [{ heading: 'Hvad vi udbedrer på afstand', items: ['Fjernelse af virus og malware', 'Langsom ydelse og opstartsproblemer', 'Mail- og kontoopsætning', 'Softwarekonfiguration og fejlsøgning', 'Netværks- og WiFi-problemer (hvor de ikke er hardware-relaterede)', 'Opsætning af automatiske cloud-backupløsninger (kun konfiguration — gendannelse af data fra et allerede svigtet drev kræver fysisk adgang, se vores side om backup & datagendannelse til det)'] }],
-    callout: { label: 'Hvad vi ikke kan udbedre på afstand', text: 'Alt, der kræver fysisk adgang — skærmudskiftning, batteriskift, hardwarereparationer. Kom forbi værkstedet med dem, eller spørg om vores on-site besøgsservice.' },
+    // Vores eneste værksted ligger i Frederiksberg — der er intet lokalt
+    // værksted i andre byer. Denne callout skal derfor være ærlig om
+    // indsendelse (post/kurér) som muligheden for kunder uden for
+    // København/Frederiksberg, i stedet for kun at pege på "kom forbi" og
+    // on-site (som reelt kun dækker København-området).
+    callout: { label: 'Hvad vi ikke kan udbedre på afstand', text: 'Alt, der kræver fysisk adgang — skærmudskiftning, batteriskift, hardwarereparationer. Bor du i eller tæt på København, kan du komme forbi værkstedet eller booke on-site besøg. Bor du længere væk — for eksempel Helsingør, Hillerød, Roskilde, Køge eller Nykøbing Falster — sender du enheden til os med post eller kurér (indsendelse); i nogle tilfælde kan afhentning/levering også aftales, afhængigt af din placering.' },
     faq: [
-      { q: 'Kan fjernsupport udbedre en helt ureagerende computer?', a: 'Nej — fjernsupport kræver, at computeren i det mindste kan starte op og forbinde til internettet. Ureagerende enheder kræver fysisk fejlsøgning.' },
+      { q: 'Kan fjernsupport udbedre en helt ureagerende computer?', a: 'Nej — fjernsupport kræver, at computeren i det mindste kan starte op og forbinde til internettet. Ureagerende enheder kræver fysisk fejlsøgning, enten ved indsendelse eller ved at komme forbi værkstedet.' },
       { q: 'Er fjernsupport tilgængelig uden for normal åbningstid?', a: 'Standardåbningstid gælder, medmindre andet aftales — kontakt os for at tjekke.' },
       { q: 'Er fjernsupport sikkert?', a: 'Ja, vi forbinder kun med din udtrykkelige tilladelse via et standard fjernadgangsværktøj, og du kan se alt, hvad der sker på din skærm undervejs.' },
       { q: 'Tilbyder I fjernsupport uden for København?', a: 'Ja, fjernsupport er tilgængelig hvor som helst i Danmark.' },
-      { q: 'Hvad hvis problemet viser sig at være hardware, ikke software?', a: 'Vi siger til under fjernsessionen, og så kan du bringe enheden ind eller booke et on-site besøg.' },
+      { q: 'Hvad hvis problemet viser sig at være hardware, ikke software?', a: 'Vi siger til under fjernsessionen. Bor du i nærheden af Frederiksberg, kan du bringe enheden ind eller booke et on-site besøg. Bor du længere væk, sender du den til os i stedet (indsendelse) — kontakt os først for forsendelsesinstruktioner.' },
+      { q: 'Har I et fysisk værksted i min by, hvis jeg ikke bor i København?', a: 'Nej — vores eneste værksted ligger på Falkoner Allé 108 i Frederiksberg. Uden for København/Frederiksberg foregår hjælpen via fjernsupport eller indsendelse, ikke lokalt fremmøde.' },
+      { q: 'Hvordan fungerer indsendelse?', a: 'Kontakt os først for forsendelsesinstruktioner og en idé om processen, inden du sender noget. Leveringstiden (2–4 dage standard, 1–2 timer ekspres) begynder at tælle, når enheden rent faktisk når frem til værkstedet — ikke når du sender den.' },
+      { q: 'Kan det betale sig at sende et device langt væk for reparation?', a: 'Vi har allerede kunder, der gør præcis det, blandt andet fra Helsingør, Hillerød, Roskilde, Køge og Nykøbing Falster — kontakt os, så er vi ærlige om, hvorvidt det giver mening for din konkrete situation.' },
       { q: 'Kan I opsætte cloud-backup for mig på afstand?', a: 'Ja — at konfigurere en automatisk backupløsning er en softwareopsætningsopgave, vi kan lave på afstand. Bemærk, at det er forskelligt fra datagendannelse: hvis et drev allerede er svigtet, og du skal gendanne data fra det, kræver det fysisk adgang til enheden.' },
     ],
     crosslinks: [{ label: 'Fjernelse af virus & malware', href: '/virus-og-malwarefjernelse/' }, { label: 'On-site tekniker', href: '/on-site-tekniker/' }],

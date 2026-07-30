@@ -7,3 +7,19 @@
 #
 # GENAKTIVERING: kopiér indholdet fra docs/old-wp-redirects-map.txt ind i
 # denne fil, kør node build.mjs, og deploy.
+
+# ---------------------------------------------------------------------------
+# Disse 5 ER aktive — separat beslutning fra WP-cutover-politikken ovenfor.
+# De 5 individuelle fjernby-sider (Helsingør, Hillerød, Roskilde, Køge,
+# Nykøbing Falster) var en doorway-page-pattern og blev konsolideret ind i
+# den eksisterende /fjernsupport/-side 2026-07-30 (udvidet til også at
+# dække indsendelse, ikke kun fjernsupport). I modsætning til gamle
+# WP-URL'er er dette LIVE sider, vi selv lige har bygget og sendt til
+# Googles indeks — 301 bevarer den smule linkværdi/indekseringssignal, i
+# stedet for at lade dem 404'e.
+# ---------------------------------------------------------------------------
+/computerreparation-helsingoer/       /fjernsupport/  301
+/computerreparation-hillerod/         /fjernsupport/  301
+/computerreparation-roskilde/         /fjernsupport/  301
+/computerreparation-koege/            /fjernsupport/  301
+/computerreparation-nykoebing-falster/ /fjernsupport/ 301

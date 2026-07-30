@@ -51,7 +51,7 @@ PCKlinik reparerer stationære og bærbare computere — PC og Mac — men ikke 
 - [TP-Link-opsætning](https://www.pcklinik.dk/tp-link-opsaetning/): TP-Link-router og Deco mesh.
 - [Asus-router-opsætning](https://www.pcklinik.dk/asus-router-opsaetning/): Asus-router og AiMesh.
 - [Eero & Google Nest WiFi-opsætning](https://www.pcklinik.dk/eero-google-nest-wifi-opsaetning/)
-- [Fjernsupport](https://www.pcklinik.dk/fjernsupport/): Fjernsupport til computerproblemer.
+- [Fjernsupport](https://www.pcklinik.dk/fjernsupport/): Fjernsupport til softwareproblemer, plus indsendelse (post/kurér) for hardwareproblemer — dækker hele Danmark, ikke kun København/Frederiksberg.
 - [On-site tekniker](https://www.pcklinik.dk/on-site-tekniker/): On-site computertekniker i København-området.
 - [Reparationspriser](https://www.pcklinik.dk/reparationspriser/): Vejledende fra-priser på almindelige reparationer.
 - [Garanti](https://www.pcklinik.dk/garanti/): Garanti på udført reparation.
@@ -61,11 +61,6 @@ PCKlinik reparerer stationære og bærbare computere — PC og Mac — men ikke 
 - [Computerreparation Vanløse](https://www.pcklinik.dk/computerreparation-vanloese/)
 - [Computerreparation Valby](https://www.pcklinik.dk/computerreparation-valby/)
 - [Computerreparation Nordvest](https://www.pcklinik.dk/computerreparation-nordvest/)
-- [Computerreparation Helsingør](https://www.pcklinik.dk/computerreparation-helsingoer/)
-- [Computerreparation Hillerød](https://www.pcklinik.dk/computerreparation-hillerod/)
-- [Computerreparation Roskilde](https://www.pcklinik.dk/computerreparation-roskilde/)
-- [Computerreparation Køge](https://www.pcklinik.dk/computerreparation-koege/)
-- [Computerreparation Nykøbing Falster](https://www.pcklinik.dk/computerreparation-nykoebing-falster/)
 
 ## Erhverv
 
