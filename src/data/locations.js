@@ -16,6 +16,7 @@ export const locations = [
       { q: 'Betjener I både privatpersoner og virksomheder?', a: 'Ja — ud over reparation af enkelte enheder tilbyder vi IT-supportaftaler til virksomheder. Se siden om IT-support til erhverv.' },
     ],
     areas: ['computerreparation-frederiksberg', 'computerreparation-vesterbro', 'computerreparation-vanloese', 'computerreparation-valby', 'computerreparation-nordvest'],
+    remoteAreas: ['computerreparation-helsingoer', 'computerreparation-hillerod', 'computerreparation-roskilde', 'computerreparation-koege', 'computerreparation-nykoebing-falster'],
     crosslinks: [{ label: 'IT-support til erhverv', href: '/it-support-til-erhverv/' }, { label: 'Kontakt', href: '/kontakt/' }],
   },
   {
