@@ -1,13 +1,13 @@
-// Lokationssider — værkstedet ligger i Frederiksberg; nærområdesider er
+// Lokationssider — værkstedet ligger på Frederiksberg; nærområdesider er
 // "vi betjener beboere i X", og fjernbyer bruger afhentning/levering/indsendelse.
 export const locations = [
   {
         slug: 'computerreparation-koebenhavn', hub: true, name: 'København',
         title: 'Computerreparation i København | PCKlinik',
-        description: 'PC- og Mac-reparation i København. Værksted i Frederiksberg. Fejlsøgning fra 300 kr., fast pris.',
-        h1: 'Computerreparation i København', subhead: 'Værksted i Frederiksberg — kort afstand fra det meste af centrum',
+        description: 'PC- og Mac-reparation i København. Værksted på Frederiksberg. Fejlsøgning fra 300 kr., fast pris.',
+        h1: 'Computerreparation i København', subhead: 'Værksted på Frederiksberg — kort afstand fra det meste af centrum',
         intro: [
-                'Vi reparerer PC og Mac for privatpersoner og virksomheder i hele København. Vores værksted ligger i Frederiksberg, kun kort afstand fra det meste af centrum. Standardfejlsøgning koster 300 kr. (2–4 dage), eller ekspres for 600 kr. (1–2 timer) — med reparation og levering inden for 24 timer, hvis der ikke skal bestilles specielle reservedele.',
+                'Vi reparerer PC og Mac for privatpersoner og virksomheder i hele København. Vores værksted ligger på Frederiksberg, kun kort afstand fra det meste af centrum. Standardfejlsøgning koster 300 kr. (2–4 dage), eller ekspres for 600 kr. (1–2 timer) — med reparation og levering inden for 24 timer, hvis der ikke skal bestilles specielle reservedele.',
                 'Vi betjener hele byen direkte, plus resten af Danmark via fjernsupport til IT-supportaftaler. Du får altid en fast pris, før vi går i gang.',
               ],
         faq: [
@@ -29,9 +29,9 @@ export const locations = [
   },
   {
         slug: 'computerreparation-frederiksberg', name: 'Frederiksberg',
-        title: 'Computerreparation i Frederiksberg | PCKlinik',
-        description: 'PC- og Mac-reparation i Frederiksberg, tæt på CBS. Fejlsøgning fra 300 kr., fast pris.',
-        h1: 'Computerreparation i Frederiksberg', subhead: 'Midt i Frederiksberg — gåafstand fra CBS',
+        title: 'Computerreparation på Frederiksberg | PCKlinik',
+        description: 'PC- og Mac-reparation på Frederiksberg, tæt på CBS. Fejlsøgning fra 300 kr., fast pris.',
+        h1: 'Computerreparation på Frederiksberg', subhead: 'Midt på Frederiksberg — gåafstand fra CBS',
         intro: [
                 'Vores værksted ligger på Falkoner Allé 108 — få minutter fra Frederiksberg Centret og gåafstand fra metroen (Frederiksberg St. og Fasanvej St.), i samme område som Copenhagen Business School (CBS), der har omkring 2.400–3.000 internationale studerende om året. Hvis din bærbare går ned lige før en eksamen, er vi tæt nok på til faktisk at kunne hjælpe i tide.',
                 'Standardfejlsøgning koster 300 kr. (2–4 dage), eller ekspres for 600 kr. (1–2 timer) — vigtigt, hvis du er på en stram deadline.',
@@ -46,11 +46,11 @@ export const locations = [
   },
   {
         slug: 'computerreparation-vesterbro', name: 'Vesterbro',
-        title: 'Computerreparation i Vesterbro | PCKlinik',
-        description: 'PC- og Mac-reparation til beboere i Vesterbro. Værksted i nærliggende Frederiksberg. Fejlsøgning fra 300 kr.',
-        h1: 'Computerreparation i Vesterbro', subhead: 'Kort afstand fra vores værksted i Frederiksberg',
+        title: 'Computerreparation på Vesterbro | PCKlinik',
+        description: 'PC- og Mac-reparation til beboere på Vesterbro. Værksted i nærliggende Frederiksberg. Fejlsøgning fra 300 kr.',
+        h1: 'Computerreparation på Vesterbro', subhead: 'Kort afstand fra vores værksted på Frederiksberg',
         intro: [
-                'Vi betjener beboere i Vesterbro fra vores værksted i det nærliggende Frederiksberg. Standardfejlsøgning koster 300 kr. (2–4 dage), eller ekspres for 600 kr. (1–2 timer).',
+                'Vi betjener beboere på Vesterbro fra vores værksted i det nærliggende Frederiksberg. Standardfejlsøgning koster 300 kr. (2–4 dage), eller ekspres for 600 kr. (1–2 timer).',
                 'Du får altid en fast pris, før vi går i gang.',
               ],
         faq: [
@@ -63,9 +63,9 @@ export const locations = [
   {
         slug: 'computerreparation-vanloese', name: 'Vanløse',
         title: 'Computerreparation i Vanløse | PCKlinik',
-        description: 'PC- og Mac-reparation til beboere i Vanløse. Værksted i Frederiksberg. Fejlsøgning fra 300 kr., fast pris.',
+        description: 'PC- og Mac-reparation til beboere i Vanløse. Værksted på Frederiksberg. Fejlsøgning fra 300 kr., fast pris.',
         h1: 'Computerreparation i Vanløse', subhead: 'Reparation, kort afstand fra Vanløse',
-        intro: ['Vi betjener beboere i Vanløse fra vores værksted i Frederiksberg. Standardfejlsøgning koster 300 kr. (2–4 dage), eller ekspres for 600 kr. (1–2 timer).'],
+        intro: ['Vi betjener beboere i Vanløse fra vores værksted på Frederiksberg. Standardfejlsøgning koster 300 kr. (2–4 dage), eller ekspres for 600 kr. (1–2 timer).'],
         faq: [
           { q: 'Hvad er den hurtigste måde at få mit device til jer fra Vanløse?', a: 'Kom forbi direkte, eller spørg om afhentning/levering afhængigt af din placering.' },
           { q: 'Hvad koster en reparation?', a: 'Fejlsøgning 300 kr. (2–4 dage) eller ekspres for 600 kr. (1–2 timer), altid med fast pris, før vi går i gang.' },
@@ -75,9 +75,9 @@ export const locations = [
   {
         slug: 'computerreparation-valby', name: 'Valby',
         title: 'Computerreparation i Valby | PCKlinik',
-        description: 'PC- og Mac-reparation til beboere i Valby. Værksted i Frederiksberg. Fejlsøgning fra 300 kr., fast pris.',
+        description: 'PC- og Mac-reparation til beboere i Valby. Værksted på Frederiksberg. Fejlsøgning fra 300 kr., fast pris.',
         h1: 'Computerreparation i Valby', subhead: 'Reparation, kort afstand fra Valby',
-        intro: ['Vi betjener beboere i Valby fra vores værksted i Frederiksberg. Standardfejlsøgning koster 300 kr. (2–4 dage), eller ekspres for 600 kr. (1–2 timer).'],
+        intro: ['Vi betjener beboere i Valby fra vores værksted på Frederiksberg. Standardfejlsøgning koster 300 kr. (2–4 dage), eller ekspres for 600 kr. (1–2 timer).'],
         faq: [
           { q: 'Hvad er den hurtigste måde at få mit device til jer fra Valby?', a: 'Kom forbi direkte, eller spørg om afhentning/levering afhængigt af din placering.' },
           { q: 'Hvad koster en reparation?', a: 'Fejlsøgning 300 kr. (2–4 dage) eller ekspres for 600 kr. (1–2 timer), altid med fast pris, før vi går i gang.' },
@@ -87,9 +87,9 @@ export const locations = [
   {
         slug: 'computerreparation-nordvest', name: 'Nordvest (NV)',
         title: 'Computerreparation i Nordvest | PCKlinik',
-        description: 'PC- og Mac-reparation til beboere i Nordvest (NV). Værksted i Frederiksberg. Fejlsøgning fra 300 kr., fast pris.',
+        description: 'PC- og Mac-reparation til beboere i Nordvest (NV). Værksted på Frederiksberg. Fejlsøgning fra 300 kr., fast pris.',
         h1: 'Computerreparation i Nordvest (NV)', subhead: 'Reparation, kort afstand fra Nordvest',
-        intro: ['Vi betjener beboere i Nordvest fra vores værksted i Frederiksberg. Standardfejlsøgning koster 300 kr. (2–4 dage), eller ekspres for 600 kr. (1–2 timer).'],
+        intro: ['Vi betjener beboere i Nordvest fra vores værksted på Frederiksberg. Standardfejlsøgning koster 300 kr. (2–4 dage), eller ekspres for 600 kr. (1–2 timer).'],
         faq: [
           { q: 'Hvad er den hurtigste måde at få mit device til jer fra Nordvest?', a: 'Kom forbi direkte, eller spørg om afhentning/levering afhængigt af din placering.' },
           { q: 'Hvad koster en reparation?', a: 'Fejlsøgning 300 kr. (2–4 dage) eller ekspres for 600 kr. (1–2 timer), altid med fast pris, før vi går i gang.' },
