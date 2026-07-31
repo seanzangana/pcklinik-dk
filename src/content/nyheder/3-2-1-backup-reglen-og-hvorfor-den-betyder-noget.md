@@ -1,5 +1,5 @@
 ---
-title: "3-2-1-backup-reglen, og hvorfor den betyder noget"
+title: "3-2-1-backup-reglen forklaret"
 date: 2026-07-01
 category: Guides
 description: "En enkel, huskbar regel for at tage backup af dine data ordentligt — så én fejl, tyveri eller forglemmelse aldrig sletter det hele."
