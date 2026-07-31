@@ -9,7 +9,7 @@ export const services = [
   {
     slug: 'ssd-opgradering', group: 'PC',
     title: 'SSD-opgradering | PCKlinik',
-    description: 'Opgradér din pc eller bærbare til SSD i Frederiksberg og København. Hurtigere opstartstid, samme-dags service. Fejlsøgning fra 300 kr., fast pris.',
+    description: 'Opgradér din pc eller bærbare til SSD på Frederiksberg og i København. Hurtigere opstartstid, samme-dags service. Fejlsøgning fra 300 kr., fast pris.',
     h1: 'SSD-opgradering', subhead: 'En af de største hastighedsforbedringer du kan give en ældre maskine',
     intro: ['Kører du stadig på en mekanisk harddisk? En SSD-opgradering er en af de allerstørste hastighedsforbedringer, du kan lave på en ældre pc eller bærbar — den forvandler ofte en 2-minutters opstart til 15 sekunder. Vi klarer opgraderingen, overfører dine data og dit styresystem og får dig i gang på det nye drev uden at miste noget.'],
     whatsIncluded: 'Fremskaffelse af SSD (eller brug din egen), fuld data-/OS-migrering, montering og test.',
@@ -24,7 +24,7 @@ export const services = [
   {
     slug: 'optimering-af-computer', group: 'PC',
     title: 'PC-optimering & hastighedsboost | PCKlinik',
-    description: 'Er din pc langsom? Vi optimerer opstart, fjerner bloatware og tuner ydelsen i Frederiksberg og København. Fejlsøgning fra 300 kr., fast pris.',
+    description: 'Er din pc langsom? Vi optimerer opstart, fjerner bloatware og tuner ydelsen på Frederiksberg og i København. Fejlsøgning fra 300 kr., fast pris.',
     h1: 'PC-optimering', subhead: 'En langsom pc er sjældent "bare gammel"',
     intro: ['En langsom pc er sjældent "bare gammel" — det er som regel en ophobning af opstartsprogrammer, bloatware, fragmenterede drev eller baggrundsprocesser, der æder ressourcer. Vi fejlsøger, hvad der reelt gør din maskine langsom, og retter det, i stedet for bare at anbefale, at du køber en ny computer.'],
     whatsIncluded: 'Oprydning i opstart, fjernelse af malware/bloatware, driveropdateringer, oprydning i lagerplads.',
@@ -39,7 +39,7 @@ export const services = [
   {
     slug: 'harddisk-ssd-udskiftning', group: 'PC',
     title: 'Udskiftning af harddisk | PCKlinik',
-    description: 'Er harddisken ved at svigte eller svigtet? Udskiftning og datagendannelse i Frederiksberg og København. Fejlsøgning fra 300 kr., fast pris.',
+    description: 'Er harddisken ved at svigte eller svigtet? Udskiftning og datagendannelse på Frederiksberg og i København. Fejlsøgning fra 300 kr., fast pris.',
     h1: 'Udskiftning af harddisk', subhead: 'Klik, frysninger eller et drev, der ikke vil vise sig',
     intro: ['Klikkelyde, hyppige frysninger eller et drev, der slet ikke registreres, er klassiske tegn på harddisksvigt. Vi fejlsøger, om den er ved at svigte eller svigtet, udskifter den (med en SSD-opgradering, hvis du vil) og forsøger datagendannelse, hvor det er muligt.'],
     faq: [
@@ -53,7 +53,7 @@ export const services = [
   {
     slug: 'udskiftning-af-skaerm', group: 'PC',
     title: 'Skærmudskiftning til bærbar & pc | PCKlinik',
-    description: 'Revnet eller beskadiget skærm? Udskiftning til alle bærbar-mærker i Frederiksberg og København. Fejlsøgning fra 300 kr., fast pris.',
+    description: 'Revnet eller beskadiget skærm? Udskiftning til alle bærbar-mærker på Frederiksberg og i København. Fejlsøgning fra 300 kr., fast pris.',
     h1: 'Skærmudskiftning', subhead: 'Alle bærbar-mærker, fra revnet til flimrende',
     intro: ['Revnet, sort eller flimrende skærm? Vi udskifter skærme til bærbare og skærme til alle mærker — se vores specifikke mærkesider for detaljer på modelniveau, eller kom direkte til os, hvis du er i tvivl om, hvilken side der passer.'],
     faq: [
@@ -82,7 +82,7 @@ export const services = [
   {
     slug: 'ladestik-reparation', group: 'PC',
     title: 'Reparation af ladeport til bærbar | PCKlinik',
-    description: 'Virker ladeporten ikke eller er den løs? Reparation til alle bærbar-mærker i Frederiksberg og København. Fejlsøgning fra 300 kr., fast pris.',
+    description: 'Virker ladeporten ikke eller er den løs? Reparation til alle bærbar-mærker på Frederiksberg og i København. Fejlsøgning fra 300 kr., fast pris.',
     h1: 'Reparation af ladeport', subhead: 'Løs, beskadiget eller lader slet ikke',
     intro: ['En løs, beskadiget eller ikke-fungerende ladeport er et almindeligt, men reparerbart problem. Vi fejlsøger, om det er selve porten, kablet eller ladekredsløbet, og reparerer eller udskifter derefter.'],
     faq: [
@@ -109,7 +109,7 @@ export const services = [
   {
     slug: 'mac-batteriskift', group: 'Mac',
     title: 'Mac-batteriskift | PCKlinik',
-    description: 'Holder MacBook-batteriet ikke på strøm, eller er det hævet? Udskiftning i Frederiksberg og København. Fejlsøgning fra 300 kr., fast pris.',
+    description: 'Holder MacBook-batteriet ikke på strøm, eller er det hævet? Udskiftning på Frederiksberg og i København. Fejlsøgning fra 300 kr., fast pris.',
     h1: 'Mac-batteriskift', subhead: 'Nedslidt eller hævet — vi skifter det sikkert',
     intro: ['Uanset om din MacBooks batteri er blevet nedslidt over tid eller er synligt hævet (et sikkerhedsspørgsmål — se nedenfor), skifter vi det med et kvalitetsbatteri og tester det grundigt bagefter.'],
     callout: { label: 'Sikkerhedsbemærkning', text: 'Et hævet batteri bør bringes ind hurtigst muligt — punkter det ikke, og fortsæt ikke med tung brug.' },
@@ -122,7 +122,7 @@ export const services = [
   {
     slug: 'mac-skaermudskiftning', group: 'Mac',
     title: 'Mac-skærmudskiftning | PCKlinik',
-    description: 'Revnet eller beskadiget MacBook- eller iMac-skærm? Udskiftning i Frederiksberg og København. Fejlsøgning fra 300 kr., fast pris.',
+    description: 'Revnet eller beskadiget MacBook- eller iMac-skærm? Udskiftning på Frederiksberg og i København. Fejlsøgning fra 300 kr., fast pris.',
     h1: 'Mac-skærmudskiftning', subhead: 'MacBook- og iMac-skærme, fra Intel til Apple Silicon',
     intro: ['Revnet, misfarvet eller flimrende skærm på en MacBook eller iMac? Vi udskifter Mac-skærme med kvalitetsdele på tværs af både aktuelle Apple Silicon-modeller og ældre Intel-Mac.'],
     faq: [
@@ -134,7 +134,7 @@ export const services = [
   {
     slug: 'mac-tastaturudskiftning', group: 'Mac',
     title: 'MacBook-tastaturudskiftning | PCKlinik',
-    description: 'Klistrede, ureagerende eller manglende taster på din MacBook? Tastaturudskiftning i Frederiksberg og København.',
+    description: 'Klistrede, ureagerende eller manglende taster på din MacBook? Tastaturudskiftning på Frederiksberg og i København.',
     h1: 'MacBook-tastaturudskiftning', subhead: 'Inklusive butterfly-tastaturproblemet fra 2016–2019',
     intro: ['Fra enkelte klistrede taster til fuld tastaturudskiftning (inklusive det velkendte butterfly-tastaturproblem på MacBook Pro-modeller fra 2016–2019) reparerer vi MacBook-tastaturer på tværs af generationer.'],
     faq: [
@@ -146,7 +146,7 @@ export const services = [
   {
     slug: 'mac-trackpadudskiftning', group: 'Mac',
     title: 'MacBook-trackpadudskiftning | PCKlinik',
-    description: 'Ureagerende eller klikkende MacBook-trackpad? Udskiftning i Frederiksberg og København. Fejlsøgning fra 300 kr., fast pris.',
+    description: 'Ureagerende eller klikkende MacBook-trackpad? Udskiftning på Frederiksberg og i København. Fejlsøgning fra 300 kr., fast pris.',
     h1: 'MacBook-trackpadudskiftning', subhead: 'Ustabil, ureagerende eller fysisk beskadiget',
     intro: ['En ureagerende, ustabil eller fysisk beskadiget trackpad er et almindeligt MacBook-problem, især efter et væskespild eller fald. Vi fejlsøger og udskifter trackpad-enheden.'],
     faq: [
@@ -175,7 +175,7 @@ export const services = [
   {
     slug: 'virus-og-malwarefjernelse', group: 'Cross-cutting',
     title: 'Fjernelse af virus & malware | PCKlinik',
-    description: 'Er din pc eller Mac inficeret med virus eller malware? Fjernelse og sikkerhedsoprydning i Frederiksberg og København. Fejlsøgning fra 300 kr., fast pris.',
+    description: 'Er din pc eller Mac ramt af virus eller malware? Fjernelse og sikkerhedsoprydning på Frederiksberg og i København. Fejlsøgning fra 300 kr., fast pris.',
     h1: 'Fjernelse af virus & malware', subhead: 'Pop-ups, langsom ydelse, mistænkelig aktivitet',
     intro: ['Pop-ups, træg ydelse eller mistænkelig aktivitet på din pc eller Mac? Vi fjerner virus og malware og opsætter, hvor det er relevant, løbende beskyttelse, så det ikke sker igen.'],
     faq: [
@@ -190,11 +190,11 @@ export const services = [
   {
     slug: 'fjernsupport', group: 'Cross-cutting',
     title: 'Fjernsupport & indsendelse | PCKlinik',
-    description: 'Softwareproblemer løses på afstand. Hardwareproblemer kan sendes ind med post eller kurér. Til pc og Mac, tilgængeligt i hele Danmark — ikke kun Frederiksberg og København.',
+    description: 'Softwareproblemer løses på afstand; hardware kan sendes ind. Til pc og Mac i hele Danmark. Fast pris efter fejlsøgning.',
     h1: 'Fjernsupport', subhead: 'Softwareproblemer løst på afstand — hardwareproblemer sendes ind',
     intro: ['Ikke alle problemer kræver et værkstedsbesøg. Softwareproblemer, virusinfektioner, mailopsætning, langsom ydelse og mange konfigurationsproblemer kan fejlsøges og udbedres på afstand — vi forbinder til din computer med din tilladelse, du ser, hvad vi gør, og de fleste sessioner løser problemet på stedet. Tilgængelig for både pc og Mac, hvor som helst i Danmark, ikke kun Frederiksberg og København.', 'Standardfejlsøgning koster 300 kr. (2–4 dage), eller ekspres for 600 kr. (1–2 timer) — samme prismodel som vores fysiske reparationer, da fjernfejlsøgning fungerer på samme måde.'],
     bulletSections: [{ heading: 'Hvad vi udbedrer på afstand', items: ['Fjernelse af virus og malware', 'Langsom ydelse og opstartsproblemer', 'Mail- og kontoopsætning', 'Softwarekonfiguration og fejlsøgning', 'Netværks- og WiFi-problemer (hvor de ikke er hardware-relaterede)', 'Opsætning af automatiske cloud-backupløsninger (kun konfiguration — gendannelse af data fra et allerede svigtet drev kræver fysisk adgang, se vores side om backup & datagendannelse til det)'] }],
-    // Vores eneste værksted ligger i Frederiksberg — der er intet lokalt
+    // Vores eneste værksted ligger på Frederiksberg — der er intet lokalt
     // værksted i andre byer. Denne callout skal derfor være ærlig om
     // indsendelse (post/kurér) som muligheden for kunder uden for
     // København/Frederiksberg, i stedet for kun at pege på "kom forbi" og
@@ -206,7 +206,7 @@ export const services = [
       { q: 'Er fjernsupport sikkert?', a: 'Ja, vi forbinder kun med din udtrykkelige tilladelse via et standard fjernadgangsværktøj, og du kan se alt, hvad der sker på din skærm undervejs.' },
       { q: 'Tilbyder I fjernsupport uden for København?', a: 'Ja, fjernsupport er tilgængelig hvor som helst i Danmark.' },
       { q: 'Hvad hvis problemet viser sig at være hardware, ikke software?', a: 'Vi siger til under fjernsessionen. Bor du i nærheden af Frederiksberg, kan du bringe enheden ind eller booke et on-site besøg. Bor du længere væk, sender du den til os i stedet (indsendelse) — kontakt os først for forsendelsesinstruktioner.' },
-      { q: 'Har I et fysisk værksted i min by, hvis jeg ikke bor i København?', a: 'Nej — vores eneste værksted ligger på Falkoner Allé 108 i Frederiksberg. Uden for København/Frederiksberg foregår hjælpen via fjernsupport eller indsendelse, ikke lokalt fremmøde.' },
+      { q: 'Har I et fysisk værksted i min by, hvis jeg ikke bor i København?', a: 'Nej — vores eneste værksted ligger på Falkoner Allé 108 på Frederiksberg. Uden for København/Frederiksberg foregår hjælpen via fjernsupport eller indsendelse, ikke lokalt fremmøde.' },
       { q: 'Hvordan fungerer indsendelse?', a: 'Kontakt os først for forsendelsesinstruktioner og en idé om processen, inden du sender noget. Leveringstiden (2–4 dage standard, 1–2 timer ekspres) begynder at tælle, når enheden rent faktisk når frem til værkstedet — ikke når du sender den.' },
       { q: 'Kan det betale sig at sende et device langt væk for reparation?', a: 'Vi har allerede kunder, der gør præcis det, blandt andet fra Helsingør, Hillerød, Roskilde, Køge og Nykøbing Falster — kontakt os, så er vi ærlige om, hvorvidt det giver mening for din konkrete situation.' },
       { q: 'Kan I opsætte cloud-backup for mig på afstand?', a: 'Ja — at konfigurere en automatisk backupløsning er en softwareopsætningsopgave, vi kan lave på afstand. Bemærk, at det er forskelligt fra datagendannelse: hvis et drev allerede er svigtet, og du skal gendanne data fra det, kræver det fysisk adgang til enheden.' },
@@ -216,9 +216,9 @@ export const services = [
   {
     slug: 'on-site-tekniker', group: 'Cross-cutting',
     title: 'On-site computertekniker | PCKlinik',
-    description: 'Kan du ikke bringe din computer ind? Vi kommer til dig i Frederiksberg og København til opsætning, netværksproblemer og support på stedet.',
+    description: 'Kan du ikke bringe din computer ind? Vi kommer til dig på Frederiksberg og i København til opsætning, netværksproblemer og support på stedet.',
     h1: 'On-site tekniker', subhead: 'Vi kommer til dig — hjem eller kontor',
-    intro: ['I situationer, hvor det ikke er praktisk at bringe enheden ind — en hjemmenetværksopsætning, flere computere på et kontor eller noget for besværligt at transportere — kommer vi til dig i Frederiksberg og København.'],
+    intro: ['I situationer, hvor det ikke er praktisk at bringe enheden ind — en hjemmenetværksopsætning, flere computere på et kontor eller noget for besværligt at transportere — kommer vi til dig på Frederiksberg og i København.'],
     bulletSections: [{ heading: 'Hvad vi hjælper med on-site', items: ['Opsætning af hjemme- eller lille-kontor-netværk og WiFi', 'Flere computere eller printere, der skal opsættes/konfigureres', 'Installation af nyt udstyr', 'Situationer, hvor enheden ikke let kan transporteres'] }],
     pricing: { h2: 'Tilbudsbaseret — kørsel inkluderet', text: 'Et udkaldsgebyr tillægges ud over selve arbejdet, da det dækker køretid til din adresse. Kontakt os for et tilbud ud fra, hvad du har brug for, og hvor du er placeret — du får en fast pris, før besøget bekræftes.' },
     ctaLabel: 'Få et tilbud',
@@ -234,7 +234,7 @@ export const services = [
   {
     slug: 'reinstallation-af-system', group: 'Cross-cutting',
     title: 'Installation af styresystem | PCKlinik',
-    description: 'Frisk Windows- eller macOS-installation, dataoverførsel og opsætning til pc og Mac i Frederiksberg og København.',
+    description: 'Frisk Windows- eller macOS-installation, dataoverførsel og opsætning til pc og Mac på Frederiksberg og i København.',
     h1: 'Systeminstallation', subhead: 'Et rent, ordentligt opsat system — ikke bare en geninstallation',
     intro: ['Uanset om du har brug for en frisk styresystemsinstallation for at udbedre vedvarende problemer, eller du opsætter en ny eller istandsat maskine, klarer vi hele installationen — Windows eller macOS — sammen med overførsel af dine data og opsætning af væsentlig software, så du ikke starter fra en blank tavle.'],
     bulletSections: [{ heading: 'Hvad er inkluderet', items: ['Ren OS-installation (Windows eller macOS)', 'Dataoverførsel fra dit gamle system, hvor det er muligt', 'Opsætning af væsentlig software og drivere', 'Grundlæggende konfiguration (konti, opdateringer, sikkerhedsindstillinger)'] }],
@@ -254,7 +254,7 @@ export const services = [
   {
     slug: 'unifi-opsaetning', group: 'Network',
     title: 'UniFi-netværksopsætning & support | PCKlinik',
-    description: 'UniFi (Ubiquiti)-netværksopsætning, konfiguration og fejlfinding til private og virksomheder i Frederiksberg og København.',
+    description: 'UniFi (Ubiquiti)-netværksopsætning, konfiguration og fejlfinding til private og virksomheder på Frederiksberg og i København.',
     h1: 'UniFi-opsætning & support', subhead: 'Fra et enkelt access point til et fuldt multi-site-netværk',
     intro: ['UniFi er det oplagte valg til alle, der vil have ordentlig netværksstyring — boliger med krævende opsætninger og især mindre virksomheder, der har brug for driftssikkert, centralt styret WiFi. Vi hjælper med opsætning af UniFi Dream Machine/Cloud Gateway, placering og konfiguration af access points, VLAN-opsætning til at adskille gæste- og virksomhedstrafik og generel fejlfinding, når noget ikke opfører sig som forventet.'],
     bulletSections: [{ heading: 'Hvad vi hjælper med', items: ['Indledende opsætning af UniFi-konsol og access points', 'Netværkskonfiguration (VLAN, gæstenetværk, port forwarding)', 'Fejlfinding af forbindelses- eller ydelsesproblemer', 'Dækningsplanlægning med flere access points til større boliger eller kontorer'] }],
@@ -271,7 +271,7 @@ export const services = [
   {
     slug: 'netgear-opsaetning', group: 'Network',
     title: 'Netgear-router-opsætning & support | PCKlinik',
-    description: 'Netgear Nighthawk- og Orbi-opsætning, konfiguration og fejlfinding i Frederiksberg og København.',
+    description: 'Netgear Nighthawk- og Orbi-opsætning, konfiguration og fejlfinding på Frederiksberg og i København.',
     h1: 'Netgear-opsætning & support', subhead: 'Nighthawk, Orbi og almindelige Netgear-routere',
     intro: ['Netgears Nighthawk- og Orbi-serier er almindelige i både hjem og små kontorer. Vi hjælper med indledende opsætning, WiFi-konfiguration, placering af mesh-system (Orbi) og fejlfinding, når en Netgear-router ikke præsterer som forventet.'],
     pricing: { h2: 'Sådan prissættes netværkshjælp', text: "Netværksopsætning og fejlfinding leveres gennem vores fjernsupport (konfiguration og software) eller et on-site teknikerbesøg (fysisk installation) — ikke den almindelige reparationsfejlsøgning. Kontakt os, så anbefaler vi den rette løsning og giver dig en pris på forhånd." },
@@ -286,7 +286,7 @@ export const services = [
   {
     slug: 'tp-link-opsaetning', group: 'Network',
     title: 'TP-Link-router & Deco mesh-opsætning | PCKlinik',
-    description: 'TP-Link-router- og Deco mesh-systemopsætning, konfiguration og fejlfinding i Frederiksberg og København.',
+    description: 'TP-Link-router- og Deco mesh-systemopsætning, konfiguration og fejlfinding på Frederiksberg og i København.',
     h1: 'TP-Link-opsætning & support', subhead: 'Archer-routere og Deco mesh-systemer',
     intro: ['TP-Link er et af de mest udbredte router-mærker, fra budget-Archer-routere til Deco mesh-systemer til dækning i hele boligen. Vi hjælper med opsætning, konfiguration og fejlfinding til begge.'],
     pricing: { h2: 'Sådan prissættes netværkshjælp', text: "Netværksopsætning og fejlfinding leveres gennem vores fjernsupport (konfiguration og software) eller et on-site teknikerbesøg (fysisk installation) — ikke den almindelige reparationsfejlsøgning. Kontakt os, så anbefaler vi den rette løsning og giver dig en pris på forhånd." },
@@ -301,7 +301,7 @@ export const services = [
   {
     slug: 'asus-router-opsaetning', group: 'Network',
     title: 'Asus-router & AiMesh-opsætning | PCKlinik',
-    description: 'Asus-router- og AiMesh-opsætning, konfiguration og fejlfinding i Frederiksberg og København.',
+    description: 'Asus-router- og AiMesh-opsætning, konfiguration og fejlfinding på Frederiksberg og i København.',
     h1: 'ASUS-router-opsætning & support', subhead: 'Almindelige routere, gaming-routere og AiMesh-systemer',
     intro: ['Asus laver routere lige fra ligetil hjemmemodeller til high-end gaming-routere og AiMesh-systemer til hele boligen. Vi hjælper med opsætning, konfiguration og fejlfinding til dem alle.'],
     callout: { label: 'Ikke det samme som Asus-bærbar-reparation', text: 'Denne side dækker Asus-netværksudstyr (routere, AiMesh). For Asus-computere og -bærbare, se vores separate Asus-reparationsside.' },
@@ -317,7 +317,7 @@ export const services = [
   {
     slug: 'eero-google-nest-wifi-opsaetning', group: 'Network',
     title: 'Eero & Google Nest WiFi-opsætning | PCKlinik',
-    description: 'Opsætning og fejlfinding af Eero- og Google Nest WiFi-mesh-systemer i Frederiksberg og København.',
+    description: 'Opsætning og fejlfinding af Eero- og Google Nest WiFi-mesh-systemer på Frederiksberg og i København.',
     h1: 'Eero & Google Nest WiFi-opsætning', subhead: 'Enkle mesh-systemer til ligetil WiFi i hele boligen',
     intro: ['Eero og Google Nest WiFi er designet til at være enkle — men "enkelt" betyder ikke altid problemfrit. Vi hjælper med indledende opsætning, app-konfiguration, placering til fuld dækning og fejlfinding, når noget ikke forbinder rigtigt.'],
     pricing: { h2: 'Sådan prissættes netværkshjælp', text: "Netværksopsætning og fejlfinding leveres gennem vores fjernsupport (konfiguration og software) eller et on-site teknikerbesøg (fysisk installation) — ikke den almindelige reparationsfejlsøgning. Kontakt os, så anbefaler vi den rette løsning og giver dig en pris på forhånd." },
@@ -334,7 +334,7 @@ export const services = [
   {
     slug: 'vaeskeskade-reparation', group: 'PC',
     title: 'Væskeskade-reparation (pc & Mac) | PCKlinik',
-    description: 'Spildt noget på din bærbare? Væskeskade-fejlsøgning og reparation til alle mærker — pc eller Mac — i Frederiksberg og København. Tid er afgørende.',
+    description: 'Spildt noget på din bærbare? Væskeskade-fejlsøgning og reparation til alle mærker — pc eller Mac — på Frederiksberg og i København. Tid er afgørende.',
     h1: 'Væskeskade-reparation', subhead: 'Alle mærker, alle modeller — Windows eller Mac. Tid er afgørende.',
     intro: ['Spildt kaffe, vand eller andet på din bærbare — pc eller Mac? Tid er afgørende: jo hurtigere den slukkes og bringes ind, jo bedre er chancerne for en fuld redning. Vi adskiller, renser og vurderer korrosionsskade på ethvert mærke eller model og giver dig derefter en fast pris for reparation.'],
     callout: { label: 'Hvis det lige er sket', text: 'Sluk enheden med det samme, forsøg ikke at tænde den for at "tjekke", og bring den ind hurtigst muligt.' },
@@ -352,7 +352,7 @@ export const services = [
   {
     slug: 'tastaturudskiftning', group: 'PC',
     title: 'Udskiftning af tastatur til bærbar | PCKlinik',
-    description: 'Klistrede, ureagerende eller manglende taster på din bærbare? Tastaturudskiftning til alle mærker i Frederiksberg og København.',
+    description: 'Klistrede, ureagerende eller manglende taster på din bærbare? Tastaturudskiftning til alle mærker på Frederiksberg og i København.',
     h1: 'Udskiftning af tastatur (bærbar)', subhead: 'Alle mærker — fra enkelte taster til hele enheder',
     intro: ['Klistrede taster, ureagerende taster eller et tastatur beskadiget af et spild — vi reparerer og udskifter tastaturer til bærbare på tværs af alle mærker, ikke kun enkelte taster, men hele tastaturenheder, når det er nødvendigt.'],
     faq: [
@@ -456,9 +456,9 @@ export const services = [
   // ----- BREDE INDGANGSSIDER (genskabt fra det gamle WordPress-site; disse URL'er rangerer i forvejen) -----
   {
     slug: 'computer-reparation', group: 'PC',
-    title: 'Computer reparation i Frederiksberg & København | PCKlinik',
-    description: 'Computer reparation af pc, bærbar og Mac — alle mærker. Fra samme team, der også klarer IT-support, hosting og backup, så du ikke skal bruge nogen andre. Fejlsøgning fra 300 kr.',
-    h1: 'Computer reparation i Frederiksberg & København',
+    title: 'Computer reparation på Frederiksberg & København | PCKlinik',
+    description: 'Computer reparation af pc, bærbar og Mac — alle mærker. Samme team klarer også IT-support, hosting og backup. Fejlsøgning fra 300 kr.',
+    h1: 'Computer reparation på Frederiksberg & København',
     subhead: 'Alle mærker, fast pris, og 9 ud af 10 reparationer klaret på under 24 timer',
     intro: [
       'Langsom computer, sort skærm, en bærbar der ikke vil tænde, eller hardware der har givet op? Hos PCKlinik laver vi <strong>computer reparation af både stationære pc’er, bærbare og Mac</strong> — uanset mærke. Vores værksted ligger på Falkoner Allé 108 på Frederiksberg, og vi betjener hele København.',
@@ -503,7 +503,7 @@ export const services = [
       { label: 'Bundkortreparation', href: '/bundkort-reparation/' },
       { label: 'Fjernelse af virus & malware', href: '/virus-og-malwarefjernelse/' },
       { label: 'Computerreparation i København', href: '/computerreparation-koebenhavn/' },
-      { label: 'Computerreparation i Frederiksberg', href: '/computerreparation-frederiksberg/' },
+      { label: 'Computerreparation på Frederiksberg', href: '/computerreparation-frederiksberg/' },
       { label: 'Typiske reparationspriser', href: '/reparationspriser/' },
       { label: 'Garanti', href: '/garanti/' },
     ],
@@ -511,7 +511,7 @@ export const services = [
   {
     slug: 'it-support-frederiksberg', group: 'Cross-cutting',
     title: 'IT-support på Frederiksberg | PCKlinik',
-    description: 'Lokal IT-support på Frederiksberg til private og virksomheder. Værksted på Falkoner Allé 108. Hjælp i butikken, på stedet eller via fjernsupport. Ring 91 81 61 81.',
+    description: 'Lokal IT-support på Frederiksberg for private og virksomheder. Værksted på Falkoner Allé 108. Ring 91 81 61 81.',
     h1: 'IT-support på Frederiksberg',
     subhead: 'Dit lokale IT-værksted på Falkoner Allé 108 — midt på Frederiksberg',
     intro: [
@@ -549,7 +549,7 @@ export const services = [
       { label: 'IT-support til erhverv (serviceaftale)', href: '/it-support-til-erhverv/' },
       { label: 'Fjernsupport', href: '/fjernsupport/' },
       { label: 'On-site tekniker', href: '/on-site-tekniker/' },
-      { label: 'Computerreparation i Frederiksberg', href: '/computerreparation-frederiksberg/' },
+      { label: 'Computerreparation på Frederiksberg', href: '/computerreparation-frederiksberg/' },
       { label: 'WiFi- & netværksfejlfinding', href: '/wifi-og-netvaerksfejlfinding/' },
       { label: 'Åbningstider', href: '/aabningstider/' },
     ],
@@ -557,7 +557,7 @@ export const services = [
   {
     slug: 'bundkort-reparation', group: 'PC',
     title: 'Bundkortreparation — pc & Mac | PCKlinik',
-    description: 'Reparation af bundkort på pc, bærbar og MacBook i Frederiksberg og København. Mikrolodning, væskeskade og strømfejl. Fejlsøgning fra 300 kr., fast pris.',
+    description: 'Reparation af bundkort på pc, bærbar og MacBook på Frederiksberg og i København. Mikrolodning, væskeskade og strømfejl. Fejlsøgning fra 300 kr., fast pris.',
     h1: 'Bundkortreparation',
     subhead: 'Når fejlen sidder på selve printkortet — og maskinen ellers skulle kasseres',
     intro: [
