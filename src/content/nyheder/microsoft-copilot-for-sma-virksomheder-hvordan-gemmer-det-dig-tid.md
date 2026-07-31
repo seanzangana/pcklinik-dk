@@ -1,8 +1,8 @@
 ---
-title: "Microsoft Copilot for Små Virksomheder – Hvordan Gemmer Det Dig Tid?"
+title: "Microsoft Copilot for små virksomheder"
 date: 2026-07-30
 category: Blog
-description: "Microsoft Copilot er ikke længere noget futuristisk koncept for store tech-virksomheder. Det er allerede her, og det kan faktisk gøre en reel forskel for små vi"
+description: "Microsoft Copilot er ikke kun for de store. Sådan kan små virksomheder bruge det til at spare tid på hverdagens opgaver — konkret og uden hype."
 ---
 
 Microsoft Copilot er ikke længere noget futuristisk koncept for store tech-virksomheder. Det er allerede her, og det kan faktisk gøre en reel forskel for små virksomheder som din. Hvis du har hørt ordet "AI" i forbindelse med arbejde, men ikke helt er sikker på hvad det betyder eller hvordan det kan hjælpe din forretning, så er du ikke alene. Mange danske virksomhedsejere kigger på Microsoft Copilot små virksomheder med skepsis – især fordi det lyder kompliceret. Men her er sandheden: det er ikke kompliceret, og det kan spare dig for både tid og penge hver eneste dag.
