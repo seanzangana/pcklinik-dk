@@ -38,7 +38,17 @@ export const site = {
 // it lives only in the footer "Mere" column (see footer() in build.mjs).
 export const nav = [
   { label: 'Forside', href: '/' },
-  { label: 'IT-support til erhverv', href: '/it-support-til-erhverv/' },
+  {
+    label: 'IT-support til erhverv',
+    href: '/it-support-til-erhverv/',
+    children: [
+      { label: 'IT-support til erhverv (oversigt)', href: '/it-support-til-erhverv/' },
+      { label: 'IT-rådgivning', href: '/it-raadgivning/' },
+      { label: 'IT-support til advokatkontorer', href: '/it-support-advokatkontor/' },
+      { label: 'IT-support til klinikker', href: '/it-support-klinik/' },
+      { label: 'IT-support til mindre virksomheder (Frederiksberg)', href: '/it-support-mindre-virksomheder-frederiksberg/' },
+    ],
+  },
   {
     label: 'Services',
     href: '/faq/',
@@ -74,6 +84,7 @@ export const nav = [
         { label: 'Væskeskade-reparation', href: '/vaeskeskade-reparation/' },
         { label: 'PC-rensning & støvfjernelse', href: '/rens-af-pc/' },
         { label: 'Reparation af ladeport', href: '/ladestik-reparation/' },
+        { label: 'Forsikringsreparation', href: '/forsikringsreparation/' },
         { label: 'Udskiftning af tastatur (bærbar)', href: '/tastaturudskiftning/' },
         { label: 'Mac-rensning', href: '/rens-af-mac/' },
         { label: 'Mac-batteriskift', href: '/mac-batteriskift/' },
@@ -103,6 +114,11 @@ export const nav = [
       { label: 'Hjælp & guides', children: [
         { label: 'Computeren vil ikke tænde', href: '/computer-vil-ikke-taende/' },
         { label: 'Fejlmeddelelser & koder', href: '/fejlmeddelelser/' },
+        { label: 'Blå skærm (BSOD)', href: '/blaa-skaerm-bsod/' },
+        { label: 'Grafikkort-fejl på bærbar', href: '/grafikkort-fejl-baerbar/' },
+        { label: 'MacBook Touch Bar virker ikke', href: '/macbook-touch-bar-virker-ikke/' },
+        { label: 'Batteriet holder ikke', href: '/batteriet-holder-ikke/' },
+        { label: 'Reparere eller købe ny computer?', href: '/reparere-eller-koebe-ny-computer/' },
         { label: 'Generel FAQ', href: '/faq/' },
       ] },
     ],

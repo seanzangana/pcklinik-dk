@@ -13,7 +13,7 @@ import { lucide, lucideSm } from './src/data/icons.js';
 import { services } from './src/data/services.js';
 import { locations } from './src/data/locations.js';
 import { loadNewsPosts } from './src/content/posts.mjs';
-import { macHubHtml, gamingHtml, MAC_HUB_FAQ, GAMING_FAQ, errorMessagesHtml, ERROR_FAQ, computerWontTurnOnHtml, WONT_TURN_ON_FAQ, faqPageHtml, GENERAL_FAQ, networkHubHtml, NETWORK_HUB_FAQ, websitesHubHtml, WEBSITES_HUB_FAQ, studentsHtml, STUDENTS_FAQ, priceRangesHtml } from './src/data/richPages.js';
+import { macHubHtml, gamingHtml, MAC_HUB_FAQ, GAMING_FAQ, errorMessagesHtml, ERROR_FAQ, computerWontTurnOnHtml, WONT_TURN_ON_FAQ, faqPageHtml, GENERAL_FAQ, networkHubHtml, NETWORK_HUB_FAQ, websitesHubHtml, WEBSITES_HUB_FAQ, studentsHtml, STUDENTS_FAQ, priceRangesHtml, blaaSkaermHtml, BSOD_FAQ, grafikkortFejlHtml, GRAFIKKORT_FAQ, touchBarHtml, TOUCHBAR_FAQ, batterietHolderIkkeHtml, BATTERY_FAQ, repareEllerKoebeNyComputerHtml, REPARERE_ELLER_KOEBE_FAQ } from './src/data/richPages.js';
 import { announcement } from './src/data/announcement.js';
 // Nyheder posts (src/content/nyheder/*.md), populated at the top of run().
 // Declared here rather than as a run()-local because newsIndexHtml()/
@@ -168,7 +168,7 @@ fetch(f.getAttribute('action'),{method:'POST',headers:{'Content-Type':'applicati
 // page content, not markup, and is unaffected — it's sourced from the
 // Google Business Profile, not this schema object.
 const businessSchema = {
-  '@context': 'https://schema.org', '@type': 'ComputerRepairService', name: 'PCKlinik',
+  '@context': 'https://schema.org', '@type': 'ComputerRepairService', '@id': site.domain + '/#business', name: 'PCKlinik',
   image: site.domain + '/logo.png', url: site.domain + '/', telephone: '+4591816181', email: site.emailConsumer,
   address: { '@type': 'PostalAddress', streetAddress: site.addressStreet, postalCode: site.addressPostal, addressLocality: site.addressLocality, addressCountry: 'DK' },
   areaServed: ['Frederiksberg', 'Copenhagen'],
@@ -316,7 +316,8 @@ function homeBody() {
   <section class="section"><div class="wrap"><div class="eyebrow">Vores løfte</div><h2>Sådan fungerer det</h2><div class="steps">
     <div class="step"><div class="num">1</div><h3>Fejlsøgning</h3><p>300 kr. (2–4 dage), eller ekspres for 600 kr. (1–2 timer).</p></div>
     <div class="step"><div class="num">2</div><h3>Fast pris</h3><p>Du får en klar pris, før vi rører ved noget.</p></div>
-    <div class="step"><div class="num">3</div><h3>Reparation</h3><p>Vi udfører reparationen med samme omhu som fejlsøgningen.</p></div></div></div></section>
+    <div class="step"><div class="num">3</div><h3>Reparation</h3><p>Vi udfører reparationen med samme omhu som fejlsøgningen.</p></div></div>
+    <div class="trust-line" style="margin-top:24px">Kan du ikke selv komme forbi? Afhentning og levering af din enhed kan aftales — <a href="/kontakt/">kontakt os</a>, så finder vi en løsning ud fra din placering.</div></div></section>
   <section class="section alt"><div class="wrap"><div class="eyebrow">Hvad vi reparerer</div><h2>Alle større computermærker — PC og Mac</h2>
     <p class="sub">Vi reparerer alle større computermærker — PC og Mac, bærbar og stationær — for privatpersoner og virksomheder i Frederiksberg og København.</p>
     <div class="grid grid-3">${cards}</div></div></section>
@@ -431,6 +432,14 @@ function businessBody() {
         <div class="form-row"><div><label for="biz-message">Hvad har I brug for hjælp til?</label><textarea id="biz-message" name="message" required></textarea></div></div>
         <button class="btn btn-primary" type="submit">Anmod om en gratis IT-gennemgang</button>
       </form>
+    </div></div></section>
+  <section class="section alt"><div class="wrap"><div class="eyebrow">Specialiseret support</div><h2>IT-support tilpasset jeres branche</h2>
+    <p class="sub">Ud over den generelle supportaftale ovenfor har vi samlet erfaringerne fra bestemte brancher på deres egne sider — og en uafhængig rådgivningssamtale, hvis I er i tvivl om, hvad I har brug for.</p>
+    <div class="grid grid-4">
+      <a class="card card-link" href="/it-raadgivning/"><h3>IT-rådgivning</h3><p>Gratis, uforpligtende første samtale.</p><span class="arrow">Læs mere →</span></a>
+      <a class="card card-link" href="/it-support-advokatkontor/"><h3>Advokatkontorer</h3><p>Fortrolighed og driftssikkerhed.</p><span class="arrow">Læs mere →</span></a>
+      <a class="card card-link" href="/it-support-klinik/"><h3>Klinikker</h3><p>Patientdata og GDPR.</p><span class="arrow">Læs mere →</span></a>
+      <a class="card card-link" href="/it-support-mindre-virksomheder-frederiksberg/"><h3>Mindre virksomheder (Frederiksberg)</h3><p>Én lokal partner, i gåafstand.</p><span class="arrow">Læs mere →</span></a>
     </div></div></section>
   <section class="section"><div class="wrap"><div class="eyebrow">FAQ</div><h2>IT-support til erhverv — ofte stillede spørgsmål</h2><div class="faq">${faqHtml}</div></div></section>`;
 }
@@ -804,9 +813,16 @@ function askQuestionBody() {
 function serviceBody(s) {
   const intro = s.intro.map((p) => `<p>${p}</p>`).join('');
   const included = s.whatsIncluded ? `<div class="trust-line" style="margin:6px 0 20px"><strong>Hvad er inkluderet:</strong> ${esc(s.whatsIncluded)}</div>` : '';
-  const bullets = (s.bulletSections || []).map((b) => `<section class="section"><div class="wrap"><div class="eyebrow">${esc(b.heading)}</div><ul class="check-list">${b.items.map((it) => `<li>${esc(it)}</li>`).join('')}</ul></div></section>`).join('');
+  // trustBars: array of pre-built HTML strings (not escaped — authored
+  // directly in services.js, not user input) rendered as stacked
+  // .trust-line blocks. Used for item 4 (delivery-time / workshop-location
+  // signals on /fjernsupport/) and item 7 (pickup/delivery promise).
+  const trustBars = (s.trustBars || []).map((t) => `<div class="trust-line" style="margin:6px 0 20px">${t}</div>`).join('');
+  const bullets = (s.bulletSections || []).map((b) => `<section class="section"><div class="wrap"><div class="eyebrow">${esc(b.heading)}</div><ul class="check-list">${b.items.map((it) => typeof it === 'string' ? `<li>${esc(it)}</li>` : `<li><strong>${esc(it.title)}</strong> — ${esc(it.body)}</li>`).join('')}</ul></div></section>`).join('');
   const callout = s.callout ? `<section class="section"><div class="wrap"><div class="callout"><strong>${esc(s.callout.label)}:</strong> ${esc(s.callout.text)}</div></div></section>` : '';
-  const pricing = s.pricing
+  const pricing = s.pricing === false
+    ? ''
+    : s.pricing
     ? `<section class="section alt"><div class="wrap"><div class="eyebrow">Pris</div><h2>${esc(s.pricing.h2)}</h2><p class="sub">${esc(s.pricing.text)}</p></div></section>`
     : `<section class="section alt"><div class="wrap"><div class="eyebrow">Fejlsøgning &amp; pris</div><h2>Standard eller ekspres — dit valg</h2><p class="sub">Standardfejlsøgning koster 300 kr. (2–4 dage), eller ekspres for 600 kr. (1–2 timer) — med reparation og levering inden for 24 timer, hvis der ikke skal bestilles specielle reservedele. Du får altid en fast pris, før vi går i gang.</p></div></section>`;
   const cta = esc(s.ctaLabel || 'Book fejlsøgning');
@@ -814,7 +830,7 @@ function serviceBody(s) {
   const cross = s.crosslinks.map((c) => `<a href="${c.href}">${esc(c.label)} →</a>`).join('') + `<a href="/kontakt/">Kontakt & booking →</a>`;
   return `  <section class="hero"><div class="wrap"><div class="eyebrow">Service · Frederiksberg &amp; København</div><h1>${esc(s.h1)}</h1>${s.subhead ? `<p class="lead">${esc(s.subhead)}</p>` : ''}
     <div class="cta-row"><a class="btn btn-white" href="/kontakt/">${cta}</a><a class="btn btn-ghost-light" href="${site.phoneHref}">📞 Ring ${site.phone}</a></div></div></section>
-  <section class="section"><div class="wrap lead-copy"><div class="crumbs"><a href="/">Forside</a> › <span>${esc(s.h1)}</span></div>${intro}${included}</div></section>
+  <section class="section"><div class="wrap lead-copy"><div class="crumbs"><a href="/">Forside</a> › <span>${esc(s.h1)}</span></div>${intro}${included}${trustBars}</div></section>
   ${bullets}
   ${callout}
   ${pricing}
@@ -824,6 +840,28 @@ function serviceBody(s) {
 }
 function faqSchemaFrom(items) {
   return { '@context': 'https://schema.org', '@type': 'FAQPage', mainEntity: items.map((f) => ({ '@type': 'Question', name: f.q, acceptedAnswer: { '@type': 'Answer', text: f.a } })) };
+}
+// Service schema — only emitted for services.js entries that set
+// `serviceType` (currently the branch-specific B2B pages). Existing service
+// entries without `serviceType` are unaffected — they keep getting only
+// FAQPage, as before.
+function serviceSchemaFor(s) {
+  return {
+    '@context': 'https://schema.org', '@type': 'Service', '@id': site.domain + `/${s.slug}/#service`,
+    serviceType: s.serviceType, provider: { '@id': site.domain + '/#business' },
+    areaServed: s.areaServed || ['Frederiksberg', 'Copenhagen'], url: site.domain + `/${s.slug}/`,
+  };
+}
+// Article schema for guide/how-to content (src/data/richPages.js guides) —
+// distinct from Service: guides are informational content, not a bookable
+// service, so they use Article + a #business-linked publisher rather than
+// a Service/provider node.
+function articleSchemaFor({ slug, headline, description, datePublished }) {
+  return {
+    '@context': 'https://schema.org', '@type': 'Article', '@id': site.domain + `/${slug}/#article`,
+    headline, description, inLanguage: 'da-DK', datePublished,
+    publisher: { '@id': site.domain + '/#business' }, mainEntityOfPage: site.domain + `/${slug}/`,
+  };
 }
 
 // ---------- garanti ----------
@@ -1004,6 +1042,14 @@ async function run() {
   pages.push(['/fejlmeddelelser/', page({ title: 'Almindelige computerfejlmeddelelser & koder | PCKlinik', description: 'Blå skærme, opstartsfejl, kernel panics og mere — hvad almindelige Windows- og Mac-fejlmeddelelser betyder, og hvordan vi udbedrer dem.', p: '/fejlmeddelelser/', body: errorMessagesHtml(), schema: faqSchemaFrom(ERROR_FAQ) })]);
   // Computer won't turn on (guide)
   pages.push(['/computer-vil-ikke-taende/', page({ title: 'Vil computeren ikke tænde? Her er hvorfor | PCKlinik', description: 'Vil din bærbare eller pc ikke tænde? De tre mest almindelige årsager, hvad de betyder, og hvordan vi fejlsøger og udbedrer det. Frederiksberg og København.', p: '/computer-vil-ikke-taende/', body: computerWontTurnOnHtml(), schema: faqSchemaFrom(WONT_TURN_ON_FAQ) })]);
+  // Fault-specific guides (Article + FAQPage — informational content, not a bookable Service)
+  pages.push(['/blaa-skaerm-bsod/', page({ title: 'Blå skærm (BSOD) på Windows — hvad betyder den? | PCKlinik', description: 'Blå skærm (BSOD) på Windows — hvad stopkoden betyder, hyppige årsager, og hvad du selv kan tjekke, før du kommer forbi. Frederiksberg og København.', p: '/blaa-skaerm-bsod/', body: blaaSkaermHtml(), schema: [articleSchemaFor({ slug: 'blaa-skaerm-bsod', headline: 'Blå skærm (BSOD) på Windows — hvad betyder den?', description: 'Blå skærm (BSOD) på Windows — hvad stopkoden betyder, hyppige årsager, og hvad du selv kan tjekke.', datePublished: '2026-07-30' }), faqSchemaFrom(BSOD_FAQ)] })]);
+  pages.push(['/grafikkort-fejl-baerbar/', page({ title: 'Grafikkort-fejl på bærbar — symptomer og løsning | PCKlinik', description: 'Grafikkort-fejl på bærbar computer — typiske symptomer, hvordan du skelner driverproblem fra hardwaresvigt, og hvad du selv kan teste. Frederiksberg og København.', p: '/grafikkort-fejl-baerbar/', body: grafikkortFejlHtml(), schema: [articleSchemaFor({ slug: 'grafikkort-fejl-baerbar', headline: 'Grafikkort-fejl på bærbar — symptomer og løsning', description: 'Grafikkort-fejl på bærbar computer — typiske symptomer og hvad du selv kan teste, før du kommer forbi.', datePublished: '2026-07-30' }), faqSchemaFrom(GRAFIKKORT_FAQ)] })]);
+  pages.push(['/macbook-touch-bar-virker-ikke/', page({ title: 'MacBook Touch Bar virker ikke — hvad gør du? | PCKlinik', description: 'MacBook Touch Bar virker ikke — almindelige årsager, hvad du selv kan prøve, og hvornår det er hardware. Frederiksberg og København.', p: '/macbook-touch-bar-virker-ikke/', body: touchBarHtml(), schema: [articleSchemaFor({ slug: 'macbook-touch-bar-virker-ikke', headline: 'MacBook Touch Bar virker ikke — hvad gør du?', description: 'MacBook Touch Bar virker ikke — almindelige årsager, og hvad du selv kan prøve, før du kommer forbi.', datePublished: '2026-07-30' }), faqSchemaFrom(TOUCHBAR_FAQ)] })]);
+  pages.push(['/batteriet-holder-ikke/', page({ title: 'Batteriet holder ikke på din bærbar eller Mac | PCKlinik', description: 'Batteriet holder ikke på din bærbar eller Mac — sådan tjekker du batteriets tilstand, og hvornår et batteriskift kan betale sig. Frederiksberg og København.', p: '/batteriet-holder-ikke/', body: batterietHolderIkkeHtml(), schema: [articleSchemaFor({ slug: 'batteriet-holder-ikke', headline: 'Batteriet holder ikke — skal det skiftes?', description: 'Sådan tjekker du batteriets tilstand, og hvornår et batteriskift kan betale sig.', datePublished: '2026-07-30' }), faqSchemaFrom(BATTERY_FAQ)] })]);
+  // Genopbygget URL — se kommentar i richPages.js. Article, ikke Service:
+  // det er en beslutningsguide, ikke en bookbar ydelse.
+  pages.push(['/reparere-eller-koebe-ny-computer/', page({ title: 'Reparere eller købe ny computer? | PCKlinik', description: 'Skal du reparere din computer eller købe en ny? Se hvornår en reparation kan betale sig, og hvornår en ny eller refurbished maskine er det bedre valg.', p: '/reparere-eller-koebe-ny-computer/', body: repareEllerKoebeNyComputerHtml(), schema: [articleSchemaFor({ slug: 'reparere-eller-koebe-ny-computer', headline: 'Skal du reparere din computer — eller købe en ny?', description: 'Hvornår en reparation kan betale sig, og hvornår en ny eller refurbished maskine er det bedre valg.', datePublished: '2026-07-30' }), faqSchemaFrom(REPARERE_ELLER_KOEBE_FAQ)] })]);
   // General site-wide FAQ
   pages.push(['/faq/', page({ title: 'Ofte stillede spørgsmål | PCKlinik', description: 'PC- og Mac-reparation i København — FAQ om fejlsøgning, priser, mærker, services, erhvervs-IT og vores butik.', p: '/faq/', body: faqPageHtml(), schema: faqSchemaFrom(GENERAL_FAQ) })]);
   // Network Equipment hub
@@ -1029,8 +1075,9 @@ async function run() {
   pages.push(['/tak/', page({ title: 'Thank You | PCKlinik', description: 'Your message has been sent. We will get back to you as soon as possible.', p: '/tak/', body: thankYouHtml(), noindex: true })]);
   // Location / area pages
   for (const loc of locations) pages.push([`/${loc.slug}/`, page({ title: loc.title, description: loc.description, p: `/${loc.slug}/`, body: locationBody(loc), schema: faqSchemaFrom(loc.faq) })]);
-  // 15 task-based service pages
-  for (const s of services) pages.push([`/${s.slug}/`, page({ title: s.title, description: s.description, p: `/${s.slug}/`, body: serviceBody(s), schema: faqSchemaFrom(s.faq) })]);
+  // 15 task-based service pages (+ branch-specific B2B pages, which set
+  // `serviceType` and additionally get a Service schema node alongside FAQPage)
+  for (const s of services) pages.push([`/${s.slug}/`, page({ title: s.title, description: s.description, p: `/${s.slug}/`, body: serviceBody(s), schema: s.serviceType ? [serviceSchemaFor(s), faqSchemaFrom(s.faq)] : faqSchemaFrom(s.faq) })]);
 
   for (const [p, html] of pages) await writePage(p, html);
 

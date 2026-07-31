@@ -3,7 +3,11 @@
 // tp-link, asus-router, eero) og Web (website, seo, google-ads) er endnu på
 // engelsk og oversættes i Batch 4 hhv. Batch 5.
 // Schema: slug, title, description, h1, subhead?, intro[], whatsIncluded?,
-// callout?{label,text}, pricing?{h2,text}, ctaLabel?, faq[], crosslinks[], group.
+// trustBars?[html], callout?{label,text}, pricing?{h2,text}|false, ctaLabel?,
+// faq[], crosslinks[], group, serviceType?, areaServed?[].
+// serviceType (+ optional areaServed) opts a page into Service+@id schema via
+// serviceSchemaFor() in build.mjs — used for the B2B branch pages and
+// /it-raadgivning/. Entries without serviceType keep FAQPage-only schema.
 export const services = [
   // ----- PC-OPGAVER -----
   {
@@ -193,6 +197,20 @@ export const services = [
     description: 'Softwareproblemer løses på afstand. Hardwareproblemer kan sendes ind med post eller kurér. Til pc og Mac, tilgængeligt i hele Danmark — ikke kun Frederiksberg og København.',
     h1: 'Fjernsupport', subhead: 'Softwareproblemer løst på afstand — hardwareproblemer sendes ind',
     intro: ['Ikke alle problemer kræver et værkstedsbesøg. Softwareproblemer, virusinfektioner, mailopsætning, langsom ydelse og mange konfigurationsproblemer kan fejlsøges og udbedres på afstand — vi forbinder til din computer med din tilladelse, du ser, hvad vi gør, og de fleste sessioner løser problemet på stedet. Tilgængelig for både pc og Mac, hvor som helst i Danmark, ikke kun Frederiksberg og København.', 'Standardfejlsøgning koster 300 kr. (2–4 dage), eller ekspres for 600 kr. (1–2 timer) — samme prismodel som vores fysiske reparationer, da fjernfejlsøgning fungerer på samme måde.'],
+    // Item 4 (content-plan-4-7): delivery-time trust signal. No real
+    // "X ud af Y løst inden for Z hverdage"-stat has been supplied yet —
+    // per instruction, we must NOT invent one, so this uses the approved
+    // fallback wording until a real figure is provided. Swap the first
+    // trustBars entry for the real stat once Shan supplies it.
+    // Pickup/delivery wording (item 7) also defaults to the "efter aftale"
+    // phrasing already used elsewhere on the site, pending confirmation of
+    // the true model (gratis / fast pris / efter aftale).
+    trustBars: [
+      'De fleste indsendte reparationer er færdige inden for få hverdage, efter vi har modtaget maskinen — og du får altid besked med et fast tilbud, før vi går i gang.',
+      'Vores værksted ligger på <strong>Falkoner Allé 108, 2000 Frederiksberg</strong>. Bor du længere væk, dækker indsendelse resten af landet — se ovenfor, hvordan det foregår.',
+      'Afhentning og levering af din enhed kan aftales — kontakt os, så finder vi den løsning, der passer til din placering.',
+      'Skaden dækket af din indbo- eller elektronikforsikring? Se hvordan <a href="/forsikringsreparation/">forsikringsreparation</a> fungerer hos os.',
+    ],
     bulletSections: [{ heading: 'Hvad vi udbedrer på afstand', items: ['Fjernelse af virus og malware', 'Langsom ydelse og opstartsproblemer', 'Mail- og kontoopsætning', 'Softwarekonfiguration og fejlsøgning', 'Netværks- og WiFi-problemer (hvor de ikke er hardware-relaterede)', 'Opsætning af automatiske cloud-backupløsninger (kun konfiguration — gendannelse af data fra et allerede svigtet drev kræver fysisk adgang, se vores side om backup & datagendannelse til det)'] }],
     // Vores eneste værksted ligger i Frederiksberg — der er intet lokalt
     // værksted i andre byer. Denne callout skal derfor være ærlig om
@@ -211,7 +229,7 @@ export const services = [
       { q: 'Kan det betale sig at sende et device langt væk for reparation?', a: 'Vi har allerede kunder, der gør præcis det, blandt andet fra Helsingør, Hillerød, Roskilde, Køge og Nykøbing Falster — kontakt os, så er vi ærlige om, hvorvidt det giver mening for din konkrete situation.' },
       { q: 'Kan I opsætte cloud-backup for mig på afstand?', a: 'Ja — at konfigurere en automatisk backupløsning er en softwareopsætningsopgave, vi kan lave på afstand. Bemærk, at det er forskelligt fra datagendannelse: hvis et drev allerede er svigtet, og du skal gendanne data fra det, kræver det fysisk adgang til enheden.' },
     ],
-    crosslinks: [{ label: 'Fjernelse af virus & malware', href: '/virus-og-malwarefjernelse/' }, { label: 'On-site tekniker', href: '/on-site-tekniker/' }],
+    crosslinks: [{ label: 'Fjernelse af virus & malware', href: '/virus-og-malwarefjernelse/' }, { label: 'On-site tekniker', href: '/on-site-tekniker/' }, { label: 'Forsikringsreparation', href: '/forsikringsreparation/' }, { label: 'Typiske reparationspriser', href: '/reparationspriser/' }],
   },
   {
     slug: 'on-site-tekniker', group: 'Cross-cutting',
@@ -592,6 +610,194 @@ export const services = [
       { label: 'Backup & datagendannelse', href: '/backup-og-datagendannelse/' },
       { label: 'Computer reparation', href: '/computer-reparation/' },
       { label: 'Reparation af ladeport', href: '/ladestik-reparation/' },
+    ],
+  },
+
+  // ----- B2B: BRANCHE-SPECIFIKKE ERHVERVSSIDER (content-plan item 5) -----
+  // Each page gets Service schema (serviceType set → serviceSchemaFor()
+  // kicks in via the services loop). Deliberately NOT doorway pages: each
+  // has distinct pain points, distinct bulletSections and distinct FAQ —
+  // see the five-fjernby-page cleanup this was written to avoid repeating.
+  {
+    slug: 'it-support-advokatkontor', group: 'B2B', serviceType: 'IT-support til advokatkontorer', areaServed: ['København', 'Frederiksberg'],
+    title: 'IT-support til advokatkontorer | PCKlinik',
+    description: 'IT-support til advokatkontorer i København og Frederiksberg — fortrolighed, sikker datahåndtering og hurtig hjælp ved deadlines. Ring 91 81 61 81.',
+    h1: 'IT-support til advokatkontorer',
+    subhead: 'Fortrolighed og driftssikkerhed, uden at I skal ansætte en intern IT-afdeling',
+    intro: [
+      'Et advokatkontor stiller andre krav til IT end de fleste virksomheder. Klientoplysninger er fortrolige, deadlines i retten venter ikke på en langsom computer, og en nedbrudt mailserver midt i en sagsbehandling er ikke bare irriterende — det kan være et reelt problem for sagen.',
+      'PCKlinik leverer IT-support til advokatkontorer i København og på Frederiksberg, der forstår, hvad der faktisk er på spil: fortrolig klientdata, skarpe frister og et behov for, at systemerne bare virker, uden at I selv skal fejlsøge dem.',
+    ],
+    bulletSections: [
+      { heading: 'Det ser vi typisk på hos advokatkontorer', items: [
+        'Følsomme klientoplysninger, der skal beskyttes efter tavshedspligt og GDPR — ikke bare "almindelig" IT-sikkerhed',
+        'Digitale sagsmapper og sagsbehandlingssystemer, der skal være oppe og køre hele dagen',
+        'Skarpe deadlines — en retsfrist eller indlevering venter ikke på, at en computer bliver hurtigere',
+        'Behov for sikker adgang til sager, når advokater arbejder hjemmefra, i retten eller hos en klient',
+        'E-mail og kalender, der skal virke upåklageligt — en mistet mail kan koste en frist',
+        'Ofte ingen eller kun en meget lille intern IT-funktion, og derfor behov for én ekstern partner, der kan det hele',
+      ] },
+    ],
+    pricing: false,
+    ctaLabel: 'Book en konsultation',
+    faq: [
+      { q: 'Kan I sikre fortrolige klientoplysninger, så det lever op til advokaters tavshedspligt?', a: 'Ja — vi opsætter adgangsstyring, kryptering og sikker backup, så følsomme sagsakter er beskyttet, og rådgiver om, hvad der konkret skal på plads for jeres kontor.' },
+      { q: 'Understøtter I vores eksisterende sagsbehandlings- eller dokumenthåndteringssystem?', a: 'Vi arbejder med jeres eksisterende systemer frem for at kræve, at I skifter dem. Kontakt os med navnet på jeres system, så vurderer vi det konkret.' },
+      { q: 'Kan I hjælpe med sikker fjernadgang for advokater, der arbejder hjemmefra eller i retten?', a: 'Ja, det er en af de mest almindelige opgaver hos advokatkontorer — sikker adgang til sagsmapper og mail, uanset hvor advokaten befinder sig.' },
+      { q: 'Hvad gør I, hvis der opstår et akut IT-nedbrud lige før en frist?', a: 'I ringer, og vi går i gang med det samme. De fleste sager løses samme dag via fjernsupport; kræver det fysisk adgang, prioriterer vi det.' },
+      { q: 'Arbejder I kun med store advokatkontorer, eller også mindre?', a: 'Begge dele — fra enkeltmandsadvokater til kontorer med flere ansatte. Prisen er pr. bruger, så I betaler for det, I faktisk har brug for.' },
+    ],
+    crosslinks: [
+      { label: 'IT-support til erhverv (oversigt)', href: '/it-support-til-erhverv/' },
+      { label: 'IT-rådgivning', href: '/it-raadgivning/' },
+      { label: 'Backup & datagendannelse', href: '/backup-og-datagendannelse/' },
+    ],
+  },
+  {
+    slug: 'it-support-klinik', group: 'B2B', serviceType: 'IT-support til klinikker', areaServed: ['København', 'Frederiksberg'],
+    title: 'IT-support til klinikker | PCKlinik',
+    description: 'IT-support til klinikker og sundhedspraksis i København og Frederiksberg — patientdata, GDPR og driftssikkerhed. Ring 91 81 61 81.',
+    h1: 'IT-support til klinikker',
+    subhead: 'Patientdata og daglig drift, der ikke må svigte',
+    intro: [
+      'På en klinik er IT ikke bare et arbejdsredskab — det er journalsystemet, bookingen og betalingen, som patienterne står og venter på. Går det ned midt på dagen, mærkes det med det samme, både af personalet og af patienterne i venteværelset.',
+      'PCKlinik leverer IT-support til klinikker og mindre sundhedspraksis i København og på Frederiksberg, med fokus på det, der betyder mest hos jer: patientdata behandlet korrekt, systemer der er oppe hele åbningstiden, og hurtig hjælp, når noget driller.',
+    ],
+    bulletSections: [
+      { heading: 'Det ser vi typisk på hos klinikker', items: [
+        'Journal- og bookingsystemer, der skal være oppe og køre gennem hele åbningstiden',
+        'Særligt følsomme patientoplysninger (helbredsdata), der kræver ekstra sikring efter GDPR',
+        'Betalingsterminaler og netværk, der skal virke, mens patienterne venter',
+        'Løbende backup af journaldata, så intet går tabt ved et nedbrud eller en fejl',
+        'Ofte flere behandlere eller lokationer, der skal have adgang til de samme systemer',
+        'Lidt tålmodighed med nedetid — en klinik kan sjældent vente en hel dag på en tekniker',
+      ] },
+    ],
+    pricing: false,
+    ctaLabel: 'Book en konsultation',
+    faq: [
+      { q: 'Kan I hjælpe os med at håndtere patientdata korrekt efter GDPR?', a: 'Ja — vi rådgiver om adgangsstyring, kryptering og backup af følsomme helbredsoplysninger og hjælper med at få det praktiske på plads.' },
+      { q: 'Understøtter I vores journal- eller bookingsystem?', a: 'Vi arbejder med jeres eksisterende systemer. Kontakt os med navnet på jeres system, så ser vi konkret på, hvordan vi bedst understøtter det.' },
+      { q: 'Hvad gør I, hvis systemerne går ned, mens patienterne venter?', a: 'I ringer, og vi går i gang med det samme — de fleste sager løses samme dag via fjernsupport. Kræver det fysisk adgang, prioriterer vi klinikker med patienter i venteværelset højt.' },
+      { q: 'Kan I sikre, at journaldata er ordentligt sikkerhedskopieret?', a: 'Ja, vi opsætter og overvåger automatisk backup af journaldata, så I ikke risikerer at miste patientoplysninger ved et nedbrud.' },
+      { q: 'Arbejder I med små klinikker, eller kun større sundhedspraksis?', a: 'Begge dele — fra enkeltmandsklinikker til praksis med flere behandlere. Prisen er pr. bruger, så I betaler for det, I faktisk har brug for.' },
+    ],
+    crosslinks: [
+      { label: 'IT-support til erhverv (oversigt)', href: '/it-support-til-erhverv/' },
+      { label: 'IT-rådgivning', href: '/it-raadgivning/' },
+      { label: 'Backup & datagendannelse', href: '/backup-og-datagendannelse/' },
+    ],
+  },
+  {
+    slug: 'it-support-mindre-virksomheder-frederiksberg', group: 'B2B', serviceType: 'IT-support til mindre virksomheder', areaServed: ['Frederiksberg', 'København'],
+    title: 'IT-support, mindre virksomheder Frederiksberg | PCKlinik',
+    description: 'IT-support til mindre virksomheder på Frederiksberg — én lokal partner til support, reparation og udstyr. Falkoner Allé 108. Ring 91 81 61 81.',
+    h1: 'IT-support til mindre virksomheder på Frederiksberg',
+    subhead: 'En lokal IT-partner i gåafstand — ikke et fjernt callcenter',
+    intro: [
+      'Som mindre virksomhed på Frederiksberg har I sjældent brug for en stor IT-afdeling — I har brug for én partner, der kan det hele, og som I faktisk kan komme forbi, hvis noget driller.',
+      'PCKlinik ligger på Falkoner Allé 108, midt på Frederiksberg. Vi kombinerer løbende IT-support med det, mindre virksomheder faktisk står med i praksis: en computer der skal repareres, et netværk der falder ud, eller en medarbejder der har brug for hjælp samme dag.',
+    ],
+    bulletSections: [
+      { heading: 'Det ser vi typisk på hos mindre virksomheder på Frederiksberg', items: [
+        'Ingen intern IT-medarbejder — behov for én fast partner til det hele',
+        'En blanding af opgaver: en computer der skal repareres, et netværk der driller, og en medarbejder der har brug for hjælp samme dag',
+        'Et stramt budget — I skal kunne se, hvad IT rent faktisk koster, uden overraskelser på fakturaen',
+        'Kort vej til hjælp — Falkoner Allé 108 ligger midt på Frederiksberg, så I kan komme forbi',
+        'Behov for både support og hardware ét sted — reparation, salg af udstyr og backup, ikke tre forskellige leverandører',
+        'Et ønske om en lokal partner, I kender ved navn, frem for et anonymt callcenter',
+      ] },
+    ],
+    pricing: false,
+    ctaLabel: 'Book en konsultation',
+    faq: [
+      { q: 'Kan vi komme forbi jeres værksted, hvis vi har brug for hjælp?', a: 'Ja — vi ligger på Falkoner Allé 108, midt på Frederiksberg, og I kan komme forbi i åbningstiden uden at booke tid.' },
+      { q: 'Kan I både reparere vores udstyr og levere løbende IT-support?', a: 'Ja, det er præcis pointen — I slipper for at have en reparatør og en IT-supportleverandør som to forskellige firmaer.' },
+      { q: 'Hvad koster IT-support for en lille virksomhed?', a: 'Vi har faste pakker fra 399 kr. pr. bruger pr. måned, ekskl. moms, uden binding. Enkeltopgaver afregnes efter en fast pris, du får oplyst, før vi går i gang.' },
+      { q: 'Er I for små virksomheder til jer, hvis vi kun er 2-3 medarbejdere?', a: 'Nej — vi arbejder med enkeltmandsvirksomheder og kontorer med et par medarbejdere lige så gerne som med større virksomheder. Prisen er pr. bruger, så I betaler kun for det, I bruger.' },
+      { q: 'Sælger I også computere og udstyr til virksomheder?', a: 'Ja, både nyt og professionelt istandsat (refurbished) udstyr med garanti — vi hjælper med at finde det rette til jeres budget og sætter det op klar til brug.' },
+    ],
+    crosslinks: [
+      { label: 'IT-support til erhverv (oversigt)', href: '/it-support-til-erhverv/' },
+      { label: 'IT-rådgivning', href: '/it-raadgivning/' },
+      { label: 'IT-support på Frederiksberg', href: '/it-support-frederiksberg/' },
+    ],
+  },
+
+  // ----- Supporting pages required to avoid dead links introduced above -----
+  // /it-raadgivning/ is linked from all three B2B pages above (and is the
+  // one and only place "gratis" may be used, per the ground-truth rule —
+  // it mirrors the pre-existing "Gratis IT-gennemgang, uforpligtende" offer
+  // already live on /it-support-til-erhverv/).
+  {
+    slug: 'it-raadgivning', group: 'B2B', serviceType: 'IT-rådgivning', areaServed: ['København', 'Frederiksberg'],
+    title: 'IT-rådgivning til virksomheder | PCKlinik',
+    description: 'Uafhængig IT-rådgivning til virksomheder i København og Frederiksberg. Gratis, uforpligtende første samtale. Ring 91 81 61 81.',
+    h1: 'IT-rådgivning til virksomheder',
+    subhead: 'Et ærligt, uafhængigt blik på jeres IT — før I beslutter noget',
+    intro: [
+      'Skal I reparere eller udskifte udstyr? Er I klar til NIS2 og GDPR? Giver det mening at skifte til en fast supportaftale? PCKlinik rådgiver uafhængigt af, hvad vi selv sælger — vi anbefaler det, der reelt giver mening for jeres virksomhed, ikke det, der er nemmest for os.',
+      'Den <strong>første rådgivningssamtale er gratis og uforpligtende</strong>. Vi kortlægger jeres nuværende opsætning og giver jer en ærlig vurdering — I bestemmer selv, om I vil gå videre bagefter.',
+    ],
+    bulletSections: [
+      { heading: 'Det kan vi rådgive om', items: [
+        'Kortlægning af jeres nuværende IT-opsætning og sikkerhedsniveau',
+        'Om jeres udstyr og systemer er klar til krav som NIS2 og GDPR',
+        'Om et stykke udstyr bør repareres, opgraderes eller udskiftes',
+        'Valg af den rette supportform — enkeltopgaver eller en fast IT-supportaftale',
+        'Budgetlægning og prioritering, når IT-midlerne er begrænsede',
+      ] },
+    ],
+    pricing: { h2: 'Gratis første samtale', text: 'Den første rådgivningssamtale er gratis og uforpligtende — vi kortlægger jeres behov og giver en ærlig anbefaling. Ønsker I løbende rådgivning derefter, aftaler vi omfang og pris konkret ud fra opgaven.' },
+    ctaLabel: 'Book en gratis samtale',
+    faq: [
+      { q: 'Er den første samtale virkelig gratis og uforpligtende?', a: 'Ja. I betaler intet for den indledende rådgivningssamtale, og I er ikke forpligtet til at gå videre bagefter.' },
+      { q: 'Er I bundet til at anbefale jeres egne produkter og aftaler?', a: 'Nej — vi fortæller jer, hvad der giver mening for jeres situation, også hvis svaret er, at I ikke har brug for noget nyt lige nu.' },
+      { q: 'Hvor lang tid tager en rådgivningssamtale?', a: 'Det afhænger af omfanget, men en indledende samtale tager typisk 20-30 minutter, enten telefonisk, på video eller på værkstedet.' },
+      { q: 'Kan I rådgive specifikt om NIS2 og GDPR?', a: 'Ja, vi hjælper med at vurdere, hvor I står i forhold til begge, og hvad der konkret skal på plads.' },
+      { q: 'Hvad sker der efter den gratis samtale?', a: 'I får en ærlig anbefaling. Vælger I at gå videre — med en enkeltopgave, en fast supportaftale eller andet — aftaler vi det konkrete omfang og pris derfra.' },
+    ],
+    crosslinks: [
+      { label: 'IT-support til erhverv (oversigt)', href: '/it-support-til-erhverv/' },
+      { label: 'IT-support til advokatkontorer', href: '/it-support-advokatkontor/' },
+      { label: 'IT-support til klinikker', href: '/it-support-klinik/' },
+      { label: 'IT-support til mindre virksomheder (Frederiksberg)', href: '/it-support-mindre-virksomheder-frederiksberg/' },
+    ],
+  },
+  // /forsikringsreparation/ is linked from /fjernsupport/ (item 4) and is
+  // written without inventing specific insurer names or direct-billing
+  // claims — Shan should review before publishing, since the exact
+  // insurance-billing process wasn't specified.
+  {
+    slug: 'forsikringsreparation', group: 'Cross-cutting',
+    title: 'Forsikringsreparation af computer | PCKlinik',
+    description: 'Fik din computer en skade dækket af din indbo- eller elektronikforsikring? Vi fejlsøger og laver den dokumentation, du skal bruge. Ring 91 81 61 81.',
+    h1: 'Reparation dækket af din forsikring',
+    subhead: 'Væske-, fald- eller stødskade? Din indboforsikring dækker ofte reparationen',
+    intro: [
+      'Mange danske indbo- og elektronikforsikringer dækker skader på computere — for eksempel væskeskade, faldskade eller stødskade. Vi hjælper dig med selve fejlsøgningen og reparationen, og udsteder den dokumentation, dit forsikringsselskab typisk beder om.',
+    ],
+    bulletSections: [
+      { heading: 'Sådan fungerer det typisk', items: [
+        { title: 'Vi fejlsøger skaden', body: 'og laver en skriftlig beskrivelse af, hvad der er sket, og hvad reparationen koster.' },
+        { title: 'Du anmelder skaden', body: 'til dit forsikringsselskab og hører, hvordan de vil have dokumentationen, og hvad jeres police og selvrisiko dækker.' },
+        { title: 'Vi reparerer', body: 'når du er klar til at gå videre — enten efter godkendelse fra forsikringsselskabet, eller hvis du selv vælger at betale og fremskynde det.' },
+        { title: 'Du får en specificeret faktura', body: 'som du kan bruge i din anmeldelse eller til refusion hos dit forsikringsselskab.' },
+      ] },
+    ],
+    callout: { label: 'Vigtigt', text: 'Vi kan ikke vurdere, om din konkrete police dækker skaden, eller hvad din selvrisiko er — det afklarer du med dit forsikringsselskab. Kontakt os, så laver vi en fejlsøgning og den dokumentation, du skal bruge til din anmeldelse.' },
+    faq: [
+      { q: 'Hvilke skader dækkes typisk af en indboforsikring?', a: 'Ofte væske-, fald- og stødskader — men det afhænger helt af din konkrete police. Kontakt dit forsikringsselskab for at være sikker på, hvad din dækker.' },
+      { q: 'Skal jeg kontakte forsikringsselskabet, før jeg kommer til jer, eller bagefter?', a: 'Begge dele fungerer — mange starter med en fejlsøgning hos os for at få en pris og en beskrivelse af skaden, som de så bruger i anmeldelsen. Er du i tvivl, så spørg dit forsikringsselskab, hvad de foretrækker.' },
+      { q: 'Afregner I direkte med mit forsikringsselskab?', a: 'Det afhænger af dit forsikringsselskab og din police — nogle refunderer dig efterfølgende, andre har andre ordninger. Kontakt dit forsikringsselskab for at høre, hvordan de gør det, og fortæl os det, så tilpasser vi processen bedst muligt.' },
+      { q: 'Koster fejlsøgningen det samme, selvom det er en forsikringssag?', a: 'Ja, samme priser som normalt: 300 kr. standard (2–4 dage) eller 600 kr. ekspres (1–2 timer). Du får en fast pris på selve reparationen, før vi går i gang.' },
+      { q: 'Kan I redde mine data, hvis skaden også har ramt drevet?', a: 'I mange tilfælde ja — se vores side om backup & datagendannelse for detaljer.' },
+    ],
+    crosslinks: [
+      { label: 'Væskeskade-reparation', href: '/vaeskeskade-reparation/' },
+      { label: 'Typiske reparationspriser', href: '/reparationspriser/' },
+      { label: 'Garanti', href: '/garanti/' },
+      { label: 'Backup & datagendannelse', href: '/backup-og-datagendannelse/' },
     ],
   },
 
