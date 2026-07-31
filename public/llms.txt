@@ -6,7 +6,7 @@ PCKlinik reparerer stationære og bærbare computere — PC og Mac — men ikke 
 
 ## Reparation
 
-- [Computerreparation (oversigt)](https://www.pcklinik.dk/computer-reparation/): Generel oversigt over PC- og Mac-reparation i Frederiksberg og København.
+- [Computerreparation (oversigt)](https://www.pcklinik.dk/computer-reparation/): Generel oversigt over PC- og Mac-reparation på Frederiksberg og i København.
 - [Mac-reparation](https://www.pcklinik.dk/mac-reparation/): Uafhængig Mac-specialist, ikke Apple-autoriseret, komponentniveau-reparationer.
 - [Gaming-pc-reparation](https://www.pcklinik.dk/gaming-pc-reparation/): Reparation og service af gaming-pc'er, inkl. specialbyggede maskiner.
 - [Bundkortreparation](https://www.pcklinik.dk/bundkort-reparation/): Bundkortreparation for pc og Mac.
