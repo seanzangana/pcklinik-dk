@@ -11,11 +11,11 @@ export const repairs = [
     slug: 'lenovo-reparation',
     brand: 'Lenovo',
     title: 'Lenovo-reparation: ThinkPad T14, IdeaPad, Legion | PCKlinik',
-    description: 'Reparation af Lenovo ThinkPad T14, T14s, X1 Carbon, IdeaPad 3/5 og Legion i Frederiksberg og København. Fejlsøgning fra 300 kr., fast pris. Ring 91 81 61 81.',
-    h1: 'Lenovo-reparation i Frederiksberg & København',
+    description: 'Reparation af Lenovo ThinkPad, IdeaPad og Legion på Frederiksberg og i København. Fejlsøgning fra 300 kr. Ring 91 81 61 81.',
+    h1: 'Lenovo-reparation på Frederiksberg & København',
     h2: 'ThinkPad, IdeaPad, Legion, Yoga og ThinkBook — vi reparerer dem alle',
     intro: [
-      'Har du problemer med din Lenovo? Hos PCKlinik reparerer vi alle Lenovo-serier — <strong>ThinkPad T14, T14s, T16, X1 Carbon, X1 Yoga og P16</strong>, <strong>IdeaPad 3, IdeaPad 5 og IdeaPad Slim</strong>, <strong>Legion 5 og Legion Pro</strong> samt <strong>Yoga 7, Yoga Slim</strong> og <strong>ThinkBook</strong> — for privatpersoner og virksomheder i Frederiksberg og København.',
+      'Har du problemer med din Lenovo? Hos PCKlinik reparerer vi alle Lenovo-serier — <strong>ThinkPad T14, T14s, T16, X1 Carbon, X1 Yoga og P16</strong>, <strong>IdeaPad 3, IdeaPad 5 og IdeaPad Slim</strong>, <strong>Legion 5 og Legion Pro</strong> samt <strong>Yoga 7, Yoga Slim</strong> og <strong>ThinkBook</strong> — for privatpersoner og virksomheder på Frederiksberg og i København.',
       'Uanset om det er en revnet skærm på din <strong>ThinkPad T14</strong>, et løst hængsel på din <strong>X1 Carbon</strong>, et batteri, der har givet op på din <strong>IdeaPad 5</strong>, eller en <strong>Legion</strong>, der overopheder under belastning, arbejder vi os metodisk igennem det.',
       'Vi laver en grundig fejlsøgning af din Lenovo og giver dig en fast pris, før vi går i gang — så du altid kender prisen, før vi rører ved maskinen. Standardfejlsøgning koster 300 kr. (2–4 dage), eller vælg ekspres for 600 kr. (1–2 timer) — med reparation og levering inden for 24 timer, hvis der ikke skal bestilles specielle reservedele. De fleste Lenovo-reparationer klares samme dag, direkte fra vores værksted på Falkoner Allé.',
     ],
@@ -35,7 +35,7 @@ export const repairs = [
       { title: 'Køling & ydelse', body: 'Fryser eller genstarter maskinen under gaming eller tunge opgaver på din <strong>Legion 5, Legion 5 Pro</strong> eller <strong>ThinkPad P16</strong>? Vi renser og reparerer kølesystemet og retter softwareproblemer, der giver ustabilitet på <strong>IdeaPad</strong>- og <strong>ThinkBook</strong>-modeller.' },
     ],
     whyHeading: 'Hvorfor vælge PCKlinik til Lenovo-reparation?',
-    whyIntro: 'Med tusindvis af gennemførte reparationer og tilfredse kunder er PCKlinik dit oplagte valg til reparation af <strong>ThinkPad, IdeaPad, Legion, Yoga</strong> og <strong>ThinkBook</strong> i Frederiksberg og København.',
+    whyIntro: 'Med tusindvis af gennemførte reparationer og tilfredse kunder er PCKlinik dit oplagte valg til reparation af <strong>ThinkPad, IdeaPad, Legion, Yoga</strong> og <strong>ThinkBook</strong> på Frederiksberg og i København.',
     why: [
       { title: 'Erfaren service', body: 'Solid erfaring med ThinkPad T14/T14s, X1 Carbon, IdeaPad 3/5, Legion 5 og Yoga-modeller.' },
       { title: 'Hurtig ekspedition', body: 'De fleste Lenovo-reparationer klares samme dag — uanset om det er en T14 eller en Legion 5 Pro.' },
@@ -64,11 +64,11 @@ export const repairs = [
     slug: 'acer-reparation',
     brand: 'Acer',
     title: 'Acer-reparation: Aspire, Nitro, Swift | PCKlinik',
-    description: 'Reparation af Acer Aspire 5, Nitro 5, Swift og Predator i Frederiksberg og København. Fejlsøgning fra 300 kr., fast pris. Ring 91 81 61 81.',
-    h1: 'Acer-reparation i Frederiksberg & København',
+    description: 'Reparation af Acer Aspire 5, Nitro 5, Swift og Predator på Frederiksberg og i København. Fejlsøgning fra 300 kr., fast pris. Ring 91 81 61 81.',
+    h1: 'Acer-reparation på Frederiksberg & København',
     h2: 'Aspire, Nitro, Swift og Predator — vi reparerer dem alle',
     intro: [
-      'Har du problemer med din Acer? Hos PCKlinik reparerer vi alle Acer-serier — <strong>Aspire 3, Aspire 5, Nitro 5, Swift 3, Swift 5</strong> og <strong>Predator Helios</strong> — for privatpersoner og virksomheder i Frederiksberg og København. Acer er kendt som et af de mest driftssikre og prisvenlige mærker at reparere, da reservedele generelt er tilgængelige og billige.',
+      'Har du problemer med din Acer? Hos PCKlinik reparerer vi alle Acer-serier — <strong>Aspire 3, Aspire 5, Nitro 5, Swift 3, Swift 5</strong> og <strong>Predator Helios</strong> — for privatpersoner og virksomheder på Frederiksberg og i København. Acer er kendt som et af de mest driftssikre og prisvenlige mærker at reparere, da reservedele generelt er tilgængelige og billige.',
       'Uanset om det er en revnet skærm på din <strong>Aspire 5</strong>, et løbet tørt batteri på din <strong>Swift 3</strong> eller en <strong>Nitro 5</strong>, der overopheder under gaming, arbejder vi os metodisk igennem det. Fejlsøgning koster 300 kr. (2–4 dage) eller ekspres for 600 kr. (1–2 timer).',
     ],
     models: [
@@ -112,11 +112,11 @@ export const repairs = [
     slug: 'hp-reparation',
     brand: 'HP',
     title: 'HP-reparation: EliteBook, Pavilion, Spectre | PCKlinik',
-    description: 'Reparation af HP EliteBook 840, Pavilion, Spectre x360 og Omen i Frederiksberg og København. Fejlsøgning fra 300 kr., fast pris. Ring 91 81 61 81.',
-    h1: 'HP-reparation i Frederiksberg & København',
+    description: 'Reparation af HP EliteBook 840, Pavilion, Spectre x360 og Omen på Frederiksberg og i København. Fejlsøgning fra 300 kr., fast pris. Ring 91 81 61 81.',
+    h1: 'HP-reparation på Frederiksberg & København',
     h2: 'EliteBook, Pavilion, Spectre og Omen — vi reparerer dem alle',
     intro: [
-      'Har du problemer med din HP? Hos PCKlinik reparerer vi alle HP-serier — <strong>EliteBook 840, EliteBook 850, Pavilion, Spectre x360</strong> og <strong>Omen</strong> — for privatpersoner og virksomheder i Frederiksberg og København. HP er et af de mest udbredte mærker på danske kontorer, og vi har solid erfaring med både erhvervs- og forbrugerserierne.',
+      'Har du problemer med din HP? Hos PCKlinik reparerer vi alle HP-serier — <strong>EliteBook 840, EliteBook 850, Pavilion, Spectre x360</strong> og <strong>Omen</strong> — for privatpersoner og virksomheder på Frederiksberg og i København. HP er et af de mest udbredte mærker på danske kontorer, og vi har solid erfaring med både erhvervs- og forbrugerserierne.',
       'Uanset om det er en revnet skærm på din <strong>Pavilion</strong>, et løst hængsel på din <strong>Spectre x360</strong> eller en <strong>EliteBook</strong>, der ikke vil starte, arbejder vi os metodisk igennem det. Fejlsøgning koster 300 kr. (2–4 dage) eller ekspres for 600 kr. (1–2 timer).',
     ],
     models: [
@@ -160,11 +160,11 @@ export const repairs = [
     slug: 'dell-reparation',
     brand: 'Dell',
     title: 'Dell-reparation: XPS, Latitude, Inspiron | PCKlinik',
-    description: 'Reparation af Dell XPS 13/15, Latitude, Inspiron og Precision i Frederiksberg og København. Fejlsøgning fra 300 kr., fast pris. Ring 91 81 61 81.',
-    h1: 'Dell-reparation i Frederiksberg & København',
+    description: 'Reparation af Dell XPS 13/15, Latitude, Inspiron og Precision på Frederiksberg og i København. Fejlsøgning fra 300 kr., fast pris. Ring 91 81 61 81.',
+    h1: 'Dell-reparation på Frederiksberg & København',
     h2: 'XPS, Latitude, Inspiron og Precision — vi reparerer dem alle',
     intro: [
-      'Har du problemer med din Dell? Hos PCKlinik reparerer vi alle Dell-serier — <strong>XPS 13, XPS 15, Latitude 5440, Latitude 7440, Inspiron 15</strong> og <strong>Precision</strong>-workstations — for privatpersoner og virksomheder i Frederiksberg og København.',
+      'Har du problemer med din Dell? Hos PCKlinik reparerer vi alle Dell-serier — <strong>XPS 13, XPS 15, Latitude 5440, Latitude 7440, Inspiron 15</strong> og <strong>Precision</strong>-workstations — for privatpersoner og virksomheder på Frederiksberg og i København.',
       'Uanset om det er et løst hængsel på din <strong>XPS 13</strong> (et velkendt svagt punkt hos Dell), et løbet tørt batteri på din <strong>Inspiron</strong> eller en <strong>Latitude</strong>, der driller på arbejdet, arbejder vi os metodisk igennem det. Fejlsøgning koster 300 kr. (2–4 dage) eller ekspres for 600 kr. (1–2 timer).',
     ],
     models: [
@@ -208,11 +208,11 @@ export const repairs = [
     slug: 'asus-reparation',
     brand: 'Asus',
     title: 'Asus-reparation: ZenBook, ROG, Vivobook | PCKlinik',
-    description: 'Reparation af Asus ZenBook 14, ROG Strix, TUF Gaming og Vivobook i Frederiksberg og København. Fejlsøgning fra 300 kr., fast pris. Ring 91 81 61 81.',
-    h1: 'Asus-reparation i Frederiksberg & København',
+    description: 'Reparation af Asus ZenBook 14, ROG Strix, TUF Gaming og Vivobook på Frederiksberg og i København. Fejlsøgning fra 300 kr., fast pris. Ring 91 81 61 81.',
+    h1: 'Asus-reparation på Frederiksberg & København',
     h2: 'ZenBook, Vivobook, ROG og TUF — vi reparerer dem alle',
     intro: [
-      'Har du problemer med din Asus? Hos PCKlinik reparerer vi alle Asus-serier — <strong>ZenBook 14, Vivobook 15, ROG Strix, TUF Gaming</strong> og <strong>Chromebook</strong> — for privatpersoner og virksomheder i Frederiksberg og København. Asus-computere er ofte bygget mere kompakt end mange andre mærker, hvilket kræver reel erfaring at reparere korrekt.',
+      'Har du problemer med din Asus? Hos PCKlinik reparerer vi alle Asus-serier — <strong>ZenBook 14, Vivobook 15, ROG Strix, TUF Gaming</strong> og <strong>Chromebook</strong> — for privatpersoner og virksomheder på Frederiksberg og i København. Asus-computere er ofte bygget mere kompakt end mange andre mærker, hvilket kræver reel erfaring at reparere korrekt.',
       'Uanset om det er en revnet skærm på din <strong>Vivobook</strong>, et løbet tørt batteri på din <strong>ZenBook</strong> eller en <strong>ROG Strix</strong>, der overopheder under gaming, arbejder vi os metodisk igennem det. Fejlsøgning koster 300 kr. (2–4 dage) eller ekspres for 600 kr. (1–2 timer).',
     ],
     models: [
@@ -256,11 +256,11 @@ export const repairs = [
     slug: 'msi-reparation',
     brand: 'MSI',
     title: 'MSI-reparation: Katana, GF63, Stealth | PCKlinik',
-    description: 'Reparation af MSI Katana, GF63, Stealth og Prestige i Frederiksberg og København. Fejlsøgning fra 300 kr., fast pris. Ring 91 81 61 81.',
-    h1: 'MSI-reparation i Frederiksberg & København',
+    description: 'Reparation af MSI Katana, GF63, Stealth og Prestige på Frederiksberg og i København. Fejlsøgning fra 300 kr., fast pris. Ring 91 81 61 81.',
+    h1: 'MSI-reparation på Frederiksberg & København',
     h2: 'Katana, GF63, Stealth og Prestige — vi reparerer dem alle',
     intro: [
-      'Har du problemer med din MSI-gamingcomputer? Hos PCKlinik reparerer vi alle MSI-serier — <strong>Katana 15, GF63, Stealth, Prestige</strong> og <strong>Cyborg</strong> — for gamere og kreative fagfolk i Frederiksberg og København. Vi er et af de få værksteder i Danmark, der har MSI-dele på lager, hvilket betyder hurtigere ekspedition.',
+      'Har du problemer med din MSI-gamingcomputer? Hos PCKlinik reparerer vi alle MSI-serier — <strong>Katana 15, GF63, Stealth, Prestige</strong> og <strong>Cyborg</strong> — for gamere og kreative fagfolk på Frederiksberg og i København. Vi er et af de få værksteder i Danmark, der har MSI-dele på lager, hvilket betyder hurtigere ekspedition.',
       'Uanset om det er en <strong>GF63</strong>, der overopheder under gaming, en revnet skærm på din <strong>Katana 15</strong> eller et batteri, der har givet op på din <strong>Stealth</strong>, arbejder vi os metodisk igennem det. Fejlsøgning koster 300 kr. (2–4 dage) eller ekspres for 600 kr. (1–2 timer).',
     ],
     models: [
@@ -304,11 +304,11 @@ export const repairs = [
     slug: 'huawei-reparation',
     brand: 'Huawei',
     title: 'Huawei-reparation: MateBook D14, X Pro | PCKlinik',
-    description: 'Reparation af Huawei MateBook D14, MateBook X Pro og MateBook 14 i Frederiksberg og København. Fejlsøgning fra 300 kr., fast pris. Ring 91 81 61 81.',
-    h1: 'Huawei-reparation i Frederiksberg & København',
+    description: 'Reparation af Huawei MateBook D14, MateBook X Pro og MateBook 14 på Frederiksberg og i København. Fejlsøgning fra 300 kr., fast pris. Ring 91 81 61 81.',
+    h1: 'Huawei-reparation på Frederiksberg & København',
     h2: 'MateBook D14, MateBook X Pro og MateBook 14 — vi reparerer dem alle',
     intro: [
-      'Har du problemer med din Huawei? Hos PCKlinik reparerer vi alle Huawei MateBook-serier — <strong>MateBook D14, MateBook D15, MateBook X Pro</strong> og <strong>MateBook 14</strong> — for privatpersoner og virksomheder i Frederiksberg og København.',
+      'Har du problemer med din Huawei? Hos PCKlinik reparerer vi alle Huawei MateBook-serier — <strong>MateBook D14, MateBook D15, MateBook X Pro</strong> og <strong>MateBook 14</strong> — for privatpersoner og virksomheder på Frederiksberg og i København.',
       'Uanset om det er en revnet skærm på din <strong>MateBook D14</strong>, en ladeport, der driller på din <strong>MateBook X Pro</strong>, eller en computer, der fryser og genstarter, arbejder vi os metodisk igennem det. Fejlsøgning koster 300 kr. (2–4 dage) eller ekspres for 600 kr. (1–2 timer).',
     ],
     models: [
@@ -349,11 +349,11 @@ export const repairs = [
     slug: 'macbook-reparation',
     brand: 'MacBook',
     title: 'MacBook-reparation: Pro, Air, M1/M2/M3 | PCKlinik',
-    description: 'Reparation af MacBook Pro 13"/14"/16" og MacBook Air M1/M2/M3 i Frederiksberg og København. Fejlsøgning fra 300 kr., fast pris. Ring 91 81 61 81.',
-    h1: 'MacBook-reparation i Frederiksberg & København',
+    description: 'Reparation af MacBook Pro 13"/14"/16" og MacBook Air M1/M2/M3 på Frederiksberg og i København. Fejlsøgning fra 300 kr., fast pris. Ring 91 81 61 81.',
+    h1: 'MacBook-reparation på Frederiksberg & København',
     h2: 'MacBook Pro, MacBook Air og ældre modeller — vi reparerer dem alle',
     intro: [
-      'Er din MacBook i stykker? Hos PCKlinik reparerer vi alle MacBook-modeller — fra den nyeste <strong>MacBook Pro 14" og 16" med M3-chip</strong> og <strong>MacBook Air M1/M2/M3</strong> til ældre modeller som <strong>MacBook Pro 13" (A1278/A1286)</strong> — for privatpersoner og virksomheder i Frederiksberg og København.',
+      'Er din MacBook i stykker? Hos PCKlinik reparerer vi alle MacBook-modeller — fra den nyeste <strong>MacBook Pro 14" og 16" med M3-chip</strong> og <strong>MacBook Air M1/M2/M3</strong> til ældre modeller som <strong>MacBook Pro 13" (A1278/A1286)</strong> — for privatpersoner og virksomheder på Frederiksberg og i København.',
       'Uanset om det er en revnet skærm på din <strong>MacBook Air M2</strong>, et hævet batteri på en ældre <strong>MacBook Pro 13"</strong> eller en tastaturfejl på en <strong>MacBook Pro</strong> med butterfly-tastaturet, arbejder vi os metodisk igennem det. Fejlsøgning koster 300 kr. (2–4 dage) eller ekspres for 600 kr. (1–2 timer) — med reparation og levering inden for 24 timer, hvis der ikke skal bestilles specielle reservedele. Vi giver prisgaranti på MacBook-reparationer, og mange reparationer som skærm- og batteriskift klares inden for 1 time.',
     ],
     models: [
@@ -396,11 +396,11 @@ export const repairs = [
     slug: 'microsoft-surface-reparation',
     brand: 'Microsoft Surface',
     title: 'Microsoft Surface-reparation: Pro, Laptop, Book | PCKlinik',
-    description: 'Reparation af Microsoft Surface Pro, Surface Laptop og Surface Book i Frederiksberg og København. Fejlsøgning fra 300 kr., fast pris. Ring 91 81 61 81.',
-    h1: 'Microsoft Surface-reparation i Frederiksberg & København',
+    description: 'Reparation af Microsoft Surface Pro, Surface Laptop og Surface Book på Frederiksberg og i København. Fejlsøgning fra 300 kr., fast pris. Ring 91 81 61 81.',
+    h1: 'Microsoft Surface-reparation på Frederiksberg & København',
     h2: 'Surface Pro, Surface Laptop og Surface Book — vi reparerer dem alle',
     intro: [
-      'Har du problemer med din Microsoft Surface? Hos PCKlinik reparerer vi alle Surface-modeller — <strong>Surface Pro 9, Surface Laptop 5, Surface Book 3</strong> og <strong>Surface Laptop Go</strong> — for privatpersoner og virksomheder i Frederiksberg og København. Surface-enheder kræver reel ekspertise at reparere korrekt på grund af deres kompakte, skærmintegrerede design.',
+      'Har du problemer med din Microsoft Surface? Hos PCKlinik reparerer vi alle Surface-modeller — <strong>Surface Pro 9, Surface Laptop 5, Surface Book 3</strong> og <strong>Surface Laptop Go</strong> — for privatpersoner og virksomheder på Frederiksberg og i København. Surface-enheder kræver reel ekspertise at reparere korrekt på grund af deres kompakte, skærmintegrerede design.',
       'Uanset om det er en revnet touchskærm på din <strong>Surface Pro</strong>, et løst hængsel på din <strong>Surface Book</strong> eller en ladeport, der driller på din <strong>Surface Laptop</strong>, arbejder vi os metodisk igennem det. Fejlsøgning koster 300 kr. (2–4 dage) eller ekspres for 600 kr. (1–2 timer).',
     ],
     models: [
@@ -443,11 +443,11 @@ export const repairs = [
     slug: 'samsung-reparation',
     brand: 'Samsung',
     title: 'Samsung-reparation: Galaxy Book Pro, Go | PCKlinik',
-    description: 'Reparation af Samsung Galaxy Book3, Galaxy Book4 Pro og Galaxy Book Go i Frederiksberg og København. Fejlsøgning fra 300 kr., fast pris. Ring 91 81 61 81.',
-    h1: 'Samsung-reparation i Frederiksberg & København',
+    description: 'Reparation af Samsung Galaxy Book3, Book4 Pro og Book Go på Frederiksberg og i København. Fejlsøgning fra 300 kr., fast pris. Ring 91 81 61 81.',
+    h1: 'Samsung-reparation på Frederiksberg & København',
     h2: 'Galaxy Book3, Galaxy Book4 Pro og Galaxy Book Go — vi reparerer dem alle',
     intro: [
-      'Har du problemer med din Samsung Galaxy Book? Hos PCKlinik reparerer vi alle Samsung-bærbare — <strong>Galaxy Book3, Galaxy Book4 Pro, Galaxy Book3 360</strong> og <strong>Galaxy Book Go</strong> — for privatpersoner og virksomheder i Frederiksberg og København. Samsung er et relativt nyt navn inden for bærbare, og vi er blandt de få værksteder i København med reel erfaring med mærket.',
+      'Har du problemer med din Samsung Galaxy Book? Hos PCKlinik reparerer vi alle Samsung-bærbare — <strong>Galaxy Book3, Galaxy Book4 Pro, Galaxy Book3 360</strong> og <strong>Galaxy Book Go</strong> — for privatpersoner og virksomheder på Frederiksberg og i København. Samsung er et relativt nyt navn inden for bærbare, og vi er blandt de få værksteder i København med reel erfaring med mærket.',
       'Uanset om det er en revnet skærm på din <strong>Galaxy Book3</strong>, en S Pen, der ikke registreres på din <strong>Galaxy Book3 360</strong>, eller et løbet tørt batteri, arbejder vi os metodisk igennem det. Fejlsøgning koster 300 kr. (2–4 dage) eller ekspres for 600 kr. (1–2 timer).',
     ],
     models: [
@@ -488,12 +488,12 @@ export const repairs = [
   {
     slug: 'mac-stationaer-reparation',
     brand: 'Mac (stationær)',
-    title: 'Reparation af stationær Mac: iMac, Mac mini, Mac Studio | PCKlinik',
-    description: 'Reparation af iMac, Mac mini, Mac Studio og Mac Pro i Frederiksberg og København. Fejlsøgning fra 300 kr., fast pris. Ring 91 81 61 81.',
-    h1: 'Reparation af stationær Mac i Frederiksberg & København',
+    title: 'Stationær Mac: iMac, Mac mini, Mac Studio | PCKlinik',
+    description: 'Reparation af iMac, Mac mini, Mac Studio og Mac Pro på Frederiksberg og i København. Fejlsøgning fra 300 kr., fast pris. Ring 91 81 61 81.',
+    h1: 'Reparation af stationær Mac på Frederiksberg & København',
     h2: 'iMac, Mac mini, Mac Studio og Mac Pro — vi reparerer dem alle',
     intro: [
-      'Har du problemer med din stationære Mac? Hos PCKlinik reparerer vi alle Mac-modeller — <strong>iMac 24" (M1/M3), iMac 27" (Intel), Mac mini (M2/M4), Mac Studio (M1 Max/Ultra, M2 Max/Ultra)</strong> og <strong>Mac Pro</strong> — for privatpersoner og virksomheder i Frederiksberg og København.',
+      'Har du problemer med din stationære Mac? Hos PCKlinik reparerer vi alle Mac-modeller — <strong>iMac 24" (M1/M3), iMac 27" (Intel), Mac mini (M2/M4), Mac Studio (M1 Max/Ultra, M2 Max/Ultra)</strong> og <strong>Mac Pro</strong> — for privatpersoner og virksomheder på Frederiksberg og i København.',
       'Uanset om det er en <strong>iMac</strong>, der ikke vil starte, en <strong>Mac mini</strong>, der er blevet mistænkeligt langsom, eller en <strong>Mac Studio</strong>, der laver usædvanlig blæserstøj, arbejder vi os metodisk igennem det. Vi laver en grundig fejlsøgning af din Mac og giver dig en fast pris, før vi går i gang — så du altid kender prisen, før vi rører ved maskinen. Standardfejlsøgning koster 300 kr. (2–4 dage), eller vælg ekspres for 600 kr. (1–2 timer).',
       'Leder du efter reparation af MacBook (bærbar) i stedet? Det har vi en dedikeret side til — <a href="/macbook-reparation/">se MacBook-reparation her</a>.',
     ],
@@ -539,7 +539,7 @@ export const repairs = [
     slug: 'andre-maerker-reparation',
     brand: 'Andre mærker & specialbyggede',
     title: 'Reparation af andre mærker & specialbyggede | PCKlinik',
-    description: 'Computerreparation af Gigabyte, LG gram, Razer, specialbyggede stationære og ethvert mærke, der ikke er nævnt — Frederiksberg og København. Fejlsøgning fra 300 kr., fast pris.',
+    description: 'Reparation af Gigabyte, LG gram, Razer og specialbyggede — samt ethvert mærke, der ikke er nævnt. Fejlsøgning fra 300 kr., fast pris.',
     h1: 'Reparation af andre mærker & specialbyggede',
     h2: 'Kan du ikke se dit mærke på listen? Vi reparerer det alligevel.',
     intro: [
@@ -569,8 +569,8 @@ export const repairs = [
     slug: 'toshiba-dynabook-reparation',
     brand: 'Toshiba & Dynabook',
     title: 'Toshiba- & Dynabook-reparation | PCKlinik',
-    description: 'Reparation af Toshiba- og Dynabook-bærbare — Satellite, Portégé, Tecra — i Frederiksberg og København. Fejlsøgning fra 300 kr., fast pris.',
-    h1: 'Toshiba- & Dynabook-reparation i Frederiksberg & København',
+    description: 'Reparation af Toshiba- og Dynabook-bærbare — Satellite, Portégé, Tecra — på Frederiksberg og i København. Fejlsøgning fra 300 kr., fast pris.',
+    h1: 'Toshiba- & Dynabook-reparation på Frederiksberg & København',
     h2: 'Satellite, Portégé, Tecra og ældre Toshiba-modeller',
     intro: [
       'Toshibas bærbar-forretning blev overtaget af Sharp og omdøbt til Dynabook, men vi reparerer både de ældre Toshiba-mærkede modeller og de nyere Dynabook-serier. Uanset om det er en ældre Satellite, der stadig kører fint, eller en erhvervsfokuseret Portégé eller Tecra, fejlsøger og reparerer vi dem på samme måde som ethvert andet mærke.',
@@ -606,8 +606,8 @@ export const repairs = [
   {
     slug: 'fujitsu-reparation', brand: 'Fujitsu',
     title: 'Reparation af Fujitsu-bærbare | PCKlinik',
-    description: 'Reparation af Fujitsu LIFEBOOK i Frederiksberg og København. Vi sælger også istandsatte Fujitsu-bærbare. Fejlsøgning fra 300 kr., fast pris.',
-    h1: 'Fujitsu-reparation i Frederiksberg & København',
+    description: 'Reparation af Fujitsu LIFEBOOK på Frederiksberg og i København. Vi sælger også istandsatte Fujitsu-bærbare. Fejlsøgning fra 300 kr., fast pris.',
+    h1: 'Fujitsu-reparation på Frederiksberg & København',
     h2: 'LIFEBOOK og andre Fujitsu-bærbare — et mærke, vi kender godt',
     intro: [
       'Fujitsu laver driftssikre, erhvervsfokuserede bærbare, der ikke får så meget opmærksomhed som de store mærker — men vi kender dem godt. Vi både reparerer Fujitsu-bærbare og sælger istandsatte Fujitsu-enheder i vores butik, så vi er reelt fortrolige med almindelige fejlpunkter på tværs af serien, ikke kun reparerer dem lejlighedsvis.',
@@ -642,8 +642,8 @@ export const repairs = [
   {
     slug: 'lg-gram-reparation', brand: 'LG gram',
     title: 'Reparation af LG gram-bærbare | PCKlinik',
-    description: 'Reparation af LG gram-bærbare i Frederiksberg og København. Skærm, batteri, tastatur. Fejlsøgning fra 300 kr., fast pris.',
-    h1: 'LG gram-reparation i Frederiksberg & København',
+    description: 'Reparation af LG gram-bærbare på Frederiksberg og i København. Skærm, batteri, tastatur. Fejlsøgning fra 300 kr., fast pris.',
+    h1: 'LG gram-reparation på Frederiksberg & København',
     h2: 'Ultralette bærbare, repareret ordentligt',
     intro: [
       'LG gram-bærbare er kendt for at være usædvanligt lette uden at gå på kompromis med skærmstørrelsen — populære hos studerende og fagfolk, der rejser meget. Den lette konstruktion bruger en anden intern ingeniørkunst end de fleste bærbare, hvilket vi har erfaring med.',
@@ -674,8 +674,8 @@ export const repairs = [
   {
     slug: 'razer-blade-reparation', brand: 'Razer Blade',
     title: 'Reparation af Razer Blade-bærbare | PCKlinik',
-    description: 'Reparation af Razer Blade gaming-bærbare i Frederiksberg og København. Skærm, køling, batteri. Fejlsøgning fra 300 kr., fast pris.',
-    h1: 'Razer Blade-reparation i Frederiksberg & København',
+    description: 'Reparation af Razer Blade gaming-bærbare på Frederiksberg og i København. Skærm, køling, batteri. Fejlsøgning fra 300 kr., fast pris.',
+    h1: 'Razer Blade-reparation på Frederiksberg & København',
     h2: 'Premium gaming-bærbare, repareret ordentligt',
     intro: [
       'Razer Blade-bærbare pakker højtydende gaming-hardware ind i et tyndt aluminiumskabinet — hvilket betyder, at køling og termisk styring betyder endnu mere end på typiske gaming-bærbare. Vi reparerer Razer Blade-skærme, kølesystemer, batterier og meget mere.',
