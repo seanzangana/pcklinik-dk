@@ -1,5 +1,5 @@
 ---
-title: "Sådan ved du, om dit bærbare batteri skal skiftes"
+title: "Skal dit bærbare batteri skiftes?"
 date: 2026-07-05
 category: Guides
 description: "Fem klare tegn på, at batteriet i din bærbare er på vej ud — og hvordan du tjekker dets reelle sundhed, før du bruger penge."
