@@ -1,5 +1,5 @@
 ---
-title: "De mest almindelige Mac-opstartsskærme, og hvad de betyder"
+title: "Mac-opstartsskærme: hvad de betyder"
 date: 2026-07-03
 category: Guides
 description: "En mappe med et spørgsmålstegn, en cirkel med en streg, en lås — her er, hvad ikonerne på en Mac-opstartsskærm faktisk fortæller dig."
