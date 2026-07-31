@@ -1,8 +1,8 @@
 ---
-title: "GDPR Checklist til Danske SMV'er: Sikker Dit Persondata-Håndtering Nu"
+title: "GDPR-tjekliste til danske SMV'er"
 date: 2026-07-30
 category: Guides
-description: "Som ejer af en dansk SMV skal du håndtere persondata fra dine kunder, medarbejdere og forretningspartnere. Men hvad skal du egentlig gøre for at være sikker på,"
+description: "Praktisk GDPR-tjekliste til danske SMV'er: hvilke persondata du har ansvar for, og de konkrete skridt til at håndtere dem sikkert — uden jargon."
 ---
 
 Som ejer af en dansk SMV skal du håndtere persondata fra dine kunder, medarbejdere og forretningspartnere. Men hvad skal du egentlig gøre for at være sikker på, at du overholder GDPR? En GDPR tjekliste Danmark SMV er dét værktøj, som mange virksomheder savner — noget helt konkret, der fortæller præcis hvad der skal gøres og hvornår.
