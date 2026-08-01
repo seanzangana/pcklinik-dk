@@ -38,54 +38,91 @@
 # Udvalgt fra Search Console → Ydeevne → Sider (seneste 3 mdr.), sorteret
 # efter visninger, ned til hvor visningerne nærmer sig nul (grænse: 5).
 # Alle 34 er verificeret 404 på www.pcklinik.dk inden tilføjelse.
-# Tallet i kommentaren er visninger / klik i perioden.
+# Kommentarlinjen over hver regel er visninger / klik i perioden.
+# BEMÆRK: Cloudflare Pages understøtter IKKE kommentarer i slutningen af en
+# regel-linje — en regel med "# ..." bagefter bliver ignoreret uden fejl.
+# Kommentarer skal stå på deres egen linje.
 # ---------------------------------------------------------------------------
 
 # --- Gamle bynavne-sider (bindestreg-varianten, der aldrig blev genskabt) ---
-/computer-reparation-koebenhavn/       /computerreparation-koebenhavn/  301   # 334 visn.
-/computer-reparation-vesterbro/        /computerreparation-vesterbro/  301    # 197 visn.
-/computer-reparation-koebenhavn-hvor/  /computerreparation-koebenhavn/  301   # 179 visn.
-/computer-reparation-valby/            /computerreparation-valby/  301        # 102 visn.
-/computer-reparation-vanloese/         /computerreparation-vanloese/  301     # 13 visn., 1 klik
+# 334 visn.
+/computer-reparation-koebenhavn/       /computerreparation-koebenhavn/  301
+# 197 visn.
+/computer-reparation-vesterbro/        /computerreparation-vesterbro/  301
+# 179 visn.
+/computer-reparation-koebenhavn-hvor/  /computerreparation-koebenhavn/  301
+# 102 visn.
+/computer-reparation-valby/            /computerreparation-valby/  301
+# 13 visn., 1 klik
+/computer-reparation-vanloese/         /computerreparation-vanloese/  301
 
 # --- Mac / MacBook ---
-/hvor-laenge-holder-en-macbook/        /macbook-reparation/  301              # 533 visn., 3 klik
-/mac-reparation-kobenhavn/             /mac-reparation/  301                  # 264 visn., 1 klik
-/macbook-reparation-koebenhavn-hvor/   /macbook-reparation/  301              # 165 visn.
-/macbook-reparation-koebenhavn/        /macbook-reparation/  301              # 34 visn.
-/mac-service/macbook-air-m2/           /macbook-reparation/  301              # 37 visn., 1 klik
-/mac-service/mac-pro/                  /mac-stationaer-reparation/  301       # 12 visn.
-/hvad-koster-macbook-skaerm/           /mac-skaermudskiftning/  301           # 95 visn.
-/hvad-koster-macbook-batteri/          /mac-batteriskift/  301                # 27 visn.
-/skift-batteri-baerbar-macbook/        /mac-batteriskift/  301                # 15 visn.
-/macbook-vil-ikke-lade-op/             /mac-batteriskift/  301                # 36 visn. — se note nederst
-/macbook-tastatur-reparation/          /mac-tastaturudskiftning/  301         # 18 visn.
+# 533 visn., 3 klik
+/hvor-laenge-holder-en-macbook/        /macbook-reparation/  301
+# 264 visn., 1 klik
+/mac-reparation-kobenhavn/             /mac-reparation/  301
+# 165 visn.
+/macbook-reparation-koebenhavn-hvor/   /macbook-reparation/  301
+# 34 visn.
+/macbook-reparation-koebenhavn/        /macbook-reparation/  301
+# 37 visn., 1 klik
+/mac-service/macbook-air-m2/           /macbook-reparation/  301
+# 12 visn.
+/mac-service/mac-pro/                  /mac-stationaer-reparation/  301
+# 95 visn.
+/hvad-koster-macbook-skaerm/           /mac-skaermudskiftning/  301
+# 27 visn.
+/hvad-koster-macbook-batteri/          /mac-batteriskift/  301
+# 15 visn.
+/skift-batteri-baerbar-macbook/        /mac-batteriskift/  301
+# 36 visn. — se note nederst
+/macbook-vil-ikke-lade-op/             /mac-batteriskift/  301
+# 18 visn.
+/macbook-tastatur-reparation/          /mac-tastaturudskiftning/  301
 
 # --- Erhverv / IT-support ---
-/it-serviceaftale-eller-timebetaling/  /it-support-til-erhverv/  301          # 105 visn.
-/tag/it-service-frederiksberg/         /it-support-frederiksberg/  301        # 21 visn.
-/tag/it-service/                       /it-support-til-erhverv/  301          # 5 visn.
-/tag/kobenhavn-it-service/             /it-support-til-erhverv/  301          # 5 visn.
+# 105 visn.
+/it-serviceaftale-eller-timebetaling/  /it-support-til-erhverv/  301
+# 21 visn.
+/tag/it-service-frederiksberg/         /it-support-frederiksberg/  301
+# 5 visn.
+/tag/it-service/                       /it-support-til-erhverv/  301
+# 5 visn.
+/tag/kobenhavn-it-service/             /it-support-til-erhverv/  301
 
 # --- Butik ---
-/shop/                                 /butik/  301                           # 85 visn.
-/product-category/brugte-computere-med-garanti/  /butik/computere/refurbished/  301  # 8 visn.
+# 85 visn.
+/shop/                                 /butik/  301
+# 8 visn.
+/product-category/brugte-computere-med-garanti/  /butik/computere/refurbished/  301
 
 # --- Øvrige sider med visninger ---
-/spoergsmaal-og-svar/                  /faq/  301                             # 53 visn.
-/category/blog/                        /nyheder/  301                         # 6 visn.
+# 53 visn.
+/spoergsmaal-og-svar/                  /faq/  301
+# 6 visn.
+/category/blog/                        /nyheder/  301
 
 # --- Tag-arkiver med visninger (resten 404'er fortsat) ---
-/tag/reparation-af-baerbar/            /computer-reparation/  301             # 29 visn.
-/tag/computer-hjaelp-kobenhavn/        /computerreparation-koebenhavn/  301   # 16 visn.
-/tag/data-recovery-kobenhavn/          /backup-og-datagendannelse/  301       # 15 visn.
-/tag/danish-computer-repair/           /computer-reparation/  301             # 9 visn.
-/tag/computer-repair-copenhagen/       /computerreparation-koebenhavn/  301   # 8 visn.
-/tag/mac-support-kobenhavn/            /mac-reparation/  301                  # 7 visn.
-/tag/computer-service-kobenhavn/       /computerreparation-koebenhavn/  301   # 7 visn.
-/tag/systemoptimering/                 /optimering-af-computer/  301          # 6 visn.
-/tag/computer-repair/                  /computer-reparation/  301             # 6 visn.
-/tag/computer-reparator/               /computer-reparation/  301             # 6 visn.
+# 29 visn.
+/tag/reparation-af-baerbar/            /computer-reparation/  301
+# 16 visn.
+/tag/computer-hjaelp-kobenhavn/        /computerreparation-koebenhavn/  301
+# 15 visn.
+/tag/data-recovery-kobenhavn/          /backup-og-datagendannelse/  301
+# 9 visn.
+/tag/danish-computer-repair/           /computer-reparation/  301
+# 8 visn.
+/tag/computer-repair-copenhagen/       /computerreparation-koebenhavn/  301
+# 7 visn.
+/tag/mac-support-kobenhavn/            /mac-reparation/  301
+# 7 visn.
+/tag/computer-service-kobenhavn/       /computerreparation-koebenhavn/  301
+# 6 visn.
+/tag/systemoptimering/                 /optimering-af-computer/  301
+# 6 visn.
+/tag/computer-repair/                  /computer-reparation/  301
+# 6 visn.
+/tag/computer-reparator/               /computer-reparation/  301
 
 # ---------------------------------------------------------------------------
 # ÅBNE PUNKTER — skal revideres, når de nævnte sider findes
