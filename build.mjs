@@ -161,12 +161,12 @@ fetch(f.getAttribute('action'),{method:'POST',headers:{'Content-Type':'applicati
 </script>`;
 
 // NOTE — no aggregateRating here on purpose. Google doesn't allow
-// self-serving review markup on LocalBusiness/Organization subtypes
-// (ours is ComputerRepairService), so it would never be rich-result
-// eligible regardless of how the JSON-LD is shaped. The visible footer
-// review link (site.reviewRating/reviewCount in src/data/site.js) is
-// page content, not markup, and is unaffected — it's sourced from the
-// Google Business Profile, not this schema object.
+// self-serving review markup on LocalBusiness/Organization subtypes,
+// so it would never be rich-result eligible regardless of how the
+// JSON-LD is shaped. The visible footer review link
+// (site.reviewRating/reviewCount in src/data/site.js) is page content,
+// not markup, and is unaffected — it's sourced from the Google Business
+// Profile, not this schema object.
 //
 // FROZEN BLOCK — byte-identical on every page that includes it (see page()
 // below, which puts this on literally every page). Do not edit per-page;
@@ -178,8 +178,17 @@ fetch(f.getAttribute('action'),{method:'POST',headers:{'Content-Type':'applicati
 // Maps place URL (the @lat,long prefix and the !3d/!4d data params) and
 // cross-checked against the pin shown in the GBP dashboard's own Location
 // tab. Confirmed by Shan 2026-08-05.
+//
+// `@type` is ElectronicsStore, not the old ComputerRepairService — that
+// was never a real schema.org type (validator.schema.org confirms it's
+// undefined in the vocabulary), which was also breaking `provider`
+// resolution on every areaServiceSchema() Service node pointing at this
+// block. ElectronicsStore is a real LocalBusiness > Store subtype with
+// real-world adoption and fits PCKlinik's actual model (repairs + selling
+// new/refurbished computers). Found and fixed 2026-08-05 while verifying
+// this PR against validator.schema.org.
 const businessSchema = {
-  '@context': 'https://schema.org', '@type': 'ComputerRepairService', '@id': site.domain + '/#business', name: 'PCKlinik',
+  '@context': 'https://schema.org', '@type': 'ElectronicsStore', '@id': site.domain + '/#business', name: 'PCKlinik',
   image: site.domain + '/logo.png',
   description: 'PC- og Mac-reparation, IT-support, salg af computere og rådgivning i København og på Frederiksberg.',
   url: site.domain + '/', telephone: '+4591816181', email: site.emailConsumer,
