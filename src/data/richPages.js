@@ -367,5 +367,105 @@ export function priceRangesHtml() {
     <div class="table-wrap" style="margin-top:20px"><table class="models"><thead><tr><th>Reparation</th><th>Vejledende pris</th></tr></thead><tbody>${rows}</tbody></table></div>
     <div class="trust-line" style="margin-top:24px"><strong>Alle priser er inkl. reservedele og arbejdsløn.</strong> SSD-prisen gælder 256 GB; større kapacitet koster mere. Fast tilbud, før vi går i gang.</div></div></section>
   <section class="section"><div class="wrap"><div class="cta-band"><h2>Vil du have en pris på din reparation?</h2><p>Kom forbi uden tidsbestilling eller kontakt os — vi laver en fejlsøgning og giver dig et fast tilbud, før noget arbejde går i gang.</p><div class="cta-row"><a class="btn btn-white" href="/kontakt/">Book en reparation</a><a class="btn btn-ghost-light" href="${site.phoneHref}">📞 Ring ${site.phone}</a></div></div>
-    <div style="margin-top:32px"><p class="eyebrow">Relateret</p><div class="crosslinks"><a href="/udskiftning-af-skaerm/">Skærmudskiftning →</a><a href="/mac-batteriskift/">Mac-batteriskift →</a><a href="/ssd-opgradering/">SSD-opgradering →</a><a href="/kontakt/">Kontakt & booking →</a></div></div></div></section>`;
+    <div style="margin-top:32px"><p class="eyebrow">Relateret</p><div class="crosslinks"><a href="/udskiftning-af-skaerm/">Skærmudskiftning →</a><a href="/mac-batteriskift/">Mac-batteriskift →</a><a href="/ssd-opgradering/">SSD-opgradering →</a><a href="/forsikringsreparation/">Forsikringsreparation →</a><a href="/kontakt/">Kontakt & booking →</a></div></div></div></section>`;
+}
+
+// ---------- IT-rådgivning (erhverv) ----------
+export const IT_RAADGIVNING_FAQ = [
+  { q: 'Hvad er NIS2, og gælder det min virksomhed?', a: 'NIS2 er EU’s cybersikkerhedsdirektiv, nu i dansk lov. Det rammer ikke kun store virksomheder — kravene følger med ned i leverandørkæden, så I kan være omfattet via en kunde. Vi hjælper med at afklare det og med den tekniske del.' },
+  { q: 'Hjælper I med at blive GDPR-klar?', a: 'Ja, med den praktiske IT-side: databeskyttelse, backup, adgangsstyring og dokumentation. Vi er ikke advokater, men vi får teknikken på plads.' },
+  { q: 'Koster den første konsultation noget?', a: 'Nej. Den første konsultation er gratis og uforpligtende.' },
+  { q: 'Er I bundet til bestemte produkter eller leverandører?', a: 'Nej. Vi rådgiver uafhængigt ud fra, hvad der er rigtigt for jer.' },
+  { q: 'Rådgiver I også helt små virksomheder?', a: 'Ja — fra enkeltmandsvirksomheder til mindre virksomheder og klinikker.' },
+];
+export function itRaadgivningHtml() {
+  const areas = [
+    ['🛡️', 'Sikkerhed og drift', 'Hvor sårbar er jeres opsætning, og hvad skal der til for at sove roligt om natten.'],
+    ['💾', 'Backup og gendannelse', 'Kan I komme videre, hvis en maskine dør, eller I bliver ramt af ransomware.'],
+    ['🔑', 'Adgang og brugerstyring', 'Hvem har adgang til hvad, og hvad sker der, når en medarbejder stopper.'],
+    ['📧', 'Microsoft 365, hosting og domæner', 'Det rigtige setup til jeres størrelse, uden at betale for mere end I bruger.'],
+  ].map(([i, t, b]) => `<div class="card"><div class="card-icon">${i}</div><h3>${esc(t)}</h3><p>${esc(b)}</p></div>`).join('');
+  const faqHtml = IT_RAADGIVNING_FAQ.map((f) => `<details><summary>${esc(f.q)}</summary><div class="answer">${esc(f.a)}</div></details>`).join('');
+  return `  <section class="hero"><div class="wrap"><div class="eyebrow">Erhverv · IT-rådgivning</div>
+    <h1>IT-rådgivning til din virksomhed</h1><p class="lead">Ærlig IT-rådgivning til små og mellemstore virksomheder i København og på Frederiksberg — GDPR, NIS2, og hvad der reelt giver mening for jer. Første konsultation er gratis.</p>
+    <div class="cta-row"><a class="btn btn-white" href="/kontakt/">Book en konsultation</a><a class="btn btn-ghost-light" href="${site.phoneHref}">📞 Ring ${site.phone}</a></div></div></section>
+  <section class="section"><div class="wrap lead-copy"><div class="crumbs"><a href="/">Forside</a> › <span>IT-rådgivning</span></div>
+    <p>Har du styr på din virksomheds IT — eller er det bare noget, der kører, indtil det ikke gør? Hos PCKlinik giver vi ærlig IT-rådgivning til små og mellemstore virksomheder i København og på Frederiksberg. Ingen salgstale, ingen lange kontrakter for at få en snak — bare et klart svar på, hvad der giver mening for jer.</p>
+    <p>Vi er et erfarent team med eget værksted på Falkoner Allé, og rådgivning er en fast del af "al din IT under ét tag": vi reparerer, vi sælger, vi rådgiver, og vi supporterer — så I har ét sted at gå til, og ét team, der kender jeres opsætning.</p></div></section>
+  <section class="section alt"><div class="wrap"><div class="eyebrow">Det rådgiver vi om</div><h2>Fire områder, vi hjælper virksomheder med</h2><div class="grid grid-2">${areas}</div></div></section>
+  <section class="section"><div class="wrap lead-copy"><div class="eyebrow">NIS2</div><h2>Gælder det din virksomhed?</h2>
+    <p>NIS2 er EU’s nye direktiv om cybersikkerhed, og det er trådt i kraft i dansk lovgivning. Mange mindre virksomheder tror, det kun rammer de store — men kravene følger med ned i leverandørkæden, så I kan være omfattet, fordi en større kunde er det. Vi er ikke advokater, men vi hjælper med den tekniske side: at kortlægge jeres nuværende sikkerhed, forklare hvad NIS2 betyder i praksis for jeres IT, og få de rette tekniske foranstaltninger på plads.</p></div></section>
+  <section class="section alt"><div class="wrap lead-copy"><div class="eyebrow">GDPR</div><h2>GDPR i praksis</h2>
+    <p>GDPR handler ikke kun om en cookiebanner. Vi ser på, hvordan I opbevarer og beskytter persondata, om jeres backup og adgangsstyring holder, og hvad I skal kunne dokumentere. Konkret hjælp — ikke jura-jargon.</p></div></section>
+  <section class="section"><div class="wrap"><div class="eyebrow">Sådan foregår det</div><h2>Fire trin, ingen bindinger</h2><div class="steps">
+    <div class="step"><div class="num">1</div><h3>Gratis første konsultation</h3><p>Uforpligtende, så vi forstår jeres situation.</p></div>
+    <div class="step"><div class="num">2</div><h3>Vi kigger på jeres opsætning</h3><p>Nuværende IT og sikkerhed gennemgås.</p></div>
+    <div class="step"><div class="num">3</div><h3>I får en klar anbefaling</h3><p>Hvad haster, hvad kan vente, og hvad det koster. Ingen salgstale.</p></div>
+    <div class="step"><div class="num">4</div><h3>I beslutter</h3><p>Vil I have os til at føre det ud i livet, gør vi det — ellers har I stadig en brugbar plan i hånden.</p></div></div></div></section>
+  <section class="section alt"><div class="wrap"><div class="eyebrow">FAQ</div><h2>IT-rådgivning — ofte stillede spørgsmål</h2><div class="faq">${faqHtml}</div></div></section>
+  <section class="section"><div class="wrap"><div class="cta-band"><h2>Første konsultation er gratis</h2><p>Den første samtale koster ikke noget og forpligter til ingenting. Ring på <a href="${site.phoneHref}" style="color:#A9C1F0">${site.phone}</a> eller skriv til <a href="mailto:${site.emailBusiness}" style="color:#A9C1F0">${site.emailBusiness}</a>, så aftaler vi et tidspunkt — på Falkoner Allé, over video eller ude hos jer.</p><div class="cta-row"><a class="btn btn-white" href="/kontakt/">Book en konsultation</a><a class="btn btn-ghost-light" href="${site.phoneHref}">📞 Ring ${site.phone}</a></div></div>
+    <div style="margin-top:32px"><p class="eyebrow">Relateret</p><div class="crosslinks"><a href="/it-support-til-erhverv/">IT-support til erhverv →</a><a href="/automatisk-backup/">Automatisk Backup →</a><a href="/kontakt/">Kontakt & booking →</a></div></div></div></section>`;
+}
+
+// ---------- Forsikringsreparation ----------
+export const FORSIKRING_FAQ = [
+  { q: 'Dækker min forsikring skade på computer eller Mac?', a: 'Ofte ja — indbo- og elektronikforsikringer dækker typisk pludselige skader som væske- og faldskade. Men det er dit forsikringsselskab, der afgør din konkrete sag.' },
+  { q: 'Hvordan starter jeg en forsikringssag hos jer?', a: 'Kom forbi Falkoner Allé 108 eller send enheden ind. Vi fejlsøger og sender dig et tilbud med den nødvendige dokumentation.' },
+  { q: 'Udsteder I den dokumentation, forsikringen kræver?', a: 'Ja — du får et specificeret tilbud og en faktura, som dit forsikringsselskab skal bruge.' },
+  { q: 'Betaler forsikringen jer direkte?', a: 'Nej. Du får tilbuddet og fakturaen fra os og sender dem til dit forsikringsselskab; afregningen er mellem dig og selskabet.' },
+  { q: 'Hvad med selvrisiko?', a: 'Selvrisikoen er en sag mellem dig og dit forsikringsselskab — den afhænger af din police.' },
+];
+export function forsikringsreparationHtml() {
+  const faqHtml = FORSIKRING_FAQ.map((f) => `<details><summary>${esc(f.q)}</summary><div class="answer">${esc(f.a)}</div></details>`).join('');
+  const damages = ['Væskeskade', 'Faldskade og knækkede skærme', 'Skader efter lynnedslag/overspænding', 'Skader i forbindelse med tyveri/indbrud'].map((d) => `<li>${esc(d)}</li>`).join('');
+  return `  <section class="hero"><div class="wrap"><div class="eyebrow">Forsikringsreparation · Frederiksberg &amp; København</div>
+    <h1>Reparation dækket af din forsikring</h1><p class="lead">Skadet computer eller Mac? Vi laver reparationer, der dækkes af din forsikring — du får et tilbud og en faktura til dit forsikringsselskab.</p>
+    <div class="cta-row"><a class="btn btn-white" href="/kontakt/">Book en reparation</a><a class="btn btn-ghost-light" href="${site.phoneHref}">📞 Ring ${site.phone}</a></div></div></section>
+  <section class="section"><div class="wrap lead-copy"><div class="crumbs"><a href="/">Forside</a> › <span>Forsikringsreparation</span></div>
+    <p>Er din computer eller Mac blevet skadet — spildt væske, tabt på gulvet, ramt af et lynnedslag? Så er den ofte dækket af din indbo- eller elektronikforsikring. Vi hjælper hver uge kunder med forsikringssager, og vi gør processen så enkel som muligt.</p></div></section>
+  <section class="section alt"><div class="wrap"><div class="eyebrow">Sådan foregår det</div><h2>Fem trin fra skade til reparation</h2><div class="steps">
+    <div class="step"><div class="num">1</div><h3>Du kommer forbi</h3><p>Falkoner Allé 108, eller send din enhed til os fra resten af landet.</p></div>
+    <div class="step"><div class="num">2</div><h3>Vi fejlsøger &amp; giver et tilbud</h3><p>Med præcis den dokumentation, dit forsikringsselskab skal bruge.</p></div>
+    <div class="step"><div class="num">3</div><h3>Du får det godkendt</h3><p>Du sender tilbuddet til dit forsikringsselskab. (Selvrisiko er en sag mellem dig og selskabet.)</p></div>
+    <div class="step"><div class="num">4</div><h3>Vi reparerer</h3><p>Efter godkendelse — fast pris, samme kvalitet som altid.</p></div>
+    <div class="step"><div class="num">5</div><h3>Du afregner</h3><p>Du får fakturaen, som du afregner med dit forsikringsselskab.</p></div></div>
+    <p class="sub" style="margin-top:20px">Kort sagt: du får tilbud og faktura fra os, og du sender dem videre til din forsikring. Vi holder det simpelt og reparerer maskinen — du er aldrig i tvivl om, hvad der sker.</p></div></section>
+  <section class="section"><div class="wrap"><div class="callout"><strong>Ærligt om det:</strong> Vi håndterer ikke selve forsikringssagen for dig og kan ikke garantere, at din skade er dækket — det afgør dit forsikringsselskab. Men du får præcis den dokumentation, de skal bruge, så din sag står så stærkt som muligt.</div></div></section>
+  <section class="section alt"><div class="wrap"><div class="eyebrow">Typiske skader</div><h2>Typiske forsikringsskader vi reparerer</h2><ul class="check-list">${damages}</ul></div></section>
+  <section class="section"><div class="wrap"><div class="eyebrow">FAQ</div><h2>Forsikringsreparation — ofte stillede spørgsmål</h2><div class="faq">${faqHtml}</div></div></section>
+  <section class="section alt"><div class="wrap"><div class="cta-band"><h2>Klar til at starte din forsikringssag?</h2><p>Fejlsøgning 300 kr. (2–4 dage) eller ekspres for 600 kr. (1–2 timer). Fast pris, før vi går i gang.</p><div class="cta-row"><a class="btn btn-white" href="/kontakt/">Book en reparation</a><a class="btn btn-ghost-light" href="${site.phoneHref}">📞 Ring ${site.phone}</a></div></div>
+    <div style="margin-top:32px"><p class="eyebrow">Relateret</p><div class="crosslinks"><a href="/vaeskeskade-reparation/">Væskeskade-reparation →</a><a href="/kontakt/">Kontakt & booking →</a></div></div></div></section>`;
+}
+
+// ---------- Reparere eller købe ny computer ----------
+export const REPARERE_KOEBE_FAQ = [
+  { q: 'Hvornår kan det betale sig at reparere frem for at købe ny?', a: 'Når maskinen ikke er for gammel og fejlen er afgrænset — fx SSD/RAM-opgradering, batteri eller skærm. Ligger reparationen under ca. halvdelen af en tilsvarende maskine, anbefaler vi som regel reparation.' },
+  { q: 'Min computer er blevet langsom — skal jeg købe en ny?', a: 'Sjældent. Det skyldes ofte en fyldt disk eller for lidt RAM, og en SSD-/RAM-opgradering gør den hurtig igen til en brøkdel af prisen på en ny.' },
+  { q: 'Hvor gammel er "for gammel" at reparere?', a: 'Der er ingen fast grænse, men over 5-6 år begynder dyre reparationer (fx bundkort) sjældent at kunne betale sig. Vi vurderer det konkret.' },
+  { q: 'Kan I hjælpe med at overføre mine data til en ny maskine?', a: 'Ja, det gør vi som en fast del af servicen.' },
+];
+export function reparereEllerKoebeHtml() {
+  const faqHtml = REPARERE_KOEBE_FAQ.map((f) => `<details><summary>${esc(f.q)}</summary><div class="answer">${esc(f.a)}</div></details>`).join('');
+  const goodSigns = [
+    'Maskinen er ikke ret gammel (typisk under 5-6 år) og fejlen er afgrænset: en SSD- eller RAM-opgradering, et batteriskift, en ny skærm eller en rens. Ofte små beløb, der giver maskinen flere år.',
+    'En langsom computer skyldes tit bare en fyldt disk eller for lidt RAM — det er en billig opgradering, ikke en grund til at købe ny.',
+  ].map((t) => `<li>${esc(t)}</li>`).join('');
+  const buySigns = [
+    'Maskinen er gammel, og fejlen er dyr (fx bundkort på en billig, ældre bærbar).',
+    'Reparationen nærmer sig halvdelen af prisen på en tilsvarende ny eller refurbished maskine — så er pengene som regel bedre brugt på en nyere computer.',
+  ].map((t) => `<li>${esc(t)}</li>`).join('');
+  return `  <section class="hero"><div class="wrap"><div class="eyebrow">Guide · Reparation eller ny computer</div>
+    <h1>Reparere eller købe ny computer?</h1><p class="lead">Det korte svar: det kommer an på fejlen og på maskinens alder — og vi siger det ærligt, også når reparation ikke kan betale sig.</p>
+    <div class="cta-row"><a class="btn btn-white" href="/kontakt/">Book fejlsøgning</a><a class="btn btn-ghost-light" href="${site.phoneHref}">📞 Ring ${site.phone}</a></div></div></section>
+  <section class="section"><div class="wrap lead-copy"><div class="crumbs"><a href="/">Forside</a> › <span>Reparere eller købe ny computer</span></div>
+    <p>Det korte svar: det kommer an på fejlen og på maskinens alder — og vi siger det ærligt, også når reparation ikke kan betale sig. Vi lever af at reparere, men vi vil hellere have en kunde, der stoler på os, end sælge en reparation, der ikke giver mening.</p></div></section>
+  <section class="section alt"><div class="wrap"><div class="eyebrow">Reparere</div><h2>Hvornår kan det betale sig at reparere?</h2><ul class="check-list">${goodSigns}</ul></div></section>
+  <section class="section"><div class="wrap"><div class="eyebrow">Købe ny</div><h2>Hvornår kan det bedre betale sig at købe ny (eller refurbished)?</h2><ul class="check-list">${buySigns}</ul></div></section>
+  <section class="section alt"><div class="wrap"><div class="trust-line"><strong>Vores tommelfingerregel:</strong> koster reparationen mindre end ca. halvdelen af en tilsvarende maskine, er reparation næsten altid det rigtige. Ligger den over, kigger vi på det sammen med dig.</div></div></section>
+  <section class="section"><div class="wrap lead-copy">
+    <p>Og skal du alligevel have en anden maskine, har vi testede <a href="/butik/computere/refurbished/">refurbished computere</a> i butikken — samme sted, samme team, og vi flytter gerne dine data over. Al din IT under ét tag.</p></div></section>
+  <section class="section alt"><div class="wrap"><div class="eyebrow">Fejlsøgning &amp; pris</div><h2>Sådan finder vi ud af det</h2><p class="sub">Vi fejlsøger din computer (standard 300 kr., 2-4 dage — eller ekspres 600 kr., 1-2 timer) og giver dig et fast tilbud. Så kender du prisen på reparationen, før du beslutter dig — og vi siger ærligt, hvad vi selv ville gøre.</p></div></section>
+  <section class="section"><div class="wrap"><div class="eyebrow">FAQ</div><h2>Reparere eller købe ny — ofte stillede spørgsmål</h2><div class="faq">${faqHtml}</div></div></section>
+  <section class="section alt"><div class="wrap"><div class="cta-band"><h2>Er du i tvivl om din maskine?</h2><p>Fejlsøgning 300 kr. (2–4 dage) eller ekspres for 600 kr. (1–2 timer). Fast pris, før vi går i gang — og et ærligt svar på, om det kan betale sig.</p><div class="cta-row"><a class="btn btn-white" href="/kontakt/">Book fejlsøgning</a><a class="btn btn-ghost-light" href="/butik/computere/refurbished/">Se refurbished computere →</a></div></div>
+    <div style="margin-top:32px"><p class="eyebrow">Relateret</p><div class="crosslinks"><a href="/butik/computere/refurbished/">Refurbished computere →</a><a href="/ssd-opgradering/">SSD-opgradering →</a><a href="/kontakt/">Kontakt & booking →</a></div></div></div></section>`;
 }
