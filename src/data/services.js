@@ -26,7 +26,7 @@ export const services = [
     title: 'PC-optimering & hastighedsboost | PCKlinik',
     description: 'Er din pc langsom? Vi optimerer opstart, fjerner bloatware og tuner ydelsen på Frederiksberg og i København. Fejlsøgning fra 300 kr., fast pris.',
     h1: 'PC-optimering', subhead: 'En langsom pc er sjældent "bare gammel"',
-    intro: ['En langsom pc er sjældent "bare gammel" — det er som regel en ophobning af opstartsprogrammer, bloatware, fragmenterede drev eller baggrundsprocesser, der æder ressourcer. Vi felosøger, hvad der reelt gør din maskine langsom, og retter det, i stedet for bare at anbefale, at du køber en ny computer.'],
+    intro: ['En langsom pc er sjældent "bare gammel" — det er som regel en ophobning af opstartsprogrammer, bloatware, fragmenterede drev eller baggrundsprocesser, der æder ressourcer. Vi fejlsøger, hvad der reelt gør din maskine langsom, og retter det, i stedet for bare at anbefale, at du køber en ny computer.'],
     whatsIncluded: 'Oprydning i opstart, fjernelse af malware/bloatware, driveropdateringer, oprydning i lagerplads.',
     faq: [
       { q: 'Fjerner I unødvendige opstartsprogrammer som en del af optimeringen?', a: 'Ja, det er et af de centrale trin.' },
