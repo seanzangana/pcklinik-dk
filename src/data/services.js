@@ -19,14 +19,14 @@ export const services = [
       { q: 'Mister jeg mine filer under en SSD-opgradering?', a: 'Nej, vi kloner dit eksisterende drev eller laver en frisk installation med dataoverførsel, alt efter hvad der passer til din situation.' },
       { q: 'Kan det betale sig at opgradere en ældre bærbar til SSD?', a: 'Næsten altid ja — det er ofte mere mærkbart end en ny CPU ville være.' },
     ],
-    crosslinks: [{ label: 'Udskiftning af harddisk', href: '/harddisk-ssd-udskiftning/' }, { label: 'PC-optimering', href: '/optimering-af-computer/' }],
+    crosslinks: [{ label: 'Udskiftning af harddisk', href: '/harddisk-ssd-udskiftning/' }, { label: 'PC-optimering', href: '/optimering-af-computer/' }, { label: 'Reparere eller købe ny computer?', href: '/reparere-eller-koebe-ny-computer/' }],
   },
   {
     slug: 'optimering-af-computer', group: 'PC',
     title: 'PC-optimering & hastighedsboost | PCKlinik',
     description: 'Er din pc langsom? Vi optimerer opstart, fjerner bloatware og tuner ydelsen på Frederiksberg og i København. Fejlsøgning fra 300 kr., fast pris.',
     h1: 'PC-optimering', subhead: 'En langsom pc er sjældent "bare gammel"',
-    intro: ['En langsom pc er sjældent "bare gammel" — det er som regel en ophobning af opstartsprogrammer, bloatware, fragmenterede drev eller baggrundsprocesser, der æder ressourcer. Vi fejlsøger, hvad der reelt gør din maskine langsom, og retter det, i stedet for bare at anbefale, at du køber en ny computer.'],
+    intro: ['En langsom pc er sjældent "bare gammel" — det er som regel en ophobning af opstartsprogrammer, bloatware, fragmenterede drev eller baggrundsprocesser, der æder ressourcer. Vi felosøger, hvad der reelt gør din maskine langsom, og retter det, i stedet for bare at anbefale, at du køber en ny computer.'],
     whatsIncluded: 'Oprydning i opstart, fjernelse af malware/bloatware, driveropdateringer, oprydning i lagerplads.',
     faq: [
       { q: 'Fjerner I unødvendige opstartsprogrammer som en del af optimeringen?', a: 'Ja, det er et af de centrale trin.' },
@@ -62,7 +62,7 @@ export const services = [
       { q: 'Skifter I skærme på mærker, der ikke er nævnt på jeres side?', a: 'Ja — se også vores side om andre mærker & specialbyggede.' },
       { q: 'Hvor lang tid tager en skærmudskiftning?', a: 'Ofte samme dag med ekspresfejlsøgning.' },
     ],
-    crosslinks: [{ label: 'Andre mærker & specialbyggede', href: '/andre-maerker-reparation/' }, { label: 'Mac-skærmudskiftning', href: '/mac-skaermudskiftning/' }],
+    crosslinks: [{ label: 'Andre mærker & specialbyggede', href: '/andre-maerker-reparation/' }, { label: 'Mac-skærmudskiftning', href: '/mac-skaermudskiftning/' }, { label: 'Forsikringsreparation', href: '/forsikringsreparation/' }],
   },
   {
     slug: 'rens-af-pc', group: 'PC',
@@ -347,7 +347,7 @@ export const services = [
       { q: 'Hvorfor prissættes væskeskade anderledes end jeres andre reparationer?', a: 'En ordentlig væskeskade-vurdering indebærer fuld adskillelse, rensning og korrosionsinspektion, som tager 3–4 dage — så det er en fast fejlsøgning på 600 kr. uden ekspresmulighed, i stedet for den standard-/ekspres-model, der bruges andre steder.' },
       { q: 'Kan væskeskadede bærbare altid reddes?', a: 'Ikke altid, men hurtig handling forbedrer oddsene markant. Vi vurderer og giver dig en ærlig fast pris — pc eller Mac.' },
     ],
-    crosslinks: [{ label: 'Backup & datagendannelse', href: '/backup-og-datagendannelse/' }, { label: 'Tastaturudskiftning', href: '/tastaturudskiftning/' }],
+    crosslinks: [{ label: 'Backup & datagendannelse', href: '/backup-og-datagendannelse/' }, { label: 'Tastaturudskiftning', href: '/tastaturudskiftning/' }, { label: 'Forsikringsreparation', href: '/forsikringsreparation/' }],
   },
   {
     slug: 'tastaturudskiftning', group: 'PC',
@@ -505,6 +505,7 @@ export const services = [
       { label: 'Computerreparation i København', href: '/computerreparation-koebenhavn/' },
       { label: 'Computerreparation på Frederiksberg', href: '/computerreparation-frederiksberg/' },
       { label: 'Typiske reparationspriser', href: '/reparationspriser/' },
+      { label: 'Reparere eller købe ny computer?', href: '/reparere-eller-koebe-ny-computer/' },
       { label: 'Garanti', href: '/garanti/' },
     ],
   },
