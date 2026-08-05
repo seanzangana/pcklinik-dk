@@ -3,8 +3,8 @@
 export const locations = [
   {
         slug: 'computerreparation-koebenhavn', hub: true, name: 'København',
-        title: 'Computerreparation i København | PCKlinik',
-        description: 'PC- og Mac-reparation i København. Værksted på Frederiksberg. Fejlsøgning fra 300 kr., fast pris.',
+        title: 'Computerreparation i København | 4,9★ · PCKlinik',
+        description: 'PC- og Mac-reparation i hele København. 4,9★ hos 493 kunder på Google. Fejlsøgning fra 300 kr., fast pris — du får prisen, før vi går i gang.',
         h1: 'Computerreparation i København', subhead: 'Værksted på Frederiksberg — kort afstand fra det meste af centrum',
         intro: [
                 'Vi reparerer PC og Mac for privatpersoner og virksomheder i hele København. Vores værksted ligger på Frederiksberg, kun kort afstand fra det meste af centrum. Standardfejlsøgning koster 300 kr. (2–4 dage), eller ekspres for 600 kr. (1–2 timer) — med reparation og levering inden for 24 timer, hvis der ikke skal bestilles specielle reservedele.',
@@ -25,7 +25,27 @@ export const locations = [
                 areaNames: ['Helsingør', 'Hillerød', 'Roskilde', 'Køge', 'Nykøbing Falster'],
                 href: '/fjernsupport/',
         },
-        crosslinks: [{ label: 'IT-support til erhverv', href: '/it-support-til-erhverv/' }, { label: 'Kontakt', href: '/kontakt/' }],
+        crosslinks: [{ label: 'IT-support i København', href: '/it-support-koebenhavn/' }, { label: 'Mac-reparation i København', href: '/mac-reparation-koebenhavn/' }, { label: 'IT-support til erhverv', href: '/it-support-til-erhverv/' }, { label: 'Kontakt', href: '/kontakt/' }],
+  },
+  {
+        slug: 'mac-reparation-koebenhavn', name: 'København',
+        title: 'Mac-reparation i København | PCKlinik',
+        description: 'Mac-reparation i hele København — MacBook, iMac, Mac mini & Mac Studio. Uafhængigt værksted, ærlig rådgivning. Fejlsøgning fra 300 kr.',
+        h1: 'Mac-reparation i København', subhead: 'Uafhængigt Mac-værksted på Frederiksberg — betjener hele byen',
+        intro: [
+                'Vi reparerer Mac for privatpersoner og virksomheder i hele København — MacBook, iMac, Mac mini, Mac Studio og Mac Pro, uanset alder eller model. Vores værksted ligger på Frederiksberg, kun kort afstand fra det meste af centrum, og vi kan aftale afhentning/levering eller indsendelse for resten af byen.',
+                'Vi er et <strong>uafhængigt Mac-værksted</strong> — ikke en Apple-autoriseret forhandler. Det betyder, at vi fejlsøger og reparerer på komponentniveau i stedet for automatisk at udskifte hele dele. Vi lægger ikke pres på dig for at opgradere eller købe nyt — vi siger ærligt til, om en reparation kan betale sig, eller om det er billigere at udskifte maskinen.',
+                'Standardfejlsøgning koster 300 kr. (2–4 dage), eller ekspres for 600 kr. (1–2 timer). Du får altid en fast pris, før vi går i gang.',
+              ],
+        trustLine: 'Vi er ikke Apple-autoriserede, og det siger vi ligeud — til gengæld får du en tekniker, der ser på komponentniveau, ærlig rådgivning og intet upsalgspres.',
+        faq: [
+          { q: 'Er I Apple-autoriserede?', a: 'Nej — vi er et uafhængigt værksted. Det betyder typisk en billigere og hurtigere reparation, fordi vi kan arbejde på komponentniveau i stedet for kun at udskifte hele dele. Har din Mac stadig Apple-garanti, bør du tjekke, om en reparation hos os påvirker den.' },
+          { q: 'Hvilke Mac-modeller reparerer I?', a: 'Alle — MacBook (Intel og Apple Silicon), iMac, Mac mini, Mac Studio og Mac Pro, uanset alder.' },
+          { q: 'Hvad koster en Mac-reparation i København?', a: 'Standardfejlsøgning er 300 kr. (2–4 dage), ekspres er 600 kr. (1–2 timer). Du får en fast pris, før vi går i gang, uanset fejlens omfang.' },
+          { q: 'Kan I hente og bringe min Mac i København?', a: 'Ja, kontakt os for detaljer ud fra din placering — ellers kan du komme forbi værkstedet på Frederiksberg.' },
+          { q: 'Kan det betale sig at reparere en ældre Mac?', a: 'Ofte ja. Vi giver dig et ærligt svar ud fra fejlens omfang og maskinens alder — ikke bare en automatisk anbefaling om at skifte den ud.' },
+              ],
+        crosslinks: [{ label: 'Mac-reparation (oversigt)', href: '/mac-reparation/' }, { label: 'MacBook-reparation', href: '/macbook-reparation/' }, { label: 'Computerreparation i København', href: '/computerreparation-koebenhavn/' }, { label: 'IT-support i København', href: '/it-support-koebenhavn/' }, { label: 'Kontakt', href: '/kontakt/' }],
   },
   {
         slug: 'computerreparation-frederiksberg', name: 'Frederiksberg',
