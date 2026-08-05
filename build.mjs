@@ -863,6 +863,22 @@ function areaServiceSchema({ url, serviceType, areaServed }) {
   };
 }
 
+// ---------- schema: Article (guide/help pages) ----------
+// Mirrors areaServiceSchema() above: `@id` namespaced to the page's own
+// full URL (never a bare "#article") so it can't collide across pages.
+// `author` and `publisher` both point back at the single frozen #business
+// node rather than duplicating org fields — same pattern as `provider` on
+// Service nodes. Guide pages pair this with faqSchemaFrom() for
+// Article+FAQPage, per the ground-truth "New-page checklist."
+function articleSchema({ url, headline, description, datePublished, dateModified }) {
+  return {
+    '@context': 'https://schema.org', '@type': 'Article', '@id': `${url}#article`,
+    headline, description, datePublished, dateModified: dateModified || datePublished,
+    author: { '@id': site.domain + '/#business' }, publisher: { '@id': site.domain + '/#business' },
+    mainEntityOfPage: { '@type': 'WebPage', '@id': url }, url,
+  };
+}
+
 // ---------- garanti ----------
 const GARANTI_FAQ = [
   { q: 'Hvor lang garanti giver I på en reparation?', a: 'Vi giver garanti på både reservedele og det udførte arbejde. Længden afhænger af reparationstypen og reservedelen — du får garantiperioden oplyst skriftligt, når du henter maskinen.' },
