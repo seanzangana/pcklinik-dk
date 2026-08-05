@@ -13,7 +13,7 @@ import { lucide, lucideSm } from './src/data/icons.js';
 import { services } from './src/data/services.js';
 import { locations } from './src/data/locations.js';
 import { loadNewsPosts } from './src/content/posts.mjs';
-import { macHubHtml, gamingHtml, MAC_HUB_FAQ, GAMING_FAQ, errorMessagesHtml, ERROR_FAQ, computerWontTurnOnHtml, WONT_TURN_ON_FAQ, faqPageHtml, GENERAL_FAQ, networkHubHtml, NETWORK_HUB_FAQ, websitesHubHtml, WEBSITES_HUB_FAQ, studentsHtml, STUDENTS_FAQ, priceRangesHtml } from './src/data/richPages.js';
+import { macHubHtml, gamingHtml, MAC_HUB_FAQ, GAMING_FAQ, errorMessagesHtml, ERROR_FAQ, computerWontTurnOnHtml, WONT_TURN_ON_FAQ, faqPageHtml, GENERAL_FAQ, networkHubHtml, NETWORK_HUB_FAQ, websitesHubHtml, WEBSITES_HUB_FAQ, studentsHtml, STUDENTS_FAQ, priceRangesHtml, itRaadgivningHtml, IT_RAADGIVNING_FAQ, forsikringsreparationHtml, FORSIKRING_FAQ, reparereEllerKoebeHtml, REPARERE_KOEBE_FAQ } from './src/data/richPages.js';
 import { announcement } from './src/data/announcement.js';
 // Nyheder posts (src/content/nyheder/*.md), populated at the top of run().
 // Declared here rather than as a run()-local because newsIndexHtml()/
@@ -124,7 +124,7 @@ function footer() {
   return `<footer class="site-footer"><div class="wrap"><div class="cols">
     <div><img src="/logo.png" alt="PCKlinik" class="logo-foot" width="85" height="34" /><p>Hurtig, ærlig PC- og Mac-reparation til privatpersoner og virksomheder på Frederiksberg og i København.</p><p>Alt inden for computer og IT — du har ikke brug for nogen andre.</p><p>${site.address}</p></div>
     <div><h2>Reparationer</h2><a href="/computer-reparation/">Computer reparation</a><a href="/lenovo-reparation/">Lenovo</a><a href="/hp-reparation/">HP</a><a href="/dell-reparation/">Dell</a><a href="/macbook-reparation/">MacBook</a><a href="/mac-stationaer-reparation/">Mac (stationær)</a><a href="/bundkort-reparation/">Bundkortreparation</a></div>
-    <div><h2>Mere</h2><a href="/butik/">Butik</a><a href="/hosting/">Hosting</a><a href="/automatisk-backup/">Automatisk Backup</a><a href="/domaener/">Domæner</a><a href="/butik/computere/refurbished/">Refurbished computere</a><a href="/it-support-til-erhverv/">IT-support til erhverv</a><a href="/it-support-frederiksberg/">IT-support Frederiksberg</a><a href="/hjemmesider-seo-google-ads/">Hjemmesider & SEO</a><a href="/om-os/">Mød teamet</a><a href="/faq/">FAQ</a><a href="/nyheder/">Nyheder</a><a href="/studerende/">Studerende (CBS & DTU)</a><a href="/reparationspriser/">Typiske reparationspriser</a><a href="/garanti/">Garanti</a><a href="/aabningstider/">Åbningstider</a><a href="/kontakt/">Kontakt</a></div>
+    <div><h2>Mere</h2><a href="/butik/">Butik</a><a href="/hosting/">Hosting</a><a href="/automatisk-backup/">Automatisk Backup</a><a href="/domaener/">Domæner</a><a href="/butik/computere/refurbished/">Refurbished computere</a><a href="/it-support-til-erhverv/">IT-support til erhverv</a><a href="/it-raadgivning/">IT-rådgivning</a><a href="/forsikringsreparation/">Forsikringsreparation</a><a href="/reparere-eller-koebe-ny-computer/">Reparere eller købe ny?</a><a href="/it-support-frederiksberg/">IT-support Frederiksberg</a><a href="/hjemmesider-seo-google-ads/">Hjemmesider & SEO</a><a href="/om-os/">Mød teamet</a><a href="/faq/">FAQ</a><a href="/nyheder/">Nyheder</a><a href="/studerende/">Studerende (CBS & DTU)</a><a href="/reparationspriser/">Typiske reparationspriser</a><a href="/garanti/">Garanti</a><a href="/aabningstider/">Åbningstider</a><a href="/kontakt/">Kontakt</a></div>
     <div><h2>Områder vi betjener</h2><a href="/computerreparation-koebenhavn/">København</a><a href="/computerreparation-frederiksberg/">Frederiksberg</a><a href="/computerreparation-vesterbro/">Vesterbro</a><a href="/computerreparation-vanloese/">Vanløse</a><a href="/computerreparation-valby/">Valby</a><a href="/computerreparation-nordvest/">Nordvest</a><a href="/fjernsupport/">Resten af Danmark (fjernsupport &amp; indsendelse)</a></div>
     
     <div><h2>Kontakt os</h2><p>📞 <a href="${site.phoneHref}" style="display:inline">${site.phone}</a></p><p>✉️ <a href="mailto:${site.emailConsumer}" style="display:inline">${site.emailConsumer}</a></p><p style="margin-top:14px">Man–fre 10:00–18:00<br />Lør 10:00–14:00<br />Søn lukket</p>
@@ -336,7 +336,8 @@ function homeBody() {
     <div class="grid grid-2 hero-paths">
       <a class="card card-link" href="/kontakt/"><div class="card-icon">🖥️</div><h2>Til private</h2><p>PC- og Mac-reparation — standard- eller ekspresfejlsøgning, fast pris, de fleste reparationer samme dag.</p><span class="arrow">Book en reparation →</span></a>
       <a class="card card-link" href="/it-support-til-erhverv/"><div class="card-icon">🏢</div><h2>Til virksomheder</h2><p>IT-supportaftaler til fast pris — ubegrænset support, overvågning og sikkerhed for ét fast månedligt beløb.</p><span class="arrow">Se IT-support til erhverv →</span></a>
-    </div></div></section>
+    </div>
+    <p style="margin-top:18px;color:#C7D3EC;font-size:14.5px">Har I brug for rådgivning frem for en løbende aftale? <a href="/it-raadgivning/" style="color:#A9C1F0">Se IT-rådgivning →</a></p></div></section>
   <section class="section"><div class="wrap"><div class="eyebrow">Vores løfte</div><h2>Sådan fungerer det</h2><div class="steps">
     <div class="step"><div class="num">1</div><h3>Fejlsøgning</h3><p>300 kr. (2–4 dage), eller ekspres for 600 kr. (1–2 timer).</p></div>
     <div class="step"><div class="num">2</div><h3>Fast pris</h3><p>Du får en klar pris, før vi rører ved noget.</p></div>
@@ -347,14 +348,15 @@ function homeBody() {
   <section class="section"><div class="wrap"><div class="eyebrow">Populære services</div><h2>Ud over mærkereparationer</h2>
     <p class="sub">Ud over mærkespecifikke reparationer klarer vi disse ofte efterspurgte opgaver:</p>
     <div class="grid grid-4">${popular}</div>
-    <div style="margin-top:24px"><a class="btn btn-outline" href="/faq/">Se alle services &amp; FAQ →</a></div></div></section>
+    <div style="margin-top:24px"><a class="btn btn-outline" href="/faq/">Se alle services &amp; FAQ →</a></div>
+    <p class="sub" style="margin-top:16px">Skaden dækket af din forsikring? <a href="/forsikringsreparation/">Se forsikringsreparation →</a></p></div></section>
   <section class="section alt"><div class="wrap"><div class="eyebrow">Hvorfor PCKlinik</div><h2>Derfor vælger du PCKlinik</h2><ul class="why-list">
     <li><strong>Rigtig ekspertise</strong>Et erfarent team, ikke et callcenter — du får altid et ærligt svar fra en, der ved, hvad de taler om.</li>
     <li><strong>Fast pris før vi starter</strong>Ingen overraskelser, nogensinde.</li>
     <li><strong>Erfaring på tværs af mærker</strong>Solid erfaring med alle større mærker og modeller, PC og Mac.</li>
     <li><strong>Hurtig ekspedition</strong>De fleste reparationer klares samme dag.</li>
     <li><strong>Vi taler dansk</strong>Naturligvis — men også engelsk, hvis det er nemmere for dig.</li></ul></div></section>
-  <section class="section"><div class="wrap"><div class="cta-band"><h2>Vil du hellere købe?</h2><p>Nye og istandsatte computere samt backup- og sikkerhedsudstyr — alt testet og klar til brug.</p><div class="cta-row"><a class="btn btn-white" href="/butik/">Besøg butikken →</a></div></div></div></section>
+  <section class="section"><div class="wrap"><div class="cta-band"><h2>Vil du hellere købe?</h2><p>Nye og istandsatte computere samt backup- og sikkerhedsudstyr — alt testet og klar til brug. Usikker på, om det bedre kan betale sig at reparere? <a href="/reparere-eller-koebe-ny-computer/" style="color:#A9C1F0">Se vores guide →</a></p><div class="cta-row"><a class="btn btn-white" href="/butik/">Besøg butikken →</a></div></div></div></section>
   <section class="section alt"><div class="wrap"><div class="eyebrow">Find os</div><h2>Find os på Frederiksberg</h2>
     <p class="sub">Vi er et rigtigt værksted — ikke bare en hjemmeside. Kig forbi, ring eller skriv, så kigger vi på det.</p>
     <div class="info-block"><div class="nap">
@@ -456,7 +458,8 @@ function businessBody() {
         <button class="btn btn-primary" type="submit">Anmod om en gratis IT-gennemgang</button>
       </form>
     </div></div></section>
-  <section class="section"><div class="wrap"><div class="eyebrow">FAQ</div><h2>IT-support til erhverv — ofte stillede spørgsmål</h2><div class="faq">${faqHtml}</div></div></section>`;
+  <section class="section"><div class="wrap"><div class="eyebrow">FAQ</div><h2>IT-support til erhverv — ofte stillede spørgsmål</h2><div class="faq">${faqHtml}</div></div></section>
+  <section class="section alt"><div class="wrap"><p class="eyebrow">Relateret</p><div class="crosslinks"><a href="/it-raadgivning/">IT-rådgivning →</a><a href="/automatisk-backup/">Automatisk Backup →</a><a href="/kontakt/">Kontakt & booking →</a></div></div></section>`;
 }
 function businessSchemaFaq() {
   return { '@context': 'https://schema.org', '@type': 'FAQPage', mainEntity: FAQ_BUSINESS.map(([q, a]) => ({ '@type': 'Question', name: q, acceptedAnswer: { '@type': 'Answer', text: a } })) };
@@ -588,7 +591,8 @@ function shopHub() {
     <div class="grid grid-2">
       <a class="card card-link" href="/butik/computere/"><div class="card-icon">🖥️</div><h3>Computere</h3><p>Nye og istandsatte computere — testet og klar til brug.</p><span class="arrow">Se computere →</span></a>
       <a class="card card-link" href="/butik/backup-sikkerhed/"><div class="card-icon">🛡️</div><h3>Backup & sikkerhed</h3><p>Eksterne harddiske, NAS-løsninger og sikkerhedssoftware, vi personligt anbefaler.</p><span class="arrow">Se backup & sikkerhed →</span></a>
-    </div></div></section>`+shopFaq("Butik — ofte stillede spørgsmål", [["Kan jeg bede om et bestemt produkt, der ikke er på listen lige nu?","Ja, kontakt os, så ser vi, hvad vi kan skaffe."],["Tilbyder I samlede tilbud (fx computer + backupdrev)?","Spørg os direkte — det kan nogle gange arrangeres."],["Kan jeg bytte en gammel enhed ind mod et nyt eller istandsat køb?","Kontakt os for at drøfte det — det kan nogle gange arrangeres afhængigt af enheden og dens stand."]]);
+    </div>
+    <p class="sub" style="margin-top:24px">Usikker på, om det bedre kan betale sig at reparere din nuværende maskine? <a href="/reparere-eller-koebe-ny-computer/">Se vores guide til at vælge →</a></p></div></section>`+shopFaq("Butik — ofte stillede spørgsmål", [["Kan jeg bede om et bestemt produkt, der ikke er på listen lige nu?","Ja, kontakt os, så ser vi, hvad vi kan skaffe."],["Tilbyder I samlede tilbud (fx computer + backupdrev)?","Spørg os direkte — det kan nogle gange arrangeres."],["Kan jeg bytte en gammel enhed ind mod et nyt eller istandsat køb?","Kontakt os for at drøfte det — det kan nogle gange arrangeres afhængigt af enheden og dens stand."]]);
 }
 function shopComputers() {
   return `  <section class="hero"><div class="wrap"><div class="eyebrow"><a href="/butik/" style="color:#A9C1F0">Butik</a> · Computere</div><h1>Computere</h1><p class="lead">Vælg mellem nye og istandsatte computere.</p></div></section>
@@ -1035,6 +1039,22 @@ async function run() {
   pages.push(['/kontakt/', page({ title: 'Kontakt PCKlinik | Frederiksberg & København', description: 'Kontakt PCKlinik for PC- og Mac-reparation på Frederiksberg og i København. Ring 91 81 61 81 eller skriv til kontakt@pcklinik.dk.', p: '/kontakt/', body: contactBody() })]);
   // business
   pages.push(['/it-support-til-erhverv/', page({ title: 'IT-supportaftale til erhverv | PCKlinik', description: 'IT-support til fast pris for virksomheder — plus hosting, domæner og backup fra samme team. I har ikke brug for nogen andre. Fra 399 kr./bruger/måned.', p: '/it-support-til-erhverv/', body: businessBody(), schema: businessSchemaFaq() })]);
+  // IT-rådgivning (erhverv) — GDPR/NIS2 consulting, "linchpin" for the
+  // Rådgivning pillar. Gratis first consultation ONLY — no diagnosis
+  // pricing shown on this page, per ground-truth "gratis" rule.
+  pages.push(['/it-raadgivning/', page({
+    title: 'IT-rådgivning til erhverv – GDPR & NIS2 | PCKlinik',
+    description: 'IT-rådgivning til virksomheder i København og på Frederiksberg. Få styr på GDPR og NIS2. Første konsultation er gratis. Ring 91 81 61 81.',
+    p: '/it-raadgivning/', body: itRaadgivningHtml(),
+    schema: [areaServiceSchema({ url: `${site.domain}/it-raadgivning/`, serviceType: 'IT-rådgivning', areaServed: ['København', 'Frederiksberg'] }), faqSchemaFrom(IT_RAADGIVNING_FAQ)],
+  })]);
+  // Forsikringsreparation — reparation dækket af kundens forsikring.
+  pages.push(['/forsikringsreparation/', page({
+    title: 'Forsikringsreparation af computer & Mac | PCKlinik',
+    description: 'Skadet computer eller Mac? Vi laver reparationer, der dækkes af din forsikring — du får et tilbud og en faktura til dit forsikringsselskab. Ring 91 81 61 81.',
+    p: '/forsikringsreparation/', body: forsikringsreparationHtml(),
+    schema: [areaServiceSchema({ url: `${site.domain}/forsikringsreparation/`, serviceType: 'Forsikringsreparation af computer og Mac', areaServed: ['København', 'Frederiksberg', 'Danmark'] }), faqSchemaFrom(FORSIKRING_FAQ)],
+  })]);
   // shop
   pages.push(['/butik/', page({ title: 'Butik | Computere, backup & sikkerhed | PCKlinik', description: 'Køb nye og istandsatte computere samt backup- og sikkerhedsudstyr hos PCKlinik — samme team, der også reparerer og supporterer dem. Betaling via Stripe.', p: '/butik/', body: shopHub() })]);
   pages.push(['/butik/computere/', page({ title: 'Computere | Nye & refurbished | PCKlinik Butik', description: 'Nye og istandsatte computere fra PCKlinik — testet og klar til brug, med garanti. Se udvalget og køb sikkert via Stripe.', p: '/butik/computere/', body: shopComputers() })]);
@@ -1069,6 +1089,21 @@ async function run() {
   pages.push(['/studerende/', page({ title: 'Computerreparation til studerende — CBS & DTU | PCKlinik', description: 'Computer- og MacBook-reparation til studerende ved CBS og DTU. Gåafstand fra Solbjerg Plads, Frederiksberg. Skærm, batteri, SSD, backup — fast pris.', p: '/studerende/', body: studentsHtml(), schema: faqSchemaFrom(STUDENTS_FAQ) })]);
   // Typiske reparationspriser
   pages.push(['/reparationspriser/', page({ title: 'Typiske reparationspriser | PCKlinik', description: 'Vejledende fra-priser på almindelige reparationer — skærm, batteri, SSD — inkl. dele og arbejde. Fast tilbud, før vi går i gang.', p: '/reparationspriser/', body: priceRangesHtml() })]);
+  // Reparere eller købe ny computer — genopbygning af død URL. No
+  // _redirects rule targets this slug (verified against public/_redirects
+  // before building), so no redirect needs removing here. NB: this is a
+  // different URL from /hvor-laenge-holder-en-macbook/, which DOES still
+  // have an active 301 to /macbook-reparation/ (see _redirects) — that
+  // rule must be removed in the same commit if/when that guide is built.
+  pages.push(['/reparere-eller-koebe-ny-computer/', page({
+    title: 'Reparere eller købe ny computer? Sådan vælger du | PCKlinik',
+    description: 'Kan det betale sig at reparere din computer, eller skal du købe ny? Ærlig vejledning fra PCKlinik — vi siger det ligeud, også når reparation ikke kan betale sig.',
+    p: '/reparere-eller-koebe-ny-computer/', body: reparereEllerKoebeHtml(),
+    // Article, not Service — this is a decision guide, not a service
+    // offering (per ground-truth: "Guides ... use Article + FAQPage;
+    // service pages use Service + FAQPage").
+    schema: [articleSchema({ url: `${site.domain}/reparere-eller-koebe-ny-computer/`, headline: 'Reparere eller købe ny computer? Sådan vælger du', description: 'Kan det betale sig at reparere din computer, eller skal du købe ny? Ærlig vejledning fra PCKlinik.', datePublished: '2026-08-05' }), faqSchemaFrom(REPARERE_KOEBE_FAQ)],
+  })]);
   // Garanti (genskabt fra WordPress — /garanti/ rangerer i forvejen)
   pages.push(['/garanti/', page({ title: 'Garanti på reparation | PCKlinik', description: 'PCKlinik giver garanti på både reservedele og udført arbejde. Se hvad garantien dækker, hvor længe den gælder, og hvordan du bruger den.', p: '/garanti/', body: garantiBody(), schema: faqSchemaFrom(GARANTI_FAQ) })]);
   // Åbningstider (genskabt fra WordPress — /aabningstider/ rangerer i forvejen)
