@@ -167,10 +167,25 @@ fetch(f.getAttribute('action'),{method:'POST',headers:{'Content-Type':'applicati
 // review link (site.reviewRating/reviewCount in src/data/site.js) is
 // page content, not markup, and is unaffected — it's sourced from the
 // Google Business Profile, not this schema object.
+//
+// FROZEN BLOCK — byte-identical on every page that includes it (see page()
+// below, which puts this on literally every page). Do not edit per-page;
+// edit here once. `@id` lets other schema nodes (see areaServiceSchema())
+// reference this exact node instead of duplicating business fields.
+// `url` is always the homepage, never a subpage. `geo` is sourced from the
+// verified/owned Google Business Profile listing for "PC klinik" (Falkoner
+// Allé 108) — lat/long confirmed two independent ways from the same Google
+// Maps place URL (the @lat,long prefix and the !3d/!4d data params) and
+// cross-checked against the pin shown in the GBP dashboard's own Location
+// tab. Confirmed by Shan 2026-08-05.
 const businessSchema = {
-  '@context': 'https://schema.org', '@type': 'ComputerRepairService', name: 'PCKlinik',
-  image: site.domain + '/logo.png', url: site.domain + '/', telephone: '+4591816181', email: site.emailConsumer,
+  '@context': 'https://schema.org', '@type': 'ComputerRepairService', '@id': site.domain + '/#business', name: 'PCKlinik',
+  image: site.domain + '/logo.png',
+  description: 'PC- og Mac-reparation, IT-support, salg af computere og rådgivning i København og på Frederiksberg.',
+  url: site.domain + '/', telephone: '+4591816181', email: site.emailConsumer,
+  priceRange: 'kr. 300–600',
   address: { '@type': 'PostalAddress', streetAddress: site.addressStreet, postalCode: site.addressPostal, addressLocality: site.addressLocality, addressCountry: 'DK' },
+  geo: { '@type': 'GeoCoordinates', latitude: 55.6868578, longitude: 12.5406516 },
   areaServed: ['Frederiksberg', 'Copenhagen'],
   openingHoursSpecification: [
     { '@type': 'OpeningHoursSpecification', dayOfWeek: ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday'], opens: '10:00', closes: '18:00' },
@@ -825,6 +840,19 @@ function serviceBody(s) {
 function faqSchemaFrom(items) {
   return { '@context': 'https://schema.org', '@type': 'FAQPage', mainEntity: items.map((f) => ({ '@type': 'Question', name: f.q, acceptedAnswer: { '@type': 'Answer', text: f.a } })) };
 }
+// ---------- schema: Service node (area/location pages) ----------
+// Ground-truth "area-page schema template": #business (above) stays
+// frozen/byte-identical everywhere; this Service node carries the
+// page-specific bits. `@id` is namespaced to the page's own full URL
+// (never a bare "#service") so it can't collide with another page's
+// Service node. `provider` always points back at the single #business
+// node — never re-declare business fields here.
+function areaServiceSchema({ url, serviceType, areaServed }) {
+  return {
+    '@context': 'https://schema.org', '@type': 'Service', '@id': `${url}#service`,
+    serviceType, provider: { '@id': site.domain + '/#business' }, areaServed, url,
+  };
+}
 
 // ---------- garanti ----------
 const GARANTI_FAQ = [
@@ -1027,10 +1055,31 @@ async function run() {
   pages.push(['/stil-et-spoergsmaal/', page({ title: 'Stil os et spørgsmål | PCKlinik', description: 'Har du et spørgsmål om din computer, Mac eller IT? Spørg os direkte — de mest nyttige svar bliver til guides på vores nyhedsside.', p: '/stil-et-spoergsmaal/', body: askQuestionBody() })]);
   // Thank-you pages (form redirect targets)
   pages.push(['/tak/', page({ title: 'Thank You | PCKlinik', description: 'Your message has been sent. We will get back to you as soon as possible.', p: '/tak/', body: thankYouHtml(), noindex: true })]);
-  // Location / area pages
-  for (const loc of locations) pages.push([`/${loc.slug}/`, page({ title: loc.title, description: loc.description, p: `/${loc.slug}/`, body: locationBody(loc), schema: faqSchemaFrom(loc.faq) })]);
-  // 15 task-based service pages
-  for (const s of services) pages.push([`/${s.slug}/`, page({ title: s.title, description: s.description, p: `/${s.slug}/`, body: serviceBody(s), schema: faqSchemaFrom(s.faq) })]);
+  // Location / area pages — each gets its own Service node (serviceType is
+  // Mac-reparation for the Mac-specific page, Computerreparation for the
+  // rest; areaServed drops the "(NV)" UI suffix from loc.name) alongside
+  // the shared FAQPage. #business (frozen block, above) is unaffected.
+  for (const loc of locations) {
+    const url = `${site.domain}/${loc.slug}/`;
+    const svc = areaServiceSchema({
+      url,
+      serviceType: loc.slug.startsWith('mac-reparation-') ? 'Mac-reparation' : 'Computerreparation',
+      areaServed: loc.name.replace(/\s*\(.*\)$/, ''),
+    });
+    pages.push([`/${loc.slug}/`, page({ title: loc.title, description: loc.description, p: `/${loc.slug}/`, body: locationBody(loc), schema: [svc, faqSchemaFrom(loc.faq)] })]);
+  }
+  // 15 task-based service pages. it-support-koebenhavn is the 8th page in
+  // the area-page schema rollout (ground-truth doc groups it with the 7
+  // locations.js pages above, even though it lives here in services.js) —
+  // it gets the same areaServiceSchema() treatment; every other service
+  // page keeps its plain FAQPage-only schema.
+  for (const s of services) {
+    const url = `${site.domain}/${s.slug}/`;
+    const schema = s.slug === 'it-support-koebenhavn'
+      ? [areaServiceSchema({ url, serviceType: 'IT-support', areaServed: 'København' }), faqSchemaFrom(s.faq)]
+      : faqSchemaFrom(s.faq);
+    pages.push([`/${s.slug}/`, page({ title: s.title, description: s.description, p: `/${s.slug}/`, body: serviceBody(s), schema })]);
+  }
 
   for (const [p, html] of pages) await writePage(p, html);
 
