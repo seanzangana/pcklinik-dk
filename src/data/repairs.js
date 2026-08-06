@@ -1,1165 +1,706 @@
 // ============================================================================
-// Zero-dependency static site renderer for pcklinik.dk (Danish; fork of pcklinik.eu codebase).
-// Single source of truth for the site (no Astro/view mirror). Renders into ./dist.
-// Reads data files (src/data/*.js) and CSS (src/styles/global.css).
-//   Run:  node build.mjs
+// Reparationssider — 16 mærke-/enhedssider renderet af én skabelon (repairBody).
+// Native dansk indhold. Mærke- og modelnavne bevares på engelsk efter normal
+// dansk konvention. Billeder ligger under /images/<slug>/ så en placeholder kan
+// udskiftes med et rigtigt foto ved at erstatte én fil — ingen kodeændring.
 // ============================================================================
-import { promises as fs, readFileSync } from 'node:fs';
-import path from 'node:path';
-import { fileURLToPath } from 'node:url';
-import { repairs } from './src/data/repairs.js';
-import { site, nav, hreflangMap } from './src/data/site.js';
-import { lucide, lucideSm } from './src/data/icons.js';
-import { services } from './src/data/services.js';
-import { locations } from './src/data/locations.js';
-import { loadNewsPosts } from './src/content/posts.mjs';
-import { macHubHtml, gamingHtml, MAC_HUB_FAQ, GAMING_FAQ, errorMessagesHtml, ERROR_FAQ, computerWontTurnOnHtml, WONT_TURN_ON_FAQ, faqPageHtml, GENERAL_FAQ, networkHubHtml, NETWORK_HUB_FAQ, websitesHubHtml, WEBSITES_HUB_FAQ, studentsHtml, STUDENTS_FAQ, priceRangesHtml, itRaadgivningHtml, IT_RAADGIVNING_FAQ, forsikringsreparationHtml, FORSIKRING_FAQ, reparereEllerKoebeHtml, REPARERE_KOEBE_FAQ } from './src/data/richPages.js';
-import { announcement } from './src/data/announcement.js';
-// Nyheder posts (src/content/nyheder/*.md), populated at the top of run().
-// Declared here rather than as a run()-local because newsIndexHtml()/
-// newsPostHtml()/newsPostSchema() below close over this module-level binding.
-let news = [];
 
-const __dirname = path.dirname(fileURLToPath(import.meta.url));
-const DIST = path.join(__dirname, 'dist');
-// Inlined directly into every page's <head> (see page() below) so the
-// stylesheet is never a render-blocking network request — global.css is
-// small (~6.6 KiB) so inlining it is cheap and removes the ~160ms
-// render-blocking-resources penalty PageSpeed was flagging. Still copied to
-// /styles/global.css in dist/ (see run()) as a fallback/for direct linking.
-const GLOBAL_CSS = readFileSync(path.join(__dirname, 'src/styles/global.css'), 'utf8');
-const esc = (s) => String(s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
-// Renders a <form> opening + hidden routing fields for the active form mode.
-function formOpen(dest, subject, nextPath) {
-  const next = `${site.domain}${nextPath}`;
-  if (site.formMode === 'cloudflare') {
-    const okMsg = 'Din besked er sendt — tak. Vi vender tilbage hurtigst muligt.';
-    const errMsg = 'Noget gik galt. Prøv igen, eller send os en e-mail direkte.';
-    return `<form action="/api/submit-form" method="POST" data-ajax-form data-ok="${esc(okMsg)}" data-err="${esc(errMsg)}">
-        <input type="hidden" name="_to" value="${dest}" />
-        <input type="hidden" name="_subject" value="${esc(subject)}" />
-        <input type="hidden" name="_next" value="${next}" />
-        <input type="text" name="_gotcha" tabindex="-1" autocomplete="off" aria-hidden="true" style="position:absolute;left:-9999px" />`;
-  }
-  const fs = dest === site.emailBusiness ? 'xpqgbpog' : 'maqgvelb';
-  return `<form action="https://formspree.io/f/${fs}" method="POST">
-        <input type="hidden" name="_subject" value="${esc(subject)}" />
-        <input type="hidden" name="_next" value="${next}" />`;
-}
+export const repairs = [
+  // ------------------------------------------------------------------ LENOVO
+  {
+    slug: 'lenovo-reparation',
+    brand: 'Lenovo',
+    title: 'Lenovo-reparation: ThinkPad T14, IdeaPad, Legion | PCKlinik',
+    description: 'Reparation af Lenovo ThinkPad, IdeaPad og Legion på Frederiksberg og i København. Fejlsøgning fra 300 kr. Ring 91 81 61 81.',
+    h1: 'Lenovo-reparation på Frederiksberg & København',
+    h2: 'ThinkPad, IdeaPad, Legion, Yoga og ThinkBook — vi reparerer dem alle',
+    intro: [
+      'Har du problemer med din Lenovo? Hos PCKlinik reparerer vi alle Lenovo-serier — <strong>ThinkPad T14, T14s, T16, X1 Carbon, X1 Yoga og P16</strong>, <strong>IdeaPad 3, IdeaPad 5 og IdeaPad Slim</strong>, <strong>Legion 5 og Legion Pro</strong> samt <strong>Yoga 7, Yoga Slim</strong> og <strong>ThinkBook</strong> — for privatpersoner og virksomheder på Frederiksberg og i København.',
+      'Uanset om det er en revnet skærm på din <strong>ThinkPad T14</strong>, et løst hængsel på din <strong>X1 Carbon</strong>, et batteri, der har givet op på din <strong>IdeaPad 5</strong>, eller en <strong>Legion</strong>, der overopheder under belastning, arbejder vi os metodisk igennem det.',
+      'Vi laver en grundig fejlsøgning af din Lenovo og giver dig en fast pris, før vi går i gang — så du altid kender prisen, før vi rører ved maskinen. Standardfejlsøgning koster 300 kr. (2–4 dage), eller vælg ekspres for 600 kr. (1–2 timer) — reparationen klar inden for 24 timer, hvis der ikke skal bestilles specielle reservedele. Reparationen foregår direkte på vores værksted på Falkoner Allé.',
+    ],
+    models: [
+      { series: 'ThinkPad T-serie (erhverv)', models: 'T14, T14s, T14 Gen 4, T16', issue: 'Hængselskade, skærmudskiftning, tastatur, batteri' },
+      { series: 'ThinkPad X-serie (ultrabærbar)', models: 'X1 Carbon, X1 Yoga, X13', issue: 'Skærm, hængsler, touchpanel (X1 Yoga)' },
+      { series: 'ThinkPad P-serie (workstation)', models: 'P16, P1, P14s', issue: 'Skærm, køling/blæser, bundkort, grafikkortfejl' },
+      { series: 'ThinkBook', models: 'ThinkBook 14, ThinkBook 15', issue: 'Batteri, skærm, langsom ydelse' },
+      { series: 'IdeaPad (forbruger)', models: 'IdeaPad 3, IdeaPad 5, IdeaPad Slim 3', issue: 'Batteriskift, langsom ydelse, softwareproblemer, opstartsproblemer' },
+      { series: 'Legion (gaming)', models: 'Legion 5, Legion 5 Pro, Legion Slim 5', issue: 'Køling, skærm, batteri under belastning, blæserstøj' },
+      { series: 'Yoga (2-i-1)', models: 'Yoga 7, Yoga 9i, Yoga Slim 7', issue: 'Touchskærm-reparation (adskiller sig fra almindelig skærmudskiftning), hængsler' },
+    ],
+    services: [
+      { title: 'Skærmudskiftning', body: 'Revnet eller beskadiget skærm på din <strong>ThinkPad T14, T14s, T16</strong> eller <strong>IdeaPad 3/5</strong>? Vi skifter den hurtigt med kvalitetsdele. Har du en <strong>Yoga 7</strong> eller <strong>X1 Yoga</strong> med touchfunktion? Vi klarer også udskiftning af touchpanel.' },
+      { title: 'Batteriskift', body: 'Holder batteriet på din <strong>IdeaPad 3, IdeaPad 5, ThinkPad T14</strong> eller <strong>Legion 5</strong> ikke længere på strøm? Vi skifter det og genskaber ordentlig batterilevetid.' },
+      { title: 'Hængsler & kabinet', body: 'Løse eller revnede hængsler er en klassisk fejl på <strong>ThinkPad T14, T16, X1 Carbon</strong> og <strong>X1 Yoga</strong>. Vi reparerer eller udskifter hængsler og kabinetdele, så låget lukker og sidder ordentligt igen.' },
+      { title: 'Køling & ydelse', body: 'Fryser eller genstarter maskinen under gaming eller tunge opgaver på din <strong>Legion 5, Legion 5 Pro</strong> eller <strong>ThinkPad P16</strong>? Vi renser og reparerer kølesystemet og retter softwareproblemer, der giver ustabilitet på <strong>IdeaPad</strong>- og <strong>ThinkBook</strong>-modeller.' },
+    ],
+    whyHeading: 'Hvorfor vælge PCKlinik til Lenovo-reparation?',
+    whyIntro: 'Med tusindvis af gennemførte reparationer og tilfredse kunder er PCKlinik dit oplagte valg til reparation af <strong>ThinkPad, IdeaPad, Legion, Yoga</strong> og <strong>ThinkBook</strong> på Frederiksberg og i København.',
+    why: [
+      { title: 'Erfaren service', body: 'Solid erfaring med ThinkPad T14/T14s, X1 Carbon, IdeaPad 3/5, Legion 5 og Yoga-modeller.' },
+      { title: 'Hurtig ekspedition', body: 'Vælger du ekspres, er din Lenovo klar inden for 24 timer — uanset om det er en T14 eller en Legion 5 Pro. Standard tager 3–4 dage.' },
+      { title: 'Fast pris, før vi starter', body: 'Ingen overraskelser.' },
+      { title: 'Rigtige mennesker, rigtig ekspertise', body: 'Et ægte team, ikke et callcenter — du får altid et ærligt svar fra en, der ved, hvad de taler om.' },
+    ],
+    faq: [
+      { q: 'Giver I garanti specifikt på reparation af ThinkPad-hængsler?', a: 'Ja, samme garanti som på enhver anden reparation.' },
+      { q: 'Kan I reparere en Lenovo, der ikke vil lade op over en bestemt procent?', a: 'Som regel et batteriproblem — vi laver fejlsøgning og skifter efter behov.' },
+      { q: 'Hvad koster det at skifte skærmen på en Lenovo ThinkPad T14?', a: 'Det afhænger af skaden og modellen. Fejlsøgning koster 300 kr. (2–4 dage) — eller ekspres for 600 kr. (1–2 timer). Vi giver dig en fast pris bagefter, så du kender prisen, før reparationen går i gang.' },
+      { q: 'Kan I reparere hængsler på en ThinkPad X1 Carbon?', a: 'Ja, hængselskader er en af de mest almindelige fejl på X1 Carbon og X1 Yoga. Vi udskifter eller reparerer hængsler, så låget lukker korrekt igen.' },
+      { q: 'Min Legion 5 overopheder under gaming — kan I hjælpe?', a: 'Ja. Overophedning på Legion-modeller skyldes som regel støv i kølesystemet eller en blæser, der skal skiftes. Vi renser og reparerer køling på alle Legion-modeller.' },
+      { q: 'Reparerer I IdeaPad 3 og IdeaPad 5?', a: 'Ja, vi reparerer alle IdeaPad-modeller — skærm, batteri og softwareproblemer som langsom opstart eller systemnedbrud.' },
+    ],
+    photos: [
+      { path: '/images/lenovo/thinkpad-t14-repair.jpg', alt: 'Lenovo ThinkPad T14 skærmreparation Frederiksberg' },
+      { path: '/images/lenovo/x1-carbon-hinge.jpg', alt: 'Lenovo ThinkPad X1 Carbon hængselreparation' },
+      { path: '/images/lenovo/legion-5-cooling.jpg', alt: 'Lenovo Legion 5 køling og blæserreparation' },
+    ],
+    crosslinks: [{ label: 'HP-reparation', href: '/hp-reparation/' }, { label: 'Dell-reparation', href: '/dell-reparation/' }],
+    ctaPrimary: 'Kom forbi med din enhed',
+  },
 
-// ---------- announcement banner ----------
-// Renders nothing at all when announcement.enabled is false — zero visual
-// footprint, zero performance cost. See src/data/announcement.js for how
-// Shan (via Cowork) toggles this on/off with a one-line edit + push.
-// Dismiss is stored in sessionStorage (per-tab-session): dismissing hides
-// the banner for the rest of that browsing session, but it reappears on
-// the next fresh visit/session as long as `enabled` is still true — no code
-// change needed to "reset" it.
-// expiresAt (optional, ISO timestamp incl. tz offset) adds a client-side
-// auto-hide on top of that: once a visitor's own clock passes it, the
-// script below hides the banner even though `enabled` is still true.
-// No rebuild/push is needed right at the expiry moment since the check
-// runs in-browser on every page load. Leave unset/null to skip this.
-function announcementBanner() {
-  if (!announcement.enabled) return '';
-  const id = 'pck-announcement';
-  return `<div class="announcement-bar announcement-${esc(announcement.type)}" id="${id}">
-    <div class="wrap announcement-inner"><span class="announcement-msg">${esc(announcement.message)}</span><button type="button" class="announcement-close" id="${id}-close" aria-label="Luk besked">&times;</button></div>
-  </div>`;
-}
-const announcementScript = announcement.enabled ? `<script>
-(function(){
-  var KEY='pck-announcement-dismissed';
-  var EXPIRES=${announcement.expiresAt ? JSON.stringify(announcement.expiresAt) : 'null'};
-  var bar=document.getElementById('pck-announcement');
-  var btn=document.getElementById('pck-announcement-close');
-  if(!bar) return;
-  if(EXPIRES){ try{ if(Date.now()>=new Date(EXPIRES).getTime()){ bar.style.display='none'; return; } }catch(e){} }
-  try{ if(sessionStorage.getItem(KEY)==='1'){ bar.style.display='none'; } }catch(e){}
-  btn&&btn.addEventListener('click',function(){
-    bar.style.display='none';
-    try{ sessionStorage.setItem(KEY,'1'); }catch(e){}
-  });
-})();
-</script>` : '';
+  // -------------------------------------------------------------------- ACER
+  {
+    slug: 'acer-reparation',
+    brand: 'Acer',
+    title: 'Acer-reparation: Aspire, Nitro, Swift | PCKlinik',
+    description: 'Reparation af Acer Aspire 5, Nitro 5, Swift og Predator på Frederiksberg og i København. Fejlsøgning fra 300 kr., fast pris. Ring 91 81 61 81.',
+    h1: 'Acer-reparation på Frederiksberg & København',
+    h2: 'Aspire, Nitro, Swift og Predator — vi reparerer dem alle',
+    intro: [
+      'Har du problemer med din Acer? Hos PCKlinik reparerer vi alle Acer-serier — <strong>Aspire 3, Aspire 5, Nitro 5, Swift 3, Swift 5</strong> og <strong>Predator Helios</strong> — for privatpersoner og virksomheder på Frederiksberg og i København. Acer er kendt som et af de mest driftssikre og prisvenlige mærker at reparere, da reservedele generelt er tilgængelige og billige.',
+      'Uanset om det er en revnet skærm på din <strong>Aspire 5</strong>, et løbet tørt batteri på din <strong>Swift 3</strong> eller en <strong>Nitro 5</strong>, der overopheder under gaming, arbejder vi os metodisk igennem det. Fejlsøgning koster 300 kr. (2–4 dage) eller ekspres for 600 kr. (1–2 timer).',
+    ],
+    models: [
+      { series: 'Aspire (hverdag)', models: 'Aspire 3, Aspire 5, Aspire 7', issue: 'Batteriskift, langsom ydelse, skærm' },
+      { series: 'Swift (ultrabærbar)', models: 'Swift 3, Swift 5, Swift Go', issue: 'Skærm, hængsler, batteri' },
+      { series: 'Nitro (budget-gaming)', models: 'Nitro 5, Nitro 16', issue: 'Køling, blæserstøj, skærm' },
+      { series: 'Predator (high-end gaming)', models: 'Predator Helios, Predator Triton', issue: 'Køling, GPU-fejl, skærm' },
+      { series: 'Chromebook', models: 'Acer Chromebook 315', issue: 'Software-/OS-problemer, batteri' },
+    ],
+    services: [
+      { title: 'Skærmudskiftning', body: 'Revnet skærm på din <strong>Aspire 5</strong> eller <strong>Swift 3</strong>? Hurtig udskiftning med kvalitetsdele.' },
+      { title: 'Batteriskift', body: 'Holder batteriet på din <strong>Aspire 3</strong> eller <strong>Swift 5</strong> ikke på strøm? Det skifter vi.' },
+      { title: 'Køling & blæser', body: 'Overopheder din <strong>Nitro 5</strong> eller <strong>Predator Helios</strong> under gaming? Vi renser og reparerer kølesystemet.' },
+      { title: 'Software & fejlsøgning', body: 'Langsom opstart eller systemnedbrud på din <strong>Aspire</strong>? Vi retter softwareproblemer og optimerer ydelsen.' },
+    ],
+    whyHeading: 'Hvorfor vælge PCKlinik til Acer-reparation?',
+    why: [
+      { title: 'Erfaren service', body: 'Solid erfaring med Aspire, Swift, Nitro og Predator.' },
+      { title: 'Hurtig ekspedition', body: 'Vælger du ekspres, er din Acer-reparation klar inden for 24 timer. Standard tager 3–4 dage.' },
+      { title: 'Fast pris, før vi starter', body: 'Ingen overraskelser.' },
+      { title: 'Prisvenligt', body: 'Acer-reservedele er billige, og det kommer dig til gode.' },
+    ],
+    faq: [
+      { q: 'Reparerer I Acer Chromebooks, eller kun Windows-modeller?', a: 'Begge dele.' },
+      { q: 'Er køling i Acer Predator anderledes end i almindelige bærbare?', a: 'Ja, højtydende systemer kræver mere omhyggelig rensning og påføring af kølepasta, hvilket vi har erfaring med.' },
+      { q: 'Hvad koster det at skifte batteriet på en Acer Aspire 5?', a: 'Fejlsøgning koster 300 kr. (2–4 dage) eller ekspres for 600 kr. (1–2 timer). Du får en fast pris, før reparationen går i gang.' },
+      { q: 'Kan I reparere en Acer Nitro 5, der overopheder?', a: 'Ja, overophedning på Nitro- og Predator-modeller skyldes som regel støv eller en blæser.' },
+      { q: 'Reparerer I ældre Acer Aspire-modeller?', a: 'Ja, uanset alder, så længe der er reservedele.' },
+    ],
+    photos: [
+      { path: '/images/acer/aspire-5-screen.jpg', alt: 'Acer Aspire 5 skærmreparation Frederiksberg' },
+      { path: '/images/acer/nitro-5-cooling.jpg', alt: 'Acer Nitro 5 køling og blæserreparation' },
+      { path: '/images/acer/swift-3-repair.jpg', alt: 'Acer Swift 3 skærmudskiftning' },
+    ],
+    crosslinks: [{ label: 'Asus-reparation', href: '/asus-reparation/' }, { label: 'MSI-reparation', href: '/msi-reparation/' }],
+    ctaPrimary: 'Kom forbi med din enhed',
+  },
 
-// ---------- shared chrome ----------
-function topbar(p) {
-  return `<div class="topbar"><div class="wrap">
-    <span>${lucideSm.clock} ${site.hours}</span>
-    <span>${lucideSm.phone} <a href="${site.phoneHref}">${site.phone}</a></span>
-    <span>${lucideSm.mail} <a href="mailto:${site.emailConsumer}">${site.emailConsumer}</a></span>
-  </div></div>`;
-}
-function isActive(item, p) {
-  if (item.href === '/') return p === '/';
-  if (p === item.href) return true;
-  if (item.children) return item.children.some((c) => p === c.href);
-  if (item.flyout) return item.flyout.some((cat) => cat.children.some((c) => p === c.href));
-  return false;
-}
-function header(p) {
-  const items = nav.map((item) => {
-    if (item.flyout) {
-      const cats = item.flyout.map((cat) => {
-        const links = cat.children.map((c) => `<a href="${c.href}">${esc(c.label)}</a>`).join('');
-        return `<div class="flyout-cat"><button type="button" class="flyout-cat-label">${esc(cat.label)} <span aria-hidden="true">▸</span></button><div class="flyout-panel">${links}</div></div>`;
-      }).join('');
-      return `<div class="nav-item dropdown flyout"><a href="${item.href}" class="${isActive(item, p) ? 'active' : ''}">${item.label} <span aria-hidden="true">▾</span></a><div class="dropdown-menu flyout-menu">${cats}</div></div>`;
-    }
-    if (item.children) {
-      const menu = item.children.map((c) => c.header ? `<span class="dropdown-header">${esc(c.header)}</span>` : `<a href="${c.href}">${esc(c.label)}</a>`).join('');
-      return `<div class="nav-item dropdown"><a href="${item.href}" class="${isActive(item, p) ? 'active' : ''}">${item.label} <span aria-hidden="true">▾</span></a><div class="dropdown-menu">${menu}</div></div>`;
-    }
-    return `<div class="nav-item"><a href="${item.href}" class="${isActive(item, p) ? 'active' : ''}">${item.label}</a></div>`;
-  }).join('');
-  return `${topbar(p)}<header class="site-header"><div class="wrap">
-    <a href="/" class="brand" aria-label="PCKlinik home"><img src="/logo.png" alt="PCKlinik" width="100" height="40" /></a>
-    <nav class="main" id="mainnav">${items}</nav>
-    <button class="nav-toggle" id="navtoggle" aria-label="Toggle menu" aria-expanded="false"><span></span><span></span><span></span></button>
-  </div></header>`;
-}
-function footer() {
-  const year = new Date().getFullYear();
-  return `<footer class="site-footer"><div class="wrap"><div class="cols">
-    <div><img src="/logo.png" alt="PCKlinik" class="logo-foot" width="85" height="34" /><p>Hurtig, ærlig PC- og Mac-reparation til privatpersoner og virksomheder på Frederiksberg og i København.</p><p>Alt inden for computer og IT — du har ikke brug for nogen andre.</p><p>${site.address}</p></div>
-    <div><h2>Reparationer</h2><a href="/computer-reparation/">Computer reparation</a><a href="/lenovo-reparation/">Lenovo</a><a href="/hp-reparation/">HP</a><a href="/dell-reparation/">Dell</a><a href="/macbook-reparation/">MacBook</a><a href="/mac-stationaer-reparation/">Mac (stationær)</a><a href="/bundkort-reparation/">Bundkortreparation</a></div>
-    <div><h2>Mere</h2><a href="/butik/">Butik</a><a href="/hosting/">Hosting</a><a href="/automatisk-backup/">Automatisk Backup</a><a href="/domaener/">Domæner</a><a href="/butik/computere/refurbished/">Refurbished computere</a><a href="/it-support-til-erhverv/">IT-support til erhverv</a><a href="/it-raadgivning/">IT-rådgivning</a><a href="/forsikringsreparation/">Forsikringsreparation</a><a href="/reparere-eller-koebe-ny-computer/">Reparere eller købe ny?</a><a href="/it-support-frederiksberg/">IT-support Frederiksberg</a><a href="/hjemmesider-seo-google-ads/">Hjemmesider & SEO</a><a href="/om-os/">Mød teamet</a><a href="/faq/">FAQ</a><a href="/nyheder/">Nyheder</a><a href="/studerende/">Studerende (CBS & DTU)</a><a href="/reparationspriser/">Typiske reparationspriser</a><a href="/garanti/">Garanti</a><a href="/aabningstider/">Åbningstider</a><a href="/kontakt/">Kontakt</a></div>
-    <div><h2>Områder vi betjener</h2><a href="/computerreparation-koebenhavn/">København</a><a href="/computerreparation-frederiksberg/">Frederiksberg</a><a href="/computerreparation-vesterbro/">Vesterbro</a><a href="/computerreparation-vanloese/">Vanløse</a><a href="/computerreparation-valby/">Valby</a><a href="/computerreparation-nordvest/">Nordvest</a><a href="/fjernsupport/">Resten af Danmark (fjernsupport &amp; indsendelse)</a></div>
-    
-    <div><h2>Kontakt os</h2><p>📞 <a href="${site.phoneHref}" style="display:inline">${site.phone}</a></p><p>✉️ <a href="mailto:${site.emailConsumer}" style="display:inline">${site.emailConsumer}</a></p><p style="margin-top:14px">Man–fre 10:00–18:00<br />Lør 10:00–14:00<br />Søn lukket</p>
-      <p style="margin-top:14px"><a href="${site.reviewsUrl}" target="_blank" rel="noopener">⭐ ${esc(site.reviewRating)}/5 baseret på ${esc(site.reviewCount)} anmeldelser →</a></p></div>
-  </div><div class="footer-bottom"><div class="footer-nap">PCKlinik · Falkoner Allé 108, 2000 Frederiksberg · 91 81 61 81</div><div>© ${year} PCKlinik · CVR-nr. 33275145 · Frederiksberg</div></div></div></footer>`;
-}
-const navToggleScript = `<script>
-const t=document.getElementById('navtoggle'),n=document.getElementById('mainnav');
-t&&t.addEventListener('click',()=>{const o=n.classList.toggle('open');t.setAttribute('aria-expanded',o?'true':'false');});
-document.querySelectorAll('nav.main .dropdown > a').forEach(a=>{a.setAttribute('aria-haspopup','true');a.setAttribute('aria-expanded','false');a.addEventListener('click',e=>{e.preventDefault();const d=a.parentElement;const willOpen=!d.classList.contains('open');document.querySelectorAll('nav.main .dropdown.open').forEach(x=>{if(x!==d){x.classList.remove('open');x.querySelector('a').setAttribute('aria-expanded','false');x.querySelectorAll('.flyout-cat.expanded').forEach(c=>c.classList.remove('expanded'));}});d.classList.toggle('open',willOpen);a.setAttribute('aria-expanded',willOpen?'true':'false');});});
-document.querySelectorAll('.flyout-cat-label').forEach(b=>b.addEventListener('click',e=>{e.preventDefault();const cat=b.parentElement;const willExpand=!cat.classList.contains('expanded');const menu=cat.closest('.flyout-menu');menu&&menu.querySelectorAll('.flyout-cat.expanded').forEach(c=>{if(c!==cat)c.classList.remove('expanded');});cat.classList.toggle('expanded',willExpand);}));
-document.addEventListener('click',e=>{if(!e.target.closest('.nav-item')){document.querySelectorAll('nav.main .dropdown.open').forEach(x=>{x.classList.remove('open');x.querySelector('a').setAttribute('aria-expanded','false');});document.querySelectorAll('.flyout-cat.expanded').forEach(c=>c.classList.remove('expanded'));}});
-document.addEventListener('keydown',e=>{if(e.key==='Escape'){document.querySelectorAll('nav.main .dropdown.open').forEach(x=>{x.classList.remove('open');x.querySelector('a').setAttribute('aria-expanded','false');});document.querySelectorAll('.flyout-cat.expanded').forEach(c=>c.classList.remove('expanded'));}});
-</script>`;
+  // ---------------------------------------------------------------------- HP
+  {
+    slug: 'hp-reparation',
+    brand: 'HP',
+    title: 'HP-reparation: EliteBook, Pavilion, Spectre | PCKlinik',
+    description: 'Reparation af HP EliteBook 840, Pavilion, Spectre x360 og Omen på Frederiksberg og i København. Fejlsøgning fra 300 kr., fast pris. Ring 91 81 61 81.',
+    h1: 'HP-reparation på Frederiksberg & København',
+    h2: 'EliteBook, Pavilion, Spectre og Omen — vi reparerer dem alle',
+    intro: [
+      'Har du problemer med din HP? Hos PCKlinik reparerer vi alle HP-serier — <strong>EliteBook 840, EliteBook 850, Pavilion, Spectre x360</strong> og <strong>Omen</strong> — for privatpersoner og virksomheder på Frederiksberg og i København. HP er et af de mest udbredte mærker på danske kontorer, og vi har solid erfaring med både erhvervs- og forbrugerserierne.',
+      'Uanset om det er en revnet skærm på din <strong>Pavilion</strong>, et løst hængsel på din <strong>Spectre x360</strong> eller en <strong>EliteBook</strong>, der ikke vil starte, arbejder vi os metodisk igennem det. Fejlsøgning koster 300 kr. (2–4 dage) eller ekspres for 600 kr. (1–2 timer).',
+    ],
+    models: [
+      { series: 'EliteBook (erhverv)', models: 'EliteBook 840, EliteBook 850', issue: 'Tastatur, skærm, hængsler, batteri' },
+      { series: 'ProBook (mellemklasse erhverv)', models: 'ProBook 450, ProBook 440', issue: 'Batteri, skærm, langsom ydelse' },
+      { series: 'Pavilion (forbruger)', models: 'Pavilion 15, Pavilion x360', issue: 'Batteriskift, softwareproblemer' },
+      { series: 'Spectre (premium 2-i-1)', models: 'Spectre x360', issue: 'Touchskærm, hængsler' },
+      { series: 'Omen (gaming)', models: 'Omen 16, Omen 17', issue: 'Køling, skærm, GPU-fejl' },
+    ],
+    services: [
+      { title: 'Skærmudskiftning', body: 'Revnet skærm på din <strong>EliteBook 840</strong> eller <strong>Pavilion 15</strong>? Hurtig udskiftning. Touchskærme på <strong>Spectre x360</strong> håndteres særskilt.' },
+      { title: 'Batteriskift', body: 'Holder batteriet på din <strong>EliteBook</strong> eller <strong>Pavilion</strong> ikke på strøm? Det skifter vi.' },
+      { title: 'Tastatur & hængsler', body: 'Klistrede taster eller løse hængsler på din <strong>EliteBook 840</strong>? Vi reparerer eller udskifter.' },
+      { title: 'Køling & ydelse', body: 'Overopheder din <strong>Omen 16</strong> under gaming? Vi renser kølesystemet og retter softwareproblemer.' },
+    ],
+    whyHeading: 'Hvorfor vælge PCKlinik til HP-reparation?',
+    why: [
+      { title: 'Erfaren service', body: 'Bred erfaring med EliteBook, ProBook, Pavilion, Spectre og Omen.' },
+      { title: 'Hurtig ekspedition', body: 'Vælger du ekspres, er din HP-reparation klar inden for 24 timer. Standard tager 3–4 dage.' },
+      { title: 'Fast pris, før vi starter', body: 'Ingen overraskelser.' },
+      { title: 'Erfaring med erhverv', body: 'Vi kender EliteBook- og ProBook-serierne godt fra erhvervskunder.' },
+    ],
+    faq: [
+      { q: 'Kan I reparere et revnet hængsel på en HP Spectre x360?', a: 'Ja, 2-i-1-hængsler er en reparation, vi håndterer jævnligt.' },
+      { q: 'Understøtter I ældre HP EliteBook-modeller, der ikke længere sælges nye?', a: 'Ja, alder stopper os ikke, hvis der er reservedele.' },
+      { q: 'Reparerer I HP EliteBook til virksomheder?', a: 'Ja, vi har solid erfaring med erhvervsmodeller som EliteBook 840 og 850.' },
+      { q: 'Kan I skifte touchskærmen på en HP Spectre x360?', a: 'Ja, touchskærm-reparation på Spectre x360 er en anden proces end almindelig skærmudskiftning.' },
+      { q: 'Min Omen overopheder — kan I hjælpe?', a: 'Ja, vi renser og reparerer køling på Omen-modeller.' },
+    ],
+    photos: [
+      { path: '/images/hp/elitebook-840-screen.jpg', alt: 'HP EliteBook 840 skærmreparation Frederiksberg' },
+      { path: '/images/hp/spectre-x360-hinge.jpg', alt: 'HP Spectre x360 hængselreparation' },
+      { path: '/images/hp/omen-cooling.jpg', alt: 'HP Omen blæserrensning og kølereparation' },
+    ],
+    crosslinks: [{ label: 'Lenovo-reparation', href: '/lenovo-reparation/' }, { label: 'Dell-reparation', href: '/dell-reparation/' }],
+    ctaPrimary: 'Kom forbi med din enhed',
+  },
 
-// AJAX submit for contact forms: no reload, inline success/error state.
-const formsScript = `<script>
-(function(){
-var fs=document.querySelectorAll('form[data-ajax-form]');
-fs.forEach(function(f){
-var s=document.createElement('div');s.className='form-status';s.setAttribute('role','status');s.setAttribute('aria-live','polite');s.style.display='none';f.appendChild(s);
-var b=f.querySelector('[type=submit]');
-f.addEventListener('submit',function(e){
-e.preventDefault();s.style.display='none';s.className='form-status';if(b){b.disabled=true;}
-var d={};new FormData(f).forEach(function(v,k){d[k]=v;});
-fetch(f.getAttribute('action'),{method:'POST',headers:{'Content-Type':'application/json','Accept':'application/json'},body:JSON.stringify(d)})
-.then(function(r){return r.json().catch(function(){return{};}).then(function(j){return{ok:r.ok,j:j};});})
-.then(function(x){if(x.ok&&x.j&&x.j.ok){f.reset();s.className='form-status form-status--ok';s.textContent=f.getAttribute('data-ok');}else{s.className='form-status form-status--error';s.textContent=f.getAttribute('data-err');}s.style.display='block';})
-.catch(function(){s.className='form-status form-status--error';s.textContent=f.getAttribute('data-err');s.style.display='block';})
-.then(function(){if(b){b.disabled=false;}});
-});
-});
-})();
-</script>`;
+  // -------------------------------------------------------------------- DELL
+  {
+    slug: 'dell-reparation',
+    brand: 'Dell',
+    title: 'Dell-reparation: XPS, Latitude, Inspiron | PCKlinik',
+    description: 'Reparation af Dell XPS 13/15, Latitude, Inspiron og Precision på Frederiksberg og i København. Fejlsøgning fra 300 kr., fast pris. Ring 91 81 61 81.',
+    h1: 'Dell-reparation på Frederiksberg & København',
+    h2: 'XPS, Latitude, Inspiron og Precision — vi reparerer dem alle',
+    intro: [
+      'Har du problemer med din Dell? Hos PCKlinik reparerer vi alle Dell-serier — <strong>XPS 13, XPS 15, Latitude 5440, Latitude 7440, Inspiron 15</strong> og <strong>Precision</strong>-workstations — for privatpersoner og virksomheder på Frederiksberg og i København.',
+      'Uanset om det er et løst hængsel på din <strong>XPS 13</strong> (et velkendt svagt punkt hos Dell), et løbet tørt batteri på din <strong>Inspiron</strong> eller en <strong>Latitude</strong>, der driller på arbejdet, arbejder vi os metodisk igennem det. Fejlsøgning koster 300 kr. (2–4 dage) eller ekspres for 600 kr. (1–2 timer).',
+    ],
+    models: [
+      { series: 'XPS (premium forbruger)', models: 'XPS 13, XPS 15', issue: 'Hængsler, skærm, batteri' },
+      { series: 'Latitude (erhverv)', models: 'Latitude 5440, Latitude 7440, Latitude 5540', issue: 'Tastatur, batteri, skærm' },
+      { series: 'Inspiron (budget-forbruger)', models: 'Inspiron 15, Inspiron 14', issue: 'Batteriskift, langsom ydelse' },
+      { series: 'Precision (workstation)', models: 'Precision 5570, Precision 3580', issue: 'Skærm, køling, grafikkort' },
+      { series: 'Alienware (gaming)', models: 'Alienware m16, Alienware x14', issue: 'Køling, GPU-fejl, skærm' },
+    ],
+    services: [
+      { title: 'Skærmudskiftning', body: 'Revnet skærm på din <strong>XPS 13</strong> eller <strong>Inspiron 15</strong>? Hurtig udskiftning med kvalitetsdele.' },
+      { title: 'Hængsler & kabinet', body: 'Løse hængsler er et kendt svagt punkt på <strong>XPS 13/15</strong>. Vi reparerer eller udskifter.' },
+      { title: 'Batteriskift', body: 'Holder batteriet på din <strong>Latitude</strong> eller <strong>Inspiron</strong> ikke på strøm? Det skifter vi.' },
+      { title: 'Køling & ydelse', body: 'Overopheder din <strong>Precision</strong> eller <strong>Alienware</strong> under tung belastning? Vi renser kølesystemet.' },
+    ],
+    whyHeading: 'Hvorfor vælge PCKlinik til Dell-reparation?',
+    why: [
+      { title: 'Erfaren service', body: 'Bred erfaring med XPS, Latitude, Inspiron og Precision.' },
+      { title: 'Hurtig ekspedition', body: 'Vælger du ekspres, er din Dell-reparation klar inden for 24 timer. Standard tager 3–4 dage.' },
+      { title: 'Fast pris, før vi starter', body: 'Ingen overraskelser.' },
+      { title: 'Erfaring med erhverv', body: 'Vi kender Latitude-serien godt fra erhvervskunder.' },
+    ],
+    faq: [
+      { q: 'Er hængselproblemet på XPS 13 dækket af Dells egen garanti, eller betaler jeg selv?', a: 'Det afhænger af din garantistatus hos Dell — vi reparerer det uanset hvad, men garantidækning er mellem dig og Dell.' },
+      { q: 'Reparerer I Dell Precision-workstations?', a: 'Ja, inklusive grafikkort- og kølefejlsøgning på maskiner i workstation-klassen.' },
+      { q: 'Er XPS 13 kendt for hængselproblemer?', a: 'Ja, det er en af de mest almindelige Dell-fejl, vi ser, og vi reparerer den hurtigt.' },
+      { q: 'Reparerer I Dell Latitude til virksomheder?', a: 'Ja, solid erfaring med Latitude 5440, 7440 og lignende erhvervsmodeller.' },
+      { q: 'Min Precision-workstation er langsom — kan I hjælpe?', a: 'Ja, vi fejlsøger både hardware og software på Precision-modeller.' },
+    ],
+    photos: [
+      { path: '/images/dell/xps-13-hinge.jpg', alt: 'Dell XPS 13 hængselreparation Frederiksberg' },
+      { path: '/images/dell/latitude-7440-battery.jpg', alt: 'Dell Latitude 7440 batteriskift' },
+      { path: '/images/dell/inspiron-screen.jpg', alt: 'Dell Inspiron skærmudskiftning' },
+    ],
+    crosslinks: [{ label: 'HP-reparation', href: '/hp-reparation/' }, { label: 'Lenovo-reparation', href: '/lenovo-reparation/' }],
+    ctaPrimary: 'Kom forbi med din enhed',
+  },
 
-// NOTE — no aggregateRating here on purpose. Google doesn't allow
-// self-serving review markup on LocalBusiness/Organization subtypes,
-// so it would never be rich-result eligible regardless of how the
-// JSON-LD is shaped. The visible footer review link
-// (site.reviewRating/reviewCount in src/data/site.js) is page content,
-// not markup, and is unaffected — it's sourced from the Google Business
-// Profile, not this schema object.
-//
-// FROZEN BLOCK — byte-identical on every page that includes it (see page()
-// below, which puts this on literally every page). Do not edit per-page;
-// edit here once. `@id` lets other schema nodes (see areaServiceSchema())
-// reference this exact node instead of duplicating business fields.
-// `url` is always the homepage, never a subpage. `geo` is sourced from the
-// verified/owned Google Business Profile listing for "PC klinik" (Falkoner
-// Allé 108) — lat/long confirmed two independent ways from the same Google
-// Maps place URL (the @lat,long prefix and the !3d/!4d data params) and
-// cross-checked against the pin shown in the GBP dashboard's own Location
-// tab. Confirmed by Shan 2026-08-05.
-//
-// `@type` is ElectronicsStore, not the old ComputerRepairService — that
-// was never a real schema.org type (validator.schema.org confirms it's
-// undefined in the vocabulary), which was also breaking `provider`
-// resolution on every areaServiceSchema() Service node pointing at this
-// block. ElectronicsStore is a real LocalBusiness > Store subtype with
-// real-world adoption and fits PCKlinik's actual model (repairs + selling
-// new/refurbished computers). Found and fixed 2026-08-05 while verifying
-// this PR against validator.schema.org.
-const businessSchema = {
-  '@context': 'https://schema.org', '@type': 'ElectronicsStore', '@id': site.domain + '/#business', name: 'PCKlinik',
-  image: site.domain + '/logo.png',
-  description: 'PC- og Mac-reparation, IT-support, salg af computere og rådgivning i København og på Frederiksberg.',
-  url: site.domain + '/', telephone: '+4591816181', email: site.emailConsumer,
-  priceRange: 'kr. 300–600',
-  address: { '@type': 'PostalAddress', streetAddress: site.addressStreet, postalCode: site.addressPostal, addressLocality: site.addressLocality, addressCountry: 'DK' },
-  geo: { '@type': 'GeoCoordinates', latitude: 55.6868578, longitude: 12.5406516 },
-  areaServed: ['Frederiksberg', 'Copenhagen'],
-  openingHoursSpecification: [
-    { '@type': 'OpeningHoursSpecification', dayOfWeek: ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday'], opens: '10:00', closes: '18:00' },
-    { '@type': 'OpeningHoursSpecification', dayOfWeek: ['Saturday'], opens: '10:00', closes: '14:00' },
-  ],
-};
+  // -------------------------------------------------------------------- ASUS
+  {
+    slug: 'asus-reparation',
+    brand: 'Asus',
+    title: 'Asus-reparation: ZenBook, ROG, Vivobook | PCKlinik',
+    description: 'Reparation af Asus ZenBook 14, ROG Strix, TUF Gaming og Vivobook på Frederiksberg og i København. Fejlsøgning fra 300 kr., fast pris. Ring 91 81 61 81.',
+    h1: 'Asus-reparation på Frederiksberg & København',
+    h2: 'ZenBook, Vivobook, ROG og TUF — vi reparerer dem alle',
+    intro: [
+      'Har du problemer med din Asus? Hos PCKlinik reparerer vi alle Asus-serier — <strong>ZenBook 14, Vivobook 15, ROG Strix, TUF Gaming</strong> og <strong>Chromebook</strong> — for privatpersoner og virksomheder på Frederiksberg og i København. Asus-computere er ofte bygget mere kompakt end mange andre mærker, hvilket kræver reel erfaring at reparere korrekt.',
+      'Uanset om det er en revnet skærm på din <strong>Vivobook</strong>, et løbet tørt batteri på din <strong>ZenBook</strong> eller en <strong>ROG Strix</strong>, der overopheder under gaming, arbejder vi os metodisk igennem det. Fejlsøgning koster 300 kr. (2–4 dage) eller ekspres for 600 kr. (1–2 timer).',
+    ],
+    models: [
+      { series: 'ZenBook (premium ultrabærbar)', models: 'ZenBook 14, ZenBook Pro', issue: 'Skærm, batteri, hængsler' },
+      { series: 'Vivobook (forbruger)', models: 'Vivobook 15, Vivobook Go', issue: 'Batteriskift, langsom ydelse' },
+      { series: 'ROG (high-end gaming)', models: 'ROG Strix, ROG Zephyrus', issue: 'Køling, GPU-fejl, skærm' },
+      { series: 'TUF Gaming (budget-gaming)', models: 'TUF Gaming A15, TUF Gaming F15', issue: 'Køling, blæserstøj, skærm' },
+      { series: 'Chromebook', models: 'Asus Chromebook Flip', issue: 'Software-/OS-problemer' },
+    ],
+    services: [
+      { title: 'Skærmudskiftning', body: 'Revnet skærm på din <strong>Vivobook</strong> eller <strong>ZenBook 14</strong>? Hurtig udskiftning.' },
+      { title: 'Batteriskift', body: 'Holder batteriet på din <strong>ZenBook</strong> eller <strong>Vivobook</strong> ikke på strøm? Det skifter vi.' },
+      { title: 'Køling & blæser', body: 'Overopheder din <strong>ROG Strix</strong> eller <strong>TUF Gaming</strong>? Vi renser og reparerer kølesystemet.' },
+      { title: 'Tastatur & kabinet', body: 'Klistrede taster eller beskadiget kabinet på din <strong>ZenBook</strong>? Vi udskifter det kompakte kabinet med præcision.' },
+    ],
+    whyHeading: 'Hvorfor vælge PCKlinik til Asus-reparation?',
+    why: [
+      { title: 'Erfaren service', body: '20+ års erfaring med Asus, inklusive de mere kompakt byggede modeller.' },
+      { title: 'Hurtig ekspedition', body: 'Vælger du ekspres, er din Asus-reparation klar inden for 24 timer. Standard tager 3–4 dage.' },
+      { title: 'Fast pris, før vi starter', body: 'Ingen overraskelser.' },
+      { title: 'Adgang til originale reservedele', body: 'Stærkt leverandørnetværk til ZenBook- og ROG-dele.' },
+    ],
+    faq: [
+      { q: 'Reparerer I Asus ROG-bærbare med problemer i RGB-tastaturet?', a: 'Ja, det behandles som enhver anden tastaturfejl.' },
+      { q: 'Er reparation af Vivobook billigere end ZenBook?', a: 'Reservedelsprisen varierer efter model — vi giver en fast pris efter fejlsøgning uanset hvad.' },
+      { q: 'Hvorfor er Asus-reparation anderledes end andre mærker?', a: 'Asus bygger ofte mere kompakt, hvilket kræver reel erfaring — og den har vi.' },
+      { q: 'Kan I reparere en Asus ROG Strix, der overopheder?', a: 'Ja, vi renser og reparerer køling på ROG- og TUF-modeller.' },
+      { q: 'Reparerer I Asus Chromebooks?', a: 'Ja, både hardware- og softwareproblemer.' },
+    ],
+    photos: [
+      { path: '/images/asus/zenbook-14-screen.jpg', alt: 'Asus ZenBook 14 skærmreparation Frederiksberg' },
+      { path: '/images/asus/rog-strix-cooling.jpg', alt: 'Asus ROG Strix kølereparation' },
+      { path: '/images/asus/vivobook-battery.jpg', alt: 'Asus Vivobook batteriskift' },
+    ],
+    crosslinks: [{ label: 'Acer-reparation', href: '/acer-reparation/' }, { label: 'MSI-reparation', href: '/msi-reparation/' }],
+    ctaPrimary: 'Kom forbi med din enhed',
+  },
 
-function page({ title, description, p, body, schema = null, lang = 'da', dir = '', chrome = 'da', noindex = false }) {
-  const canonical = site.domain + p;
-  const dk = hreflangMap[p];
-  const altHreflang = '';
-  const schemas = [businessSchema];
-  if (schema) Array.isArray(schema) ? schemas.push(...schema) : schemas.push(schema);
-  const ld = schemas.map((s) => `<script type="application/ld+json">${JSON.stringify(s)}</script>`).join('\n  ');
-  return `<!DOCTYPE html>
-<html lang="${lang}"${dir ? ` dir="${dir}"` : ''}>
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>${esc(title)}</title>
-  <meta name="description" content="${esc(description)}" />
-  ${noindex ? '<meta name="robots" content="noindex, follow" />\n  ' : ''}<link rel="canonical" href="${canonical}" />
-  <link rel="alternate" hreflang="${lang}" href="${canonical}" />
-  ${dk ? `<link rel="alternate" hreflang="da" href="${dk}" />\n  <link rel="alternate" hreflang="x-default" href="${canonical}" />` : ''}${altHreflang}
-  <meta property="og:type" content="website" />
-  <meta property="og:title" content="${esc(title)}" />
-  <meta property="og:description" content="${esc(description)}" />
-  <meta property="og:url" content="${canonical}" />
-  <meta property="og:site_name" content="PCKlinik" />
-  <meta property="og:locale" content="da_DK" />
-  <link rel="icon" type="image/png" href="/logo.png" />
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=optional" media="print" onload="this.media='all'" />
-  <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" /></noscript>
-  <style>${GLOBAL_CSS}</style>
-  ${ld}
-</head>
-<body>
-  ${announcementBanner()}
-  ${header(p)}
-  <main>
-${body}
-  </main>
-  ${footer()}
-  ${navToggleScript}
-  ${formsScript}
-  ${mapFacadeScript}
-  ${announcementScript}
-</body>
-</html>`;
-}
+  // --------------------------------------------------------------------- MSI
+  {
+    slug: 'msi-reparation',
+    brand: 'MSI',
+    title: 'MSI-reparation: Katana, GF63, Stealth | PCKlinik',
+    description: 'Reparation af MSI Katana, GF63, Stealth og Prestige på Frederiksberg og i København. Fejlsøgning fra 300 kr., fast pris. Ring 91 81 61 81.',
+    h1: 'MSI-reparation på Frederiksberg & København',
+    h2: 'Katana, GF63, Stealth og Prestige — vi reparerer dem alle',
+    intro: [
+      'Har du problemer med din MSI-gamingcomputer? Hos PCKlinik reparerer vi alle MSI-serier — <strong>Katana 15, GF63, Stealth, Prestige</strong> og <strong>Cyborg</strong> — for gamere og kreative fagfolk på Frederiksberg og i København. Vi er et af de få værksteder i Danmark, der har MSI-dele på lager, hvilket betyder hurtigere ekspedition.',
+      'Uanset om det er en <strong>GF63</strong>, der overopheder under gaming, en revnet skærm på din <strong>Katana 15</strong> eller et batteri, der har givet op på din <strong>Stealth</strong>, arbejder vi os metodisk igennem det. Fejlsøgning koster 300 kr. (2–4 dage) eller ekspres for 600 kr. (1–2 timer).',
+    ],
+    models: [
+      { series: 'Katana (mellemklasse gaming)', models: 'Katana 15, Katana 17', issue: 'Køling, skærm, blæserstøj' },
+      { series: 'GF-serie (budget-gaming)', models: 'GF63, GF65', issue: 'Køling, batteriydelse' },
+      { series: 'Stealth (tynd gaming)', models: 'Stealth 14, Stealth 16', issue: 'Hængsler, batteri, skærm' },
+      { series: 'Prestige (creator/erhverv)', models: 'Prestige 13, Prestige 14', issue: 'Skærm, batteri' },
+      { series: 'Cyborg (budget-gaming)', models: 'Cyborg 15', issue: 'Køling, skærm' },
+    ],
+    services: [
+      { title: 'Køling & blæser', body: 'Overopheder din <strong>GF63</strong> eller <strong>Katana 15</strong> under gaming? Vi renser og reparerer køling — den mest almindelige MSI-fejl.' },
+      { title: 'Skærmudskiftning', body: 'Revnet skærm på din <strong>Katana</strong> eller <strong>Stealth</strong>? Hurtig udskiftning.' },
+      { title: 'Batteriskift', body: 'Holder batteriet på din <strong>Stealth</strong> eller <strong>Prestige</strong> ikke på strøm? Det skifter vi.' },
+      { title: 'Software & ydelse', body: 'Fryser eller hakker din MSI under tung belastning? Vi fejlsøger og optimerer.' },
+    ],
+    whyHeading: 'Hvorfor vælge PCKlinik til MSI-reparation?',
+    why: [
+      { title: "Specialister i gaming-pc'er", body: 'Et af de få værksteder i Danmark med MSI-dele på lager.' },
+      { title: 'Hurtig ekspedition', body: 'Vælger du ekspres, er din MSI-reparation klar inden for 24 timer. Standard tager 3–4 dage.' },
+      { title: 'Fast pris, før vi starter', body: 'Ingen overraskelser.' },
+      { title: 'Erfaring med højtydende hardware', body: 'GPU, køling og skærme til gaming-modeller.' },
+    ],
+    faq: [
+      { q: 'Har I MSI-GPU-reservedele på lager?', a: 'Vi har stærke leverandørforhold til MSI-dele — kontakt os om din konkrete model.' },
+      { q: 'Kan I udbedre coil whine (en højfrekvent hyletone) på en MSI-bærbar?', a: 'Vi fejlsøger årsagen — nogle gange en driver-/strømindstilling, nogle gange hardware-relateret.' },
+      { q: 'Hvorfor overopheder min MSI GF63?', a: 'Som regel støv i kølesystemet eller en blæser, der skal renses/skiftes.' },
+      { q: 'Har I MSI-dele på lager?', a: 'Ja, vi er et af de få danske værksteder med MSI-dele på lager.' },
+      { q: 'Reparerer I MSI Stealth-modeller?', a: 'Ja, inklusive de tyndere Stealth-modeller, hvor hængsler og batteri er typiske fejlpunkter.' },
+    ],
+    photos: [
+      { path: '/images/msi/gf63-cooling.jpg', alt: 'MSI GF63 køling og blæserreparation Frederiksberg' },
+      { path: '/images/msi/katana-15-screen.jpg', alt: 'MSI Katana 15 skærmreparation' },
+      { path: '/images/msi/stealth-battery.jpg', alt: 'MSI Stealth batteriskift' },
+    ],
+    crosslinks: [{ label: 'Asus-reparation', href: '/asus-reparation/' }, { label: 'Acer-reparation', href: '/acer-reparation/' }],
+    ctaPrimary: 'Kom forbi med din enhed',
+  },
 
-// Click-to-load map facade: avoids loading Google Maps' embed JS (~220 KiB
-// unused-on-load, per PageSpeed) until the visitor actually wants the
-// interactive map. Swaps in the real iframe on click via mapFacadeScript
-// (see page()). Every page that shows the map pays zero JS cost for it
-// unless the button is clicked.
-const mapFrame = `<div class="map-frame"><button type="button" class="map-facade" data-map-src="${esc(site.mapsEmbed)}" aria-label="Åbn interaktivt kort over PCKlinik, Falkoner Allé 108"><span class="map-facade-icon" aria-hidden="true">📍</span><span>Klik for at åbne det interaktive kort</span></button></div>`;
-const mapFacadeScript = `<script>
-document.querySelectorAll('.map-facade').forEach(function(btn){btn.addEventListener('click',function(){var src=btn.getAttribute('data-map-src');var f=document.createElement('iframe');f.src=src;f.loading='lazy';f.title='PCKlinik on the map, Falkoner Allé 108';f.referrerPolicy='no-referrer-when-downgrade';btn.replaceWith(f);});});
-</script>`;
+  // ------------------------------------------------------------------ HUAWEI
+  {
+    slug: 'huawei-reparation',
+    brand: 'Huawei',
+    title: 'Huawei-reparation: MateBook D14, X Pro | PCKlinik',
+    description: 'Reparation af Huawei MateBook D14, MateBook X Pro og MateBook 14 på Frederiksberg og i København. Fejlsøgning fra 300 kr., fast pris. Ring 91 81 61 81.',
+    h1: 'Huawei-reparation på Frederiksberg & København',
+    h2: 'MateBook D14, MateBook X Pro og MateBook 14 — vi reparerer dem alle',
+    intro: [
+      'Har du problemer med din Huawei? Hos PCKlinik reparerer vi alle Huawei MateBook-serier — <strong>MateBook D14, MateBook D15, MateBook X Pro</strong> og <strong>MateBook 14</strong> — for privatpersoner og virksomheder på Frederiksberg og i København.',
+      'Uanset om det er en revnet skærm på din <strong>MateBook D14</strong>, en ladeport, der driller på din <strong>MateBook X Pro</strong>, eller en computer, der fryser og genstarter, arbejder vi os metodisk igennem det. Fejlsøgning koster 300 kr. (2–4 dage) eller ekspres for 600 kr. (1–2 timer).',
+    ],
+    models: [
+      { series: 'MateBook D (budget-forbruger)', models: 'MateBook D14, MateBook D15', issue: 'Batteriskift, skærm, langsom ydelse' },
+      { series: 'MateBook X (premium)', models: 'MateBook X Pro', issue: 'Skærm, ladeport, tastatur' },
+      { series: 'MateBook (mellemklasse)', models: 'MateBook 14', issue: 'Batteri, software' },
+    ],
+    services: [
+      { title: 'Skærmudskiftning', body: 'Revnet eller beskadiget skærm på din <strong>MateBook D14</strong> eller <strong>X Pro</strong>? Hurtig udskiftning.' },
+      { title: 'Batteriskift', body: 'Holder batteriet ikke på strøm? Det skifter vi.' },
+      { title: 'Ladeport & knapper', body: 'Ladeproblemer eller fejl i tænd/sluk-knappen på din <strong>MateBook X Pro</strong>? Vi reparerer eller udskifter defekte komponenter.' },
+      { title: 'Software & fejlsøgning', body: 'Fryser, genstarter eller er langsom? Vi retter softwareproblemer og sikrer stabil drift.' },
+    ],
+    whyHeading: 'Hvorfor vælge PCKlinik til Huawei-reparation?',
+    why: [
+      { title: 'Erfaren service', body: 'Solid erfaring med reparation af Huawei MateBook-enheder.' },
+      { title: 'Hurtig ekspedition', body: 'Vælger du ekspres, er din Huawei-reparation klar inden for 24 timer. Standard tager 3–4 dage.' },
+      { title: 'Fast pris, før vi starter', body: 'Ingen overraskelser.' },
+      { title: 'Kvalitetsdele', body: 'Vi bruger kvalitetsdele ved hver reparation.' },
+    ],
+    faq: [
+      { q: 'Reparerer I trackpads på Huawei MateBook?', a: 'Ja, det fejlsøges og repareres som enhver anden komponentfejl.' },
+      { q: 'Er det svært at skaffe reservedele til Huawei-bærbare i Danmark?', a: 'Mindre almindeligt end de store mærker, men vi har erfaring med at skaffe det nødvendige.' },
+      { q: 'Reparerer I Huawei MateBook X Pro?', a: 'Ja, inklusive skærm, ladeport og batteri.' },
+      { q: 'Min MateBook D14 bliver ved med at fryse — kan I hjælpe?', a: 'Ja, vi fejlsøger og retter både software- og hardwareproblemer.' },
+      { q: 'Hvad koster et batteriskift til en MateBook?', a: 'Fejlsøgning koster 300 kr. (2–4 dage) eller ekspres for 600 kr. — du får en fast pris bagefter.' },
+    ],
+    photos: [
+      { path: '/images/huawei/matebook-d14-screen.jpg', alt: 'Huawei MateBook D14 skærmreparation Frederiksberg' },
+      { path: '/images/huawei/matebook-x-pro-charging.jpg', alt: 'Huawei MateBook X Pro ladeportreparation' },
+    ],
+    crosslinks: [{ label: 'Lenovo-reparation', href: '/lenovo-reparation/' }],
+    ctaPrimary: 'Kom forbi med din enhed',
+  },
 
-// ---------- repair pages ----------
-function repairBody(r) {
-  const svcIcons = ['🖥️', '🔋', '🔧', '🌀'];
-  const services = r.services.map((s, i) => `<div class="card"><div class="card-icon">${svcIcons[i % 4]}</div><h3>${esc(s.title)}</h3><p>${s.body}</p></div>`).join('');
-  const faq = r.faq.map((f) => `<details><summary>${esc(f.q)}</summary><div class="answer">${esc(f.a)}</div></details>`).join('');
-  const cross = r.crosslinks.map((c) => `<a href="${c.href}">${esc(c.label)} →</a>`).join('') + `<a href="/kontakt/">Kontakt & booking →</a>`;
-  const intro = r.intro.map((pp) => `<p>${pp}</p>`).join('');
-  // Optional sections — omitted for the catch-all "Other Brands" page.
-  const modelsSection = r.models ? `<section class="section alt"><div class="wrap"><div class="eyebrow">Modeller vi reparerer</div><h2>Fuld modeldækning</h2><div class="table-wrap"><table class="models"><thead><tr><th>Serie</th><th>Modeller</th><th>Typisk problem</th></tr></thead><tbody>${r.models.map((m) => `<tr><td>${esc(m.series)}</td><td>${esc(m.models)}</td><td class="issue">${esc(m.issue)}</td></tr>`).join('')}</tbody></table></div></div></section>` : '';
-  const photosSection = r.photos ? `<section class="section alt"><div class="wrap"><div class="eyebrow">Fra vores værksted</div><h2>Rigtige ${esc(r.brand)}-reparationer</h2><div class="grid grid-${r.photos.length === 2 ? '2' : '3'}">${r.photos.map((ph) => `<img class="img-placeholder" src="${ph.path}" alt="${esc(ph.alt)}" loading="lazy" width="480" height="360" />`).join('')}</div></div></section>` : '';
-  const whySection = r.why ? `<section class="section"><div class="wrap"><div class="eyebrow">Hvorfor PCKlinik</div><h2>${esc(r.whyHeading)}</h2>${r.whyIntro ? `<p class="sub">${r.whyIntro}</p>` : ''}<ul class="why-list">${r.why.map((w) => `<li><strong>${esc(w.title)}</strong>${esc(w.body)}</li>`).join('')}</ul></div></section>` : '';
-  const ctaHeading = r.ctaHeading ? esc(r.ctaHeading) : `Klar til at få din ${esc(r.brand)} repareret?`;
-  return `  <section class="hero"><div class="wrap">
-    <div class="eyebrow">${esc(r.brand)}-reparation · Frederiksberg &amp; København</div>
-    <h1>${esc(r.h1)}</h1><p class="lead">${esc(r.h2)}</p>
-    <div class="cta-row"><a class="btn btn-white" href="/kontakt/">${esc(r.ctaPrimary)}</a><a class="btn btn-ghost-light" href="${site.phoneHref}">📞 Ring ${site.phone}</a></div>
-  </div></section>
-  <section class="section"><div class="wrap lead-copy"><div class="crumbs"><a href="/">Forside</a> › <span>${esc(r.brand)}-reparation</span></div>${intro}</div></section>
-  ${modelsSection}
-  <section class="section"><div class="wrap"><div class="eyebrow">Hvad vi reparerer</div><h2>${esc(r.brand)}-reparationsservices</h2><div class="grid grid-4">${services}</div></div></section>
-  ${photosSection}
-  ${whySection}
-  <section class="section alt"><div class="wrap"><div class="eyebrow">FAQ</div><h2>${esc(r.brand)}-reparation — ofte stillede spørgsmål</h2><div class="faq">${faq}</div></div></section>
-  <section class="section"><div class="wrap"><div class="cta-band"><h2>${ctaHeading}</h2><p>Fejlsøgning 300 kr. (2–4 dage) eller ekspres for 600 kr. (1–2 timer). Fast pris, før vi går i gang.</p><div class="cta-row"><a class="btn btn-white" href="/kontakt/">${esc(r.ctaPrimary)}</a><a class="btn btn-ghost-light" href="${site.phoneHref}">📞 Ring ${site.phone}</a></div></div>
-    <div style="margin-top:32px"><p class="eyebrow">Relaterede reparationer</p><div class="crosslinks">${cross}</div></div></div></section>`;
-}
-function repairSchema(r) {
-  return { '@context': 'https://schema.org', '@type': 'FAQPage', mainEntity: r.faq.map((f) => ({ '@type': 'Question', name: f.q, acceptedAnswer: { '@type': 'Answer', text: f.a } })) };
-}
+  // ----------------------------------------------------------------- MACBOOK
+  {
+    slug: 'macbook-reparation',
+    brand: 'MacBook',
+    title: 'MacBook-reparation: Pro, Air, M1/M2/M3 | PCKlinik',
+    description: 'Reparation af MacBook Pro 13"/14"/16" og MacBook Air M1/M2/M3 på Frederiksberg og i København. Fejlsøgning fra 300 kr., fast pris. Ring 91 81 61 81.',
+    h1: 'MacBook-reparation på Frederiksberg & København',
+    h2: 'MacBook Pro, MacBook Air og ældre modeller — vi reparerer dem alle',
+    intro: [
+      'Er din MacBook i stykker? Hos PCKlinik reparerer vi alle MacBook-modeller — fra den nyeste <strong>MacBook Pro 14" og 16" med M3-chip</strong> og <strong>MacBook Air M1/M2/M3</strong> til ældre modeller som <strong>MacBook Pro 13" (A1278/A1286)</strong> — for privatpersoner og virksomheder på Frederiksberg og i København.',
+      'Uanset om det er en revnet skærm på din <strong>MacBook Air M2</strong>, et hævet batteri på en ældre <strong>MacBook Pro 13"</strong> eller en tastaturfejl på en <strong>MacBook Pro</strong> med butterfly-tastaturet, arbejder vi os metodisk igennem det. Fejlsøgning koster 300 kr. (2–4 dage) eller ekspres for 600 kr. (1–2 timer) — reparationen klar inden for 24 timer, hvis der ikke skal bestilles specielle reservedele. Vi giver prisgaranti på MacBook-reparationer, og mange reparationer som skærm- og batteriskift klares inden for 1 time.',
+    ],
+    models: [
+      { series: 'MacBook Pro (nyeste, Apple Silicon)', models: 'MacBook Pro 14" M3, MacBook Pro 16" M3', issue: 'Skærm, batteri, logic board' },
+      { series: 'MacBook Air (Apple Silicon)', models: 'MacBook Air M1, MacBook Air M2, MacBook Air M3', issue: 'Skærm, batteri' },
+      { series: 'MacBook Pro (Intel, ældre)', models: 'MacBook Pro 13" A1278, MacBook Pro 15" A1286', issue: 'Batteri (ofte hævet), hængsler, logic board' },
+      { series: 'MacBook (Intel, butterfly-tastatur)', models: 'MacBook Pro 2016–2019', issue: 'Tastaturfejl (kendt Apple-problem), skærm' },
+    ],
+    services: [
+      { title: 'Skærmudskiftning', body: 'Revnet skærm på din <strong>MacBook Air M1/M2</strong> eller <strong>MacBook Pro 14"</strong>? Vi skifter den med kvalitetsdele.' },
+      { title: 'Batteriskift', body: 'Hævet eller udslidt batteri på din <strong>MacBook Pro 13" A1278</strong> eller nyere <strong>MacBook Air</strong>? Vi skifter det sikkert.' },
+      { title: 'Tastaturreparation', body: 'Klistrede eller ureagerende taster på en <strong>MacBook Pro</strong> med butterfly-tastaturet (2016–2019)? Vi udbedrer det kendte problem.' },
+      { title: 'Logic board & fejlsøgning', body: 'Vil din MacBook ikke starte? Vi fejlsøger logic board og andre hardwarefejl på både Intel- og Apple Silicon-modeller.' },
+    ],
+    whyHeading: 'Hvorfor vælge PCKlinik til MacBook-reparation?',
+    why: [
+      { title: 'Erfaren service', body: 'Solid erfaring med både de nyeste Apple Silicon-modeller og ældre Intel-MacBooks.' },
+      { title: 'Hurtig ekspedition', body: 'Skærm- og batteriskift klares ofte inden for 1 time.' },
+      { title: 'Fast pris, før vi starter', body: 'Ingen overraskelser.' },
+      { title: 'Prisgaranti', body: 'Vi giver prisgaranti på MacBook-reparationer.' },
+    ],
+    faq: [
+      { q: 'Skifter I højttalere i MacBook Pro, hvis de er forvrængede?', a: 'Ja, højttalerproblemer fejlsøges og repareres.' },
+      { q: 'Kan I udbedre en MacBook, der ikke vil genkende opladeren?', a: 'Ja — det kan være opladeren, porten eller logic board; vi fejlsøger, hvad det er.' },
+      { q: 'Reparerer I den nyeste MacBook Pro med M3-chip?', a: 'Ja, vi reparerer alle MacBook-modeller uanset alder eller chip.' },
+      { q: 'Batteriet på min gamle MacBook Pro 13" er hævet — er det farligt?', a: 'Et hævet batteri bør skiftes hurtigst muligt. Kontakt os for fejlsøgning og en fast pris.' },
+      { q: 'Kan I udbedre butterfly-tastaturproblemer på en ældre MacBook Pro?', a: 'Ja, det er et kendt Apple-problem på 2016–2019-modeller, og vi har solid erfaring med det.' },
+    ],
+    photos: [
+      { path: '/images/macbook/air-m2-screen.jpg', alt: 'MacBook Air M2 skærmreparation Frederiksberg' },
+      { path: '/images/macbook/pro-13-battery.jpg', alt: 'MacBook Pro 13 batteriskift' },
+      { path: '/images/macbook/butterfly-keyboard.jpg', alt: 'MacBook Pro butterfly-tastaturreparation' },
+    ],
+    crosslinks: [{ label: 'Mac (stationær)-reparation', href: '/mac-stationaer-reparation/' }, { label: 'Microsoft Surface-reparation', href: '/microsoft-surface-reparation/' }],
+    ctaPrimary: 'Kom forbi med din enhed',
+  },
 
-// ---------- home ----------
-const HOME_FAQ = [
-  ['Reparerer I alle computermærker?', 'Ja, vi reparerer alle større PC- og Mac-mærker samt specialbyggede computere. Kan du ikke se dit mærke, så se "Andre mærker & specialbyggede".'],
-  ['Hvad koster en reparation?', 'Standardfejlsøgning koster 300 kr. (2–4 dage), eller ekspres for 600 kr. (1–2 timer). Du får altid en fast pris, før vi går i gang, så der er ingen overraskelser.'],
-  ['Hvor lang tid tager en reparation?', 'Ekspres (600 kr.) giver fejlsøgning på 1–2 timer, og reparationen er klar inden for 24 timer. Standard (300 kr.) tager 3–4 dage. Du får altid en forventet tid, før vi går i gang.'],
-  ['Tilbyder I service til virksomheder også, ikke kun privatpersoner?', 'Ja — ud over reparation tilbyder vi IT-supportaftaler til fast pris, inklusive ubegrænset support, overvågning og sikkerhed. Se vores side om IT-support til erhverv.'],
-  ['Hvor ligger I?', 'Falkoner Allé 108, Frederiksberg. Vi betjener Frederiksberg og København direkte, samt resten af Danmark via fjernsupport til IT-supportaftaler.'],
-  ['Sælger I også computere, eller kun reparation?', 'Ja — nye og brugte/istandsatte computere samt backup- og sikkerhedsudstyr findes i vores butik.'],
-  ['Kan jeg bare møde op, eller skal jeg bestille tid?', 'Du kan altid møde op uden bestilling — men det kan reducere ventetiden at booke på forhånd, især ved ekspresfejlsøgning.'],
-  ['Tilbyder I en måde at følge status på en igangværende reparation uden at ringe?', 'Kontakt os direkte for en statusopdatering — et opkald eller en e-mail fungerer bedst for et lille, personligt værksted som vores.'],
+  // ------------------------------------------------------- MICROSOFT SURFACE
+  {
+    slug: 'microsoft-surface-reparation',
+    brand: 'Microsoft Surface',
+    title: 'Microsoft Surface-reparation: Pro, Laptop, Book | PCKlinik',
+    description: 'Reparation af Microsoft Surface Pro, Surface Laptop og Surface Book på Frederiksberg og i København. Fejlsøgning fra 300 kr., fast pris. Ring 91 81 61 81.',
+    h1: 'Microsoft Surface-reparation på Frederiksberg & København',
+    h2: 'Surface Pro, Surface Laptop og Surface Book — vi reparerer dem alle',
+    intro: [
+      'Har du problemer med din Microsoft Surface? Hos PCKlinik reparerer vi alle Surface-modeller — <strong>Surface Pro 9, Surface Laptop 5, Surface Book 3</strong> og <strong>Surface Laptop Go</strong> — for privatpersoner og virksomheder på Frederiksberg og i København. Surface-enheder kræver reel ekspertise at reparere korrekt på grund af deres kompakte, skærmintegrerede design.',
+      'Uanset om det er en revnet touchskærm på din <strong>Surface Pro</strong>, et løst hængsel på din <strong>Surface Book</strong> eller en ladeport, der driller på din <strong>Surface Laptop</strong>, arbejder vi os metodisk igennem det. Fejlsøgning koster 300 kr. (2–4 dage) eller ekspres for 600 kr. (1–2 timer).',
+    ],
+    models: [
+      { series: 'Surface Pro (2-i-1 tablet)', models: 'Surface Pro 8, Surface Pro 9', issue: 'Touchskærm/digitizer, kickstand-hængsel, ladeport' },
+      { series: 'Surface Laptop', models: 'Surface Laptop 4, Surface Laptop 5', issue: 'Skærm (kendt for delaminering), batteri, tastatur' },
+      { series: 'Surface Book (aftageligt)', models: 'Surface Book 2, Surface Book 3', issue: 'Hængsel/aftagningsmekanisme, batteri' },
+      { series: 'Surface Laptop Go', models: 'Surface Laptop Go 2, Go 3', issue: 'Batteri, skærm' },
+    ],
+    services: [
+      { title: 'Skærm & touch/digitizer', body: 'Revnet skærm eller ureagerende touch på din <strong>Surface Pro 9</strong>? Vi skifter skærm og digitizer — en mere specialiseret reparation end almindelig skærmudskiftning.' },
+      { title: 'Batteriskift', body: 'Holder batteriet på din <strong>Surface Laptop</strong> eller <strong>Surface Book</strong> ikke på strøm? Det skifter vi.' },
+      { title: 'Hængsel & kickstand', body: 'Løs kickstand på din <strong>Surface Pro</strong>, eller en aftagningsmekanisme, der driller på din <strong>Surface Book</strong>? Det reparerer vi.' },
+      { title: 'Ladeport & software', body: 'Lader ikke korrekt, eller fryser? Vi fejlsøger og retter.' },
+    ],
+    whyHeading: 'Hvorfor vælge PCKlinik til Surface-reparation?',
+    why: [
+      { title: 'Specialiseret erfaring', body: 'Surface-enheder er bygget anderledes end almindelige bærbare og kræver specifik ekspertise.' },
+      { title: 'Hurtig ekspedition', body: 'Vælger du ekspres, er din Surface-reparation klar inden for 24 timer. Standard tager 3–4 dage.' },
+      { title: 'Fast pris, før vi starter', body: 'Ingen overraskelser.' },
+      { title: 'Erfaring med digitizer-reparation', body: 'Vi håndterer touch- og digitizer-reparationer jævnligt.' },
+    ],
+    faq: [
+      { q: 'Reparerer I Type Cover-tastaturer til Surface Pro?', a: 'Type Cover er et separat tilbehør — vi rådgiver om udskiftning og reparerer Surfacens egen port, hvis det er den reelle fejl.' },
+      { q: 'Er Surface-reparation dyrere end almindelig reparation af bærbare?', a: 'Ofte lidt dyrere på grund af det specialiserede, tæt integrerede design — vi giver altid en fast pris først.' },
+      { q: 'Kan I reparere touchskærmen på en Surface Pro?', a: 'Ja, digitizer- og touchskærm-reparation på Surface Pro er en specialiseret proces, vi har erfaring med.' },
+      { q: 'Min Surface Laptop-skærm har mørke pletter/delaminering — kan det udbedres?', a: 'Ja, det er et kendt Surface Laptop-problem. Vi fejlsøger og giver en fast pris på skærmudskiftning.' },
+      { q: 'Reparerer I hængselmekanismen på Surface Book?', a: 'Ja, både det almindelige hængsel og aftagningsmekanismen mellem skærm og tastatur.' },
+    ],
+    photos: [
+      { path: '/images/microsoft-surface/pro-9-digitizer.jpg', alt: 'Microsoft Surface Pro 9 skærm- og digitizer-reparation Frederiksberg' },
+      { path: '/images/microsoft-surface/book-hinge.jpg', alt: 'Surface Book hængselreparation' },
+      { path: '/images/microsoft-surface/laptop-screen.jpg', alt: 'Surface Laptop skærmudskiftning' },
+    ],
+    crosslinks: [{ label: 'MacBook-reparation', href: '/macbook-reparation/' }],
+    ctaPrimary: 'Kom forbi med din enhed',
+  },
+
+  // ----------------------------------------------------------------- SAMSUNG
+  {
+    slug: 'samsung-reparation',
+    brand: 'Samsung',
+    title: 'Samsung-reparation: Galaxy Book Pro, Go | PCKlinik',
+    description: 'Reparation af Samsung Galaxy Book3, Book4 Pro og Book Go på Frederiksberg og i København. Fejlsøgning fra 300 kr., fast pris. Ring 91 81 61 81.',
+    h1: 'Samsung-reparation på Frederiksberg & København',
+    h2: 'Galaxy Book3, Galaxy Book4 Pro og Galaxy Book Go — vi reparerer dem alle',
+    intro: [
+      'Har du problemer med din Samsung Galaxy Book? Hos PCKlinik reparerer vi alle Samsung-bærbare — <strong>Galaxy Book3, Galaxy Book4 Pro, Galaxy Book3 360</strong> og <strong>Galaxy Book Go</strong> — for privatpersoner og virksomheder på Frederiksberg og i København. Samsung er et relativt nyt navn inden for bærbare, og vi er blandt de få værksteder i København med reel erfaring med mærket.',
+      'Uanset om det er en revnet skærm på din <strong>Galaxy Book3</strong>, en S Pen, der ikke registreres på din <strong>Galaxy Book3 360</strong>, eller et løbet tørt batteri, arbejder vi os metodisk igennem det. Fejlsøgning koster 300 kr. (2–4 dage) eller ekspres for 600 kr. (1–2 timer).',
+    ],
+    models: [
+      { series: 'Galaxy Book (standard)', models: 'Galaxy Book3, Galaxy Book4', issue: 'Skærm, batteri' },
+      { series: 'Galaxy Book Pro', models: 'Galaxy Book4 Pro, Galaxy Book4 Ultra', issue: 'Skærm (AMOLED), batteri' },
+      { series: 'Galaxy Book 360 (2-i-1)', models: 'Galaxy Book3 360', issue: 'Touchskærm, S Pen-fejl, hængsler' },
+      { series: 'Galaxy Book Go (ARM, budget)', models: 'Galaxy Book Go', issue: 'Batteri, software' },
+    ],
+    services: [
+      { title: 'Skærmudskiftning', body: 'Revnet AMOLED-skærm på din <strong>Galaxy Book4 Pro</strong>? Vi skifter den med kvalitetsdele.' },
+      { title: 'Batteriskift', body: 'Holder batteriet på din <strong>Galaxy Book3</strong> eller <strong>Galaxy Book Go</strong> ikke på strøm? Det skifter vi.' },
+      { title: 'Touchskærm & S Pen', body: 'Registreres S Pen ikke korrekt på din <strong>Galaxy Book3 360</strong>? Vi fejlsøger touchmodulet.' },
+      { title: 'Software & fejlsøgning', body: 'Fryser eller langsom? Vi retter softwareproblemer og sikrer stabil drift.' },
+    ],
+    whyHeading: 'Hvorfor vælge PCKlinik til Samsung-reparation?',
+    why: [
+      { title: 'Tidlig Samsung-erfaring', body: 'Blandt de få værksteder i København med reel erfaring med Galaxy Book-serien.' },
+      { title: 'Hurtig ekspedition', body: 'Vælger du ekspres, er din Samsung-reparation klar inden for 24 timer. Standard tager 3–4 dage.' },
+      { title: 'Fast pris, før vi starter', body: 'Ingen overraskelser.' },
+      { title: 'Ekspertise i AMOLED-skærme', body: 'Vi håndterer de mere sarte AMOLED-paneler med ekstra omhu.' },
+    ],
+    faq: [
+      { q: 'Reparerer I hængsler på Samsung Galaxy Book?', a: 'Ja.' },
+      { q: 'Hvis min S Pen holder op med at virke, er det så dækket af reparation af den bærbare?', a: 'Hvis fejlen sidder i Galaxy Bookens touchmodul, ja — kontakt os, så fejlsøger vi det.' },
+      { q: 'Reparerer I Samsung Galaxy Book-bærbare?', a: 'Ja, alle modeller inklusive Galaxy Book3, Book4 Pro og Book Go.' },
+      { q: 'Min S Pen virker ikke på min Galaxy Book3 360 — kan det udbedres?', a: 'Ja, vi fejlsøger touchmodulet og finder årsagen.' },
+      { q: 'Er AMOLED-skærme dyrere at reparere?', a: 'Det afhænger af skaden. Vi fejlsøger altid først og giver en fast pris, før vi går i gang.' },
+    ],
+    photos: [
+      { path: '/images/samsung/galaxy-book4-pro-screen.jpg', alt: 'Samsung Galaxy Book4 Pro skærmreparation Frederiksberg' },
+      { path: '/images/samsung/galaxy-book3-360-spen.jpg', alt: 'Samsung Galaxy Book3 360 S Pen-reparation' },
+    ],
+    crosslinks: [{ label: 'Microsoft Surface-reparation', href: '/microsoft-surface-reparation/' }],
+    ctaPrimary: 'Kom forbi med din enhed',
+  },
+
+  // ------------------------------------------------------------- MAC DESKTOP
+  {
+    slug: 'mac-stationaer-reparation',
+    brand: 'Mac (stationær)',
+    title: 'Stationær Mac: iMac, Mac mini, Mac Studio | PCKlinik',
+    description: 'Reparation af iMac, Mac mini, Mac Studio og Mac Pro på Frederiksberg og i København. Fejlsøgning fra 300 kr., fast pris. Ring 91 81 61 81.',
+    h1: 'Reparation af stationær Mac på Frederiksberg & København',
+    h2: 'iMac, Mac mini, Mac Studio og Mac Pro — vi reparerer dem alle',
+    intro: [
+      'Har du problemer med din stationære Mac? Hos PCKlinik reparerer vi alle Mac-modeller — <strong>iMac 24" (M1/M3), iMac 27" (Intel), Mac mini (M2/M4), Mac Studio (M1 Max/Ultra, M2 Max/Ultra)</strong> og <strong>Mac Pro</strong> — for privatpersoner og virksomheder på Frederiksberg og i København.',
+      'Uanset om det er en <strong>iMac</strong>, der ikke vil starte, en <strong>Mac mini</strong>, der er blevet mistænkeligt langsom, eller en <strong>Mac Studio</strong>, der laver usædvanlig blæserstøj, arbejder vi os metodisk igennem det. Vi laver en grundig fejlsøgning af din Mac og giver dig en fast pris, før vi går i gang — så du altid kender prisen, før vi rører ved maskinen. Standardfejlsøgning koster 300 kr. (2–4 dage), eller vælg ekspres for 600 kr. (1–2 timer).',
+      'Leder du efter reparation af MacBook (bærbar) i stedet? Det har vi en dedikeret side til — <a href="/macbook-reparation/">se MacBook-reparation her</a>.',
+    ],
+    models: [
+      { series: 'iMac', models: 'iMac 24" M1, iMac 24" M3, iMac 27" (Intel, ældre)', issue: 'Vil ikke tænde, HDD/SSD-fejl, skærm/baggrundslys, blæserstøj' },
+      { series: 'Mac mini', models: 'Mac mini M2, Mac mini M4, Mac mini (Intel, ældre)', issue: 'Vil ikke starte, SSD-fejl, langsom ydelse, portproblemer' },
+      { series: 'Mac Studio', models: 'Mac Studio M1 Max/Ultra, Mac Studio M2 Max/Ultra', issue: 'Overophedning/blæserstøj, portproblemer, langsom ydelse' },
+      { series: 'Mac Pro', models: 'Mac Pro 2019 (Intel), Mac Pro M2 Ultra', issue: 'Strømforsyning, GPU-fejl, RAM-fejl, opstartsproblemer' },
+    ],
+    services: [
+      { title: 'Opstartsproblemer & fejlsøgning', body: 'Vil din <strong>iMac</strong> eller <strong>Mac mini</strong> ikke starte, eller viser den en blinkende mappe? Vi fejlsøger hardware og software systematisk for at finde årsagen.' },
+      { title: 'Harddisk & SSD', body: 'Er din <strong>iMac</strong> eller <strong>Mac Pro</strong> blevet langsom, eller er harddisken svigtet helt? Vi opgraderer til SSD og gendanner dine data, hvor det er muligt.' },
+      { title: 'Skærm & baggrundslys', body: 'Har din <strong>iMac</strong> pletter, mørke områder eller ujævnt baggrundslys? Vi udskifter skærmpanelet.' },
+      { title: 'Køling & blæserstøj', body: 'Er din <strong>Mac Studio</strong> eller <strong>Mac Pro</strong> usædvanlig larmende eller overopheder under tung belastning? Vi renser og reparerer kølesystemet.' },
+    ],
+    whyHeading: 'Hvorfor vælge PCKlinik til Mac-reparation?',
+    why: [
+      { title: 'Erfaren service', body: 'Vi reparerer både de nyeste Apple Silicon-modeller (M1, M2, M3, M4) og ældre Intel-baserede Mac-computere.' },
+      { title: 'Dine data holdes sikre', body: 'Vi sletter aldrig data uden aftale og tilbyder backup før reparation.' },
+      { title: 'Fast pris, før vi starter', body: 'Ingen overraskelser.' },
+      { title: 'Bred Mac-erfaring', body: 'Fra iMac og Mac mini til Mac Studio og Mac Pro.' },
+    ],
+    faq: [
+      { q: 'Reparerer I strømforsyningsproblemer i iMac?', a: 'Ja, vi fejlsøger og reparerer strømrelaterede fejl på iMac og andre stationære Mac-computere.' },
+      { q: 'Kan en Mac mini opgraderes med mere lagerplads efter køb?', a: 'Det afhænger af modelgenerationen — vi kan rådgive om, hvad der er muligt for din.' },
+      { q: 'Min iMac vil ikke starte — hvad kan det være?', a: 'Det kan være flere ting, fra strømforsyning til harddisk/SSD eller logic board. Vi fejlsøger systematisk og giver dig en fast pris, før vi går i gang.' },
+      { q: 'Kan I opgradere min ældre iMac med en SSD?', a: 'Ja, på ældre Intel-iMacs kan en SSD-opgradering gøre en markant forskel i hastighed.' },
+      { q: 'Min Mac Studio er larmende — er det normalt?', a: 'Ikke hvis den er usædvanlig larmende. Det skyldes ofte støv i kølesystemet, som vi kan rense og reparere.' },
+      { q: 'Mister jeg mine data, når I reparerer min Mac?', a: 'Nej, vi sletter aldrig data uden din tilladelse, og vi tilbyder backup, hvis det er nødvendigt.' },
+    ],
+    photos: [
+      { path: '/images/mac/imac-24-repair.jpg', alt: 'iMac 24 reparation hos PCKlinik Frederiksberg' },
+      { path: '/images/mac/mac-mini-ssd.jpg', alt: 'Mac mini SSD-opgradering Frederiksberg' },
+      { path: '/images/mac/mac-studio-cooling.jpg', alt: 'Mac Studio køling og blæserreparation' },
+    ],
+    crosslinks: [{ label: 'MacBook-reparation', href: '/macbook-reparation/' }],
+    ctaPrimary: 'Kom forbi med din enhed',
+  },
+
+  // ---------------------------------------------- OTHER BRANDS & CUSTOM BUILDS
+  // Opsamlingsside. Ingen modeltabel / fotos / why-blok efter design.
+  {
+    slug: 'andre-maerker-reparation',
+    brand: 'Andre mærker & specialbyggede',
+    title: 'Reparation af andre mærker & specialbyggede | PCKlinik',
+    description: 'Reparation af Gigabyte, LG gram, Razer og specialbyggede — samt ethvert mærke, der ikke er nævnt. Fejlsøgning fra 300 kr., fast pris.',
+    h1: 'Reparation af andre mærker & specialbyggede',
+    h2: 'Kan du ikke se dit mærke på listen? Vi reparerer det alligevel.',
+    intro: [
+      'Vi reparerer alle computermærker og opsætninger, ikke kun dem med dedikerede sider — inklusive <strong>Gigabyte, Chromebook, MSI’s mindre udbredte serier og andre mindre almindelige mærker</strong> samt fuldt <strong>specialbyggede stationære pc’er</strong>. Uanset om det er en bærbar fra et mærke, vi ikke har nævnt særskilt, eller en specialbygget gaming-maskine bygget fra bunden, griber vi det an på samme måde: grundig fejlsøgning og derefter en fast pris, før vi går i gang.',
+      'Standardfejlsøgning koster 300 kr. (2–4 dage), eller ekspres for 600 kr. (1–2 timer) — reparationen klar inden for 24 timer, hvis der ikke skal bestilles specielle reservedele.',
+    ],
+    services: [
+      { title: 'Skærmudskiftning', body: 'Revnet eller beskadiget skærm, uanset mærke.' },
+      { title: 'Batteriskift', body: 'Holder ikke på strøm? Vi skaffer også batterier til mærker ud over de store navne.' },
+      { title: 'Reparation af specialbyggede stationære', body: 'Bygget din egen pc, eller købt en specialbygget? Vi fejlsøger og reparerer specialbyggede maskiner — GPU, køling og bundkortproblemer inkluderet.' },
+      { title: 'Fejlsøgning & problemløsning', body: 'Er du i tvivl om, hvad der er galt, eller kan du ikke se dit mærke på listen? Kom forbi — så finder vi ud af det.' },
+    ],
+    faq: [
+      { q: 'Reparerer I mærker, der ikke er nævnt på jeres hjemmeside?', a: 'Ja, vi reparerer stort set alle computermærker og specialbyggede opsætninger, ikke kun dem med dedikerede sider.' },
+      { q: 'Kan I reparere en specialbygget gaming-pc?', a: 'Ja, inklusive GPU-, køle- og bundkortfejlsøgning på specialbyggede maskiner.' },
+      { q: 'Reparerer I Gigabyte-bærbare?', a: 'Ja — Gigabyte (inklusive deres AORUS-gamingserie) er dækket her, sammen med ethvert andet mærke, der ikke er nævnt særskilt.' },
+      { q: 'Reparerer I Chromebooks?', a: 'Ja, på tværs af mærker — Chromebook-specifikke problemer (software, batteri, skærm) håndteres på samme måde som enhver anden bærbar.' },
+      { q: 'Jeg har en bærbar fra et mærke, jeg aldrig har set nævnt nogen steder på jeres side — vil I stadig kigge på den?', a: 'Ja — denne side findes netop til den situation. Kom forbi, så fejlsøger vi den på samme måde som ethvert andet mærke.' },
+      { q: 'Får specialbyggede stationære pc’er samme standard-/ekspresfejlsøgningspris som mærkevarebærbare?', a: 'Ja, samme prismodel gælder, uanset om det er et stort mærke, et mindre kendt mærke eller en specialbygget maskine.' },
+    ],
+    crosslinks: [{ label: 'MSI-reparation', href: '/msi-reparation/' }, { label: 'Mac (stationær)-reparation', href: '/mac-stationaer-reparation/' }],
+    ctaPrimary: 'Kom forbi med din enhed',
+    ctaHeading: 'Har du et mærke, vi ikke har nævnt, eller en specialbygget maskine?',
+  },
+  // ------------------------------------------------------- TOSHIBA / DYNABOOK
+  {
+    slug: 'toshiba-dynabook-reparation',
+    brand: 'Toshiba & Dynabook',
+    title: 'Toshiba- & Dynabook-reparation | PCKlinik',
+    description: 'Reparation af Toshiba- og Dynabook-bærbare — Satellite, Portégé, Tecra — på Frederiksberg og i København. Fejlsøgning fra 300 kr., fast pris.',
+    h1: 'Toshiba- & Dynabook-reparation på Frederiksberg & København',
+    h2: 'Satellite, Portégé, Tecra og ældre Toshiba-modeller',
+    intro: [
+      'Toshibas bærbar-forretning blev overtaget af Sharp og omdøbt til Dynabook, men vi reparerer både de ældre Toshiba-mærkede modeller og de nyere Dynabook-serier. Uanset om det er en ældre Satellite, der stadig kører fint, eller en erhvervsfokuseret Portégé eller Tecra, fejlsøger og reparerer vi dem på samme måde som ethvert andet mærke.',
+      'Standardfejlsøgning koster 300 kr. (2–4 dage), eller ekspres for 600 kr. (1–2 timer) — reparationen klar inden for 24 timer, hvis der ikke skal bestilles specielle reservedele.',
+    ],
+    models: [
+      { series: 'Satellite (forbruger)', models: 'Satellite Pro, Satellite C/L-serie', issue: 'Batteri, skærm, langsom ydelse' },
+      { series: 'Portégé (ultrabærbar erhverv)', models: 'Portégé X30, Portégé Z30', issue: 'Skærm, hængsler, batteri' },
+      { series: 'Tecra (erhverv)', models: 'Tecra A50, Tecra X40', issue: 'Batteri, tastatur, skærm' },
+    ],
+    services: [
+      { title: 'Skærmudskiftning', body: 'Revnet eller beskadiget skærm på enhver Toshiba-/Dynabook-model.' },
+      { title: 'Batteriskift', body: 'Holder ikke på strøm? Vi skaffer batterier selv til ældre Toshiba-modeller.' },
+      { title: 'Tastatur & hængsler', body: 'Almindelige slidpunkter på ældre Satellite- og erhvervsmodeller.' },
+      { title: 'Fejlsøgning & software', body: 'Langsom ydelse eller softwareproblemer, fejlsøgt og udbedret.' },
+    ],
+    whyHeading: 'Hvorfor vælge PCKlinik til Toshiba- & Dynabook-reparation?',
+    why: [
+      { title: 'Gammelt og nyt', body: 'Vi reparerer både ældre Toshiba-modeller og aktuelle Dynabook-serier.' },
+      { title: 'Hurtig ekspedition', body: 'Vælger du ekspres, er reparationen klar inden for 24 timer. Standard tager 3–4 dage.' },
+      { title: 'Fast pris, før vi starter', body: 'Ingen overraskelser.' },
+      { title: 'Fremskaffelse af reservedele', body: 'Vi skaffer batterier og dele selv til ældre modeller, hvor det er muligt.' },
+    ],
+    faq: [
+      { q: 'Reparerer I stadig ældre Toshiba-modeller, eller kun nyere Dynabook?', a: 'Begge dele — alder stopper os ikke fra at reparere den, så længe der er reservedele.' },
+      { q: 'Er Dynabook det samme firma som Toshiba?', a: 'Dynabook er den omdøbte efterfølger til Toshibas bærbar-forretning (overtaget af Sharp) — vi reparerer begge under samme service.' },
+    ],
+    crosslinks: [{ label: 'Andre mærker & specialbyggede', href: '/andre-maerker-reparation/' }, { label: 'Computerreparation i København', href: '/computerreparation-koebenhavn/' }],
+    ctaPrimary: 'Kom forbi med din enhed',
+  },
+
+  // ------------------------------------------------------------------ FUJITSU
+  {
+    slug: 'fujitsu-reparation', brand: 'Fujitsu',
+    title: 'Reparation af Fujitsu-bærbare | PCKlinik',
+    description: 'Reparation af Fujitsu LIFEBOOK på Frederiksberg og i København. Vi sælger også istandsatte Fujitsu-bærbare. Fejlsøgning fra 300 kr., fast pris.',
+    h1: 'Fujitsu-reparation på Frederiksberg & København',
+    h2: 'LIFEBOOK og andre Fujitsu-bærbare — et mærke, vi kender godt',
+    intro: [
+      'Fujitsu laver driftssikre, erhvervsfokuserede bærbare, der ikke får så meget opmærksomhed som de store mærker — men vi kender dem godt. Vi både reparerer Fujitsu-bærbare og sælger istandsatte Fujitsu-enheder i vores butik, så vi er reelt fortrolige med almindelige fejlpunkter på tværs af serien, ikke kun reparerer dem lejlighedsvis.',
+      'Standardfejlsøgning koster 300 kr. (2–4 dage), eller ekspres for 600 kr. (1–2 timer) — reparationen klar inden for 24 timer, hvis der ikke skal bestilles specielle reservedele.',
+    ],
+    models: [
+      { series: 'LIFEBOOK (erhverv)', models: 'LIFEBOOK U, LIFEBOOK E-serie', issue: 'Batteri, skærm, tastatur' },
+      { series: 'LIFEBOOK (forbruger/generel)', models: 'LIFEBOOK A-serie', issue: 'Langsom ydelse, batteri, skærm' },
+    ],
+    services: [
+      { title: 'Skærmudskiftning', body: 'Revnede eller beskadigede skærme på enhver Fujitsu LIFEBOOK-model.' },
+      { title: 'Batteriskift', body: 'Almindeligt på ældre LIFEBOOK-enheder — vi skaffer erstatninger.' },
+      { title: 'Tastaturreparation', body: 'Klistrede eller ureagerende taster, et hyppigt problem på velbrugte erhvervsenheder.' },
+      { title: 'Fejlsøgning & ydelse', body: 'Langsom ydelse eller softwareproblemer, fejlsøgt og udbedret.' },
+    ],
+    whyHeading: 'Hvorfor vælge PCKlinik til Fujitsu-reparation?',
+    why: [
+      { title: 'Vi kender Fujitsu', body: 'Vi sælger istandsatte Fujitsu-enheder, så vi kender de almindelige problemer på første hånd.' },
+      { title: 'Hurtig ekspedition', body: 'Vælger du ekspres, er reparationen klar inden for 24 timer. Standard tager 3–4 dage.' },
+      { title: 'Fast pris, før vi starter', body: 'Ingen overraskelser.' },
+      { title: 'Fremskaffelse af reservedele', body: 'Fujitsu-dele er mindre almindelige, men vi har erfaring med at finde det nødvendige.' },
+    ],
+    faq: [
+      { q: 'Har I istandsatte Fujitsu-bærbare på lager lige nu?', a: 'Lageret varierer — se vores butiksside for aktuel tilgængelighed, eller kontakt os direkte.' },
+      { q: 'Ser I faktisk mange Fujitsu-bærbare, eller er det en sjælden henvendelse?', a: 'Vi ser dem jævnligt — vi sælger selv istandsatte Fujitsu-enheder, så vi er allerede fortrolige med de almindelige problemer.' },
+      { q: 'Er Fujitsu-dele svære at skaffe?', a: 'Mindre almindelige end Lenovo/HP/Dell, men vi har erfaring med at finde det nødvendige.' },
+    ],
+    crosslinks: [{ label: 'Refurbished computere', href: '/butik/computere/refurbished/' }, { label: 'Andre mærker & specialbyggede', href: '/andre-maerker-reparation/' }],
+    ctaPrimary: 'Kom forbi med din enhed',
+  },
+  // ------------------------------------------------------------------- LG GRAM
+  {
+    slug: 'lg-gram-reparation', brand: 'LG gram',
+    title: 'Reparation af LG gram-bærbare | PCKlinik',
+    description: 'Reparation af LG gram-bærbare på Frederiksberg og i København. Skærm, batteri, tastatur. Fejlsøgning fra 300 kr., fast pris.',
+    h1: 'LG gram-reparation på Frederiksberg & København',
+    h2: 'Ultralette bærbare, repareret ordentligt',
+    intro: [
+      'LG gram-bærbare er kendt for at være usædvanligt lette uden at gå på kompromis med skærmstørrelsen — populære hos studerende og fagfolk, der rejser meget. Den lette konstruktion bruger en anden intern ingeniørkunst end de fleste bærbare, hvilket vi har erfaring med.',
+      'Standardfejlsøgning koster 300 kr. (2–4 dage), eller ekspres for 600 kr. (1–2 timer) — reparationen klar inden for 24 timer, hvis der ikke skal bestilles specielle reservedele.',
+    ],
+    services: [
+      { title: 'Skærmudskiftning', body: 'LG grams store, tynde skærme repareret ordentligt.' },
+      { title: 'Batteriskift', body: 'Genskab den oprindelige batterilevetid.' },
+      { title: 'Hængselreparation', body: 'Det ultralette kabinetdesign betyder, at hængsler er et mere almindeligt slidpunkt end på tungere bærbare.' },
+      { title: 'Tastatur & trackpad', body: 'Reparation eller udskiftning efter behov.' },
+    ],
+    whyHeading: 'Hvorfor vælge PCKlinik til LG gram-reparation?',
+    why: [
+      { title: 'Erfaring med tynde kabinetter', body: 'Vi har det rette værktøj og den rette omhu til den ultralette konstruktion.' },
+      { title: 'Hurtig ekspedition', body: 'Vælger du ekspres, er reparationen klar inden for 24 timer. Standard tager 3–4 dage.' },
+      { title: 'Fast pris, før vi starter', body: 'Ingen overraskelser.' },
+      { title: 'Alle generationer', body: 'Vi reparerer både ældre og nyere LG gram-modeller.' },
+    ],
+    faq: [
+      { q: 'Er LG gram-reparation dyrere på grund af det unikke lette design?', a: 'Ikke nødvendigvis dyrere, men det kræver mere forsigtig håndtering på grund af det tynde kabinet — vi fejlsøger altid først og giver en fast pris, før vi går i gang.' },
+      { q: 'Er LG gram sværere at reparere, fordi den er så let?', a: 'Det kræver omhu på grund af det tynde kabinet, men vi har det rette værktøj og den rette erfaring.' },
+      { q: 'Reparerer I både ældre og nyere LG gram-modeller?', a: 'Ja, uanset generation.' },
+    ],
+    crosslinks: [{ label: 'Andre mærker & specialbyggede', href: '/andre-maerker-reparation/' }, { label: 'Computerreparation i København', href: '/computerreparation-koebenhavn/' }],
+    ctaPrimary: 'Kom forbi med din enhed',
+  },
+  // --------------------------------------------------------------- RAZER BLADE
+  {
+    slug: 'razer-blade-reparation', brand: 'Razer Blade',
+    title: 'Reparation af Razer Blade-bærbare | PCKlinik',
+    description: 'Reparation af Razer Blade gaming-bærbare på Frederiksberg og i København. Skærm, køling, batteri. Fejlsøgning fra 300 kr., fast pris.',
+    h1: 'Razer Blade-reparation på Frederiksberg & København',
+    h2: 'Premium gaming-bærbare, repareret ordentligt',
+    intro: [
+      'Razer Blade-bærbare pakker højtydende gaming-hardware ind i et tyndt aluminiumskabinet — hvilket betyder, at køling og termisk styring betyder endnu mere end på typiske gaming-bærbare. Vi reparerer Razer Blade-skærme, kølesystemer, batterier og meget mere.',
+      'Standardfejlsøgning koster 300 kr. (2–4 dage), eller ekspres for 600 kr. (1–2 timer) — reparationen klar inden for 24 timer, hvis der ikke skal bestilles specielle reservedele.',
+    ],
+    services: [
+      { title: 'Køling & termisk service', body: 'Det tynde kabinetdesign gør ordentlig kølevedligeholdelse særligt vigtig på Razer Blade-modeller.' },
+      { title: 'Skærmudskiftning', body: 'Skærme med høj opdateringsfrekvens repareret med kvalitetsdele.' },
+      { title: 'Batteriskift', body: 'Genskab batterilevetiden på ældre enheder.' },
+      { title: 'GPU-fejlsøgning', body: 'Artefakter eller nedbrud under belastning, fejlsøgt og repareret.' },
+    ],
+    whyHeading: 'Hvorfor vælge PCKlinik til Razer Blade-reparation?',
+    why: [
+      { title: 'Erfaring med tynde gaming-bærbare', body: 'Vi kender det kompakte aluminiumskabinet og dets termiske krav.' },
+      { title: 'Hurtig ekspedition', body: 'Vælger du ekspres, er reparationen klar inden for 24 timer. Standard tager 3–4 dage.' },
+      { title: 'Fast pris, før vi starter', body: 'Ingen overraskelser.' },
+      { title: 'Alle modeller', body: 'Standard- og Studio Edition-modeller af Razer Blade.' },
+    ],
+    faq: [
+      { q: 'Reparerer I Razer Blades RGB-tastaturbelysning, hvis den holder op med at virke?', a: 'Ja — problemer med RGB-belysning fejlsøges på samme måde som enhver anden tastaturrelateret fejl.' },
+      { q: 'Er en Razer Blade sværere at reparere end andre gaming-bærbare?', a: 'Det kompakte aluminiumskabinet kræver mere omhu, men vi har erfaring med tynde og lette gaming-bærbardesign.' },
+      { q: 'Arbejder I på både standard- og Studio Edition-modellerne af Razer Blade?', a: 'Ja.' },
+    ],
+    crosslinks: [{ label: 'Gaming-pc’er & specialbyggede', href: '/gaming-pc-reparation/' }, { label: 'Andre mærker & specialbyggede', href: '/andre-maerker-reparation/' }],
+    ctaPrimary: 'Kom forbi med din enhed',
+  },
+
 ];
-function homeBody() {
-  // [name, models, href, icon-key, optional linkText]
-  const brands = [
-    ['Lenovo', 'ThinkPad, IdeaPad, Legion, Yoga', '/lenovo-reparation/', 'laptop'],
-    ['Acer', 'Aspire, Swift, Nitro, Predator', '/acer-reparation/', 'laptop'],
-    ['HP', 'EliteBook, Pavilion, Spectre, Omen', '/hp-reparation/', 'laptop'],
-    ['Dell', 'XPS, Latitude, Inspiron, Precision', '/dell-reparation/', 'laptop'],
-    ['Asus', 'ZenBook, Vivobook, ROG, TUF', '/asus-reparation/', 'laptop'],
-    ['MSI', 'Katana, GF-serien, Stealth, Prestige', '/msi-reparation/', 'laptop'],
-    ['Huawei', 'MateBook D14, D15, X Pro', '/huawei-reparation/', 'laptop'],
-    ['MacBook', 'Pro, Air, alle generationer', '/macbook-reparation/', 'laptop'],
-    ['Microsoft Surface', 'Pro, Laptop, Book', '/microsoft-surface-reparation/', 'laptop'],
-    ['Samsung', 'Galaxy Book-serien', '/samsung-reparation/', 'laptop'],
-    ['Mac (stationær)', 'iMac, Mac mini, Mac Studio, Mac Pro', '/mac-stationaer-reparation/', 'monitor'],
-    ['Gaming-pc’er & specialbyggede', 'Reparation, service & bygning fra bunden', '/gaming-pc-reparation/', 'monitor'],
-    ['Andre mærker & specialbyggede', 'Gigabyte, Chromebook, specialbyggede pc’er m.m.', '/andre-maerker-reparation/', 'wrench', 'Se andre mærker'],
-    ['Netværksudstyr', 'UniFi, Netgear, TP-Link m.m.', '/netvaerksudstyr/', 'wifi', 'Se netværksudstyr'],
-    ['Toshiba / Dynabook', 'Satellite, Portégé, Tecra', '/toshiba-dynabook-reparation/', 'laptop'],
-    ['Fujitsu', 'LIFEBOOK — reparation & salg af istandsatte', '/fujitsu-reparation/', 'laptop'],
-    ['LG gram', 'Reparation af ultralet bærbar', '/lg-gram-reparation/', 'laptop'],
-    ['Razer Blade', 'Reparation af gaming-bærbar', '/razer-blade-reparation/', 'laptop'],
-  ];
-  const cards = brands.map(([n, m, h, i, lt]) => `<a class="card card-link brand-card" href="${h}"><div class="card-icon brand-icon">${lucide[i]}</div><h3>${esc(n)}</h3><p class="models">${esc(m)}</p><span class="arrow">${esc(lt ? lt : 'Se ' + n + '-reparation')} →</span></a>`).join('');
-  const popular = [
-    ['SSD-opgradering', 'Hurtigere opstartstid for en ældre pc eller bærbar.', '/ssd-opgradering/'],
-    ['Væskeskade-reparation', 'Alle mærker og modeller — pc eller Mac.', '/vaeskeskade-reparation/'],
-    ['Backup & datagendannelse', 'Beskyt dine filer, eller gendan dem efter en fejl.', '/backup-og-datagendannelse/'],
-    ['Fjernelse af virus & malware', 'Pc eller Mac, renset og beskyttet.', '/virus-og-malwarefjernelse/'],
-  ].map(([t, d, h]) => `<a class="card card-link" href="${h}"><h3>${esc(t)}</h3><p>${esc(d)}</p><span class="arrow">Læs mere →</span></a>`).join('');
-  const faqHtml = HOME_FAQ.map(([q, a]) => `<details><summary>${esc(q)}</summary><div class="answer">${esc(a)}</div></details>`).join('');
-  return `  <section class="hero"><div class="wrap"><div class="eyebrow">Frederiksberg &amp; København</div>
-    <h1>Alt inden for computer og IT — du har ikke brug for nogen andre.</h1>
-    <p class="lead">Fra reparation, rådgivning og IT-support til hosting, domæner, backup og salg af computere — hos PCKlinik får du det hele ét sted. I din computerverden har du ikke brug for nogen andre end os. Ingen at ringe rundt til, ingen flere aftaler at holde styr på — bare ét team, der kender din opsætning fra start til slut.</p>
-    <p style="margin-top:14px;font-weight:600">Vælg din vej nedenfor:</p>
-    <div class="grid grid-2 hero-paths">
-      <a class="card card-link" href="/kontakt/"><div class="card-icon">🖥️</div><h2>Til private</h2><p>PC- og Mac-reparation — kom forbi med din enhed til en fejlsøgning, eller ring/skriv, hvis du har et spørgsmål. Fast pris, før vi går i gang.</p><span class="arrow">Kom forbi eller kontakt os →</span></a>
-      <a class="card card-link" href="/it-support-til-erhverv/"><div class="card-icon">🏢</div><h2>Til virksomheder</h2><p>IT-supportaftaler til fast pris — ubegrænset support, overvågning og sikkerhed for ét fast månedligt beløb.</p><span class="arrow">Se IT-support til erhverv →</span></a>
-    </div>
-    <p style="margin-top:18px;color:#C7D3EC;font-size:14.5px">Har I brug for rådgivning frem for en løbende aftale? <a href="/it-raadgivning/" style="color:#A9C1F0">Se IT-rådgivning →</a></p></div></section>
-  <section class="section"><div class="wrap"><div class="eyebrow">Vores løfte</div><h2>Sådan fungerer det</h2><div class="steps">
-    <div class="step"><div class="num">1</div><h3>Fejlsøgning</h3><p>300 kr. (2–4 dage), eller ekspres for 600 kr. (1–2 timer).</p></div>
-    <div class="step"><div class="num">2</div><h3>Fast pris</h3><p>Du får en klar pris, før vi rører ved noget.</p></div>
-    <div class="step"><div class="num">3</div><h3>Reparation</h3><p>Vi udfører reparationen med samme omhu som fejlsøgningen.</p></div></div></div></section>
-  <section class="section alt"><div class="wrap"><div class="eyebrow">Hvad vi reparerer</div><h2>Alle større computermærker — PC og Mac</h2>
-    <p class="sub">Vi reparerer alle større computermærker — PC og Mac, bærbar og stationær — for privatpersoner og virksomheder på Frederiksberg og i København.</p>
-    <div class="grid grid-3">${cards}</div></div></section>
-  <section class="section"><div class="wrap"><div class="eyebrow">Populære services</div><h2>Ud over mærkereparationer</h2>
-    <p class="sub">Ud over mærkespecifikke reparationer klarer vi disse ofte efterspurgte opgaver:</p>
-    <div class="grid grid-4">${popular}</div>
-    <div style="margin-top:24px"><a class="btn btn-outline" href="/faq/">Se alle services &amp; FAQ →</a></div>
-    <p class="sub" style="margin-top:16px">Skaden dækket af din forsikring? <a href="/forsikringsreparation/">Se forsikringsreparation →</a></p></div></section>
-  <section class="section alt"><div class="wrap"><div class="eyebrow">Hvorfor PCKlinik</div><h2>Derfor vælger du PCKlinik</h2><ul class="why-list">
-    <li><strong>Rigtig ekspertise</strong>Et erfarent team, ikke et callcenter — du får altid et ærligt svar fra en, der ved, hvad de taler om.</li>
-    <li><strong>Fast pris før vi starter</strong>Ingen overraskelser, nogensinde.</li>
-    <li><strong>Erfaring på tværs af mærker</strong>Solid erfaring med alle større mærker og modeller, PC og Mac.</li>
-    <li><strong>Hurtig ekspedition</strong>Vælger du ekspres, er reparationen klar inden for 24 timer. Standard tager 3–4 dage.</li>
-    <li><strong>Vi taler dansk</strong>Naturligvis — men også engelsk, hvis det er nemmere for dig.</li></ul></div></section>
-  <section class="section"><div class="wrap"><div class="cta-band"><h2>Vil du hellere købe?</h2><p>Nye og istandsatte computere samt backup- og sikkerhedsudstyr — alt testet og klar til brug. Usikker på, om det bedre kan betale sig at reparere? <a href="/reparere-eller-koebe-ny-computer/" style="color:#A9C1F0">Se vores guide →</a></p><div class="cta-row"><a class="btn btn-white" href="/butik/">Besøg butikken →</a></div></div></div></section>
-  <section class="section alt"><div class="wrap"><div class="eyebrow">Find os</div><h2>Find os på Frederiksberg</h2>
-    <p class="sub">Vi er et rigtigt værksted — ikke bare en hjemmeside. Kig forbi, ring eller skriv, så kigger vi på det.</p>
-    <div class="info-block"><div class="nap">
-      <p><strong>Adresse</strong><br />${site.address}</p>
-      <p><strong>Telefon</strong><br /><a href="${site.phoneHref}">${site.phone}</a></p>
-      <p><strong>E-mail</strong><br /><a href="mailto:${site.emailConsumer}">${site.emailConsumer}</a></p>
-      <p><strong>Åbningstider</strong><br />Man–fre 10:00–18:00 · Lør 10:00–14:00 · Søn lukket</p>
-      <a class="btn btn-primary" href="/kontakt/" style="margin-top:8px">Kom forbi med din enhed</a>
-    </div>${mapFrame}</div></div></section>
-  <section class="section"><div class="wrap"><div class="eyebrow">FAQ</div><h2>Ofte stillede spørgsmål</h2><div class="faq">${faqHtml}</div></div></section>`;
-}
-
-// ---------- contact ----------
-function contactBody() {
-  return `  <section class="hero"><div class="wrap"><div class="eyebrow">Kom i kontakt</div><h1>Kontakt os</h1>
-    <p class="lead">Vi er klar til at hjælpe med din computer. Har du et spørgsmål om en reparation, eller vil du booke en tid? Ring, skriv, eller kig forbi værkstedet på Falkoner Allé — vi svarer hurtigt.</p><div class="badges"><span class="badge check">Fremmøde uden bestilling</span></div></div></section>
-  <section class="section"><div class="wrap"><div class="info-block">
-    <div class="nap"><div class="eyebrow">Kontaktoplysninger</div>
-      <p><strong>Telefon</strong><br /><a href="${site.phoneHref}">${site.phone}</a></p>
-      <p><strong>E-mail</strong><br /><a href="mailto:${site.emailConsumer}">${site.emailConsumer}</a></p>
-      <p><strong>Adresse</strong><br />${site.address}</p>
-      <p><strong>Åbningstider</strong><br />Man–fre 10:00–18:00 · Lør 10:00–14:00 · Søn lukket</p></div>
-    <div class="form-card">
-      ${formOpen(site.emailConsumer, 'Ny henvendelse via kontaktformular — pcklinik.dk', '/tak/')}
-        <div class="form-row"><div><label for="name">Navn</label><input id="name" name="name" type="text" autocomplete="name" required /></div></div>
-        <div class="form-row"><div><label for="contact">Telefon eller e-mail</label><input id="contact" name="contact" type="text" autocomplete="email" required /></div></div>
-        <div class="form-row"><div><label for="model">Mærke / model <span style="font-weight:400;color:var(--muted)">(valgfrit — hjælper os med at forberede)</span></label><input id="model" name="model" type="text" placeholder="fx Lenovo ThinkPad T14" /></div></div>
-        <div class="form-row"><div><label for="message">Besked / beskrivelse af problemet</label><textarea id="message" name="message" required></textarea></div></div>
-        <button class="btn btn-primary" type="submit">Send besked</button>
-      </form></div></div></div></section>
-  <section class="section"><div class="wrap"><div class="eyebrow">Godt at vide</div><h2>Ofte stillede spørgsmål</h2><div class="faq"><details><summary>Skal jeg bestille tid?</summary><div class="answer">Nej — du kan møde op uden bestilling. Du er velkommen til at kigge forbi i åbningstiden.</div></details><details><summary>Kan jeg bede om et bestemt tidspunkt?</summary><div class="answer">Da vi er et lille, personligt værksted, så ring gerne i forvejen, så finder vi en løsning, hvor det er muligt.</div></details><details><summary>Er værkstedet kørestolsvenligt?</summary><div class="answer">Kontakt os direkte, hvis du har særlige behov for tilgængelighed, så sørger vi for, at dit besøg fungerer.</div></details><details><summary>Hvilke oplysninger skal jeg give jer, for at få et hurtigt tilbud?</summary><div class="answer">Mærke og modelnavn er en god start, men serienummer (eller modelnummer) gør det muligt for os at give et hurtigere og mere præcist overslag, allerede før du kommer forbi. På en bærbar står det ofte på undersiden eller inde under batteriet; på en stationær pc typisk på et mærkat bagpå eller i siden. Har du ikke mulighed for at finde det, er det heller ikke noget problem — så ser vi nærmere på det, når du kontakter os eller kommer forbi.</div></details></div></div></section>
-  <section class="section alt"><div class="wrap"><div class="eyebrow">Find os</div><h2>Falkoner Allé 108, Frederiksberg</h2>${mapFrame}</div></section>`;
-}
-
-// ---------- business IT ----------
-function businessBody() {
-  const features = [
-    ['🛠️', 'Ubegrænset IT-support', 'Hjælp til jeres medarbejdere via telefon, e-mail og fjernsupport — og on-site i København, når det er nødvendigt. Fast pris, ingen timeafregning.'],
-    ['📡', 'Overvågning & drift', 'Vi holder øje med jeres computere og servere døgnet rundt og fanger problemer, før de bliver til nedbrud.'],
-    ['💾', 'Backup & gendannelse', 'Rigtig backup af jeres data og Microsoft 365 — ikke bare cloud-lagring. Sker der noget med en maskine, gendanner vi det hele på en ny.'],
-    ['🛡️', 'IT-sikkerhed', 'Professionel endpoint-beskyttelse og antivirus — beskyttelse mod virus, ransomware, phishing og mailtrusler, plus løbende overvågning.'],
-    ['📧', 'Microsoft 365', 'Opsætning og administration af Microsoft 365, Teams, SharePoint og e-mail — nye medarbejdere kommer hurtigt og sikkert i gang.'],
-    ['📋', 'Rådgivning & NIS2', 'Praktisk IT-rådgivning, så I træffer de rette valg — og er klar til krav som GDPR og NIS2.'],
-    ['🖥️', 'Nyt IT-udstyr', 'Vi sælger og opsætter nye computere, Mac, skærme og andet udstyr — klar til brug fra dag ét.'],
-    ['♻️', 'Istandsat udstyr', 'Professionelt istandsatte computere og enheder — 1 til 3 års garanti afhængigt af kvalitetsgrad (A/B/C). Billigere og grønnere.'],
-    ['🔒', 'Sikker bortskaffelse', 'Vi tager jeres gamle udstyr retur, sletter alle data sikkert og bortskaffer det ansvarligt — fuldt GDPR-compliant.'],
-  ];
-  const tiers = [
-    ['Starter', 'Ubegrænset fjernsupport og proaktiv vedligeholdelse til mindre virksomheder.', '399', false,
-      [['yes', 'Ubegrænset fjernsupport (telefon & e-mail)'], ['yes', 'Svar inden for 1 arbejdsdag'], ['yes', 'Patch management & opdateringer'], ['yes', 'RMM-enhedsovervågning'], ['yes', 'Månedlig statusrapport'], ['no', 'Antivirus & endpoint-beskyttelse'], ['no', 'Backup-overvågning']]],
-    ['Premium', 'Alt, jeres virksomhed har brug for: ubegrænset support og komplet IT-sikkerhed.', '599', true,
-      [['yes', 'Alt i Starter'], ['yes', 'Svar inden for 4 timer'], ['yes', 'Antivirus & endpoint-beskyttelse'], ['yes', '24/7-overvågning'], ['yes', 'Backup-overvågning'], ['yes', 'Microsoft 365-administration'], ['yes', 'MFA & adgangsstyring']]],
-    ['Exclusive', 'Komplet IT-support, sikkerhed og Microsoft 365-licens — alt i én pakke.', '899', false,
-      [['yes', 'Alt i Premium'], ['yes', 'Svar inden for 1 time'], ['yes', 'Microsoft 365-licens inkluderet'], ['yes', 'Outlook, Teams & OneDrive'], ['yes', 'Exchange Online (virksomhedsmail)'], ['yes', 'Opsætning & migrering inkluderet'], ['yes', 'Løbende licensadministration'], ['yes', 'GDPR-klar cloud-løsning']]],
-  ];
-  const faq = FAQ_BUSINESS;
-  const feat = features.map(([i, t, b]) => `<div class="card"><div class="card-icon">${i}</div><h3>${esc(t)}</h3><p>${esc(b)}</p></div>`).join('');
-  const price = tiers.map(([name, blurb, p, feat2, items]) => {
-    const li = items.map(([k, l]) => `<li class="${k}">${esc(l)}</li>`).join('');
-    const signup = `mailto:${site.emailBusiness}?subject=${encodeURIComponent('Tilmelding: ' + name + '-pakke')}`;
-    return `<div class="price-card${feat2 ? ' featured' : ''}">${feat2 ? '<span class="ribbon">⭐ Anbefalet</span>' : ''}<div class="tag">${esc(name)}</div><h3>${esc(name)}</h3><p class="blurb">${esc(blurb)}</p><div class="price">${p} kr. <small>/ bruger / måned</small></div><div class="vat">ekskl. moms</div><ul>${li}</ul><a class="btn ${feat2 ? 'btn-primary' : 'btn-outline'}" href="${signup}">Vælg ${esc(name)}</a><div class="fine">Ingen binding • Start i dag</div></div>`;
-  }).join('');
-  const faqHtml = faq.map(([q, a]) => `<details><summary>${esc(q)}</summary><div class="answer">${esc(a)}</div></details>`).join('');
-  const reviewMail = `mailto:${site.emailBusiness}?subject=Gratis%20IT-gennemgang`;
-  return `  <section class="hero"><div class="wrap"><div class="eyebrow">Erhverv · IT-supportaftale</div>
-    <h1>IT-supportaftale til erhverv — din IT-afdeling på abonnement</h1>
-    <p class="lead">IT-support til fast pris for virksomheder i København og på Frederiksberg. Ubegrænset support, proaktiv overvågning og IT-sikkerhed for én forudsigelig månedlig pris. Vi ligger på Falkoner Allé på Frederiksberg, kører ud i hele København og hjælper resten af landet via fjernsupport.</p>
-    <div class="badges"><span class="badge check">Faste pakker fra 399 kr./bruger/md.</span><span class="badge check">Ubegrænset support — ingen timepriser</span><span class="badge check">Svar fra 1 time</span><span class="badge check">Lokal IT-partner på Frederiksberg</span></div>
-    <div class="cta-row"><a class="btn btn-ghost-light" href="${site.phoneHref}">📞 Ring ${site.phone}</a><a class="btn btn-white" href="#enquiry">Book en gratis IT-gennemgang</a><a class="hero-text-link" href="#pricing">Se priser →</a></div></div></section>
-  <section class="section alt"><div class="wrap"><div class="eyebrow">Hvad er en IT-supportaftale?</div><h2>Én fast aftale — og jeres IT kører bare</h2>
-    <p class="sub">En IT-supportaftale til erhverv betyder, at PCKlinik passer på jeres IT, så I kan fokusere på jeres forretning. I får en dedikeret IT-ansvarlig, der kender jeres opsætning, holder øje med jeres systemer og træder til, når noget går galt — uden uventede regninger. I stedet for at ringe rundt efter hjælp har I én partner, der holder styr på det hele.</p>
-    <div class="grid grid-3">${feat}</div></div></section>
-  <section class="section"><div class="wrap"><div class="eyebrow">Hvorfor PCKlinik</div><h2>En rigtig lokal IT-partner — ikke et callcenter</h2><ul class="why-list">
-    <li><strong>Forudsigelige IT-omkostninger</strong>Fast månedlig pris, ingen timepriser eller regningsoverraskelser.</li>
-    <li><strong>En dedikeret kontaktperson</strong>I får én navngiven IT-ansvarlig, der kender jeres virksomhed, bakket op af et helt team, når der skal flere hænder til.</li>
-    <li><strong>Hurtig hjælp</strong>Garanteret svartid fra 1 arbejdsdag ned til 1 time, afhængigt af jeres pakke.</li>
-    <li><strong>Lokalt og landsdækkende</strong>On-site i København og omegn, fjernsupport i hele landet.</li></ul></div></section>
-  <section class="section alt"><div class="wrap"><div class="eyebrow">Sådan kommer I i gang</div><h2>Tre enkle trin</h2><div class="steps">
-    <div class="step"><div class="num">1</div><h3>Gratis IT-gennemgang</h3><p>Vi kortlægger jeres nuværende IT-opsætning, finder sikkerhedshuller og besparelsesmuligheder — helt uforpligtende.</p></div>
-    <div class="step"><div class="num">2</div><h3>En klar plan</h3><p>I får en konkret anbefaling og en supportaftale, der passer til jeres størrelse og behov. I sætter tempoet.</p></div>
-    <div class="step"><div class="num">3</div><h3>Vi driver jeres IT</h3><p>Vi opsætter det og vedligeholder det fremover — support, overvågning og sikkerhed inkluderet.</p></div></div></div></section>
-  <section class="section" id="pricing"><div class="wrap"><div class="eyebrow">Priser & pakker</div><h2>Gennemsigtige priser — ingen overraskelser</h2>
-    <p class="sub">Vælg den pakke, der passer til jeres virksomhed. Fast pris pr. bruger, ekskl. moms — ingen binding.</p>
-    <div class="pricing-grid">${price}</div>
-    <p class="center" style="margin-top:28px;color:var(--muted)">Er I i tvivl om, hvad I har brug for? <a href="${site.phoneHref}">Ring ${site.phone}</a> for en uforpligtende IT-gennemgang.</p></div></section>
-  <section class="section alt"><div class="wrap"><div class="eyebrow">Find os på Frederiksberg</div><h2>En fysisk IT-butik og værksted — ikke bare en hjemmeside</h2>
-    <p class="sub">Kig forbi, ring eller skriv, så finder vi den rette aftale til jer.</p>
-    <div class="info-block"><div class="nap"><p><strong>Adresse</strong><br />${site.address}</p><p><strong>Telefon</strong><br /><a href="${site.phoneHref}">${site.phone}</a></p><p><strong>E-mail</strong><br /><a href="mailto:${site.emailBusiness}">${site.emailBusiness}</a></p></div>${mapFrame}</div></div></section>
-  <section class="section alt" id="enquiry"><div class="wrap"><div class="eyebrow">Kom i kontakt</div><h2>Book en gratis IT-gennemgang</h2>
-    <p class="sub">Fortæl os lidt om jeres virksomhed, så vender vi tilbage — uforpligtende.</p>
-    <div class="form-card" style="max-width:640px">
-      ${formOpen(site.emailBusiness, 'Ny henvendelse om IT-support til erhverv — pcklinik.dk', '/tak/')}
-        <div class="form-row"><div><label for="biz-name">Navn</label><input id="biz-name" name="name" type="text" autocomplete="name" required /></div></div>
-        <div class="form-row"><div><label for="biz-company">Virksomhed <span style="font-weight:400;color:var(--muted)">(valgfrit)</span></label><input id="biz-company" name="company" type="text" autocomplete="organization" /></div></div>
-        <div class="form-row"><div><label for="biz-email">E-mail</label><input id="biz-email" name="email" type="email" autocomplete="email" required /></div></div>
-        <div class="form-row"><div><label for="biz-phone">Telefon <span style="font-weight:400;color:var(--muted)">(valgfrit)</span></label><input id="biz-phone" name="phone" type="tel" autocomplete="tel" /></div></div>
-        <div class="form-row"><div><label for="biz-users">Antal brugere <span style="font-weight:400;color:var(--muted)">(valgfrit)</span></label><input id="biz-users" name="users" type="text" placeholder="fx 8" /></div></div>
-        <div class="form-row"><div><label for="biz-message">Hvad har I brug for hjælp til?</label><textarea id="biz-message" name="message" required></textarea></div></div>
-        <button class="btn btn-primary" type="submit">Anmod om en gratis IT-gennemgang</button>
-      </form>
-    </div></div></section>
-  <section class="section"><div class="wrap"><div class="eyebrow">FAQ</div><h2>IT-support til erhverv — ofte stillede spørgsmål</h2><div class="faq">${faqHtml}</div></div></section>
-  <section class="section alt"><div class="wrap"><p class="eyebrow">Relateret</p><div class="crosslinks"><a href="/it-raadgivning/">IT-rådgivning →</a><a href="/fjernsupport/">Fjernsupport →</a><a href="/automatisk-backup/">Automatisk Backup →</a><a href="/kontakt/">Kontakt & booking →</a></div></div></section>`;
-}
-function businessSchemaFaq() {
-  return { '@context': 'https://schema.org', '@type': 'FAQPage', mainEntity: FAQ_BUSINESS.map(([q, a]) => ({ '@type': 'Question', name: q, acceptedAnswer: { '@type': 'Answer', text: a } })) };
-}
-const FAQ_BUSINESS = [
-  ['Kan ambassader eller diplomatiske repræsentationer bede om momsfri fakturering?', 'Kontakt os direkte for at drøfte jeres konkrete administrative krav og faktureringskrav — vi arbejder gerne inden for jeres organisations indkøbsproces.'],
-  ['Tilbyder I onboarding af mange medarbejdere på én gang?', 'Ja — masseopsætning (flere nye medarbejdere eller migrering af et helt teams udstyr) er noget, vi håndterer som en del af en supportaftale.'],
-  ['Kan I arbejde med vores eksisterende IT-dokumentation eller asset-inventory-system?', 'Ja — kontakt os om jeres konkrete systemer, så tilpasser vi os til at passe ind i jeres eksisterende processer frem for at kræve, at I ændrer dem.'],
-  ['Hvad koster en IT-supportaftale?', 'Vi har tre pakker: Starter fra 399 kr., Premium 599 kr. og Exclusive 899 kr. pr. bruger pr. måned (ekskl. moms). I betaler en fast månedlig pris, så I altid kender omkostningen på forhånd. Usikker på, hvilken pakke der passer? Book en gennemgang.'],
-  ['Er der nogen skjulte gebyrer?', 'Nej — aldrig. I betaler én fast månedlig pris pr. bruger, og det er det. Ingen opstartsgebyr, ingen timepris for supporthenvendelser og ingen overraskelser på fakturaen.'],
-  ['Hvad er jeres svartid?', 'Det afhænger af jeres pakke: Starter garanterer svar inden for 1 arbejdsdag, Premium inden for 4 timer, og Exclusive inden for 1 time — alt i normal åbningstid (man–fre 10:00–17:00).'],
-  ['Kan I opsige jeres abonnement når som helst?', 'Månedlige abonnementer kan opsiges med en måneds varsel. Årlige abonnementer løber til periodens udløb. Ingen binding ud over det.'],
-  ['Hvad dækker "ubegrænset support"?', 'Alt vedrørende jeres daglige IT: computer- og softwareproblemer, netværksproblemer, printere, e-mail, Microsoft 365, virus og sikkerhed. Dækker ikke hardwareudskiftning eller kundespecifik udvikling — det aftaler vi særskilt.'],
-  ['Fungerer det for virksomheder af enhver størrelse?', 'Ja. Vi hjælper enkeltmandsvirksomheder, kontorer med 2–3 medarbejdere og virksomheder med 50+ brugere. Prisen er pr. bruger, så I betaler præcis for det, I har brug for.'],
-  ['Skal I installere noget?', 'Vi installerer et lille fjernadgangsværktøj (TeamViewer eller lignende), så vi hurtigt kan hjælpe jer, uden at I behøver komme til os. Opsætningen tager typisk under 15 minutter, og vi klarer den for jer.'],
-  ['Hjælper I med printere og netværksprintere?', 'Ja. Vi opsætter, konfigurerer og fejlfinder alle typer printere — lokale, netværks- og cloud-printere. Vi hjælper også med driveropdateringer og integration med jeres eksisterende netværk.'],
-  ['Tilbyder I backupløsninger?', 'Ja. Vi opsætter automatisk backup — både lokalt og i skyen — så jeres data altid er beskyttet. Vi tester backuppen regelmæssigt og hjælper med gendannelse, hvis noget går galt.'],
-  ['Hvad med antivirussoftware og IT-sikkerhed?', 'Vi installerer og administrerer antivirus og endpoint-sikkerhed på alle jeres enheder. Premium-pakken inkluderer løbende sikkerhedsovervågning, så I er beskyttet mod virus, ransomware og phishing.'],
-  ['Kan I hjælpe med vores netværk og WiFi?', 'Ja. Vi opsætter og optimerer netværk, routere og WiFi — inklusive gæstenetværk, firewalls og VPN. Langsomt internet eller dårlig dækning? Vi finder løsningen.'],
-  ['Sælger I computere og udstyr?', 'Ja. Vi sælger både nyt og brugt/istandsat udstyr — computere, bærbare, skærme, printere til erhverv og tilbehør. Istandsat udstyr er professionelt gennemgået og kommer med garanti. Vi hjælper jer med at finde det rette udstyr til jeres behov og budget og opsætter det klar til brug.'],
-  ['Hvad er forskellen på en supportaftale og timeafregning?', 'Med en supportaftale betaler I en fast månedlig pris og får ubegrænset support — uden at tænke på, hvad hvert opkald koster. Med timeafregning betaler I pr. opgave, hvilket gør omkostningerne uforudsigelige og ofte dyrere. En aftale betyder også, at vi arbejder proaktivt, så der opstår færre problemer i første omgang.'],
-  ['Kan I overtage fra vores nuværende IT-leverandør?', 'Ja. Vi styrer en glidende overgang, indhenter de nødvendige oplysninger og overtager driften, uden at I oplever nedetid. I behøver ikke selv koordinere det.'],
-  ['Hvor hurtigt kan vi komme i gang?', 'Som regel inden for få dage. Vi starter med en gennemgang, opsætter fjernadgang (under 15 minutter) og driver jeres aftale derfra.'],
-  ['Hjælper I med NIS2 og GDPR?', 'Ja. Vi rådgiver om både GDPR og det nye NIS2-direktiv og hjælper med backup, adgangsstyring, sikkerhed og dokumentation, så I lever op til kravene.'],
-  ['Understøtter I medarbejdere, der arbejder hjemmefra?', 'Ja. Vores support afhænger ikke af, hvor medarbejderne befinder sig. Vi hjælper via fjernsupport, uanset om de er på kontoret eller hjemme, og sikrer en stabil forbindelse til virksomhedens systemer.'],
-  ['Hvad sker der ved et IT-nedbrud?', 'I kontakter os, og vi går i gang med det samme. Med vores overvågning fanger vi ofte problemet, før I selv opdager det. Vores mål er at få jer op at køre igen hurtigst muligt og holde nedetiden på et minimum.'],
-  ['Hjælper I virksomheder i hele landet?', 'Ja. Fjernsupport dækker hele Danmark. Vi tilbyder on-site service i København og på Frederiksberg, hvor vi holder til.'],
-];
-
-// ---------- hosting ----------
-// NOTE: "Bestil nu" buttons below link to HostShop product pages. HostShop
-// setup (My20i package types, HostShop products, opening the shop) hasn't
-// been completed yet — see hostshop-checkout-setup.md — so these are
-// placeholders for now. Swap HOSTING_TIERS[].href with the real per-product
-// HostShop "Product Link" URLs once Steps 5-7 of that setup are done.
-const HOSTING_TIERS = [
-  ['Basic', '45', false, '10 GB lagerplads', ['10 GB lagerplads', 'Ubegrænset trafik', '15 mailbokse', 'Gratis SSL-certifikat', 'Daglig backup'], '#hostshop-basic-tbd'],
-  ['Business', '89', true, '50 GB lagerplads', ['50 GB lagerplads', 'Ubegrænset trafik', '60 mailbokse', 'Gratis SSL-certifikat', 'Daglig backup', 'Prioriteret support'], '#hostshop-business-tbd'],
-  ['Business+', '169', false, '100 GB lagerplads', ['100 GB lagerplads', 'Ubegrænset trafik', '120 mailbokse', 'Gratis SSL-certifikat', 'Daglig backup', 'Prioriteret support', 'Til virksomheder med flere sites'], '#hostshop-businessplus-tbd'],
-];
-const HOSTING_FAQ = [
-  ['Hvad er inkluderet i hosting-pakkerne?', 'Alle pakker inkluderer lagerplads, ubegrænset trafik, mailbokse, et gratis SSL-certifikat og daglig backup. Business og Business+ tilføjer flere mailbokse og prioriteret support — se sammenligningen ovenfor for detaljer pr. pakke.'],
-  ['Kan I flytte min hjemmeside fra min nuværende udbyder?', 'Ja, kontakt os, så håndterer vi flytningen af din hjemmeside og dine mailbokse, så du undgår nedetid eller mistede e-mails undervejs.'],
-  ['Er priserne inkl. eller ekskl. moms?', 'Priserne, du ser på siden, er ekskl. moms — 25% dansk moms lægges oveni ved bestilling.'],
-  ['Er der binding på abonnementet?', 'Nej, alle hosting-pakker er månedlige uden binding.'],
-  ['Hvad er forskellen på hosting og jeres webdesign-/SEO-ydelser?', 'Hosting er selve serverpladsen, der får din hjemmeside til at være tilgængelig online. Webdesign, SEO og Google Ads er separate ydelser — vi bygger og optimerer selve hjemmesiden. Mange kunder bruger begge dele, men de kan også vælges hver for sig.'],
-  ['Hvilken pakke skal jeg vælge?', 'Basic passer til de fleste mindre hjemmesider og enkeltmandsvirksomheder. Business og Business+ passer til virksomheder med flere medarbejdere, mere e-mail-behov eller flere hjemmesider. Er du i tvivl, så kontakt os — vi rådgiver gerne.'],
-];
-function hostingBody() {
-  const cards = HOSTING_TIERS.map(([name, price, featured, headline, features, href]) => {
-    const li = features.map((f) => `<li class="yes">${esc(f)}</li>`).join('');
-    return `<div class="price-card${featured ? ' featured' : ''}">${featured ? '<span class="ribbon">⭐ Anbefalet</span>' : ''}<div class="tag">${esc(name)}</div><h3>${esc(name)}</h3><p class="blurb">${esc(headline)}</p><div class="price">${price} kr. <small>/ måned</small></div><div class="vat">ekskl. moms</div><ul>${li}</ul><a class="btn ${featured ? 'btn-primary' : 'btn-outline'}" href="${href}">Bestil nu</a><div class="fine">Ingen binding</div></div>`;
-  }).join('');
-  const faqHtml = HOSTING_FAQ.map(([q, a]) => `<details><summary>${esc(q)}</summary><div class="answer">${esc(a)}</div></details>`).join('');
-  return `  <section class="hero"><div class="wrap"><div class="eyebrow">Hosting</div><h1>Webhosting til din hjemmeside</h1>
-    <p class="lead">Hurtig, driftssikker webhosting med daglig backup og gratis SSL — fra det samme team, der reparerer din computer og bygger din hjemmeside.</p>
-    <div class="badges"><span class="badge check">Fra 45 kr./md.</span><span class="badge check">Ingen binding</span><span class="badge check">Dansk support</span></div>
-    <div class="cta-row"><a class="btn btn-white" href="#pricing">Se priser</a><a class="btn btn-ghost-light" href="${site.phoneHref}">📞 Ring ${site.phone}</a></div></div></section>
-  <section class="section"><div class="wrap"><div class="crumbs"><a href="/">Forside</a> › <span>Hosting</span></div>
-    <p class="sub">Skal din hjemmeside køre stabilt, hurtigt og sikkert? Vores hosting-pakker inkluderer lagerplads, mailbokse, gratis SSL-certifikat og daglig backup — så du kan fokusere på din forretning i stedet for serverdrift. Passer godt sammen med vores <a href="/hjemmesider-seo-google-ads/">webdesign- og SEO-ydelser</a>, men kan også vælges alene.</p></div></section>
-  <section class="section alt" id="pricing"><div class="wrap"><div class="eyebrow">Priser & pakker</div><h2>Gennemsigtige priser — ingen overraskelser</h2>
-    <p class="sub">Vælg den pakke, der passer til din hjemmeside. Fast pris pr. måned, ekskl. moms — ingen binding.</p>
-    <div class="pricing-grid">${cards}</div>
-    <p class="center" style="margin-top:28px;color:var(--muted)">Er du i tvivl om, hvilken pakke der passer? <a href="${site.phoneHref}">Ring ${site.phone}</a> eller <a href="/kontakt/">kontakt os</a>.</p></div></section>
-  <section class="section"><div class="wrap"><div class="eyebrow">FAQ</div><h2>Hosting — ofte stillede spørgsmål</h2><div class="faq">${faqHtml}</div></div></section>`;
-}
-function hostingSchemaFaq() {
-  return { '@context': 'https://schema.org', '@type': 'FAQPage', mainEntity: HOSTING_FAQ.map(([q, a]) => ({ '@type': 'Question', name: q, acceptedAnswer: { '@type': 'Answer', text: a } })) };
-}
-
-// ---------- automatisk backup ----------
-// NOTE ON NAMING: deliberately distinct from "Backup & datagendannelse"
-// (/backup-og-datagendannelse/, a one-time data-recovery service under
-// Services). This page is a recurring backup SUBSCRIPTION.
-const AUTOMATISK_BACKUP_TIERS = [
-  ['256 GB', '199', 'Til den enkelte computer med almindelig brug.'],
-  ['512 GB', '289', 'Til flere enheder eller større datamængder.'],
-  ['1 TB', '349', 'Til virksomheder eller store fotobiblioteker/arkiver.'],
-  ['2 TB', '599', 'Til servere eller flere brugere med store datamængder.'],
-];
-const AUTOMATISK_BACKUP_FAQ = [
-  ['Hvor ofte tages der backup?', 'Automatisk, løbende — typisk dagligt, afhængig af dine behov og den aftalte plan.'],
-  ['Hvor opbevares mine data?', 'Sikkert og krypteret hos en anerkendt cloud-udbyder. Kontakt os for specifikke detaljer om datacenter-placering.'],
-  ['Kan jeg få gendannet en enkelt fil, eller kun det hele?', 'Begge dele — du kan få gendannet enkelte filer eller en fuld gendannelse, alt efter behov.'],
-  ['Er der binding?', 'Nej, alle planer er uden binding.'],
-  ['Hvad er forskellen på dette og "Backup & datagendannelse"?', '"Backup & datagendannelse" er en engangsservice — vi tager en backup eller gendanner data i forbindelse med en reparation. Automatisk Backup er et løbende abonnement, der kører i baggrunden hver dag, så du altid har en frisk kopi af dine data.'],
-];
-function automatiskBackupBody() {
-  const cards = AUTOMATISK_BACKUP_TIERS.map(([name, price, blurb]) => {
-    const mailto = `mailto:${site.emailConsumer}?subject=${encodeURIComponent('Interesse: Automatisk Backup – ' + name)}`;
-    return `<div class="price-card"><div class="tag">${esc(name)}</div><h3>${esc(name)}</h3><p class="blurb">${esc(blurb)}</p><div class="price">${price} kr. <small>/ måned</small></div><div class="vat">ekskl. moms</div><a class="btn btn-outline" href="${mailto}">Kontakt os for at komme i gang</a><div class="fine">Ingen binding</div></div>`;
-  }).join('');
-  const why = [
-    ['Sker automatisk, i baggrunden', 'Ingen manuel kopiering, ingen glemte USB-drev.'],
-    ['Krypteret opbevaring', 'Dine data er beskyttet, både under overførsel og i opbevaring.'],
-    ['Nem gendannelse', 'Mistet en fil, eller hele computeren? Vi henter det tilbage.'],
-    ['Dansk support', 'Samme team som kender din opsætning i forvejen.'],
-  ].map(([t, b]) => `<li><strong>${esc(t)}</strong>${esc(b)}</li>`).join('');
-  const faqHtml = AUTOMATISK_BACKUP_FAQ.map(([q, a]) => `<details><summary>${esc(q)}</summary><div class="answer">${esc(a)}</div></details>`).join('');
-  return `  <section class="hero"><div class="wrap"><div class="eyebrow">Automatisk Backup</div><h1>Automatisk Backup fra PCKlinik</h1>
-    <p class="lead">Løbende, automatisk sikkerhedskopiering af dine computere og servere — så en computerfejl aldrig bliver en katastrofe. Fra det samme team, der reparerer dine computere.</p>
-    <div class="badges"><span class="badge check">Fra 199 kr./md.</span><span class="badge check">Ingen binding</span><span class="badge check">Krypteret opbevaring</span></div>
-    <div class="cta-row"><a class="btn btn-white" href="#pricing">Se priser</a><a class="btn btn-ghost-light" href="${site.phoneHref}">📞 Ring ${site.phone}</a></div></div></section>
-  <section class="section"><div class="wrap"><div class="crumbs"><a href="/">Forside</a> › <span>Automatisk Backup</span></div>
-    <div class="eyebrow">Hvorfor automatisk backup</div><ul class="why-list">${why}</ul></div></section>
-  <section class="section alt" id="pricing"><div class="wrap"><div class="eyebrow">Priser</div><h2>Vælg den plan, der passer til dig</h2>
-    <p class="sub">Ekskl. moms, ingen bindingsperiode.</p>
-    <div class="pricing-grid">${cards}</div></div></section>
-  <section class="section"><div class="wrap"><div class="eyebrow">Sådan kommer du i gang</div><h2>Kontakt os for at komme i gang</h2>
-    <p class="sub">Skriv til os eller ring, så sætter vi din automatiske backup op — vi rådgiver gerne om, hvilken plan der passer til dine behov.</p>
-    <div class="cta-row"><a class="btn btn-primary" href="mailto:${site.emailConsumer}?subject=${encodeURIComponent('Interesse: Automatisk Backup')}">Kontakt os for at komme i gang</a><a class="btn btn-outline" href="${site.phoneHref}">📞 Ring ${site.phone}</a></div></div></section>
-  <section class="section alt"><div class="wrap"><div class="eyebrow">FAQ</div><h2>Automatisk Backup — ofte stillede spørgsmål</h2><div class="faq">${faqHtml}</div></div></section>`;
-}
-function automatiskBackupSchemaFaq() {
-  return { '@context': 'https://schema.org', '@type': 'FAQPage', mainEntity: AUTOMATISK_BACKUP_FAQ.map(([q, a]) => ({ '@type': 'Question', name: q, acceptedAnswer: { '@type': 'Answer', text: a } })) };
-}
-
-// ---------- shop ----------
-function productCard({ img, alt, title, desc, price, stripe = '#stripe-link-placeholder' }) {
-  return `<div class="card product-card"><img class="img-placeholder" src="${img}" alt="${esc(alt)}" loading="lazy" width="480" height="360" /><h3>${esc(title)}</h3><p class="desc">${esc(desc)}</p><div class="price-tag">${esc(price)}</div><a class="btn btn-primary" href="${stripe}">Køb nu →</a></div>`;
-}
-function shopFaq(heading, items) {
-  const d = items.map(([q, a]) => `<details><summary>${esc(q)}</summary><div class="answer">${esc(a)}</div></details>`).join('');
-  return `\n  <section class="section alt"><div class="wrap"><div class="eyebrow">FAQ</div><h2>${esc(heading)}</h2><div class="faq">${d}</div></div></section>`;
-}
-function shopHub() {
-  return `  <section class="hero"><div class="wrap"><div class="eyebrow">Butik</div><h1>Butik</h1><p class="lead">Computere, backup og sikkerhed — håndplukket og testet af os.</p></div></section>
-  <section class="section"><div class="wrap"><div class="trust-line" style="margin-bottom:36px">Alle produkter er personligt udvalgt og testet af os inden salg. Spørgsmål inden du køber? Ring <a href="${site.phoneHref}">${site.phone}</a>. Har du en gammel maskine? Vi køber brugte computere, og du kan bytte den ind mod et nyt eller refurbished køb.</div>
-    <div class="grid grid-2">
-      <a class="card card-link" href="/butik/computere/"><div class="card-icon">🖥️</div><h3>Computere</h3><p>Nye og istandsatte computere — testet og klar til brug.</p><span class="arrow">Se computere →</span></a>
-      <a class="card card-link" href="/butik/backup-sikkerhed/"><div class="card-icon">🛡️</div><h3>Backup & sikkerhed</h3><p>Eksterne harddiske, NAS-løsninger og sikkerhedssoftware, vi personligt anbefaler.</p><span class="arrow">Se backup & sikkerhed →</span></a>
-    </div>
-    <p class="sub" style="margin-top:24px">Usikker på, om det bedre kan betale sig at reparere din nuværende maskine? <a href="/reparere-eller-koebe-ny-computer/">Se vores guide til at vælge →</a></p></div></section>`+shopFaq("Butik — ofte stillede spørgsmål", [["Kan jeg bede om et bestemt produkt, der ikke er på listen lige nu?","Ja, kontakt os, så ser vi, hvad vi kan skaffe."],["Tilbyder I samlede tilbud (fx computer + backupdrev)?","Spørg os direkte — det kan nogle gange arrangeres."],["Kan jeg bytte en gammel enhed ind mod et nyt eller istandsat køb?","Ja. Vi køber brugte maskiner, og du kan bytte din gamle ind mod en ny eller refurbished computer. Er den ikke længere noget værd, tager vi den af hænderne på dig, sletter dine data sikkert og sender den til genbrug."]]);
-}
-function shopComputers() {
-  return `  <section class="hero"><div class="wrap"><div class="eyebrow"><a href="/butik/" style="color:#A9C1F0">Butik</a> · Computere</div><h1>Computere</h1><p class="lead">Vælg mellem nye og istandsatte computere.</p></div></section>
-  <section class="section"><div class="wrap"><div class="crumbs"><a href="/butik/">Butik</a> › <span>Computere</span></div>
-    <p class="sub">Uanset om du vil have en helt ny maskine eller en velholdt, testet computer til en lavere pris, har vi begge dele. Hver computer klargøres og testes af os, før den sælges.</p>
-    <div class="grid grid-2">
-      <a class="card card-link" href="/butik/computere/nye/"><div class="card-icon">✨</div><h3>Nye computere</h3><p>Nye computere fra driftssikre mærker, klar med det samme.</p><span class="arrow">Se nye computere →</span></a>
-      <a class="card card-link" href="/butik/computere/refurbished/"><div class="card-icon">♻️</div><h3>Refurbished computere</h3><p>Grundigt testede og istandsatte computere — god ydelse til en lavere pris, med garanti.</p><span class="arrow">Se refurbished computere →</span></a>
-    </div></div></section>`+shopFaq("Computere — ofte stillede spørgsmål", [["Hvad er bedst for de fleste — nyt eller refurbished?","Afhænger af budget og behov; refurbished giver bedre værdi til almindelig brug, nyt passer til dem, der vil have de nyeste specifikationer og fuld garanti."]]);
-}
-function shopNew() {
-  return `  <section class="hero"><div class="wrap"><div class="eyebrow"><a href="/butik/computere/" style="color:#A9C1F0">Computere</a> · Nye</div><h1>Nye computere</h1><p class="lead">Klar med det samme.</p></div></section>
-  <section class="section"><div class="wrap"><div class="crumbs"><a href="/butik/">Butik</a> › <a href="/butik/computere/">Computere</a> › <span>Nye</span></div>
-    <p class="sub">Nye computere fra driftssikre mærker. Vi hjælper dig med at finde det rette udstyr til dine behov og dit budget og opsætter det klar til brug.</p>
-    <div class="trust-line" style="margin:20px 0 8px">Vores lager af nye computere skifter løbende, så vi holder ikke faste modeller og priser her på siden. Ring <a href="${site.phoneHref}">${site.phone}</a> eller skriv til <a href="mailto:${site.emailConsumer}">${site.emailConsumer}</a>, så fortæller vi, hvad vi har på lager lige nu, og finder den rette maskine til dig.</div>
-    <div class="cta-row" style="margin-top:20px"><a class="btn btn-primary" href="${site.phoneHref}">📞 Ring ${site.phone}</a><a class="btn btn-outline" href="mailto:${site.emailConsumer}">Skriv til os</a></div></div></section>`+shopFaq("Nye computere — ofte stillede spørgsmål", [["Kan jeg tilpasse specifikationerne på en ny computer inden køb?","Kontakt os om dine krav — vi kan ofte skaffe konfigurationer ud over det, der er nævnt."]]);
-}
-function shopRefurb() {
-  const warrantyGrades = [
-    ['🥇', 'A-kvalitet', '3 års garanti'],
-    ['🥈', 'B-kvalitet', '2 års garanti'],
-    ['🥉', 'C-kvalitet', '1 års garanti'],
-  ].map(([i, t, b]) => `<div class="card"><div class="card-icon">${i}</div><h3>${esc(t)}</h3><p>${esc(b)}</p></div>`).join('');
-  return `  <section class="hero"><div class="wrap"><div class="eyebrow"><a href="/butik/computere/" style="color:#A9C1F0">Computere</a> · Refurbished</div><h1>Refurbished computere</h1><p class="lead">Testet, rengjort og klar til brug — med garanti efter kvalitetsgrad.</p></div></section>
-  <section class="section"><div class="wrap"><div class="crumbs"><a href="/butik/">Butik</a> › <a href="/butik/computere/">Computere</a> › <span>Refurbished</span></div>
-    <p class="sub">Grundigt testede og istandsatte computere — god ydelse til en lavere pris, med samme servicegaranti som vores reparationer. Testet af de samme teknikere, der reparerer computere i værkstedet.</p>
-    <div class="grid grid-3" style="margin:20px 0 8px">${warrantyGrades}</div>
-    <div class="trust-line" style="margin:20px 0 8px"><strong>Hvad "refurbished" betyder her:</strong> hver maskine bliver testet, rengjort og forsynet med et nyt batteri, hvis nødvendigt, og derefter mærket med en kvalitetsgrad (A/B/C), der afgør garantiperioden. Det er de samme teknikere, der reparerer og istandsætter, så den holdes til samme standard som vores reparationsarbejde.</div>
-    <div class="trust-line" style="margin:20px 0 8px">Har du en gammel maskine? Vi køber brugte computere, og du kan bytte din gamle ind mod en refurbished eller ny maskine — spørg, når du kontakter os.</div>
-    <div class="trust-line" style="margin:20px 0 8px">Vores lager af refurbished computere skifter løbende, så vi holder ikke faste modeller og priser her på siden. Ring <a href="${site.phoneHref}">${site.phone}</a> eller skriv til <a href="mailto:${site.emailConsumer}">${site.emailConsumer}</a>, så fortæller vi, hvad vi har på lager lige nu, og finder den rette maskine til dig.</div>
-    <div class="cta-row" style="margin-top:20px"><a class="btn btn-primary" href="${site.phoneHref}">📞 Ring ${site.phone}</a><a class="btn btn-outline" href="mailto:${site.emailConsumer}">Skriv til os</a></div></div></section>`+shopFaq("Refurbished computere — ofte stillede spørgsmål", [["Kommer refurbished computere med et licenseret styresystem?","Ja, alle istandsatte enheder inkluderer en gyldig, licenseret OS-installation."],["Hvad sker der med de gamle dele eller enheder, I udskifter under istandsættelsen?","Hvor det er muligt, genbruges eller genanvendes fungerende komponenter ansvarligt; alt, der ikke fungerer, bortskaffes gennem korrekte e-affaldskanaler frem for på lossepladsen."],["Hvor lang garanti får jeg på en refurbished computer?","Det afhænger af kvalitetsgraden: A-kvalitet 3 år, B-kvalitet 2 år, C-kvalitet 1 år."]]);
-}
-function shopBackup() {
-  return `  <section class="hero"><div class="wrap"><div class="eyebrow"><a href="/butik/" style="color:#A9C1F0">Butik</a> · Backup & sikkerhed</div><h1>Backup & sikkerhed</h1><p class="lead">Udstyr og software, vi personligt anbefaler og bruger.</p></div></section>
-  <section class="section"><div class="wrap"><div class="crumbs"><a href="/butik/">Butik</a> › <span>Backup & sikkerhed</span></div>
-    <p class="sub">Eksterne harddiske, NAS-løsninger og sikkerhedssoftware, vi personligt anbefaler og bruger. Vi hjælper gerne med opsætning, hvis det er købt hos os.</p>
-    <div class="trust-line" style="margin:20px 0 8px">Vores udvalg skifter løbende, så vi holder ikke faste varer og priser her på siden. Ring <a href="${site.phoneHref}">${site.phone}</a> eller skriv til <a href="mailto:${site.emailConsumer}">${site.emailConsumer}</a>, så fortæller vi, hvad vi har på lager lige nu, og til hvilken pris.</div>
-    <div class="cta-row" style="margin-top:20px"><a class="btn btn-primary" href="${site.phoneHref}">📞 Ring ${site.phone}</a><a class="btn btn-outline" href="mailto:${site.emailConsumer}">Skriv til os</a></div></div></section>`+shopFaq("Backup & sikkerhed — ofte stillede spørgsmål", [["Tilbyder I cloud-backup, eller kun fysiske drev?","Begge dele — kontakt os om dine konkrete behov og budget."]]);
-}
-
-// ---------- domain purchase ----------
-// NOTE: DOMAENER_TLDS below is display/copy-only. The actual list of TLDs
-// checked is SUPPORTED_TLDS in functions/_lib/openprovider.js (the two
-// lists live in separate deploy targets — static build vs. Pages
-// Functions — so they can't share an import). Keep them in sync by hand.
-function domaenerBody() {
-  return `  <section class="hero"><div class="wrap"><div class="eyebrow">Domæner</div><h1>Find og køb dit domæne</h1>
-    <p class="lead">Søg efter et domænenavn — vi tjekker ${DOMAENER_TLD_COUNT} endelser (${DOMAENER_TLD_LIST_TEXT}) på én gang og viser priserne med det samme. Betal sikkert via Stripe — vi registrerer domænet for dig inden for få timer.</p></div></section>
-  <style>
-    .dom-results-list{display:flex;flex-direction:column;gap:10px}
-    .dom-result-row{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:12px 14px;border:1px solid var(--border,#e2e2e2);border-radius:10px;flex-wrap:wrap}
-    .dom-result-row .dom-choose-btn{margin-left:auto}
-  </style>
-  <section class="section"><div class="wrap">
-    <div class="form-card" style="max-width:640px" id="dom-search-card">
-      <div class="form-row">
-        <div style="flex:2 1 auto"><label for="dom-name">Domænenavn</label><input id="dom-name" type="text" placeholder="fx pcklinik-webshop" autocomplete="off" /></div>
-      </div>
-      <button class="btn btn-primary" type="button" id="dom-check-btn">Tjek tilgængelighed</button>
-      <div id="dom-result" style="margin-top:20px"></div>
-    </div>
-
-    <div class="form-card" style="max-width:640px;display:none;margin-top:24px" id="dom-registrant-card">
-      <div class="eyebrow">Valgt domæne: <strong id="dom-selected-label"></strong></div>
-      <div class="form-row"><div><label for="reg-name">Fulde navn</label><input id="reg-name" type="text" autocomplete="name" required /></div></div>
-      <div class="form-row"><div><label for="reg-email">E-mail</label><input id="reg-email" type="email" autocomplete="email" required /></div></div>
-      <div class="form-row"><div><label for="reg-address">Adresse</label><input id="reg-address" type="text" autocomplete="street-address" required /></div></div>
-      <div class="form-row">
-        <div><label for="reg-postal">Postnr.</label><input id="reg-postal" type="text" autocomplete="postal-code" required /></div>
-        <div><label for="reg-city">By</label><input id="reg-city" type="text" autocomplete="address-level2" required /></div>
-      </div>
-      <div class="form-row"><div><label for="reg-country">Land</label><input id="reg-country" type="text" autocomplete="country-name" value="Danmark" required /></div></div>
-      <button class="btn btn-primary" type="button" id="dom-buy-btn">Bestil nu</button>
-      <div id="dom-buy-error" class="form-status form-status--error" style="display:none;margin-top:14px"></div>
-      <p class="sub" style="margin-top:16px;font-size:14.5px">Ved bestilling betaler du det fulde beløb inkl. 25% moms via Stripe. Vi registrerer domænet for dig manuelt inden for få timer og sender en bekræftelse på e-mail. Dette er et engangskøb for 1 års registrering — fornyelse næste år faktureres separat.</p>
-    </div>
-  </div></section>
-  <section class="section alt"><div class="wrap"><div class="eyebrow">FAQ</div><h2>Ofte stillede spørgsmål</h2><div class="faq">${DOMAENER_FAQ.map((f) => `<details><summary>${esc(f.q)}</summary><div class="answer">${esc(f.a)}</div></details>`).join('')}</div></div></section>
-  <script>
-  (function(){
-    var nameEl=document.getElementById('dom-name'),
-      checkBtn=document.getElementById('dom-check-btn'),resultEl=document.getElementById('dom-result'),
-      regCard=document.getElementById('dom-registrant-card'),buyBtn=document.getElementById('dom-buy-btn'),
-      buyErr=document.getElementById('dom-buy-error'),selectedLabel=document.getElementById('dom-selected-label');
-    var currentCheck=null;
-    function esc(s){var d=document.createElement('div');d.textContent=s;return d.innerHTML;}
-    function runCheck(){
-      var name=(nameEl.value||'').trim().toLowerCase();
-      if(!name){resultEl.innerHTML='<p class="form-status form-status--error" style="display:block">Skriv venligst et domænenavn.</p>';return;}
-      checkBtn.disabled=true;resultEl.innerHTML='<p class="sub">Tjekker '+esc(name)+' på tværs af alle endelser …</p>';regCard.style.display='none';currentCheck=null;
-      fetch('/api/check-domain',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({name:name})})
-        .then(function(r){return r.json().then(function(j){return {ok:r.ok,j:j};});})
-        .then(function(x){
-          checkBtn.disabled=false;
-          if(!x.ok||x.j.error||!x.j.results){resultEl.innerHTML='<p class="form-status form-status--error" style="display:block">'+esc(x.j&&x.j.error?x.j.error:'Noget gik galt. Prøv igen.')+'</p>';return;}
-          var rows=x.j.results.map(function(r){
-            var full=name+'.'+r.tld;
-            if(r.error){return '<div class="dom-result-row"><span>'+esc(full)+'</span><span class="sub">Kunne ikke tjekkes</span></div>';}
-            if(!r.available){return '<div class="dom-result-row"><span>'+esc(full)+'</span><span class="sub">Optaget</span></div>';}
-            return '<div class="dom-result-row"><span>'+esc(full)+'</span><span><strong>'+r.price_dkk+' kr.</strong> <span class="vat">ekskl. moms</span></span>'
-              +'<button type="button" class="btn btn-outline dom-choose-btn" data-name="'+esc(name)+'" data-tld="'+esc(r.tld)+'" data-full="'+esc(full)+'">Vælg</button></div>';
-          }).join('');
-          resultEl.innerHTML='<div class="dom-results-list">'+rows+'</div>';
-          var buttons=resultEl.querySelectorAll('.dom-choose-btn');
-          for(var i=0;i<buttons.length;i++){
-            buttons[i].addEventListener('click',function(){
-              currentCheck={name:this.getAttribute('data-name'),tld:this.getAttribute('data-tld')};
-              selectedLabel.textContent=this.getAttribute('data-full');
-              regCard.style.display='block';
-              regCard.scrollIntoView({behavior:'smooth',block:'start'});
-            });
-          }
-        })
-        .catch(function(){checkBtn.disabled=false;resultEl.innerHTML='<p class="form-status form-status--error" style="display:block">Noget gik galt. Prøv igen.</p>';});
-    }
-    checkBtn.addEventListener('click',runCheck);
-    nameEl.addEventListener('keydown',function(e){if(e.key==='Enter'){e.preventDefault();runCheck();}});
-    buyBtn.addEventListener('click',function(){
-      buyErr.style.display='none';
-      if(!currentCheck){buyErr.textContent='Vælg venligst et domæne først.';buyErr.style.display='block';return;}
-      var registrant={
-        name:document.getElementById('reg-name').value.trim(),
-        email:document.getElementById('reg-email').value.trim(),
-        address:document.getElementById('reg-address').value.trim(),
-        postal_code:document.getElementById('reg-postal').value.trim(),
-        city:document.getElementById('reg-city').value.trim(),
-        country:document.getElementById('reg-country').value.trim()
-      };
-      for(var k in registrant){if(!registrant[k]){buyErr.textContent='Udfyld venligst alle kontaktoplysninger.';buyErr.style.display='block';return;}}
-      buyBtn.disabled=true;buyBtn.textContent='Et øjeblik …';
-      fetch('/api/create-checkout-session',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({name:currentCheck.name,tld:currentCheck.tld,registrant:registrant})})
-        .then(function(r){return r.json().then(function(j){return {ok:r.ok,j:j};});})
-        .then(function(x){
-          if(!x.ok||!x.j.url){buyBtn.disabled=false;buyBtn.textContent='Bestil nu';buyErr.textContent=(x.j&&x.j.error)?x.j.error:'Noget gik galt. Prøv igen.';buyErr.style.display='block';return;}
-          window.location.href=x.j.url;
-        })
-        .catch(function(){buyBtn.disabled=false;buyBtn.textContent='Bestil nu';buyErr.textContent='Noget gik galt. Prøv igen.';buyErr.style.display='block';});
-    });
-  })();
-  </script>`;
-}
-// Must match SUPPORTED_TLDS in functions/_lib/openprovider.js (see note above).
-const DOMAENER_TLDS = [
-  'dk', 'com', 'net', 'org', 'eu',
-  'info', 'biz', 'name', 'pro', 'mobi',
-  'io', 'ai', 'co', 'me', 'tv', 'cc',
-  'app', 'dev', 'xyz', 'online', 'store', 'tech', 'site', 'shop', 'club',
-  'live', 'cloud', 'page', 'agency', 'digital', 'company', 'email', 'host',
-  'link', 'media', 'news', 'software', 'solutions', 'studio', 'support',
-  'team', 'tools', 'top', 'website', 'work', 'world', 'zone', 'fun', 'life',
-  'art', 'design', 'style', 'consulting', 'finance', 'group', 'legal',
-  'ltd', 'management', 'market', 'marketing', 'services', 'systems',
-  'technology',
-];
-const DOMAENER_TLD_COUNT = DOMAENER_TLDS.length;
-const DOMAENER_TLD_LIST_TEXT = DOMAENER_TLDS.slice(0, 8).map((t) => '.' + t).join(', ') + ' m.fl.';
-const DOMAENER_FAQ = [
-  { q: 'Hvor lang tid tager registreringen?', a: 'Vi registrerer domænet manuelt for dig, typisk inden for få timer efter betaling, og sender en bekræftelse på e-mail, når det er klar.' },
-  { q: 'Hvad er inkluderet i prisen?', a: 'Prisen dækker 1 års registrering af domænet. Fornyelse næste år faktureres separat — vi kontakter dig, inden domænet udløber.' },
-  { q: 'Er prisen inkl. eller ekskl. moms?', a: 'Prisen, du ser på siden, er ekskl. moms. Ved betaling via Stripe lægges 25% dansk moms oveni, så du ser det fulde beløb, før du betaler.' },
-  { q: 'Kan jeg overføre et domæne, jeg allerede ejer?', a: 'Ja, kontakt os direkte på kontakt@pcklinik.dk, så hjælper vi med overførslen.' },
-  { q: 'Hvilke endelser (TLD’er) tilbyder I?', a: 'Vi tjekker automatisk ' + DOMAENER_TLD_COUNT + ' endelser på én gang, herunder ' + DOMAENER_TLD_LIST_TEXT + ' Vi tilbyder generiske endelser (ikke landespecifikke som .de eller .fr) — mangler du en bestemt endelse, så kontakt os direkte.' },
-];
-
-// ---------- About / Team ----------
-const TEAM = [
-  ['Shan — Indehaver', '/images/team/shan.jpg', '20+ års erfaring på tværs af Mac, pc, servere og netværk. Står for værkstedet og håndterer personligt de mest teknisk krævende reparationer og erhvervs-IT-opsætninger.'],
-  ['On-site tekniker', '/images/team/on-site-technician-1.jpg', 'Håndterer besøg i hjem og på kontorer på Frederiksberg og i København — netværksopsætninger, fejlfinding på stedet og praktisk arbejde uden for værkstedet.'],
-  ['On-site tekniker', '/images/team/on-site-technician-2.jpg', 'Håndterer besøg i hjem og på kontorer på Frederiksberg og i København — netværksopsætninger, fejlfinding på stedet og praktisk arbejde uden for værkstedet.'],
-  ['Mac-specialist', '/images/team/mac-specialist.jpg', 'Uafhængig, ikke Apple-autoriseret — hvilket betyder mere fleksibilitet: reparationer på komponentniveau, som autoriserede værksteder ofte ikke kan udføre, og ærlig rådgivning om reparation kontra udskiftning uden pres mod dyrere officielle kanaler.'],
-  ['Hjemmeside- & SEO-specialist', '/images/team/seo-specialist.jpg', '15 års erfaring, ansvarlig for den tekniske og søgemæssige side af PCKliniks egen webtilstedeværelse samt de hjemmeside- og SEO-ydelser, vi tilbyder kunder.'],
-  ['Teammedlem', '/images/team/team-member-6.jpg', 'Runder teamet af med daglige reparationer og kundesupport.'],
-  ['Teammedlem', '/images/team/team-member-7.jpg', 'Runder teamet af med daglige reparationer og kundesupport.'],
-];
-function aboutBody() {
-  const cards = TEAM.map(([name, img, bio]) => `<div class="card"><img class="img-placeholder" src="${img}" alt="${esc(name)}" loading="lazy" width="480" height="360" /><h3>${esc(name)}</h3><p>${esc(bio)}</p></div>`).join('');
-  return `  <section class="hero"><div class="wrap"><div class="eyebrow">Om PCKlinik</div><h1>Mød teamet</h1>
-    <p class="lead">Rigtige mennesker, rigtig erfaring — ikke et callcenter. PCKlinik er et team på 7, med base i vores værksted på Falkoner All&eacute; på Frederiksberg. Tilsammen dækker vi pc- og Mac-reparation, netværk og servere, on-site support og hjemmeside-/SEO-arbejde — så uanset hvad du har brug for, er der en på teamet, der virkelig kender det godt.</p></div></section>
-  <section class="section"><div class="wrap"><div class="eyebrow">Hvorfor vi er mere end reparation</div><h2>Alt inden for computer og IT — du har ikke brug for nogen andre</h2>
-    <p class="sub">Vi startede som et reparationsværksted, men er over tid vokset til også at dække IT-support, hosting, domæner, backup og salg af computere. Det er ikke tilfældigt. Vi så det samme mønster igen og igen: kunder, der endte med at ringe rundt til flere forskellige leverandører for ting, der egentlig hang sammen — én til reparationen, én til hjemmesiden, én til backuppen, én til domænet. Derfor har vi valgt at være det ene team, der kender din opsætning fra start til slut. Inden for din computer- og IT-verden har du ikke brug for nogen andre end os.</p></div></section>
-  <section class="section alt"><div class="wrap"><div class="eyebrow">Teamet</div><h2>Syv personer, ét værksted</h2>
-    <div class="grid grid-3" style="margin-top:24px">${cards}</div></div></section>
-  <section class="section"><div class="wrap"><div class="eyebrow">Derfor betyder det noget for dig</div><h2>Et større team — samme ærlige svar</h2>
-    <p class="sub">Et større team betyder hurtigere ekspedition og mere specialiseret ekspertise — men vi arbejder stadig, som vi altid har gjort: du får et ærligt svar fra en, der faktisk ved, hvad de taler om, ikke et sagsnummer i en kø.</p>
-    <div class="cta-row"><a class="btn btn-primary" href="/kontakt/">Kontakt os</a><a class="btn btn-outline" href="/it-support-til-erhverv/">IT-support til erhverv →</a></div></div></section>`;
-}
-
-function domaenerTakHtml() {
-  return `  <section class="hero"><div class="wrap"><div class="eyebrow">Domæner</div><h1>Tak for din bestilling!</h1>
-    <p class="lead">Vi har modtaget din betaling. Vi registrerer dit domæne inden for få timer og sender en bekræftelse til den e-mail, du opgav ved bestilling.</p>
-    <div class="cta-row"><a class="btn btn-white" href="/">← Til forsiden</a><a class="btn btn-ghost-light" href="${site.phoneHref}">📞 Ring ${site.phone}</a></div></div></section>`;
-}
-function thankYouHtml() {
-  return `  <section class="hero"><div class="wrap"><div class="eyebrow">PCKlinik</div><h1>Thank You</h1>
-    <p class="lead">Your message has been sent. We'll get back to you as soon as possible.</p>
-    <div class="cta-row"><a class="btn btn-white" href="/">← Back to homepage</a></div></div></section>`;
-}
-function fmtDate(d) {
-  const [y, m, day] = d.split('-').map(Number);
-  const months = ['januar','februar','marts','april','maj','juni','juli','august','september','oktober','november','december'];
-  return `${day}. ${months[m - 1]} ${y}`;
-}
-function newsIndexHtml() {
-  const cards = news.map((n) => `<a class="card card-link" href="/nyheder/${n.slug}/"><div class="eyebrow" style="margin-bottom:8px">${esc(n.category)} · ${esc(fmtDate(n.date))}</div><h3>${esc(n.title)}</h3><p>${esc(n.description)}</p><span class="arrow">Læs mere →</span></a>`).join('');
-  return `  <section class="hero"><div class="wrap"><div class="eyebrow">Nyheder · Guides</div><h1>Nyheder &amp; guides</h1>
-    <p class="lead">Klare, praktiske svar på almindelige computer- og Mac-spørgsmål — skrevet af folk, der reparerer dem til daglig. Ingen jargon, ingen fyld.</p></div></section>
-  <section class="section"><div class="wrap"><div class="grid grid-3">${cards}</div>
-    <p class="sub" style="margin-top:32px">Har du et spørgsmål, du ikke finder svar på her? <a href="/stil-et-spoergsmaal/">Spørg os direkte</a> — de mest nyttige bliver til guides på denne side.</p></div></section>`;
-}
-function newsPostHtml(n) {
-  const idx = news.findIndex((x) => x.slug === n.slug);
-  const others = news.filter((_, i) => i !== idx).slice(0, 2)
-    .map((o) => `<a href="/nyheder/${o.slug}/">${esc(o.title)} →</a>`).join('');
-  return `  <section class="hero"><div class="wrap"><div class="crumbs"><a href="/nyheder/">Nyheder</a> › <span>${esc(n.category)}</span></div>
-    <h1>${esc(n.title)}</h1><p class="lead">${esc(fmtDate(n.date))}</p></div></section>
-  <section class="section"><div class="wrap"><div class="lead-copy" style="max-width:760px">${n.body}</div>
-    ${others ? `<div style="margin-top:40px"><p class="eyebrow">Mere fra Nyheder</p><div class="crosslinks">${others}</div></div>` : ''}</div></section>
-  <section class="section alt"><div class="wrap"><div class="cta-band"><h2>Brug for hjælp med dette?</h2><p>Fejlsøgning 300 kr. (2–4 dage) eller ekspres for 600 kr. (1–2 timer). Fast pris, før vi går i gang.</p><div class="cta-row"><a class="btn btn-white" href="/kontakt/">Kontakt os</a><a class="btn btn-ghost-light" href="${site.phoneHref}">📞 Ring ${site.phone}</a></div></div></div></section>`;
-}
-function newsPostSchema(n) {
-  const schema = { '@context': 'https://schema.org', '@type': 'BlogPosting', headline: n.title, datePublished: n.date, dateModified: n.date, description: n.description, author: { '@type': 'Organization', name: 'PCKlinik' }, publisher: { '@type': 'Organization', name: 'PCKlinik' }, mainEntityOfPage: `${site.domain}/nyheder/${n.slug}/` };
-  if (n.image) schema.image = n.image.startsWith('http') ? n.image : `${site.domain}${n.image}`;
-  return schema;
-}
-
-// ---------- Ask Us a Question ----------
-function askQuestionBody() {
-  return `  <section class="hero"><div class="wrap"><div class="eyebrow">Stil os et spørgsmål</div><h1>Stil os et spørgsmål</h1>
-    <p class="lead">Rigtige spørgsmål fra rigtige mennesker — nogle ender med at hjælpe andre. Er du i tvivl om, hvorvidt noget er værd at reparere, nysgerrig på et konkret problem, eller vil du bare have et hurtigt svar, før du beslutter dig? Spørg os direkte. Vi læser hvert spørgsmål — de mest nyttige bliver til et ordentligt svar på vores <a href="/nyheder/" style="color:#A9C1F0">nyhedsside</a>, så dit spørgsmål kan ende med at hjælpe en anden med samme problem.</p></div></section>
-  <section class="section"><div class="wrap"><div class="form-card" style="max-width:640px">
-      ${formOpen(site.emailConsumer, 'Nyt spørgsmål — pcklinik.dk Spørg os', '/tak/')}
-        <div class="form-row"><div><label for="aq-name">Navn <span style="font-weight:400;color:var(--muted)">(valgfrit)</span></label><input id="aq-name" name="name" type="text" autocomplete="name" /></div></div>
-        <div class="form-row"><div><label for="aq-email">E-mail <span style="font-weight:400;color:var(--muted)">(valgfrit — kun nødvendigt, hvis du ønsker et personligt svar)</span></label><input id="aq-email" name="email" type="email" autocomplete="email" /></div></div>
-        <div class="form-row"><div><label for="aq-device">Enhed / mærke <span style="font-weight:400;color:var(--muted)">(valgfrit — hjælper os med at svare mere præcist)</span></label><input id="aq-device" name="device" type="text" placeholder="fx MacBook Air M2" /></div></div>
-        <div class="form-row"><div><label for="aq-question">Dit spørgsmål</label><textarea id="aq-question" name="question" required></textarea></div></div>
-        <div class="form-row"><label style="display:flex;gap:10px;align-items:flex-start;font-weight:400;color:var(--muted);font-size:14.5px"><input type="checkbox" name="feature_ok" value="yes" style="width:auto;margin-top:3px" /> Det er okay at vise dette spørgsmål (anonymt) på vores nyhedsside.</label></div>
-        <button class="btn btn-primary" type="submit">Send spørgsmål</button>
-      </form>
-      <p class="sub" style="margin-top:20px;font-size:14.5px">Privat som standard. Vi offentliggør aldrig noget, medmindre du sætter kryds ovenfor — og selv da anonymiserer vi det (for eksempel: "en kunde spurgte for nylig…"). Dit navn og din e-mail bliver aldrig offentliggjort.</p>
-    </div></div></section>`;
-}
-
-// ---------- task-based service pages ----------
-function serviceBody(s) {
-  const intro = s.intro.map((p) => `<p>${p}</p>`).join('');
-  const included = s.whatsIncluded ? `<div class="trust-line" style="margin:6px 0 20px"><strong>Hvad er inkluderet:</strong> ${esc(s.whatsIncluded)}</div>` : '';
-  const bullets = (s.bulletSections || []).map((b) => `<section class="section"><div class="wrap"><div class="eyebrow">${esc(b.heading)}</div><ul class="check-list">${b.items.map((it) => `<li>${esc(it)}</li>`).join('')}</ul></div></section>`).join('');
-  const callout = s.callout ? `<section class="section"><div class="wrap"><div class="callout"><strong>${esc(s.callout.label)}:</strong> ${esc(s.callout.text)}</div></div></section>` : '';
-  const pricing = s.pricing
-    ? `<section class="section alt"><div class="wrap"><div class="eyebrow">Pris</div><h2>${esc(s.pricing.h2)}</h2><p class="sub">${esc(s.pricing.text)}</p></div></section>`
-    : `<section class="section alt"><div class="wrap"><div class="eyebrow">Fejlsøgning &amp; pris</div><h2>Standard eller ekspres — dit valg</h2><p class="sub">Standardfejlsøgning koster 300 kr. (2–4 dage), eller ekspres for 600 kr. (1–2 timer) — reparationen klar inden for 24 timer, hvis der ikke skal bestilles specielle reservedele. Du får altid en fast pris, før vi går i gang.</p></div></section>`;
-  const cta = esc(s.ctaLabel || 'Kom forbi med din enhed');
-  const faq = s.faq.map((f) => `<details><summary>${esc(f.q)}</summary><div class="answer">${esc(f.a)}</div></details>`).join('');
-  const cross = s.crosslinks.map((c) => `<a href="${c.href}">${esc(c.label)} →</a>`).join('') + `<a href="/kontakt/">Kontakt & booking →</a>`;
-  return `  <section class="hero"><div class="wrap"><div class="eyebrow">Service · Frederiksberg &amp; København</div><h1>${esc(s.h1)}</h1>${s.subhead ? `<p class="lead">${esc(s.subhead)}</p>` : ''}
-    <div class="cta-row"><a class="btn btn-white" href="/kontakt/">${cta}</a><a class="btn btn-ghost-light" href="${site.phoneHref}">📞 Ring ${site.phone}</a></div></div></section>
-  <section class="section"><div class="wrap lead-copy"><div class="crumbs"><a href="/">Forside</a> › <span>${esc(s.h1)}</span></div>${intro}${included}</div></section>
-  ${bullets}
-  ${callout}
-  ${pricing}
-  <section class="section"><div class="wrap"><div class="eyebrow">FAQ</div><h2>Ofte stillede spørgsmål</h2><div class="faq">${faq}</div></div></section>
-  <section class="section alt"><div class="wrap"><div class="cta-band"><h2>Klar til at komme i gang?</h2><p>Kontakt os, så hjælper vi dig med at booke den rette service.</p><div class="cta-row"><a class="btn btn-white" href="/kontakt/">${cta}</a><a class="btn btn-ghost-light" href="${site.phoneHref}">📞 Ring ${site.phone}</a></div></div>
-    <div style="margin-top:32px"><p class="eyebrow">Relaterede services</p><div class="crosslinks">${cross}</div></div></div></section>`;
-}
-function faqSchemaFrom(items) {
-  return { '@context': 'https://schema.org', '@type': 'FAQPage', mainEntity: items.map((f) => ({ '@type': 'Question', name: f.q, acceptedAnswer: { '@type': 'Answer', text: f.a } })) };
-}
-// ---------- schema: Service node (area/location pages) ----------
-// Ground-truth "area-page schema template": #business (above) stays
-// frozen/byte-identical everywhere; this Service node carries the
-// page-specific bits. `@id` is namespaced to the page's own full URL
-// (never a bare "#service") so it can't collide with another page's
-// Service node. `provider` always points back at the single #business
-// node — never re-declare business fields here.
-function areaServiceSchema({ url, serviceType, areaServed }) {
-  return {
-    '@context': 'https://schema.org', '@type': 'Service', '@id': `${url}#service`,
-    serviceType, provider: { '@id': site.domain + '/#business' }, areaServed, url,
-  };
-}
-
-// ---------- schema: Article (guide/help pages) ----------
-// Mirrors areaServiceSchema() above: `@id` namespaced to the page's own
-// full URL (never a bare "#article") so it can't collide across pages.
-// `author` and `publisher` both point back at the single frozen #business
-// node rather than duplicating org fields — same pattern as `provider` on
-// Service nodes. Guide pages pair this with faqSchemaFrom() for
-// Article+FAQPage, per the ground-truth "New-page checklist."
-function articleSchema({ url, headline, description, datePublished, dateModified }) {
-  return {
-    '@context': 'https://schema.org', '@type': 'Article', '@id': `${url}#article`,
-    headline, description, datePublished, dateModified: dateModified || datePublished,
-    author: { '@id': site.domain + '/#business' }, publisher: { '@id': site.domain + '/#business' },
-    mainEntityOfPage: { '@type': 'WebPage', '@id': url }, url,
-  };
-}
-
-// ---------- garanti ----------
-const GARANTI_FAQ = [
-  { q: 'Hvor lang garanti giver I på en reparation?', a: 'Vi giver garanti på både reservedele og det udførte arbejde. Længden afhænger af reparationstypen og reservedelen — du får garantiperioden oplyst skriftligt, når du henter maskinen.' },
-  { q: 'Hvad dækker garantien?', a: 'Garantien dækker den reservedel, vi har monteret, og det arbejde, vi har udført. Går den samme del i stykker igen inden for garantiperioden under normal brug, udbedrer vi det uden beregning.' },
-  { q: 'Hvad dækker garantien ikke?', a: 'Garantien dækker ikke nye skader, der ikke har med reparationen at gøre — for eksempel ny væskeskade, fald- eller stødskade, overspænding, eller skader efter at andre har åbnet maskinen. Den dækker heller ikke slitage på batterier ud over normal kapacitetsnedgang.' },
-  { q: 'Hvad gør jeg, hvis fejlen kommer igen?', a: 'Kontakt os på 91 81 61 81 eller kom forbi værkstedet på Falkoner Allé 108 med maskinen og din kvittering. Vi ser på den med det samme og udbedrer det, hvis det er dækket.' },
-  { q: 'Skal jeg have kvitteringen med?', a: 'Ja, tag kvitteringen eller reparationsnummeret med — så kan vi finde din sag med det samme.' },
-  { q: 'Gælder garantien også på refurbished computere fra butikken?', a: 'Ja. Refurbished computere fra PCKlinik sælges med garanti efter kvalitetsgrad: A-kvalitet 3 år, B-kvalitet 2 år, C-kvalitet 1 år.' },
-];
-function garantiBody() {
-  const faq = GARANTI_FAQ.map((f) => `<details><summary>${esc(f.q)}</summary><div class="answer">${esc(f.a)}</div></details>`).join('');
-  return `  <section class="hero"><div class="wrap"><div class="eyebrow">Garanti</div><h1>Garanti på reparation</h1>
-    <p class="lead">Vi giver garanti på både reservedele og det arbejde, vi udfører. Går den samme fejl igen inden for garantiperioden, retter vi det uden beregning.</p>
-    <div class="cta-row"><a class="btn btn-white" href="/kontakt/">Kontakt os</a><a class="btn btn-ghost-light" href="${site.phoneHref}">📞 Ring ${site.phone}</a></div></div></section>
-  <section class="section"><div class="wrap lead-copy"><div class="crumbs"><a href="/">Forside</a> › <span>Garanti</span></div>
-    <p>Når vi reparerer din computer, skal du kunne regne med, at det holder. Derfor giver vi <strong>garanti på både den reservedel, vi monterer, og på selve arbejdet</strong>. Du får garantiperioden oplyst skriftligt på din kvittering, når du henter maskinen.</p>
-    <p>Vi bruger kvalitetsreservedele, og vi tester altid maskinen, før du får den tilbage. Skulle den samme fejl alligevel dukke op igen inden for garantiperioden under normal brug, udbedrer vi det <strong>uden beregning</strong>.</p>
-    <div class="trust-line" style="margin:6px 0 20px"><strong>Sådan bruger du garantien:</strong> Ring på ${site.phone} eller kom forbi Falkoner Allé 108 med maskinen og din kvittering.</div></div></section>
-  <section class="section"><div class="wrap"><div class="eyebrow">Dækning</div><h2>Hvad garantien dækker — og ikke dækker</h2>
-    <div class="grid grid-2" style="margin-top:24px">
-      <div class="card"><h3>Dækket</h3><ul class="check-list">
-        <li>Den reservedel, vi har monteret</li>
-        <li>Det arbejde, vi har udført</li>
-        <li>Samme fejl der opstår igen ved normal brug</li>
-        <li>Refurbished computere købt i butikken</li>
-      </ul></div>
-      <div class="card"><h3>Ikke dækket</h3><ul class="check-list">
-        <li>Nye skader uden sammenhæng med reparationen</li>
-        <li>Ny væskeskade, fald- eller stødskade</li>
-        <li>Overspænding og lynnedslag</li>
-        <li>Skader efter at andre har åbnet maskinen</li>
-        <li>Normal slitage på batterikapacitet</li>
-      </ul></div>
-    </div></div></section>
-  <section class="section alt"><div class="wrap"><div class="eyebrow">Refurbished</div><h2>Garanti på refurbished computere</h2>
-    <p class="sub">Alle refurbished computere fra PCKlinik er testet og istandsat, og garantien afhænger af kvalitetsgraden: <strong>A-kvalitet</strong> 3 år, <strong>B-kvalitet</strong> 2 år, <strong>C-kvalitet</strong> 1 år — billigere og grønnere end at købe nyt.</p>
-    <div class="cta-row"><a class="btn btn-primary" href="/butik/computere/refurbished/">Se refurbished computere →</a></div></div></section>
-  <section class="section"><div class="wrap"><div class="eyebrow">FAQ</div><h2>Ofte stillede spørgsmål om garanti</h2><div class="faq">${faq}</div></div></section>
-  <section class="section alt"><div class="wrap"><div class="cta-band"><h2>Spørgsmål til din reparation?</h2><p>Ring til os, eller kom forbi værkstedet på Falkoner Allé 108.</p><div class="cta-row"><a class="btn btn-white" href="/kontakt/">Kontakt os</a><a class="btn btn-ghost-light" href="${site.phoneHref}">📞 Ring ${site.phone}</a></div></div>
-    <div style="margin-top:32px"><p class="eyebrow">Relateret</p><div class="crosslinks"><a href="/reparationspriser/">Typiske reparationspriser →</a><a href="/computer-reparation/">Computer reparation →</a><a href="/aabningstider/">Åbningstider →</a><a href="/faq/">FAQ →</a></div></div></div></section>`;
-}
-
-// ---------- åbningstider ----------
-const AABNING_FAQ = [
-  { q: 'Hvad er PCKlinik åbningstider?', a: 'Mandag til fredag 10:00–18:00, lørdag 10:00–14:00. Søndag holder vi lukket.' },
-  { q: 'Skal jeg booke tid, eller kan jeg bare komme forbi?', a: 'Du kan komme forbi i åbningstiden uden at booke tid. Vi tager imod indlevering løbende.' },
-  { q: 'Hvor ligger værkstedet?', a: 'Falkoner Allé 108, 2000 Frederiksberg — i stueetagen. Tæt på Frederiksberg Station (metro M1/M2) og Falkoner Allé.' },
-  { q: 'Hvad skal jeg have med, når jeg afleverer min computer?', a: 'Tag selve maskinen og gerne opladeren med. Har du en adgangskode til Windows eller macOS, skal vi bruge den for at kunne teste maskinen. Husk at lave en backup, hvis du kan.' },
-  { q: 'Har I åbent på helligdage?', a: 'Vi holder lukket på helligdage. Er du i tvivl, så ring på 91 81 61 81, før du kører herud.' },
-  { q: 'Kan jeg få hjælp uden for åbningstiden?', a: 'Erhvervskunder med en IT-serviceaftale kan aftale support uden for normal åbningstid. Kontakt os for at høre nærmere.' },
-];
-function aabningstiderBody() {
-  const faq = AABNING_FAQ.map((f) => `<details><summary>${esc(f.q)}</summary><div class="answer">${esc(f.a)}</div></details>`).join('');
-  const rows = [['Mandag', '10:00–18:00'], ['Tirsdag', '10:00–18:00'], ['Onsdag', '10:00–18:00'], ['Torsdag', '10:00–18:00'], ['Fredag', '10:00–18:00'], ['Lørdag', '10:00–14:00'], ['Søndag', 'Lukket']]
-    .map(([d, h]) => `<li><strong>${d}</strong> — ${h}</li>`).join('');
-  return `  <section class="hero"><div class="wrap"><div class="eyebrow">Åbningstider &amp; find vej</div><h1>Åbningstider</h1>
-    <p class="lead">Falkoner Allé 108, 2000 Frederiksberg. Kom forbi i åbningstiden — du behøver ikke booke tid.</p>
-    <div class="cta-row"><a class="btn btn-white" href="${site.phoneHref}">📞 Ring ${site.phone}</a><a class="btn btn-ghost-light" href="/kontakt/">Kontakt &amp; booking</a></div></div></section>
-  <section class="section"><div class="wrap lead-copy"><div class="crumbs"><a href="/">Forside</a> › <span>Åbningstider</span></div>
-    <p>Vores værksted på <strong>Falkoner Allé 108 på Frederiksberg</strong> har åbent seks dage om ugen. Du kan komme forbi og aflevere din computer i åbningstiden — <strong>ingen tidsbestilling nødvendig</strong>.</p></div></section>
-  <section class="section"><div class="wrap"><div class="eyebrow">Åbningstider</div><h2>Hvornår vi har åbent</h2>
-    <div class="grid grid-2" style="margin-top:24px">
-      <div class="card"><h3>Ugens åbningstider</h3><ul class="check-list">${rows}</ul><p style="margin-top:12px">Vi holder lukket på helligdage. Er du i tvivl, så ring først på <a href="${site.phoneHref}">${site.phone}</a>.</p></div>
-      <div class="card"><h3>Sådan finder du os</h3><ul class="check-list">
-        <li>Falkoner Allé 108, 2000 Frederiksberg — stueetagen</li>
-        <li>Metro M1/M2 til Frederiksberg Station, ca. 5 min. gang</li>
-        <li>Bus på Falkoner Allé lige uden for døren</li>
-        <li>Betalingsparkering på Falkoner Allé og sidegaderne</li>
-        <li>Gåafstand fra CBS (Solbjerg Plads)</li>
-      </ul></div>
-    </div></div></section>
-  <section class="section alt"><div class="wrap"><div class="eyebrow">Inden du kommer</div><h2>Hvad du skal have med</h2>
-    <p class="sub">Tag selve maskinen og gerne opladeren med. Har du en adgangskode til Windows eller macOS, skal vi bruge den for at kunne teste maskinen efter reparationen. Lav en backup af dine data, hvis du har mulighed for det — vi passer på dine filer, men en backup er altid en god idé.</p>
-    <div class="cta-row"><a class="btn btn-primary" href="/reparationspriser/">Se typiske priser →</a><a class="btn btn-outline" href="/computer-reparation/">Computer reparation →</a></div></div></section>
-  <section class="section"><div class="wrap"><div class="eyebrow">Find os</div><h2>Vores værksted — Falkoner Allé 108, Frederiksberg</h2>${mapFrame}</div></section>
-  <section class="section alt"><div class="wrap"><div class="eyebrow">FAQ</div><h2>Ofte stillede spørgsmål</h2><div class="faq">${faq}</div></div></section>`;
-}
-
-// ---------- location / area pages ----------
-function locationBody(loc) {
-  const intro = loc.intro.map((p) => `<p>${p}</p>`).join('');
-  const trust = loc.trustLine ? `<div class="trust-line" style="margin:8px 0 24px">${esc(loc.trustLine)}</div>` : '';
-  const areas = loc.areas ? `<section class="section alt"><div class="wrap"><div class="eyebrow">Områder vi betjener</div><h2>Kvarterer i København</h2><div class="grid grid-3">${loc.areas.map((sl) => { const a = locations.find((x) => x.slug === sl); return `<a class="card card-link" href="/${a.slug}/"><h3>${esc(a.name)}</h3><p>${esc(a.subhead)}</p><span class="arrow">Se område →</span></a>`; }).join('')}</div></div></section>` : '';
-  // Honest framing: this is NOT a grid of local-repair pages for other towns
-  // (that was a doorway pattern, removed 2026-07-30) — it's one link to the
-  // consolidated remote-support/send-in page, with the served areas named in
-  // plain text so it's clear this isn't local walk-in coverage.
-  const remoteAreas = loc.remoteAreas ? '<section class="section"><div class="wrap"><div class="eyebrow">Resten af Danmark</div><h2>Fjernsupport og indsendelse uden for København</h2><p class="sub">Vi har allerede kunder i ' + loc.remoteAreas.areaNames.map(esc).join(', ') + ' og resten af landet — ikke som lokalt fremmøde, men via fjernsupport eller indsendelse af din enhed.</p><div class="cta-row"><a class="btn btn-primary" href="' + loc.remoteAreas.href + '">Se hvordan fjernsupport og indsendelse fungerer →</a></div></div></section>' : '';
-  const faq = loc.faq.map((f) => `<details><summary>${esc(f.q)}</summary><div class="answer">${esc(f.a)}</div></details>`).join('');
-  const cross = loc.crosslinks.map((c) => `<a href="${c.href}">${esc(c.label)} →</a>`).join('');
-  return `  <section class="hero"><div class="wrap"><div class="eyebrow">København · Frederiksberg</div>
-    <h1>${esc(loc.h1)}</h1><p class="lead">${esc(loc.subhead)}</p>
-    <div class="cta-row"><a class="btn btn-white" href="/kontakt/">Kom forbi med din enhed</a><a class="btn btn-ghost-light" href="${site.phoneHref}">📞 Ring ${site.phone}</a></div></div></section>
-  <section class="section"><div class="wrap lead-copy"><div class="crumbs"><a href="/">Forside</a> › <span>${esc(loc.h1)}</span></div>${intro}${trust}</div></section>
-  ${areas}
-  ${remoteAreas}
-  <section class="section"><div class="wrap"><div class="eyebrow">FAQ</div><h2>Ofte stillede spørgsmål</h2><div class="faq">${faq}</div></div></section>
-  <section class="section alt"><div class="wrap"><div class="eyebrow">Find os</div><h2>Vores værksted — Falkoner Allé 108, Frederiksberg</h2><p class="sub">Vi betjener dette område fra vores værksted på Frederiksberg — kom forbi med din enhed, eller kontakt os for at høre mere.</p>${mapFrame}</div></section>
-  <section class="section"><div class="wrap"><div class="cta-band"><h2>Brug for reparation ${['Frederiksberg','Vesterbro','Nørrebro','Østerbro','Amager','Christianshavn'].includes(loc.name) ? 'på' : 'i'} ${esc(loc.name)}?</h2><p>Fejlsøgning 300 kr. (2–4 dage) eller ekspres (600 kr., 1–2 timer). Fast pris, før vi går i gang.</p><div class="cta-row"><a class="btn btn-white" href="/kontakt/">Kom forbi med din enhed</a><a class="btn btn-ghost-light" href="${site.phoneHref}">📞 Ring ${site.phone}</a></div></div>
-    <div style="margin-top:32px"><p class="eyebrow">Relateret</p><div class="crosslinks">${cross}</div></div></div></section>`;
-}
-// ---------- 404 ----------
-function notFoundBody() {
-  return `  <section class="hero"><div class="wrap"><div class="eyebrow">Fejl 404</div>
-    <h1>Siden blev ikke fundet</h1>
-    <p class="lead">Siden, du leder efter, findes ikke — den kan være flyttet, omdøbt, eller URL'en kan indeholde en fejl.</p>
-    <div class="cta-row"><a class="btn btn-white" href="/">Til forsiden</a><a class="btn btn-ghost-light" href="/kontakt/">Kontakt os</a></div>
-  </div></section>
-  <section class="section"><div class="wrap"><div class="eyebrow">Prøv i stedet</div><h2>Populære sider</h2>
-    <div class="grid grid-4">
-      <a class="card card-link" href="/kontakt/"><h3>Kom forbi med din enhed</h3><p>Fejlsøgning fra 300 kr., fast pris.</p><span class="arrow">Gå til kontakt →</span></a>
-      <a class="card card-link" href="/butik/"><h3>Butik</h3><p>Computere, backup & sikkerhed.</p><span class="arrow">Se butikken →</span></a>
-      <a class="card card-link" href="/it-support-til-erhverv/"><h3>IT-support til erhverv</h3><p>Fast pris pr. måned.</p><span class="arrow">Se erhvervs-IT →</span></a>
-      <a class="card card-link" href="/faq/"><h3>FAQ</h3><p>Ofte stillede spørgsmål.</p><span class="arrow">Se FAQ →</span></a>
-    </div></div></section>`;
-}
-
-// ---------- write helpers ----------
-async function writePage(p, html) {
-  const dir = p === '/' ? DIST : path.join(DIST, p);
-  await fs.mkdir(dir, { recursive: true });
-  await fs.writeFile(path.join(dir, 'index.html'), html);
-}
-async function copyDir(src, dst) {
-  await fs.mkdir(dst, { recursive: true });
-  for (const e of await fs.readdir(src, { withFileTypes: true })) {
-    const s = path.join(src, e.name), d = path.join(dst, e.name);
-    if (e.isDirectory()) await copyDir(s, d); else await fs.copyFile(s, d);
-  }
-}
-
-// ---------- run ----------
-async function run() {
-  // Nyheder posts: Markdown + frontmatter under src/content/nyheder/*.md,
-  // newest first, drafts skipped. See src/content/README.md.
-  news = await loadNewsPosts(__dirname);
-
-  await fs.rm(DIST, { recursive: true, force: true });
-  await fs.mkdir(DIST, { recursive: true });
-
-  // static assets
-  await copyDir(path.join(__dirname, 'public'), DIST);
-  await fs.mkdir(path.join(DIST, 'styles'), { recursive: true });
-  await fs.copyFile(path.join(__dirname, 'src/styles/global.css'), path.join(DIST, 'styles/global.css'));
-
-  const pages = [];
-  // home
-  pages.push(['/', page({ title: 'PCKlinik | Computer- og Mac-reparation i København', description: 'Computer- og Mac-reparation, IT-support, hosting og backup — alt ét sted hos PCKlinik. Fejlsøgning fra 300 kr. Ring 91 81 61 81.', p: '/', body: homeBody(), schema: faqSchemaFrom(HOME_FAQ) })]);
-  // repairs
-  for (const r of repairs) {
-    pages.push([`/${r.slug}/`, page({ title: r.title, description: r.description, p: `/${r.slug}/`, body: repairBody(r), schema: repairSchema(r) })]);
-  }
-  // contact
-  pages.push(['/kontakt/', page({ title: 'Kontakt PCKlinik | Frederiksberg & København', description: 'Kontakt PCKlinik for PC- og Mac-reparation på Frederiksberg og i København. Ring 91 81 61 81 eller skriv til kontakt@pcklinik.dk.', p: '/kontakt/', body: contactBody() })]);
-  // business
-  pages.push(['/it-support-til-erhverv/', page({ title: 'IT-supportaftale til erhverv | PCKlinik', description: 'IT-support til fast pris for virksomheder — plus hosting, domæner og backup fra samme team. I har ikke brug for nogen andre. Fra 399 kr./bruger/måned.', p: '/it-support-til-erhverv/', body: businessBody(), schema: businessSchemaFaq() })]);
-  // IT-rådgivning (erhverv) — GDPR/NIS2 consulting, "linchpin" for the
-  // Rådgivning pillar. Gratis first consultation ONLY — no diagnosis
-  // pricing shown on this page, per ground-truth "gratis" rule.
-  pages.push(['/it-raadgivning/', page({
-    title: 'IT-rådgivning til erhverv – GDPR & NIS2 | PCKlinik',
-    description: 'IT-rådgivning til virksomheder i København og på Frederiksberg. Få styr på GDPR og NIS2. Første konsultation er gratis. Ring 91 81 61 81.',
-    p: '/it-raadgivning/', body: itRaadgivningHtml(),
-    schema: [areaServiceSchema({ url: `${site.domain}/it-raadgivning/`, serviceType: 'IT-rådgivning', areaServed: ['København', 'Frederiksberg'] }), faqSchemaFrom(IT_RAADGIVNING_FAQ)],
-  })]);
-  // Forsikringsreparation — reparation dækket af kundens forsikring.
-  pages.push(['/forsikringsreparation/', page({
-    title: 'Forsikringsreparation af computer & Mac | PCKlinik',
-    description: 'Skadet computer eller Mac? Vi laver reparationer, der dækkes af din forsikring — du får et tilbud og en faktura til dit forsikringsselskab. Ring 91 81 61 81.',
-    p: '/forsikringsreparation/', body: forsikringsreparationHtml(),
-    schema: [areaServiceSchema({ url: `${site.domain}/forsikringsreparation/`, serviceType: 'Forsikringsreparation af computer og Mac', areaServed: ['København', 'Frederiksberg', 'Danmark'] }), faqSchemaFrom(FORSIKRING_FAQ)],
-  })]);
-  // shop
-  pages.push(['/butik/', page({ title: 'Butik | Computere, backup & sikkerhed | PCKlinik', description: 'Køb nye og istandsatte computere samt backup- og sikkerhedsudstyr hos PCKlinik — samme team, der også reparerer og supporterer dem. Betaling via Stripe.', p: '/butik/', body: shopHub() })]);
-  pages.push(['/butik/computere/', page({ title: 'Computere | Nye & refurbished | PCKlinik Butik', description: 'Nye og istandsatte computere fra PCKlinik — testet og klar til brug, med garanti. Se udvalget og køb sikkert via Stripe.', p: '/butik/computere/', body: shopComputers() })]);
-  pages.push(['/butik/computere/nye/', page({ title: 'Nye computere | PCKlinik Butik', description: 'Køb nye computere hos PCKlinik. Driftssikre mærker, klargjort og klar til brug. Sikker betaling via Stripe.', p: '/butik/computere/nye/', body: shopNew() })]);
-  pages.push(['/butik/computere/refurbished/', page({ title: 'Refurbished computere med garanti | PCKlinik Butik', description: 'Grundigt testede og istandsatte computere fra PCKlinik, med garanti. God ydelse til en lavere pris. Sikker betaling via Stripe.', p: '/butik/computere/refurbished/', body: shopRefurb() })]);
-  pages.push(['/butik/backup-sikkerhed/', page({ title: 'Backup & sikkerhed | PCKlinik Butik', description: 'Eksterne harddiske, NAS-løsninger og sikkerhedssoftware anbefalet af PCKlinik. Sikker betaling via Stripe.', p: '/butik/backup-sikkerhed/', body: shopBackup() })]);
-  // Domain purchase
-  pages.push(['/domaener/', page({ title: 'Køb domæne (.dk & .com) | PCKlinik', description: 'Søg og køb dit domæne direkte online hos PCKlinik — samme team som klarer reparation, hosting og IT-support. Betal sikkert via Stripe.', p: '/domaener/', body: domaenerBody(), schema: faqSchemaFrom(DOMAENER_FAQ) })]);
-  pages.push(['/domaener/tak/', page({ title: 'Tak for din bestilling | PCKlinik Domæner', description: 'Vi har modtaget din betaling og registrerer dit domæne inden for få timer.', p: '/domaener/tak/', body: domaenerTakHtml(), noindex: true })]);
-  // Hosting (webhosting subscription — HostShop checkout links are TBD, see hostingBody() note)
-  pages.push(['/hosting/', page({ title: 'Webhosting til din hjemmeside | PCKlinik', description: 'Hurtig, driftssikker webhosting fra 45 kr./md. — fra samme team, der reparerer din computer og bygger din hjemmeside. Ingen binding.', p: '/hosting/', body: hostingBody(), schema: hostingSchemaFaq() })]);
-  // Automatisk Backup (recurring backup subscription — distinct from /backup-og-datagendannelse/)
-  pages.push(['/automatisk-backup/', page({ title: 'Automatisk Backup | PCKlinik', description: 'Løbende, automatisk sikkerhedskopiering af dine computere og servere fra 199 kr./md. — fra det samme team, der reparerer og supporterer dig.', p: '/automatisk-backup/', body: automatiskBackupBody(), schema: automatiskBackupSchemaFaq() })]);
-
-  // Mac Repair hub (broad intent)
-  pages.push(['/mac-reparation/', page({ title: 'Mac-reparation på Frederiksberg & København | PCKlinik', description: 'Reparation af MacBook, iMac, Mac mini, Mac Studio og Mac Pro på Frederiksberg og i København. Fejlsøgning fra 300 kr., fast pris, hurtig ekspedition.', p: '/mac-reparation/', body: macHubHtml(), schema: faqSchemaFrom(MAC_HUB_FAQ) })]);
-  // Gaming PC repair, service & custom builds
-  pages.push(['/gaming-pc-reparation/', page({ title: 'Gaming-pc — reparation, service & specialbyggede | PCKlinik', description: 'Reparation af gaming-pc, køleservice og specialbyggede pc’er på Frederiksberg og i København. GPU, overophedning, opgraderinger — plus bygning fra bunden.', p: '/gaming-pc-reparation/', body: gamingHtml(), schema: faqSchemaFrom(GAMING_FAQ) })]);
-  // Error messages reference page
-  pages.push(['/fejlmeddelelser/', page({ title: 'Almindelige computerfejlmeddelelser & koder | PCKlinik', description: 'Blå skærme, opstartsfejl, kernel panics og mere — hvad almindelige Windows- og Mac-fejlmeddelelser betyder, og hvordan vi udbedrer dem.', p: '/fejlmeddelelser/', body: errorMessagesHtml(), schema: faqSchemaFrom(ERROR_FAQ) })]);
-  // Computer won't turn on (guide)
-  pages.push(['/computer-vil-ikke-taende/', page({ title: 'Vil computeren ikke tænde? Her er hvorfor | PCKlinik', description: 'Vil din bærbare eller pc ikke tænde? De tre mest almindelige årsager, hvad de betyder, og hvordan vi fejlsøger og udbedrer det. Frederiksberg og København.', p: '/computer-vil-ikke-taende/', body: computerWontTurnOnHtml(), schema: faqSchemaFrom(WONT_TURN_ON_FAQ) })]);
-  // General site-wide FAQ
-  pages.push(['/faq/', page({ title: 'Ofte stillede spørgsmål | PCKlinik', description: 'PC- og Mac-reparation i København — FAQ om fejlsøgning, priser, mærker, services, erhvervs-IT og vores butik.', p: '/faq/', body: faqPageHtml(), schema: faqSchemaFrom(GENERAL_FAQ) })]);
-  // Network Equipment hub
-  pages.push(['/netvaerksudstyr/', page({ title: 'Netværks- & router-opsætning: UniFi, Netgear | PCKlinik', description: 'Router- og netværksopsætning, konfiguration og fejlfinding — UniFi, Netgear, TP-Link, ASUS, Eero og Google Nest. Frederiksberg og København.', p: '/netvaerksudstyr/', body: networkHubHtml(), schema: faqSchemaFrom(NETWORK_HUB_FAQ) })]);
-  // Websites & SEO hub
-  pages.push(['/hjemmesider-seo-google-ads/', page({ title: 'Webdesign, SEO & Google Ads | PCKlinik', description: 'Webdesign, SEO og Google Ads-administration til virksomheder i København. Bygget og optimeret af en, der faktisk laver arbejdet.', p: '/hjemmesider-seo-google-ads/', body: websitesHubHtml(), schema: faqSchemaFrom(WEBSITES_HUB_FAQ) })]);
-  // About / Meet the Team
-  pages.push(['/om-os/', page({ title: 'Om PCKlinik & vores team | PCKlinik', description: 'Mød PCKlinik-teamet — 7 personer, der dækker pc, Mac, netværk, on-site support og web/SEO, med base på Frederiksberg.', p: '/om-os/', body: aboutBody() })]);
-  // Students (CBS & DTU) — student-facing SEO/FAQ page
-  pages.push(['/studerende/', page({ title: 'Computerreparation til studerende — CBS & DTU | PCKlinik', description: 'Computer- og MacBook-reparation til studerende ved CBS og DTU. Gåafstand fra Solbjerg Plads, Frederiksberg. Skærm, batteri, SSD, backup — fast pris.', p: '/studerende/', body: studentsHtml(), schema: faqSchemaFrom(STUDENTS_FAQ) })]);
-  // Typiske reparationspriser
-  pages.push(['/reparationspriser/', page({ title: 'Typiske reparationspriser | PCKlinik', description: 'Vejledende fra-priser på almindelige reparationer — skærm, batteri, SSD — inkl. dele og arbejde. Fast tilbud, før vi går i gang.', p: '/reparationspriser/', body: priceRangesHtml() })]);
-  // Reparere eller købe ny computer — genopbygning af død URL. No
-  // _redirects rule targets this slug (verified against public/_redirects
-  // before building), so no redirect needs removing here. NB: this is a
-  // different URL from /hvor-laenge-holder-en-macbook/, which DOES still
-  // have an active 301 to /macbook-reparation/ (see _redirects) — that
-  // rule must be removed in the same commit if/when that guide is built.
-  pages.push(['/reparere-eller-koebe-ny-computer/', page({
-    title: 'Reparere eller købe ny computer? Sådan vælger du | PCKlinik',
-    description: 'Kan det betale sig at reparere din computer, eller skal du købe ny? Ærlig vejledning fra PCKlinik — vi siger det ligeud, også når reparation ikke kan betale sig.',
-    p: '/reparere-eller-koebe-ny-computer/', body: reparereEllerKoebeHtml(),
-    // Article, not Service — this is a decision guide, not a service
-    // offering (per ground-truth: "Guides ... use Article + FAQPage;
-    // service pages use Service + FAQPage").
-    schema: [articleSchema({ url: `${site.domain}/reparere-eller-koebe-ny-computer/`, headline: 'Reparere eller købe ny computer? Sådan vælger du', description: 'Kan det betale sig at reparere din computer, eller skal du købe ny? Ærlig vejledning fra PCKlinik.', datePublished: '2026-08-05' }), faqSchemaFrom(REPARERE_KOEBE_FAQ)],
-  })]);
-  // Garanti (genskabt fra WordPress — /garanti/ rangerer i forvejen)
-  pages.push(['/garanti/', page({ title: 'Garanti på reparation | PCKlinik', description: 'PCKlinik giver garanti på både reservedele og udført arbejde. Se hvad garantien dækker, hvor længe den gælder, og hvordan du bruger den.', p: '/garanti/', body: garantiBody(), schema: faqSchemaFrom(GARANTI_FAQ) })]);
-  // Åbningstider (genskabt fra WordPress — /aabningstider/ rangerer i forvejen)
-  pages.push(['/aabningstider/', page({ title: 'Åbningstider — Falkoner Allé 108, Frederiksberg | PCKlinik', description: 'PCKlinik åbningstider: man–fre 10–18, lør 10–14, søn lukket. Falkoner Allé 108, Frederiksberg. Kom forbi uden tidsbestilling. Ring 91 81 61 81.', p: '/aabningstider/', body: aabningstiderBody(), schema: faqSchemaFrom(AABNING_FAQ) })]);
-  // News section
-  pages.push(['/nyheder/', page({ title: 'Nyheder & guides | PCKlinik', description: 'Praktiske computer-, Mac- og IT-guides fra PCKlinik på Frederiksberg — klare svar på almindelige spørgsmål, uden jargon.', p: '/nyheder/', body: newsIndexHtml() })]);
-  for (const n of news) pages.push([`/nyheder/${n.slug}/`, page({ title: `${n.title} | PCKlinik Nyheder`, description: n.description, p: `/nyheder/${n.slug}/`, body: newsPostHtml(n), schema: newsPostSchema(n) })]);
-  // Ask Us a Question
-  pages.push(['/stil-et-spoergsmaal/', page({ title: 'Stil os et spørgsmål | PCKlinik', description: 'Har du et spørgsmål om din computer, Mac eller IT? Spørg os direkte — de mest nyttige svar bliver til guides på vores nyhedsside.', p: '/stil-et-spoergsmaal/', body: askQuestionBody() })]);
-  // Thank-you pages (form redirect targets)
-  pages.push(['/tak/', page({ title: 'Thank You | PCKlinik', description: 'Your message has been sent. We will get back to you as soon as possible.', p: '/tak/', body: thankYouHtml(), noindex: true })]);
-  // Location / area pages — each gets its own Service node (serviceType is
-  // Mac-reparation for the Mac-specific page, Computerreparation for the
-  // rest; areaServed drops the "(NV)" UI suffix from loc.name) alongside
-  // the shared FAQPage. #business (frozen block, above) is unaffected.
-  for (const loc of locations) {
-    const url = `${site.domain}/${loc.slug}/`;
-    const svc = areaServiceSchema({
-      url,
-      serviceType: loc.slug.startsWith('mac-reparation-') ? 'Mac-reparation' : 'Computerreparation',
-      areaServed: loc.name.replace(/\s*\(.*\)$/, ''),
-    });
-    pages.push([`/${loc.slug}/`, page({ title: loc.title, description: loc.description, p: `/${loc.slug}/`, body: locationBody(loc), schema: [svc, faqSchemaFrom(loc.faq)] })]);
-  }
-  // 15 task-based service pages. it-support-koebenhavn is the 8th page in
-  // the area-page schema rollout (ground-truth doc groups it with the 7
-  // locations.js pages above, even though it lives here in services.js) —
-  // it gets the same areaServiceSchema() treatment; every other service
-  // page keeps its plain FAQPage-only schema.
-  for (const s of services) {
-    const url = `${site.domain}/${s.slug}/`;
-    const schema = s.slug === 'it-support-koebenhavn'
-      ? [areaServiceSchema({ url, serviceType: 'IT-support', areaServed: 'København' }), faqSchemaFrom(s.faq)]
-      : faqSchemaFrom(s.faq);
-    pages.push([`/${s.slug}/`, page({ title: s.title, description: s.description, p: `/${s.slug}/`, body: serviceBody(s), schema })]);
-  }
-
-  for (const [p, html] of pages) await writePage(p, html);
-
-  // 404 page — Cloudflare Pages serves this file (with an actual 404 status)
-  // for any request that doesn't match a static asset or another route.
-  const notFoundHtml = page({ title: 'Siden blev ikke fundet (404) | PCKlinik', description: 'Siden findes ikke. Gå til forsiden, eller find det, du leder efter, i menuen.', p: '/404.html', body: notFoundBody(), noindex: true });
-  await fs.writeFile(path.join(DIST, '404.html'), notFoundHtml);
-
-  // sitemap + robots
-  const urls = pages.map(([p]) => `  <url><loc>${site.domain}${p}</loc></url>`).join('\n');
-  await fs.writeFile(path.join(DIST, 'sitemap.xml'), `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n${urls}\n</urlset>\n`);
-  await fs.writeFile(path.join(DIST, 'robots.txt'), `User-agent: *\nAllow: /\nSitemap: ${site.domain}/sitemap.xml\n`);
-
-  console.log(`Built ${pages.length} pages -> dist/`);
-}
-run().catch((e) => { console.error(e); process.exit(1); });
