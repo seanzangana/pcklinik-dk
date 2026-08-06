@@ -1,5 +1,8 @@
 // Lokationssider — værkstedet ligger på Frederiksberg; nærområdesider er
-// "vi betjener beboere i X", og fjernbyer bruger afhentning/levering/indsendelse.
+// "vi betjener beboere i X", og fjernbyer bruger indsendelse (post/kurér).
+// NB: PCKlinik tilbyder ikke afhentning/levering som ydelse (bekræftet af
+// Shan 2026-08-06) — skriv det aldrig ind igen, kunden kommer selv forbi
+// eller sender enheden med post/kurér, hvis afstanden er for stor.
 export const locations = [
   {
         slug: 'computerreparation-koebenhavn', hub: true, name: 'København',
@@ -7,12 +10,12 @@ export const locations = [
         description: 'PC- og Mac-reparation i hele København. 4,9★ hos 493 kunder på Google. Fejlsøgning fra 300 kr., fast pris — du får prisen, før vi går i gang.',
         h1: 'Computerreparation i København', subhead: 'Værksted på Frederiksberg — kort afstand fra det meste af centrum',
         intro: [
-                'Vi reparerer PC og Mac for privatpersoner og virksomheder i hele København. Vores værksted ligger på Frederiksberg, kun kort afstand fra det meste af centrum. Standardfejlsøgning koster 300 kr. (2–4 dage), eller ekspres for 600 kr. (1–2 timer) — med reparation og levering inden for 24 timer, hvis der ikke skal bestilles specielle reservedele.',
+                'Vi reparerer PC og Mac for privatpersoner og virksomheder i hele København. Vores værksted ligger på Frederiksberg, kun kort afstand fra det meste af centrum. Standardfejlsøgning koster 300 kr. (2–4 dage), eller ekspres for 600 kr. (1–2 timer) — reparationen klar inden for 24 timer, hvis der ikke skal bestilles specielle reservedele.',
                 'Vi betjener hele byen direkte, plus resten af Danmark via fjernsupport til IT-supportaftaler. Du får altid en fast pris, før vi går i gang.',
               ],
         faq: [
           { q: 'Hvor ligger værkstedet?', a: 'Falkoner Allé 108, Frederiksberg.' },
-          { q: 'Tilbyder I afhentning og levering i København?', a: 'Ja, kontakt os for detaljer ud fra din placering.' },
+          { q: 'Skal jeg bestille tid, før jeg kommer forbi?', a: 'Nej — du er velkommen til at kigge ind i åbningstiden uden at bestille tid først.' },
           { q: 'Betjener I både privatpersoner og virksomheder?', a: 'Ja — ud over reparation af enkelte enheder tilbyder vi IT-supportaftaler til virksomheder. Se siden om IT-support til erhverv.' },
               ],
         areas: ['computerreparation-frederiksberg', 'computerreparation-vesterbro', 'computerreparation-vanloese', 'computerreparation-valby', 'computerreparation-nordvest'],
@@ -33,7 +36,7 @@ export const locations = [
         description: 'Mac-reparation i hele København — MacBook, iMac, Mac mini & Mac Studio. Uafhængigt værksted, ærlig rådgivning. Fejlsøgning fra 300 kr.',
         h1: 'Mac-reparation i København', subhead: 'Uafhængigt Mac-værksted på Frederiksberg — betjener hele byen',
         intro: [
-                'Vi reparerer Mac for privatpersoner og virksomheder i hele København — MacBook, iMac, Mac mini, Mac Studio og Mac Pro, uanset alder eller model. Vores værksted ligger på Frederiksberg, kun kort afstand fra det meste af centrum, og vi kan aftale afhentning/levering eller indsendelse for resten af byen.',
+                'Vi reparerer Mac for privatpersoner og virksomheder i hele København — MacBook, iMac, Mac mini, Mac Studio og Mac Pro, uanset alder eller model. Vores værksted ligger på Frederiksberg, kun kort afstand fra det meste af centrum, og vi betjener hele byen — du er velkommen til at komme forbi, uanset hvilken bydel du bor i.',
                 'Vi er et <strong>uafhængigt Mac-værksted</strong> — ikke en Apple-autoriseret forhandler. Det betyder, at vi fejlsøger og reparerer på komponentniveau i stedet for automatisk at udskifte hele dele. Vi lægger ikke pres på dig for at opgradere eller købe nyt — vi siger ærligt til, om en reparation kan betale sig, eller om det er billigere at udskifte maskinen.',
                 'Standardfejlsøgning koster 300 kr. (2–4 dage), eller ekspres for 600 kr. (1–2 timer). Du får altid en fast pris, før vi går i gang.',
               ],
@@ -42,7 +45,6 @@ export const locations = [
           { q: 'Er I Apple-autoriserede?', a: 'Nej — vi er et uafhængigt værksted. Det betyder typisk en billigere og hurtigere reparation, fordi vi kan arbejde på komponentniveau i stedet for kun at udskifte hele dele. Har din Mac stadig Apple-garanti, bør du tjekke, om en reparation hos os påvirker den.' },
           { q: 'Hvilke Mac-modeller reparerer I?', a: 'Alle — MacBook (Intel og Apple Silicon), iMac, Mac mini, Mac Studio og Mac Pro, uanset alder.' },
           { q: 'Hvad koster en Mac-reparation i København?', a: 'Standardfejlsøgning er 300 kr. (2–4 dage), ekspres er 600 kr. (1–2 timer). Du får en fast pris, før vi går i gang, uanset fejlens omfang.' },
-          { q: 'Kan I hente og bringe min Mac i København?', a: 'Ja, kontakt os for detaljer ud fra din placering — ellers kan du komme forbi værkstedet på Frederiksberg.' },
           { q: 'Kan det betale sig at reparere en ældre Mac?', a: 'Ofte ja. Vi giver dig et ærligt svar ud fra fejlens omfang og maskinens alder — ikke bare en automatisk anbefaling om at skifte den ud.' },
               ],
         crosslinks: [{ label: 'Mac-reparation (oversigt)', href: '/mac-reparation/' }, { label: 'MacBook-reparation', href: '/macbook-reparation/' }, { label: 'Computerreparation i København', href: '/computerreparation-koebenhavn/' }, { label: 'IT-support i København', href: '/it-support-koebenhavn/' }, { label: 'Kontakt', href: '/kontakt/' }],
@@ -90,7 +92,7 @@ export const locations = [
         h1: 'Computerreparation i Vanløse', subhead: 'Reparation, kort afstand fra Vanløse',
         intro: ['Vi betjener beboere i Vanløse fra vores værksted på Frederiksberg. Standardfejlsøgning koster 300 kr. (2–4 dage), eller ekspres for 600 kr. (1–2 timer).'],
         faq: [
-          { q: 'Hvad er den hurtigste måde at få mit device til jer fra Vanløse?', a: 'Kom forbi direkte, eller spørg om afhentning/levering afhængigt af din placering.' },
+          { q: 'Hvad er den hurtigste måde at få mit device til jer fra Vanløse?', a: 'Kom forbi direkte til værkstedet på Frederiksberg — det er den hurtigste måde.' },
           { q: 'Hvad koster en reparation?', a: 'Fejlsøgning 300 kr. (2–4 dage) eller ekspres for 600 kr. (1–2 timer), altid med fast pris, før vi går i gang.' },
               ],
         crosslinks: [{ label: 'København (oversigt)', href: '/computerreparation-koebenhavn/' }, { label: 'IT-support til erhverv', href: '/it-support-til-erhverv/' }, { label: 'Kontakt', href: '/kontakt/' }],
@@ -102,7 +104,7 @@ export const locations = [
         h1: 'Computerreparation i Valby', subhead: 'Reparation, kort afstand fra Valby',
         intro: ['Vi betjener beboere i Valby fra vores værksted på Frederiksberg. Standardfejlsøgning koster 300 kr. (2–4 dage), eller ekspres for 600 kr. (1–2 timer).'],
         faq: [
-          { q: 'Hvad er den hurtigste måde at få mit device til jer fra Valby?', a: 'Kom forbi direkte, eller spørg om afhentning/levering afhængigt af din placering.' },
+          { q: 'Hvad er den hurtigste måde at få mit device til jer fra Valby?', a: 'Kom forbi direkte til værkstedet på Frederiksberg — det er den hurtigste måde.' },
           { q: 'Hvad koster en reparation?', a: 'Fejlsøgning 300 kr. (2–4 dage) eller ekspres for 600 kr. (1–2 timer), altid med fast pris, før vi går i gang.' },
               ],
         crosslinks: [{ label: 'København (oversigt)', href: '/computerreparation-koebenhavn/' }, { label: 'IT-support til erhverv', href: '/it-support-til-erhverv/' }, { label: 'Kontakt', href: '/kontakt/' }],
@@ -114,7 +116,7 @@ export const locations = [
         h1: 'Computerreparation i Nordvest (NV)', subhead: 'Reparation, kort afstand fra Nordvest',
         intro: ['Vi betjener beboere i Nordvest fra vores værksted på Frederiksberg. Standardfejlsøgning koster 300 kr. (2–4 dage), eller ekspres for 600 kr. (1–2 timer).'],
         faq: [
-          { q: 'Hvad er den hurtigste måde at få mit device til jer fra Nordvest?', a: 'Kom forbi direkte, eller spørg om afhentning/levering afhængigt af din placering.' },
+          { q: 'Hvad er den hurtigste måde at få mit device til jer fra Nordvest?', a: 'Kom forbi direkte til værkstedet på Frederiksberg — det er den hurtigste måde.' },
           { q: 'Hvad koster en reparation?', a: 'Fejlsøgning 300 kr. (2–4 dage) eller ekspres for 600 kr. (1–2 timer), altid med fast pris, før vi går i gang.' },
               ],
         crosslinks: [{ label: 'København (oversigt)', href: '/computerreparation-koebenhavn/' }, { label: 'IT-support til erhverv', href: '/it-support-til-erhverv/' }, { label: 'Kontakt', href: '/kontakt/' }],
