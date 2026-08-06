@@ -35,7 +35,7 @@ export const repairs = [
       { title: 'Køling & ydelse', body: 'Fryser eller genstarter maskinen under gaming eller tunge opgaver på din <strong>Legion 5, Legion 5 Pro</strong> eller <strong>ThinkPad P16</strong>? Vi renser og reparerer kølesystemet og retter softwareproblemer, der giver ustabilitet på <strong>IdeaPad</strong>- og <strong>ThinkBook</strong>-modeller.' },
     ],
     whyHeading: 'Hvorfor vælge PCKlinik til Lenovo-reparation?',
-    whyIntro: 'Med tusindvis af gennemførte reparationer og tilfredse kunder er PCKlinik dit oplagte valg til reparation af <strong>ThinkPad, IdeaPad, Legion, Yoga</strong> og <strong>ThinkBook</strong> på Frederiksberg og i København.',
+    whyIntro: 'Hos PCKlinik får du et fast værksted på Frederiksberg med et team, der kender Lenovo-modellerne godt — fra <strong>ThinkPad</strong> og <strong>IdeaPad</strong> til <strong>Legion</strong>, <strong>Yoga</strong> og <strong>ThinkBook</strong>.',
     why: [
       { title: 'Erfaren service', body: 'Solid erfaring med ThinkPad T14/T14s, X1 Carbon, IdeaPad 3/5, Legion 5 og Yoga-modeller.' },
       { title: 'Hurtig ekspedition', body: 'Vælger du ekspres, er din Lenovo klar inden for 24 timer — uanset om det er en T14 eller en Legion 5 Pro. Standard tager 3–4 dage.' },

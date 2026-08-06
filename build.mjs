@@ -295,7 +295,7 @@ const HOME_FAQ = [
   ['Tilbyder I service til virksomheder også, ikke kun privatpersoner?', 'Ja — ud over reparation tilbyder vi IT-supportaftaler til fast pris, inklusive ubegrænset support, overvågning og sikkerhed. Se vores side om IT-support til erhverv.'],
   ['Hvor ligger I?', 'Falkoner Allé 108, Frederiksberg. Vi betjener Frederiksberg og København direkte, samt resten af Danmark via fjernsupport til IT-supportaftaler.'],
   ['Sælger I også computere, eller kun reparation?', 'Ja — nye og brugte/istandsatte computere samt backup- og sikkerhedsudstyr findes i vores butik.'],
-  ['Kan jeg bare møde op, eller skal jeg bestille tid?', 'Du kan altid møde op uden bestilling — men det kan reducere ventetiden at booke på forhånd, især ved ekspresfejlsøgning.'],
+  ['Kan jeg bare møde op, eller skal jeg bestille tid?', 'Du kan altid møde op uden at bestille tid — kom forbi i åbningstiden, så kigger vi på den.'],
   ['Tilbyder I en måde at følge status på en igangværende reparation uden at ringe?', 'Kontakt os direkte for en statusopdatering — et opkald eller en e-mail fungerer bedst for et lille, personligt værksted som vores.'],
 ];
 function homeBody() {
@@ -371,7 +371,7 @@ function homeBody() {
 // ---------- contact ----------
 function contactBody() {
   return `  <section class="hero"><div class="wrap"><div class="eyebrow">Kom i kontakt</div><h1>Kontakt os</h1>
-    <p class="lead">Vi er klar til at hjælpe med din computer. Har du et spørgsmål om en reparation, eller vil du booke en tid? Ring, skriv, eller kig forbi værkstedet på Falkoner Allé — vi svarer hurtigt.</p><div class="badges"><span class="badge check">Fremmøde uden bestilling</span></div></div></section>
+    <p class="lead">Vi er klar til at hjælpe med din computer. Har du et spørgsmål om en reparation? Ring, skriv, eller kig bare forbi værkstedet på Falkoner Allé — du behøver ikke bestille tid. Skal du bruge IT-rådgivning til din virksomhed, aftaler vi et tidspunkt.</p><div class="badges"><span class="badge check">Fremmøde uden bestilling</span></div></div></section>
   <section class="section"><div class="wrap"><div class="info-block">
     <div class="nap"><div class="eyebrow">Kontaktoplysninger</div>
       <p><strong>Telefon</strong><br /><a href="${site.phoneHref}">${site.phone}</a></p>
@@ -853,7 +853,7 @@ function serviceBody(s) {
   ${callout}
   ${pricing}
   <section class="section"><div class="wrap"><div class="eyebrow">FAQ</div><h2>Ofte stillede spørgsmål</h2><div class="faq">${faq}</div></div></section>
-  <section class="section alt"><div class="wrap"><div class="cta-band"><h2>Klar til at komme i gang?</h2><p>Kontakt os, så hjælper vi dig med at booke den rette service.</p><div class="cta-row"><a class="btn btn-white" href="/kontakt/">${cta}</a><a class="btn btn-ghost-light" href="${site.phoneHref}">📞 Ring ${site.phone}</a></div></div>
+  <section class="section alt"><div class="wrap"><div class="cta-band"><h2>Klar til at komme i gang?</h2><p>Kontakt os, så finder vi den rette løsning for dig.</p><div class="cta-row"><a class="btn btn-white" href="/kontakt/">${cta}</a><a class="btn btn-ghost-light" href="${site.phoneHref}">📞 Ring ${site.phone}</a></div></div>
     <div style="margin-top:32px"><p class="eyebrow">Relaterede services</p><div class="crosslinks">${cross}</div></div></div></section>`;
 }
 function faqSchemaFrom(items) {
@@ -934,7 +934,7 @@ function garantiBody() {
 // ---------- åbningstider ----------
 const AABNING_FAQ = [
   { q: 'Hvad er PCKlinik åbningstider?', a: 'Mandag til fredag 10:00–18:00, lørdag 10:00–14:00. Søndag holder vi lukket.' },
-  { q: 'Skal jeg booke tid, eller kan jeg bare komme forbi?', a: 'Du kan komme forbi i åbningstiden uden at booke tid. Vi tager imod indlevering løbende.' },
+  { q: 'Skal jeg bestille tid, eller kan jeg bare komme forbi?', a: 'Du kan komme forbi i åbningstiden uden at bestille tid. Vi tager imod indlevering løbende.' },
   { q: 'Hvor ligger værkstedet?', a: 'Falkoner Allé 108, 2000 Frederiksberg — i stueetagen. Tæt på Frederiksberg Station (metro M1/M2) og Falkoner Allé.' },
   { q: 'Hvad skal jeg have med, når jeg afleverer min computer?', a: 'Tag selve maskinen og gerne opladeren med. Har du en adgangskode til Windows eller macOS, skal vi bruge den for at kunne teste maskinen. Husk at lave en backup, hvis du kan.' },
   { q: 'Har I åbent på helligdage?', a: 'Vi holder lukket på helligdage. Er du i tvivl, så ring på 91 81 61 81, før du kører herud.' },
@@ -945,7 +945,7 @@ function aabningstiderBody() {
   const rows = [['Mandag', '10:00–18:00'], ['Tirsdag', '10:00–18:00'], ['Onsdag', '10:00–18:00'], ['Torsdag', '10:00–18:00'], ['Fredag', '10:00–18:00'], ['Lørdag', '10:00–14:00'], ['Søndag', 'Lukket']]
     .map(([d, h]) => `<li><strong>${d}</strong> — ${h}</li>`).join('');
   return `  <section class="hero"><div class="wrap"><div class="eyebrow">Åbningstider &amp; find vej</div><h1>Åbningstider</h1>
-    <p class="lead">Falkoner Allé 108, 2000 Frederiksberg. Kom forbi i åbningstiden — du behøver ikke booke tid.</p>
+    <p class="lead">Falkoner Allé 108, 2000 Frederiksberg. Kom forbi i åbningstiden — du behøver ikke bestille tid.</p>
     <div class="cta-row"><a class="btn btn-white" href="${site.phoneHref}">📞 Ring ${site.phone}</a><a class="btn btn-ghost-light" href="/kontakt/">Kontakt &amp; booking</a></div></div></section>
   <section class="section"><div class="wrap lead-copy"><div class="crumbs"><a href="/">Forside</a> › <span>Åbningstider</span></div>
     <p>Vores værksted på <strong>Falkoner Allé 108 på Frederiksberg</strong> har åbent seks dage om ugen. Du kan komme forbi og aflevere din computer i åbningstiden — <strong>ingen tidsbestilling nødvendig</strong>.</p></div></section>
