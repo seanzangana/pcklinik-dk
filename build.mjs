@@ -13,7 +13,7 @@ import { lucide, lucideSm } from './src/data/icons.js';
 import { services } from './src/data/services.js';
 import { locations } from './src/data/locations.js';
 import { loadNewsPosts } from './src/content/posts.mjs';
-import { macHubHtml, gamingHtml, MAC_HUB_FAQ, GAMING_FAQ, errorMessagesHtml, ERROR_FAQ, computerWontTurnOnHtml, WONT_TURN_ON_FAQ, faqPageHtml, GENERAL_FAQ, networkHubHtml, NETWORK_HUB_FAQ, websitesHubHtml, WEBSITES_HUB_FAQ, studentsHtml, STUDENTS_FAQ, priceRangesHtml, itRaadgivningHtml, IT_RAADGIVNING_FAQ, forsikringsreparationHtml, FORSIKRING_FAQ, reparereEllerKoebeHtml, REPARERE_KOEBE_FAQ } from './src/data/richPages.js';
+import { macHubHtml, gamingHtml, MAC_HUB_FAQ, GAMING_FAQ, errorMessagesHtml, ERROR_FAQ, computerWontTurnOnHtml, WONT_TURN_ON_FAQ, faqPageHtml, GENERAL_FAQ, networkHubHtml, NETWORK_HUB_FAQ, websitesHubHtml, WEBSITES_HUB_FAQ, studentsHtml, STUDENTS_FAQ, priceRangesHtml, itRaadgivningHtml, IT_RAADGIVNING_FAQ, forsikringsreparationHtml, FORSIKRING_FAQ, reparereEllerKoebeHtml, REPARERE_KOEBE_FAQ, macbookLevetidHtml, MACBOOK_LEVETID_FAQ, windows10HubHtml, WINDOWS10_HUB_FAQ, windows11KravHtml, WINDOWS11_KRAV_FAQ, windows11OpgraderingHtml, WINDOWS11_OPGRADERING_FAQ, windows10ErhvervHtml, WINDOWS10_ERHVERV_FAQ, itSupportAdvokatkontorHtml, IT_SUPPORT_ADVOKAT_FAQ, itSupportKlinikHtml, IT_SUPPORT_KLINIK_FAQ, itSupportMindreVirksomhederHtml, IT_SUPPORT_MINDRE_VIRKSOMHEDER_FAQ, bsodHtml, BSOD_FAQ, grafikkortFejlHtml, GPU_FEJL_FAQ, macbookTouchBarHtml, TOUCH_BAR_FAQ, batterietHolderIkkeHtml, BATTERI_HOLDER_IKKE_FAQ } from './src/data/richPages.js';
 import { announcement } from './src/data/announcement.js';
 // Nyheder posts (src/content/nyheder/*.md), populated at the top of run().
 // Declared here rather than as a run()-local because newsIndexHtml()/
@@ -124,7 +124,7 @@ function footer() {
   return `<footer class="site-footer"><div class="wrap"><div class="cols">
     <div><img src="/logo.png" alt="PCKlinik" class="logo-foot" width="85" height="34" /><p>Hurtig, ærlig PC- og Mac-reparation til privatpersoner og virksomheder på Frederiksberg og i København.</p><p>Alt inden for computer og IT — du har ikke brug for nogen andre.</p><p>${site.address}</p></div>
     <div><h2>Reparationer</h2><a href="/computer-reparation/">Computer reparation</a><a href="/lenovo-reparation/">Lenovo</a><a href="/hp-reparation/">HP</a><a href="/dell-reparation/">Dell</a><a href="/macbook-reparation/">MacBook</a><a href="/mac-stationaer-reparation/">Mac (stationær)</a><a href="/bundkort-reparation/">Bundkortreparation</a></div>
-    <div><h2>Mere</h2><a href="/butik/">Butik</a><a href="/hosting/">Hosting</a><a href="/automatisk-backup/">Automatisk Backup</a><a href="/domaener/">Domæner</a><a href="/butik/computere/refurbished/">Refurbished computere</a><a href="/it-support-til-erhverv/">IT-support til erhverv</a><a href="/it-raadgivning/">IT-rådgivning</a><a href="/forsikringsreparation/">Forsikringsreparation</a><a href="/reparere-eller-koebe-ny-computer/">Reparere eller købe ny?</a><a href="/it-support-frederiksberg/">IT-support Frederiksberg</a><a href="/hjemmesider-seo-google-ads/">Hjemmesider & SEO</a><a href="/om-os/">Mød teamet</a><a href="/faq/">FAQ</a><a href="/nyheder/">Nyheder</a><a href="/studerende/">Studerende (CBS & DTU)</a><a href="/reparationspriser/">Typiske reparationspriser</a><a href="/garanti/">Garanti</a><a href="/aabningstider/">Åbningstider</a><a href="/kontakt/">Kontakt</a></div>
+    <div><h2>Mere</h2><a href="/butik/">Butik</a><a href="/hosting/">Hosting</a><a href="/automatisk-backup/">Automatisk Backup</a><a href="/domaener/">Domæner</a><a href="/butik/computere/refurbished/">Refurbished computere</a><a href="/it-support-til-erhverv/">IT-support til erhverv</a><a href="/it-raadgivning/">IT-rådgivning</a><a href="/forsikringsreparation/">Forsikringsreparation</a><a href="/reparere-eller-koebe-ny-computer/">Reparere eller købe ny?</a><a href="/hvor-laenge-holder-en-macbook/">Hvor længe holder en MacBook?</a><a href="/windows-10-support-slut/">Windows 10 support er slut</a><a href="/kan-min-computer-koere-windows-11/">Kan min computer køre Windows 11?</a><a href="/opgradering-til-windows-11/">Opgradering til Windows 11</a><a href="/windows-10-erhverv-migrering/">Windows 10-migrering for virksomheder</a><a href="/it-support-advokatkontor/">IT-support til advokatkontorer</a><a href="/it-support-klinik/">IT-support til klinikker</a><a href="/it-support-mindre-virksomheder-frederiksberg/">IT-support til mindre virksomheder</a><a href="/blaa-skaerm-bsod/">Blå skærm (BSOD)</a><a href="/grafikkort-fejl-baerbar/">Grafikkortfejl på bærbar</a><a href="/macbook-touch-bar-virker-ikke/">MacBook Touch Bar virker ikke</a><a href="/batteriet-holder-ikke/">Batteriet holder ikke</a><a href="/it-support-frederiksberg/">IT-support Frederiksberg</a><a href="/hjemmesider-seo-google-ads/">Hjemmesider & SEO</a><a href="/om-os/">Mød teamet</a><a href="/faq/">FAQ</a><a href="/nyheder/">Nyheder</a><a href="/studerende/">Studerende (CBS & DTU)</a><a href="/reparationspriser/">Typiske reparationspriser</a><a href="/garanti/">Garanti</a><a href="/aabningstider/">Åbningstider</a><a href="/kontakt/">Kontakt</a></div>
     <div><h2>Områder vi betjener</h2><a href="/computerreparation-koebenhavn/">København</a><a href="/computerreparation-frederiksberg/">Frederiksberg</a><a href="/computerreparation-vesterbro/">Vesterbro</a><a href="/computerreparation-oesterbro/">Østerbro</a><a href="/computerreparation-amager/">Amager</a><a href="/computerreparation-indre-by/">Indre By</a><a href="/computerreparation-christianshavn/">Christianshavn</a><a href="/computerreparation-vanloese/">Vanløse</a><a href="/computerreparation-valby/">Valby</a><a href="/computerreparation-nordvest/">Nordvest</a><a href="/computerreparation-broenshoej/">Brønshøj</a><a href="/computerreparation-bispebjerg/">Bispebjerg</a><a href="/computerreparation-storkoebenhavn/">Storkøbenhavn</a><a href="/fjernsupport/">Resten af Danmark (fjernsupport &amp; indsendelse)</a></div>
     
     <div><h2>Kontakt os</h2><p>📞 <a href="${site.phoneHref}" style="display:inline">${site.phone}</a></p><p>✉️ <a href="mailto:${site.emailConsumer}" style="display:inline">${site.emailConsumer}</a></p><p style="margin-top:14px">Man–fre 10:00–18:00<br />Lør 10:00–14:00<br />Søn lukket</p>
@@ -459,7 +459,7 @@ function businessBody() {
       </form>
     </div></div></section>
   <section class="section"><div class="wrap"><div class="eyebrow">FAQ</div><h2>IT-support til erhverv — ofte stillede spørgsmål</h2><div class="faq">${faqHtml}</div></div></section>
-  <section class="section alt"><div class="wrap"><p class="eyebrow">Relateret</p><div class="crosslinks"><a href="/it-raadgivning/">IT-rådgivning →</a><a href="/fjernsupport/">Fjernsupport →</a><a href="/automatisk-backup/">Automatisk Backup →</a><a href="/kontakt/">Kontakt & booking →</a></div></div></section>`;
+  <section class="section alt"><div class="wrap"><p class="eyebrow">Relateret</p><div class="crosslinks"><a href="/it-raadgivning/">IT-rådgivning →</a><a href="/fjernsupport/">Fjernsupport →</a><a href="/windows-10-erhverv-migrering/">Windows 10-migrering for virksomheder →</a><a href="/it-support-advokatkontor/">IT-support til advokatkontorer →</a><a href="/it-support-klinik/">IT-support til klinikker →</a><a href="/it-support-mindre-virksomheder-frederiksberg/">IT-support til mindre virksomheder →</a><a href="/automatisk-backup/">Automatisk Backup →</a><a href="/kontakt/">Kontakt & booking →</a></div></div></section>`;
 }
 function businessSchemaFaq() {
   return { '@context': 'https://schema.org', '@type': 'FAQPage', mainEntity: FAQ_BUSINESS.map(([q, a]) => ({ '@type': 'Question', name: q, acceptedAnswer: { '@type': 'Answer', text: a } })) };
@@ -1099,9 +1099,9 @@ async function run() {
   // Reparere eller købe ny computer — genopbygning af død URL. No
   // _redirects rule targets this slug (verified against public/_redirects
   // before building), so no redirect needs removing here. NB: this is a
-  // different URL from /hvor-laenge-holder-en-macbook/, which DOES still
-  // have an active 301 to /macbook-reparation/ (see _redirects) — that
-  // rule must be removed in the same commit if/when that guide is built.
+  // different URL from /hvor-laenge-holder-en-macbook/, which used to have
+  // an active 301 to /macbook-reparation/ — that rule was removed from
+  // public/_redirects in the same commit that added the page below.
   pages.push(['/reparere-eller-koebe-ny-computer/', page({
     title: 'Reparere eller købe ny computer? Sådan vælger du | PCKlinik',
     description: 'Kan det betale sig at reparere din computer, eller skal du købe ny? Ærlig vejledning fra PCKlinik — vi siger det ligeud, også når reparation ikke kan betale sig.',
@@ -1110,6 +1110,91 @@ async function run() {
     // offering (per ground-truth: "Guides ... use Article + FAQPage;
     // service pages use Service + FAQPage").
     schema: [articleSchema({ url: `${site.domain}/reparere-eller-koebe-ny-computer/`, headline: 'Reparere eller købe ny computer? Sådan vælger du', description: 'Kan det betale sig at reparere din computer, eller skal du købe ny? Ærlig vejledning fra PCKlinik.', datePublished: '2026-08-05' }), faqSchemaFrom(REPARERE_KOEBE_FAQ)],
+  })]);
+  // Hvor længe holder en MacBook? — rebuild of a dead URL with 533 proven
+  // views (see removed _redirects rule). Article, not Service, same
+  // reasoning as the guide above.
+  pages.push(['/hvor-laenge-holder-en-macbook/', page({
+    title: 'Hvor længe holder en MacBook? | PCKlinik',
+    description: 'Realistisk levetid for en MacBook er 5–10 år. Se hvad der afgør det, tegnene på at den nærmer sig enden, og hvordan du vælger mellem reparation og ny.',
+    p: '/hvor-laenge-holder-en-macbook/', body: macbookLevetidHtml(),
+    schema: [articleSchema({ url: `${site.domain}/hvor-laenge-holder-en-macbook/`, headline: 'Hvor længe holder en MacBook?', description: 'Realistisk levetid for en MacBook er 5–10 år. Se hvad der afgør det, og hvordan du vælger mellem reparation og ny.', datePublished: '2026-08-06' }), faqSchemaFrom(MACBOOK_LEVETID_FAQ)],
+  })]);
+  // Windows 10-klyngen (4 sider) — alle Article+FAQPage. ESU-fakta og
+  // slutdatoer verificeret mod Microsofts egne sider 2026-08-06 (se
+  // kommentar i richPages.js) — ikke skrevet fra hukommelse.
+  pages.push(['/windows-10-support-slut/', page({
+    title: 'Windows 10 support er slut — hvad gør du nu? | PCKlinik',
+    description: 'Windows 10 mistede support 14. oktober 2025. Se dine tre muligheder: opgradér til Windows 11, forlæng midlertidigt, eller køb ny/refurbished.',
+    p: '/windows-10-support-slut/', body: windows10HubHtml(),
+    schema: [articleSchema({ url: `${site.domain}/windows-10-support-slut/`, headline: 'Windows 10 er ikke længere sikker — her er dine muligheder', description: 'Windows 10 mistede support 14. oktober 2025. Se dine tre muligheder, og hvordan du finder ud af, hvad der er rigtigst for din maskine.', datePublished: '2026-08-06' }), faqSchemaFrom(WINDOWS10_HUB_FAQ)],
+  })]);
+  pages.push(['/kan-min-computer-koere-windows-11/', page({
+    title: 'Kan min computer køre Windows 11? | PCKlinik',
+    description: 'TPM 2.0 og processoren afgør oftest, om din computer kan opgraderes til Windows 11. Se kravene, og hvordan du selv tjekker din maskine.',
+    p: '/kan-min-computer-koere-windows-11/', body: windows11KravHtml(),
+    schema: [articleSchema({ url: `${site.domain}/kan-min-computer-koere-windows-11/`, headline: 'Kan min computer køre Windows 11?', description: 'TPM 2.0 og processoren afgør oftest, om din computer kan opgraderes til Windows 11. Se kravene, og hvordan du selv tjekker din maskine.', datePublished: '2026-08-06' }), faqSchemaFrom(WINDOWS11_KRAV_FAQ)],
+  })]);
+  pages.push(['/opgradering-til-windows-11/', page({
+    title: 'Sådan opgraderer du til Windows 11 | PCKlinik',
+    description: 'Backup først, altid. Se trin for trin, hvad der sker med dine filer og programmer, og hvornår en ren installation er bedre end en opgradering.',
+    p: '/opgradering-til-windows-11/', body: windows11OpgraderingHtml(),
+    schema: [articleSchema({ url: `${site.domain}/opgradering-til-windows-11/`, headline: 'Sådan opgraderer du til Windows 11', description: 'Backup først, altid. Trin for trin gennem opgraderingen, og hvornår en ren installation er bedre.', datePublished: '2026-08-06' }), faqSchemaFrom(WINDOWS11_OPGRADERING_FAQ)],
+  })]);
+  pages.push(['/windows-10-erhverv-migrering/', page({
+    title: 'Windows 10-migrering for virksomheder | PCKlinik',
+    description: 'ESU køber jer tid, ikke en plan. Sådan kortlægger og migrerer I hele maskinparken sikkert væk fra Windows 10 — inkl. GDPR/NIS2-vinklen.',
+    p: '/windows-10-erhverv-migrering/', body: windows10ErhvervHtml(),
+    schema: [articleSchema({ url: `${site.domain}/windows-10-erhverv-migrering/`, headline: 'Windows 10-migrering for virksomheder', description: 'ESU køber jer tid, ikke en plan. Sådan kortlægger og migrerer I hele maskinparken sikkert væk fra Windows 10.', datePublished: '2026-08-06' }), faqSchemaFrom(WINDOWS10_ERHVERV_FAQ)],
+  })]);
+  // Tre B2B-sider — Service+FAQPage (ydelsessider, ikke guides). Reelt
+  // forskelligt indhold pr. side (klientfortrolighed / behandlings-oppetid /
+  // ét-fast-kontaktpunkt), ikke navneudskiftning. support@ er den bevidste
+  // erhvervsundtagelse (site.emailBusiness), Starter/Premium/Exclusive
+  // svartider matcher /it-support-til-erhverv/.
+  pages.push(['/it-support-advokatkontor/', page({
+    title: 'IT-support til advokatkontorer | PCKlinik',
+    description: 'IT-support til advokatkontorer i København og på Frederiksberg — sikker mail og fildeling, adgangsstyring, backup og ransomware-beredskab.',
+    p: '/it-support-advokatkontor/', body: itSupportAdvokatkontorHtml(),
+    schema: [areaServiceSchema({ url: `${site.domain}/it-support-advokatkontor/`, serviceType: 'IT-support til advokatkontorer', areaServed: ['København', 'Frederiksberg'] }), faqSchemaFrom(IT_SUPPORT_ADVOKAT_FAQ)],
+  })]);
+  pages.push(['/it-support-klinik/', page({
+    title: 'IT-support til klinikker | PCKlinik',
+    description: 'IT-support til klinikker i København og på Frederiksberg — oppetid i åbningstiden, sikker håndtering af patientdata, testet backup.',
+    p: '/it-support-klinik/', body: itSupportKlinikHtml(),
+    schema: [areaServiceSchema({ url: `${site.domain}/it-support-klinik/`, serviceType: 'IT-support til klinikker', areaServed: ['København', 'Frederiksberg'] }), faqSchemaFrom(IT_SUPPORT_KLINIK_FAQ)],
+  })]);
+  pages.push(['/it-support-mindre-virksomheder-frederiksberg/', page({
+    title: 'IT-support til mindre virksomheder på Frederiksberg | PCKlinik',
+    description: 'IT-support til mindre virksomheder på Frederiksberg uden egen IT-afdeling — én fast kontakt til computere, Microsoft 365, backup og netværk.',
+    p: '/it-support-mindre-virksomheder-frederiksberg/', body: itSupportMindreVirksomhederHtml(),
+    schema: [areaServiceSchema({ url: `${site.domain}/it-support-mindre-virksomheder-frederiksberg/`, serviceType: 'IT-support til mindre virksomheder', areaServed: ['Frederiksberg', 'København'] }), faqSchemaFrom(IT_SUPPORT_MINDRE_VIRKSOMHEDER_FAQ)],
+  })]);
+  // Fire fejlspecifikke guides — Article+FAQPage. Reel selvhjælp først,
+  // standard lukke-CTA (FAULT_GUIDE_CTA i richPages.js) ordret på alle fire.
+  pages.push(['/blaa-skaerm-bsod/', page({
+    title: 'Blå skærm (BSOD) — hvad betyder det? | PCKlinik',
+    description: 'Blå skærm på din pc? Se hvad en BSOD betyder, hvor du finder stopkoden, de hyppigste årsager, og hvad du selv kan prøve, før du bringer den ind.',
+    p: '/blaa-skaerm-bsod/', body: bsodHtml(),
+    schema: [articleSchema({ url: `${site.domain}/blaa-skaerm-bsod/`, headline: 'Blå skærm — hvad det betyder, og hvad du kan gøre', description: 'Se hvad en BSOD betyder, hvor du finder stopkoden, og de hyppigste årsager — RAM, drivere, disk, overophedning.', datePublished: '2026-08-06' }), faqSchemaFrom(BSOD_FAQ)],
+  })]);
+  pages.push(['/grafikkort-fejl-baerbar/', page({
+    title: 'Grafikkortfejl på bærbar — årsager & løsning | PCKlinik',
+    description: 'Artefakter, striber eller sort skærm på din bærbare? Se forskellen på driver, overophedning og hardwaresvigt, og hvad du selv kan tjekke først.',
+    p: '/grafikkort-fejl-baerbar/', body: grafikkortFejlHtml(),
+    schema: [articleSchema({ url: `${site.domain}/grafikkort-fejl-baerbar/`, headline: 'Grafikkortfejl på en bærbar — hvad det kan være', description: 'Artefakter, striber eller sort skærm, mens maskinen ellers kører — driver, overophedning eller hardwaresvigt?', datePublished: '2026-08-06' }), faqSchemaFrom(GPU_FEJL_FAQ)],
+  })]);
+  pages.push(['/macbook-touch-bar-virker-ikke/', page({
+    title: 'MacBook Touch Bar virker ikke | PCKlinik',
+    description: 'Sort, frosset eller død Touch Bar på din MacBook Pro? Se de mest almindelige årsager, og hvad du selv kan prøve, før du bringer den ind.',
+    p: '/macbook-touch-bar-virker-ikke/', body: macbookTouchBarHtml(),
+    schema: [articleSchema({ url: `${site.domain}/macbook-touch-bar-virker-ikke/`, headline: 'Touch Bar virker ikke — hvad du kan gøre', description: 'Software-hængning, macOS-fejl, væskeskade eller et defekt flexkabel — hvad der oftest er årsagen, og hvad du selv kan prøve.', datePublished: '2026-08-06' }), faqSchemaFrom(TOUCH_BAR_FAQ)],
+  })]);
+  pages.push(['/batteriet-holder-ikke/', page({
+    title: 'Batteriet holder ikke? Sådan finder du årsagen | PCKlinik',
+    description: 'Batteriet i din computer eller Mac holder ikke som før? Se hvordan du selv tjekker batteriets tilstand på Windows og Mac, og hvornår det er en sikkerhedsrisiko.',
+    p: '/batteriet-holder-ikke/', body: batterietHolderIkkeHtml(),
+    schema: [articleSchema({ url: `${site.domain}/batteriet-holder-ikke/`, headline: 'Batteriet holder ikke længere — hvad du bør vide', description: 'Sådan tjekker du batteriets tilstand på Windows og Mac, og hvornår det er mere end bare almindeligt slid.', datePublished: '2026-08-06' }), faqSchemaFrom(BATTERI_HOLDER_IKKE_FAQ)],
   })]);
   // Garanti (genskabt fra WordPress — /garanti/ rangerer i forvejen)
   pages.push(['/garanti/', page({ title: 'Garanti på reparation | PCKlinik', description: 'PCKlinik giver garanti på både reservedele og udført arbejde. Se hvad garantien dækker, hvor længe den gælder, og hvordan du bruger den.', p: '/garanti/', body: garantiBody(), schema: faqSchemaFrom(GARANTI_FAQ) })]);

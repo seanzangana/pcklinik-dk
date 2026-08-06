@@ -57,8 +57,6 @@
 /computer-reparation-vanloese/         /computerreparation-vanloese/  301
 
 # --- Mac / MacBook ---
-# 533 visn., 3 klik
-/hvor-laenge-holder-en-macbook/        /macbook-reparation/  301
 # 264 visn., 1 klik
 /mac-reparation-kobenhavn/             /mac-reparation/  301
 # 165 visn.
@@ -141,11 +139,10 @@
 #    indtil videre.
 #    → OMPEG til pcklinik.eu, når .eu er genopbygget.
 #
-# 3. /hvor-laenge-holder-en-macbook/ (533 visn., 3 klik) → /macbook-reparation/
-#    Det største enkelte mål på listen — en død side, der trækker mere
-#    søgeinteresse end de fleste af vores LIVE sider. Redirecten opsamler
-#    trafikken nu, men matcher ikke intentionen ("hvor længe holder den /
-#    kan det betale sig at skifte den ud?").
-#    → BYG som rigtig guide. Hænger sammen med den planlagte
-#      /reparere-eller-koebe-ny-computer/-side. Fjern denne regel, når
-#      guiden ligger på samme URL.
+# 3. /hvor-laenge-holder-en-macbook/ (533 visn., 3 klik) — RESOLVED 2026-08-06.
+#    Was → /macbook-reparation/, the largest single item on this list (a
+#    dead page pulling more search interest than most of our LIVE pages,
+#    with a redirect that caught the traffic but didn't match the intent).
+#    Now built as a real guide at that exact URL (Article+FAQPage,
+#    src/data/richPages.js:macbookLevetidHtml()) — this redirect rule was
+#    removed in the same commit that added the page.

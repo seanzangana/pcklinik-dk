@@ -7,7 +7,12 @@ export const site = {
   phoneHref: 'tel:+4591816181',
   formMode: 'cloudflare', // 'formspree' or 'cloudflare' (Resend via /api/submit-form). LIVE-GATED: verify domain in Resend + set RESEND_API_KEY secret before deploying.
   emailConsumer: 'kontakt@pcklinik.dk',
-  emailBusiness: 'kontakt@pcklinik.dk',
+  // Erhvervsundtagelsen (2026-08-06): B2B-facing pages use support@ instead
+  // of kontakt@ — see the "resten af backloggen" brief. Applies wherever
+  // site.emailBusiness is already used (IT-support til erhverv, IT-rådgivning,
+  // hjemmesider/SEO, and the new B2B pages), not just the new ones — this is
+  // the single source of truth so the address doesn't drift between pages.
+  emailBusiness: 'support@pcklinik.dk',
   address: 'Falkoner Allé 108, 2000 Frederiksberg',
   addressStreet: 'Falkoner Allé 108',
   addressLocality: 'Frederiksberg',
@@ -103,6 +108,15 @@ export const nav = [
       { label: 'Hjælp & guides', children: [
         { label: 'Computeren vil ikke tænde', href: '/computer-vil-ikke-taende/' },
         { label: 'Fejlmeddelelser & koder', href: '/fejlmeddelelser/' },
+        { label: 'Blå skærm (BSOD)', href: '/blaa-skaerm-bsod/' },
+        { label: 'Grafikkortfejl på bærbar', href: '/grafikkort-fejl-baerbar/' },
+        { label: 'MacBook Touch Bar virker ikke', href: '/macbook-touch-bar-virker-ikke/' },
+        { label: 'Batteriet holder ikke', href: '/batteriet-holder-ikke/' },
+        { label: 'Hvor længe holder en MacBook?', href: '/hvor-laenge-holder-en-macbook/' },
+        { label: 'Windows 10 support er slut', href: '/windows-10-support-slut/' },
+        { label: 'Kan min computer køre Windows 11?', href: '/kan-min-computer-koere-windows-11/' },
+        { label: 'Opgradering til Windows 11', href: '/opgradering-til-windows-11/' },
+        { label: 'Windows 10-migrering for virksomheder', href: '/windows-10-erhverv-migrering/' },
         { label: 'Generel FAQ', href: '/faq/' },
       ] },
     ],

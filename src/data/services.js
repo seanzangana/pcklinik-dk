@@ -9,7 +9,7 @@ export const services = [
   {
     slug: 'ssd-opgradering', group: 'PC',
     title: 'SSD-opgradering | PCKlinik',
-    description: 'Opgradér din pc eller bærbare til SSD på Frederiksberg og i København. Hurtigere opstartstid, samme-dags service. Fejlsøgning fra 300 kr., fast pris.',
+    description: 'Opgradér din pc eller bærbare til SSD på Frederiksberg og i København. Hurtigere opstartstid. Fejlsøgning fra 300 kr., fast pris.',
     h1: 'SSD-opgradering', subhead: 'En af de største hastighedsforbedringer du kan give en ældre maskine',
     intro: ['Kører du stadig på en mekanisk harddisk? En SSD-opgradering er en af de allerstørste hastighedsforbedringer, du kan lave på en ældre pc eller bærbar — den forvandler ofte en 2-minutters opstart til 15 sekunder. Vi klarer opgraderingen, overfører dine data og dit styresystem og får dig i gang på det nye drev uden at miste noget.'],
     whatsIncluded: 'Fremskaffelse af SSD (eller brug din egen), fuld data-/OS-migrering, montering og test.',
@@ -19,7 +19,7 @@ export const services = [
       { q: 'Mister jeg mine filer under en SSD-opgradering?', a: 'Nej, vi kloner dit eksisterende drev eller laver en frisk installation med dataoverførsel, alt efter hvad der passer til din situation.' },
       { q: 'Kan det betale sig at opgradere en ældre bærbar til SSD?', a: 'Næsten altid ja — det er ofte mere mærkbart end en ny CPU ville være.' },
     ],
-    crosslinks: [{ label: 'Udskiftning af harddisk', href: '/harddisk-ssd-udskiftning/' }, { label: 'PC-optimering', href: '/optimering-af-computer/' }, { label: 'Reparere eller købe ny computer?', href: '/reparere-eller-koebe-ny-computer/' }],
+    crosslinks: [{ label: 'Udskiftning af harddisk', href: '/harddisk-ssd-udskiftning/' }, { label: 'PC-optimering', href: '/optimering-af-computer/' }, { label: 'Reparere eller købe ny computer?', href: '/reparere-eller-koebe-ny-computer/' }, { label: 'Windows 10 support er slut', href: '/windows-10-support-slut/' }],
   },
   {
     slug: 'optimering-af-computer', group: 'PC',
@@ -48,7 +48,7 @@ export const services = [
       { q: 'Min harddisk laver en klikkelyd — hvad betyder det?', a: 'Som regel et mekanisk svigt. Tag backup af det, du kan, med det samme, og kom forbi.' },
       { q: 'Kan I gendanne mine data, hvis drevet er svigtet?', a: 'Ofte ja, men det afhænger af svigtets type og alvorlighed. Se vores side om datagendannelse for mere.' },
     ],
-    crosslinks: [{ label: 'Backup & datagendannelse', href: '/backup-og-datagendannelse/' }, { label: 'SSD-opgradering', href: '/ssd-opgradering/' }],
+    crosslinks: [{ label: 'Backup & datagendannelse', href: '/backup-og-datagendannelse/' }, { label: 'SSD-opgradering', href: '/ssd-opgradering/' }, { label: 'Blå skærm (BSOD)', href: '/blaa-skaerm-bsod/' }],
   },
   {
     slug: 'udskiftning-af-skaerm', group: 'PC',
@@ -77,7 +77,7 @@ export const services = [
       { q: 'Min bærbars blæser er larmende — er det løsningen?', a: 'Ofte ja, især kombineret med ny kølepasta.' },
       { q: 'Kan varmt vejr skade min computer?', a: 'Ja, indirekte — varmt vejr lægger ekstra pres på et system, der i forvejen er tilstoppet af støv, fordi køleluften i forvejen er varmere. Det er ofte om sommeren, at en computer, der har haft det fint hele vinteren, pludselig begynder at overophede eller lukke ned uventet. En indvendig rensning inden sommeren er en god forebyggende foranstaltning.' },
     ],
-    crosslinks: [{ label: 'Gaming-pc-reparation & bygning', href: '/gaming-pc-reparation/' }],
+    crosslinks: [{ label: 'Gaming-pc-reparation & bygning', href: '/gaming-pc-reparation/' }, { label: 'Grafikkortfejl på bærbar', href: '/grafikkort-fejl-baerbar/' }],
   },
   {
     slug: 'ladestik-reparation', group: 'PC',
@@ -117,7 +117,7 @@ export const services = [
       { q: 'Hvor længe holder et Mac-batteri typisk, før det skal skiftes?', a: 'Generelt 3–5 års regelmæssig brug, men det varierer efter brugsmønster.' },
       { q: 'Min MacBook-trackpad føles hævet i den ene side — er det et batteriproblem?', a: 'Ja, det er et klassisk tegn på et hævet batteri. Kom forbi snart.' },
     ],
-    crosslinks: [{ label: 'MacBook-reparation', href: '/macbook-reparation/' }, { label: 'Mac-reparation (oversigt)', href: '/mac-reparation/' }],
+    crosslinks: [{ label: 'MacBook-reparation', href: '/macbook-reparation/' }, { label: 'Mac-reparation (oversigt)', href: '/mac-reparation/' }, { label: 'Batteriet holder ikke', href: '/batteriet-holder-ikke/' }],
   },
   {
     slug: 'mac-skaermudskiftning', group: 'Mac',
@@ -129,7 +129,7 @@ export const services = [
       { q: 'Skifter I kun glasset eller hele skærmenheden?', a: 'Afhænger af modellen — nogle tillader udskiftning af glas alene, andre kræver hele enheden.' },
       { q: 'Er en Mac-skærm dyrere at skifte end en pc-skærm?', a: 'Ofte lidt dyrere på grund af reservedelsprisen, men vi giver altid en fast pris, før vi går i gang, så der ikke er overraskelser.' },
     ],
-    crosslinks: [{ label: 'MacBook-reparation', href: '/macbook-reparation/' }, { label: 'Reparation af stationær Mac', href: '/mac-stationaer-reparation/' }],
+    crosslinks: [{ label: 'MacBook-reparation', href: '/macbook-reparation/' }, { label: 'Reparation af stationær Mac', href: '/mac-stationaer-reparation/' }, { label: 'MacBook Touch Bar virker ikke', href: '/macbook-touch-bar-virker-ikke/' }],
   },
   {
     slug: 'mac-tastaturudskiftning', group: 'Mac',
@@ -248,7 +248,7 @@ export const services = [
       { q: 'Installerer I Windows eller kun macOS?', a: 'Begge dele.' },
       { q: 'Er dette det samme som jeres PC-optimeringsservice?', a: 'Nej — optimering forbedrer et eksisterende, fungerende system. Systeminstallation udskifter styresystemet helt, typisk for en frisk start eller for at løse dybtliggende softwareproblemer.' },
     ],
-    crosslinks: [{ label: 'PC-optimering', href: '/optimering-af-computer/' }, { label: 'SSD-opgradering', href: '/ssd-opgradering/' }],
+    crosslinks: [{ label: 'PC-optimering', href: '/optimering-af-computer/' }, { label: 'SSD-opgradering', href: '/ssd-opgradering/' }, { label: 'Sådan opgraderer du til Windows 11', href: '/opgradering-til-windows-11/' }],
   },
 
   // ----- NETVÆRKSUDSTYR -----
@@ -348,7 +348,7 @@ export const services = [
       { q: 'Hvorfor prissættes væskeskade anderledes end jeres andre reparationer?', a: 'En ordentlig væskeskade-vurdering indebærer fuld adskillelse, rensning og korrosionsinspektion, som tager 3–4 dage — så det er en fast fejlsøgning på 600 kr. uden ekspresmulighed, i stedet for den standard-/ekspres-model, der bruges andre steder.' },
       { q: 'Kan væskeskadede bærbare altid reddes?', a: 'Ikke altid, men hurtig handling forbedrer oddsene markant. Vi vurderer og giver dig en ærlig fast pris — pc eller Mac.' },
     ],
-    crosslinks: [{ label: 'Backup & datagendannelse', href: '/backup-og-datagendannelse/' }, { label: 'Tastaturudskiftning', href: '/tastaturudskiftning/' }, { label: 'Forsikringsreparation', href: '/forsikringsreparation/' }],
+    crosslinks: [{ label: 'Backup & datagendannelse', href: '/backup-og-datagendannelse/' }, { label: 'Tastaturudskiftning', href: '/tastaturudskiftning/' }, { label: 'Forsikringsreparation', href: '/forsikringsreparation/' }, { label: 'MacBook Touch Bar virker ikke', href: '/macbook-touch-bar-virker-ikke/' }],
   },
   {
     slug: 'tastaturudskiftning', group: 'PC',
@@ -640,6 +640,7 @@ export const services = [
       { label: 'Backup & datagendannelse', href: '/backup-og-datagendannelse/' },
       { label: 'Computer reparation', href: '/computer-reparation/' },
       { label: 'Reparation af ladeport', href: '/ladestik-reparation/' },
+      { label: 'Grafikkortfejl på bærbar', href: '/grafikkort-fejl-baerbar/' },
     ],
   },
 
