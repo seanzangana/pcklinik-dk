@@ -491,7 +491,7 @@ export const services = [
     faq: [
       { q: 'Hvad koster computer reparation?', a: 'Fejlsøgning koster 300 kr. (3–4 dage) eller 600 kr. for ekspres (1–2 timer). Derefter får du en fast pris på selve reparationen, før vi går i gang — så du altid kender prisen på forhånd.' },
       { q: 'Hvor lang tid tager en computer reparation?', a: 'Vælger du ekspres, er reparationen klar inden for 24 timer. Standard tager 3–4 dage. Skal der bestilles en særlig reservedel, kan det tage lidt længere — det siger vi klart, når vi giver dig prisen.' },
-      { q: 'Skal jeg booke tid, eller kan jeg bare komme forbi?', a: 'Du kan komme forbi i vores åbningstid uden at booke tid. Vi ligger på Falkoner Allé 108 på Frederiksberg.' },
+      { q: 'Skal jeg bestille tid, eller kan jeg bare komme forbi?', a: 'Du kan komme forbi i vores åbningstid uden at bestille tid. Vi ligger på Falkoner Allé 108 på Frederiksberg.' },
       { q: 'Reparerer I alle mærker computere?', a: 'Ja. Vi reparerer alle mærker af pc og bærbar — Lenovo, HP, Dell, Acer, Asus, MSI, Huawei, Samsung, Microsoft Surface og flere — samt alle Mac-modeller.' },
       { q: 'Kan det betale sig at reparere, eller skal jeg købe en ny?', a: 'Det siger vi ærligt. Hvis reparationen ikke kan betale sig i forhold til maskinens værdi og restlevetid, fortæller vi dig det frem for at sælge dig en dyr reparation. Vi har også nye og refurbished computere i butikken.' },
       { q: 'Mister jeg mine data under reparationen?', a: 'Normalt ikke, men vi anbefaler altid en backup inden. Vi tilbyder også backup og datagendannelse, hvis drevet er defekt.' },
@@ -517,7 +517,7 @@ export const services = [
     h1: 'IT-support på Frederiksberg',
     subhead: 'Dit lokale IT-værksted på Falkoner Allé 108 — midt på Frederiksberg',
     intro: [
-      'PCKlinik er et <strong>fysisk IT-værksted på Frederiksberg</strong> — ikke et callcenter og ikke en hjemmeside uden adresse. Vi ligger på Falkoner Allé 108, og du kan komme forbi i åbningstiden uden at booke tid.',
+      'PCKlinik er et <strong>fysisk IT-værksted på Frederiksberg</strong> — ikke et callcenter og ikke en hjemmeside uden adresse. Vi ligger på Falkoner Allé 108, og du kan komme forbi i åbningstiden uden at bestille tid.',
       'Vi leverer hurtig og pålidelig <strong>IT-support til både private og virksomheder</strong> på Frederiksberg og i resten af København. Det kan være en computer, der driller, en printer der ikke vil forbinde, et netværk der falder ud, eller en fast supportaftale for hele virksomheden.',
       'Fordelen ved at have en lokal IT-partner er enkel: du ved, hvem du taler med, og vi kan komme forbi. Vi har over 20 års erfaring og 4,9 stjerner fra næsten 500 kunder.',
     ],
@@ -540,7 +540,7 @@ export const services = [
     ],
     callout: { label: 'Til virksomheder', text: 'Har I brug for løbende IT-support frem for enkeltopgaver, tilbyder vi en fast IT-serviceaftale med ubegrænset support, overvågning og sikkerhed til én fast månedspris.' },
     faq: [
-      { q: 'Hvor på Frederiksberg ligger I?', a: 'Vi ligger på Falkoner Allé 108, 2000 Frederiksberg — tæt på Falkoner Allé og i gåafstand fra CBS. Du kan komme forbi i vores åbningstid uden at booke tid.' },
+      { q: 'Hvor på Frederiksberg ligger I?', a: 'Vi ligger på Falkoner Allé 108, 2000 Frederiksberg — tæt på Falkoner Allé og i gåafstand fra CBS. Du kan komme forbi i vores åbningstid uden at bestille tid.' },
       { q: 'Tilbyder I IT-support til private, eller kun til virksomheder?', a: 'Begge dele. Private kan komme forbi butikken eller få fjernsupport, og virksomheder kan tegne en fast IT-serviceaftale med ubegrænset support.' },
       { q: 'Kan I komme ud til min adresse på Frederiksberg?', a: 'Ja. Vi tilbyder on-site support, hvor en tekniker kommer ud til dig eller din virksomhed. Mange sager kan dog løses hurtigere via fjernsupport.' },
       { q: 'Hvad koster IT-support?', a: 'Enkeltopgaver afregnes efter en fast pris, som du får oplyst, før vi går i gang. Løbende IT-support til erhverv starter ved 399 kr. pr. bruger pr. måned med ubegrænset support og ingen timepriser.' },
