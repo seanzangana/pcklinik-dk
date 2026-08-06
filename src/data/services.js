@@ -111,7 +111,7 @@ export const services = [
     title: 'Mac-batteriskift | PCKlinik',
     description: 'Holder MacBook-batteriet ikke på strøm, eller er det hævet? Udskiftning på Frederiksberg og i København. Fejlsøgning fra 300 kr., fast pris.',
     h1: 'Mac-batteriskift', subhead: 'Nedslidt eller hævet — vi skifter det sikkert',
-    intro: ['Uanset om din MacBooks batteri er blevet nedslidt over tid eller er synligt hævet (et sikkerhedsspørgsmål — se nedenfor), skifter vi det med et kvalitetsbatteri og tester det grundigt bagefter.'],
+    intro: ['Uanset om din MacBooks batteri er blevet nedslidt over tid eller er synligt hævet (et sikkerhedsspørgsmål — se nedenfor), skifter vi det med Apple-reservedele fra lager og tester det grundigt bagefter.'],
     callout: { label: 'Sikkerhedsbemærkning', text: 'Et hævet batteri bør bringes ind hurtigst muligt — punkter det ikke, og fortsæt ikke med tung brug.' },
     faq: [
       { q: 'Hvor længe holder et Mac-batteri typisk, før det skal skiftes?', a: 'Generelt 3–5 års regelmæssig brug, men det varierer efter brugsmønster.' },
@@ -124,7 +124,7 @@ export const services = [
     title: 'Mac-skærmudskiftning | PCKlinik',
     description: 'Revnet eller beskadiget MacBook- eller iMac-skærm? Udskiftning på Frederiksberg og i København. Fejlsøgning fra 300 kr., fast pris.',
     h1: 'Mac-skærmudskiftning', subhead: 'MacBook- og iMac-skærme, fra Intel til Apple Silicon',
-    intro: ['Revnet, misfarvet eller flimrende skærm på en MacBook eller iMac? Vi udskifter Mac-skærme med kvalitetsdele på tværs af både aktuelle Apple Silicon-modeller og ældre Intel-Mac.'],
+    intro: ['Revnet, misfarvet eller flimrende skærm på en MacBook eller iMac? Vi udskifter Mac-skærme med Apple-reservedele fra lager på tværs af både aktuelle Apple Silicon-modeller og ældre Intel-Mac.'],
     faq: [
       { q: 'Skifter I kun glasset eller hele skærmenheden?', a: 'Afhænger af modellen — nogle tillader udskiftning af glas alene, andre kræver hele enheden.' },
       { q: 'Er en Mac-skærm dyrere at skifte end en pc-skærm?', a: 'Ofte lidt dyrere på grund af reservedelsprisen, men vi giver altid en fast pris, før vi går i gang, så der ikke er overraskelser.' },
