@@ -363,8 +363,8 @@ export const repairs = [
       { series: 'MacBook (Intel, butterfly-tastatur)', models: 'MacBook Pro 2016–2019', issue: 'Tastaturfejl (kendt Apple-problem), skærm' },
     ],
     services: [
-      { title: 'Skærmudskiftning', body: 'Revnet skærm på din <strong>MacBook Air M1/M2</strong> eller <strong>MacBook Pro 14"</strong>? Vi skifter den med kvalitetsdele.' },
-      { title: 'Batteriskift', body: 'Hævet eller udslidt batteri på din <strong>MacBook Pro 13" A1278</strong> eller nyere <strong>MacBook Air</strong>? Vi skifter det sikkert.' },
+      { title: 'Skærmudskiftning', body: 'Revnet skærm på din <strong>MacBook Air M1/M2</strong> eller <strong>MacBook Pro 14"</strong>? Vi har Apple-reservedele på lager og skifter den hurtigt.' },
+      { title: 'Batteriskift', body: 'Hævet eller udslidt batteri på din <strong>MacBook Pro 13" A1278</strong> eller nyere <strong>MacBook Air</strong>? Vi skifter det sikkert med Apple-reservedele fra lager.' },
       { title: 'Tastaturreparation', body: 'Klistrede eller ureagerende taster på en <strong>MacBook Pro</strong> med butterfly-tastaturet (2016–2019)? Vi udbedrer det kendte problem.' },
       { title: 'Logic board & fejlsøgning', body: 'Vil din MacBook ikke starte? Vi fejlsøger logic board og andre hardwarefejl på både Intel- og Apple Silicon-modeller.' },
     ],
@@ -374,6 +374,8 @@ export const repairs = [
       { title: 'Hurtig ekspedition', body: 'Skærm- og batteriskift klares ofte inden for 1 time.' },
       { title: 'Fast pris, før vi starter', body: 'Ingen overraskelser.' },
       { title: 'Prisgaranti', body: 'Vi giver prisgaranti på MacBook-reparationer.' },
+      { title: 'Apple-reservedele på lager', body: 'Vi har Apple-reservedele på lager til de mest almindelige skærm- og batteriskift.' },
+      { title: 'Ofte billigere end et officielt værksted', body: 'Som uafhængigt værksted arbejder vi på komponentniveau — det gør os ofte 30-50 % billigere end et officielt Apple-værksted.' },
     ],
     faq: [
       { q: 'Skifter I højttalere i MacBook Pro, hvis de er forvrængede?', a: 'Ja, højttalerproblemer fejlsøges og repareres.' },
