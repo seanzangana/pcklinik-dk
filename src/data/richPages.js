@@ -12,13 +12,13 @@ export function macHubHtml() {
   const faqHtml = faq.map((f) => `<details><summary>${esc(f.q)}</summary><div class="answer">${esc(f.a)}</div></details>`).join('');
   return `  <section class="hero"><div class="wrap"><div class="eyebrow">Mac-reparation · Frederiksberg &amp; København</div>
     <h1>Mac-reparation på Frederiksberg &amp; København</h1><p class="lead">Alle Mac-modeller, ét værksted — bærbar eller stationær.</p>
-    <div class="cta-row"><a class="btn btn-white" href="/kontakt/">Book fejlsøgning</a><a class="btn btn-ghost-light" href="${site.phoneHref}">📞 Ring ${site.phone}</a></div></div></section>
+    <div class="cta-row"><a class="btn btn-white" href="/kontakt/">Kom forbi med din enhed</a><a class="btn btn-ghost-light" href="${site.phoneHref}">📞 Ring ${site.phone}</a></div></div></section>
   <section class="section"><div class="wrap lead-copy"><div class="crumbs"><a href="/">Forside</a> › <span>Mac-reparation</span></div>
-    <p>Uanset hvad der er galt med din Mac — en MacBook, iMac, Mac mini, Mac Studio eller Mac Pro — reparerer vi den. Vi fejlsøger det reelle problem først, giver dig en fast pris, før vi går i gang, og klarer de fleste reparationer hurtigt. Standardfejlsøgning koster 300 kr. (2–4 dage), eller vælg ekspres for 600 kr. (1–2 timer) — med reparation og levering inden for 24 timer, hvis der ikke skal bestilles specielle reservedele.</p></div></section>
+    <p>Uanset hvad der er galt med din Mac — en MacBook, iMac, Mac mini, Mac Studio eller Mac Pro — reparerer vi den. Vi fejlsøger det reelle problem først, giver dig en fast pris, før vi går i gang, og klarer de fleste reparationer hurtigt. Standardfejlsøgning koster 300 kr. (2–4 dage), eller vælg ekspres for 600 kr. (1–2 timer) — reparationen klar inden for 24 timer, hvis der ikke skal bestilles specielle reservedele.</p></div></section>
   <section class="section alt"><div class="wrap"><div class="eyebrow">Vores løfte</div><h2>Tre enkle trin</h2><div class="steps">
-    <div class="step"><div class="num">1</div><h3>Book fejlsøgning</h3><p>300 kr. (2–4 dage) eller ekspres (600 kr., 1–2 timer).</p></div>
+    <div class="step"><div class="num">1</div><h3>Kom forbi til fejlsøgning</h3><p>300 kr. (2–4 dage) eller ekspres (600 kr., 1–2 timer).</p></div>
     <div class="step"><div class="num">2</div><h3>Få en fast pris</h3><p>Du godkender prisen, før vi rører ved noget.</p></div>
-    <div class="step"><div class="num">3</div><h3>Vi reparerer den</h3><p>De fleste reparationer klares samme dag — vi siger til, når den er klar.</p></div></div></div></section>
+    <div class="step"><div class="num">3</div><h3>Vi reparerer den</h3><p>Vælger du ekspres, er den klar inden for 24 timer. Standard tager 3–4 dage — vi siger til, når den er klar.</p></div></div></div></section>
   <section class="section"><div class="wrap"><div class="eyebrow">Vælg din Mac</div><h2>Hvilken Mac har du?</h2><div class="grid grid-2">
     <a class="card card-link" href="/macbook-reparation/"><div class="card-icon brand-icon">${lucide.laptop}</div><h3>MacBook (bærbar)</h3><p>Dækker MacBook Pro, MacBook Air og ældre MacBook-modeller — skærm, batteri, tastatur, logic board og mere.</p><span class="arrow">MacBook-reparation →</span></a>
     <a class="card card-link" href="/mac-stationaer-reparation/"><div class="card-icon brand-icon">${lucide.monitor}</div><h3>Stationær Mac</h3><p>Dækker iMac, Mac mini, Mac Studio og Mac Pro — opstartsproblemer, lagring, skærm/display, køling.</p><span class="arrow">Reparation af stationær Mac →</span></a>
@@ -29,14 +29,14 @@ export function macHubHtml() {
   <section class="section"><div class="wrap"><div class="eyebrow">Reparere eller udskifte?</div><h2>Kan det betale sig at reparere?</h2>
     <p class="sub">Vi giver dig altid et ærligt svar — ikke bare et reparationsoverslag. Hvis en reparation ikke giver økonomisk mening sammenlignet med at udskifte Mac’en, siger vi det ligeud og peger dig mod vores <a href="/butik/computere/refurbished/">istandsatte</a> og <a href="/butik/computere/nye/">nye computere</a> i butikken, hvis det er den bedre løsning. Vores mål er det rette resultat for dig, ikke bare fakturerbart arbejde.</p></div></section>
   <section class="section alt"><div class="wrap"><div class="eyebrow">FAQ</div><h2>Mac-reparation — ofte stillede spørgsmål</h2><div class="faq">${faqHtml}</div></div></section>
-  <section class="section"><div class="wrap"><div class="cta-band"><h2>Klar til at få kigget på din Mac?</h2><p>Fejlsøgning 300 kr. (2–4 dage) eller ekspres for 600 kr. (1–2 timer). Fast pris, før vi går i gang.</p><div class="cta-row"><a class="btn btn-white" href="/kontakt/">Book fejlsøgning</a><a class="btn btn-ghost-light" href="${site.phoneHref}">📞 Ring ${site.phone}</a></div></div>
+  <section class="section"><div class="wrap"><div class="cta-band"><h2>Klar til at få kigget på din Mac?</h2><p>Fejlsøgning 300 kr. (2–4 dage) eller ekspres for 600 kr. (1–2 timer). Fast pris, før vi går i gang.</p><div class="cta-row"><a class="btn btn-white" href="/kontakt/">Kom forbi med din enhed</a><a class="btn btn-ghost-light" href="${site.phoneHref}">📞 Ring ${site.phone}</a></div></div>
     <div style="margin-top:32px"><p class="eyebrow">Relateret</p><div class="crosslinks"><a href="/macbook-reparation/">MacBook-reparation →</a><a href="/mac-stationaer-reparation/">Reparation af stationær Mac →</a><a href="/mac-reparation-koebenhavn/">Mac-reparation i København →</a><a href="/mac-batteriskift/">Mac-batteriskift →</a><a href="/kontakt/">Kontakt & booking →</a></div></div></div></section>`;
 }
 export const MAC_HUB_FAQ = [
   { q: 'Tilbyder I en lånecomputer, mens min Mac bliver repareret?', a: 'Ikke i øjeblikket — spørg ved booking, hvis det er vigtigt for dig.' },
   { q: 'Koster fejlsøgning det samme for både MacBook og stationær Mac?', a: 'Ja, samme standard-/ekspres-priser gælder på tværs af alle Mac-modeller.' },
   { q: 'Hvad koster en Mac-reparation?', a: 'Det afhænger af fejlen og modellen. Vi fejlsøger altid først og giver dig en fast pris, før vi går i gang — standardfejlsøgning er 300 kr. (2–4 dage), eller ekspres for 600 kr. (1–2 timer).' },
-  { q: 'Hvor lang tid tager en Mac-reparation?', a: 'Mange reparationer klares samme dag, især med ekspresfejlsøgning. Mere omfattende reparationer kan tage længere tid afhængigt af reservedele.' },
+  { q: 'Hvor lang tid tager en Mac-reparation?', a: 'Med ekspresfejlsøgning er den ofte klar inden for 24 timer. Standardfejlsøgning tager 3–4 dage, og mere omfattende reparationer kan tage længere tid afhængigt af reservedele.' },
   { q: 'Kan alle Mac-computere repareres?', a: 'De fleste kan, men det afhænger af skadens omfang og modellens alder. Vi siger altid ærligt til, hvis en reparation ikke kan betale sig.' },
   { q: 'Betyder det noget, om min Mac er gammel?', a: 'Nej — vi reparerer Mac-computere på tværs af generationer, fra aktuelle Apple Silicon-modeller til meget ældre Intel-Mac.' },
   { q: 'Holder en Mac længere end en Windows-computer?', a: 'Ofte ja, i praksis — Apples tætte integration mellem hardware og styresystem betyder typisk en længere brugbar levetid og mere jævn ydelse over tid, end man ofte ser på tilfældigt sammensat pc-hardware. Det er dog ikke en absolut regel: en velbygget pc kan sagtens holde lige så længe, og en Mac er ikke immun over for slid. Vi reparerer og anbefaler begge dele lige ærligt, alt efter hvad der reelt passer til din situation.' },
@@ -69,10 +69,10 @@ export function gamingHtml() {
   const buildQuote = `mailto:${site.emailConsumer}?subject=${encodeURIComponent('Tilbud på specialbygget pc')}`;
   return `  <section class="hero"><div class="wrap"><div class="eyebrow">Gaming-pc’er · Reparation, service &amp; specialbyggede</div>
     <h1>Gaming-pc — reparation, service &amp; specialbyggede</h1><p class="lead">Fra at udbedre en overophedet maskine til at bygge din drømme-pc fra bunden.</p>
-    <div class="cta-row"><a class="btn btn-white" href="/kontakt/">Book fejlsøgning</a><a class="btn btn-ghost-light" href="${buildQuote}">Få et tilbud på en byggeopgave</a></div></div></section>
+    <div class="cta-row"><a class="btn btn-white" href="/kontakt/">Kom forbi med din enhed</a><a class="btn btn-ghost-light" href="${buildQuote}">Få et tilbud på en byggeopgave</a></div></div></section>
   <section class="section"><div class="wrap lead-copy"><div class="crumbs"><a href="/">Forside</a> › <span>Gaming-pc’er</span></div>
     <p>Uanset om din gaming-pc overopheder, underpræsterer, eller du vil have en helt specialbygget maskine fra bunden, klarer PCKlinik det. Vi reparerer og servicerer gaming-stationære af enhver slags — samlefærdige eller selvbyggede — og vi bygger specialtilpassede gaming-pc’er efter dine ønsker til kunder, der vil have noget bygget rigtigt første gang.</p>
-    <p><strong>Til reparation og service:</strong> standardfejlsøgning er 300 kr. (2–4 dage), eller ekspres for 600 kr. (1–2 timer) — med reparation og levering inden for 24 timer, hvis der ikke skal bestilles specielle reservedele.</p>
+    <p><strong>Til reparation og service:</strong> standardfejlsøgning er 300 kr. (2–4 dage), eller ekspres for 600 kr. (1–2 timer) — reparationen klar inden for 24 timer, hvis der ikke skal bestilles specielle reservedele.</p>
     <p><strong>Til specialbyggede maskiner:</strong> det er en anden proces — ingen fejlsøgning involveret. Vi drøfter dit budget, dit formål (gaming, streaming, redigering) og dine præferencer og giver derefter en fast byggepris, før vi bestiller nogen dele.</p></div></section>
   <section class="section alt"><div class="wrap"><div class="eyebrow">Reparation &amp; service</div><h2>Almindelige problemer vi udbedrer</h2><ul class="why-list">${issues}</ul>
     <div class="grid grid-4" style="margin-top:32px">${cards}</div></div></section>
@@ -87,7 +87,7 @@ export function gamingHtml() {
     <div class="cta-row" style="margin-top:24px"><a class="btn btn-primary" href="${buildQuote}">Få et tilbud på en byggeopgave</a></div></div></section>
   <section class="section alt"><div class="wrap"><div class="eyebrow">Hvorfor PCKlinik</div><h2>Bygget og repareret ordentligt</h2><ul class="why-list">${why}</ul></div></section>
   <section class="section"><div class="wrap"><div class="eyebrow">FAQ</div><h2>Gaming-pc’er — ofte stillede spørgsmål</h2><div class="faq">${faqHtml}</div></div></section>
-  <section class="section alt"><div class="wrap"><div class="cta-band"><h2>Reparere, opgradere eller bygge fra bunden?</h2><p>Fejlsøgning koster 300 kr. (2–4 dage) eller ekspres (600 kr.). Specialbyggede maskiner er tilbudsbaserede — intet fejlsøgningsgebyr.</p><div class="cta-row"><a class="btn btn-white" href="/kontakt/">Book fejlsøgning</a><a class="btn btn-ghost-light" href="${buildQuote}">Få et tilbud på en byggeopgave</a></div></div>
+  <section class="section alt"><div class="wrap"><div class="cta-band"><h2>Reparere, opgradere eller bygge fra bunden?</h2><p>Fejlsøgning koster 300 kr. (2–4 dage) eller ekspres (600 kr.). Specialbyggede maskiner er tilbudsbaserede — intet fejlsøgningsgebyr.</p><div class="cta-row"><a class="btn btn-white" href="/kontakt/">Kom forbi med din enhed</a><a class="btn btn-ghost-light" href="${buildQuote}">Få et tilbud på en byggeopgave</a></div></div>
     <div style="margin-top:32px"><p class="eyebrow">Relateret</p><div class="crosslinks"><a href="/mac-stationaer-reparation/">Reparation af stationær Mac →</a><a href="/msi-reparation/">MSI-reparation →</a><a href="/rens-af-pc/">PC-rensning →</a><a href="/kontakt/">Kontakt & booking →</a></div></div></div></section>`;
 }
 export const GAMING_FAQ = [
@@ -141,7 +141,7 @@ export function errorMessagesHtml() {
   const faqHtml = ERROR_FAQ.map((f) => `<details><summary>${esc(f.q)}</summary><div class="answer">${esc(f.a)}</div></details>`).join('');
   return `  <section class="hero"><div class="wrap"><div class="eyebrow">Hjælp · Fejlmeddelelser</div>
     <h1>Almindelige fejlmeddelelser &amp; hvad de betyder</h1><p class="lead">Windows- og Mac-fejl, forklaret ligeud.</p>
-    <div class="cta-row"><a class="btn btn-white" href="/kontakt/">Book fejlsøgning</a><a class="btn btn-ghost-light" href="${site.phoneHref}">📞 Ring ${site.phone}</a></div></div></section>
+    <div class="cta-row"><a class="btn btn-white" href="/kontakt/">Kom forbi med din enhed</a><a class="btn btn-ghost-light" href="${site.phoneHref}">📞 Ring ${site.phone}</a></div></div></section>
   <section class="section"><div class="wrap lead-copy"><div class="crumbs"><a href="/">Forside</a> › <span>Fejlmeddelelser</span></div>
     <p>At se en kryptisk fejlmeddelelse eller kode er ubehageligt, især når den forhindrer dig i at bruge computeren overhovedet. Nedenfor er de mest almindelige Windows- og Mac-fejl, vi bliver spurgt om — hvad de generelt betyder, og hvad vi gør for at udbedre dem. Vi fejlsøger altid den specifikke årsag frem for at gætte, da den samme fejlmeddelelse kan have flere forskellige underliggende årsager.</p></div></section>
   <section class="section alt"><div class="wrap"><div class="eyebrow">Windows</div><h2>Windows-fejl</h2>
@@ -156,7 +156,7 @@ export function errorMessagesHtml() {
     </div></div></section>
   <section class="section"><div class="wrap"><div class="eyebrow">Mac</div><h2>Mac-fejl</h2><div class="lead-copy">${msubs}</div></div></section>
   <section class="section alt"><div class="wrap"><div class="eyebrow">FAQ</div><h2>Fejlmeddelelser — ofte stillede spørgsmål</h2><div class="faq">${faqHtml}</div></div></section>
-  <section class="section"><div class="wrap"><div class="cta-band"><h2>Har du en af disse fejl?</h2><p>Vi fejlsøger rodårsagen, ikke bare koden. Fejlsøgning 300 kr. (2–4 dage) eller ekspres (600 kr., 1–2 timer), fast pris før vi går i gang.</p><div class="cta-row"><a class="btn btn-white" href="/kontakt/">Book fejlsøgning</a><a class="btn btn-ghost-light" href="${site.phoneHref}">📞 Ring ${site.phone}</a></div></div>
+  <section class="section"><div class="wrap"><div class="cta-band"><h2>Har du en af disse fejl?</h2><p>Vi fejlsøger rodårsagen, ikke bare koden. Fejlsøgning 300 kr. (2–4 dage) eller ekspres (600 kr., 1–2 timer), fast pris før vi går i gang.</p><div class="cta-row"><a class="btn btn-white" href="/kontakt/">Kom forbi med din enhed</a><a class="btn btn-ghost-light" href="${site.phoneHref}">📞 Ring ${site.phone}</a></div></div>
     <div style="margin-top:32px"><p class="eyebrow">Relateret</p><div class="crosslinks"><a href="/backup-og-datagendannelse/">Backup & datagendannelse →</a><a href="/harddisk-ssd-udskiftning/">Udskiftning af harddisk →</a><a href="/reinstallation-af-system/">Systeminstallation →</a><a href="/virus-og-malwarefjernelse/">Fjernelse af virus & malware →</a><a href="/kontakt/">Kontakt & booking →</a></div></div></div></section>`;
 }
 
@@ -187,13 +187,13 @@ export function computerWontTurnOnHtml() {
   const faqHtml = WONT_TURN_ON_FAQ.map((f) => `<details><summary>${esc(f.q)}</summary><div class="answer">${esc(f.a)}</div></details>`).join('');
   return `  <section class="hero"><div class="wrap"><div class="eyebrow">Hjælp · Vil ikke tænde</div>
     <h1>Vil computeren ikke tænde?</h1><p class="lead">Tre almindelige scenarier — og hvad hvert af dem som regel betyder.</p>
-    <div class="cta-row"><a class="btn btn-white" href="/kontakt/">Book fejlsøgning</a><a class="btn btn-ghost-light" href="${site.phoneHref}">📞 Ring ${site.phone}</a></div></div></section>
+    <div class="cta-row"><a class="btn btn-white" href="/kontakt/">Kom forbi med din enhed</a><a class="btn btn-ghost-light" href="${site.phoneHref}">📞 Ring ${site.phone}</a></div></div></section>
   <section class="section"><div class="wrap lead-copy"><div class="crumbs"><a href="/">Forside</a> › <span>Computeren vil ikke tænde</span></div>
     <p>"Vil ikke tænde" kan faktisk betyde et par forskellige ting, og hver peger på en forskellig årsag. Før du antager det værste, hjælper det at vide, hvilken af disse tre situationer der matcher din:</p></div></section>
   ${scen}
-  <section class="section alt"><div class="wrap"><div class="eyebrow">Fejlsøgning &amp; pris</div><h2>Standard eller ekspres — dit valg</h2><p class="sub">Standardfejlsøgning koster 300 kr. (2–4 dage), eller ekspres for 600 kr. (1–2 timer) — med reparation og levering inden for 24 timer, hvis der ikke skal bestilles specielle reservedele. Du får en fast pris, før vi går i gang.</p></div></section>
+  <section class="section alt"><div class="wrap"><div class="eyebrow">Fejlsøgning &amp; pris</div><h2>Standard eller ekspres — dit valg</h2><p class="sub">Standardfejlsøgning koster 300 kr. (2–4 dage), eller ekspres for 600 kr. (1–2 timer) — reparationen klar inden for 24 timer, hvis der ikke skal bestilles specielle reservedele. Du får en fast pris, før vi går i gang.</p></div></section>
   <section class="section"><div class="wrap"><div class="eyebrow">FAQ</div><h2>Vil ikke tænde — ofte stillede spørgsmål</h2><div class="faq">${faqHtml}</div></div></section>
-  <section class="section alt"><div class="wrap"><div class="cta-band"><h2>Er du i tvivl om, hvilket scenarie der er dit?</h2><p>Kom forbi — fejlsøgning 300 kr. (2–4 dage) eller ekspres (600 kr.). Vi isolerer årsagen, før vi giver pris.</p><div class="cta-row"><a class="btn btn-white" href="/kontakt/">Book fejlsøgning</a><a class="btn btn-ghost-light" href="${site.phoneHref}">📞 Ring ${site.phone}</a></div></div>
+  <section class="section alt"><div class="wrap"><div class="cta-band"><h2>Er du i tvivl om, hvilket scenarie der er dit?</h2><p>Kom forbi — fejlsøgning 300 kr. (2–4 dage) eller ekspres (600 kr.). Vi isolerer årsagen, før vi giver pris.</p><div class="cta-row"><a class="btn btn-white" href="/kontakt/">Kom forbi med din enhed</a><a class="btn btn-ghost-light" href="${site.phoneHref}">📞 Ring ${site.phone}</a></div></div>
     <div style="margin-top:32px"><p class="eyebrow">Relateret</p><div class="crosslinks"><a href="/ladestik-reparation/">Reparation af ladeport →</a><a href="/udskiftning-af-skaerm/">Skærmudskiftning →</a><a href="/fejlmeddelelser/">Fejlmeddelelser →</a><a href="/faq/">Generel FAQ →</a></div></div></div></section>`;
 }
 
@@ -205,12 +205,11 @@ const FAQ_GROUPS = [
     ['Hvad skal jeg gøre, før jeg bringer min enhed ind til reparation?', 'Hvis muligt: tag backup af vigtige data, fjern eventuelt cover eller tilbehør, og notér enhedens adgangskode, hvis vi skal teste den efter reparation. Ikke et krav, men det gør det hurtigere.'],
     ['Tilbyder I studierabat?', 'Kontakt os direkte for at spørge — værd at tjekke, især i betragtning af vores placering tæt på Copenhagen Business School.'],
     ['Taler I engelsk?', 'Ja — vi kan sagtens klare hele forløbet på engelsk, hvis det er nemmere for dig, fra første opkald eller e-mail til afhentning af den reparerede enhed.'],
-    ['Hvordan fungerer fejlsøgning og reparation?', 'Vi fejlsøger det reelle problem først og giver dig derefter en fast pris, før noget reparationsarbejde starter. Standardfejlsøgning koster 300 kr. (2–4 dage), eller vælg ekspres for 600 kr. (1–2 timer) — med reparation og levering inden for 24 timer, hvis der ikke skal bestilles specielle reservedele.'],
+    ['Hvordan fungerer fejlsøgning og reparation?', 'Vi fejlsøger det reelle problem først og giver dig derefter en fast pris, før noget reparationsarbejde starter. Standardfejlsøgning koster 300 kr. (2–4 dage), eller vælg ekspres for 600 kr. (1–2 timer) — reparationen klar inden for 24 timer, hvis der ikke skal bestilles specielle reservedele.'],
     ['Hvad hvis jeg skal bruge min enhed hurtigere end standardfejlsøgning?', 'Vælg ekspresfejlsøgning (600 kr., 1–2 timer) i stedet for standardmuligheden (300 kr.). De fleste ekspresreparationer klares inden for 24 timer, hvis der ikke skal bestilles specielle reservedele.'],
     ['Giver I garanti på reparationer?', 'Ja, reparationer kommer med garanti. Spørg ved booking om detaljerne for din type reparation.'],
     ['Er mine data sikre under reparation?', 'Ja. Vi tilgår eller deler ikke personlige data ud over det, der er nødvendigt for at gennemføre reparationen, og vi anbefaler under alle omstændigheder at tage backup af vigtige filer forinden.'],
     ['Skal jeg bestille tid, eller kan jeg bare møde op?', 'Fremmøde uden bestilling — ingen tidsbestilling nødvendig.'],
-    ['Kan I hente og levere min computer?', 'Ja, afhentning og levering er muligt — kontakt os for detaljer ud fra din placering.'],
     ['Hvad hvis min enhed ikke kan repareres?', 'Så siger vi det ærligt. Hvis en reparation ikke kan betale sig sammenlignet med at udskifte, siger vi det frem for at opkræve for arbejde, der ikke kan svare sig — og kan pege dig mod istandsatte eller nye muligheder i vores <a href="/butik/">butik</a>, hvis det er den bedre vej.'],
     ['Hvordan ved jeg, om det kan betale sig at reparere min computer, eller om jeg bare skal udskifte den?', 'En almindelig tommelfingerregel: hvis reparationsprisen er mere end 25–50 % af en tilsvarende erstatning, er udskiftning som regel den bedre værdi — især på en ældre maskine. En 2–3 år gammel bærbar er næsten altid værd at reparere; en på 7–8 år kan have sværere-tilgængelige reservedele. Vi giver dig vores ærlige vurdering som en del af din faste pris.'],
     ['Hvilke betalingsmetoder tager I imod?', 'Kortbetaling og bankoverførsel.'],
@@ -318,7 +317,7 @@ export function websitesHubHtml() {
 export const STUDENTS_FAQ = [
   { q: 'Ligger PCKlinik tæt på CBS?', a: 'Ja. Vores værksted på Falkoner Allé 108 ligger i gåafstand fra CBS på Solbjerg Plads og Frederiksberg campus — nemt at nå til fods, på cykel eller med metro, hvis din bærbare driller midt i en aflevering.' },
   { q: 'Skal jeg bestille tid, eller kan jeg bare komme forbi?', a: 'Ingen tidsbestilling nødvendig — bare kom forbi i åbningstiden, så kigger vi på den. Har du en stram deadline, så sig til, så prioriterer vi med ekspresfejlsøgning, hvor det er muligt.' },
-  { q: 'Jeg læser på DTU i Lyngby — kan I stadig hjælpe?', a: 'Ja. DTU Lyngby ligger længere væk end vores værksted på Frederiksberg, men afhentning/levering eller indsendelse dækker afstanden. Kontakt os, så aftaler vi det ud fra din situation.' },
+  { q: 'Jeg læser på DTU i Lyngby — kan I stadig hjælpe?', a: 'Ja. DTU Lyngby ligger længere væk end vores værksted på Frederiksberg, men indsendelse dækker afstanden. Kontakt os, så aftaler vi det ud fra din situation.' },
   { q: 'Kan jeg låne en computer, mens min bliver repareret?', a: 'Efter tilgængelighed, ja — vi kan i nogle tilfælde låne dig en bærbar, mens din bliver repareret. Da vi kun har et begrænset antal lånecomputere, kan vi ikke garantere det, og det afhænger af, hvad der er ledigt. Spørg os, når du afleverer din computer.' },
   { q: 'Kan I hjælpe med backup, før jeg afslutter studiet eller flytter?', a: 'Ja. Vi hjælper med at sikre dine data — opgaver, projekter og noter — inden studieophold eller flytning, og vi fører backup- og sikkerhedsudstyr i vores butik. Se Backup & sikkerhed, eller kontakt os, så finder vi den rette løsning.' },
   { q: 'Reparerer I også university-ejede computere (CBS/DTU-udstyr), eller kun private?', a: 'Ja, vi reparerer også university-ejede enheder fra CBS, DTU og andre uddannelsesinstitutioner — ikke kun private computere. Kom forbi med din institution-udstedte laptop, så kigger vi på den på samme vilkår som private enheder.' },
@@ -335,16 +334,16 @@ export function studentsHtml() {
   return `  <section class="hero"><div class="wrap"><div class="eyebrow">Studerende · CBS &amp; DTU</div>
     <h1>Computerreparation til studerende — CBS &amp; DTU</h1>
     <p class="lead">Er din bærbare gået i stykker midt i semesteret? Vi reparerer PC og Mac for studerende ved CBS og DTU — hurtigt, til fast pris og i gåafstand fra Solbjerg Plads.</p>
-    <div class="cta-row"><a class="btn btn-white" href="/kontakt/">Book en reparation</a><a class="btn btn-ghost-light" href="${site.phoneHref}">📞 Ring ${site.phone}</a></div></div></section>
+    <div class="cta-row"><a class="btn btn-white" href="/kontakt/">Kom forbi med din enhed</a><a class="btn btn-ghost-light" href="${site.phoneHref}">📞 Ring ${site.phone}</a></div></div></section>
   <section class="section"><div class="wrap lead-copy"><div class="crumbs"><a href="/">Forside</a> › <span>Studerende</span></div>
     <p>Vi ved, hvor galt det rammer, når computeren svigter lige op til en eksamen eller aflevering. Derfor tilbyder vi hurtig, ærlig computerreparation til studerende i København — uanset om du læser på CBS på Frederiksberg eller på DTU i Lyngby. Vores værksted ligger på Falkoner Allé 108, i gåafstand fra Solbjerg Plads, så en MacBook-reparation eller en bærbar med revnet skærm behøver ikke koste dig en hel dag.</p>
-    <p>Fejlsøgning koster 300 kr. (2–4 dage), eller vælg ekspres for 600 kr. (1–2 timer) — med reparation og levering inden for 24 timer, hvis der ikke skal bestilles specielle reservedele. Du får altid en fast pris, før vi går i gang, så der er ingen overraskelser på et studiebudget.</p></div></section>
-  <section class="section alt"><div class="wrap"><div class="eyebrow">Tæt på campus</div><h2>Gåafstand fra CBS — og afhentning til DTU</h2>
-    <p class="sub">For <strong>CBS-studerende</strong> er vi kun kort afstand fra Solbjerg Plads og Frederiksberg campus — kom forbi mellem forelæsninger. For <strong>DTU-studerende i Lyngby</strong> dækker vi afstanden med afhentning/levering eller indsendelse, så du ikke selv skal transportere maskinen hele vejen.</p></div></section>
+    <p>Fejlsøgning koster 300 kr. (2–4 dage), eller vælg ekspres for 600 kr. (1–2 timer) — reparationen klar inden for 24 timer, hvis der ikke skal bestilles specielle reservedele. Du får altid en fast pris, før vi går i gang, så der er ingen overraskelser på et studiebudget.</p></div></section>
+  <section class="section alt"><div class="wrap"><div class="eyebrow">Tæt på campus</div><h2>Gåafstand fra CBS — og indsendelse fra DTU</h2>
+    <p class="sub">For <strong>CBS-studerende</strong> er vi kun kort afstand fra Solbjerg Plads og Frederiksberg campus — kom forbi mellem forelæsninger. For <strong>DTU-studerende i Lyngby</strong> dækker vi afstanden med indsendelse, så du ikke selv skal køre hele vejen til Frederiksberg.</p></div></section>
   <section class="section"><div class="wrap"><div class="eyebrow">Populært hos studerende</div><h2>Det får studerende oftest lavet</h2>
     <div class="grid grid-4">${services}</div></div></section>
   <section class="section alt"><div class="wrap"><div class="eyebrow">FAQ</div><h2>Studerende — ofte stillede spørgsmål</h2><div class="faq">${faqHtml}</div></div></section>
-  <section class="section"><div class="wrap"><div class="cta-band"><h2>Bærbar gået ned før en deadline?</h2><p>Kom forbi uden tidsbestilling, eller ring. Fejlsøgning 300 kr. (2–4 dage) eller ekspres 600 kr. (1–2 timer), fast pris før vi går i gang.</p><div class="cta-row"><a class="btn btn-white" href="/kontakt/">Book en reparation</a><a class="btn btn-ghost-light" href="${site.phoneHref}">📞 Ring ${site.phone}</a></div></div>
+  <section class="section"><div class="wrap"><div class="cta-band"><h2>Bærbar gået ned før en deadline?</h2><p>Kom forbi uden tidsbestilling, eller ring. Fejlsøgning 300 kr. (2–4 dage) eller ekspres 600 kr. (1–2 timer), fast pris før vi går i gang.</p><div class="cta-row"><a class="btn btn-white" href="/kontakt/">Kom forbi med din enhed</a><a class="btn btn-ghost-light" href="${site.phoneHref}">📞 Ring ${site.phone}</a></div></div>
     <div style="margin-top:32px"><p class="eyebrow">Relateret</p><div class="crosslinks"><a href="/computerreparation-frederiksberg/">Computerreparation på Frederiksberg →</a><a href="/butik/backup-sikkerhed/">Backup &amp; sikkerhed →</a><a href="/macbook-reparation/">MacBook-reparation →</a><a href="/kontakt/">Kontakt & booking →</a></div></div></div></section>`;
 }
 
@@ -359,14 +358,14 @@ export function priceRangesHtml() {
   ].map(([r, p]) => `<tr><td>${esc(r)}</td><td class="issue">${esc(p)}</td></tr>`).join('');
   return `  <section class="hero"><div class="wrap"><div class="eyebrow">Priser · Frederiksberg &amp; København</div>
     <h1>Typiske reparationspriser</h1><p class="lead">Vejledende fra-priser på de mest almindelige reparationer — inkl. reservedele og arbejdsløn.</p>
-    <div class="cta-row"><a class="btn btn-white" href="/kontakt/">Book en reparation</a><a class="btn btn-ghost-light" href="${site.phoneHref}">📞 Ring ${site.phone}</a></div></div></section>
+    <div class="cta-row"><a class="btn btn-white" href="/kontakt/">Kom forbi med din enhed</a><a class="btn btn-ghost-light" href="${site.phoneHref}">📞 Ring ${site.phone}</a></div></div></section>
   <section class="section"><div class="wrap lead-copy"><div class="crumbs"><a href="/">Forside</a> › <span>Typiske reparationspriser</span></div>
     <p>Priserne nedenfor er vejledende <strong>fra-priser</strong> (startpriser) og gælder de mest almindelige reparationer. Den endelige pris afhænger af model og skadens omfang — men du får altid et fast tilbud, før vi går i gang, så der ikke er nogen overraskelser.</p>
     <p>Selve fejlsøgningen prissættes særskilt: standard koster 300 kr. (2–4 dage), eller ekspres 600 kr. (1–2 timer). Væskeskade har en fast pris på 600 kr. (3–4 dage, ingen ekspresmulighed).</p></div></section>
   <section class="section alt"><div class="wrap"><div class="eyebrow">Vejledende priser</div><h2>Fra-priser på almindelige reparationer</h2>
     <div class="table-wrap" style="margin-top:20px"><table class="models"><thead><tr><th>Reparation</th><th>Vejledende pris</th></tr></thead><tbody>${rows}</tbody></table></div>
     <div class="trust-line" style="margin-top:24px"><strong>Alle priser er inkl. reservedele og arbejdsløn.</strong> SSD-prisen gælder 256 GB; større kapacitet koster mere. Fast tilbud, før vi går i gang.</div></div></section>
-  <section class="section"><div class="wrap"><div class="cta-band"><h2>Vil du have en pris på din reparation?</h2><p>Kom forbi uden tidsbestilling eller kontakt os — vi laver en fejlsøgning og giver dig et fast tilbud, før noget arbejde går i gang.</p><div class="cta-row"><a class="btn btn-white" href="/kontakt/">Book en reparation</a><a class="btn btn-ghost-light" href="${site.phoneHref}">📞 Ring ${site.phone}</a></div></div>
+  <section class="section"><div class="wrap"><div class="cta-band"><h2>Vil du have en pris på din reparation?</h2><p>Kom forbi uden tidsbestilling eller kontakt os — vi laver en fejlsøgning og giver dig et fast tilbud, før noget arbejde går i gang.</p><div class="cta-row"><a class="btn btn-white" href="/kontakt/">Kom forbi med din enhed</a><a class="btn btn-ghost-light" href="${site.phoneHref}">📞 Ring ${site.phone}</a></div></div>
     <div style="margin-top:32px"><p class="eyebrow">Relateret</p><div class="crosslinks"><a href="/udskiftning-af-skaerm/">Skærmudskiftning →</a><a href="/mac-batteriskift/">Mac-batteriskift →</a><a href="/ssd-opgradering/">SSD-opgradering →</a><a href="/forsikringsreparation/">Forsikringsreparation →</a><a href="/kontakt/">Kontakt & booking →</a></div></div></div></section>`;
 }
 
@@ -420,7 +419,7 @@ export function forsikringsreparationHtml() {
   const damages = ['Væskeskade', 'Faldskade og knækkede skærme', 'Skader efter lynnedslag/overspænding', 'Skader i forbindelse med tyveri/indbrud'].map((d) => `<li>${esc(d)}</li>`).join('');
   return `  <section class="hero"><div class="wrap"><div class="eyebrow">Forsikringsreparation · Frederiksberg &amp; København</div>
     <h1>Reparation dækket af din forsikring</h1><p class="lead">Skadet computer eller Mac? Vi laver reparationer, der dækkes af din forsikring — du får et tilbud og en faktura til dit forsikringsselskab.</p>
-    <div class="cta-row"><a class="btn btn-white" href="/kontakt/">Book en reparation</a><a class="btn btn-ghost-light" href="${site.phoneHref}">📞 Ring ${site.phone}</a></div></div></section>
+    <div class="cta-row"><a class="btn btn-white" href="/kontakt/">Kom forbi med din enhed</a><a class="btn btn-ghost-light" href="${site.phoneHref}">📞 Ring ${site.phone}</a></div></div></section>
   <section class="section"><div class="wrap lead-copy"><div class="crumbs"><a href="/">Forside</a> › <span>Forsikringsreparation</span></div>
     <p>Er din computer eller Mac blevet skadet — spildt væske, tabt på gulvet, ramt af et lynnedslag? Så er den ofte dækket af din indbo- eller elektronikforsikring. Vi hjælper hver uge kunder med forsikringssager, og vi gør processen så enkel som muligt.</p></div></section>
   <section class="section alt"><div class="wrap"><div class="eyebrow">Sådan foregår det</div><h2>Fem trin fra skade til reparation</h2><div class="steps">
@@ -433,7 +432,7 @@ export function forsikringsreparationHtml() {
   <section class="section"><div class="wrap"><div class="callout"><strong>Ærligt om det:</strong> Vi håndterer ikke selve forsikringssagen for dig og kan ikke garantere, at din skade er dækket — det afgør dit forsikringsselskab. Men du får præcis den dokumentation, de skal bruge, så din sag står så stærkt som muligt.</div></div></section>
   <section class="section alt"><div class="wrap"><div class="eyebrow">Typiske skader</div><h2>Typiske forsikringsskader vi reparerer</h2><ul class="check-list">${damages}</ul></div></section>
   <section class="section"><div class="wrap"><div class="eyebrow">FAQ</div><h2>Forsikringsreparation — ofte stillede spørgsmål</h2><div class="faq">${faqHtml}</div></div></section>
-  <section class="section alt"><div class="wrap"><div class="cta-band"><h2>Klar til at starte din forsikringssag?</h2><p>Fejlsøgning 300 kr. (2–4 dage) eller ekspres for 600 kr. (1–2 timer). Fast pris, før vi går i gang.</p><div class="cta-row"><a class="btn btn-white" href="/kontakt/">Book en reparation</a><a class="btn btn-ghost-light" href="${site.phoneHref}">📞 Ring ${site.phone}</a></div></div>
+  <section class="section alt"><div class="wrap"><div class="cta-band"><h2>Klar til at starte din forsikringssag?</h2><p>Fejlsøgning 300 kr. (2–4 dage) eller ekspres for 600 kr. (1–2 timer). Fast pris, før vi går i gang.</p><div class="cta-row"><a class="btn btn-white" href="/kontakt/">Kom forbi med din enhed</a><a class="btn btn-ghost-light" href="${site.phoneHref}">📞 Ring ${site.phone}</a></div></div>
     <div style="margin-top:32px"><p class="eyebrow">Relateret</p><div class="crosslinks"><a href="/vaeskeskade-reparation/">Væskeskade-reparation →</a><a href="/kontakt/">Kontakt & booking →</a></div></div></div></section>`;
 }
 
@@ -443,6 +442,7 @@ export const REPARERE_KOEBE_FAQ = [
   { q: 'Min computer er blevet langsom — skal jeg købe en ny?', a: 'Sjældent. Det skyldes ofte en fyldt disk eller for lidt RAM, og en SSD-/RAM-opgradering gør den hurtig igen til en brøkdel af prisen på en ny.' },
   { q: 'Hvor gammel er "for gammel" at reparere?', a: 'Der er ingen fast grænse, men over 5-6 år begynder dyre reparationer (fx bundkort) sjældent at kunne betale sig. Vi vurderer det konkret.' },
   { q: 'Kan I hjælpe med at overføre mine data til en ny maskine?', a: 'Ja, det gør vi som en fast del af servicen.' },
+  { q: 'Tager I min gamle computer retur?', a: 'Ja. Vi køber brugte maskiner, og du kan bytte din gamle ind mod en ny eller refurbished. Er den ikke længere noget værd, tager vi den af hænderne på dig, sletter dine data sikkert og sender den til genbrug.' },
 ];
 export function reparereEllerKoebeHtml() {
   const faqHtml = REPARERE_KOEBE_FAQ.map((f) => `<details><summary>${esc(f.q)}</summary><div class="answer">${esc(f.a)}</div></details>`).join('');
@@ -456,7 +456,7 @@ export function reparereEllerKoebeHtml() {
   ].map((t) => `<li>${esc(t)}</li>`).join('');
   return `  <section class="hero"><div class="wrap"><div class="eyebrow">Guide · Reparation eller ny computer</div>
     <h1>Reparere eller købe ny computer?</h1><p class="lead">Det korte svar: det kommer an på fejlen og på maskinens alder — og vi siger det ærligt, også når reparation ikke kan betale sig.</p>
-    <div class="cta-row"><a class="btn btn-white" href="/kontakt/">Book fejlsøgning</a><a class="btn btn-ghost-light" href="${site.phoneHref}">📞 Ring ${site.phone}</a></div></div></section>
+    <div class="cta-row"><a class="btn btn-white" href="/kontakt/">Kom forbi med din enhed</a><a class="btn btn-ghost-light" href="${site.phoneHref}">📞 Ring ${site.phone}</a></div></div></section>
   <section class="section"><div class="wrap lead-copy"><div class="crumbs"><a href="/">Forside</a> › <span>Reparere eller købe ny computer</span></div>
     <p>Det korte svar: det kommer an på fejlen og på maskinens alder — og vi siger det ærligt, også når reparation ikke kan betale sig. Vi lever af at reparere, men vi vil hellere have en kunde, der stoler på os, end sælge en reparation, der ikke giver mening.</p></div></section>
   <section class="section alt"><div class="wrap"><div class="eyebrow">Reparere</div><h2>Hvornår kan det betale sig at reparere?</h2><ul class="check-list">${goodSigns}</ul></div></section>
@@ -466,6 +466,6 @@ export function reparereEllerKoebeHtml() {
     <p>Og skal du alligevel have en anden maskine, har vi testede <a href="/butik/computere/refurbished/">refurbished computere</a> i butikken — samme sted, samme team, og vi flytter gerne dine data over. Al din IT under ét tag.</p></div></section>
   <section class="section alt"><div class="wrap"><div class="eyebrow">Fejlsøgning &amp; pris</div><h2>Sådan finder vi ud af det</h2><p class="sub">Vi fejlsøger din computer (standard 300 kr., 2-4 dage — eller ekspres 600 kr., 1-2 timer) og giver dig et fast tilbud. Så kender du prisen på reparationen, før du beslutter dig — og vi siger ærligt, hvad vi selv ville gøre.</p></div></section>
   <section class="section"><div class="wrap"><div class="eyebrow">FAQ</div><h2>Reparere eller købe ny — ofte stillede spørgsmål</h2><div class="faq">${faqHtml}</div></div></section>
-  <section class="section alt"><div class="wrap"><div class="cta-band"><h2>Er du i tvivl om din maskine?</h2><p>Fejlsøgning 300 kr. (2–4 dage) eller ekspres for 600 kr. (1–2 timer). Fast pris, før vi går i gang — og et ærligt svar på, om det kan betale sig.</p><div class="cta-row"><a class="btn btn-white" href="/kontakt/">Book fejlsøgning</a><a class="btn btn-ghost-light" href="/butik/computere/refurbished/">Se refurbished computere →</a></div></div>
+  <section class="section alt"><div class="wrap"><div class="cta-band"><h2>Er du i tvivl om din maskine?</h2><p>Fejlsøgning 300 kr. (2–4 dage) eller ekspres for 600 kr. (1–2 timer). Fast pris, før vi går i gang — og et ærligt svar på, om det kan betale sig.</p><div class="cta-row"><a class="btn btn-white" href="/kontakt/">Kom forbi med din enhed</a><a class="btn btn-ghost-light" href="/butik/computere/refurbished/">Se refurbished computere →</a></div></div>
     <div style="margin-top:32px"><p class="eyebrow">Relateret</p><div class="crosslinks"><a href="/butik/computere/refurbished/">Refurbished computere →</a><a href="/ssd-opgradering/">SSD-opgradering →</a><a href="/kontakt/">Kontakt & booking →</a></div></div></div></section>`;
 }
