@@ -60,7 +60,7 @@ export const services = [
       { q: 'Matcher erstatningsskærme original lysstyrke og farve?', a: 'Vi bruger kvalitetsdele, der matcher de oprindelige specifikationer, hvor det er muligt.' },
       { q: 'Kan en skærm repareres i stedet for at blive helt udskiftet?', a: 'Lejlighedsvis ved visse fejl, men fuld udskiftning er mere almindeligt ved revnede skærme.' },
       { q: 'Skifter I skærme på mærker, der ikke er nævnt på jeres side?', a: 'Ja — se også vores side om andre mærker & specialbyggede.' },
-      { q: 'Hvor lang tid tager en skærmudskiftning?', a: 'Ofte samme dag med ekspresfejlsøgning.' },
+      { q: 'Hvor lang tid tager en skærmudskiftning?', a: 'Med ekspresfejlsøgning ofte inden for 24 timer.' },
     ],
     crosslinks: [{ label: 'Andre mærker & specialbyggede', href: '/andre-maerker-reparation/' }, { label: 'Mac-skærmudskiftning', href: '/mac-skaermudskiftning/' }, { label: 'Forsikringsreparation', href: '/forsikringsreparation/' }],
   },
@@ -192,14 +192,14 @@ export const services = [
     title: 'Fjernsupport & indsendelse | PCKlinik',
     description: 'Softwareproblemer løses på afstand; hardware kan sendes ind. Til pc og Mac i hele Danmark. Fast pris efter fejlsøgning.',
     h1: 'Fjernsupport', subhead: 'Softwareproblemer løst på afstand — hardwareproblemer sendes ind',
-    intro: ['Ikke alle problemer kræver et værkstedsbesøg. Softwareproblemer, virusinfektioner, mailopsætning, langsom ydelse og mange konfigurationsproblemer kan fejlsøges og udbedres på afstand — vi forbinder til din computer med din tilladelse, du ser, hvad vi gør, og de fleste sessioner løser problemet på stedet. Tilgængelig for både pc og Mac, hvor som helst i Danmark, ikke kun Frederiksberg og København.', 'Standardfejlsøgning koster 300 kr. (2–4 dage), eller ekspres for 600 kr. (1–2 timer) — samme prismodel som vores fysiske reparationer, da fjernfejlsøgning fungerer på samme måde.'],
+    intro: ['Ikke alle problemer kræver et værkstedsbesøg. Softwareproblemer, virusinfektioner, mailopsætning, langsom ydelse og mange konfigurationsproblemer kan fejlsøges og udbedres på afstand — vi forbinder til din computer med din tilladelse, du ser, hvad vi gør, og de fleste sessioner løser problemet på stedet. Tilgængelig for både pc og Mac, hvor som helst i Danmark, ikke kun Frederiksberg og København.', 'Fjernsupport er også en fast del af vores IT-supportaftaler til erhverv, hvor virksomheder får en garanteret svartid i stedet for at betale pr. sag — se IT-support til erhverv for pakker og priser.', 'Er du privatkunde uden en fast aftale, betaler du i stedet pr. fejlsøgning: Standardfejlsøgning koster 300 kr. (2–4 dage), eller ekspres for 600 kr. (1–2 timer, løsning klar inden for 24 timer) — samme prismodel som vores fysiske reparationer.'],
     bulletSections: [{ heading: 'Hvad vi udbedrer på afstand', items: ['Fjernelse af virus og malware', 'Langsom ydelse og opstartsproblemer', 'Mail- og kontoopsætning', 'Softwarekonfiguration og fejlsøgning', 'Netværks- og WiFi-problemer (hvor de ikke er hardware-relaterede)', 'Opsætning af automatiske cloud-backupløsninger (kun konfiguration — gendannelse af data fra et allerede svigtet drev kræver fysisk adgang, se vores side om backup & datagendannelse til det)'] }],
     // Vores eneste værksted ligger på Frederiksberg — der er intet lokalt
     // værksted i andre byer. Denne callout skal derfor være ærlig om
     // indsendelse (post/kurér) som muligheden for kunder uden for
     // København/Frederiksberg, i stedet for kun at pege på "kom forbi" og
     // on-site (som reelt kun dækker København-området).
-    callout: { label: 'Hvad vi ikke kan udbedre på afstand', text: 'Alt, der kræver fysisk adgang — skærmudskiftning, batteriskift, hardwarereparationer. Bor du i eller tæt på København, kan du komme forbi værkstedet eller booke on-site besøg. Bor du længere væk — for eksempel Helsingør, Hillerød, Roskilde, Køge eller Nykøbing Falster — sender du enheden til os med post eller kurér (indsendelse); i nogle tilfælde kan afhentning/levering også aftales, afhængigt af din placering.' },
+    callout: { label: 'Hvad vi ikke kan udbedre på afstand', text: 'Alt, der kræver fysisk adgang — skærmudskiftning, batteriskift, hardwarereparationer. Bor du i eller tæt på København, kan du komme forbi værkstedet eller booke on-site besøg. Bor du længere væk — for eksempel Helsingør, Hillerød, Roskilde, Køge eller Nykøbing Falster — sender du enheden til os med post eller kurér (indsendelse); afhængigt af din placering.' },
     faq: [
       { q: 'Kan fjernsupport udbedre en helt ureagerende computer?', a: 'Nej — fjernsupport kræver, at computeren i det mindste kan starte op og forbinde til internettet. Ureagerende enheder kræver fysisk fejlsøgning, enten ved indsendelse eller ved at komme forbi værkstedet.' },
       { q: 'Er fjernsupport tilgængelig uden for normal åbningstid?', a: 'Standardåbningstid gælder, medmindre andet aftales — kontakt os for at tjekke.' },
@@ -210,8 +210,9 @@ export const services = [
       { q: 'Hvordan fungerer indsendelse?', a: 'Kontakt os først for forsendelsesinstruktioner og en idé om processen, inden du sender noget. Leveringstiden (2–4 dage standard, 1–2 timer ekspres) begynder at tælle, når enheden rent faktisk når frem til værkstedet — ikke når du sender den.' },
       { q: 'Kan det betale sig at sende et device langt væk for reparation?', a: 'Vi har allerede kunder, der gør præcis det, blandt andet fra Helsingør, Hillerød, Roskilde, Køge og Nykøbing Falster — kontakt os, så er vi ærlige om, hvorvidt det giver mening for din konkrete situation.' },
       { q: 'Kan I opsætte cloud-backup for mig på afstand?', a: 'Ja — at konfigurere en automatisk backupløsning er en softwareopsætningsopgave, vi kan lave på afstand. Bemærk, at det er forskelligt fra datagendannelse: hvis et drev allerede er svigtet, og du skal gendanne data fra det, kræver det fysisk adgang til enheden.' },
+      { q: 'Hvad er svartiden, hvis min virksomhed har en IT-supportaftale?', a: 'Det afhænger af jeres pakke: Starter garanterer svar inden for 1 arbejdsdag, Premium inden for 4 timer, og Exclusive inden for 1 time. Det er en anden ordning end enkeltstående fejlsøgning for privatkunder — se IT-support til erhverv for pakker og priser.' },
     ],
-    crosslinks: [{ label: 'Fjernelse af virus & malware', href: '/virus-og-malwarefjernelse/' }, { label: 'On-site tekniker', href: '/on-site-tekniker/' }],
+    crosslinks: [{ label: 'IT-support til erhverv', href: '/it-support-til-erhverv/' }, { label: 'Fjernelse af virus & malware', href: '/virus-og-malwarefjernelse/' }, { label: 'On-site tekniker', href: '/on-site-tekniker/' }],
   },
   {
     slug: 'on-site-tekniker', group: 'Cross-cutting',
@@ -339,7 +340,7 @@ export const services = [
     intro: ['Spildt kaffe, vand eller andet på din bærbare — pc eller Mac? Tid er afgørende: jo hurtigere den slukkes og bringes ind, jo bedre er chancerne for en fuld redning. Vi adskiller, renser og vurderer korrosionsskade på ethvert mærke eller model og giver dig derefter en fast pris for reparation.'],
     callout: { label: 'Hvis det lige er sket', text: 'Sluk enheden med det samme, forsøg ikke at tænde den for at "tjekke", og bring den ind hurtigst muligt.' },
     pricing: { h2: 'Priser ved væskeskade', text: 'Væskeskade-fejlsøgning fungerer anderledes end vores standardpriser — det er en fast pris på 600 kr., tager 3–4 dage, og der er ingen ekspresmulighed, da en ordentlig korrosionsvurdering tager tid. Du får en fast pris for selve reparationen, før noget arbejde går i gang.' },
-    ctaLabel: 'Book væskeskade-vurdering',
+    ctaLabel: 'Kom forbi med din enhed',
     faq: [
       { q: 'Har typen af spildt væske betydning for reparationschancerne?', a: 'Ja — sukkerholdige eller salte væsker (kaffe, sodavand) har tendens til at give mere korrosion end rent vand.' },
       { q: 'Skal jeg lægge en væskeskadet bærbar i ris?', a: 'Nej — det er en myte, der ikke hjælper nævneværdigt. Sluk den, og bring den ind i stedet.' },
@@ -459,11 +460,11 @@ export const services = [
     title: 'Computer reparation på Frederiksberg & København | PCKlinik',
     description: 'Computer reparation af pc, bærbar og Mac — alle mærker. Samme team klarer også IT-support, hosting og backup. Fejlsøgning fra 300 kr.',
     h1: 'Computer reparation på Frederiksberg & København',
-    subhead: 'Alle mærker, fast pris, og 9 ud af 10 reparationer klaret på under 24 timer',
+    subhead: 'Alle mærker, fast pris, og altid en klar tid, før vi går i gang',
     intro: [
       'Langsom computer, sort skærm, en bærbar der ikke vil tænde, eller hardware der har givet op? Hos PCKlinik laver vi <strong>computer reparation af både stationære pc’er, bærbare og Mac</strong> — uanset mærke. Vores værksted ligger på Falkoner Allé 108 på Frederiksberg, og vi betjener hele København.',
       'Vi starter altid med en grundig fejlsøgning og giver dig en <strong>fast pris, før vi går i gang</strong>. Ingen overraskelser på regningen, og ingen timepriser der løber løbsk. Du får at vide, hvad der er galt, hvad det koster, og hvor lang tid det tager — og så beslutter du.',
-      'Vi har over 20 års erfaring, og de fleste reparationer er færdige samme dag eller dagen efter. Du kan komme forbi i åbningstiden uden at booke tid.',
+      'Vi har over 20 års erfaring. Vælger du ekspres, er reparationen klar inden for 24 timer — standard tager 3–4 dage. Du kan komme forbi i åbningstiden uden at bestille tid.',
     ],
     whatsIncluded: 'Fejlsøgning, fast pristilbud før arbejdet påbegyndes, reparation, test og garanti på udført arbejde.',
     bulletSections: [
@@ -489,7 +490,7 @@ export const services = [
     ],
     faq: [
       { q: 'Hvad koster computer reparation?', a: 'Fejlsøgning koster 300 kr. (2–4 dage) eller 600 kr. for ekspres (1–2 timer). Derefter får du en fast pris på selve reparationen, før vi går i gang — så du altid kender prisen på forhånd.' },
-      { q: 'Hvor lang tid tager en computer reparation?', a: '9 ud af 10 reparationer er færdige på under 24 timer. Skal der bestilles en særlig reservedel, kan det tage lidt længere — det siger vi klart, når vi giver dig prisen.' },
+      { q: 'Hvor lang tid tager en computer reparation?', a: 'Vælger du ekspres, er reparationen klar inden for 24 timer. Standard tager 3–4 dage. Skal der bestilles en særlig reservedel, kan det tage lidt længere — det siger vi klart, når vi giver dig prisen.' },
       { q: 'Skal jeg booke tid, eller kan jeg bare komme forbi?', a: 'Du kan komme forbi i vores åbningstid uden at booke tid. Vi ligger på Falkoner Allé 108 på Frederiksberg.' },
       { q: 'Reparerer I alle mærker computere?', a: 'Ja. Vi reparerer alle mærker af pc og bærbar — Lenovo, HP, Dell, Acer, Asus, MSI, Huawei, Samsung, Microsoft Surface og flere — samt alle Mac-modeller.' },
       { q: 'Kan det betale sig at reparere, eller skal jeg købe en ny?', a: 'Det siger vi ærligt. Hvis reparationen ikke kan betale sig i forhold til maskinens værdi og restlevetid, fortæller vi dig det frem for at sælge dig en dyr reparation. Vi har også nye og refurbished computere i butikken.' },
@@ -520,7 +521,7 @@ export const services = [
       'Vi leverer hurtig og pålidelig <strong>IT-support til både private og virksomheder</strong> på Frederiksberg og i resten af København. Det kan være en computer, der driller, en printer der ikke vil forbinde, et netværk der falder ud, eller en fast supportaftale for hele virksomheden.',
       'Fordelen ved at have en lokal IT-partner er enkel: du ved, hvem du taler med, og vi kan komme forbi. Vi har over 20 års erfaring og 4,9 stjerner fra næsten 500 kunder.',
     ],
-    whatsIncluded: 'Hjælp i butikken, fjernsupport samme dag, eller on-site besøg på din adresse på Frederiksberg.',
+    whatsIncluded: 'Hjælp i butikken, fjernsupport, eller on-site besøg på din adresse på Frederiksberg.',
     bulletSections: [
       { heading: 'Sådan kan vi hjælpe dig', items: [
         'Kom forbi værkstedet på Falkoner Allé 108 — ingen tidsbestilling nødvendig',
@@ -543,7 +544,7 @@ export const services = [
       { q: 'Tilbyder I IT-support til private, eller kun til virksomheder?', a: 'Begge dele. Private kan komme forbi butikken eller få fjernsupport, og virksomheder kan tegne en fast IT-serviceaftale med ubegrænset support.' },
       { q: 'Kan I komme ud til min adresse på Frederiksberg?', a: 'Ja. Vi tilbyder on-site support, hvor en tekniker kommer ud til dig eller din virksomhed. Mange sager kan dog løses hurtigere via fjernsupport.' },
       { q: 'Hvad koster IT-support?', a: 'Enkeltopgaver afregnes efter en fast pris, som du får oplyst, før vi går i gang. Løbende IT-support til erhverv starter ved 399 kr. pr. bruger pr. måned med ubegrænset support og ingen timepriser.' },
-      { q: 'Hvor hurtigt kan I hjælpe?', a: 'De fleste sager løses samme dag. Ring på 91 81 61 81, så finder vi ud af, om det klares over fjernsupport, i butikken, eller om vi skal komme ud.' },
+      { q: 'Hvor hurtigt kan I hjælpe?', a: 'Ring på 91 81 61 81, så finder vi hurtigst muligt ud af, om det klares over fjernsupport, i butikken, eller om vi skal komme ud.' },
       { q: 'Hjælper I også med Microsoft 365 og e-mail?', a: 'Ja. Vi opsætter og administrerer Microsoft 365, Teams, SharePoint og virksomhedse-mail, inkl. onboarding af nye medarbejdere.' },
     ],
     crosslinks: [
@@ -559,18 +560,18 @@ export const services = [
   {
     slug: 'it-support-koebenhavn', group: 'Cross-cutting',
     title: 'IT-support i København | PCKlinik',
-    description: 'Lokal IT-support i hele København for private og virksomheder. Fjernsupport samme dag eller on-site tekniker. Ring 91 81 61 81.',
+    description: 'Lokal IT-support i hele København for private og virksomheder. Fjernsupport eller on-site tekniker. Ring 91 81 61 81.',
     h1: 'IT-support i København',
-    subhead: 'Fjernsupport samme dag, eller en tekniker ude hos dig — i hele byen',
+    subhead: 'Fjernsupport, eller en tekniker ude hos dig — i hele byen',
     intro: [
-      'PCKlinik yder <strong>IT-support i hele København</strong> — fra Indre By og Østerbro til Amager, Nørrebro og Valby. Vores værksted ligger på Frederiksberg, men det meste af vores support foregår enten som <strong>fjernsupport</strong> samme dag eller ved at en <strong>tekniker kommer ud til dig</strong>, så du ikke behøver at være tæt på selve værkstedet.',
+      'PCKlinik yder <strong>IT-support i hele København</strong> — fra Indre By og Østerbro til Amager, Nørrebro og Valby. Vores værksted ligger på Frederiksberg, men det meste af vores support foregår enten som <strong>fjernsupport</strong> eller ved at en <strong>tekniker kommer ud til dig</strong>, så du ikke behøver at være tæt på selve værkstedet.',
       'Vi hjælper både private og virksomheder — en enkelt computer, der driller, en printer der ikke vil forbinde, et netværk der falder ud, eller en fast supportaftale for hele virksomheden.',
       'Fordelen ved en lokal IT-partner er enkel: du taler med den samme tekniker hver gang, og vi kan komme forbi, hvis sagen kræver det. Vi har over 20 års erfaring og 4,9 stjerner fra næsten 500 kunder.',
     ],
-    whatsIncluded: 'Fjernsupport samme dag, on-site tekniker i hele København, eller aflevering på værkstedet på Frederiksberg.',
+    whatsIncluded: 'Fjernsupport, on-site tekniker i hele København, eller aflevering på værkstedet på Frederiksberg.',
     bulletSections: [
       { heading: 'Sådan får du hjælp i København', items: [
-        'Fjernsupport, hvor vi kobler op på din maskine og løser problemet med det samme — de fleste sager samme dag',
+        'Fjernsupport, hvor vi kobler op på din maskine og løser problemet med det samme',
         'On-site tekniker, der kommer ud til dig eller din virksomhed, uanset hvilken bydel I sidder i',
         'Aflever eller send maskinen til værkstedet på Frederiksberg, hvis den skal skrues op',
         'Fast IT-supportaftale til erhverv med ubegrænset support fra 399 kr./bruger/md.',
@@ -585,10 +586,10 @@ export const services = [
     ],
     callout: { label: 'Til virksomheder i København', text: 'Har I brug for løbende IT-support frem for enkeltopgaver, tilbyder vi en fast IT-serviceaftale med ubegrænset support, overvågning og sikkerhed til én fast månedspris — uanset om I sidder i Indre By, på Amager eller ude i Valby.' },
     faq: [
-      { q: 'Dækker I hele København, eller kun tæt på værkstedet?', a: 'Hele byen. De fleste sager løses via fjernsupport samme dag, og har du brug for en tekniker ude hos dig, dækker vi alle bydele — Indre By, Østerbro, Nørrebro, Amager, Valby og resten af København.' },
+      { q: 'Dækker I hele København, eller kun tæt på værkstedet?', a: 'Hele byen. De fleste sager løses via fjernsupport, og har du brug for en tekniker ude hos dig, dækker vi alle bydele — Indre By, Østerbro, Nørrebro, Amager, Valby og resten af København.' },
       { q: 'Hvad koster IT-support i København?', a: 'Enkeltopgaver afregnes til en fast pris, du får oplyst, før vi går i gang. Løbende IT-support til erhverv starter ved 399 kr. pr. bruger pr. måned med ubegrænset support og ingen timepriser.' },
       { q: 'Kan I komme ud til vores kontor?', a: 'Ja — vi tilbyder on-site support i hele København. Mange sager løses dog hurtigere og billigere via fjernsupport, så vi starter der, hvis det er muligt.' },
-      { q: 'Hvor hurtigt kan I hjælpe en virksomhed i København?', a: 'De fleste sager løses samme dag. Ring på 91 81 61 81, så finder vi ud af, om det klares hurtigst via fjernsupport eller et besøg.' },
+      { q: 'Hvor hurtigt kan I hjælpe en virksomhed i København?', a: 'Ring på 91 81 61 81, så finder vi hurtigst muligt ud af, om det klares via fjernsupport eller et besøg.' },
       { q: 'Hjælper I også private i København, eller kun virksomheder?', a: 'Begge dele. Private kan få fjernsupport eller aflevere på værkstedet, og virksomheder kan tegne en fast IT-serviceaftale.' },
       { q: 'Skal jeg selv aflevere maskinen på Frederiksberg, hvis den skal repareres fysisk?', a: 'Ja, hvis det kræver værkstedsarbejde — men de fleste IT-supportsager som netværk, software og opsætning klares uden, at maskinen skal forlade dit kontor.' },
     ],
