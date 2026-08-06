@@ -33,7 +33,7 @@ export function macHubHtml() {
     <div style="margin-top:32px"><p class="eyebrow">Relateret</p><div class="crosslinks"><a href="/macbook-reparation/">MacBook-reparation →</a><a href="/mac-stationaer-reparation/">Reparation af stationær Mac →</a><a href="/mac-reparation-koebenhavn/">Mac-reparation i København →</a><a href="/mac-batteriskift/">Mac-batteriskift →</a><a href="/hvor-laenge-holder-en-macbook/">Hvor længe holder en MacBook? →</a><a href="/kontakt/">Kontakt & booking →</a></div></div></div></section>`;
 }
 export const MAC_HUB_FAQ = [
-  { q: 'Tilbyder I en lånecomputer, mens min Mac bliver repareret?', a: 'Ikke i øjeblikket — spørg ved booking, hvis det er vigtigt for dig.' },
+  { q: 'Tilbyder I en lånecomputer, mens min Mac bliver repareret?', a: 'Ikke i øjeblikket — spørg os, når du kommer forbi, hvis det er vigtigt for dig.' },
   { q: 'Koster fejlsøgning det samme for både MacBook og stationær Mac?', a: 'Ja, samme standard-/ekspres-priser gælder på tværs af alle Mac-modeller.' },
   { q: 'Hvad koster en Mac-reparation?', a: 'Det afhænger af fejlen og modellen. Vi fejlsøger altid først og giver dig en fast pris, før vi går i gang — standardfejlsøgning er 300 kr. (3–4 dage), eller ekspres for 600 kr. (1–2 timer).' },
   { q: 'Hvor lang tid tager en Mac-reparation?', a: 'Med ekspresfejlsøgning er den ofte klar inden for 24 timer. Standardfejlsøgning tager 3–4 dage, og mere omfattende reparationer kan tage længere tid afhængigt af reservedele.' },
@@ -207,7 +207,7 @@ const FAQ_GROUPS = [
     ['Taler I engelsk?', 'Ja — vi kan sagtens klare hele forløbet på engelsk, hvis det er nemmere for dig, fra første opkald eller e-mail til afhentning af den reparerede enhed.'],
     ['Hvordan fungerer fejlsøgning og reparation?', 'Vi fejlsøger det reelle problem først og giver dig derefter en fast pris, før noget reparationsarbejde starter. Standardfejlsøgning koster 300 kr. (3–4 dage), eller vælg ekspres for 600 kr. (1–2 timer) — reparationen klar inden for 24 timer, hvis der ikke skal bestilles specielle reservedele.'],
     ['Hvad hvis jeg skal bruge min enhed hurtigere end standardfejlsøgning?', 'Vælg ekspresfejlsøgning (600 kr., 1–2 timer) i stedet for standardmuligheden (300 kr.). De fleste ekspresreparationer klares inden for 24 timer, hvis der ikke skal bestilles specielle reservedele.'],
-    ['Giver I garanti på reparationer?', 'Ja, reparationer kommer med garanti. Spørg ved booking om detaljerne for din type reparation.'],
+    ['Giver I garanti på reparationer?', 'Ja, reparationer kommer med garanti. Spørg os om detaljerne for din type reparation, når du kontakter os eller kommer forbi.'],
     ['Er mine data sikre under reparation?', 'Ja. Vi tilgår eller deler ikke personlige data ud over det, der er nødvendigt for at gennemføre reparationen, og vi anbefaler under alle omstændigheder at tage backup af vigtige filer forinden.'],
     ['Skal jeg bestille tid, eller kan jeg bare møde op?', 'Fremmøde uden bestilling — ingen tidsbestilling nødvendig.'],
     ['Hvad hvis min enhed ikke kan repareres?', 'Så siger vi det ærligt. Hvis en reparation ikke kan betale sig sammenlignet med at udskifte, siger vi det frem for at opkræve for arbejde, der ikke kan svare sig — og kan pege dig mod istandsatte eller nye muligheder i vores <a href="/butik/">butik</a>, hvis det er den bedre vej.'],
