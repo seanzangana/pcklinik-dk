@@ -57,8 +57,10 @@
 /computer-reparation-vanloese/         /computerreparation-vanloese/  301
 
 # --- Mac / MacBook ---
-# 264 visn., 1 klik
-/mac-reparation-kobenhavn/             /mac-reparation/  301
+# 264 visn., 1 klik — was pointing at the generic /mac-reparation/ hub;
+# this is the København-spelling variant of the local page, so it should
+# land on the actual local page, not the hub (A3.0, 2026-08-07).
+/mac-reparation-kobenhavn/             /mac-reparation-koebenhavn/  301
 # 165 visn.
 /macbook-reparation-koebenhavn-hvor/   /macbook-reparation/  301
 # 34 visn.
