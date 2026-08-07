@@ -34,7 +34,7 @@ export const site = {
   // to KV/D1 once a billing-enabled Google Cloud project + Places API key +
   // Place ID exist) — not needed for this static version.
   reviewRating: '4.9',
-  reviewCount: '493',
+  reviewCount: '494', // live-checked on Google Business Profile 2026-08-07
 };
 
 // Dropdown children may include { header: 'Label' } items — rendered as a
@@ -73,12 +73,14 @@ export const nav = [
         { label: 'Computer reparation (oversigt)', href: '/computer-reparation/' },
         { label: 'Bundkortreparation', href: '/bundkort-reparation/' },
         { label: 'SSD-opgradering', href: '/ssd-opgradering/' },
+        { label: 'RAM-opgradering', href: '/ram-opgradering/' },
         { label: 'PC-optimering', href: '/optimering-af-computer/' },
         { label: 'Udskiftning af harddisk', href: '/harddisk-ssd-udskiftning/' },
         { label: 'Skærmudskiftning', href: '/udskiftning-af-skaerm/' },
         { label: 'Væskeskade-reparation', href: '/vaeskeskade-reparation/' },
         { label: 'PC-rensning & støvfjernelse', href: '/rens-af-pc/' },
         { label: 'Reparation af ladeport', href: '/ladestik-reparation/' },
+        { label: 'Reparation af strømforsyning', href: '/stroemforsyning-reparation/' },
         { label: 'Udskiftning af tastatur (bærbar)', href: '/tastaturudskiftning/' },
         { label: 'Mac-rensning', href: '/rens-af-mac/' },
         { label: 'Mac-batteriskift', href: '/mac-batteriskift/' },
