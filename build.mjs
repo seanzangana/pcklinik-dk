@@ -195,7 +195,7 @@ const businessSchema = {
   priceRange: 'kr. 300–600',
   address: { '@type': 'PostalAddress', streetAddress: site.addressStreet, postalCode: site.addressPostal, addressLocality: site.addressLocality, addressCountry: 'DK' },
   geo: { '@type': 'GeoCoordinates', latitude: 55.6868578, longitude: 12.5406516 },
-  areaServed: ['Frederiksberg', 'Copenhagen'],
+  areaServed: ['Frederiksberg', 'København'],
   openingHoursSpecification: [
     { '@type': 'OpeningHoursSpecification', dayOfWeek: ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday'], opens: '10:00', closes: '18:00' },
     { '@type': 'OpeningHoursSpecification', dayOfWeek: ['Saturday'], opens: '10:00', closes: '14:00' },
@@ -254,7 +254,7 @@ ${body}
 // unless the button is clicked.
 const mapFrame = `<div class="map-frame"><button type="button" class="map-facade" data-map-src="${esc(site.mapsEmbed)}" aria-label="Åbn interaktivt kort over PCKlinik, Falkoner Allé 108"><span class="map-facade-icon" aria-hidden="true">📍</span><span>Klik for at åbne det interaktive kort</span></button></div>`;
 const mapFacadeScript = `<script>
-document.querySelectorAll('.map-facade').forEach(function(btn){btn.addEventListener('click',function(){var src=btn.getAttribute('data-map-src');var f=document.createElement('iframe');f.src=src;f.loading='lazy';f.title='PCKlinik on the map, Falkoner Allé 108';f.referrerPolicy='no-referrer-when-downgrade';btn.replaceWith(f);});});
+document.querySelectorAll('.map-facade').forEach(function(btn){btn.addEventListener('click',function(){var src=btn.getAttribute('data-map-src');var f=document.createElement('iframe');f.src=src;f.loading='lazy';f.title='PCKlinik på kortet, Falkoner Allé 108';f.referrerPolicy='no-referrer-when-downgrade';btn.replaceWith(f);});});
 </script>`;
 
 // ---------- repair pages ----------
@@ -342,7 +342,7 @@ function homeBody() {
     <div class="step"><div class="num">2</div><h3>Fast pris</h3><p>Du får en klar pris, før vi rører ved noget.</p></div>
     <div class="step"><div class="num">3</div><h3>Reparation</h3><p>Vi udfører reparationen med samme omhu som fejlsøgningen.</p></div></div></div></section>
   <section class="section alt"><div class="wrap"><div class="eyebrow">Hvad vi reparerer</div><h2>Alle større computermærker — PC og Mac</h2>
-    <p class="sub">Vi reparerer alle større computermærker — PC og Mac, bærbar og stationær — for privatpersoner og virksomheder på Frederiksberg og i København.</p>
+    <p class="sub">Vi reparerer alle større computermærker — PC og Mac, bærbar og stationær — for privatpersoner og virksomheder på Frederiksberg og i København. Se vores fulde <a href="/computer-reparation/">computer reparation</a>-oversigt, eller vælg dit mærke nedenfor.</p>
     <div class="grid grid-3">${cards}</div></div></section>
   <section class="section"><div class="wrap"><div class="eyebrow">Populære services</div><h2>Ud over mærkereparationer</h2>
     <p class="sub">Ud over mærkespecifikke reparationer klarer vi disse ofte efterspurgte opgaver:</p>
