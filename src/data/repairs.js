@@ -389,7 +389,7 @@ export const repairs = [
       { path: '/images/macbook/pro-13-battery.jpg', alt: 'MacBook Pro 13 batteriskift' },
       { path: '/images/macbook/butterfly-keyboard.jpg', alt: 'MacBook Pro butterfly-tastaturreparation' },
     ],
-    crosslinks: [{ label: 'Mac (stationær)-reparation', href: '/mac-stationaer-reparation/' }, { label: 'Hvor længe holder en MacBook?', href: '/hvor-laenge-holder-en-macbook/' }, { label: 'Microsoft Surface-reparation', href: '/microsoft-surface-reparation/' }],
+    crosslinks: [{ label: 'Mac (stationær)-reparation', href: '/mac-stationaer-reparation/' }, { label: 'Mac-reparation i København', href: '/mac-reparation-koebenhavn/' }, { label: 'Hvor længe holder en MacBook?', href: '/hvor-laenge-holder-en-macbook/' }, { label: 'Microsoft Surface-reparation', href: '/microsoft-surface-reparation/' }],
     ctaPrimary: 'Kom forbi med din enhed',
   },
 
@@ -525,6 +525,7 @@ export const repairs = [
       { q: 'Kan I opgradere min ældre iMac med en SSD?', a: 'Ja, på ældre Intel-iMacs kan en SSD-opgradering gøre en markant forskel i hastighed.' },
       { q: 'Min Mac Studio er larmende — er det normalt?', a: 'Ikke hvis den er usædvanlig larmende. Det skyldes ofte støv i kølesystemet, som vi kan rense og reparere.' },
       { q: 'Mister jeg mine data, når I reparerer min Mac?', a: 'Nej, vi sletter aldrig data uden din tilladelse, og vi tilbyder backup, hvis det er nødvendigt.' },
+      { q: 'Hvad koster det at få repareret imac skærm?', a: 'Prisen afhænger af model og skærmtype, men fejlsøgningen i sig selv er 300 kr. (3–4 dage) eller 600 kr. ekspres (1–2 timer), og du får altid en fast pris for reparationen, før vi går i gang.' },
     ],
     photos: [
       { path: '/images/mac/imac-24-repair.jpg', alt: 'iMac 24 reparation hos PCKlinik Frederiksberg' },
