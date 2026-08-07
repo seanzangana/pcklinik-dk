@@ -1264,7 +1264,31 @@ async function run() {
   // sitemap + robots
   const urls = pages.map(([p]) => `  <url><loc>${site.domain}${p}</loc></url>`).join('\n');
   await fs.writeFile(path.join(DIST, 'sitemap.xml'), `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n${urls}\n</urlset>\n`);
-  await fs.writeFile(path.join(DIST, 'robots.txt'), `User-agent: *\nAllow: /\nSitemap: ${site.domain}/sitemap.xml\n`);
+  // robots.txt
+  // The only Disallow is for ?nocache= query strings. The old WordPress site
+  // emitted cache-busting homepage URLs like /?nocache=1769857392, and Google
+  // has crawled 60+ of them repeatedly. They still return 200 (a static build
+  // ignores query strings, so they serve the homepage) and are held out of the
+  // index only by the canonical tag -- meaning they never 404 and never decay.
+  // Blocking them stops the crawler spending budget re-fetching the homepage
+  // under dozens of aliases. The pattern omits the leading '?' on purpose:
+  // some of the crawled URLs carry Trustpilot UTM parameters first, so the
+  // parameter appears as '&nocache=' rather than '?nocache='.
+  //
+  // Deliberately NOT blocked: /tag/, /product-category/, /wp-json/,
+  // /wp-includes/, /shop/ and other retired WordPress paths. Those already
+  // return 404, and a 404 is the cleanest signal for dropping a URL. Blocking
+  // them in robots.txt would stop Googlebot ever seeing the 404 and would
+  // freeze them in place instead.
+  const robots = [
+    'User-agent: *',
+    'Allow: /',
+    'Disallow: /*nocache=',
+    '',
+    `Sitemap: ${site.domain}/sitemap.xml`,
+    '',
+  ].join('\n');
+  await fs.writeFile(path.join(DIST, 'robots.txt'), robots);
 
   console.log(`Built ${pages.length} pages -> dist/`);
 }
