@@ -129,6 +129,16 @@ nav.main a.active { border-bottom: 2px solid var(--blue); }
   padding: 9px 16px; border-radius: 100px; font-size: 13px; font-weight: 500;
 }
 .badge.check::before { content: "✓ "; }
+
+/* Four-pillar positioning row (C2) — clickable pills inside the dark hero */
+.pillars-row { display: flex; gap: 10px; flex-wrap: wrap; margin: 4px 0 26px; }
+.pill-link {
+  background: var(--pill-bg); border: 1px solid var(--pill-border); color: #fff;
+  padding: 9px 18px; border-radius: 100px; font-size: 14px; font-weight: 700;
+  text-decoration: none; display: inline-flex; align-items: center; gap: 7px;
+  transition: background .15s ease;
+}
+.pill-link:hover { background: rgba(255,255,255,0.22); }
 .cta-row { display: flex; gap: 14px; flex-wrap: wrap; align-items: center; }
 .hero-text-link { color: #C7D3EC; text-decoration: none; font-weight: 600; font-size: 14px; display: inline-flex; align-items: center; gap: 6px; padding: 6px 4px; }
 .hero-text-link:hover { color: #fff; }
@@ -253,6 +263,15 @@ table.models td.issue { color: var(--muted); }
 
 /* ---------- Trust / info blocks ---------- */
 .trust-line { background: var(--blue-soft); border-radius: 12px; padding: 16px 22px; color: var(--navy-deep); font-size: 14.5px; font-weight: 500; }
+
+/* Homepage trust bar (C4) — compact row of proof points, sits right under the hero */
+.trust-bar-section { padding: 26px 0; }
+.trust-bar { display: flex; flex-wrap: wrap; gap: 14px 32px; align-items: center; }
+.trust-bar-item { display: flex; align-items: center; gap: 9px; font-size: 14px; font-weight: 600; color: var(--navy-deep); }
+.trust-bar-item .ti-icon { font-size: 17px; line-height: 1; flex-shrink: 0; }
+.trust-bar-item a { color: inherit; text-decoration: underline; text-decoration-color: var(--line); }
+.trust-bar-item a:hover { color: var(--blue); }
+@media (max-width: 900px) { .trust-bar { gap: 12px 22px; } .trust-bar-item { font-size: 13.5px; } }
 .info-block { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; align-items: start; }
 .info-block .nap p { margin: 0 0 10px; color: var(--muted); font-size: 15px; }
 .info-block .nap strong { color: var(--ink); }
