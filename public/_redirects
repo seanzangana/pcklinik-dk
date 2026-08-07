@@ -125,6 +125,29 @@
 /tag/computer-reparator/               /computer-reparation/  301
 
 # ---------------------------------------------------------------------------
+# B2 — backlink-genindvinding (2026-08-07). Kriterium 3 ("har eksterne
+# backlinks") kørt igennem for første gang: fuld Search Console-eksport
+# (208 eksterne links, 90 linkende domæner) viste, at ALLE eksterne links
+# allerede peger på 3 sider, der er live i dag — ingen 404-URL har et
+# eneste kendt eksternt link lige nu. Kriterium 3 gav altså ingen nye
+# regler. Bing/Ahrefs Webmaster Tools kunne ikke tjekkes (ikke logget ind,
+# opretter ikke konti på Shans vegne) — hvis en af dem viser noget senere,
+# tilføjes det her.
+#
+# De 6 regler nedenfor er IKKE begrundet i backlinks eller visninger — de
+# er rene 1:1-mappinger fra den gamle 65-regel-liste med nul downside
+# (ingen kannibalisering, målet er en ægte tilsvarende side), tilføjet
+# efter Shans eksplicitte ok som SEO-hygiejne, ikke som led i kriterium
+# 1-3-politikken ovenfor.
+# ---------------------------------------------------------------------------
+/tag/it-support-frederiksberg/         /it-support-frederiksberg/  301
+/imac-reparation/                      /mac-stationaer-reparation/  301
+/apple-mac-reparation/                 /mac-reparation/  301
+/liquid-damage-repair-pc/              /vaeskeskade-reparation/  301
+/liquid-damage-repair-mac/             /vaeskeskade-reparation/  301
+/liquid-damage-repair/                 /vaeskeskade-reparation/  301
+
+# ---------------------------------------------------------------------------
 # ÅBNE PUNKTER — skal revideres, når de nævnte sider findes
 # ---------------------------------------------------------------------------
 #
