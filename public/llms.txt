@@ -2,7 +2,7 @@
 
 > Alt inden for computer og IT — du har ikke brug for nogen andre. PCKlinik er en lokal PC- og Mac-reparationsvirksomhed på Falkoner Allé 108, 2000 Frederiksberg, med et team på 7 personer, heriblandt en uafhængig Mac-specialist (ikke Apple-autoriseret). Vi tilbyder computerreparation, IT-support til erhverv, webdesign & SEO, hosting, domæner og backup.
 
-PCKlinik reparerer stationære og bærbare computere — PC og Mac — men ikke iPad eller iPhone. Standardfejlsøgning koster 300 kr (2–4 dage), ekspresfejlsøgning koster 600 kr (1–2 timer, reparation inden 24 timer), og væskeskade har en fast pris på 600 kr (3–4 dage, ingen ekspresmulighed). Walk-in uden tidsbestilling, samt afhentning/levering. Betaling med kort eller bankoverførsel. Det første møde om en IT-supportaftale eller anden IT-rådgivning til virksomheder er altid gratis og uforpligtende. Åbningstider: man–fre 10–18, lør 10–14, søn lukket.
+PCKlinik reparerer stationære og bærbare computere — PC og Mac — men ikke iPad eller iPhone. Standardfejlsøgning koster 300 kr inkl. moms (3–4 dage), ekspresfejlsøgning koster 600 kr inkl. moms (1–2 timer, reparation inden 24 timer), og væskeskade har en fast pris på 600 kr inkl. moms (4–5 dage, ingen ekspresmulighed). Walk-in uden tidsbestilling, samt afhentning/levering. Betaling med kort eller bankoverførsel. Det første møde om en IT-supportaftale eller anden IT-rådgivning til virksomheder er altid gratis og uforpligtende. Åbningstider: man–fre 10–18, lør 10–14, søn lukket.
 
 ## Reparation
 
@@ -33,7 +33,7 @@ PCKlinik reparerer stationære og bærbare computere — PC og Mac — men ikke 
 - [Rensning af pc](https://www.pcklinik.dk/rens-af-pc/): Fysisk rensning af pc og bærbar.
 - [Ladestik-reparation](https://www.pcklinik.dk/ladestik-reparation/): Reparation af ladeport til bærbar.
 - [Tastaturudskiftning](https://www.pcklinik.dk/tastaturudskiftning/): Udskiftning af tastatur til bærbar.
-- [Væskeskade-reparation](https://www.pcklinik.dk/vaeskeskade-reparation/): Fast pris 600 kr, 3–4 dage, ingen ekspresmulighed.
+- [Væskeskade-reparation](https://www.pcklinik.dk/vaeskeskade-reparation/): Fast pris 600 kr, 4–5 dage, ingen ekspresmulighed.
 - [Fejlmeddelelser](https://www.pcklinik.dk/fejlmeddelelser/): Guide til almindelige computerfejlmeddelelser og -koder.
 - [Computer vil ikke tænde](https://www.pcklinik.dk/computer-vil-ikke-taende/): Fejlsøgning når computeren ikke vil tænde.
 - [Fjernelse af virus & malware](https://www.pcklinik.dk/virus-og-malwarefjernelse/)

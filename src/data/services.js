@@ -9,7 +9,7 @@ export const services = [
   {
     slug: 'ssd-opgradering', group: 'PC',
     title: 'SSD-opgradering | PCKlinik',
-    description: 'Opgradér din pc eller bærbare til SSD på Frederiksberg og i København. Hurtigere opstartstid. Fejlsøgning fra 300 kr., fast pris.',
+    description: 'Opgradér din pc eller bærbare til SSD på Frederiksberg og i København. Hurtigere opstartstid. Fejlsøgning fra 300 kr. inkl. moms, fast pris.',
     h1: 'SSD-opgradering', subhead: 'En af de største hastighedsforbedringer du kan give en ældre maskine',
     intro: ['Kører du stadig på en mekanisk harddisk? En SSD-opgradering er en af de allerstørste hastighedsforbedringer, du kan lave på en ældre pc eller bærbar — den forvandler ofte en 2-minutters opstart til 15 sekunder. Vi klarer opgraderingen, overfører dine data og dit styresystem og får dig i gang på det nye drev uden at miste noget.'],
     whatsIncluded: 'Fremskaffelse af SSD (eller brug din egen), fuld data-/OS-migrering, montering og test.',
@@ -24,7 +24,7 @@ export const services = [
   {
     slug: 'ram-opgradering', group: 'PC',
     title: 'RAM-opgradering | PCKlinik',
-    description: 'Langsom pc med mange programmer åbne på én gang? Vi opgraderer RAM'+"'"+'en på Frederiksberg og i København. Fejlsøgning fra 300 kr., fast pris.',
+    description: 'Langsom pc med mange programmer åbne på én gang? Vi opgraderer RAM'+"'"+'en på Frederiksberg og i København. Fejlsøgning fra 300 kr. inkl. moms, fast pris.',
     h1: 'RAM-opgradering', subhead: 'Mærkes især, når du har mange programmer eller faner åbne samtidig',
     intro: ['Fryser eller sakker din computer, når du har mange programmer eller browserfaner åbne på én gang? Det er ofte for lidt RAM, ikke en langsom processor. Vi tjekker, om din maskine kan opgraderes, finder den rette hukommelse, og monterer og tester den, mens du venter, hvis det er en simpel opgradering.'],
     whatsIncluded: 'Kompatibilitetstjek, fremskaffelse af RAM (eller brug din egen), montering og test.',
@@ -55,7 +55,7 @@ export const services = [
   {
     slug: 'optimering-af-computer', group: 'PC',
     title: 'PC-optimering & hastighedsboost | PCKlinik',
-    description: 'Er din pc langsom? Vi optimerer opstart, fjerner bloatware og tuner ydelsen på Frederiksberg og i København. Fejlsøgning fra 300 kr., fast pris.',
+    description: 'Er din pc langsom? Vi optimerer opstart, fjerner bloatware og tuner ydelsen på Frederiksberg og i København. Fejlsøgning fra 300 kr. inkl. moms, fast pris.',
     h1: 'PC-optimering', subhead: 'En langsom pc er sjældent "bare gammel"',
     intro: ['En langsom pc er sjældent "bare gammel" — det er som regel en ophobning af opstartsprogrammer, bloatware, fragmenterede drev eller baggrundsprocesser, der æder ressourcer. Vi fejlsøger, hvad der reelt gør din maskine langsom, og retter det, i stedet for bare at anbefale, at du køber en ny computer.'],
     whatsIncluded: 'Oprydning i opstart, fjernelse af malware/bloatware, driveropdateringer, oprydning i lagerplads.',
@@ -70,7 +70,7 @@ export const services = [
   {
     slug: 'harddisk-ssd-udskiftning', group: 'PC',
     title: 'Udskiftning af harddisk | PCKlinik',
-    description: 'Er harddisken ved at svigte eller svigtet? Udskiftning og datagendannelse på Frederiksberg og i København. Fejlsøgning fra 300 kr., fast pris.',
+    description: 'Er harddisken ved at svigte eller svigtet? Udskiftning og datagendannelse på Frederiksberg og i København. Fejlsøgning fra 300 kr. inkl. moms, fast pris.',
     h1: 'Udskiftning af harddisk', subhead: 'Klik, frysninger eller et drev, der ikke vil vise sig',
     intro: ['Klikkelyde, hyppige frysninger eller et drev, der slet ikke registreres, er klassiske tegn på harddisksvigt. Vi fejlsøger, om den er ved at svigte eller svigtet, udskifter den (med en SSD-opgradering, hvis du vil) og forsøger datagendannelse, hvor det er muligt.'],
     faq: [
@@ -78,14 +78,14 @@ export const services = [
       { q: 'Er en SSD altid en direkte erstatning for en svigtet HDD?', a: 'I de fleste moderne bærbare ja, men vi bekræfter kompatibilitet for netop din model.' },
       { q: 'Min harddisk laver en klikkelyd — hvad betyder det?', a: 'Som regel et mekanisk svigt. Tag backup af det, du kan, med det samme, og kom forbi.' },
       { q: 'Kan I gendanne mine data, hvis drevet er svigtet?', a: 'Ofte ja, men det afhænger af svigtets type og alvorlighed. Se vores side om datagendannelse for mere.' },
-      { q: 'Hvad koster harddisk udskiftning?', a: 'Fejlsøgning er 300 kr. (3–4 dage) eller 600 kr. ekspres (1–2 timer). Du får en fast pris for selve udskiftningen, før vi går i gang, uanset om det bliver en ny harddisk eller en SSD-opgradering.' },
+      { q: 'Hvad koster harddisk udskiftning?', a: 'Fejlsøgning er 300 kr. inkl. moms (3–4 dage) eller 600 kr. inkl. moms ekspres (1–2 timer). Du får en fast pris for selve udskiftningen, før vi går i gang, uanset om det bliver en ny harddisk eller en SSD-opgradering.' },
     ],
     crosslinks: [{ label: 'Backup & datagendannelse', href: '/backup-og-datagendannelse/' }, { label: 'SSD-opgradering', href: '/ssd-opgradering/' }, { label: 'Blå skærm (BSOD)', href: '/blaa-skaerm-bsod/' }],
   },
   {
     slug: 'udskiftning-af-skaerm', group: 'PC',
     title: 'Skærmudskiftning til bærbar & pc | PCKlinik',
-    description: 'Revnet eller beskadiget skærm? Udskiftning til alle bærbar-mærker på Frederiksberg og i København. Fejlsøgning fra 300 kr., fast pris.',
+    description: 'Revnet eller beskadiget skærm? Udskiftning til alle bærbar-mærker på Frederiksberg og i København. Fejlsøgning fra 300 kr. inkl. moms, fast pris.',
     h1: 'Skærmudskiftning', subhead: 'Alle bærbar-mærker, fra revnet til flimrende',
     intro: ['Revnet, sort eller flimrende skærm? Vi udskifter skærme til bærbare og skærme til alle mærker — se vores specifikke mærkesider for detaljer på modelniveau, eller kom direkte til os, hvis du er i tvivl om, hvilken side der passer.'],
     faq: [
@@ -115,7 +115,7 @@ export const services = [
   {
     slug: 'ladestik-reparation', group: 'PC',
     title: 'Reparation af ladeport til bærbar | PCKlinik',
-    description: 'Virker ladeporten ikke eller er den løs? Reparation til alle bærbar-mærker på Frederiksberg og i København. Fejlsøgning fra 300 kr., fast pris.',
+    description: 'Virker ladeporten ikke eller er den løs? Reparation til alle bærbar-mærker på Frederiksberg og i København. Fejlsøgning fra 300 kr. inkl. moms, fast pris.',
     h1: 'Reparation af ladeport', subhead: 'Løs, beskadiget eller lader slet ikke',
     intro: ['En løs, beskadiget eller ikke-fungerende ladeport er et almindeligt, men reparerbart problem. Vi fejlsøger, om det er selve porten, kablet eller ladekredsløbet, og reparerer eller udskifter derefter.'],
     faq: [
@@ -142,27 +142,27 @@ export const services = [
   {
     slug: 'mac-batteriskift', group: 'Mac',
     title: 'Mac-batteriskift | PCKlinik',
-    description: 'Holder MacBook-batteriet ikke på strøm, eller er det hævet? Udskiftning på Frederiksberg og i København. Fejlsøgning fra 300 kr., fast pris.',
+    description: 'Holder MacBook-batteriet ikke på strøm, eller er det hævet? Udskiftning på Frederiksberg og i København. Fejlsøgning fra 300 kr. inkl. moms, fast pris.',
     h1: 'Mac-batteriskift', subhead: 'Nedslidt eller hævet — vi skifter det sikkert',
     intro: ['Uanset om din MacBooks batteri er blevet nedslidt over tid eller er synligt hævet (et sikkerhedsspørgsmål — se nedenfor), skifter vi det med Apple-reservedele fra lager og tester det grundigt bagefter.'],
     callout: { label: 'Sikkerhedsbemærkning', text: 'Et hævet batteri bør bringes ind hurtigst muligt — punkter det ikke, og fortsæt ikke med tung brug.' },
     faq: [
       { q: 'Hvor længe holder et Mac-batteri typisk, før det skal skiftes?', a: 'Generelt 3–5 års regelmæssig brug, men det varierer efter brugsmønster.' },
       { q: 'Min MacBook-trackpad føles hævet i den ene side — er det et batteriproblem?', a: 'Ja, det er et klassisk tegn på et hævet batteri. Kom forbi snart.' },
-      { q: 'Hvad koster det at få skiftet MacBook-batteri, hvis det ikke holder på strøm?', a: 'Standardfejlsøgning er 300 kr. (3–4 dage), ekspres er 600 kr. (1–2 timer). Du får en fast pris for selve batteriskiftet, før vi går i gang.' },
+      { q: 'Hvad koster det at få skiftet MacBook-batteri, hvis det ikke holder på strøm?', a: 'Standardfejlsøgning er 300 kr. inkl. moms (3–4 dage), ekspres er 600 kr. inkl. moms (1–2 timer). Du får en fast pris for selve batteriskiftet, før vi går i gang.' },
     ],
     crosslinks: [{ label: 'MacBook-reparation', href: '/macbook-reparation/' }, { label: 'Mac-reparation (oversigt)', href: '/mac-reparation/' }, { label: 'Batteriet holder ikke', href: '/batteriet-holder-ikke/' }],
   },
   {
     slug: 'mac-skaermudskiftning', group: 'Mac',
     title: 'Mac-skærmudskiftning | PCKlinik',
-    description: 'Revnet eller beskadiget MacBook- eller iMac-skærm? Udskiftning på Frederiksberg og i København. Fejlsøgning fra 300 kr., fast pris.',
+    description: 'Revnet eller beskadiget MacBook- eller iMac-skærm? Udskiftning på Frederiksberg og i København. Fejlsøgning fra 300 kr. inkl. moms, fast pris.',
     h1: 'Mac-skærmudskiftning', subhead: 'MacBook- og iMac-skærme, fra Intel til Apple Silicon',
     intro: ['Revnet, misfarvet eller flimrende skærm på en MacBook eller iMac? Vi udskifter Mac-skærme med Apple-reservedele fra lager på tværs af både aktuelle Apple Silicon-modeller og ældre Intel-Mac.'],
     faq: [
       { q: 'Skifter I kun glasset eller hele skærmenheden?', a: 'Afhænger af modellen — nogle tillader udskiftning af glas alene, andre kræver hele enheden.' },
       { q: 'Er en Mac-skærm dyrere at skifte end en pc-skærm?', a: 'Ofte lidt dyrere på grund af reservedelsprisen, men vi giver altid en fast pris, før vi går i gang, så der ikke er overraskelser.' },
-      { q: 'Hvad koster det, hvis skærmen på min MacBook er knust?', a: 'Prisen afhænger af model og skærmtype, men du får altid en fast pris, før vi går i gang — fejlsøgningen i sig selv er 300 kr. (3–4 dage) eller 600 kr. ekspres (1–2 timer).' },
+      { q: 'Hvad koster det, hvis skærmen på min MacBook er knust?', a: 'Prisen afhænger af model og skærmtype, men du får altid en fast pris, før vi går i gang — fejlsøgningen i sig selv er 300 kr. inkl. moms (3–4 dage) eller 600 kr. inkl. moms ekspres (1–2 timer).' },
     ],
     crosslinks: [{ label: 'MacBook-reparation', href: '/macbook-reparation/' }, { label: 'Reparation af stationær Mac', href: '/mac-stationaer-reparation/' }, { label: 'MacBook Touch Bar virker ikke', href: '/macbook-touch-bar-virker-ikke/' }],
   },
@@ -182,7 +182,7 @@ export const services = [
   {
     slug: 'mac-trackpadudskiftning', group: 'Mac',
     title: 'MacBook-trackpadudskiftning | PCKlinik',
-    description: 'Ureagerende eller klikkende MacBook-trackpad? Udskiftning på Frederiksberg og i København. Fejlsøgning fra 300 kr., fast pris.',
+    description: 'Ureagerende eller klikkende MacBook-trackpad? Udskiftning på Frederiksberg og i København. Fejlsøgning fra 300 kr. inkl. moms, fast pris.',
     h1: 'MacBook-trackpadudskiftning', subhead: 'Ustabil, ureagerende eller fysisk beskadiget',
     intro: ['En ureagerende, ustabil eller fysisk beskadiget trackpad er et almindeligt MacBook-problem, især efter et væskespild eller fald. Vi fejlsøger og udskifter trackpad-enheden.'],
     faq: [
@@ -211,7 +211,7 @@ export const services = [
   {
     slug: 'virus-og-malwarefjernelse', group: 'Cross-cutting',
     title: 'Fjernelse af virus & malware | PCKlinik',
-    description: 'Er din pc eller Mac ramt af virus eller malware? Fjernelse og sikkerhedsoprydning på Frederiksberg og i København. Fejlsøgning fra 300 kr., fast pris.',
+    description: 'Er din pc eller Mac ramt af virus eller malware? Fjernelse og oprydning på Frederiksberg og i København. Fejlsøgning fra 300 kr. inkl. moms, fast pris.',
     h1: 'Fjernelse af virus & malware', subhead: 'Pop-ups, langsom ydelse, mistænkelig aktivitet',
     intro: ['Pop-ups, træg ydelse eller mistænkelig aktivitet på din pc eller Mac? Vi fjerner virus og malware og opsætter, hvor det er relevant, løbende beskyttelse, så det ikke sker igen.'],
     faq: [
@@ -228,7 +228,7 @@ export const services = [
     title: 'Fjernsupport & indsendelse | PCKlinik',
     description: 'Softwareproblemer løses på afstand; hardware kan sendes ind. Til pc og Mac i hele Danmark. Fast pris efter fejlsøgning.',
     h1: 'Fjernsupport', subhead: 'Softwareproblemer løst på afstand — hardwareproblemer sendes ind',
-    intro: ['Ikke alle problemer kræver et værkstedsbesøg. Softwareproblemer, virusinfektioner, mailopsætning, langsom ydelse og mange konfigurationsproblemer kan fejlsøges og udbedres på afstand — vi forbinder til din computer med din tilladelse, du ser, hvad vi gør, og de fleste sessioner løser problemet på stedet. Tilgængelig for både pc og Mac, hvor som helst i Danmark, ikke kun Frederiksberg og København.', 'Fjernsupport er også en fast del af vores IT-supportaftaler til erhverv, hvor virksomheder får en garanteret svartid i stedet for at betale pr. sag — se IT-support til erhverv for pakker og priser.', 'Er du privatkunde uden en fast aftale, betaler du i stedet pr. fejlsøgning: Standardfejlsøgning koster 300 kr. (3–4 dage), eller ekspres for 600 kr. (1–2 timer, løsning klar inden for 24 timer) — samme prismodel som vores fysiske reparationer.'],
+    intro: ['Ikke alle problemer kræver et værkstedsbesøg. Softwareproblemer, virusinfektioner, mailopsætning, langsom ydelse og mange konfigurationsproblemer kan fejlsøges og udbedres på afstand — vi forbinder til din computer med din tilladelse, du ser, hvad vi gør, og de fleste sessioner løser problemet på stedet. Tilgængelig for både pc og Mac, hvor som helst i Danmark, ikke kun Frederiksberg og København.', 'Fjernsupport er også en fast del af vores IT-supportaftaler til erhverv, hvor virksomheder får en garanteret svartid i stedet for at betale pr. sag — se IT-support til erhverv for pakker og priser.', 'Er du privatkunde uden en fast aftale, betaler du i stedet pr. fejlsøgning: Standardfejlsøgning koster 300 kr. inkl. moms (3–4 dage), eller ekspres for 600 kr. inkl. moms (1–2 timer, løsning klar inden for 24 timer) — samme prismodel som vores fysiske reparationer.'],
     bulletSections: [{ heading: 'Hvad vi udbedrer på afstand', items: ['Fjernelse af virus og malware', 'Langsom ydelse og opstartsproblemer', 'Mail- og kontoopsætning', 'Softwarekonfiguration og fejlsøgning', 'Netværks- og WiFi-problemer (hvor de ikke er hardware-relaterede)', 'Opsætning af automatiske cloud-backupløsninger (kun konfiguration — gendannelse af data fra et allerede svigtet drev kræver fysisk adgang, se vores side om backup & datagendannelse til det)'] }],
     // Vores eneste værksted ligger på Frederiksberg — der er intet lokalt
     // værksted i andre byer. Denne callout skal derfor være ærlig om
@@ -375,13 +375,13 @@ export const services = [
     h1: 'Væskeskade-reparation', subhead: 'Alle mærker, alle modeller — Windows eller Mac. Tid er afgørende.',
     intro: ['Spildt kaffe, vand eller andet på din bærbare — pc eller Mac? Tid er afgørende: jo hurtigere den slukkes og bringes ind, jo bedre er chancerne for en fuld redning. Vi adskiller, renser og vurderer korrosionsskade på ethvert mærke eller model og giver dig derefter en fast pris for reparation.'],
     callout: { label: 'Hvis det lige er sket', text: 'Sluk enheden med det samme, forsøg ikke at tænde den for at "tjekke", og bring den ind hurtigst muligt.' },
-    pricing: { h2: 'Priser ved væskeskade', text: 'Væskeskade-fejlsøgning fungerer anderledes end vores standardpriser — det er en fast pris på 600 kr., tager 3–4 dage, og der er ingen ekspresmulighed, da en ordentlig korrosionsvurdering tager tid. Du får en fast pris for selve reparationen, før noget arbejde går i gang.' },
+    pricing: { h2: 'Priser ved væskeskade', text: 'Væskeskade-fejlsøgning fungerer anderledes end vores standardpriser — det er en fast pris på 600 kr. inkl. moms, tager 4–5 dage, og der er ingen ekspresmulighed, da en ordentlig korrosionsvurdering tager tid. Du får en fast pris for selve reparationen, før noget arbejde går i gang.' },
     ctaLabel: 'Kom forbi med din enhed',
     faq: [
       { q: 'Har typen af spildt væske betydning for reparationschancerne?', a: 'Ja — sukkerholdige eller salte væsker (kaffe, sodavand) har tendens til at give mere korrosion end rent vand.' },
       { q: 'Skal jeg lægge en væskeskadet bærbar i ris?', a: 'Nej — det er en myte, der ikke hjælper nævneværdigt. Sluk den, og bring den ind i stedet.' },
       { q: 'Jeg har spildt væske på min bærbare — hvad skal jeg gøre lige nu?', a: 'Sluk den med det samme, forsøg ikke at tænde den igen, og bring den ind, så hurtigt du kan. Fortsat brug risikerer, at korrosion spreder sig på bundkortet.' },
-      { q: 'Hvorfor prissættes væskeskade anderledes end jeres andre reparationer?', a: 'En ordentlig væskeskade-vurdering indebærer fuld adskillelse, rensning og korrosionsinspektion, som tager 3–4 dage — så det er en fast fejlsøgning på 600 kr. uden ekspresmulighed, i stedet for den standard-/ekspres-model, der bruges andre steder.' },
+      { q: 'Hvorfor prissættes væskeskade anderledes end jeres andre reparationer?', a: 'En ordentlig væskeskade-vurdering indebærer fuld adskillelse, rensning og korrosionsinspektion, som tager 4–5 dage — så det er en fast fejlsøgning på 600 kr. inkl. moms uden ekspresmulighed, i stedet for den standard-/ekspres-model, der bruges andre steder.' },
       { q: 'Kan væskeskadede bærbare altid reddes?', a: 'Ikke altid, men hurtig handling forbedrer oddsene markant. Vi vurderer og giver dig en ærlig fast pris — pc eller Mac.' },
       { q: 'Jeg har spildt vand på min MacBook — er det anderledes end en pc?', a: 'Grundprincippet er det samme: sluk den med det samme, og bring den ind hurtigst muligt. På en MacBook sidder logic board tæt på tastaturet, så korrosion kan sprede sig hurtigt — vent ikke.' },
     ],
@@ -495,7 +495,7 @@ export const services = [
   {
     slug: 'computer-reparation', group: 'PC',
     title: 'Computer reparation på Frederiksberg & København | PCKlinik',
-    description: 'Computer reparation af pc, bærbar og Mac — alle mærker. Samme team klarer også IT-support, hosting og backup. Fejlsøgning fra 300 kr.',
+    description: 'Computer reparation af pc, bærbar og Mac — alle mærker. Samme team klarer også IT-support, hosting og backup. Fejlsøgning fra 300 kr. inkl. moms',
     h1: 'Computer reparation på Frederiksberg & København',
     subhead: 'Alle mærker, fast pris, og altid en klar tid, før vi går i gang',
     intro: [
@@ -526,8 +526,8 @@ export const services = [
       ] },
     ],
     faq: [
-      { q: 'Er det det samme som pc reparation eller bærbar reparation?', a: 'Ja — uanset om du søger efter "computer reparation", "pc reparation", "computerreparation" eller "bærbar reparation", er det den samme service hos os: fejlsøgning fra 300 kr., fast pris før vi går i gang, og reparation af alle mærker pc, bærbar og Mac.' },
-      { q: 'Hvad koster computer reparation?', a: 'Fejlsøgning koster 300 kr. (3–4 dage) eller 600 kr. for ekspres (1–2 timer). Derefter får du en fast pris på selve reparationen, før vi går i gang — så du altid kender prisen på forhånd.' },
+      { q: 'Er det det samme som pc reparation eller bærbar reparation?', a: 'Ja — uanset om du søger efter "computer reparation", "pc reparation", "computerreparation" eller "bærbar reparation", er det den samme service hos os: fejlsøgning fra 300 kr. inkl. moms, fast pris før vi går i gang, og reparation af alle mærker pc, bærbar og Mac.' },
+      { q: 'Hvad koster computer reparation?', a: 'Fejlsøgning koster 300 kr. inkl. moms (3–4 dage) eller 600 kr. inkl. moms for ekspres (1–2 timer). Derefter får du en fast pris på selve reparationen, før vi går i gang — så du altid kender prisen på forhånd.' },
       { q: 'Hvor lang tid tager en computer reparation?', a: 'Vælger du ekspres, er reparationen klar inden for 24 timer. Standard tager 3–4 dage. Skal der bestilles en særlig reservedel, kan det tage lidt længere — det siger vi klart, når vi giver dig prisen.' },
       { q: 'Skal jeg bestille tid, eller kan jeg bare komme forbi?', a: 'Du kan komme forbi i vores åbningstid uden at bestille tid. Vi ligger på Falkoner Allé 108 på Frederiksberg.' },
       { q: 'Reparerer I alle mærker computere?', a: 'Ja. Vi reparerer alle mærker af pc og bærbar — Lenovo, HP, Dell, Acer, Asus, MSI, Huawei, Samsung, Microsoft Surface og flere — samt alle Mac-modeller.' },
@@ -682,7 +682,7 @@ export const services = [
   {
     slug: 'bundkort-reparation', group: 'PC',
     title: 'Bundkortreparation — pc & Mac | PCKlinik',
-    description: 'Reparation af bundkort på pc, bærbar og MacBook på Frederiksberg og i København. Mikrolodning, væskeskade og strømfejl. Fejlsøgning fra 300 kr., fast pris.',
+    description: 'Bundkortreparation til pc, bærbar og MacBook på Frederiksberg og i København. Mikrolodning og strømfejl. Fejlsøgning fra 300 kr. inkl. moms, fast pris.',
     h1: 'Bundkortreparation',
     subhead: 'Når fejlen sidder på selve printkortet — og maskinen ellers skulle kasseres',
     intro: [
@@ -705,7 +705,7 @@ export const services = [
     callout: { label: 'Ærlig vurdering', text: 'Vi fortæller dig altid, om en bundkortreparation kan betale sig i forhold til maskinens værdi — også når svaret er nej.' },
     faq: [
       { q: 'Kan et bundkort overhovedet repareres, eller skal det udskiftes?', a: 'Ofte kan det repareres. Vi fejlsøger på komponentniveau og kan i mange tilfælde udskifte enkelte komponenter eller lodde en defekt kreds frem for at skifte hele bundkortet — det er markant billigere.' },
-      { q: 'Hvad koster en bundkortreparation?', a: 'Det afhænger af fejlen. Vi starter med en fejlsøgning (300 kr. standard, 600 kr. ekspres) og giver dig derefter en fast pris, før vi går i gang. Kan det ikke betale sig, siger vi det.' },
+      { q: 'Hvad koster en bundkortreparation?', a: 'Det afhænger af fejlen. Vi starter med en fejlsøgning (300 kr. standard, 600 kr. ekspres — begge inkl. moms) og giver dig derefter en fast pris, før vi går i gang. Kan det ikke betale sig, siger vi det.' },
       { q: 'Kan I redde et bundkort efter væskeskade?', a: 'Ofte ja, hvis maskinen kommer hurtigt ind. Sluk den, lad være med at tænde den igen, og kom forbi hurtigst muligt — jo længere væsken sidder, jo mere korroderer kredsløbet.' },
       { q: 'Mine data ligger på maskinen — kan I redde dem?', a: 'Ja. Selv hvis bundkortet ikke kan reddes, kan vi i de fleste tilfælde hente dine data ud af drevet. Se datagendannelse.' },
       { q: 'Reparerer I også bundkort på MacBook?', a: 'Ja, vi arbejder med logic boards på MacBook — herunder ladekreds, væskeskade og strømfejl.' },

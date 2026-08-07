@@ -14,9 +14,9 @@ Positionering: PCKlinik samler reparation, IT-support, hjemmesider/SEO, hosting,
 
 ## Priser & diagnostik
 
-- **Standardfejlsøgning**: 300 kr. Svartid 2–4 dage.
-- **Ekspresfejlsøgning**: 600 kr. Svartid 1–2 timer, med reparation og levering inden for 24 timer, forudsat at der ikke skal bestilles specielle eller udgåede reservedele.
-- **Væskeskade**: Fast pris 600 kr. Svartid 3–4 dage. Ingen ekspresmulighed ved væskeskade.
+- **Standardfejlsøgning**: 300 kr. inkl. moms. Svartid 3–4 dage.
+- **Ekspresfejlsøgning**: 600 kr. inkl. moms. Svartid 1–2 timer, med reparation og levering inden for 24 timer, forudsat at der ikke skal bestilles specielle eller udgåede reservedele.
+- **Væskeskade**: Fast pris 600 kr. inkl. moms. Svartid 4–5 dage. Ingen ekspresmulighed ved væskeskade.
 
 Vejledende fra-priser på almindelige reparationer (inkl. reservedele og arbejdsløn) findes på https://www.pcklinik.dk/reparationspriser/. Der gives et fast tilbud, før reparation påbegyndes. Se også garanti på udført reparation: https://www.pcklinik.dk/garanti/.
 
