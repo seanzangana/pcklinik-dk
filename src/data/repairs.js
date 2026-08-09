@@ -389,7 +389,7 @@ export const repairs = [
       { path: '/images/macbook/pro-13-battery.jpg', alt: 'MacBook Pro 13 batteriskift' },
       { path: '/images/macbook/butterfly-keyboard.jpg', alt: 'MacBook Pro butterfly-tastaturreparation' },
     ],
-    crosslinks: [{ label: 'Mac (stationær)-reparation', href: '/mac-stationaer-reparation/' }, { label: 'Mac-reparation i København', href: '/mac-reparation-koebenhavn/' }, { label: 'Hvor længe holder en MacBook?', href: '/hvor-laenge-holder-en-macbook/' }, { label: 'Microsoft Surface-reparation', href: '/microsoft-surface-reparation/' }],
+    crosslinks: [{ label: 'Mac (stationær)-reparation', href: '/mac-stationaer-reparation/' }, { label: 'Mac-reparation i København', href: '/mac-reparation-koebenhavn/' }, { label: 'Hvor længe holder en MacBook?', href: '/hvor-laenge-holder-en-macbook/' }, { label: 'Microsoft Surface-reparation', href: '/microsoft-surface-reparation/' }, { label: 'Driver du virksomhed? Se IT-support til erhverv', href: '/it-support-til-erhverv/' }],
     ctaPrimary: 'Kom forbi med din enhed',
   },
 
