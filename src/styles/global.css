@@ -325,7 +325,7 @@ textarea { resize: vertical; min-height: 120px; }
 
 /* ---------- Footer ---------- */
 .site-footer { background: var(--navy-deep); color: #C7D3EC; padding: 54px 0 30px; margin-top: 0; }
-.site-footer .cols { display: grid; grid-template-columns: 1.6fr 1fr 1fr 1fr 1fr; gap: 28px; }
+.site-footer .cols { display: grid; grid-template-columns: 1.4fr 1fr 1fr 1fr 1fr 1fr; gap: 24px; }
 .site-footer h2 { color: #fff; font-size: 14px; margin: 0 0 14px; letter-spacing: .3px; }
 .site-footer a { color: #C7D3EC; text-decoration: none; font-size: 13.5px; display: block; margin-bottom: 9px; }
 .site-footer a:hover { color: #fff; }
