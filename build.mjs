@@ -202,12 +202,43 @@ const businessSchema = {
   ],
 };
 
+// Builds BreadcrumbList JSON-LD straight from the visible `.crumbs` div
+// already present in a page's body HTML, instead of hand-maintaining a
+// second copy of the trail per page type. Guarantees the structured data
+// always matches what's actually on the page (Google requires this) and
+// covers every page that renders a `.crumbs` div with zero extra code
+// per page generator. Returns null when a page has no `.crumbs` div
+// (e.g. the homepage, kontakt, faq) — those simply don't get the schema.
+function breadcrumbSchemaFrom(body, canonical) {
+  const m = body.match(/<div class="crumbs">([\s\S]*?)<\/div>/);
+  if (!m) return null;
+  const inner = m[1];
+  const unesc = (s) => s.replace(/&amp;/g, '&').replace(/&lt;/g, '<').replace(/&gt;/g, '>');
+  const items = [];
+  const linkRe = /<a href="([^"]+)">([^<]+)<\/a>/g;
+  let lm;
+  while ((lm = linkRe.exec(inner))) items.push({ name: unesc(lm[2]), url: lm[1] });
+  const spanM = inner.match(/<span>([^<]+)<\/span>\s*$/);
+  if (spanM) items.push({ name: unesc(spanM[1]), url: null });
+  if (!items.length) return null;
+  if (items[0].url !== '/') items.unshift({ name: 'Forside', url: '/' });
+  return {
+    '@context': 'https://schema.org', '@type': 'BreadcrumbList',
+    itemListElement: items.map((it, i) => ({
+      '@type': 'ListItem', position: i + 1, name: it.name,
+      item: it.url ? site.domain + it.url : canonical,
+    })),
+  };
+}
+
 function page({ title, description, p, body, schema = null, lang = 'da', dir = '', chrome = 'da', noindex = false }) {
   const canonical = site.domain + p;
   const dk = hreflangMap[p];
   const altHreflang = '';
   const schemas = [businessSchema];
   if (schema) Array.isArray(schema) ? schemas.push(...schema) : schemas.push(schema);
+  const breadcrumb = breadcrumbSchemaFrom(body, canonical);
+  if (breadcrumb) schemas.push(breadcrumb);
   const ld = schemas.map((s) => `<script type="application/ld+json">${JSON.stringify(s)}</script>`).join('\n  ');
   return `<!DOCTYPE html>
 <html lang="${lang}"${dir ? ` dir="${dir}"` : ''}>
