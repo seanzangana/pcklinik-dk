@@ -245,6 +245,8 @@ function page({ title, description, p, body, schema = null, lang = 'da', dir = '
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-54QH3TD0N9"></script>
+  <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-54QH3TD0N9');</script>
   <title>${esc(title)}</title>
   <meta name="description" content="${esc(description)}" />
   ${noindex ? '<meta name="robots" content="noindex, follow" />\n  ' : ''}<link rel="canonical" href="${canonical}" />
