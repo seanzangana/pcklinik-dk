@@ -124,7 +124,8 @@ function footer() {
   return `<footer class="site-footer"><div class="wrap"><div class="cols">
     <div><img src="/logo.png" alt="PCKlinik" class="logo-foot" width="85" height="34" /><p>Hurtig, ærlig PC- og Mac-reparation til privatpersoner og virksomheder på Frederiksberg og i København.</p><p>Alt inden for computer og IT — du har ikke brug for nogen andre.</p><p>${site.address}</p></div>
     <div><h2>Reparationer</h2><a href="/computer-reparation/">Computer reparation</a><a href="/lenovo-reparation/">Lenovo</a><a href="/hp-reparation/">HP</a><a href="/dell-reparation/">Dell</a><a href="/macbook-reparation/">MacBook</a><a href="/mac-stationaer-reparation/">Mac (stationær)</a><a href="/bundkort-reparation/">Bundkortreparation</a></div>
-    <div><h2>Mere</h2><a href="/butik/">Butik</a><a href="/hosting/">Hosting</a><a href="/automatisk-backup/">Automatisk Backup</a><a href="/domaener/">Domæner</a><a href="/butik/computere/refurbished/">Refurbished computere</a><a href="/it-support-til-erhverv/">IT-support til erhverv</a><a href="/it-raadgivning/">IT-rådgivning</a><a href="/microsoft-365-erhverv/">Microsoft 365 til virksomheder</a><a href="/forsikringsreparation/">Forsikringsreparation</a><a href="/reparere-eller-koebe-ny-computer/">Reparere eller købe ny?</a><a href="/hvor-laenge-holder-en-macbook/">Hvor længe holder en MacBook?</a><a href="/windows-10-support-slut/">Windows 10 support er slut</a><a href="/kan-min-computer-koere-windows-11/">Kan min computer køre Windows 11?</a><a href="/opgradering-til-windows-11/">Opgradering til Windows 11</a><a href="/windows-10-erhverv-migrering/">Windows 10-migrering for virksomheder</a><a href="/it-support-advokatkontor/">IT-support til advokatkontorer</a><a href="/it-support-klinik/">IT-support til klinikker</a><a href="/it-support-mindre-virksomheder-frederiksberg/">IT-support til mindre virksomheder</a><a href="/blaa-skaerm-bsod/">Blå skærm (BSOD)</a><a href="/grafikkort-fejl-baerbar/">Grafikkortfejl på bærbar</a><a href="/macbook-touch-bar-virker-ikke/">MacBook Touch Bar virker ikke</a><a href="/batteriet-holder-ikke/">Batteriet holder ikke</a><a href="/it-support-frederiksberg/">IT-support Frederiksberg</a><a href="/hjemmesider-seo-google-ads/">Hjemmesider & SEO</a><a href="/om-os/">Mød teamet</a><a href="/faq/">FAQ</a><a href="/nyheder/">Nyheder</a><a href="/studerende/">Studerende (CBS & DTU)</a><a href="/reparationspriser/">Typiske reparationspriser</a><a href="/garanti/">Garanti</a><a href="/aabningstider/">Åbningstider</a><a href="/kontakt/">Kontakt</a></div>
+    <div><h2>Erhverv</h2><a href="/it-support-til-erhverv/">IT-support til erhverv</a><a href="/it-raadgivning/">IT-rådgivning</a><a href="/it-support-frederiksberg/">IT-support Frederiksberg</a><a href="/it-support-koebenhavn/">IT-support København</a><a href="/microsoft-365-erhverv/">Microsoft 365 til virksomheder</a><a href="/automatisk-backup/">Automatisk Backup</a><a href="/hosting/">Hosting</a><a href="/domaener/">Domæner</a><a href="/forsikringsreparation/">Forsikringsreparation</a><a href="/windows-10-erhverv-migrering/">Windows 10-migrering for virksomheder</a><a href="/it-support-advokatkontor/">IT-support til advokatkontorer</a><a href="/it-support-klinik/">IT-support til klinikker</a><a href="/it-support-mindre-virksomheder-frederiksberg/">IT-support til mindre virksomheder</a><a href="/hjemmesider-seo-google-ads/">Hjemmesider & SEO</a></div>
+    <div><h2>Mere</h2><a href="/butik/">Butik</a><a href="/butik/computere/refurbished/">Refurbished computere</a><a href="/reparere-eller-koebe-ny-computer/">Reparere eller købe ny?</a><a href="/hvor-laenge-holder-en-macbook/">Hvor længe holder en MacBook?</a><a href="/windows-10-support-slut/">Windows 10 support er slut</a><a href="/kan-min-computer-koere-windows-11/">Kan min computer køre Windows 11?</a><a href="/opgradering-til-windows-11/">Opgradering til Windows 11</a><a href="/blaa-skaerm-bsod/">Blå skærm (BSOD)</a><a href="/grafikkort-fejl-baerbar/">Grafikkortfejl på bærbar</a><a href="/macbook-touch-bar-virker-ikke/">MacBook Touch Bar virker ikke</a><a href="/batteriet-holder-ikke/">Batteriet holder ikke</a><a href="/om-os/">Mød teamet</a><a href="/faq/">FAQ</a><a href="/nyheder/">Nyheder</a><a href="/studerende/">Studerende (CBS & DTU)</a><a href="/reparationspriser/">Typiske reparationspriser</a><a href="/garanti/">Garanti</a><a href="/aabningstider/">Åbningstider</a><a href="/kontakt/">Kontakt</a></div>
     <div><h2>Områder vi betjener</h2><a href="/computerreparation-koebenhavn/">København</a><a href="/mac-reparation-koebenhavn/">Mac-reparation i København</a><a href="/it-support-koebenhavn/">IT-support i København</a><a href="/computerreparation-frederiksberg/">Frederiksberg</a><a href="/computerreparation-vesterbro/">Vesterbro</a><a href="/computerreparation-oesterbro/">Østerbro</a><a href="/computerreparation-amager/">Amager</a><a href="/computerreparation-indre-by/">Indre By</a><a href="/computerreparation-christianshavn/">Christianshavn</a><a href="/computerreparation-vanloese/">Vanløse</a><a href="/computerreparation-valby/">Valby</a><a href="/computerreparation-nordvest/">Nordvest</a><a href="/computerreparation-broenshoej/">Brønshøj</a><a href="/computerreparation-bispebjerg/">Bispebjerg</a><a href="/computerreparation-storkoebenhavn/">Storkøbenhavn</a><a href="/fjernsupport/">Resten af Danmark (fjernsupport &amp; indsendelse)</a></div>
     
     <div><h2>Kontakt os</h2><p>📞 <a href="${site.phoneHref}" style="display:inline">${site.phone}</a></p><p>✉️ <a href="mailto:${site.emailConsumer}" style="display:inline">${site.emailConsumer}</a></p><p style="margin-top:14px">Man–fre 10:00–18:00<br />Lør 10:00–14:00<br />Søn lukket</p>
@@ -440,6 +441,20 @@ function contactBody() {
 }
 
 // ---------- business IT ----------
+const BUSINESS_HUB_SPOKES = [
+  ['💬', 'IT-rådgivning (GDPR & NIS2)', 'Ærlig rådgivning om sikkerhed, backup og compliance. Første konsultation er gratis.', '/it-raadgivning/'],
+  ['🖥️', 'Fjernsupport', 'Softwareproblemer løst på afstand — en fast del af enhver supportaftale.', '/fjernsupport/'],
+  ['📍', 'IT-support på Frederiksberg', 'Lokal IT-support fra værkstedet på Falkoner Allé 108.', '/it-support-frederiksberg/'],
+  ['🏙️', 'IT-support i København', 'Fjernsupport eller on-site tekniker i hele byen.', '/it-support-koebenhavn/'],
+  ['💾', 'Automatisk Backup', 'Løbende, automatisk sikkerhedskopiering af computere og servere.', '/automatisk-backup/'],
+  ['🌐', 'Hosting', 'Driftssikker webhosting med daglig backup og gratis SSL.', '/hosting/'],
+  ['🔗', 'Domæner', 'Søg og køb .dk- og .com-domæner direkte online.', '/domaener/'],
+  ['📧', 'Microsoft 365 til virksomheder', 'Opsætning, migrering og løbende administration af M365.', '/microsoft-365-erhverv/'],
+  ['🛡️', 'Forsikringsreparation', 'Reparation dækket af jeres erhvervsforsikring.', '/forsikringsreparation/'],
+];
+function businessHubSpokesHtml() {
+  return BUSINESS_HUB_SPOKES.map(([i, t, d, h]) => `<a class="card card-link" href="${h}"><div class="card-icon">${i}</div><h3>${esc(t)}</h3><p>${esc(d)}</p><span class="arrow">Læs mere →</span></a>`).join('');
+}
 function businessBody() {
   const features = [
     ['🛠️', 'Ubegrænset IT-support', 'Hjælp til jeres medarbejdere via telefon, e-mail og fjernsupport — og on-site i København, når det er nødvendigt. Fast pris, ingen timeafregning.'],
@@ -473,23 +488,41 @@ function businessBody() {
     <h1>IT-supportaftale til erhverv — din IT-afdeling på abonnement</h1>
     <p class="lead">IT-support til fast pris for virksomheder i København og på Frederiksberg. Ubegrænset support, proaktiv overvågning og IT-sikkerhed for én forudsigelig månedlig pris. Vi ligger på Falkoner Allé på Frederiksberg, kører ud i hele København og hjælper resten af landet via fjernsupport.</p>
     <div class="badges"><span class="badge check">Faste pakker fra 399 kr./bruger/md.</span><span class="badge check">Ubegrænset support — ingen timepriser</span><span class="badge check">Svar fra 1 time</span><span class="badge check">Lokal IT-partner på Frederiksberg</span></div>
+    <p class="sub" style="margin-top:14px;color:#C7D3EC">20+ års erfaring · 7-personers team · eget værksted · ⭐ ${esc(site.reviewRating)}/5 fra ${esc(site.reviewCount)} anmeldelser</p>
     <div class="cta-row"><a class="btn btn-ghost-light" href="${site.phoneHref}">📞 Ring ${site.phone}</a><a class="btn btn-white" href="#enquiry">Book en gratis IT-gennemgang</a><a class="hero-text-link" href="#pricing">Se priser →</a></div></div></section>
   <section class="section alt"><div class="wrap"><div class="eyebrow">Hvad er en IT-supportaftale?</div><h2>Én fast aftale — og jeres IT kører bare</h2>
     <p class="sub">En IT-supportaftale til erhverv betyder, at PCKlinik passer på jeres IT, så I kan fokusere på jeres forretning. I får en dedikeret IT-ansvarlig, der kender jeres opsætning, holder øje med jeres systemer og træder til, når noget går galt — uden uventede regninger. I stedet for at ringe rundt efter hjælp har I én partner, der holder styr på det hele.</p>
     <div class="grid grid-3">${feat}</div></div></section>
+  <section class="section"><div class="wrap lead-copy"><h2>IT-serviceaftale, IT-supportaftale eller IT-abonnement — det er det samme hos os</h2>
+    <p>Uanset om I søger efter en IT-serviceaftale, en IT-supportaftale eller et IT-support-abonnement, er det den samme løsning: én fast månedlig pris pr. bruger for ubegrænset support, overvågning og sikkerhed — uden timepriser og uden binding ud over selve betalingsperioden. Se pakker og priser nedenfor.</p></div></section>
+  <section class="section alt"><div class="wrap"><div class="eyebrow">Erhvervsydelser</div><h2>Alt inden for erhvervs-IT — ét team, én aftale</h2>
+    <p class="sub">De fleste erhvervskunder bruger mere end én af disse — det er netop pointen med "al din IT under ét tag".</p>
+    <div class="grid grid-3">${businessHubSpokesHtml()}</div></div></section>
   <section class="section"><div class="wrap"><div class="eyebrow">Hvorfor PCKlinik</div><h2>En rigtig lokal IT-partner — ikke et callcenter</h2><ul class="why-list">
     <li><strong>Forudsigelige IT-omkostninger</strong>Fast månedlig pris, ingen timepriser eller regningsoverraskelser.</li>
     <li><strong>En dedikeret kontaktperson</strong>I får én navngiven IT-ansvarlig, der kender jeres virksomhed, bakket op af et helt team, når der skal flere hænder til.</li>
-    <li><strong>Hurtig hjælp</strong>Garanteret svartid fra 1 arbejdsdag ned til 1 time, afhængigt af jeres pakke.</li>
+    <li><strong>Hurtig hjælp</strong>Garanteret svartid fra 1 arbejdsdag ned til 1 time, afhængigt af jeres pakke. Vi holder bevidst den sidste time inden lukketid fri, så sene henvendelser stadig får svar samme dag.</li>
     <li><strong>Lokalt og landsdækkende</strong>On-site i København og omegn, fjernsupport i hele landet.</li></ul></div></section>
   <section class="section alt"><div class="wrap"><div class="eyebrow">Sådan kommer I i gang</div><h2>Tre enkle trin</h2><div class="steps">
     <div class="step"><div class="num">1</div><h3>Gratis IT-gennemgang</h3><p>Vi kortlægger jeres nuværende IT-opsætning, finder sikkerhedshuller og besparelsesmuligheder — helt uforpligtende.</p></div>
     <div class="step"><div class="num">2</div><h3>En klar plan</h3><p>I får en konkret anbefaling og en supportaftale, der passer til jeres størrelse og behov. I sætter tempoet.</p></div>
     <div class="step"><div class="num">3</div><h3>Vi driver jeres IT</h3><p>Vi opsætter det og vedligeholder det fremover — support, overvågning og sikkerhed inkluderet.</p></div></div></div></section>
+  <section class="section"><div class="wrap"><div class="eyebrow">Typiske kunder</div><h2>Virksomheder, vi kender godt</h2>
+    <p class="sub">Tre eksempler på virksomhedstyper, vi ofte hjælper — hver med sine egne krav til IT.</p>
+    <div class="grid grid-3">
+      <a class="card card-link" href="/it-support-advokatkontor/"><h3>Et advokatkontor på Frederiksberg</h3><p>Klientfortrolighed, adgangsstyring når en fuldmægtig stopper, og backup der virker under en frist.</p><span class="arrow">Se IT-support til advokatkontorer →</span></a>
+      <a class="card card-link" href="/it-support-klinik/"><h3>En klinik med patientkontakt hele dagen</h3><p>Opdateringer planlagt uden for behandlingstiden, patientdata i strengeste GDPR-kategori, adskilt gæste-WiFi.</p><span class="arrow">Se IT-support til klinikker →</span></a>
+      <a class="card card-link" href="/it-support-mindre-virksomheder-frederiksberg/"><h3>En mindre virksomhed uden egen IT-afdeling</h3><p>Én fast kontakt i stedet for flere leverandører at ringe rundt til.</p><span class="arrow">Se IT-support til mindre virksomheder →</span></a>
+    </div></div></section>
   <section class="section" id="pricing"><div class="wrap"><div class="eyebrow">Priser & pakker</div><h2>Gennemsigtige priser — ingen overraskelser</h2>
     <p class="sub">Vælg den pakke, der passer til jeres virksomhed. Fast pris pr. bruger, ekskl. moms — ingen binding.</p>
     <div class="pricing-grid">${price}</div>
     <p class="center" style="margin-top:28px;color:var(--muted)">Er I i tvivl om, hvad I har brug for? <a href="${site.phoneHref}">Ring ${site.phone}</a> for en uforpligtende IT-gennemgang.</p></div></section>
+  <section class="section"><div class="wrap"><div class="eyebrow">Klippekort</div><h2>Ikke klar til en fast aftale?</h2>
+    <p class="sub">Nogle virksomheder har brug for hjælp nu og da, men ikke en løbende aftale. Derfor tilbyder vi også klippekort — timer, I køber på forhånd og trækker på, når I har brug for os. Til support, opsætning, netværk eller et konkret projekt.</p>
+    <div class="badges"><span class="badge check">5 timer — 1.000 kr./time</span><span class="badge check">10 timer — 950 kr./time</span><span class="badge check">20 timer — 900 kr./time</span></div>
+    <p class="sub" style="margin-top:16px">Priserne er ekskl. moms. I får den samme tekniker og den samme kvalitet som i vores abonnementer. Til gengæld er der ikke ubegrænset support, overvågning eller garanteret svartid — det hører til abonnementerne ovenfor.</p>
+    <p class="sub">Bruger I os jævnligt, er et abonnement næsten altid billigere. Det siger vi ærligt, også selvom klippekortet giver os pengene op front. Ring på <a href="${site.phoneHref}">${site.phone}</a>, så regner vi på det sammen.</p></div></section>
   <section class="section alt"><div class="wrap"><div class="eyebrow">Find os på Frederiksberg</div><h2>En fysisk IT-butik og værksted — ikke bare en hjemmeside</h2>
     <p class="sub">Kig forbi, ring eller skriv, så finder vi den rette aftale til jer.</p>
     <div class="info-block"><div class="nap"><p><strong>Adresse</strong><br />${site.address}</p><p><strong>Telefon</strong><br /><a href="${site.phoneHref}">${site.phone}</a></p><p><strong>E-mail</strong><br /><a href="mailto:${site.emailBusiness}">${site.emailBusiness}</a></p></div>${mapFrame}</div></div></section>
@@ -507,7 +540,7 @@ function businessBody() {
       </form>
     </div></div></section>
   <section class="section"><div class="wrap"><div class="eyebrow">FAQ</div><h2>IT-support til erhverv — ofte stillede spørgsmål</h2><div class="faq">${faqHtml}</div></div></section>
-  <section class="section alt"><div class="wrap"><p class="eyebrow">Relateret</p><div class="crosslinks"><a href="/it-raadgivning/">IT-rådgivning →</a><a href="/microsoft-365-erhverv/">Microsoft 365 til virksomheder →</a><a href="/it-support-frederiksberg/">IT-support på Frederiksberg →</a><a href="/fjernsupport/">Fjernsupport →</a><a href="/windows-10-erhverv-migrering/">Windows 10-migrering for virksomheder →</a><a href="/it-support-advokatkontor/">IT-support til advokatkontorer →</a><a href="/it-support-klinik/">IT-support til klinikker →</a><a href="/it-support-mindre-virksomheder-frederiksberg/">IT-support til mindre virksomheder →</a><a href="/automatisk-backup/">Automatisk Backup →</a><a href="/kontakt/">Kontakt & booking →</a></div></div></section>`;
+  <section class="section alt"><div class="wrap"><p class="eyebrow">Relateret</p><div class="crosslinks"><a href="/it-raadgivning/">IT-rådgivning →</a><a href="/microsoft-365-erhverv/">Microsoft 365 til virksomheder →</a><a href="/it-support-frederiksberg/">IT-support på Frederiksberg →</a><a href="/it-support-koebenhavn/">IT-support i København →</a><a href="/fjernsupport/">Fjernsupport →</a><a href="/hosting/">Hosting →</a><a href="/domaener/">Domæner →</a><a href="/windows-10-erhverv-migrering/">Windows 10-migrering for virksomheder →</a><a href="/it-support-advokatkontor/">IT-support til advokatkontorer →</a><a href="/it-support-klinik/">IT-support til klinikker →</a><a href="/it-support-mindre-virksomheder-frederiksberg/">IT-support til mindre virksomheder →</a><a href="/automatisk-backup/">Automatisk Backup →</a><a href="/forsikringsreparation/">Forsikringsreparation →</a><a href="/kontakt/">Kontakt & booking →</a></div></div></section>`;
 }
 function businessSchemaFaq() {
   return { '@context': 'https://schema.org', '@type': 'FAQPage', mainEntity: FAQ_BUSINESS.map(([q, a]) => ({ '@type': 'Question', name: q, acceptedAnswer: { '@type': 'Answer', text: a } })) };
@@ -519,8 +552,12 @@ const FAQ_BUSINESS = [
   ['Hvad koster en IT-supportaftale?', 'Vi har tre pakker: Starter fra 399 kr., Premium 599 kr. og Exclusive 899 kr. pr. bruger pr. måned (ekskl. moms). I betaler en fast månedlig pris, så I altid kender omkostningen på forhånd. Usikker på, hvilken pakke der passer? Book en gennemgang.'],
   ['Er det samme som en IT-serviceaftale eller et IT-support-abonnement?', 'Ja — "IT-supportaftale", "IT-serviceaftale" og "IT-support-abonnement" dækker det samme hos os: én fast månedlig pris for ubegrænset support, overvågning og sikkerhed, uden timepriser.'],
   ['Er der nogen skjulte gebyrer?', 'Nej — aldrig. I betaler én fast månedlig pris pr. bruger, og det er det. Ingen opstartsgebyr, ingen timepris for supporthenvendelser og ingen overraskelser på fakturaen.'],
-  ['Hvad er jeres svartid?', 'Det afhænger af jeres pakke: Starter garanterer svar inden for 1 arbejdsdag, Premium inden for 4 timer, og Exclusive inden for 1 time — alt i normal åbningstid (man–fre 10:00–17:00).'],
-  ['Kan I opsige jeres abonnement når som helst?', 'Månedlige abonnementer kan opsiges med en måneds varsel. Årlige abonnementer løber til periodens udløb. Ingen binding ud over det.'],
+  ['Hvad er jeres svartid?', 'Det afhænger af jeres pakke: Starter garanterer svar inden for 1 arbejdsdag, Premium inden for 4 timer, og Exclusive inden for 1 time. Svartiderne gælder inden for supporttiden man–fre 10:00–17:00. Den sidste time inden lukketid holder vi bevidst fri, så vi kan nå de henvendelser, der kommer sent på dagen — ringer I kl. 17:00, får I stadig svar samme dag. Værkstedet på Falkoner Allé har åbent til 18:00.'],
+  ['Kan I opsige jeres abonnement når som helst?', 'Ja. Der er ingen bindingsperiode. Opsiger I et månedligt abonnement, løber det til udgangen af den måned, I opsiger i — der er ingen efterfølgende opsigelsesperiode. Årlige abonnementer løber til periodens udløb.'],
+  ['Tilbyder I hjælp uden et fast abonnement?', 'Ja — klippekort på 5, 10 eller 20 timer, som I trækker på efter behov. Bruger I os jævnligt, er et abonnement som regel billigere; det siger vi ærligt.'],
+  ['Hvad er forskellen på klippekort og abonnement?', 'Klippekortet er timer, I køber på forhånd og bruger, når I har brug for os. Abonnementet er en fast månedlig pris med ubegrænset support, overvågning, sikkerhed og garanteret svartid. Klippekort passer til enkeltopgaver, abonnement til løbende drift.'],
+  ['Udløber timerne?', 'Nej. Jeres timer udløber ikke. Bruger I dem inden for 12 måneder, gælder den pris, I købte til. Går der mere end et år, omregnes den resterende værdi til dagens timepris — I mister ikke værdien, men et klippekort købt for flere år siden dækker naturligvis lidt færre timer i dag.'],
+  ['Hvad koster en time uden abonnement?', '1.000 kr. ekskl. moms. Køber I et klippekort, falder timeprisen til 950 kr. (10 timer) eller 900 kr. (20 timer).'],
   ['Hvad dækker "ubegrænset support"?', 'Alt vedrørende jeres daglige IT: computer- og softwareproblemer, netværksproblemer, printere, e-mail, Microsoft 365, virus og sikkerhed. Dækker ikke hardwareudskiftning eller kundespecifik udvikling — det aftaler vi særskilt.'],
   ['Fungerer det for virksomheder af enhver størrelse?', 'Ja. Vi hjælper enkeltmandsvirksomheder, kontorer med 2–3 medarbejdere og virksomheder med 50+ brugere. Prisen er pr. bruger, så I betaler præcis for det, I har brug for.'],
   ['Skal I installere noget?', 'Vi installerer et lille fjernadgangsværktøj (TeamViewer eller lignende), så vi hurtigt kan hjælpe jer, uden at I behøver komme til os. Opsætningen tager typisk under 15 minutter, og vi klarer den for jer.'],
@@ -573,7 +610,8 @@ function hostingBody() {
     <p class="sub">Vælg den pakke, der passer til din hjemmeside. Fast pris pr. måned, ekskl. moms — ingen binding.</p>
     <div class="pricing-grid">${cards}</div>
     <p class="center" style="margin-top:28px;color:var(--muted)">Er du i tvivl om, hvilken pakke der passer? <a href="${site.phoneHref}">Ring ${site.phone}</a> eller <a href="/kontakt/">kontakt os</a>.</p></div></section>
-  <section class="section"><div class="wrap"><div class="eyebrow">FAQ</div><h2>Hosting — ofte stillede spørgsmål</h2><div class="faq">${faqHtml}</div></div></section>`;
+  <section class="section"><div class="wrap"><div class="eyebrow">FAQ</div><h2>Hosting — ofte stillede spørgsmål</h2><div class="faq">${faqHtml}</div></div></section>
+  <section class="section alt"><div class="wrap"><p class="eyebrow">Relateret</p><div class="crosslinks"><a href="/domaener/">Domæner →</a><a href="/hjemmesider-seo-google-ads/">Hjemmesider & SEO →</a><a href="/it-support-til-erhverv/">IT-support til erhverv →</a><a href="/automatisk-backup/">Automatisk Backup →</a><a href="/kontakt/">Kontakt →</a></div></div></section>`;
 }
 function hostingSchemaFaq() {
   return { '@context': 'https://schema.org', '@type': 'FAQPage', mainEntity: HOSTING_FAQ.map(([q, a]) => ({ '@type': 'Question', name: q, acceptedAnswer: { '@type': 'Answer', text: a } })) };
@@ -598,7 +636,7 @@ const AUTOMATISK_BACKUP_FAQ = [
 ];
 function automatiskBackupBody() {
   const cards = AUTOMATISK_BACKUP_TIERS.map(([name, price, blurb]) => {
-    const mailto = `mailto:${site.emailConsumer}?subject=${encodeURIComponent('Interesse: Automatisk Backup – ' + name)}`;
+    const mailto = `mailto:${site.emailBusiness}?subject=${encodeURIComponent('Interesse: Automatisk Backup – ' + name)}`;
     return `<div class="price-card"><div class="tag">${esc(name)}</div><h3>${esc(name)}</h3><p class="blurb">${esc(blurb)}</p><div class="price">${price} kr. <small>/ måned</small></div><div class="vat">ekskl. moms</div><a class="btn btn-outline" href="${mailto}">Kontakt os for at komme i gang</a><div class="fine">Ingen binding</div></div>`;
   }).join('');
   const why = [
@@ -619,8 +657,9 @@ function automatiskBackupBody() {
     <div class="pricing-grid">${cards}</div></div></section>
   <section class="section"><div class="wrap"><div class="eyebrow">Sådan kommer du i gang</div><h2>Kontakt os for at komme i gang</h2>
     <p class="sub">Skriv til os eller ring, så sætter vi din automatiske backup op — vi rådgiver gerne om, hvilken plan der passer til dine behov.</p>
-    <div class="cta-row"><a class="btn btn-primary" href="mailto:${site.emailConsumer}?subject=${encodeURIComponent('Interesse: Automatisk Backup')}">Kontakt os for at komme i gang</a><a class="btn btn-outline" href="${site.phoneHref}">📞 Ring ${site.phone}</a></div></div></section>
-  <section class="section alt"><div class="wrap"><div class="eyebrow">FAQ</div><h2>Automatisk Backup — ofte stillede spørgsmål</h2><div class="faq">${faqHtml}</div></div></section>`;
+    <div class="cta-row"><a class="btn btn-primary" href="mailto:${site.emailBusiness}?subject=${encodeURIComponent('Interesse: Automatisk Backup')}">Kontakt os for at komme i gang</a><a class="btn btn-outline" href="${site.phoneHref}">📞 Ring ${site.phone}</a></div></div></section>
+  <section class="section alt"><div class="wrap"><div class="eyebrow">FAQ</div><h2>Automatisk Backup — ofte stillede spørgsmål</h2><div class="faq">${faqHtml}</div></div></section>
+  <section class="section"><div class="wrap"><p class="eyebrow">Relateret</p><div class="crosslinks"><a href="/it-support-til-erhverv/">IT-support til erhverv →</a><a href="/it-raadgivning/">IT-rådgivning →</a><a href="/backup-og-datagendannelse/">Backup & datagendannelse →</a><a href="/kontakt/">Kontakt →</a></div></div></section>`;
 }
 function automatiskBackupSchemaFaq() {
   return { '@context': 'https://schema.org', '@type': 'FAQPage', mainEntity: AUTOMATISK_BACKUP_FAQ.map(([q, a]) => ({ '@type': 'Question', name: q, acceptedAnswer: { '@type': 'Answer', text: a } })) };
@@ -721,6 +760,7 @@ function domaenerBody() {
     </div>
   </div></section>
   <section class="section alt"><div class="wrap"><div class="eyebrow">FAQ</div><h2>Ofte stillede spørgsmål</h2><div class="faq">${DOMAENER_FAQ.map((f) => `<details><summary>${esc(f.q)}</summary><div class="answer">${esc(f.a)}</div></details>`).join('')}</div></div></section>
+  <section class="section"><div class="wrap"><p class="eyebrow">Relateret</p><div class="crosslinks"><a href="/hosting/">Hosting →</a><a href="/hjemmesider-seo-google-ads/">Hjemmesider & SEO →</a><a href="/it-support-til-erhverv/">IT-support til erhverv →</a><a href="/kontakt/">Kontakt →</a></div></div></section>
   <script>
   (function(){
     var nameEl=document.getElementById('dom-name'),
@@ -1038,7 +1078,7 @@ function locationBody(loc) {
   ${areas}
   ${remoteAreas}
   <section class="section"><div class="wrap"><div class="eyebrow">FAQ</div><h2>Ofte stillede spørgsmål</h2><div class="faq">${faq}</div></div></section>
-  <section class="section alt"><div class="wrap"><div class="eyebrow">Find os</div><h2>Vores værksted — Falkoner Allé 108, Frederiksberg</h2><p class="sub">Vi betjener dette område fra vores værksted på Frederiksberg — kom forbi med din enhed, eller kontakt os for at høre mere.</p>${mapFrame}</div></section>
+  <section class="section alt"><div class="wrap"><div class="eyebrow">Find os</div><h2>Vores værksted — Falkoner Allé 108, Frederiksberg</h2><p class="sub">Vi betjener dette område fra vores værksted på Frederiksberg — kom forbi med din enhed, eller kontakt os for at høre mere. Driver du virksomhed? Se vores <a href="/it-support-til-erhverv/">IT-support til erhverv →</a></p>${mapFrame}</div></section>
   <section class="section"><div class="wrap"><div class="cta-band"><h2>Brug for reparation ${['Frederiksberg','Vesterbro','Nørrebro','Østerbro','Amager','Christianshavn'].includes(loc.name) ? 'på' : 'i'} ${esc(loc.name)}?</h2><p>Fejlsøgning 300 kr. inkl. moms (3–4 dage) eller ekspres (600 kr. inkl. moms, 1–2 timer). Fast pris, før vi går i gang.</p><div class="cta-row"><a class="btn btn-white" href="/kontakt/">Kom forbi med din enhed</a><a class="btn btn-ghost-light" href="${site.phoneHref}">📞 Ring ${site.phone}</a></div></div>
     <div style="margin-top:32px"><p class="eyebrow">Relateret</p><div class="crosslinks">${cross}</div></div></div></section>`;
 }
