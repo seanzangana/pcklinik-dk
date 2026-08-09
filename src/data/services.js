@@ -450,7 +450,7 @@ export const services = [
       { q: 'Bygger I med en website-builder som Wix eller Squarespace, eller rigtig kode?', a: 'Rigtig kode — HTML, CSS og moderne web-frameworks, ikke en drag-and-drop-builder. Det betyder bedre ydelse, mere fleksibilitet og ingen leverandørbinding til en page-builder-platform.' },
       { q: 'Bruger I WordPress?', a: 'Ikke som standard — vi bygger med moderne, lette frameworks frem for WordPress, hvilket undgår de plugin-sikkerheds- og ydelsesproblemer, WordPress-sider ofte er tilbøjelige til. Har du specifikt brug for WordPress til en eksisterende opsætning, så kontakt os for at drøfte det.' },
     ],
-    crosslinks: [{ label: 'SEO-ydelser', href: '/seo-ydelser/' }, { label: 'Hjemmesider & SEO', href: '/hjemmesider-seo-google-ads/' }],
+    crosslinks: [{ label: 'SEO-ydelser', href: '/seo-ydelser/' }, { label: 'Hjemmesider & SEO', href: '/hjemmesider-seo-google-ads/' }, { label: 'Hosting', href: '/hosting/' }, { label: 'Domæner', href: '/domaener/' }],
   },
   {
     slug: 'seo-ydelser', group: 'Web',
@@ -546,6 +546,7 @@ export const services = [
       { label: 'Typiske reparationspriser', href: '/reparationspriser/' },
       { label: 'Reparere eller købe ny computer?', href: '/reparere-eller-koebe-ny-computer/' },
       { label: 'Garanti', href: '/garanti/' },
+      { label: 'Driver du virksomhed? Se IT-support til erhverv', href: '/it-support-til-erhverv/' },
     ],
   },
   {
@@ -661,7 +662,7 @@ export const services = [
         'Løbende overvågning og support uden timepriser',
       ] },
     ],
-    callout: { label: 'Til virksomheder i København', text: 'Har I brug for løbende IT-support frem for enkeltopgaver, tilbyder vi en fast IT-serviceaftale med ubegrænset support, overvågning og sikkerhed til én fast månedspris — uanset om I sidder i Indre By, på Amager eller ude i Valby.' },
+    callout: { label: 'Til virksomheder i København', text: 'Har I brug for løbende IT-support frem for enkeltopgaver, tilbyder vi en fast IT-serviceaftale med ubegrænset support, overvågning og sikkerhed til én fast månedspris — uanset om I sidder i Indre By, på Amager eller ude i Valby. Svartiden afhænger af jeres pakke: Starter 1 arbejdsdag, Premium 4 timer, Exclusive 1 time. Skriv til support@pcklinik.dk, eller se IT-rådgivning, hvis I hellere vil starte med en gennemgang.' },
     faq: [
       { q: 'Dækker I hele København, eller kun tæt på værkstedet?', a: 'Hele byen. De fleste sager løses via fjernsupport, og har du brug for en tekniker ude hos dig, dækker vi alle bydele — Indre By, Østerbro, Nørrebro, Amager, Valby og resten af København.' },
       { q: 'Hvad koster IT-support i København?', a: 'Enkeltopgaver afregnes til en fast pris, du får oplyst, før vi går i gang. Løbende IT-support til erhverv starter ved 399 kr. pr. bruger pr. måned med ubegrænset support og ingen timepriser.' },
@@ -673,6 +674,8 @@ export const services = [
     crosslinks: [
       { label: 'IT-support til erhverv (serviceaftale)', href: '/it-support-til-erhverv/' },
       { label: 'IT-support på Frederiksberg', href: '/it-support-frederiksberg/' },
+      { label: 'IT-rådgivning', href: '/it-raadgivning/' },
+      { label: 'Microsoft 365 til virksomheder', href: '/microsoft-365-erhverv/' },
       { label: 'Fjernsupport', href: '/fjernsupport/' },
       { label: 'On-site tekniker', href: '/on-site-tekniker/' },
       { label: 'Computerreparation i København', href: '/computerreparation-koebenhavn/' },
