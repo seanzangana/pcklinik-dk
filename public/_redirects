@@ -148,6 +148,19 @@
 /liquid-damage-repair/                 /vaeskeskade-reparation/  301
 
 # ---------------------------------------------------------------------------
+# Nyheder — slug-rettelser (2026-08-11). Filnavnene blev oprindeligt oprettet
+# med æ/ø tabt som bar bindestreg i stedet for translittereret (fx "opsætning"
+# -> "ops-tning" i stedet for "opsaetning"), i modstrid med sitets egen
+# konvention andre steder. Disse 3 URL'er er live og indekserede lige nu, så
+# selvom de er helt nye, er dette ikke en gammel-WP-oprydning efter
+# kriterie-politikken ovenfor — det er os, der omdøber en aktiv, indekseret
+# URL, og enhver sådan omdøbning 301'es for at bevare linkværdi/indeksering.
+# ---------------------------------------------------------------------------
+/nyheder/gr-n-it-for-danske-virksomheder-reducer-milj-fodaftryk-mens-du-sparer-penge/  /nyheder/groen-it-for-danske-virksomheder-reducer-miljoefodaftryk-mens-du-sparer-penge/  301
+/nyheder/it-budget-for-dansk-smv-hvordan-planl-gger-du-it-udgifter-og-undgar-dyrt-stilstand/  /nyheder/it-budget-for-dansk-smv-hvordan-planlaegger-du-it-udgifter-og-undgaar-dyrt-stilstand/  301
+/nyheder/sikker-wifi-ops-tning-for-butikker-og-kontorer-it-sikkerhed-guide/  /nyheder/sikker-wifi-opsaetning-for-butikker-og-kontorer-it-sikkerhed-guide/  301
+
+# ---------------------------------------------------------------------------
 # ÅBNE PUNKTER — skal revideres, når de nævnte sider findes
 # ---------------------------------------------------------------------------
 #
