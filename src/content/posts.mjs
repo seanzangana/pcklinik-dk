@@ -15,7 +15,7 @@
 import { promises as fs } from 'node:fs';
 import path from 'node:path';
 
-const esc = (s) => String(s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
+const esc = (s) => String(s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
 
 // ---------- frontmatter ----------
 // Deliberately minimal: flat `key: value` pairs between a pair of `---`
