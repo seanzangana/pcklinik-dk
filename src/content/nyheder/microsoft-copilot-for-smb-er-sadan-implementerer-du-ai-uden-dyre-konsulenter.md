@@ -1,5 +1,5 @@
 ---
-title: "Microsoft Copilot for SMB'er: Sådan Implementerer du AI uden Dyre Konsulenter"
+title: "Microsoft Copilot for SMB'er uden Konsulenter"
 date: 2026-08-03
 category: Blog
 description: "Microsoft Copilot SMB løsninger åbner døren til kunstig intelligens uden de massive investeringer, som mange små virksomheder tror er nødvendige. Hvis du ejer e"
