@@ -1,5 +1,5 @@
 ---
-title: "Sikker WiFi opsætning for butikker og kontorer: IT sikkerhed guide"
+title: "Sikker WiFi-opsætning for Butikker og Kontorer"
 date: 2026-08-02
 category: Guides
 description: "Hvis du ejer en butik eller et lille kontor i Danmark, er det sandsynligt, at du har WiFi til dine medarbejdere og kunder. Men har du tænkt over, hvor usikker d"
