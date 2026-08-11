@@ -681,6 +681,8 @@ export function itSupportFrederiksbergHtml() {
     ['/it-support-mindre-virksomheder/', 'Mindre virksomheder', 'Én fast kontakt i stedet for fem leverandører at ringe rundt til.'],
     ['/it-support-revisor-bogholder/', 'Revisorer & bogholdere', 'Regnskabssystemer, der virker ved kvartalsafslutning, og backup med versionering.'],
     ['/it-support-butik-og-restaurant/', 'Butikker & restauranter', 'Kassesystem og betalingsterminal, der ikke går ned i myldretiden.'],
+    ['/it-support-arkitekt-og-design/', 'Arkitekt- & designtegnestuer', 'Mac-tunge miljøer, store CAD- og Revit-filer, fildeling med bygherrer og farvekalibrerede skærme.'],
+    ['/it-support-forening-og-organisation/', 'Foreninger & organisationer', 'Adgange og dokumenter, der følger posten, ikke personen, når bestyrelsen skifter.'],
   ].map(([href, t, b]) => `<a class="card card-link" href="${href}"><h3>${esc(t)}</h3><p>${esc(b)}</p><span class="arrow">Se IT-support til ${esc(t.toLowerCase())} →</span></a>`).join('');
   return `  <section class="hero"><div class="wrap"><div class="eyebrow">Erhverv · Frederiksberg</div>
     <h1>IT-support til virksomheder på Frederiksberg</h1><p class="lead">De fleste IT-leverandører dækker Frederiksberg. Vi ligger her — på Falkoner Allé 108. Ingen kørsel at betale for, ingen ventetid på en ledig tekniker.</p>
@@ -701,7 +703,7 @@ export function itSupportFrederiksbergHtml() {
     <p class="sub">En fast IT-supportaftale koster fra 399 kr. pr. bruger pr. måned (Starter), 599 kr. (Premium) eller 899 kr. (Exclusive), med garanteret svartid ned til 1 time. Ikke klar til en fast aftale? Køb i stedet et klippekort på 5, 10 eller 20 timer og brug dem, når I har brug for os — timeprisen falder, jo flere timer I køber. <a href="/it-support-til-erhverv/">Se alle pakker, svartider og klippekort-priser →</a></p></div></section>
   <section class="section alt"><div class="wrap"><div class="eyebrow">Din branche</div><h2>IT-support skræddersyet til jeres fag</h2>
     <p class="sub">Vi kender de problemer, der går igen i jeres branche — og bygger jeres aftale omkring dem.</p>
-    <div class="grid grid-3">${branches}</div></div></section>
+    <div class="grid grid-4">${branches}</div></div></section>
   <section class="section"><div class="wrap"><div class="eyebrow">FAQ</div><h2>IT-support på Frederiksberg — ofte stillede spørgsmål</h2><div class="faq">${faqHtml}</div></div></section>
   <section class="section alt"><div class="wrap"><div class="cta-band"><h2>Klar til en uforpligtende snak om jeres IT?</h2><p>Skriv til ${site.emailBusiness} eller ring, så kigger vi på jeres nuværende opsætning og finder de svage punkter — helt uforpligtende.</p><div class="cta-row"><a class="btn btn-white" href="/kontakt/">Book en gratis IT-gennemgang</a><a class="btn btn-ghost-light" href="${site.phoneHref}">📞 Ring ${site.phone}</a></div></div>
     <div style="margin-top:32px"><p class="eyebrow">Relateret</p><div class="crosslinks"><a href="/it-support-til-erhverv/">IT-support til erhverv (serviceaftale) →</a><a href="/it-raadgivning/">IT-rådgivning →</a><a href="/fjernsupport/">Fjernsupport →</a><a href="/on-site-tekniker/">On-site tekniker →</a><a href="/computerreparation-frederiksberg/">Computerreparation på Frederiksberg →</a><a href="/wifi-og-netvaerksfejlfinding/">WiFi- &amp; netværksfejlfinding →</a><a href="/automatisk-backup/">Automatisk Backup →</a><a href="/aabningstider/">Åbningstider →</a></div></div></div></section>`;
@@ -934,6 +936,82 @@ export function itSupportButikRestaurantHtml() {
   <section class="section"><div class="wrap"><div class="eyebrow">FAQ</div><h2>IT-support til butikker og restauranter — ofte stillede spørgsmål</h2><div class="faq">${faqHtml}</div></div></section>
   <section class="section alt"><div class="wrap"><div class="cta-band"><h2>Klar til en uforpligtende snak om jeres IT?</h2><p>Skriv til ${site.emailBusiness} eller ring, så kigger vi på jeres nuværende opsætning og finder de svage punkter.</p><div class="cta-row"><a class="btn btn-white" href="/kontakt/">Book en gratis IT-gennemgang</a><a class="btn btn-ghost-light" href="${site.phoneHref}">📞 Ring ${site.phone}</a></div></div>
     <div style="margin-top:32px"><p class="eyebrow">Relateret</p><div class="crosslinks"><a href="/it-support-frederiksberg/">IT-support på Frederiksberg →</a><a href="/it-support-klinik/">IT-support til klinikker →</a><a href="/it-support-til-erhverv/">IT-support til erhverv →</a><a href="/it-raadgivning/">IT-rådgivning →</a><a href="/automatisk-backup/">Automatisk Backup →</a><a href="/kontakt/">Kontakt &amp; booking →</a></div></div></div></section>`;
+}
+
+// ---------- B2B: Arkitekt- & designtegnestuer ----------
+// Angle: store filer, Mac-tunge miljøer, deadlines mod bygherre. Per DEL 4
+// this page also links out directly to the Mac repair pages (not a sister
+// B2B page — the maskiner selv), since arkitekter er et af de mest
+// Mac-tunge segmenter på hele sitet.
+export const IT_SUPPORT_ARKITEKT_FAQ = [
+  { q: 'Kan I sætte Mac op sammen med CAD, Revit eller InDesign?', a: 'Ja. Vi sætter Mac-miljøet op til jeres arbejdsgange, inkl. lagring og netværk, der er dimensioneret til store filer — ikke standardopsætning fra en boks.' },
+  { q: 'Reparerer I også selve Mac-hardwaren, eller kun softwaren?', a: 'Begge dele. Vi har eget værksted med reservedele på hylden — går en skærm, et batteri eller et drev i stykker, reparerer vi det samme sted, som vi supporterer softwaren.' },
+  { q: 'Hvordan sikrer I hurtig og sikker fildeling med bygherrer og underleverandører?', a: 'Vi sætter sikker fildeling op, dimensioneret til store tegningsfiler, så I kan dele med eksterne uden at maile store vedhæftninger frem og tilbage.' },
+  { q: 'Kan I hjælpe med versionsstyring, så alle arbejder på den nyeste tegning?', a: 'Ja — vi sætter strukturer op, der gør det tydeligt, hvilken version der gælder, så en underleverandør ikke ved et uheld bygger efter en gammel udgave.' },
+  { q: 'Hvad med farvekalibrering af skærme?', a: 'Vi kalibrerer skærme, så det, I ser på skærmen, matcher det, der ender med at blive trykt eller bygget — vigtigt, når farver og materialer skal godkendes af en bygherre.' },
+  { q: 'Rådgiver I om selve designet eller arkitekturen?', a: 'Nej — vi er ikke arkitekter eller designere. Vi står for teknikken: at store filer håndteres hurtigt, deles sikkert, og at det, I ser på skærmen, er til at stole på.' },
+];
+export function itSupportArkitektHtml() {
+  const faqHtml = IT_SUPPORT_ARKITEKT_FAQ.map((f) => `<details><summary>${esc(f.q)}</summary><div class="answer">${esc(f.a)}</div></details>`).join('');
+  const cards = [
+    ['🖥️', 'Mac-tungt miljø', 'Vi laver begge dele — sætter Mac op til jeres arbejdsgange, og reparerer den samme dag, hvis hardwaren driller.'],
+    ['📐', 'CAD, Revit, InDesign', 'Lagring og hastighed dimensioneret til store filer, ikke en standardopsætning fra en boks.'],
+    ['📤', 'Fildeling med bygherrer & underleverandører', 'Sikker deling af store tegningsfiler, uden at store vedhæftninger skal mailes frem og tilbage.'],
+    ['🗂️', 'Versionsstyring', 'Tydeligt, hvilken tegning der gælder — så en underleverandør ikke bygger efter en gammel udgave.'],
+    ['🎨', 'Farvekalibrerede skærme', 'Det, I ser på skærmen, matcher det, der ender med at blive trykt eller bygget.'],
+  ].map(([i, t, b]) => `<div class="card"><div class="card-icon">${i}</div><h3>${esc(t)}</h3><p>${esc(b)}</p></div>`).join('');
+  return `  <section class="hero"><div class="wrap"><div class="eyebrow">Erhverv · Arkitekt- &amp; designtegnestuer</div>
+    <h1>IT-support til arkitekt- og designtegnestuer</h1><p class="lead">Store filer, Mac-tunge miljøer og deadlines mod en bygherre stiller andre krav til IT. Vi sætter det op — og reparerer maskinerne, når hardwaren driller.</p>
+    <div class="cta-row"><a class="btn btn-white" href="/kontakt/">Book en gratis IT-gennemgang</a><a class="btn btn-ghost-light" href="${site.phoneHref}">📞 Ring ${site.phone}</a></div></div></section>
+  <section class="section"><div class="wrap lead-copy"><div class="crumbs"><a href="/">Forside</a> › <a href="/it-support-frederiksberg/">IT-support på Frederiksberg</a> › <span>Arkitekt- &amp; designtegnestuer</span></div>
+    <p>På en arkitekt- eller designtegnestue er IT sjældent bare kontorudstyr — det er store CAD- og Revit-filer, der skal håndteres hurtigt, tegninger der skal deles sikkert med bygherrer og underleverandører, og skærme, hvor farverne skal kunne stoles på. Vi bygger jeres IT-support omkring den virkelighed, ikke en generisk erhvervspakke.</p>
+    <p>Vi er ikke arkitekter eller designere, og vi rådgiver ikke om selve designet. Det, vi gør, er at stå for teknikken bag det — Mac-miljøet, lagringen, fildelingen og maskinerne selv.</p>
+    <p>Der ligger en del arkitekt- og designtegnestuer på Frederiksberg. Vores værksted er på Falkoner Allé 108 — vi er der på få minutter, og vi reparerer Mac-hardware selv, i modsætning til leverandører, der kun supporterer softwaren.</p></div></section>
+  <section class="section alt"><div class="wrap"><div class="eyebrow">Derfor er IT ikke bare IT på en arkitekt- eller designtegnestue</div><h2>Fem ting, vi bygger jeres aftale omkring</h2><div class="grid grid-3">${cards}</div></div></section>
+  <section class="section"><div class="wrap"><div class="callout"><strong>Sagt tydeligt:</strong> Vi er ikke arkitekter eller designere — vi rådgiver ikke om selve tegningen eller designet. Vores opgave er, at Mac-miljøet, lagringen og fildelingen virker, og at maskinerne bliver repareret, når de driller.</div></div></section>
+  <section class="section alt"><div class="wrap"><div class="eyebrow">Svartider</div><h2>Klar besked om, hvor hurtigt vi svarer</h2>
+    <p class="sub">Med <strong>Starter</strong> har I svar inden for 1 arbejdsdag, med <strong>Premium</strong> inden for 4 timer, og med <strong>Exclusive</strong> inden for 1 time — alt i normal åbningstid. <a href="/it-support-til-erhverv/">Se alle pakker og priser →</a></p></div></section>
+  <section class="section"><div class="wrap"><div class="eyebrow">FAQ</div><h2>IT-support til arkitekt- og designtegnestuer — ofte stillede spørgsmål</h2><div class="faq">${faqHtml}</div></div></section>
+  <section class="section alt"><div class="wrap"><div class="cta-band"><h2>Klar til en uforpligtende snak om jeres IT?</h2><p>Skriv til ${site.emailBusiness} eller ring, så kigger vi på jeres nuværende opsætning og finder de svage punkter.</p><div class="cta-row"><a class="btn btn-white" href="/kontakt/">Book en gratis IT-gennemgang</a><a class="btn btn-ghost-light" href="${site.phoneHref}">📞 Ring ${site.phone}</a></div></div>
+    <div style="margin-top:32px"><p class="eyebrow">Relateret</p><div class="crosslinks"><a href="/it-support-frederiksberg/">IT-support på Frederiksberg →</a><a href="/mac-reparation/">Mac-reparation →</a><a href="/macbook-reparation/">MacBook-reparation →</a><a href="/it-support-til-erhverv/">IT-support til erhverv →</a><a href="/automatisk-backup/">Automatisk Backup →</a><a href="/kontakt/">Kontakt &amp; booking →</a></div></div></div></section>`;
+}
+
+// ---------- B2B: Foreninger & organisationer ----------
+// Angle: skiftende frivillige, begrænset budget — distinct from the paying-
+// business angles above. Leans on refurbished/budget-friendly framing,
+// consistent with the "ærligt om enterprise" honesty pattern used on the
+// mindre-virksomheder page.
+export const IT_SUPPORT_FORENING_FAQ = [
+  { q: 'Hvad sker der med adgange, når bestyrelsen skifter?', a: 'Vi overdrager adgange struktureret til den nye bestyrelse, så mail, dokumenter og systemer ikke forsvinder med den forrige kasserer eller formand.' },
+  { q: 'Kan I sætte fælles postkasser og dokumenter op, så den nye bestyrelse har adgang med det samme?', a: 'Ja — vi sætter fælles postkasser og dokumentdeling op, som følger posten, ikke personen, så et bestyrelsesskift ikke betyder, at noget går tabt.' },
+  { q: 'Hvordan håndterer I medlemsdata og GDPR for en forening?', a: 'Vi sætter adgangsstyring og opbevaring op, så medlemsdata er beskyttet efter reglerne — også når det er frivillige, der administrerer det.' },
+  { q: 'Er refurbished udstyr en god løsning for en forening med stramt budget?', a: 'Ofte ja. Vi rådgiver ærligt: I skal sjældent bruge nyt udstyr til en forenings behov — refurbished computere med garanti er typisk det bedste forhold mellem pris og holdbarhed.' },
+  { q: 'Har vi brug for en fast IT-supportaftale, eller er et klippekort nok?', a: 'For mange foreninger er et klippekort på 5 eller 10 timer nok — I bruger dem, når der er brug for det, fx op til en generalforsamling. I skifter til en fast aftale, hvis behovet vokser.' },
+  { q: 'Hvor hurtigt kan I hjælpe, hvis noget går galt op til en generalforsamling eller et event?', a: 'Vi prioriterer sager med en fast dato, som en generalforsamling eller et arrangement — ring eller skriv, så finder vi hurtigst muligt en løsning.' },
+];
+export function itSupportForeningHtml() {
+  const faqHtml = IT_SUPPORT_FORENING_FAQ.map((f) => `<details><summary>${esc(f.q)}</summary><div class="answer">${esc(f.a)}</div></details>`).join('');
+  const cards = [
+    ['🔄', 'Overdragelse ved bestyrelsesskift', 'Adgange overdrages struktureret — de forsvinder ikke med den forrige kasserer.'],
+    ['📬', 'Fælles postkasser & dokumenter', 'Følger posten, ikke personen, så et bestyrelsesskift ikke betyder tabt adgang.'],
+    ['🔐', 'Medlemsdata & GDPR', 'Beskyttet efter reglerne, også når det er frivillige, der administrerer det.'],
+    ['♻️', 'Budgetvenligt, gerne refurbished', 'Nyt udstyr er sjældent nødvendigt — refurbished med garanti er ofte det bedste valg.'],
+    ['🎟️', 'Klippekort frem for fast aftale', 'For mange foreninger er et klippekort nok — I betaler kun for den hjælp, I bruger.'],
+  ].map(([i, t, b]) => `<div class="card"><div class="card-icon">${i}</div><h3>${esc(t)}</h3><p>${esc(b)}</p></div>`).join('');
+  return `  <section class="hero"><div class="wrap"><div class="eyebrow">Erhverv · Foreninger &amp; organisationer</div>
+    <h1>IT-support til foreninger og organisationer</h1><p class="lead">Skiftende frivillige og et begrænset budget stiller andre krav til IT. Vi sørger for, at adgange og dokumenter følger posten, ikke personen — og at udstyret matcher budgettet.</p>
+    <div class="cta-row"><a class="btn btn-white" href="/kontakt/">Book en gratis IT-gennemgang</a><a class="btn btn-ghost-light" href="${site.phoneHref}">📞 Ring ${site.phone}</a></div></div></section>
+  <section class="section"><div class="wrap lead-copy"><div class="crumbs"><a href="/">Forside</a> › <a href="/it-support-frederiksberg/">IT-support på Frederiksberg</a> › <span>Foreninger &amp; organisationer</span></div>
+    <p>I en forening eller organisation skifter bestyrelsen ofte, og ingen er ansat til at være IT-ansvarlig. Vi bygger jeres IT-support omkring den virkelighed: adgange, der overdrages struktureret, i stedet for at forsvinde med den forrige kasserer, fælles postkasser og dokumenter, der følger posten, og udstyr, der matcher et foreningsbudget.</p>
+    <p>Vi rådgiver ærligt: en forening har sjældent brug for dyrt nyt udstyr eller en fast supportaftale — refurbished maskiner og et klippekort er ofte den rigtige løsning, selvom det giver os mindre at lave.</p>
+    <p>Vores værksted er på Falkoner Allé 108 på Frederiksberg — I er velkomne til at komme forbi, uanset om I er en lokal forening eller en landsdækkende organisation.</p></div></section>
+  <section class="section alt"><div class="wrap"><div class="eyebrow">Det, vi bygger jeres aftale omkring</div><h2>Fem ting, der går igen i foreninger</h2><div class="grid grid-3">${cards}</div></div></section>
+  <section class="section"><div class="wrap"><div class="callout"><strong>Ærligt sagt:</strong> I skal sjældent bruge dyrt nyt udstyr eller en fast supportaftale. Refurbished computere med garanti og et klippekort på timer, I selv styrer, er ofte den rigtige løsning for en forening — vi siger det, selvom en fast aftale giver os mere at lave.</div></div></section>
+  <section class="section alt"><div class="wrap"><div class="eyebrow">Svartider</div><h2>Klar besked om, hvor hurtigt vi svarer</h2>
+    <p class="sub">Med en fast aftale går svartiden fra 1 arbejdsdag i <strong>Starter</strong> til 1 time i <strong>Exclusive</strong>. Foretrækker I klippekort, koster timerne 1.000/950/900 kr. ved 5/10/20 timer. <a href="/it-support-til-erhverv/">Se alle pakker og priser →</a></p></div></section>
+  <section class="section"><div class="wrap"><div class="eyebrow">FAQ</div><h2>IT-support til foreninger og organisationer — ofte stillede spørgsmål</h2><div class="faq">${faqHtml}</div></div></section>
+  <section class="section alt"><div class="wrap"><div class="cta-band"><h2>Klar til en uforpligtende snak om jeres IT?</h2><p>Skriv til ${site.emailBusiness} eller ring, så kigger vi på jeres nuværende opsætning og finder de svage punkter.</p><div class="cta-row"><a class="btn btn-white" href="/kontakt/">Book en gratis IT-gennemgang</a><a class="btn btn-ghost-light" href="${site.phoneHref}">📞 Ring ${site.phone}</a></div></div>
+    <div style="margin-top:32px"><p class="eyebrow">Relateret</p><div class="crosslinks"><a href="/it-support-frederiksberg/">IT-support på Frederiksberg →</a><a href="/it-support-mindre-virksomheder/">IT-support til mindre virksomheder →</a><a href="/it-support-til-erhverv/">IT-support til erhverv →</a><a href="/butik/computere/refurbished/">Refurbished computere →</a><a href="/automatisk-backup/">Automatisk Backup →</a><a href="/kontakt/">Kontakt &amp; booking →</a></div></div></div></section>`;
 }
 
 
