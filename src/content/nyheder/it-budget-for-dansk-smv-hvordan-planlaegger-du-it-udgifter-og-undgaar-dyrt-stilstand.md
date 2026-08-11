@@ -1,5 +1,5 @@
 ---
-title: "IT-budget for dansk SMV - Hvordan planlægger du IT-udgifter og undgår dyrt stilstand?"
+title: "IT-budget for SMV: Undgå Dyrt Stilstand"
 date: 2026-08-09
 category: Blog
 description: "Som småbusinessejer i Danmark ved du helt sikkert, at IT ikke længere er en luksus – det er helt grundlæggende for at driften kan køre glat. Men mange ejere str"
