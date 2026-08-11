@@ -1,5 +1,5 @@
 ---
-title: "GDPR og persondatahåndtering: Hvad skal din virksomhed gøre for at være lovlig?"
+title: "GDPR: Sådan Håndterer I Persondata Lovligt"
 date: 2026-08-10
 category: GDPR
 description: "GDPR persondatahåndtering virksomhed kan virke skræmmende, især når man hører om bøder på op til 20 millioner euro. Men sandheden er, at ved at følge nogle konk"
