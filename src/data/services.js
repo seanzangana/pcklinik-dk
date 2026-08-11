@@ -549,55 +549,11 @@ export const services = [
       { label: 'Driver du virksomhed? Se IT-support til erhverv', href: '/it-support-til-erhverv/' },
     ],
   },
-  {
-    slug: 'it-support-frederiksberg', group: 'Cross-cutting',
-    title: 'IT-support på Frederiksberg | PCKlinik',
-    description: 'Lokal IT-support på Frederiksberg for private og virksomheder. Værksted på Falkoner Allé 108. Ring 91 81 61 81.',
-    h1: 'IT-support på Frederiksberg',
-    subhead: 'Dit lokale IT-værksted på Falkoner Allé 108 — midt på Frederiksberg',
-    intro: [
-      'PCKlinik er et <strong>fysisk IT-værksted på Frederiksberg</strong> — ikke et callcenter og ikke en hjemmeside uden adresse. Vi ligger på Falkoner Allé 108, og du kan komme forbi i åbningstiden uden at bestille tid.',
-      'Vi leverer hurtig og pålidelig <strong>IT-support til både private og virksomheder</strong> på Frederiksberg og i resten af København. Det kan være en computer, der driller, en printer der ikke vil forbinde, et netværk der falder ud, eller en fast supportaftale for hele virksomheden.',
-      'Fordelen ved at have en lokal IT-partner er enkel: du ved, hvem du taler med, og vi kan komme forbi. Vi har over 20 års erfaring og 4,9 stjerner fra næsten 500 kunder.',
-    ],
-    whatsIncluded: 'Hjælp i butikken, fjernsupport, eller on-site besøg på din adresse på Frederiksberg.',
-    bulletSections: [
-      { heading: 'Sådan kan vi hjælpe dig', items: [
-        'Kom forbi værkstedet på Falkoner Allé 108 — ingen tidsbestilling nødvendig',
-        'Fjernsupport, hvor vi kobler op på din maskine og løser problemet med det samme',
-        'On-site tekniker, der kommer ud til dig eller din virksomhed på Frederiksberg',
-        'Fast IT-supportaftale til erhverv med ubegrænset support fra 399 kr./bruger/md.',
-      ] },
-      { heading: 'Typiske IT-opgaver', items: [
-        'Computer- og Mac-problemer, opsætning og fejlfinding',
-        'Netværk, WiFi og router — opsætning og udfald',
-        'Printere og netværksprintere',
-        'Microsoft 365, e-mail, Teams og OneDrive',
-        'Backup, datagendannelse og IT-sikkerhed',
-        'Opsætning af nye medarbejdere og nyt udstyr',
-      ] },
-    ],
-    callout: { label: 'Til virksomheder', text: 'Foretrækker I en fast aftale frem for enkeltopgaver, dækker vores IT-serviceaftale ubegrænset support, overvågning og sikkerhed til én fast månedspris — med garanteret svartid fra 1 arbejdsdag (Starter) ned til 1 time (Exclusive). Skriv til support@pcklinik.dk, eller se IT-rådgivning, hvis I hellere vil starte med en gennemgang.' },
-    faq: [
-      { q: 'Hvor på Frederiksberg ligger I?', a: 'Vi ligger på Falkoner Allé 108, 2000 Frederiksberg — tæt på Falkoner Allé og i gåafstand fra CBS. Du kan komme forbi i vores åbningstid uden at bestille tid.' },
-      { q: 'Tilbyder I IT-support til private, eller kun til virksomheder?', a: 'Begge dele. Private kan komme forbi butikken eller få fjernsupport, og virksomheder kan tegne en fast IT-serviceaftale med ubegrænset support.' },
-      { q: 'Kan I komme ud til min adresse på Frederiksberg?', a: 'Ja. Vi tilbyder on-site support, hvor en tekniker kommer ud til dig eller din virksomhed. Mange sager kan dog løses hurtigere via fjernsupport.' },
-      { q: 'Hvad koster IT-support?', a: 'Enkeltopgaver afregnes efter en fast pris, som du får oplyst, før vi går i gang. Vil I hellere have en fast aftale, starter vores IT-supportpakker til erhverv ved 399 kr. pr. bruger pr. måned — ubegrænset support, ingen timepriser.' },
-      { q: 'Hvad er svartiden på en fast IT-supportaftale?', a: 'Svartiden er garanteret og afhænger af pakken: 1 arbejdsdag med Starter, 4 timer med Premium, og 1 time med Exclusive.' },
-      { q: 'Hvor hurtigt kan I hjælpe?', a: 'Ring på 91 81 61 81 eller skriv til support@pcklinik.dk, så finder vi hurtigst muligt ud af, om det klares over fjernsupport, i butikken, eller om vi skal komme ud.' },
-      { q: 'Hjælper I også med Microsoft 365 og e-mail?', a: 'Ja. Vi opsætter og administrerer Microsoft 365, Teams, SharePoint og virksomhedse-mail, inkl. onboarding af nye medarbejdere.' },
-    ],
-    crosslinks: [
-      { label: 'IT-support til erhverv (serviceaftale)', href: '/it-support-til-erhverv/' },
-      { label: 'IT-rådgivning', href: '/it-raadgivning/' },
-      { label: 'IT-support i København', href: '/it-support-koebenhavn/' },
-      { label: 'Fjernsupport', href: '/fjernsupport/' },
-      { label: 'On-site tekniker', href: '/on-site-tekniker/' },
-      { label: 'Computerreparation på Frederiksberg', href: '/computerreparation-frederiksberg/' },
-      { label: 'WiFi- & netværksfejlfinding', href: '/wifi-og-netvaerksfejlfinding/' },
-      { label: 'Åbningstider', href: '/aabningstider/' },
-    ],
-  },
+  // NOTE: 'it-support-frederiksberg' moved to richPages.js
+  // (itSupportFrederiksbergHtml) 2026-08-11 — now the hand-built B2B
+  // flagship page for the "dominér Frederiksberg" content cluster, no
+  // longer the generic serviceBody() template. Same URL, no redirect
+  // needed. See build.mjs page registration near the other B2B pages.
   {
     slug: 'microsoft-365-erhverv', group: 'Cross-cutting',
     title: 'Microsoft 365 til virksomheder | PCKlinik',
