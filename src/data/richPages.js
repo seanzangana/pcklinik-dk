@@ -2,7 +2,7 @@
 // build.mjs (dist renderer). Single source of truth; no Astro/view mirror.
 import { site } from './site.js';
 import { lucide } from './icons.js';
-const esc = (s) => String(s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
+const esc = (s) => String(s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
 
 // ---------- Mac Repair hub ----------
 export function macHubHtml() {
@@ -642,6 +642,107 @@ export function windows10ErhvervHtml() {
     <div style="margin-top:32px"><p class="eyebrow">Relateret</p><div class="crosslinks"><a href="/windows-10-support-slut/">Windows 10 support er slut →</a><a href="/it-raadgivning/">IT-rådgivning →</a><a href="/it-support-til-erhverv/">IT-support til erhverv →</a><a href="/automatisk-backup/">Automatisk Backup →</a><a href="/fjernsupport/">Fjernsupport →</a><a href="/butik/computere/refurbished/">Refurbished computere →</a><a href="/kontakt/">Kontakt & booking →</a></div></div></div></section>`;
 }
 
+// ---------- B2B: IT-support Frederiksberg (flagskib) ----------
+// Kernestrategi (2026-08-11 brief): vi lader København ligge og bygger ét
+// stærkt Frederiksberg-område. Denne side er navet — alle branchesider
+// (advokat/klinik/mindre-virksomheder/håndværkere m.fl.) linker hertil, og
+// den linker tilbage til dem via "Din branche". Kerneargumentet på hver
+// eneste sektion: konkurrenterne kører ud til Frederiksberg, vi ligger her
+// — så ingen kørselsgebyr, ingen ventetid på en ledig tekniker, og virksomheder
+// kan selv komme forbi. Erstatter den tidligere generiske services.js-side
+// (samme URL, /it-support-frederiksberg/, så ingen redirect nødvendig).
+export const IT_SUPPORT_FREDERIKSBERG_FAQ = [
+  { q: 'Hvor hurtigt kan I være her, hvis noget går galt?', a: 'Vi ligger på Falkoner Allé 108, så for de fleste adresser på Frederiksberg er vi der på under 10 minutter — ikke en halv dag, som det tager en udkørende leverandør at finde en ledig tekniker. Mange sager løses dog hurtigere endnu via fjernsupport, uden at nogen skal ud af døren.' },
+  { q: 'Koster det ekstra, at I kommer ud?', a: 'Nej, ikke fordi vi ligger tæt på. Konkurrenter, der kører ud fra et andet sted i byen, lægger enten et eksplicit udkaldsgebyr på, eller bager køretiden ind i timeprisen — I betaler for den, uanset hvad det hedder på fakturaen. Ligger I på Frederiksberg, er den udgift stort set væk.' },
+  { q: 'Kan vi bare komme forbi med maskinen, hvis vi har travlt?', a: 'Ja. Er I på Frederiksberg, kan I gå, cykle eller køre forbi Falkoner Allé 108 i åbningstiden, uden at bestille tid. Ingen ventetid på, at en tekniker fra en "vi kører ud"-leverandør bliver ledig — I lægger maskinen, og vi går i gang.' },
+  { q: 'Skal vi have en fast aftale, eller kan vi bare ringe, når vi har brug for hjælp?', a: 'Begge dele virker. En fast IT-supportaftale (fra 399 kr. pr. bruger pr. måned) giver ubegrænset support og garanteret svartid. Har I brug for hjælp mere sporadisk, sælger vi klippekort på 5, 10 eller 20 timer, som I bruger, når det passer jer.' },
+  { q: 'Vi er kun 3 ansatte — er vi for små til at være kunde hos jer?', a: 'Nej. En stor del af vores erhvervskunder på Frederiksberg er små virksomheder uden egen IT-afdeling — nogle med under 5 ansatte. Et klippekort er ofte nok til at starte med; I skifter til en fast aftale, når behovet vokser.' },
+  { q: 'Kan I hjælpe med både Mac og PC?', a: 'Ja. Mange af vores erhvervskunder kører en blanding — nogle medarbejdere på Mac, andre på Windows, alle på Microsoft 365. Vi supporterer og reparerer begge dele under samme aftale.' },
+  { q: 'Hvad hvis en af vores maskiner går fysisk i stykker — skærm, batteri, tastatur?', a: 'Så reparerer vi den. I modsætning til leverandører, der kun supporterer software og sender hardware videre til en ekstern værkstedspartner, har vi eget værksted på Falkoner Allé med reservedele på hylden og syv teknikere, der selv skruer.' },
+  { q: 'Kan I overtage IT-supporten fra vores nuværende leverandør?', a: 'Ja. Vi kortlægger, hvad I har i dag — udstyr, licenser, adgange — og overtager uden driftsstop undervejs. De fleste af vores erhvervskunder kommer fra en anden leverandør, ikke fra at have haft ingen.' },
+];
+export function itSupportFrederiksbergHtml() {
+  const faqHtml = IT_SUPPORT_FREDERIKSBERG_FAQ.map((f) => `<details><summary>${esc(f.q)}</summary><div class="answer">${esc(f.a)}</div></details>`).join('');
+  const problems = [
+    'Ældre kontorejendomme med tykke mure og dårlig WiFi-dækning — løses med en ordentlig netværksopsætning, ikke en ny router fra en elektronikkæde.',
+    'Blandede maskinparker — nogle medarbejdere på Mac, nogle på PC, alle på Microsoft 365.',
+    'Ingen IT-ansvarlig — "ham der er god til computere" har også et rigtigt job at passe.',
+    'Fem leverandører — én til mailen, én til hjemmesiden, én til kassesystemet. Ingen har det fulde overblik.',
+  ].map((t) => `<li>${t}</li>`).join('');
+  const ways = [
+    ['1', 'Kom forbi', 'Falkoner Allé 108, uden aftale, i åbningstiden — I lægger maskinen, vi går i gang.'],
+    ['2', 'Fjernsupport', 'Vi løser det meste med det samme, uden at nogen skal køre nogen steder.'],
+    ['3', 'On-site', 'Vi kommer til jer. Fra Frederiksberg er det minutter, ikke en halv dags ventetid.'],
+  ].map(([n, t, b]) => `<div class="step"><div class="num">${n}</div><h3>${esc(t)}</h3><p>${esc(b)}</p></div>`).join('');
+  const branches = [
+    ['/it-support-haandvaerkere/', 'Håndværkere', 'Mobilt udstyr, ordrestyring og fakturering fra bilen — IT der virker på pladsen, ikke kun på kontoret.'],
+    ['/it-support-advokatkontor/', 'Advokatkontorer', 'Klientfortrolighed, adgangsstyring og backup, der virker under en frist.'],
+    ['/it-support-klinik/', 'Klinikker', 'Oppetid i behandlingstiden, patientdata i strengeste GDPR-kategori.'],
+    ['/it-support-mindre-virksomheder-frederiksberg/', 'Mindre virksomheder', 'Én fast kontakt i stedet for fem leverandører at ringe rundt til.'],
+  ].map(([href, t, b]) => `<a class="card card-link" href="${href}"><h3>${esc(t)}</h3><p>${esc(b)}</p><span class="arrow">Se IT-support til ${esc(t.toLowerCase())} →</span></a>`).join('');
+  return `  <section class="hero"><div class="wrap"><div class="eyebrow">Erhverv · Frederiksberg</div>
+    <h1>IT-support til virksomheder på Frederiksberg</h1><p class="lead">De fleste IT-leverandører dækker Frederiksberg. Vi ligger her — på Falkoner Allé 108. Ingen kørsel at betale for, ingen ventetid på en ledig tekniker.</p>
+    <div class="badges"><span class="badge check">Værksted på Falkoner Allé 108</span><span class="badge check">Fra 399 kr./bruger/md.</span><span class="badge check">7 mennesker, ikke et callcenter</span><span class="badge check">⭐ ${esc(site.reviewRating)}/5 · ${esc(site.reviewCount)} anmeldelser</span></div>
+    <div class="cta-row"><a class="btn btn-white" href="/kontakt/">Book en gratis IT-gennemgang</a><a class="btn btn-ghost-light" href="${site.phoneHref}">📞 Ring ${site.phone}</a></div></div></section>
+  <section class="section"><div class="wrap lead-copy"><div class="crumbs"><a href="/">Forside</a> › <span>IT-support til virksomheder på Frederiksberg</span></div>
+    <p>Vores værksted er på Falkoner Allé 108. Er I på Frederiksberg, er vi minutter væk — på cykel, i bil eller til fods. I betaler ikke for kørsel, og I venter ikke på, at en tekniker bliver ledig et andet sted i byen.</p>
+    <p>Vi er syv mennesker, ikke et callcenter. Ringer I, taler I med en, der kender jeres opsætning — og som også er den, der skruer maskinen op, hvis den går i stykker.</p></div></section>
+  <section class="section alt"><div class="wrap"><div class="eyebrow">Prissammenligningen</div><h2>En lavere månedspris er ikke det samme som en lavere regning</h2>
+    <p class="sub">Nogle konkurrenter markedsfører en lavere månedspris. Vi matcher ikke — vi forklarer hvorfor: skal der en tekniker ud, koster kørslen, og den tid, det tager. Vi ligger på Frederiksberg, så der er ingen kørsel at betale for og ingen ventetid på, at nogen bliver ledig. Går hardwaren i stykker, sender vi den heller ikke videre — vi har eget værksted, syv teknikere og reservedele på hylden.</p></div></section>
+  <section class="section"><div class="wrap"><div class="eyebrow">Områder vi dækker</div><h2>Hele Frederiksberg</h2>
+    <p class="sub">Vi hjælper virksomheder i hele Frederiksberg: omkring Falkoner Allé, Gammel Kongevej, Godthåbsvej, Frederiksberg Allé, Smallegade, Peter Bangs Vej, Nordre Fasanvej, Howitzvej, Finsensvej og Roskildevej — og ved Frederiksberg Centret, Solbjerg Plads, Frederiksberg Have og Forum.</p></div></section>
+  <section class="section alt"><div class="wrap"><div class="eyebrow">Vores kunder</div><h2>Virksomheder på Frederiksberg, typisk 2–30 ansatte</h2>
+    <p class="sub">Advokat- og revisionskontorer, tandlæge- og lægeklinikker, håndværksvirksomheder, arkitekt- og designtegnestuer, konsulenthuse, butikker, caféer og foreninger.</p></div></section>
+  <section class="section"><div class="wrap"><div class="eyebrow">Det vi faktisk ser</div><h2>Problemer, der går igen på Frederiksberg</h2><ul class="check-list">${problems}</ul></div></section>
+  <section class="section alt"><div class="wrap"><div class="eyebrow">Sådan får I hjælp</div><h2>Tre måder — I vælger</h2><div class="steps">${ways}</div></div></section>
+  <section class="section"><div class="wrap"><div class="eyebrow">Priser</div><h2>Fast aftale eller klippekort</h2>
+    <p class="sub">En fast IT-supportaftale koster fra 399 kr. pr. bruger pr. måned (Starter), 599 kr. (Premium) eller 899 kr. (Exclusive), med garanteret svartid ned til 1 time. Ikke klar til en fast aftale? Køb i stedet et klippekort på 5, 10 eller 20 timer og brug dem, når I har brug for os — timeprisen falder, jo flere timer I køber. <a href="/it-support-til-erhverv/">Se alle pakker, svartider og klippekort-priser →</a></p></div></section>
+  <section class="section alt"><div class="wrap"><div class="eyebrow">Din branche</div><h2>IT-support skræddersyet til jeres fag</h2>
+    <p class="sub">Vi kender de problemer, der går igen i jeres branche — og bygger jeres aftale omkring dem.</p>
+    <div class="grid grid-2">${branches}</div></div></section>
+  <section class="section"><div class="wrap"><div class="eyebrow">FAQ</div><h2>IT-support på Frederiksberg — ofte stillede spørgsmål</h2><div class="faq">${faqHtml}</div></div></section>
+  <section class="section alt"><div class="wrap"><div class="cta-band"><h2>Klar til en uforpligtende snak om jeres IT?</h2><p>Skriv til ${site.emailBusiness} eller ring, så kigger vi på jeres nuværende opsætning og finder de svage punkter — helt uforpligtende.</p><div class="cta-row"><a class="btn btn-white" href="/kontakt/">Book en gratis IT-gennemgang</a><a class="btn btn-ghost-light" href="${site.phoneHref}">📞 Ring ${site.phone}</a></div></div>
+    <div style="margin-top:32px"><p class="eyebrow">Relateret</p><div class="crosslinks"><a href="/it-support-til-erhverv/">IT-support til erhverv (serviceaftale) →</a><a href="/it-raadgivning/">IT-rådgivning →</a><a href="/fjernsupport/">Fjernsupport →</a><a href="/on-site-tekniker/">On-site tekniker →</a><a href="/computerreparation-frederiksberg/">Computerreparation på Frederiksberg →</a><a href="/wifi-og-netvaerksfejlfinding/">WiFi- &amp; netværksfejlfinding →</a><a href="/automatisk-backup/">Automatisk Backup →</a><a href="/aabningstider/">Åbningstider →</a></div></div></div></section>`;
+}
+
+// ---------- B2B: Håndværkere ----------
+// Angle: mobilt arbejde, ikke skrivebordsarbejde — udstyret er i bilen, på
+// stilladset og i regnvejr, ikke på et kontor. Størst uudnyttet segment
+// (2026-08-11 brief: "næsten ingen skriver IT-indhold til håndværkere").
+export const IT_SUPPORT_HAANDVAERKERE_FAQ = [
+  { q: 'Vi sidder aldrig ved et skrivebord — kan I overhovedet hjælpe os?', a: 'Ja, det er faktisk pointen. Vi sætter jeres mobile udstyr op — tablets og telefoner til pladsen, ikke kun stationære maskiner på kontoret — og sørger for, at ordre- og sagsstyring, fakturering og fotodokumentation virker, uanset hvor I står.' },
+  { q: 'Kan I sætte vores ordre- eller sagsstyringssystem op, så det virker på farten?', a: 'Ja — Minuba, Ordrestyring, e-Komplet og lignende systemer sætter vi op, så I kan oprette og opdatere sager fra bilen eller pladsen, ikke kun fra kontoret.' },
+  { q: 'Kan vi fakturere direkte fra bilen mellem to opgaver?', a: 'Ja, det er en af de ting, der giver mest mening at få sat rigtigt op — jo hurtigere en faktura sendes, jo hurtigere kommer pengene hjem.' },
+  { q: 'Vi tager billeder på pladsen, men de ryger aldrig ind i sagen — kan det løses?', a: 'Ja. Vi sætter automatisk synkronisering op, så fotodokumentation lander i den rigtige sag med det samme, i stedet for at blive liggende på en medarbejders private telefon.' },
+  { q: 'Hvad sker der, hvis en tablet eller telefon går i stykker eller ryger i vandet på pladsen?', a: 'Vi reparerer den, hvis det kan lade sig gøre, eller sætter en ny op med jeres data og systemer gendannet fra backup — er data ikke sikret først, er det den del, der for alvor koster tid.' },
+  { q: 'Kan I anbefale udstyr, der faktisk kan tåle en værktøjskasse?', a: 'Ja — vi rådgiver om robust hardware til feltbrug i stedet for standardkontorudstyr, der ikke er lavet til en byggeplads.' },
+  { q: 'Vi arbejder tit i kældre og på pladser uden ordentlig dækning — er det et problem?', a: 'Vi sætter systemerne op med offline-adgang, så I stadig kan arbejde uden forbindelse og synkronisere, så snart I er tilbage online.' },
+];
+export function itSupportHaandvaerkereHtml() {
+  const faqHtml = IT_SUPPORT_HAANDVAERKERE_FAQ.map((f) => `<details><summary>${esc(f.q)}</summary><div class="answer">${esc(f.a)}</div></details>`).join('');
+  const cards = [
+    ['📱', 'Mobilt udstyr', 'Tablets og telefoner sat op til pladsen, ikke kun stationære maskiner på kontoret.'],
+    ['📋', 'Ordre- og sagsstyring på farten', 'Minuba, Ordrestyring, e-Komplet og lignende sat op, så de virker fra bilen eller pladsen.'],
+    ['🧾', 'Fakturering fra bilen', 'Send fakturaen, mens I stadig husker detaljerne — så pengene kommer hjem samme uge.'],
+    ['📸', 'Fotodokumentation, der havner rigtigt', 'Billeder fra pladsen synkroniseres automatisk ind i sagen — ikke på en privat telefon.'],
+    ['🛠️', 'Robust hardware', 'Udstyr, der kan tåle en værktøjskasse, en byggeplads og en regnvejrsdag.'],
+    ['📶', 'Offline-adgang', 'Systemer sat op til at virke, selv når kælderen eller pladsen ikke har dækning.'],
+  ].map(([i, t, b]) => `<div class="card"><div class="card-icon">${i}</div><h3>${esc(t)}</h3><p>${esc(b)}</p></div>`).join('');
+  return `  <section class="hero"><div class="wrap"><div class="eyebrow">Erhverv · Håndværkere</div>
+    <h1>IT-support til håndværksvirksomheder</h1><p class="lead">I sidder ikke ved et skrivebord. Udstyret er i bilen, på stilladset og i regnvejr — vi sætter det op, så det rent faktisk virker der.</p>
+    <div class="cta-row"><a class="btn btn-white" href="/kontakt/">Book en gratis IT-gennemgang</a><a class="btn btn-ghost-light" href="${site.phoneHref}">📞 Ring ${site.phone}</a></div></div></section>
+  <section class="section"><div class="wrap lead-copy"><div class="crumbs"><a href="/">Forside</a> › <a href="/it-support-frederiksberg/">IT-support på Frederiksberg</a> › <span>Håndværkere</span></div>
+    <p>De fleste IT-leverandører tænker i skriveborde og kontorlokaler. Hos en håndværksvirksomhed foregår arbejdet et helt andet sted — i bilen mellem to opgaver, på stilladset, i en kundes kælder uden dækning. Vi bygger jeres IT-support omkring den virkelighed: mobilt udstyr, sagsstyring der virker på farten, og fakturering, der ikke venter til I er tilbage på kontoret.</p>
+    <p>Mange af vores håndværkerkunder arbejder i de gamle ejendomme på Frederiksberg. Kører I forbi Falkoner Allé mellem to opgaver, kan I aflevere en maskine på vejen — ingen aftale nødvendig.</p></div></section>
+  <section class="section alt"><div class="wrap"><div class="eyebrow">Derfor er IT ikke bare IT for en håndværksvirksomhed</div><h2>Seks ting, vi bygger jeres aftale omkring</h2><div class="grid grid-3">${cards}</div></div></section>
+  <section class="section"><div class="wrap"><div class="callout"><strong>En rigtig sag:</strong> En VVS-virksomhed med 6 montører mistede tre ugers fotodokumentation, da en telefon røg i en spand vand — ingen af billederne var synkroniseret til sagen, de lå kun på telefonen. Vi satte automatisk synkronisering op, så det ikke kan ske igen.</div></div></section>
+  <section class="section alt"><div class="wrap"><div class="eyebrow">Priser</div><h2>Fast aftale eller klippekort</h2>
+    <p class="sub">Har I brug for løbende support til hele maskinparken, starter vores IT-supportpakker ved 399 kr. pr. bruger pr. måned. Er det mere sporadisk — en tablet der driller, en ny mand der skal sættes op — passer et klippekort på 5, 10 eller 20 timer ofte bedre. <a href="/it-support-til-erhverv/">Se alle pakker og priser →</a></p></div></section>
+  <section class="section"><div class="wrap"><div class="eyebrow">FAQ</div><h2>IT-support til håndværkere — ofte stillede spørgsmål</h2><div class="faq">${faqHtml}</div></div></section>
+  <section class="section alt"><div class="wrap"><div class="cta-band"><h2>Klar til en uforpligtende snak om jeres IT?</h2><p>Skriv til ${site.emailBusiness} eller ring, så kigger vi på jeres nuværende opsætning og finder de svage punkter.</p><div class="cta-row"><a class="btn btn-white" href="/kontakt/">Book en gratis IT-gennemgang</a><a class="btn btn-ghost-light" href="${site.phoneHref}">📞 Ring ${site.phone}</a></div></div>
+    <div style="margin-top:32px"><p class="eyebrow">Relateret</p><div class="crosslinks"><a href="/it-support-frederiksberg/">IT-support på Frederiksberg →</a><a href="/it-support-mindre-virksomheder-frederiksberg/">IT-support til mindre virksomheder →</a><a href="/it-support-til-erhverv/">IT-support til erhverv →</a><a href="/automatisk-backup/">Automatisk Backup →</a><a href="/kontakt/">Kontakt &amp; booking →</a></div></div></div></section>`;
+}
+
 // ---------- B2B: Advokatkontorer ----------
 // Angle: client confidentiality & professional liability — distinct from
 // the klinik page's "uptime during treatment" angle and the mindre
@@ -674,7 +775,7 @@ export function itSupportAdvokatkontorHtml() {
     <p class="sub">Med <strong>Starter</strong> har I svar inden for 1 arbejdsdag, med <strong>Premium</strong> inden for 4 timer, og med <strong>Exclusive</strong> inden for 1 time — alt i normal åbningstid. Mange advokatkontorer med faste tidsfrister vælger Premium eller Exclusive. <a href="/it-support-til-erhverv/">Se alle pakker og priser →</a></p></div></section>
   <section class="section"><div class="wrap"><div class="eyebrow">FAQ</div><h2>IT-support til advokatkontorer — ofte stillede spørgsmål</h2><div class="faq">${faqHtml}</div></div></section>
   <section class="section alt"><div class="wrap"><div class="cta-band"><h2>Klar til en uforpligtende snak om jeres IT?</h2><p>Skriv til ${site.emailBusiness} eller ring, så kigger vi på jeres nuværende opsætning og finder de svage punkter.</p><div class="cta-row"><a class="btn btn-white" href="/kontakt/">Book en gratis IT-gennemgang</a><a class="btn btn-ghost-light" href="${site.phoneHref}">📞 Ring ${site.phone}</a></div></div>
-    <div style="margin-top:32px"><p class="eyebrow">Relateret</p><div class="crosslinks"><a href="/it-support-til-erhverv/">IT-support til erhverv →</a><a href="/it-raadgivning/">IT-rådgivning →</a><a href="/microsoft-365-erhverv/">Microsoft 365 til virksomheder →</a><a href="/automatisk-backup/">Automatisk Backup →</a><a href="/kontakt/">Kontakt & booking →</a></div></div></div></section>`;
+    <div style="margin-top:32px"><p class="eyebrow">Relateret</p><div class="crosslinks"><a href="/it-support-frederiksberg/">IT-support på Frederiksberg →</a><a href="/it-support-til-erhverv/">IT-support til erhverv →</a><a href="/it-raadgivning/">IT-rådgivning →</a><a href="/microsoft-365-erhverv/">Microsoft 365 til virksomheder →</a><a href="/automatisk-backup/">Automatisk Backup →</a><a href="/kontakt/">Kontakt & booking →</a></div></div></div></section>`;
 }
 
 // ---------- B2B: Klinikker ----------
@@ -708,7 +809,7 @@ export function itSupportKlinikHtml() {
     <p class="sub">Svartiden er garanteret efter pakke — <strong>Starter</strong> inden for 1 arbejdsdag, <strong>Premium</strong> inden for 4 timer, <strong>Exclusive</strong> inden for 1 time — alt i normal åbningstid. Klinikker med løbende patientkontakt vælger typisk Premium eller Exclusive. <a href="/it-support-til-erhverv/">Se alle pakker og priser →</a></p></div></section>
   <section class="section"><div class="wrap"><div class="eyebrow">FAQ</div><h2>IT-support til klinikker — ofte stillede spørgsmål</h2><div class="faq">${faqHtml}</div></div></section>
   <section class="section alt"><div class="wrap"><div class="cta-band"><h2>Klar til en uforpligtende snak om jeres IT?</h2><p>Skriv til ${site.emailBusiness} eller ring, så kigger vi på jeres nuværende opsætning og finder de svage punkter.</p><div class="cta-row"><a class="btn btn-white" href="/kontakt/">Book en gratis IT-gennemgang</a><a class="btn btn-ghost-light" href="${site.phoneHref}">📞 Ring ${site.phone}</a></div></div>
-    <div style="margin-top:32px"><p class="eyebrow">Relateret</p><div class="crosslinks"><a href="/it-support-til-erhverv/">IT-support til erhverv →</a><a href="/it-raadgivning/">IT-rådgivning →</a><a href="/automatisk-backup/">Automatisk Backup →</a><a href="/kontakt/">Kontakt & booking →</a></div></div></div></section>`;
+    <div style="margin-top:32px"><p class="eyebrow">Relateret</p><div class="crosslinks"><a href="/it-support-frederiksberg/">IT-support på Frederiksberg →</a><a href="/it-support-til-erhverv/">IT-support til erhverv →</a><a href="/it-raadgivning/">IT-rådgivning →</a><a href="/automatisk-backup/">Automatisk Backup →</a><a href="/kontakt/">Kontakt & booking →</a></div></div></div></section>`;
 }
 
 // Standard closing CTA — used verbatim on all four fault-specific guides
@@ -747,7 +848,7 @@ export function itSupportMindreVirksomhederHtml() {
     <p class="sub">Svartiden går fra 1 arbejdsdag i <strong>Starter</strong>, til 4 timer i <strong>Premium</strong>, til 1 time i <strong>Exclusive</strong> — alt inden for normal åbningstid. <a href="/it-support-til-erhverv/">Se alle pakker og priser →</a></p></div></section>
   <section class="section"><div class="wrap"><div class="eyebrow">FAQ</div><h2>IT-support til mindre virksomheder — ofte stillede spørgsmål</h2><div class="faq">${faqHtml}</div></div></section>
   <section class="section alt"><div class="wrap"><div class="cta-band"><h2>Klar til en uforpligtende snak om jeres IT?</h2><p>Skriv til ${site.emailBusiness} eller ring, så kigger vi på jeres nuværende opsætning og finder de svage punkter.</p><div class="cta-row"><a class="btn btn-white" href="/kontakt/">Book en gratis IT-gennemgang</a><a class="btn btn-ghost-light" href="${site.phoneHref}">📞 Ring ${site.phone}</a></div></div>
-    <div style="margin-top:32px"><p class="eyebrow">Relateret</p><div class="crosslinks"><a href="/it-support-til-erhverv/">IT-support til erhverv →</a><a href="/it-raadgivning/">IT-rådgivning →</a><a href="/microsoft-365-erhverv/">Microsoft 365 til virksomheder →</a><a href="/kontakt/">Kontakt & booking →</a></div></div></div></section>`;
+    <div style="margin-top:32px"><p class="eyebrow">Relateret</p><div class="crosslinks"><a href="/it-support-frederiksberg/">IT-support på Frederiksberg →</a><a href="/it-support-haandvaerkere/">IT-support til håndværkere →</a><a href="/it-support-til-erhverv/">IT-support til erhverv →</a><a href="/it-raadgivning/">IT-rådgivning →</a><a href="/microsoft-365-erhverv/">Microsoft 365 til virksomheder →</a><a href="/kontakt/">Kontakt & booking →</a></div></div></div></section>`;
 }
 
 
