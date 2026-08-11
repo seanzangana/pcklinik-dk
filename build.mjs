@@ -28,7 +28,7 @@ const DIST = path.join(__dirname, 'dist');
 // render-blocking-resources penalty PageSpeed was flagging. Still copied to
 // /styles/global.css in dist/ (see run()) as a fallback/for direct linking.
 const GLOBAL_CSS = readFileSync(path.join(__dirname, 'src/styles/global.css'), 'utf8');
-const esc = (s) => String(s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
+const esc = (s) => String(s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
 // Renders a <form> opening + hidden routing fields for the active form mode.
 function formOpen(dest, subject, nextPath) {
   const next = `${site.domain}${nextPath}`;
