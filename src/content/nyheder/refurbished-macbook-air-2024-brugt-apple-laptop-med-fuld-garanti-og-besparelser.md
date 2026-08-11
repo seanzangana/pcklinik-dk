@@ -1,5 +1,5 @@
 ---
-title: "Refurbished MacBook Air 2024 - Brugt Apple laptop med fuld garanti og besparelser"
+title: "Refurbished MacBook Air 2024"
 date: 2026-08-08
 category: Blog
 description: "Hvis du leder efter en pålidelig laptop til virksomheden, men ikke vil bruge en formue på en splinterny MacBook Air, er en refurbished MacBook Air 2024 måske sv"
