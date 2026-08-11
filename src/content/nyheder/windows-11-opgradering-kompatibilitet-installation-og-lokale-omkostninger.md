@@ -1,5 +1,5 @@
 ---
-title: "Windows 11 Opgradering: Kompatibilitet, Installation og Lokale Omkostninger"
+title: "Windows 11-opgradering: Kompatibilitet & Pris"
 date: 2026-08-07
 category: Blog
 description: "Hvis du arbejder med computere i Danmark, er Windows 11 opgradering sandsynligvis allerede på din radar. Måske har du hørt, at operativsystemet kræver helt nye "
