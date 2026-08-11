@@ -1,5 +1,5 @@
 ---
-title: "Grøn IT for Danske Virksomheder: Reducér Miljøfodaftryk Mens du Sparer Penge"
+title: "Grøn IT: Spar Penge og Reducér Miljøaftryk"
 date: 2026-08-01
 category: Blog
 description: "De fleste danske virksomheder tænker ikke meget over deres IT-udstyr, før det bliver langsomt eller går i stykker. Men hvad hvis jeg sagde, at du kan spare både"
