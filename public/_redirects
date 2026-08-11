@@ -161,6 +161,16 @@
 /nyheder/sikker-wifi-ops-tning-for-butikker-og-kontorer-it-sikkerhed-guide/  /nyheder/sikker-wifi-opsaetning-for-butikker-og-kontorer-it-sikkerhed-guide/  301
 
 # ---------------------------------------------------------------------------
+# Frederiksberg-klynge (2026-08-11 brief) — 2G-siden omdøbt fra
+# /it-support-mindre-virksomheder-frederiksberg/ til den kortere
+# /it-support-mindre-virksomheder/, uden geo i sluggen, for at matche
+# navngivningen på de andre branchesider (håndværkere, advokat, klinik)
+# og fange den bredere branchesøgning. Live/indekseret URL, som PCKlinik
+# selv omdøber -> 301 for at bevare linkværdi/indeksering.
+# ---------------------------------------------------------------------------
+/it-support-mindre-virksomheder-frederiksberg/  /it-support-mindre-virksomheder/  301
+
+# ---------------------------------------------------------------------------
 # ÅBNE PUNKTER — skal revideres, når de nævnte sider findes
 # ---------------------------------------------------------------------------
 #
