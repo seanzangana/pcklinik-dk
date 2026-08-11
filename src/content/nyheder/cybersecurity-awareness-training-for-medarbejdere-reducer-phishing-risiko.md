@@ -1,5 +1,5 @@
 ---
-title: "Cybersecurity Awareness Training for Medarbejdere: Reducér Phishing-Risiko"
+title: "Cybersecurity Training: Undgå Phishing"
 date: 2026-08-04
 category: Blog
 description: "Cybersecurity awareness training har udviklet sig fra en nice-to-have til en absolut nødvendighed for danske virksomheder. Hvis du ikke allerede fokuserer på at"
