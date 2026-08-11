@@ -1,5 +1,5 @@
 ---
-title: "IT outsourcing for små virksomheder: Hvad koster det og hvad får du til gengæld?"
+title: "IT-outsourcing for Små Virksomheder"
 date: 2026-08-11
 category: Blog
 description: "Mange små virksomheder står over for en klassisk udfordring: Skal vi bygge vores eget IT-team, eller skal vi outsource IT-opgaverne? Spørgsmålet handler sjælden"
