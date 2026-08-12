@@ -296,7 +296,7 @@ function repairBody(r) {
   const svcIcons = ['🖥️', '🔋', '🔧', '🌀'];
   const services = r.services.map((s, i) => `<div class="card"><div class="card-icon">${svcIcons[i % 4]}</div><h3>${esc(s.title)}</h3><p>${s.body}</p></div>`).join('');
   const faq = r.faq.map((f) => `<details><summary>${esc(f.q)}</summary><div class="answer">${esc(f.a)}</div></details>`).join('');
-  const cross = r.crosslinks.map((c) => `<a href="${c.href}">${esc(c.label)} →</a>`).join('') + `<a href="/kontakt/">Kontakt & booking →</a>` + `<a href="/butik/">Kan det ikke betale sig at reparere? Se vores computere →</a>` + `<a href="/om-os/">Mød teamet →</a>`;
+  const cross = r.crosslinks.map((c) => `<a href="${c.href}">${esc(c.label)} →</a>`).join('') + `<a href="/computerreparation-frederiksberg/">computerreparation på Frederiksberg →</a>` + `<a href="/kontakt/">Kontakt & booking →</a>` + `<a href="/butik/">Kan det ikke betale sig at reparere? Se vores computere →</a>` + `<a href="/om-os/">Mød teamet →</a>`;
   const intro = r.intro.map((pp) => `<p>${pp}</p>`).join('');
   // Optional sections — omitted for the catch-all "Other Brands" page.
   const modelsSection = r.models ? `<section class="section alt"><div class="wrap"><div class="eyebrow">Modeller vi reparerer</div><h2>Fuld modeldækning</h2><div class="table-wrap"><table class="models"><thead><tr><th>Serie</th><th>Modeller</th><th>Typisk problem</th></tr></thead><tbody>${r.models.map((m) => `<tr><td>${esc(m.series)}</td><td>${esc(m.models)}</td><td class="issue">${esc(m.issue)}</td></tr>`).join('')}</tbody></table></div></div></section>` : '';
@@ -414,6 +414,7 @@ function homeBody() {
       <p><strong>E-mail</strong><br /><a href="mailto:${site.emailConsumer}">${site.emailConsumer}</a></p>
       <p><strong>Åbningstider</strong><br />Man–fre 10:00–18:00 · Lør 10:00–14:00 · Søn lukket</p>
       <a class="btn btn-primary" href="/kontakt/" style="margin-top:8px">Kom forbi med din enhed</a>
+      <p style="margin-top:12px"><a href="/computerreparation-frederiksberg/">Se alt om computerreparation på Frederiksberg →</a></p>
     </div>${mapFrame}</div></div></section>
   <section class="section"><div class="wrap"><div class="eyebrow">FAQ</div><h2>Ofte stillede spørgsmål</h2><div class="faq">${faqHtml}</div></div></section>`;
 }
@@ -862,7 +863,7 @@ function aboutBody() {
   const cards = TEAM.map(([name, img, bio]) => `<div class="card"><img class="img-placeholder" src="${img}" alt="${esc(name)}" loading="lazy" width="480" height="360" /><h3>${esc(name)}</h3><p>${esc(bio)}</p></div>`).join('');
   return `  <section class="hero"><div class="wrap"><div class="eyebrow">Om PCKlinik</div><h1>Mød teamet</h1>
     <p class="lead">Rigtige mennesker, rigtig erfaring — ikke et callcenter. PCKlinik er et team på 7, med base i vores værksted på Falkoner All&eacute; på Frederiksberg. Tilsammen dækker vi pc- og Mac-reparation, netværk og servere, on-site support og hjemmeside-/SEO-arbejde — så uanset hvad du har brug for, er der en på teamet, der virkelig kender det godt.</p></div></section>
-  <section class="section"><div class="wrap"><div class="trust-line">16 år på samme domæne, eget værksted på Falkoner Allé — ikke et callcenter — og <a href="${site.reviewsUrl}" target="_blank" rel="noopener">4,9 ★ hos 494 kunder på Google →</a></div></div></section>
+  <section class="section"><div class="wrap"><div class="trust-line">16 år på samme domæne, eget værksted på Falkoner Allé, hvor vi laver <a href="/computerreparation-frederiksberg/">computerreparation på Frederiksberg</a> — ikke et callcenter — og <a href="${site.reviewsUrl}" target="_blank" rel="noopener">4,9 ★ hos 494 kunder på Google →</a></div></div></section>
   <section class="section alt"><div class="wrap"><div class="eyebrow">Hvorfor vi er mere end reparation</div><h2>Alt inden for computer og IT — du har ikke brug for nogen andre</h2>
     <p class="sub">Vi startede som et reparationsværksted, men er over tid vokset til også at dække IT-support, hosting, domæner, backup og salg af computere. Det er ikke tilfældigt. Vi så det samme mønster igen og igen: kunder, der endte med at ringe rundt til flere forskellige leverandører for ting, der egentlig hang sammen — én til reparationen, én til hjemmesiden, én til backuppen, én til domænet. Derfor har vi valgt at være det ene team, der kender din opsætning fra start til slut. Inden for din computer- og IT-verden har du ikke brug for nogen andre end os.</p></div></section>
   <section class="section"><div class="wrap"><div class="eyebrow">Teamet</div><h2>Syv personer, ét værksted</h2>
@@ -938,7 +939,10 @@ function serviceBody(s) {
     : `<section class="section alt"><div class="wrap"><div class="eyebrow">Fejlsøgning &amp; pris</div><h2>Standard eller ekspres — dit valg</h2><p class="sub">Standardfejlsøgning koster 300 kr. inkl. moms (3–4 dage), eller ekspres for 600 kr. inkl. moms (1–2 timer) — reparationen klar inden for 24 timer, hvis der ikke skal bestilles specielle reservedele. Du får altid en fast pris, før vi går i gang.</p></div></section>`;
   const cta = esc(s.ctaLabel || 'Kom forbi med din enhed');
   const faq = s.faq.map((f) => `<details><summary>${esc(f.q)}</summary><div class="answer">${esc(f.a)}</div></details>`).join('');
-  const cross = s.crosslinks.map((c) => `<a href="${c.href}">${esc(c.label)} →</a>`).join('') + `<a href="/kontakt/">Kontakt & booking →</a>`;
+  // Repair/hardware-adjacent services (PC/Mac) point back to the Frederiksberg
+  // area page — Network/Web/other cross-cutting groups aren't a natural fit
+  // for that anchor, so left untouched (2026-08-12 crosslink pass).
+  const cross = s.crosslinks.map((c) => `<a href="${c.href}">${esc(c.label)} →</a>`).join('') + ((s.group === 'PC' || s.group === 'Mac') ? `<a href="/computerreparation-frederiksberg/">computerreparation på Frederiksberg →</a>` : '') + `<a href="/kontakt/">Kontakt & booking →</a>`;
   return `  <section class="hero"><div class="wrap"><div class="eyebrow">Service · Frederiksberg &amp; København</div><h1>${esc(s.h1)}</h1>${s.subhead ? `<p class="lead">${esc(s.subhead)}</p>` : ''}
     <div class="cta-row"><a class="btn btn-white" href="/kontakt/">${cta}</a><a class="btn btn-ghost-light" href="${site.phoneHref}">📞 Ring ${site.phone}</a></div></div></section>
   <section class="section"><div class="wrap lead-copy"><div class="crumbs"><a href="/">Forside</a> › <span>${esc(s.h1)}</span></div>${intro}${included}</div></section>
@@ -1072,8 +1076,9 @@ function locationBody(loc) {
   const remoteAreas = loc.remoteAreas ? '<section class="section"><div class="wrap"><div class="eyebrow">Resten af Danmark</div><h2>Fjernsupport og indsendelse uden for København</h2><p class="sub">Vi har allerede kunder i ' + loc.remoteAreas.areaNames.map(esc).join(', ') + ' og resten af landet — ikke som lokalt fremmøde, men via fjernsupport eller indsendelse af din enhed.</p><div class="cta-row"><a class="btn btn-primary" href="' + loc.remoteAreas.href + '">Se hvordan fjernsupport og indsendelse fungerer →</a></div></div></section>' : '';
   const faq = loc.faq.map((f) => `<details><summary>${esc(f.q)}</summary><div class="answer">${esc(f.a)}</div></details>`).join('');
   const cross = loc.crosslinks.map((c) => `<a href="${c.href}">${esc(c.label)} →</a>`).join('');
+  const badges = loc.badges ? `<div class="badges">${loc.badges.map((b) => `<span class="badge check">${esc(b)}</span>`).join('')}</div>` : '';
   return `  <section class="hero"><div class="wrap"><div class="eyebrow">København · Frederiksberg</div>
-    <h1>${esc(loc.h1)}</h1><p class="lead">${esc(loc.subhead)}</p>
+    <h1>${esc(loc.h1)}</h1><p class="lead">${esc(loc.subhead)}</p>${badges}
     <div class="cta-row"><a class="btn btn-white" href="/kontakt/">Kom forbi med din enhed</a><a class="btn btn-ghost-light" href="${site.phoneHref}">📞 Ring ${site.phone}</a></div></div></section>
   <section class="section"><div class="wrap lead-copy"><div class="crumbs"><a href="/">Forside</a> › <span>${esc(loc.h1)}</span></div>${intro}${trust}</div></section>
   ${areas}
