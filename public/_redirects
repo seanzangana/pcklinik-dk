@@ -170,6 +170,24 @@
 # ---------------------------------------------------------------------------
 /it-support-mindre-virksomheder-frederiksberg/  /it-support-mindre-virksomheder/  301
 
+# --- Resterende legacy-familier med visninger (1-4) — tilføjet 2026-08-15 ---
+# Disse opfylder kriterium 1 (har visninger), men lå under den oprindelige
+# grænse på 5. De hører til familier, vi allerede omdirigerer, så de er taget
+# med for konsistens. Wildcards står bevidst EFTER de specifikke
+# /mac-service/-regler ovenfor — første match vinder.
+# 4 visn.
+/tag/pc-reparation/                    /computer-reparation/  301
+# 3 visn.
+/tag/computer-reparation-kobenhavn/    /computerreparation-koebenhavn/  301
+# 3 visn. + resten af /author/
+/author/*                              /om-os/  301
+# 1 visn. + resten af /testimonial/
+/testimonial/*                         /om-os/  301
+# 2-3 visn. — resterende /mac-service/-modelsider
+/mac-service/*                         /mac-reparation/  301
+# 2 visn. — resterende /pc-ategories/-URL'er
+/pc-ategories/*                        /butik/computere/  301
+
 # ---------------------------------------------------------------------------
 # ÅBNE PUNKTER — skal revideres, når de nævnte sider findes
 # ---------------------------------------------------------------------------
