@@ -10,8 +10,8 @@
 // (zero visual footprint, zero performance cost) — see banner() in build.mjs.
 export const announcement = {
   enabled: true,
-  message: 'PCKlinik holder lukket i morgen, lørdag den 15. august. Vi er tilbage mandag med normale åbningstider. Skriv til kontakt@pcklinik.dk eller ring 91 81 61 81, hvis det haster.',
-  expiresAt: '2026-08-17T00:00:00+02:00', // ISO timestamp with tz offset; banner auto-hides client-side once past this (see build.mjs). Leave null/unset for no auto-expiry.
+  message: 'PCKlinik holder ferielukket fra mandag den 23. august til og med søndag den 6. september. Vi er tilbage mandag den 7. september med normale åbningstider. Skriv til kontakt@pcklinik.dk eller ring 91 81 61 81, hvis det haster.',
+  expiresAt: '2026-09-07T00:00:00+02:00', // ISO timestamp with tz offset; banner auto-hides client-side once past this (see build.mjs). Leave null/unset for no auto-expiry.
     // type controls the banner color: "closed" (amber/orange), "info" (blue),
     // "holiday" (amber/orange, same as closed). Add more types + colors in
     // the .announcement-bar CSS rules in src/styles/global.css if needed.
